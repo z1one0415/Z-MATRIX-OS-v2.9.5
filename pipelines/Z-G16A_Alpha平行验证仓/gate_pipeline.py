@@ -63,11 +63,25 @@ def run(plan=None):
     if plan.get("system_verdict_at_entry"):
         print(f"  System判决: {plan['system_verdict_at_entry']}")
     
-    # 开仓模拟
+    # 开仓 — 调用resolve_fill_quality (三级fill质量判定)
     entry_price = plan.get("entry_price", 100)
     benchmark_price = plan.get("benchmark_price", entry_price)
-    slippage = 0.0015
-    fill_price = entry_price * (1 + slippage)
+    
+    fill = resolve_fill_quality(
+        mt_status=plan.get("market_truth_status","PASS"),
+        price_basis=plan.get("price_basis","raw_unadjusted"),
+        quote_domain=plan.get("quote_domain","execution_quote"),
+        quote_role=plan.get("quote_role","primary"),
+        ttl_valid=plan.get("ttl_valid",True),
+        ref_price=entry_price
+    )
+    fill_quality = fill["fill_quality"]
+    fill_price = fill["fill_price"]
+    
+    if fill_quality == "NO_FILL":
+        result["plan_status"] = "CREATED_NO_FILL"
+        print(f"\n⛔ NO_FILL → 仅验证计划草案, 不开仓价")
+        return result
     
     print(f"\n📊 PAPER_WORLD开仓:")
     print(f"  入场价: {entry_price:.2f} | 填报价: {fill_price:.2f}")

@@ -40,11 +40,15 @@ def run(proposal=None):
     dq_total = dq.get("total",0)
     mt_status = g1.get("status","BLOCK")
     
-    # Full模式前置条件: DQ≥85 + MT.PASS + (L1.5 SAFE implied) + world=PAPER_WORLD
-    l1_5_safe = True  # placeholder - real check requires L1.5 module
-    world_ok = True    # placeholder - real check requires world context
+    # Full模式前置条件: DQ≥85 + MT.PASS + 完整前置检查
+    l1_5_safe = proposal.get("l1_5_status","") == "SAFE"
+    world_ok = proposal.get("world","") == "PAPER_WORLD"
+    role_valid = bool(proposal.get("selected_role",""))
+    operating_mode = proposal.get("operating_mode","NORMAL")
+    tail_ok = operating_mode != "DEFENSIVE_ONLY"
+    hibernation_ok = not proposal.get("hibernation_no_attack", False)
     
-    if dq_total < 85 or mt_status != "PASS" or not l1_5_safe or not world_ok:
+    if dq_total < 85 or mt_status != "PASS" or not l1_5_safe or not world_ok or not role_valid or not tail_ok or not hibernation_ok:
         mode = "Lite"
         output_level = "O2_DIAGNOSTIC" if mt_status == "BLOCK" else "O3_CONDITIONAL"
         print(f"⚠️ {mode}模式: DQ={dq_total}, MT={mt_status} → {output_level}")
@@ -86,6 +90,11 @@ def run(proposal=None):
     print(f"📝 [8/8] 后验: T+1/3/5/20→Z9→Alpha验证仓")
     print(f"🏁 paper_only | 不连接券商")
     
+    result["capability_mask"] = {
+        "allowed_outputs": ["paper_plan", "paper_track"],
+        "conditional_outputs": [{"output":"PAPER_PROBE","requires":["world=PAPER_WORLD","MT=PASS","L1.5=SAFE","role_valid=true","TailRisk!=DEFENSIVE","Hibernation!=NO_ATTACK"]}],
+        "forbidden_actions": ["BUY","SELL","AUTO_TRADE"]
+    }
     result["coach_plan"] = {
         "current_state": {"l3":"PARTIAL","dq":dq_total,"price":price},
         "scenario_routes": [

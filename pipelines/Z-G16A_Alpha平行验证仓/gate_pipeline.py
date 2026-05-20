@@ -67,30 +67,33 @@ def run(plan=None):
     entry_price = plan.get("entry_price", 100)
     benchmark_price = plan.get("benchmark_price", entry_price)
     
+    slippage_rate = 0.0015
     fill = resolve_fill_quality(
         mt_status=plan.get("market_truth_status","BLOCK"),
         price_basis=plan.get("price_basis","unknown"),
         quote_domain=plan.get("quote_domain","unknown"),
         quote_role=plan.get("quote_role","unknown"),
         ttl_valid=plan.get("ttl_valid",False),
-        ref_price=entry_price
+        ref_price=entry_price,
+        slippage=slippage_rate
     )
     fill_quality = fill["fill_quality"]
     fill_price = fill["fill_price"]
+    result["fill_quality"] = fill
     
     if fill_quality == "NO_FILL":
         result["plan_status"] = "CREATED_NO_FILL"
+        result["position"] = None
         print(f"\n⛔ NO_FILL → 仅验证计划草案, 不开仓价")
         return result
     
     print(f"\n📊 PAPER_WORLD开仓:")
     print(f"  入场价: {entry_price:.2f} | 填报价: {fill_price:.2f}")
-    print(f"  基准价: {benchmark_price:.2f} | 滑点: {slippage*100:.2f}%")
+    print(f"  基准价: {benchmark_price:.2f} | 滑点: {slippage_rate*100:.2f}%")
     print(f"  数量: 1U (纸面验证单位)")
     
-    # 成本
     costs = {
-        "slippage": round((fill_price - entry_price), 2) if fill_price else 0,
+        "slippage": round((fill_price - entry_price), 2),
         "commission": round(fill_price * 0.0003, 2),
         "total": round((fill_price - entry_price) + fill_price * 0.0003, 2)
     }
@@ -102,7 +105,11 @@ def run(plan=None):
         "benchmark_price": benchmark_price,
         "costs": costs,
         "world": "PAPER_WORLD",
-        "status": "OPEN"
+        "status": "OPEN",
+        "fill_quality": fill["fill_quality"],
+        "fill_confidence": fill["fill_confidence"],
+        "attribution_allowed": fill["attribution_allowed"],
+        "reason_codes": fill["reason_codes"]
     }
     
     # 结算预览

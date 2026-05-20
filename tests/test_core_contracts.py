@@ -90,6 +90,54 @@ def test_zg16a_high_confidence_fill():
     assert r["fill_price"] == 100.15  # 100 * 1.0015
     print("✅ test_zg16a_high_confidence_fill")
 
+
+
+def test_zg16a_run_missing_fill_fields_created_no_fill():
+    """Z-G16A run: missing fill fields→CREATED_NO_FILL, position=None"""
+    spec = importlib.util.spec_from_file_location("zg16a","pipelines/Z-G16A_Alpha平行验证仓/gate_pipeline.py")
+    mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
+    
+    r = mod.run({"validation_id":"test","validation_hypothesis":"PCB验证","ghost_benchmark":"512480",
+        "planned_horizon_days":30,"invalidation_conditions":["跌破MA60"],"primary_role":"R_MATRIX",
+        "entry_price":100})
+    assert r["plan_status"] == "CREATED_NO_FILL", f"Expected CREATED_NO_FILL, got {r['plan_status']}"
+    assert r.get("position") is None, "position must be None on NO_FILL"
+    assert r["fill_quality"]["fill_quality"] == "NO_FILL"
+    print("✅ test_zg16a_run_missing_fill_fields_created_no_fill")
+
+def test_zg16a_run_degraded_fill_position_metadata():
+    """Z-G16A run: DEGRADED_FILL→position with correct metadata"""
+    spec = importlib.util.spec_from_file_location("zg16a","pipelines/Z-G16A_Alpha平行验证仓/gate_pipeline.py")
+    mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
+    
+    r = mod.run({"validation_id":"test","validation_hypothesis":"PCB验证","ghost_benchmark":"512480",
+        "planned_horizon_days":30,"invalidation_conditions":["跌破MA60"],"primary_role":"R_MATRIX",
+        "entry_price":100,"market_truth_status":"DEGRADED","price_basis":"raw_unadjusted",
+        "quote_domain":"realtime_research","quote_role":"raw_fallback","ttl_valid":True})
+    
+    assert r.get("position") is not None, "position must exist for DEGRADED_FILL"
+    assert r["position"]["fill_quality"] == "DEGRADED_FILL"
+    assert r["position"]["attribution_allowed"] is False, "DEGRADED must have attribution_allowed=False"
+    assert r["fill_quality"]["fill_confidence"] == "degraded"
+    print("✅ test_zg16a_run_degraded_fill_position_metadata")
+
+def test_zg16a_run_high_confidence_no_nameerror():
+    """Z-G16A run: HIGH_CONFIDENCE_FILL→correct fill_price + no NameError"""
+    spec = importlib.util.spec_from_file_location("zg16a","pipelines/Z-G16A_Alpha平行验证仓/gate_pipeline.py")
+    mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
+    
+    r = mod.run({"validation_id":"test","validation_hypothesis":"PCB验证","ghost_benchmark":"512480",
+        "planned_horizon_days":30,"invalidation_conditions":["跌破MA60"],"primary_role":"R_MATRIX",
+        "entry_price":100,"market_truth_status":"PASS","price_basis":"raw_unadjusted",
+        "quote_domain":"execution_quote","quote_role":"primary","ttl_valid":True})
+    
+    assert r.get("position") is not None
+    assert r["position"]["fill_quality"] == "HIGH_CONFIDENCE_FILL"
+    assert r["position"]["attribution_allowed"] is True
+    assert r["position"]["fill_price"] == 100.15
+    assert r["fill_quality"]["fill_quality"] == "HIGH_CONFIDENCE_FILL"
+    print("✅ test_zg16a_run_high_confidence_no_nameerror")
+
 if __name__ == "__main__":
     results = []
     for name, fn in list(globals().items()):

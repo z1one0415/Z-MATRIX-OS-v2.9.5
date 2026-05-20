@@ -41,8 +41,18 @@ def test_zg16_full_no_default_paper_probe_action():
     coach = r["coach_plan"]
     for route in coach["scenario_routes"]:
         assert route.get("action") != "PAPER_PROBE", f"PAPER_PROBE as action in route"
+        if route.get("conditional_output") == "PAPER_PROBE":
+            assert "requires" in route
+            assert "world=PAPER_WORLD" in route["requires"]
+            assert "L1.5=SAFE" in route["requires"]
+            assert "role_valid=true" in route["requires"]
     for step in coach["position_playbook"]["steps"]:
         assert step.get("action") != "PAPER_PROBE", f"PAPER_PROBE as action in step"
+        if step.get("conditional_output") == "PAPER_PROBE":
+            assert "requires" in step
+            assert "world=PAPER_WORLD" in step["requires"]
+            assert "L1.5=SAFE" in step["requires"]
+            assert "role_valid=true" in step["requires"]
     print("✅ test_zg16_full_no_default_paper_probe_action (monkeypatch Full)")
 
 def test_zg16a_missing_fill_fields_no_fill():

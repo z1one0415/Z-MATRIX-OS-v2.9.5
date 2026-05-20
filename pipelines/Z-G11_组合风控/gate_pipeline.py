@@ -82,8 +82,8 @@ def run():
         if pct > 60: warnings.append(f"产业链过度集中: {ch} {pct:.0f}%")
     
     # 3. 现金比例 (假设总资产=持仓+现金, 估算)
-    cash_ratio = 10  # placeholder
-    print(f"\n💰 现金比例: 约{cash_ratio}% (需从账户实测)")
+    cash_ratio = None  # NOT_CONNECTED — not a placeholder, explicitly unavailable
+    print(f"\n💰 现金比例: 未接入账户实测数据")
     
     # 4. 裁决
     print(f"\n📋 裁决:")
@@ -98,6 +98,7 @@ def run():
     result["sections"]["positions"] = positions
     result["sections"]["total_value"] = total_value
     result["sections"]["warnings"] = warnings
+    result["sections"]["cash"] = {"cash_ratio": None, "source": "NOT_CONNECTED", "capability": "cash_exposure_disabled"}
     return result
 
 if __name__ == "__main__":

@@ -91,26 +91,60 @@ def _bs_research_kline(ticker, days=10):
     return _bs_kline_internal(ticker, days, adjust="research")
 
 def _bs_kline_internal(ticker, days, adjust="research"):
-    """拉取baostock日K — 按用途分离adjustflag
+    """拉取baostock日K OHLCV — 按用途分离adjustflag
     adjust="research" → adjustflag=2 (前复权, 用于均线/收益率/形态)
     adjust="raw"      → adjustflag=3 (不复权, 用于execution交叉验证)
+    
+    Returns dict with: dates/open/high/low/close/volume/amount/prices/adjust_flag/adjust_type/data_contract
+    prices == close for backward compatibility with Z-G09/Z-G10/R-Matrix/D-Matrix.
     """
     try:
         import baostock as bs; bs.login()
         pfx = "sz" if ticker[0] in "03" else "sh"
         code = f"{pfx}.{ticker}"
-        flag = "2" if adjust == "research" else "3"  # research=前复权, raw=不复权(adjustflag=3)
-        s = (datetime.now()-timedelta(days=days)).strftime("%Y-%m-%d")
+        flag = "2" if adjust == "research" else "3"
+        s = (datetime.now()-timedelta(days=max(days+10,100))).strftime("%Y-%m-%d")
         e = datetime.now().strftime("%Y-%m-%d")
-        rs = bs.query_history_k_data_plus(code,"date,close",start_date=s,end_date=e,frequency="d",adjustflag=flag)
-        prices = []
+        fields = "date,open,high,low,close,volume,amount"
+        rs = bs.query_history_k_data_plus(code, fields, start_date=s, end_date=e, frequency="d", adjustflag=flag)
+        rows = []
+        missing = set()
         while rs.next():
             r = rs.get_row_data()
-            if r[1] and r[1]!="" and float(r[1])>0: prices.append({"date":r[0],"close":float(r[1])})
+            if r[1] and r[1] != "" and float(r[1]) > 0:
+                try:
+                    rows.append({"date": r[0], "open": float(r[1]), "high": float(r[2]),
+                                "low": float(r[3]), "close": float(r[4]),
+                                "volume": float(r[5]) if r[5] and r[5] != "" else 0.0,
+                                "amount": float(r[6]) if len(r) > 6 and r[6] and r[6] != "" else 0.0})
+                except (IndexError, ValueError):
+                    rows.append({"date": r[0], "open": float(r[1]), "high": float(r[2]),
+                                "low": float(r[3]), "close": float(r[4]), "volume": 0.0, "amount": 0.0})
         bs.logout()
-        return {"prices":prices, "adjust_flag":flag, "adjust_type":adjust} if prices else {"error":"no_data"}
+        if not rows:
+            return {"error": "no_data"}
+        # Check for missing fields
+        if all(r["amount"] == 0.0 for r in rows):
+            missing.add("amount")
+        result = {
+            "dates": [r["date"] for r in rows],
+            "open": [r["open"] for r in rows],
+            "high": [r["high"] for r in rows],
+            "low": [r["low"] for r in rows],
+            "close": [r["close"] for r in rows],
+            "volume": [r["volume"] for r in rows],
+            "amount": [r["amount"] for r in rows] if "amount" not in missing else [],
+            "prices": [r["close"] for r in rows],  # backward compat
+            "count": len(rows),
+            "adjust_flag": flag,
+            "adjust_type": adjust,
+            "data_contract": "OHLCV_DAILY_V1",
+        }
+        if missing:
+            result["missing_fields"] = sorted(missing)
+        return result
     except Exception as ex:
-        return {"error":str(ex)[:60]}
+        return {"error": str(ex)[:60]}
 
 def _bs_finance(ticker):
     try:
@@ -169,7 +203,7 @@ def market_truth(ticker):
     sina = _sina_quote(ticker)
     if sina.get("error"): errs.append(f"sina:{sina['error']}")
     else: dt.update(sina)
-    # execution验证用raw price (adjustflag=1, 不复权)
+    # execution验证用raw price (adjustflag=3, 不复权)
     bs = _bs_raw_kline(ticker, 10)
     if bs.get("error"): errs.append(f"bs:{bs['error']}")
     elif bs.get("prices"):
@@ -179,14 +213,33 @@ def market_truth(ticker):
             dp = abs(dt["price"]-lt["close"])/dt["price"]*100
             dt["source_diff_pct"]=round(dp,2)
             dd = max(0,(datetime.strptime(today,"%Y-%m-%d")-datetime.strptime(lt["date"],"%Y-%m-%d")).days)
-            # execution_quote: warn=0.3%, block=1.0%
-            if dp <= 0.30: dt["cross_validated"]=True; dt["price_conflict"]=False  # execution_quote warn=0.3%
-            elif dp <= 1.0: dt["cross_validated"]=False; dt["price_conflict"]=False; dt["degraded"]=True; errs.append(f"execution_quote DEGRADED:{dt['price']}vs{lt['close']}({dp:.1f}%)")
-            else: dt["price_conflict"]=True; errs.append(f"execution_quote BLOCK:{dt['price']}vs{lt['close']}({dp:.1f}%>1.0%)")
+            is_same_trading_date = lt["date"] == today
+            if is_same_trading_date:
+                # Same trading day: standard thresholds apply
+                if dp <= 0.30: dt["cross_validated"]=True; dt["price_conflict"]=False
+                elif dp <= 1.0: dt["cross_validated"]=False; dt["price_conflict"]=False; dt["degraded"]=True; errs.append(f"execution_quote DEGRADED:{dt['price']}vs{lt['close']}({dp:.1f}%)")
+                else: dt["price_conflict"]=True; errs.append(f"execution_quote BLOCK:{dt['price']}vs{lt['close']}({dp:.1f}%>1.0%)")
+            else:
+                # Real-time vs previous close: never BLOCK on diff alone
+                dt["historical_close_date"] = lt["date"]
+                dt["comparison_mode"] = "realtime_vs_previous_close_reference"
+                dt["cross_validated"] = False
+                dt["degraded"] = True
+                dt["price_conflict"] = False  # not a true conflict, just different dates
+                errs.append(f"REALTIME_VS_PREV_CLOSE_REFERENCE_ONLY (diff={dp:.1f}%)")
     st = "BLOCK" if not dt.get("price") else ("DEGRADED" if dt.get("price_conflict") or errs else "PASS")
     # Capability Mask: 根据status确定输出等级
     cap_level = "O5" if st=="PASS" else ("O3" if st=="DEGRADED" else "O2")
-    cap_disabled = [] if st=="PASS" else (["exact_price_zone","paper_fill_price"] if st=="DEGRADED" else ["exact_price_zone","paper_fill_price","execution_proposal"])
+    # When only reference comparison (not true cross-validation), disable paper_fill but allow watch/diagnostic
+    is_reference_only = dt.get("comparison_mode") == "realtime_vs_previous_close_reference"
+    if is_reference_only:
+        cap_disabled = ["paper_fill_price", "exact_price_zone"]
+    elif st == "PASS":
+        cap_disabled = []
+    elif st == "DEGRADED":
+        cap_disabled = ["exact_price_zone", "paper_fill_price"]
+    else:
+        cap_disabled = ["exact_price_zone", "paper_fill_price", "execution_proposal"]
     dt["price_basis"] = "raw_unadjusted"; dt["quote_domain"] = "execution_quote"; dt["quote_role"] = "primary"; dt["output_level"] = cap_level
     dt["capability_mask"] = capability_mask(cap_disabled, cap_level, errs)
     rv = {**dt,"status":st,"errors":errs}; _cache_set(ck,rv); return rv
@@ -232,11 +285,25 @@ def l4_health(ticker):
 def get_kline(ticker, n=60):
     ck = f"kl_{ticker}_{n}"
     if _cache_get(ck, ttl=30): return _cache_get(ck, ttl=30)
-    bs = _bs_research_kline(ticker, max(n+10,70))
+    bs = _bs_research_kline(ticker, max(n+30, 100))
     if bs.get("error"): return {"status":"DATA_INCOMPLETE","prices":[],"error":bs["error"]}
-    px = [p["close"] for p in bs["prices"][-n:]]
-    rv = {"status":"PASS" if len(px)>=min(n,20) else "DEGRADED","prices":px,"count":len(px)}
-    _cache_set(ck,rv); return rv
+    # Extract OHLCV arrays, trim to n
+    rv = {
+        "status": "PASS" if bs.get("count",0) >= min(n,20) else "DEGRADED",
+        "prices": bs["close"][-n:] if bs.get("close") else [],
+        "open": bs["open"][-n:] if bs.get("open") else [],
+        "high": bs["high"][-n:] if bs.get("high") else [],
+        "low": bs["low"][-n:] if bs.get("low") else [],
+        "close": bs["close"][-n:] if bs.get("close") else [],
+        "volume": bs["volume"][-n:] if bs.get("volume") else [],
+        "amount": bs["amount"][-n:] if bs.get("amount") else [],
+        "count": min(n, bs.get("count", 0)),
+        "data_contract": bs.get("data_contract", "OHLCV_DAILY_V1"),
+        "price_basis": "adjusted_research",
+    }
+    if bs.get("missing_fields"):
+        rv["missing_fields"] = bs["missing_fields"]
+    _cache_set(ck, rv); return rv
 
 def get_financials(ticker):
     ck = f"fin_{ticker}"

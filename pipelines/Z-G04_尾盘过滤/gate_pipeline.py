@@ -28,22 +28,36 @@ def _tail_30min_analysis(ticker):
     
     today_chg = (g1["price"] / g1.get("open", g1["price"]) - 1) * 100 if g1.get("open") else 0
     prices = kl["prices"]
-    # 如果最近一日涨幅>3%但前几日缩量 → 尾盘画图嫌疑
-    if len(prices) >= 5:
+    # Use OHLCV volume field when available, fall back to price-based proxy
+    volumes = kl.get("volume", [])
+    if len(volumes) >= 5:
+        avg_vol_5d = sum(volumes[-5:-1]) / 4
+        today_vol = volumes[-1]
+        vol_source = "daily_ohlcv"
+    elif len(prices) >= 5:
+        # Fallback: price-based proxy (degraded, not real volume)
         avg_vol_5d = sum(prices[-5:-1]) / 4 if len(prices) >= 6 else prices[-2]
         today_vol = prices[-1]
-        vol_ratio = today_vol / avg_vol_5d if avg_vol_5d > 0 else 1
-        
-        if today_chg > 3 and vol_ratio < 0.7:
-            return {"type": "FALSE_PREHEAT", "ticker": ticker,
-                    "reason": f"缩量尾盘拉升 (+{today_chg:.1f}%, 量比{vol_ratio:.1f}x)",
-                    "action": "冷却3交易日, 禁止生命周期升级"}
-        if today_chg > 2 and vol_ratio > 1.5:
-            return {"type": "SMART_MONEY_TAIL", "ticker": ticker,
-                    "reason": f"放量逆势抢筹 (+{today_chg:.1f}%, 量比{vol_ratio:.1f}x)",
-                    "action": "次日观察优先级, 需L3确认"}
+        vol_source = "price_proxy_DEGRADED"
+    else:
+        return {"type": "DATA_INCOMPLETE", "ticker": ticker, "reason": "NO_VOLUME_DATA"}
     
-    return {"type": "NORMAL", "ticker": ticker, "reason": "尾盘无异常"}
+    vol_ratio = today_vol / avg_vol_5d if avg_vol_5d > 0 else 1
+    data_contract = kl.get("data_contract", "UNKNOWN")
+    
+    if today_chg > 3 and vol_ratio < 0.7:
+        return {"type": "FALSE_PREHEAT", "ticker": ticker,
+                "reason": f"缩量尾盘拉升 (+{today_chg:.1f}%, 量比{vol_ratio:.1f}x)",
+                "action": "冷却3交易日, 禁止生命周期升级",
+                "data_contract": data_contract, "volume_source": vol_source}
+    if today_chg > 2 and vol_ratio > 1.5:
+        return {"type": "SMART_MONEY_TAIL", "ticker": ticker,
+                "reason": f"放量逆势抢筹 (+{today_chg:.1f}%, 量比{vol_ratio:.1f}x)",
+                "action": "次日观察优先级, 需L3确认",
+                "data_contract": data_contract, "volume_source": vol_source}
+    
+    return {"type": "NORMAL", "ticker": ticker, "reason": "尾盘无异常",
+            "data_contract": data_contract, "volume_source": vol_source}
 
 def run(tickers=None, mode="tail_filter"):
     """Z-G04 主管线"""

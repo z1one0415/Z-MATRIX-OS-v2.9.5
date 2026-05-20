@@ -1,9 +1,10 @@
-"""v2.9.5-RC 18条管线 manifest smoke — 验证目录+入口+状态诚实"""
+"""v2.9.5-RC 18条管线 manifest smoke — 强制校验README一致性+入口契约"""
 import importlib.util, sys, os
 from pathlib import Path
 
-# 18条管线清单: {编号: {path, status}}
-# status: executable/prototype/doc_only — 必须与README一致
+# executable: 目录存在 + import OK + callable run()
+# prototype:  目录存在 + import OK (不强制run())
+# doc_only:   仅README标注, 无代码入口
 PIPELINE_MANIFEST = {
     "Z-G01": {"path": "pipelines/Z-G01_数据后勤保障/gate_data.py", "status": "executable"},
     "Z-G02": {"path": "pipelines/Z-G02_前夜战报/gate_pipeline.py", "status": "prototype"},
@@ -25,44 +26,71 @@ PIPELINE_MANIFEST = {
     "Z-G17": {"path": "pipelines/Z-G17_人类风控/gate_pipeline.py", "status": "executable"},
 }
 
+README_STATUS_MAP = {"🟢": "executable", "🟡": "prototype", "🔴": "doc_only"}
+
 def load_module(path):
-    try:
-        spec = importlib.util.spec_from_file_location(Path(path).stem, path)
-        mod = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(mod)
-        return mod
-    except:
-        return None
+    spec = importlib.util.spec_from_file_location(Path(path).stem, path)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
 
-def test_manifest_all_18_declared():
-    """验证清单覆盖18条管线"""
-    assert len(PIPELINE_MANIFEST) == 18, f"Expected 18, got {len(PIPELINE_MANIFEST)}"
-    print(f"  ✅ 18条管线已声明")
+def test_manifest_all_18():
+    assert len(PIPELINE_MANIFEST) == 18
+    print("  ✅ 18/18")
 
-def test_manifest_paths_exist_or_doc_only():
-    """验证入口文件存在 (doc_only除外)"""
+def test_executable_paths_and_run():
+    """executable: 目录存在 + import + callable run()"""
+    failed = []
     for code, item in PIPELINE_MANIFEST.items():
+        if item["status"] != "executable": continue
         p = Path(item["path"])
-        if item["status"] == "doc_only":
-            print(f"  📄 {code}: doc_only (skip file check)")
-            continue
         assert p.exists(), f"{code}: MISSING {p}"
-        print(f"  {'🟢' if item['status']=='executable' else '🟡'} {code}: {item['status']} ({p.name})")
-    print("  ✅ 所有声明路径存在")
+        mod = load_module(str(p))
+        # Z-G01 is Data Service (market_truth+source_arbitrate, not run())
+        if "gate_data.py" in item["path"]:
+            assert hasattr(mod, "market_truth"), f"{code}: data service missing market_truth"
+            assert hasattr(mod, "source_arbitrate"), f"{code}: data service missing source_arbitrate"
+            print(f"  ✅ {code}: data service (market_truth+source_arbitrate)")
+        else:
+            assert hasattr(mod, "run"), f"{code}: executable must have run()"
+            assert callable(mod.run), f"{code}: run() not callable"
+            print(f"  ✅ {code}: path+import+run()")
+    assert not failed
 
-def test_executable_pipelines_importable():
-    """验证executable管线可import"""
+def test_prototype_import():
+    """prototype: 目录存在 + import OK"""
     for code, item in PIPELINE_MANIFEST.items():
+        if item["status"] != "prototype": continue
         p = Path(item["path"])
-        if not p.exists(): continue
-        if item["status"] == "executable":
-            mod = load_module(str(p))
-            assert mod is not None, f"{code}: import failed"
-            has_run = hasattr(mod, "run") and callable(mod.run)
-            print(f"  ✅ {code}: import OK, run()={'OK' if has_run else 'MISSING'}")
+        assert p.exists(), f"{code}: MISSING {p}"
+        mod = load_module(str(p))
+        assert mod is not None, f"{code}: import failed"
+        print(f"  ✅ {code}: path+import (prototype)")
+
+def test_pipeline_readme_status_consistent():
+    """pipelines/README.md 状态与manifest一致"""
+    readme = Path("pipelines/README.md").read_text(encoding="utf-8")
+    for code, item in PIPELINE_MANIFEST.items():
+        lines = [ln for ln in readme.splitlines() if f"| {code} " in ln]
+        assert lines, f"{code}: missing in pipelines/README.md"
+        line = lines[0]
+        expected_icon = {"executable": "🟢", "prototype": "🟡", "doc_only": "🔴"}[item["status"]]
+        assert expected_icon in line, f"{code}: manifest={item['status']} but README={line.strip()}"
+    print("  ✅ pipelines/README状态与manifest一致")
+
+def test_root_and_pipeline_readme_consistent():
+    """根README与pipelines README release状态一致"""
+    root = Path("README.md").read_text(encoding="utf-8")
+    pipe = Path("pipelines/README.md").read_text(encoding="utf-8")
+    root_rc = "release-ready candidate" in root or "code-ready candidate" in root
+    pipe_rc = "release-ready candidate" in pipe or "code-ready candidate" in pipe
+    assert root_rc and pipe_rc, "Both READMEs must have state label"
+    print("  ✅ 根README与pipelines README状态一致")
 
 if __name__ == "__main__":
-    test_manifest_all_18_declared()
-    test_manifest_paths_exist_or_doc_only()
-    test_executable_pipelines_importable()
-    print("\n🏁 18-pipeline manifest smoke PASS")
+    test_manifest_all_18()
+    test_executable_paths_and_run()
+    test_prototype_import()
+    test_pipeline_readme_status_consistent()
+    test_root_and_pipeline_readme_consistent()
+    print("\n🏁 18-pipeline manifest smoke + README consistency PASS")

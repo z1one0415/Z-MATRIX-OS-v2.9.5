@@ -1,13 +1,13 @@
 # 🏛️ Z-MATRIX-OS v2.9.5-RC 流程管线专用空间
 
-> **版本**: v2.9.5-RC code-ready candidate | **18条管线**
+> **版本**: v2.9.5-RC release-ready candidate | **18条管线**
 
 ## 管线索引
 
 | 编号 | 名称 | 状态 | 说明 |
 |:--:|------|:--:|------|
 | Z-G01 | 数据后勤保障 | 🟢 | Data Service Layer, 8函数+分级TTL+降级链 |
-| Z-G02 | 前夜战报+叙事水温 | 🟢 | L2.5+MacroVeto+情绪快扫 |
+| Z-G02 | 前夜战报+叙事水温 | 🟡 | L2.5+MacroVeto+情绪快扫 |
 | Z-G03 | 盘中确认 | 🟡 | 原型可用, VWAP+量比待校准 |
 | Z-G04 | 尾盘过滤 | 🟢 | FalsePreheat+SmartMoney+Lifecycle |
 | Z-G05 | 日记忆卡 | 🟢 | 持仓追踪+MEMORY自动追加 |

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""☯️ Z-G09 全局轮动筛选 — R-Matrix OscillationKing v1.1 Type B优先版
+"""☯️ Z-G09 全局轮动筛选 — R-Matrix OscillationKing v1.1 Type A/B 双模式
 运行: 每周全量 + 每日增量 | 算法: Type B上升通道 + 残差均值回归 + 熊陷阱 + 波动锥 (Type A水平震荡待补)
 """
 
@@ -18,7 +18,7 @@ except ImportError:
     l4_health = lambda t: {"status":"stub"}
 
 def _r_matrix_score(ticker):
-    """R-Matrix OscillationKing v1.1 Type B优先版 评分"""
+    """R-Matrix OscillationKing v1.1 Type A/B 双模式 评分"""
     g1 = market_truth(ticker)
     l4 = l4_health(ticker)
     if g1.get("status") == "BLOCK" or l4.get("status") == "BLOCK":
@@ -31,17 +31,20 @@ def _r_matrix_score(ticker):
                 "reason_codes":["KLINE_LT_60D"],"ticker":ticker,"excluded_from_ranking":True}
     
     try:
-        from zmatrix.scoring.r_matrix.oscillation_king_ranker_v11 import rank_type_b_rising_channel
-        result = rank_type_b_rising_channel(ticker, g1.get("name",""), prices)
+        from zmatrix.scoring.r_matrix.oscillation_king_ranker_v11 import rank_type_a_horizontal, rank_type_b_rising_channel
+        type_a = rank_type_a_horizontal(ticker, g1.get("name",""), prices)
+        type_b = rank_type_b_rising_channel(ticker, g1.get("name",""), prices)
+        best = max([type_a, type_b], key=lambda r: r.score)
         return {
             "ticker":ticker,"name":g1.get("name",""),
             "status":"PASS",
-            "score":result.score,
-            "role":result.role,
-            "oscillation_type":result.oscillation_type,
-            "allowed_action":result.allowed_action,
-            "next_trigger":result.next_trigger,
-            "diagnostics":result.diagnostics if hasattr(result,"diagnostics") else {}
+            "score":best.score,
+            "oscillation_type":best.oscillation_type,
+            "allowed_action":best.allowed_action,
+            "next_trigger":best.next_trigger,
+            "diagnostics":best.diagnostics,
+            "subtype_scores":{"type_a_horizontal":type_a.score,"type_b_rising_channel":type_b.score},
+            "subtype_actions":{"type_a_horizontal":type_a.allowed_action,"type_b_rising_channel":type_b.allowed_action}
         }
     except Exception as e:
         return {"status":"ERROR","ticker":ticker,"error":str(e)[:80],"excluded_from_ranking":True}

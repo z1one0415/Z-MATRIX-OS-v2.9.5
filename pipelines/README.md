@@ -14,7 +14,7 @@
 | Z-G06 | 复盘反馈 | 🟢 | Z9校准+模式检测+Hermes |
 | Z-G07 | 轮动+黑马选股 | 🟡 | 原型可用, 待重构调用Z-G01统一接口 |
 | Z-G08 | 叙事雷达深度 | 🟡 | 原型 |
-| Z-G09 | 全局轮动筛选 | 🟢 | R-Matrix OscillationKing v1.1 Type B优先版 |
+| Z-G09 | 全局轮动筛选 | 🟢 | R-Matrix OscillationKing v1.1 Type A/B 双模式 |
 | Z-G10 | 全局黑马筛选 | 🟢 | D-Matrix v2.2 源点雷达 |
 | Z-G11 | 组合风控 | 🟢 | 集中度+产业链+现金 |
 | Z-G12 | 系统巡检 | 🟢 | 6模块+DQ+Cron |

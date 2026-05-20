@@ -12,7 +12,7 @@ PIPELINE_MANIFEST = {
     "Z-G04": {"path": "pipelines/Z-G04_尾盘过滤/gate_pipeline.py", "status": "executable_light"},
     "Z-G05": {"path": "pipelines/Z-G05_日记忆卡/gate_pipeline.py", "status": "executable_core"},
     "Z-G06": {"path": "pipelines/Z-G06_复盘反馈/gate_pipeline.py", "status": "executable_core"},
-    "Z-G07": {"path": "pipelines/Z-G07_轮动黑马选股/gate_pipeline.py", "status": "prototype"},
+    "Z-G07": {"path": "pipelines/Z-G07_轮动黑马选股/gate_pipeline.py", "status": "executable_core"},
     "Z-G08": {"path": "pipelines/Z-G08_叙事雷达深度/gate_pipeline.py", "status": "prototype"},
     "Z-G09": {"path": "pipelines/Z-G09_全局轮动筛选/gate_pipeline.py", "status": "executable_core"},
     "Z-G10": {"path": "pipelines/Z-G10_全局黑马筛选/gate_pipeline.py", "status": "executable_core"},
@@ -52,9 +52,13 @@ def test_executable_paths_and_run():
             assert hasattr(mod, "source_arbitrate"), f"{code}: data service missing source_arbitrate"
             print(f"  ✅ {code}: data service (market_truth+source_arbitrate)")
         else:
-            assert hasattr(mod, "run"), f"{code}: executable must have run()"
-            assert callable(mod.run), f"{code}: run() not callable"
-            print(f"  ✅ {code}: path+import+run()")
+            entry = None
+            for name in ("run", "run_pipeline"):
+                if hasattr(mod, name) and callable(getattr(mod, name)):
+                    entry = name
+                    break
+            assert entry, f"{code}: executable must have run() or run_pipeline()"
+            print(f"  ✅ {code}: path+import+{entry}()")
     assert not failed
 
 def test_prototype_import():

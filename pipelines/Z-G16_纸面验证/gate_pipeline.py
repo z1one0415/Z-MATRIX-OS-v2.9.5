@@ -40,7 +40,11 @@ def run(proposal=None):
     dq_total = dq.get("total",0)
     mt_status = g1.get("status","BLOCK")
     
-    if dq_total < 85 or mt_status != "PASS":
+    # Full模式前置条件: DQ≥85 + MT.PASS + (L1.5 SAFE implied) + world=PAPER_WORLD
+    l1_5_safe = True  # placeholder - real check requires L1.5 module
+    world_ok = True    # placeholder - real check requires world context
+    
+    if dq_total < 85 or mt_status != "PASS" or not l1_5_safe or not world_ok:
         mode = "Lite"
         output_level = "O2_DIAGNOSTIC" if mt_status == "BLOCK" else "O3_CONDITIONAL"
         print(f"⚠️ {mode}模式: DQ={dq_total}, MT={mt_status} → {output_level}")
@@ -58,7 +62,9 @@ def run(proposal=None):
     
     # Full mode
     mode = "Full"
-    print(f"Full模式: DQ={dq_total}, MT=PASS")
+        # NOTE: TailRisk DEFENSIVE_ONLY check, Hibernation check - placeholders
+    # Full requires: DQ≥85, MT.PASS, L1.5 SAFE, role_valid, world=PAPER_WORLD
+    print(f"Full模式: DQ={dq_total}, MT=PASS (L1.5/TailRisk/Hibernation待接入)")
     result["mode"] = mode
     result["output_level"] = "O4_PAPER_PLAN"
     result["plan_status"] = "QUALIFIED"

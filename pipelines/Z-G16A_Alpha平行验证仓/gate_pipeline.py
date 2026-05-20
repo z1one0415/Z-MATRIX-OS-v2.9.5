@@ -12,6 +12,18 @@ from pathlib import Path
 WORKSPACE = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(WORKSPACE))
 
+
+
+def resolve_fill_quality(mt_status, price_basis, quote_domain, quote_role, ttl_valid, ref_price, slippage=0.0015):
+    """fill_quality_resolver — HIGH_CONFIDENCE/DEGRADED/NO_FILL"""
+    if not ttl_valid or mt_status == "BLOCK" or ref_price is None:
+        return {"fill_quality":"NO_FILL","fill_price":None,"fill_confidence":"none","attribution_allowed":False,"reason_codes":["TTL_EXPIRED_OR_MT_BLOCK"]}
+    if mt_status == "PASS" and price_basis == "raw_unadjusted" and quote_domain == "execution_quote" and quote_role == "primary":
+        return {"fill_quality":"HIGH_CONFIDENCE_FILL","fill_price":round(ref_price*(1+slippage),2),"fill_confidence":"high","attribution_allowed":True,"reason_codes":[]}
+    if mt_status in ("PASS","DEGRADED") and price_basis == "raw_unadjusted" and quote_role in ("raw_fallback","fallback"):
+        return {"fill_quality":"DEGRADED_FILL","fill_price":round(ref_price*(1+slippage),2),"fill_confidence":"degraded","attribution_allowed":False,"reason_codes":["DIRECTIONAL_ALPHA_ONLY"]}
+    return {"fill_quality":"NO_FILL","fill_price":None,"fill_confidence":"none","attribution_allowed":False,"reason_codes":["PRICE_BASIS_OR_DOMAIN_INVALID"]}
+
 def run(plan=None):
     now = datetime.now(timezone(timedelta(hours=8)))
     plan = plan or _demo_plan()

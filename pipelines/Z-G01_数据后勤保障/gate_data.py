@@ -229,7 +229,11 @@ def market_truth(ticker):
                 dt["degraded"] = True
                 dt["price_conflict"] = False  # not a true conflict, just different dates
                 errs.append(f"REALTIME_VS_PREV_CLOSE_REFERENCE_ONLY (diff={dp:.1f}%)")
-    st = "BLOCK" if not dt.get("price") else ("DEGRADED" if dt.get("price_conflict") or errs else "PASS")
+    # Status: no-price→BLOCK, price-conflict→BLOCK, errs/warnings→DEGRADED, else PASS
+    if not dt.get("price"): st = "BLOCK"
+    elif dt.get("price_conflict"): st = "BLOCK"
+    elif errs: st = "DEGRADED"
+    else: st = "PASS"
     # Capability Mask: 根据status确定输出等级
     cap_level = "O5" if st=="PASS" else ("O3" if st=="DEGRADED" else "O2")
     # When only reference comparison (not true cross-validation), disable paper_fill but allow watch/diagnostic

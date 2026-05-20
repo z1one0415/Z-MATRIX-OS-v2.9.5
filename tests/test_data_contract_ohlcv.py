@@ -118,8 +118,28 @@ def test_market_truth_handles_ohlcv_raw_kline_shape():
 
 
 
-def test_market_truth_same_day_degraded_branch_no_lt_dict_crash():
-    """Same-day dp=0.5%→DEGRADED, must not NameError on lt['close']"""
+def test_market_truth_same_day_price_conflict_blocks_execution():
+    """Same-day dp>1%→BLOCK, execution_proposal disabled"""
+    import importlib.util
+    from datetime import datetime
+    spec = importlib.util.spec_from_file_location("zg01", "pipelines/Z-G01_数据后勤保障/gate_data.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    today = datetime.now().strftime("%Y-%m-%d")
+    mod._cache_get = lambda ck, ttl=None: None
+    mod._cache_set = lambda ck, rv, ttl=None: None
+    mod._sina_quote = lambda t: {"price":100.0,"open":99.5,"high":101.0,"low":99.0,"volume":"1000000","name":"测试","source":"sina_api","time":"15:00:00"}
+    mod._bs_raw_kline = lambda t,d: {"dates":[today],"close":[98.5],"prices":[98.5],"count":1,"data_contract":"OHLCV_DAILY_V1"}
+    r = mod.market_truth("002463")
+    assert r["status"] == "BLOCK", f"expected BLOCK got {r['status']}"
+    assert r["price_conflict"] is True
+    assert any("execution_quote BLOCK" in e for e in r["errors"])
+    assert r["output_level"] == "O2"
+    assert "execution_proposal" in r["capability_mask"]["disabled_capabilities"]
+    print(f"✅ same-day BLOCK: status={r['status']} level={r['output_level']} disabled={r['capability_mask']['disabled_capabilities']}")
+
+def test_market_truth_same_day_degraded_for_moderate_diff():
+    """Same-day dp=0.5% (≤1%)→DEGRADED when within tolerance"""
     import importlib.util
     from datetime import datetime
     spec = importlib.util.spec_from_file_location("zg01", "pipelines/Z-G01_数据后勤保障/gate_data.py")
@@ -131,36 +151,18 @@ def test_market_truth_same_day_degraded_branch_no_lt_dict_crash():
     mod._sina_quote = lambda t: {"price":100.0,"open":99.5,"high":101.0,"low":99.0,"volume":"1000000","name":"测试","source":"sina_api","time":"15:00:00"}
     mod._bs_raw_kline = lambda t,d: {"dates":[today],"close":[99.5],"prices":[99.5],"count":1,"data_contract":"OHLCV_DAILY_V1"}
     r = mod.market_truth("002463")
-    assert r["status"] == "DEGRADED"
+    assert r["status"] == "DEGRADED", f"expected DEGRADED got {r['status']}"
     assert r["baostock_close"] == 99.5
     assert r["baostock_date"] == today
     assert any("execution_quote DEGRADED" in e for e in r["errors"])
     print(f"✅ same-day DEGRADED: status={r['status']} close={r['baostock_close']}")
-
-def test_market_truth_same_day_block_branch_no_lt_dict_crash():
-    """Same-day dp=2.0%→BLOCK, must not NameError on lt['close']"""
-    import importlib.util
-    from datetime import datetime
-    spec = importlib.util.spec_from_file_location("zg01", "pipelines/Z-G01_数据后勤保障/gate_data.py")
-    mod = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(mod)
-    today = datetime.now().strftime("%Y-%m-%d")
-    mod._cache_get = lambda ck, ttl=None: None
-    mod._cache_set = lambda ck, rv, ttl=None: None
-    mod._sina_quote = lambda t: {"price":100.0,"open":99.5,"high":101.0,"low":99.0,"volume":"1000000","name":"测试","source":"sina_api","time":"15:00:00"}
-    mod._bs_raw_kline = lambda t,d: {"dates":[today],"close":[98.0],"prices":[98.0],"count":1,"data_contract":"OHLCV_DAILY_V1"}
-    r = mod.market_truth("002463")
-    assert r["status"] == "DEGRADED"  # price_conflict=True → DEGRADED
-    assert r["price_conflict"] is True
-    assert any("execution_quote BLOCK" in e for e in r["errors"])
-    print(f"✅ same-day BLOCK: status={r['status']} conflict={r['price_conflict']} errors={r['errors']}")
 
 if __name__ == "__main__":
     test_get_kline_contract_has_ohlcv_keys()
     test_zg04_uses_volume_not_prices()
     test_market_truth_realtime_vs_prev_close_not_block()
     test_zg11_cash_ratio_not_placeholder()
-    test_market_truth_same_day_degraded_branch_no_lt_dict_crash()
-    test_market_truth_same_day_block_branch_no_lt_dict_crash()
+    test_market_truth_same_day_price_conflict_blocks_execution()
+    test_market_truth_same_day_degraded_for_moderate_diff()
     test_market_truth_handles_ohlcv_raw_kline_shape()
     print("\n🏁 OHLCV data contract tests PASS")

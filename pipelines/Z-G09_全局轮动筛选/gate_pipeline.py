@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """☯️ Z-G09 全局轮动筛选 — R-Matrix OscillationKing v1.1 Type A/B 双模式
-运行: 每周全量 + 每日增量 | 算法: Type B上升通道 + 残差均值回归 + 熊陷阱 + 波动锥 (Type A水平震荡待补)
+运行: 每周全量 + 每日增量 | 算法: Type A水平箱体震荡 + Type B上升通道震荡 + DFA/Hurst + 支撑阻力 + BearTrap + VolCone
 """
 
 import argparse, json, sys, os
@@ -24,11 +24,11 @@ def _r_matrix_score(ticker):
     if g1.get("status") == "BLOCK" or l4.get("status") == "BLOCK":
         return {"status":"BLOCKED","output_level":"O2_DIAGNOSTIC","ticker":ticker,"excluded_from_ranking":True}
     
-    kl = get_kline(ticker, 250)
+    kl = get_kline(ticker, 500)
     prices = kl.get("prices", [])
-    if len(prices) < 60:
+    if len(prices) < 260:
         return {"status":"DATA_INSUFFICIENT","output_level":"O1_DATA_GAP",
-                "reason_codes":["KLINE_LT_60D"],"ticker":ticker,"excluded_from_ranking":True}
+                "reason_codes":["KLINE_LT_260D"],"ticker":ticker,"excluded_from_ranking":True}
     
     try:
         from zmatrix.scoring.r_matrix.oscillation_king_ranker_v11 import rank_type_a_horizontal, rank_type_b_rising_channel
@@ -59,7 +59,7 @@ def run(pool_size=80):
     print("=" * 60)
     
     tickers = _scan_list()
-    print(f"📡 扫描: {len(tickers)}标的 → Type B上升通道 + 残差均值回归 + BearTrap + VolCone")
+    print(f"📡 扫描: {len(tickers)}标的 → Type A水平震荡 + Type B上升通道 + OscillationKing双模式")
     
     candidates = []; degraded = []
     for t in tickers:

@@ -155,7 +155,7 @@ def _preset_dev() -> dict:
 # ============================================================
 
 def _bs_all_stock(today: str) -> list[str]:
-    """baostock.query_all_stock — filter to valid A-shares"""
+    """baostock.query_all_stock — filter to valid A-shares, exclude ST/suspended/delisted"""
     try:
         import baostock as bs
         bs.login()
@@ -166,8 +166,13 @@ def _bs_all_stock(today: str) -> list[str]:
             if len(r) < 3:
                 continue
             code_full = r[0]  # e.g. sh.600000
+            trade_status = r[1] if len(r) > 1 else ""
             name = r[2] if len(r) > 2 else ""
+            # Filter: ST/退市/suspended
             if "ST" in name or "退" in name:
+                continue
+            # Filter: tradeStatus — "1" = trading. Missing field = tolerate (not block).
+            if trade_status and trade_status != "1":
                 continue
             if "." in code_full:
                 code = code_full.split(".")[1]
@@ -275,10 +280,18 @@ def load_universe(source: str = "A_SHARE_ALL", allow_fallback: bool = False,
         uni = _make_result("DATA_GAP", source, [], False, "UNKNOWN",
                            warnings=[f"unknown source: {source}"])
 
-    # Enforce min_count
+    # Enforce min_count — but not on fallback INDEX_BASKET (non-global downgrade is acceptable)
     if min_count and uni["count"] < min_count:
-        uni["status"] = "DATA_GAP"
-        uni["warnings"].append(f"count={uni['count']} < min_count={min_count}")
-        uni["is_global"] = False
+        if uni.get("fallback_used") and uni.get("universe_level") == "INDEX_BASKET":
+            # Fallback is an allowed non-global downgrade, not full-market failure
+            uni["status"] = "DEGRADED"
+            uni["is_global"] = False
+            uni["warnings"].append(
+                f"A_SHARE_ALL count<{min_count}; using non-global INDEX_BASKET fallback"
+            )
+        else:
+            uni["status"] = "DATA_GAP"
+            uni["warnings"].append(f"count={uni['count']} < min_count={min_count}")
+            uni["is_global"] = False
 
     return uni

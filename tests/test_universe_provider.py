@@ -30,9 +30,8 @@ def test_unknown_source_returns_data_gap():
     print(f"✅ unknown source→DATA_GAP")
 
 
-def test_a_share_all_data_gap_with_fallback_false(monkeypatch):
+def test_a_share_all_data_gap_with_fallback_false():
     """When baostock + cache both fail and allow_fallback=False → DATA_GAP"""
-    # Force failure by mocking internal function
     import pipelines.universe_provider as up
     orig = up._a_share_all
     up._a_share_all = lambda allow_fallback: {
@@ -67,10 +66,41 @@ def test_universe_contract_has_required_fields():
     print(f"✅ all {len(required)} required fields present")
 
 
+
+def test_a_share_all_fallback_index_basket_not_killed_by_min_count():
+    """A_SHARE_ALL fail + allow_fallback=True + index basket → DEGRADED, not DATA_GAP"""
+    import pipelines.universe_provider as up
+    orig_a = up._bs_all_stock
+    orig_cache = up._read_cache
+    orig_index = up._index_basket
+    
+    up._bs_all_stock = lambda today: []
+    up._read_cache = lambda path, max_age_days: (None, None)
+    up._index_basket = lambda src: {
+        "status": "PASS", "source": src,
+        "tickers": ["000001", "000002", "600000"],
+        "count": 3, "is_global": False, "universe_level": src,
+        "fallback_used": False, "warnings": [],
+    }
+    try:
+        uni = up.load_universe("A_SHARE_ALL", allow_fallback=True, min_count=4000)
+        assert uni["status"] == "DEGRADED", f"expected DEGRADED got {uni['status']}"
+        assert uni["is_global"] is False
+        assert uni["universe_level"] == "INDEX_BASKET"
+        assert uni["fallback_used"] is True
+        assert uni["count"] == 3
+        print(f"✅ fallback index basket→DEGRADED (not DATA_GAP)")
+    finally:
+        up._bs_all_stock = orig_a
+        up._read_cache = orig_cache
+        up._index_basket = orig_index
+
 if __name__ == "__main__":
     test_preset_dev_is_not_global()
     test_watchlist_is_not_global()
     test_unknown_source_returns_data_gap()
     test_as_of_contract_exists_for_all_local_sources()
     test_universe_contract_has_required_fields()
+    test_a_share_all_data_gap_with_fallback_false()
+    test_a_share_all_fallback_index_basket_not_killed_by_min_count()
     print("\n🏁 UniverseProvider tests PASS")

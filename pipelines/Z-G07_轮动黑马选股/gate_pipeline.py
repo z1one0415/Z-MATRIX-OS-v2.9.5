@@ -93,6 +93,7 @@ def gate3_dq_score(ticker: str) -> GateResult:
     """闸口3: DQ评分 → CapabilityDecision (开放智能降级)"""
     scores = {"行情": 0, "财务": 0, "估值": 0, "产业链": 0, "资金": 0, "来源": 0}
     errors = []
+    details = {}  # initialize before loop — P0: was undefined when q1_eps written below
     
     # 行情 (max 15) — 交叉验证=加分
     g1 = g1_details_for(ticker)
@@ -273,67 +274,55 @@ def gate6_l4_health(ticker: str) -> GateResult:
 
 
 def gate7_l5_matrix(ticker: str, g1_details: dict) -> GateResult:
-    """闸口7: L5 B/D/R/OKR Matrix — 跑Python代码, 不人工标记。"""
+    """闸口7: L5 B/D/R/OKR Matrix — 使用当前仓库 zmatrix.scoring 包, 不依赖外部绝对路径"""
     errors = []
     details = {"b_matrix": "not_run", "d_matrix": "not_run", "r_matrix": "not_run"}
     
-    workspace = os.path.expanduser("~/.openclaw/agents/z2-analyst/workspace")
-    sys.path.insert(0, workspace)
+    # Use Z-G01 kline, not baostock direct
+    kl = get_kline(ticker, 500)
+    prices = kl.get("prices", [])
+    if len(prices) < 60:
+        errors.append(f"R/D-Matrix: KLINE_LT_60D({len(prices)}日)")
+        return GateResult(7, "L5 Matrix", GateStatus.DEGRADED, details, errors, 0)
     
-    # D-Matrix v2.2 — in-process, import chain fixed in scoring/__init__.py
-    d_script = os.path.join(workspace, "zmatrix/scoring/d_band/d_early_v22_scorer.py")
-    if not os.path.exists(d_script):
-        errors.append(f"D-Matrix脚本缺失")
-    else:
+    # D-Matrix v2.2 — current repo package, no absolute path check
+    try:
+        from zmatrix.scoring.d_band.d_early_v22_scorer import evaluate_d_early_v22
+        payload = {
+            "code": ticker, "name": "",
+            "prices": prices,
+            "market": {
+                "volume": kl.get("volume", []),
+                "amount": kl.get("amount", []),
+                "prices": prices,
+            },
+        }
+        r = evaluate_d_early_v22(payload)
+        if hasattr(r, "to_dict"):
+            rd = r.to_dict()
+            details["d_score"] = round(rd.get("final_score", 0), 1)
+        elif isinstance(r, dict):
+            details["d_score"] = r.get("d_score", 0)
+        details["d_matrix"] = "ran"
+    except Exception as e:
+        errors.append(f"D-Matrix: {str(e)[:80]}")
+    
+    # R-Matrix v1.1 — Type A/B dual mode, requires 260+ bars
+    if len(prices) >= 260:
         try:
-            from zmatrix.scoring.d_band.d_early_v22_scorer import evaluate_d_early_v22
-            payload = {"code": ticker, "name": "", "sector": "", "theme": ""}
-            r = evaluate_d_early_v22(payload)
-            if isinstance(r, dict):
-                details["d_score"] = str(r.get("d_score", str(r)))[:60]
-            else:
-                details["d_score"] = str(r)[:60]
-            details["d_matrix"] = "ran"
-        except Exception as e:
-            errors.append(f"D-Matrix: {str(e)[:80]}")
-
-    # R-Matrix v1.1 — in-process
-    r_script = os.path.join(workspace, "zmatrix/scoring/r_matrix/oscillation_king_ranker_v11.py")
-    if not os.path.exists(r_script):
-        errors.append(f"R-Matrix脚本缺失")
-    else:
-        try:
-            # R-Matrix需要K线数据, 先拉baostock
-            import baostock as bs
-            bs.login()
-            prefix = "sz" if ticker.startswith(("0","3")) else "sh"
-            code = f"{prefix}.{ticker}"
-            start_d = (datetime.now()-timedelta(days=250)).strftime("%Y-%m-%d")
-            end_d = datetime.now().strftime("%Y-%m-%d")
-            rs = bs.query_history_k_data_plus(code, "date,close",
-                start_date=start_d, end_date=end_d,
-                frequency="d", adjustflag="2")
-            daily_prices = []
-            while rs.next():
-                r = rs.get_row_data()
-                if r[1] and r[1] != "" and float(r[1]) > 0:
-                    daily_prices.append(float(r[1]))
-            bs.logout()
-            
-            if len(daily_prices) < 60:
-                errors.append(f"R-Matrix: K线不足60日({len(daily_prices)}日)")
-            else:
-                from zmatrix.scoring.r_matrix.oscillation_king_ranker_v11 import rank_type_b_rising_channel
-                result = rank_type_b_rising_channel(ticker, "", daily_prices)
-                if hasattr(result, 'score'):
-                    details["r_score"] = str(result.score)[:60]
-                    details["r_matrix"] = "ran"
-                    details["r_role"] = str(result.role) if hasattr(result, 'role') else ""
-                else:
-                    details["r_score"] = str(result)[:60]
-                    details["r_matrix"] = "ran"
+            from zmatrix.scoring.r_matrix.oscillation_king_ranker_v11 import (
+                rank_type_a_horizontal, rank_type_b_rising_channel
+            )
+            ra = rank_type_a_horizontal(ticker, "", prices)
+            rb = rank_type_b_rising_channel(ticker, "", prices)
+            best = ra if ra.score >= rb.score else rb
+            details["r_score"] = round(best.score, 1)
+            details["r_subtype"] = best.oscillation_type
+            details["r_matrix"] = "ran"
         except Exception as e:
             errors.append(f"R-Matrix: {str(e)[:80]}")
+    else:
+        errors.append(f"R-Matrix: KLINE_LT_260D({len(prices)}日)")
     
     if details["d_matrix"] == "not_run" and details["r_matrix"] == "not_run":
         return GateResult(7, "L5 Matrix", GateStatus.SKIPPED, details, errors, 0)

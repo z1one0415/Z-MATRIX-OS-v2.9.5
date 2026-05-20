@@ -219,8 +219,8 @@ def market_truth(ticker):
             if is_same_trading_date:
                 # Same trading day: standard thresholds apply
                 if dp <= 0.30: dt["cross_validated"]=True; dt["price_conflict"]=False
-                elif dp <= 1.0: dt["cross_validated"]=False; dt["price_conflict"]=False; dt["degraded"]=True; errs.append(f"execution_quote DEGRADED:{dt['price']}vs{lt['close']}({dp:.1f}%)")
-                else: dt["price_conflict"]=True; errs.append(f"execution_quote BLOCK:{dt['price']}vs{lt['close']}({dp:.1f}%>1.0%)")
+                elif dp <= 1.0: dt["cross_validated"]=False; dt["price_conflict"]=False; dt["degraded"]=True; errs.append(f"execution_quote DEGRADED:{dt['price']}vs{lt_close}({dp:.1f}%)")
+                else: dt["price_conflict"]=True; errs.append(f"execution_quote BLOCK:{dt['price']}vs{lt_close}({dp:.1f}%>1.0%)")
             else:
                 # Real-time vs previous close: never BLOCK on diff alone
                 dt["historical_close_date"] = lt_date

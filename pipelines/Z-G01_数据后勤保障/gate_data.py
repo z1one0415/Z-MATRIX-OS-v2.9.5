@@ -19,7 +19,12 @@ CAPABILITY_MASK_KEYS = ["exact_price_zone","paper_fill_price","micro_absorption"
     "l2_bid_depth","dividend_score","m1_preheat","position_playbook","execution_proposal"]
 
 def capability_mask(disabled: list, output_level: str, errors: list = None) -> dict:
-    """生成能力掩码 — 替代旧PASS/DEGRADED/BLOCK"""
+    """生成能力掩码 — 替代旧PASS/DEGRADED/BLOCK
+    
+    forbidden_now: 当前不可执行的输出 (硬禁止)
+    re_enable_conditions: 未来满足条件后可恢复的输出路径
+    conditional_future_outputs: 同re_enable_conditions, 语义更明确的别名
+    """
     cond = []
     if "PAPER_PROBE" in _forbidden_by_disabled(disabled):
         cond.append({"output":"PAPER_PROBE","requires":["world=PAPER_WORLD","MT=PASS","L1.5=SAFE"]})
@@ -27,8 +32,11 @@ def capability_mask(disabled: list, output_level: str, errors: list = None) -> d
         "output_level": output_level,
         "disabled_capabilities": disabled,
         "allowed_outputs": _allowed_by_level(output_level),
-        "conditional_outputs": cond,
+        "conditional_outputs": cond,  # = future re-enable path, not currently executable
+        "conditional_future_outputs": cond,  # explicit alias
         "forbidden_actions": _forbidden_by_disabled(disabled),
+        "forbidden_now": _forbidden_by_disabled(disabled),  # explicit alias: currently blocked
+        "re_enable_conditions": cond,  # what must change to re-enable
         "required_next_data": _required_by_disabled(disabled),
         "errors": errors or []
     }

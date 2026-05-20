@@ -115,12 +115,14 @@ def run(tickers=None, mode="confirm"):
             "ticker": t, "name": g1.get("name","?"),
             "price": g1.get("price"), "vwap_status": vwap,
             "volume_ratio": vr, "verdict": verdict,
-            "action": "WATCH" if verdict == "CONFIRMED" else "WAIT"
+            "action": "WATCH" if verdict == "CONFIRMED" else "WAIT",
+            "data_precision": "DAILY_OHLCV_PROXY", "m1_connected": False, "confidence": "MEDIUM"
         }
         l3.append(entry)
         icon = "✅" if verdict == "CONFIRMED" else ("❌" if verdict == "REJECTED" else "⏳")
         print(f"  {icon} {t}: {verdict} (VWAP={vwap} 量比={vr:.1f}x) → {entry['action']}")
     result["sections"]["L3确认结果"] = l3
+    result["sections"]["data_precision_note"] = "DAILY_OHLCV_PROXY: 日线OHLCV+实时快照近似VWAP, 非M1盘中确认"
     
     # 4. 准确率
     accuracy = {"notes": "盘中确认实时记录, 盘后由Z-G06汇总校准"}

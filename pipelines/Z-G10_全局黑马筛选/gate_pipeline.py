@@ -33,8 +33,39 @@ def _d_matrix_score(ticker):
     
     try:
         from zmatrix.scoring.d_band.d_early_v22_scorer import evaluate_d_early_v22
-        payload = {"code":ticker, "name":g1.get("name",""), "sector":"", "theme":{},
-                   "prices": prices, "market": {"prices": prices}}
+        # Build OHLCV-enriched payload — missing fields are empty, scorer does coverage discount
+        payload = {
+            "code": ticker, "name": g1.get("name", ""),
+            "sector": g1.get("industry", "") or g1.get("sector", ""),
+            "theme": {},
+            "prices": prices,
+            "market": {
+                "dates": kl.get("dates", []),
+                "open": kl.get("open", []),
+                "high": kl.get("high", []),
+                "low": kl.get("low", []),
+                "close": kl.get("close", prices),
+                "volume": kl.get("volume", []),
+                "amount": kl.get("amount", []),
+                "prices": prices,
+                "data_contract": kl.get("data_contract", ""),
+            },
+            "silent_accumulation": {
+                "prices": prices,
+                "volume": kl.get("volume", []),
+                "amount": kl.get("amount", []),
+            },
+            "micro_absorption": {
+                "prices": prices,
+                "volume": kl.get("volume", []),
+                "amount": kl.get("amount", []),
+            },
+            "volume_price_preload": {
+                "prices": prices,
+                "volume": kl.get("volume", []),
+                "amount": kl.get("amount", []),
+            },
+        }
         result = evaluate_d_early_v22(payload)
         
         # DEarlyV22Result dataclass → 通过to_dict()获取字段

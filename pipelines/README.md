@@ -8,14 +8,14 @@
 |:--:|------|:--:|------|
 | Z-G01 | 数据后勤保障 | 🟢 | Data Service Layer, 8函数+分级TTL+降级链 |
 | Z-G02 | 前夜战报+叙事水温 | 🟡 | L2.5+MacroVeto+情绪快扫 |
-| Z-G03 | 盘中确认 | 🟡 | 原型可用, VWAP+量比待校准 |
-| Z-G04 | 尾盘过滤 | 🟢-light | 日线OHLCV代理版, 日线volume已接入；M1真实尾盘检测待增强 |
+| Z-G03 | 盘中确认 | 🟢-light | DAILY_OHLCV_PROXY, VWAP+量比已接入; M1真实盘中待增强 |
+| Z-G04 | 尾盘过滤 | 🟢-light | DAILY_OHLCV_PROXY, volume已接入; M1尾盘待增强 |
 | Z-G05 | 日记忆卡 | 🟢 | 持仓追踪+MEMORY自动追加 |
 | Z-G06 | 复盘反馈 | 🟢 | Z9校准+模式检测+Hermes |
 | Z-G07 | 轮动+黑马选股 | 🟢 | 10闸口全量, 已调用Z-G01统一数据层, 3模式(full/lite/watch) |
 | Z-G08 | 叙事雷达深度 | 🟡 | 原型 |
 | Z-G09 | 全局轮动筛选 | 🟢 | R-Matrix OscillationKing v1.1 Type A/B 双模式 |
-| Z-G10 | 全局黑马筛选 | 🟢 | D-Matrix v2.2 源点雷达 |
+| Z-G10 | 全局黑马筛选 | 🟢 | D-Matrix v2.2 源点雷达, OHLCV enriched; Theme/Micro数据待增强 |
 | Z-G11 | 组合风控 | 🟢-light | 集中度可用；现金/账户实盘数据待接入(NOT_CONNECTED) |
 | Z-G12 | 系统巡检 | 🟢 | 6模块+DQ+Cron |
 | Z-G13 | 底仓管理 | 🟢-light | B-Matrix v2.1.1已接入 5类真评分；数据源(get_financials)字段仍为stub |

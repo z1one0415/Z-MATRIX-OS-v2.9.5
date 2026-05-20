@@ -69,6 +69,7 @@ def run(tickers=None, mode="tail_filter"):
     
     result = {
         "pipeline_signature": "Z-G04_尾盘过滤_v2.9.5-draft",
+        "data_precision": "DAILY_OHLCV_PROXY", "m1_connected": False,
         "timestamp": now.isoformat(), "date": today,
         "mode": mode, "status": "running", "sections": {}, "errors": []
     }

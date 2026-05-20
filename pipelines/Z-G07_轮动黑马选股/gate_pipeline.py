@@ -133,7 +133,7 @@ def gate3_dq_score(ticker: str) -> GateResult:
     scores["来源"] = 13 if g1.get("cross_validated") else (6 if g1.get("price") else 3)
     
     total = sum(scores.values())
-    details = {"total": total, "breakdown": scores}
+    details.update({"total": total, "breakdown": scores})
     
     if total < 60:
         errors.append(f"DQ_FAIL: DQ={total}<60→O2_DIAGNOSTIC")
@@ -287,15 +287,8 @@ def gate7_l5_matrix(ticker: str, g1_details: dict) -> GateResult:
     # D-Matrix v2.2
     try:
         from zmatrix.scoring.d_band.d_early_v22_scorer import evaluate_d_early_v22
-        payload = {
-            "code": ticker, "name": "",
-            "prices": prices,
-            "market": {
-                "volume": kl.get("volume", []),
-                "amount": kl.get("amount", []),
-                "prices": prices,
-            },
-        }
+        from pipelines.dmatrix_payload_builder import build_dmatrix_payload
+        payload = build_dmatrix_payload(ticker, g1_details.get("name", ""), kl)
         r = evaluate_d_early_v22(payload)
         if hasattr(r, "to_dict"):
             rd = r.to_dict()

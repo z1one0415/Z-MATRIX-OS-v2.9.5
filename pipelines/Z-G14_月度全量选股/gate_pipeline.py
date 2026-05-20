@@ -83,51 +83,69 @@ def _get_d_matrix():
 
 
 def _real_b_score(ticker, name):
-    """True B-Matrix v2.1.1 score (0-100, normalized from 0-10 raw)"""
+    """True B-Matrix v2.1.1 score — structured return"""
     _, evaluate_bm = _get_b_matrix()
-    if evaluate_bm is None: return None, None, None, []
+    if evaluate_bm is None:
+        return {"score": None, "status": "DATA_GAP", "base_type": None, "rating": None,
+                "traps": [], "error": "B-Matrix scorer not available"}
     inp = _build_bmatrix_input(ticker, name)
-    if inp is None: return None, None, None, []
-    bm = evaluate_bm(inp)
-    return round(bm.score_final * 10, 1), bm.base_type.value, bm.rating.value, bm.trap_flags
+    if inp is None:
+        return {"score": None, "status": "DATA_GAP", "base_type": None, "rating": None,
+                "traps": [], "error": "BMatrixInput build failed"}
+    try:
+        bm = evaluate_bm(inp)
+        return {"score": round(bm.score_final * 10, 1), "status": "PASS",
+                "base_type": bm.base_type.value, "rating": bm.rating.value,
+                "traps": bm.trap_flags, "error": None}
+    except Exception as e:
+        return {"score": None, "status": "ERROR", "base_type": None, "rating": None,
+                "traps": [], "error": str(e)[:120]}
 
 
 def _real_r_score(ticker, name, prices):
-    """True R-Matrix v1.1 score (Type A or B, whichever higher)"""
+    """True R-Matrix v1.1 score — structured return, never silent zero"""
     rank_a, rank_b = _get_r_matrix()
-    if rank_a is None: return None, None
+    if rank_a is None:
+        return {"score": None, "status": "DATA_GAP", "subtype": None,
+                "error": "R-Matrix scorer not available"}
+    errors = []
+    s_a, s_b = 0, 0
     try:
         ra = rank_a(ticker, name, prices)
         s_a = ra.score
-    except: s_a = 0
+    except Exception as e:
+        errors.append(f"TypeA: {str(e)[:80]}")
     try:
         rb = rank_b(ticker, name, prices)
         s_b = rb.score
-    except: s_b = 0
+    except Exception as e:
+        errors.append(f"TypeB: {str(e)[:80]}")
+    if errors and s_a == 0 and s_b == 0:
+        return {"score": None, "status": "ERROR", "subtype": None,
+                "error": "; ".join(errors)}
     best_type = "A" if s_a >= s_b else "B"
-    return round(max(s_a, s_b) * 10, 1), best_type
+    status = "DEGRADED" if errors else "PASS"
+    return {"score": round(max(s_a, s_b) * 10, 1), "status": status,
+            "subtype": best_type, "error": "; ".join(errors) if errors else None}
 
 
 def _real_d_score(ticker, name, prices, kl):
-    """True D-Matrix v2.2 score"""
+    """True D-Matrix v2.2 score — structured return, never silent zero"""
     evaluate_d = _get_d_matrix()
-    if evaluate_d is None: return None, None
+    if evaluate_d is None:
+        return {"score": None, "status": "DATA_GAP", "lifecycle": None,
+                "error": "D-Matrix scorer not available"}
     try:
-        payload = {
-            "code": ticker, "name": name,
-            "prices": prices,
-            "market": {
-                "volume": kl.get("volume", []),
-                "amount": kl.get("amount", []),
-                "prices": prices,
-            },
-        }
+        from pipelines.dmatrix_payload_builder import build_dmatrix_payload
+        payload = build_dmatrix_payload(ticker, name, kl)
         result = evaluate_d(payload)
         if hasattr(result, "to_dict"):
             rd = result.to_dict()
-            return round(rd.get("final_score", 0), 1), rd.get("stage_hint", "D1")
-        return float(result), "D1"
-    except: return None, None
+            return {"score": round(rd.get("final_score", 0), 1), "status": "PASS",
+                    "lifecycle": rd.get("stage_hint", "D1"), "error": None}
+        return {"score": float(result), "status": "PASS", "lifecycle": "D1", "error": None}
+    except Exception as e:
+        return {"score": None, "status": "ERROR", "lifecycle": None, "error": str(e)[:120]}
 
 
 def _full_scan(tickers):
@@ -146,18 +164,18 @@ def _full_scan(tickers):
         name = g1.get("name", "")
 
         # --- B-Matrix v2.1.1 ---
-        b_score, b_type, b_rating, b_traps = _real_b_score(t, name)
-
+        b = _real_b_score(t, name)
         # --- R-Matrix v1.1 ---
-        r_score, r_subtype = _real_r_score(t, name, prices)
-
+        r = _real_r_score(t, name, prices)
         # --- D-Matrix v2.2 ---
-        d_score, d_lifecycle = _real_d_score(t, name, prices, kl)
+        d = _real_d_score(t, name, prices, kl)
 
-        # Fallbacks if scorers unavailable
-        b_final = b_score if b_score is not None else 0
-        r_final = r_score if r_score is not None else 0
-        d_final = d_score if d_score is not None else 0
+        b_final = b["score"] if b["score"] is not None else 0
+        r_final = r["score"] if r["score"] is not None else 0
+        d_final = d["score"] if d["score"] is not None else 0
+
+        # Weighted total with explicit scale
+        weighted_total = round(b_final * 0.34 + r_final * 0.33 + d_final * 0.33, 2)
 
         # --- Cross matrix ---
         b_ok = b_final > 40
@@ -172,13 +190,21 @@ def _full_scan(tickers):
         if r_ok and not b_ok and not d_ok: cross.append("纯R")
         if not cross: cross.append("观察")
 
+        # Confidence when any scorer had errors
+        confidence = "PASS"
+        if any(s["status"] == "ERROR" for s in [b, r, d]):
+            confidence = "DEGRADED_MATRIX_ERROR"
+
         candidates.append({
             "code": t, "name": name,
             "b": b_final, "r": r_final, "d": d_final,
-            "b_type": b_type, "b_rating": b_rating,
-            "r_subtype": r_subtype, "d_lifecycle": d_lifecycle,
-            "b_traps": b_traps if b_traps else [],
-            "cross": cross[0], "total": b_final + r_final + d_final,
+            "b_type": b.get("base_type"), "b_rating": b.get("rating"),
+            "r_subtype": r.get("subtype"), "d_lifecycle": d.get("lifecycle"),
+            "b_traps": b.get("traps", []),
+            "score_status": {"b": b["status"], "r": r["status"], "d": d["status"]},
+            "score_scale": {"b": "0-100", "r": "0-100", "d": "0-100"},
+            "weighted_total": weighted_total, "total": b_final + r_final + d_final,
+            "cross": cross[0], "confidence": confidence,
             "price": g1.get("price"),
         })
     return candidates

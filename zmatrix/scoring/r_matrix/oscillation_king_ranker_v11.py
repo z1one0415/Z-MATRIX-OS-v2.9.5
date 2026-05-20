@@ -38,13 +38,19 @@ def rank_type_b_rising_channel(symbol, name, daily_prices, weekly_prices=None):
     if reversion.mean_reverting: score+=2.5
     if cycle.passed: score+=2.0
     if cone.state=="ACTIVE": score+=1.5
-    if bear.passed: score+=1.5
-    if position.zone.startswith("LOW"): score+=1.5
-    elif position.zone.startswith("MID_LOW"): score+=1.0
+    if bear.state=="BEAR_TRAP_RECLAIMED": score+=1.5
+    if position.zone=="HIGH_HARVEST_ZONE": score+=0.5
+    elif position.zone in ("LOW_ZONE","LOW_REPAIR_ZONE"): score+=1.5
     score=min(score,10.0)
-    action=position.action
+    # action mapping from zone+bear+cone
+    if position.zone=="HIGH_HARVEST_ZONE": action="HARVEST"
+    elif cone.state=="OSCILLATION_EXPIRED": action="WAIT"
+    elif position.zone in ("LOW_ZONE","LOW_REPAIR_ZONE") and reversion.mean_reverting: action="WATCH"
+    elif bear.state=="BEAR_TRAP_RECLAIMED": action="PAPER_PROBE"
+    else: action="WAIT"
+    triggers=["L3板块确认","L1.5确认承接","残差回归通道"]
     assert_allowed_action(action)
-    return OscillationKingResult(symbol,name,"R_MATRIX_OSCILLATION_KING",OscillationType.RISING_CHANNEL.value,round(score,2),action,position.triggers,forbidden,{"beta":trend.beta,"hurst":reversion.dfa_hurst,"half_life":reversion.half_life,"bear_trap":bear.passed,"cone":cone.state,"zone":position.zone})
+    return OscillationKingResult(symbol,name,"R_MATRIX_OSCILLATION_KING",OscillationType.RISING_CHANNEL.value,round(score,2),action,triggers,forbidden,{"trend_beta":trend.beta,"dfa_hurst":reversion.dfa_hurst,"half_life":reversion.half_life,"channel_position":position.position,"zone":position.zone,"cone":cone.state,"bear_trap":bear.state})
 
 def rank_type_a_horizontal(symbol, name, daily_prices, weekly_prices=None):
     """Type A 水平震荡波动天王 — 6道硬门"""

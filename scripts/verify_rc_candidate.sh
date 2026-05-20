@@ -21,18 +21,19 @@ echo "== 18-pipeline manifest smoke =="
 python3 tests/test_pipeline_manifest_smoke.py
 
 echo ""
-echo "== Type A horizontal tests ==
+echo "== Type A horizontal tests =="
 python3 tests/test_zg09_type_a_horizontal.py
 
 echo ""
-echo "== Z-G09/Z-G10 scorer contract tests ==""
+echo "== Z-G09/Z-G10 scorer contract tests =="
 python3 tests/test_zg09_zg10_contracts.py
 
 echo ""
 echo "== Pytest =="
 if command -v pytest >/dev/null 2>&1; then
     pytest tests/test_core_contracts.py tests/test_pipeline_smoke.py \
-        tests/test_pipeline_manifest_smoke.py tests/test_zg09_zg10_contracts.py tests/test_zg09_type_a_horizontal.py -q
+        tests/test_pipeline_manifest_smoke.py tests/test_zg09_zg10_contracts.py \
+        tests/test_zg09_type_a_horizontal.py -q
 else
     echo "pytest not installed, skip"
 fi

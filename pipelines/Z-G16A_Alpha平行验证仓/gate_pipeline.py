@@ -68,11 +68,11 @@ def run(plan=None):
     benchmark_price = plan.get("benchmark_price", entry_price)
     
     fill = resolve_fill_quality(
-        mt_status=plan.get("market_truth_status","PASS"),
-        price_basis=plan.get("price_basis","raw_unadjusted"),
-        quote_domain=plan.get("quote_domain","execution_quote"),
-        quote_role=plan.get("quote_role","primary"),
-        ttl_valid=plan.get("ttl_valid",True),
+        mt_status=plan.get("market_truth_status","BLOCK"),
+        price_basis=plan.get("price_basis","unknown"),
+        quote_domain=plan.get("quote_domain","unknown"),
+        quote_role=plan.get("quote_role","unknown"),
+        ttl_valid=plan.get("ttl_valid",False),
         ref_price=entry_price
     )
     fill_quality = fill["fill_quality"]
@@ -90,7 +90,7 @@ def run(plan=None):
     
     # 成本
     costs = {
-        "slippage": round((fill_price - entry_price), 2),
+        "slippage": round((fill_price - entry_price), 2) if fill_price else 0,
         "commission": round(fill_price * 0.0003, 2),
         "total": round((fill_price - entry_price) + fill_price * 0.0003, 2)
     }

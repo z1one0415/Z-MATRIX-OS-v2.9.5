@@ -260,13 +260,13 @@ def gate6_l4_health(ticker: str) -> GateResult:
                 details["output_level"] = "O2_DIAGNOSTIC"
                 details["disabled_capabilities"] = ["execution_price","paper_fill_price","reduce_risk_execution","harvest_execution"]
                 details["allowed_outputs"] = ["holding_status_note","reopen_watch_plan"]
-                return GateResult(6, "L4 Health", GateStatus.BLOCK, details, errors, 0)
+                return GateResult(6, "L4 Health", GateStatus.DATA_INCOMPLETE, details, errors, 0)
             if "无成交" in e:
                 details["reason"] = "NO_VOLUME"; details["action"] = "DIAGNOSTIC_ONLY"
                 details["output_level"] = "O2_DIAGNOSTIC"
                 details["disabled_capabilities"] = ["fill_price","paper_probe"]
                 details["allowed_outputs"] = ["liquidity_gap_report"]
-                return GateResult(6, "L4 Health", GateStatus.BLOCK, details, errors, 0)
+                return GateResult(6, "L4 Health", GateStatus.DATA_INCOMPLETE, details, errors, 0)
         return GateResult(6, "L4 Health", GateStatus.DEGRADED, details, errors, 0)
     
     return GateResult(6, "L4 Health", GateStatus.PASS, details, [], 0)

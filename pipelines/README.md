@@ -18,7 +18,7 @@
 | Z-G10 | 全局黑马筛选 | 🟢 | D-Matrix v2.2 源点雷达 |
 | Z-G11 | 组合风控 | 🟢-light | 入口已实现；现金比例/账户实盘数据接入待增强 |
 | Z-G12 | 系统巡检 | 🟢 | 6模块+DQ+Cron |
-| Z-G13 | 底仓管理 | 🟡 | B-Matrix+ThesisStop |
+| Z-G13 | 底仓管理 | 🟢-light | B-Matrix v2.1.1已接入；数据源(get_financials)仍为stub |
 | Z-G14 | 月度全量选股(流A) | 🟡 | B-R-D全量重跑, 原型 |
 | Z-G15 | 产业链深研 | 🟡 | V3证据分层 |
 | Z-G16 | V4纸面执行教练 | 🟢 | Full/Lite双模式，PAPER_PROBE conditional_output |

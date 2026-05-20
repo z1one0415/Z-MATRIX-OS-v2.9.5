@@ -22,7 +22,7 @@ Z-G09  🟢        全局轮动筛选 (R-Matrix OscillationKing v1.1 Type A/B)
 Z-G10  🟢        全局黑马筛选 (D-Matrix v2.2)
 Z-G11  🟢-light  组合风控 (轻量入口, 现金/实盘数据待增强)
 Z-G12  🟢        系统巡检
-Z-G13  🟡        底仓管理 (B-Matrix+ThesisStop 原型)
+Z-G13  🟢-light  底仓管理 (B-Matrix v2.1.1已接入, 数据源待升级)
 Z-G14  🟡        月度全量选股 (流A 原型)
 Z-G15  🟡        产业链深研 (V3证据分层 原型)
 Z-G16  🟢        V4纸面执行教练 (Full/Lite双模式)

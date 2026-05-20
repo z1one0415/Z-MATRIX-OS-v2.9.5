@@ -6,24 +6,24 @@ from pathlib import Path
 # prototype:  目录存在 + import OK (不强制run())
 # doc_only:   仅README标注, 无代码入口
 PIPELINE_MANIFEST = {
-    "Z-G01": {"path": "pipelines/Z-G01_数据后勤保障/gate_data.py", "status": "executable"},
+    "Z-G01": {"path": "pipelines/Z-G01_数据后勤保障/gate_data.py", "status": "executable_core"},
     "Z-G02": {"path": "pipelines/Z-G02_前夜战报/gate_pipeline.py", "status": "prototype"},
     "Z-G03": {"path": "pipelines/Z-G03_盘中确认/gate_pipeline.py", "status": "prototype"},
-    "Z-G04": {"path": "pipelines/Z-G04_尾盘过滤/gate_pipeline.py", "status": "executable"},
-    "Z-G05": {"path": "pipelines/Z-G05_日记忆卡/gate_pipeline.py", "status": "executable"},
-    "Z-G06": {"path": "pipelines/Z-G06_复盘反馈/gate_pipeline.py", "status": "executable"},
+    "Z-G04": {"path": "pipelines/Z-G04_尾盘过滤/gate_pipeline.py", "status": "executable_light"},
+    "Z-G05": {"path": "pipelines/Z-G05_日记忆卡/gate_pipeline.py", "status": "executable_core"},
+    "Z-G06": {"path": "pipelines/Z-G06_复盘反馈/gate_pipeline.py", "status": "executable_core"},
     "Z-G07": {"path": "pipelines/Z-G07_轮动黑马选股/gate_pipeline.py", "status": "prototype"},
     "Z-G08": {"path": "pipelines/Z-G08_叙事雷达深度/gate_pipeline.py", "status": "prototype"},
-    "Z-G09": {"path": "pipelines/Z-G09_全局轮动筛选/gate_pipeline.py", "status": "executable"},
-    "Z-G10": {"path": "pipelines/Z-G10_全局黑马筛选/gate_pipeline.py", "status": "executable"},
-    "Z-G11": {"path": "pipelines/Z-G11_组合风控/gate_pipeline.py", "status": "executable"},
-    "Z-G12": {"path": "pipelines/Z-G12_系统巡检/gate_pipeline.py", "status": "executable"},
-    "Z-G13": {"path": "pipelines/Z-G13_底仓管理/gate_pipeline.py", "status": "prototype"},
+    "Z-G09": {"path": "pipelines/Z-G09_全局轮动筛选/gate_pipeline.py", "status": "executable_core"},
+    "Z-G10": {"path": "pipelines/Z-G10_全局黑马筛选/gate_pipeline.py", "status": "executable_core"},
+    "Z-G11": {"path": "pipelines/Z-G11_组合风控/gate_pipeline.py", "status": "executable_light"},
+    "Z-G12": {"path": "pipelines/Z-G12_系统巡检/gate_pipeline.py", "status": "executable_core"},
+    "Z-G13": {"path": "pipelines/Z-G13_底仓管理/gate_pipeline.py", "status": "executable_light"},
     "Z-G14": {"path": "pipelines/Z-G14_月度全量选股/gate_pipeline.py", "status": "prototype"},
     "Z-G15": {"path": "pipelines/Z-G15_产业链深研/gate_pipeline.py", "status": "prototype"},
-    "Z-G16": {"path": "pipelines/Z-G16_纸面验证/gate_pipeline.py", "status": "executable"},
-    "Z-G16A": {"path": "pipelines/Z-G16A_Alpha平行验证仓/gate_pipeline.py", "status": "executable"},
-    "Z-G17": {"path": "pipelines/Z-G17_人类风控/gate_pipeline.py", "status": "executable"},
+    "Z-G16": {"path": "pipelines/Z-G16_纸面验证/gate_pipeline.py", "status": "executable_core"},
+    "Z-G16A": {"path": "pipelines/Z-G16A_Alpha平行验证仓/gate_pipeline.py", "status": "executable_core"},
+    "Z-G17": {"path": "pipelines/Z-G17_人类风控/gate_pipeline.py", "status": "executable_light"},
 }
 
 README_STATUS_MAP = {"🟢": "executable", "🟡": "prototype", "🔴": "doc_only"}
@@ -42,7 +42,7 @@ def test_executable_paths_and_run():
     """executable: 目录存在 + import + callable run()"""
     failed = []
     for code, item in PIPELINE_MANIFEST.items():
-        if item["status"] != "executable": continue
+        if item["status"] not in ("executable_core","executable_light"): continue
         p = Path(item["path"])
         assert p.exists(), f"{code}: MISSING {p}"
         mod = load_module(str(p))
@@ -74,7 +74,7 @@ def test_pipeline_readme_status_consistent():
         lines = [ln for ln in readme.splitlines() if f"| {code} " in ln]
         assert lines, f"{code}: missing in pipelines/README.md"
         line = lines[0]
-        expected_icon = {"executable": "🟢", "prototype": "🟡", "doc_only": "🔴"}[item["status"]]
+        expected_icon = {"executable_core": "🟢", "executable_light": "🟢-light", "prototype": "🟡", "doc_only": "🔴"}[item["status"]]
         assert expected_icon in line, f"{code}: manifest={item['status']} but README={line.strip()}"
     print("  ✅ pipelines/README状态与manifest一致")
 

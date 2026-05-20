@@ -90,7 +90,7 @@ def gate2_source_arbitration(ticker: str, g1_details: dict) -> GateResult:
         return GateResult(2, "Source Arbitration", GateStatus.DEGRADED, {}, [str(e)], 0)
 
 def gate3_dq_score(ticker: str) -> GateResult:
-    """闸口3: Data Quality评分。DQ<60→禁买卖, DQ<85→禁V4。宪法第3条: 能力边界诚实。"""
+    """闸口3: DQ评分 → CapabilityDecision (开放智能降级)"""
     scores = {"行情": 0, "财务": 0, "估值": 0, "产业链": 0, "资金": 0, "来源": 0}
     errors = []
     
@@ -138,7 +138,7 @@ def gate3_dq_score(ticker: str) -> GateResult:
         errors.append(f"DQ={total}<60, 禁止买卖建议")
         return GateResult(3, "DQ Score", GateStatus.BLOCK, details, errors, 3)
     if total < 85:
-        errors.append(f"DQ={total}<85, 禁止V4纸面执行")
+        errors.append(f"DQ={total}<85→禁Z-G16 Full, 允Z-G16 Lite")
         return GateResult(3, "DQ Score", GateStatus.DEGRADED, details, errors, 3)
     return GateResult(3, "DQ Score", GateStatus.PASS, details, [], 3)
 
@@ -201,7 +201,7 @@ def gate5_l3_sectors() -> GateResult:
 
 
 def gate6_l4_health(ticker: str) -> GateResult:
-    """闸口6: L4健康检查 — ST/停牌/流动性。"""
+    """闸口6: L4健康检查 — ST→BLOCK_ENTER, 停牌→O2, 无成交→O2 (分级降级)"""
     errors = []
     details = {}
     
@@ -336,7 +336,7 @@ def gate8_v3_scenarios(g1_details: dict) -> GateResult:
 
 
 def gate9_z8_action(gates: List[GateResult]) -> Tuple[ActionLevel, str]:
-    """闸口9: Z8动作映射 — 根据闸口1-8结果。"""
+    """闸口9: Z8动作映射 — Capability Mask判定, PAPER_PROBE需条件"""
     pass_count = sum(1 for g in gates if g.status == GateStatus.PASS)
     block_count = sum(1 for g in gates if g.status in (GateStatus.BLOCK, GateStatus.DATA_INCOMPLETE))
     skip_count = sum(1 for g in gates if g.status == GateStatus.SKIPPED)
@@ -349,7 +349,7 @@ def gate9_z8_action(gates: List[GateResult]) -> Tuple[ActionLevel, str]:
         return ActionLevel.WATCH, f"WATCH: {skip_count}闸口跳过"
     if pass_count >= 7:
         if block_count == 0:
-            return ActionLevel.PAPER_PROBE, "PAPER_PROBE: ≥7 PASS, 0 BLOCK → 可纸面试仓(PAPER_WORLD)"
+            return ActionLevel.PAPER_TRACK, "PAPER_TRACK(PAPER_PROBE需MT.PASS+L1.5.SAFE+world=PAPER_WORLD)"
         return ActionLevel.WATCH, "WATCH: 数据可用但部分闸口DEGRADED"
     if pass_count >= 5:
         return ActionLevel.WATCH, "WATCH: 最低通过线"

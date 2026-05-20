@@ -20,20 +20,32 @@ CAPABILITY_MASK_KEYS = ["exact_price_zone","paper_fill_price","micro_absorption"
 
 def capability_mask(disabled: list, output_level: str, errors: list = None) -> dict:
     """生成能力掩码 — 替代旧PASS/DEGRADED/BLOCK"""
+    cond = []
+    if "PAPER_PROBE" in _forbidden_by_disabled(disabled):
+        cond.append({"output":"PAPER_PROBE","requires":["world=PAPER_WORLD","MT=PASS","L1.5=SAFE"]})
     return {
         "output_level": output_level,
         "disabled_capabilities": disabled,
         "allowed_outputs": _allowed_by_level(output_level),
+        "conditional_outputs": cond,
         "forbidden_actions": _forbidden_by_disabled(disabled),
+        "required_next_data": _required_by_disabled(disabled),
         "errors": errors or []
     }
+
+def _required_by_disabled(disabled: list) -> list:
+    req = []
+    if "exact_price_zone" in disabled: req.append("MT_PASS_or_DQ>=85")
+    if "execution_proposal" in disabled: req.append("MT_PASS+L1.5_SAFE")
+    if "paper_fill_price" in disabled: req.append("MT_PASS+execution_quote+TTL_valid")
+    return req
 
 def _allowed_by_level(level: str) -> list:
     m = {
         "O5": ["full_plan","price_zones","position","paper_probe","watch","wait"],
         "O4": ["paper_plan","conditional_routes","watch","wait","paper_track"],
-        "O3": ["conditional_routes","watch","wait","gap_report"],
-        "O2": ["diagnostic","gap_report","watch"],
+        "O3": ["conditional_routes","watch","wait","gap_report","zg16_lite"],
+        "O2": ["diagnostic","gap_report","watch","condition_route","evidence_report"],
         "O1": ["data_gap_report"],
     }
     return m.get(level, ["data_gap_report"])
@@ -175,7 +187,7 @@ def market_truth(ticker):
     # Capability Mask: 根据status确定输出等级
     cap_level = "O5" if st=="PASS" else ("O3" if st=="DEGRADED" else "O2")
     cap_disabled = [] if st=="PASS" else (["exact_price_zone","paper_fill_price"] if st=="DEGRADED" else ["exact_price_zone","paper_fill_price","execution_proposal"])
-    dt["price_basis"] = "raw_unadjusted"; dt["quote_domain"] = "execution_quote"; dt["output_level"] = cap_level
+    dt["price_basis"] = "raw_unadjusted"; dt["quote_domain"] = "execution_quote"; dt["quote_role"] = "primary"; dt["output_level"] = cap_level
     dt["capability_mask"] = capability_mask(cap_disabled, cap_level, errs)
     rv = {**dt,"status":st,"errors":errs}; _cache_set(ck,rv); return rv
 
@@ -188,6 +200,7 @@ def source_arbitrate(ticker, g1):
         "source": g1.get("source",""),
         "price_basis": g1.get("price_basis",""),
         "quote_domain": g1.get("quote_domain",""),
+        "quote_role": g1.get("quote_role",""),
         "output_level": g1.get("output_level",""),
         "capability_mask": g1.get("capability_mask",{}),
         "cross_validated": g1.get("cross_validated",False),

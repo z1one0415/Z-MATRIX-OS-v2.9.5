@@ -19,31 +19,31 @@ def test_zg16_lite_when_missing_world_or_l15():
     print("✅ test_zg16_lite_when_missing_world_or_l15")
 
 def test_zg16_full_no_default_paper_probe_action():
-    """Z-G16 Full: PAPER_PROBE only in conditional_outputs, not as default action"""
+    """Z-G16 Full: monkeypatch强制Full, PAPER_PROBE仅conditional"""
     spec = importlib.util.spec_from_file_location("zg16","pipelines/Z-G16_纸面验证/gate_pipeline.py")
     mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
     
+    # monkeypatch 强制 Full (绕过实时数据依赖)
+    mod.market_truth = lambda t: {"status":"PASS","price":100,"output_level":"O4_PAPER_PLAN","capability_mask":{}}
+    mod.dq_score = lambda t: {"total":90,"status":"PASS"}
+    mod.get_kline = lambda t, d: {"prices":[100]*60,"count":60}
+    
     r = mod.run({"symbol":"002463","name":"测试","selected_role":"R_MATRIX",
-        "action_proposal":{"action":"PAPER_TRACK"},"price":102.6,
+        "action_proposal":{"action":"PAPER_TRACK"},"price":100,
         "world":"PAPER_WORLD","l1_5_status":"SAFE","operating_mode":"NORMAL","hibernation_no_attack":False
     })
-    # Verify no PAPER_PROBE as default action in either Full or Lite mode
-    coach = r.get("coach_plan",{})
-    if coach:
-        for route in coach.get("scenario_routes",[]):
-            assert route.get("action") != "PAPER_PROBE", f"PAPER_PROBE found as action in route: {route}"
-        for step in coach.get("position_playbook",{}).get("steps",[]):
-            assert step.get("action") != "PAPER_PROBE", f"PAPER_PROBE found as action in step: {step}"
-    # Lite: verify forbidden_fields contains PAPER_PROBE
-    if r.get("mode") == "Lite":
-        assert "PAPER_PROBE" in r.get("forbidden_fields",[]), "Lite must forbid PAPER_PROBE"
-    # Full: verify capability_mask has PAPER_PROBE as conditional
-    if r.get("mode") == "Full" or r.get("capability_mask"):
-        cm = r.get("capability_mask",{}) or {}
-        cond = cm.get("conditional_outputs",[])
-        if cond:
-            assert any(c.get("output")=="PAPER_PROBE" for c in cond), "Full mode conditional_outputs must contain PAPER_PROBE"
-    print("✅ test_zg16_full_no_default_paper_probe_action")
+    assert r["mode"] == "Full", f"Expected Full via monkeypatch, got {r['mode']}"
+    assert r["output_level"] == "O4_PAPER_PLAN"
+    assert "capability_mask" in r
+    cond = r["capability_mask"]["conditional_outputs"]
+    assert any(c.get("output")=="PAPER_PROBE" for c in cond), "conditional_outputs must contain PAPER_PROBE"
+    
+    coach = r["coach_plan"]
+    for route in coach["scenario_routes"]:
+        assert route.get("action") != "PAPER_PROBE", f"PAPER_PROBE as action in route"
+    for step in coach["position_playbook"]["steps"]:
+        assert step.get("action") != "PAPER_PROBE", f"PAPER_PROBE as action in step"
+    print("✅ test_zg16_full_no_default_paper_probe_action (monkeypatch Full)")
 
 def test_zg16a_missing_fill_fields_no_fill():
     """Z-G16A: missing fill fields→NO_FILL, no position"""

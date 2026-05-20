@@ -18,12 +18,12 @@ Z-G05  🟢        日记忆卡
 Z-G06  🟢        复盘反馈
 Z-G07  🟢        轮动+黑马选股 (10闸口, 已调用Z-G01)
 Z-G08  🟡        叙事雷达深度
-Z-G09  🟢        全局轮动筛选 (R-Matrix OscillationKing v1.1 Type A/B)
-Z-G10  🟢        全局黑马筛选 (D-Matrix v2.2)
+Z-G09  🟢        全局轮动筛选 (R-Matrix v1.1, UniverseProvider 6种universe)
+Z-G10  🟢        全局黑马筛选 (D-Matrix v2.2, UniverseProvider)
 Z-G11  🟢-light  组合风控 (集中度可用, 现金未接入)
 Z-G12  🟢        系统巡检
 Z-G13  🟢-light  底仓管理 (B-Matrix v2.1.1 5类真评分, 数据源字段待补)
-Z-G14  🟡        月度全量选股 (流A 原型)
+Z-G14  🟢-light  月度全量选股 (B/R/D真评分, A_SHARE_ALL强制, fail-closed)
 Z-G15  🟡        产业链深研 (V3证据分层 原型)
 Z-G16  🟢        V4纸面执行教练 (Full/Lite双模式)
 Z-G16A 🟢        Alpha平行验证仓

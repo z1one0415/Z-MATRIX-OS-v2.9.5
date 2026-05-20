@@ -50,15 +50,32 @@ def _r_matrix_score(ticker):
         return {"status":"ERROR","ticker":ticker,"error":str(e)[:80],"excluded_from_ranking":True}
 
 
-def run(pool_size=80):
+def run(pool_size=80, universe="A_SHARE_ALL", allow_fallback=True):
+    """Z-G09 R-Matrix OscillationKing v1.1
+    universe: A_SHARE_ALL/INDEX_300/INDEX_500/INDEX_1000/WATCHLIST/PRESET_DEV/FILE"""
+    from pipelines.universe_provider import load_universe
+    
     now = datetime.now(timezone(timedelta(hours=8)))
-    result = {"pipeline_signature":"Z-G09_全局轮动_v2.9.5-RC","timestamp":now.isoformat(),
-              "engine":"OscillationKing v1.1","sections":{},"r_pool":[]}
+    uni = load_universe(source=universe, allow_fallback=allow_fallback,
+                       min_count=4000 if universe=="A_SHARE_ALL" else None)
+    is_global = uni.get("is_global", False)
+    sig = "Z-G09_R-Matrix_v2.9.5-RC" if is_global else "Z-G09_R-Matrix_non_global_universe"
     
-    print(f"\n☯️ Z-G09 全局轮动 (OscillationKing v1.1) — {now.strftime('%Y-%m-%d %H:%M')}")
+    result = {"pipeline_signature":sig,"timestamp":now.isoformat(),
+              "engine":"OscillationKing v1.1","sections":{},"r_pool":[],
+              "universe_contract":uni,"warnings":[]}
+    
+    if uni["status"] == "DATA_GAP":
+        result["status"] = "DATA_GAP"
+        result["reason"] = "UNIVERSE_NOT_AVAILABLE"
+        return result
+    if not is_global:
+        result["warnings"].append("NON_GLOBAL_UNIVERSE")
+    
+    tickers = uni["tickers"]
+    print(f"\n☯️ Z-G09 筛选 (OscillationKing v1.1) — {now.strftime('%Y-%m-%d %H:%M')}")
+    print(f"    Universe: {uni['source']} {uni['count']}只 is_global={is_global}")
     print("=" * 60)
-    
-    tickers = _scan_list()
     print(f"📡 扫描: {len(tickers)}标的 → Type A水平震荡 + Type B上升通道 + OscillationKing双模式")
     
     candidates = []; degraded = []
@@ -81,16 +98,13 @@ def run(pool_size=80):
     result["sections"]["summary"] = {"scanned":len(tickers),"pool_size":len(r_pool),"degraded":len(degraded)}
     return result
 
-def _scan_list():
-    tk = []; preset = ["002463","002472","002837","002881","002979","000977","000988",
-        "300308","300394","300502","300620","300687","300499",
-        "600519","601899","601898","688041","688111","688160","688256","688322","688608","688981"]
-    for c in preset:
-        if c not in tk: tk.append(c)
-    return tk
+# _scan_list() removed — use pipelines.universe_provider.load_universe() instead
 
 if __name__ == "__main__":
-    p = argparse.ArgumentParser(description="Z-G09 全局轮动 (OscillationKing v1.1)")
+    p = argparse.ArgumentParser(description="Z-G09 R-Matrix OscillationKing v1.1")
     p.add_argument("--pool", type=int, default=80)
+    p.add_argument("--universe", default="A_SHARE_ALL",
+                   choices=["A_SHARE_ALL","INDEX_300","INDEX_500","INDEX_1000","WATCHLIST","PRESET_DEV","FILE"])
+    p.add_argument("--allow-fallback", action="store_true")
     args = p.parse_args()
-    run(pool_size=args.pool)
+    run(pool_size=args.pool, universe=args.universe, allow_fallback=args.allow_fallback)

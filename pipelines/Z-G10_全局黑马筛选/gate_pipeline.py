@@ -98,15 +98,31 @@ def _d_matrix_score(ticker):
         return {"status":"ERROR","ticker":ticker,"error":str(e)[:80],"excluded_from_ranking":True}
 
 
-def run(pool_size=100):
+def run(pool_size=100, universe="A_SHARE_ALL", allow_fallback=True):
+    """Z-G10 D-Matrix v2.2
+    universe: A_SHARE_ALL/INDEX_300/INDEX_500/INDEX_1000/WATCHLIST/PRESET_DEV/FILE"""
+    from pipelines.universe_provider import load_universe
+    
     now = datetime.now(timezone(timedelta(hours=8)))
-    result = {"pipeline_signature":"Z-G10_全局黑马_v2.9.5-RC","timestamp":now.isoformat(),
-              "engine":"D-Matrix v2.2","d_pool":[]}
+    uni = load_universe(source=universe, allow_fallback=allow_fallback,
+                       min_count=4000 if universe=="A_SHARE_ALL" else None)
+    is_global = uni.get("is_global", False)
+    sig = "Z-G10_D-Matrix_v2.9.5-RC" if is_global else "Z-G10_D-Matrix_non_global_universe"
     
-    print(f"\n☯️ Z-G10 全局黑马 (D-Matrix v2.2) — {now.strftime('%Y-%m-%d')}")
+    result = {"pipeline_signature":sig,"timestamp":now.isoformat(),
+              "engine":"D-Matrix v2.2","d_pool":[],"universe_contract":uni,"warnings":[]}
+    
+    if uni["status"] == "DATA_GAP":
+        result["status"] = "DATA_GAP"
+        result["reason"] = "UNIVERSE_NOT_AVAILABLE"
+        return result
+    if not is_global:
+        result["warnings"].append("NON_GLOBAL_UNIVERSE")
+    
+    tickers = uni["tickers"]
+    print(f"\n☯️ Z-G10 筛选 (D-Matrix v2.2) — {now.strftime('%Y-%m-%d %H:%M')}")
+    print(f"    Universe: {uni['source']} {uni['count']}只 is_global={is_global}")
     print("=" * 60)
-    
-    tickers = _scan_list()
     print(f"📡 扫描: {len(tickers)}标的 → Gene(22%)+Sector(18%)+Silent(18%)+SmartMoney(10%)+Micro(10%)+VolPreload(7%)")
     
     candidates = []; degraded = []
@@ -133,16 +149,14 @@ def run(pool_size=100):
     result["sections"] = {"d3":len(d3),"d2":len(d2),"total":len(d_pool),"degraded":len(degraded)}
     return result
 
-def _scan_list():
-    tk = []; preset = ["002463","002472","002837","002881","002979","000977","000988",
-        "300308","300394","300502","300620","300687","300499",
-        "600519","601899","601898","688041","688111","688160","688256","688322","688608"]
-    for c in preset:
-        if c not in tk: tk.append(c)
-    return tk
+# _scan_list() removed — use pipelines.universe_provider.load_universe() instead
+
 
 if __name__ == "__main__":
-    p = argparse.ArgumentParser(description="Z-G10 全局黑马 (D-Matrix v2.2)")
+    p = argparse.ArgumentParser(description="Z-G10 D-Matrix v2.2")
     p.add_argument("--pool", type=int, default=100)
+    p.add_argument("--universe", default="A_SHARE_ALL",
+                   choices=["A_SHARE_ALL","INDEX_300","INDEX_500","INDEX_1000","WATCHLIST","PRESET_DEV","FILE"])
+    p.add_argument("--allow-fallback", action="store_true")
     args = p.parse_args()
-    run(pool_size=args.pool)
+    run(pool_size=args.pool, universe=args.universe, allow_fallback=args.allow_fallback)

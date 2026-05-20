@@ -14,12 +14,12 @@
 | Z-G06 | 复盘反馈 | 🟢 | Z9校准+模式检测+Hermes |
 | Z-G07 | 轮动+黑马选股 | 🟢 | 10闸口全量, 已调用Z-G01统一数据层, 3模式(full/lite/watch) |
 | Z-G08 | 叙事雷达深度 | 🟡 | 原型 |
-| Z-G09 | 全局轮动筛选 | 🟢 | R-Matrix OscillationKing v1.1 Type A/B 双模式 |
-| Z-G10 | 全局黑马筛选 | 🟢 | D-Matrix v2.2 源点雷达, OHLCV enriched; Theme/Micro数据待增强 |
+| Z-G09 | 全局轮动筛选 | 🟢 | R-Matrix v1.1 Type A/B, UniverseProvider, 支持6种universe |
+| Z-G10 | 全局黑马筛选 | 🟢 | D-Matrix v2.2, UniverseProvider, OHLCV enriched |
 | Z-G11 | 组合风控 | 🟢-light | 集中度可用；现金/账户实盘数据待接入(NOT_CONNECTED) |
 | Z-G12 | 系统巡检 | 🟢 | 6模块+DQ+Cron |
 | Z-G13 | 底仓管理 | 🟢-light | B-Matrix v2.1.1已接入 5类真评分；数据源(get_financials)字段仍为stub |
-| Z-G14 | 月度全量选股(流A) | 🟡 | B-R-D全量重跑, 原型 |
+| Z-G14 | 月度全量选股(流A) | 🟢-light | B-Matrix v2.1.1 + R-Matrix v1.1 + D-Matrix v2.2 真评分; ticker universe待扩展 |
 | Z-G15 | 产业链深研 | 🟡 | V3证据分层 |
 | Z-G16 | V4纸面执行教练 | 🟢 | Full/Lite双模式，PAPER_PROBE conditional_output |
 | Z-G16A | Alpha平行验证仓 | 🟢 | PAPER_WORLD+幽灵基准 |
@@ -27,3 +27,5 @@
 
 ## 状态说明
 🟢 = 核心可执行 / 契约较完整 | 🟢-light = 有入口可运行但轻量 | 🟡 = 原型 / 需升级 | 🔴 = 待建
+
+> "全局筛选"定义: 必须使用 UniverseProvider 且 universe_contract.is_global=True。WATCHLIST/PRESET_DEV/INDEX 不得称为全市场全局。

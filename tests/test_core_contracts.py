@@ -119,6 +119,8 @@ def test_zg16a_run_degraded_fill_position_metadata():
     assert r["position"]["fill_quality"] == "DEGRADED_FILL"
     assert r["position"]["attribution_allowed"] is False, "DEGRADED must have attribution_allowed=False"
     assert r["fill_quality"]["fill_confidence"] == "degraded"
+    assert r["plan_status"] == "OPEN_DEGRADED_FILL"
+    assert r["position"]["status"] == "OPEN"
     print("✅ test_zg16a_run_degraded_fill_position_metadata")
 
 def test_zg16a_run_high_confidence_no_nameerror():
@@ -136,6 +138,8 @@ def test_zg16a_run_high_confidence_no_nameerror():
     assert r["position"]["attribution_allowed"] is True
     assert r["position"]["fill_price"] == 100.15
     assert r["fill_quality"]["fill_quality"] == "HIGH_CONFIDENCE_FILL"
+    assert r["plan_status"] == "OPEN_HIGH_CONFIDENCE_FILL"
+    assert r["position"]["status"] == "OPEN"
     print("✅ test_zg16a_run_high_confidence_no_nameerror")
 
 if __name__ == "__main__":

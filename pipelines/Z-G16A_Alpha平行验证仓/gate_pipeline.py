@@ -87,6 +87,14 @@ def run(plan=None):
         print(f"\n⛔ NO_FILL → 仅验证计划草案, 不开仓价")
         return result
     
+    # plan_status by fill tier
+    if fill["fill_quality"] == "HIGH_CONFIDENCE_FILL":
+        result["plan_status"] = "OPEN_HIGH_CONFIDENCE_FILL"
+    elif fill["fill_quality"] == "DEGRADED_FILL":
+        result["plan_status"] = "OPEN_DEGRADED_FILL"
+    else:
+        result["plan_status"] = "OPEN_WITH_FILL"
+    
     print(f"\n📊 PAPER_WORLD开仓:")
     print(f"  入场价: {entry_price:.2f} | 填报价: {fill_price:.2f}")
     print(f"  基准价: {benchmark_price:.2f} | 滑点: {slippage_rate*100:.2f}%")
@@ -130,6 +138,7 @@ def run(plan=None):
     return result
 
 def _demo_plan():
+    """默认demo不提供MarketTruth字段，fail-closed→NO_FILL→仅验证草案"""
     return {
         "validation_id": "val_20260519_001",
         "world": "PAPER_WORLD",

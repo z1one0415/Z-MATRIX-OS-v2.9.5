@@ -1,0 +1,19 @@
+version: "2.1-lite"
+phase: "Phase1"
+weights:
+  blackhorse_gene: 0.40
+  sector_ignition: 0.30
+  vol_price_preload: 0.20
+  theme_mapping: 0.10
+thresholds:
+  watch_score: 6.0
+  d3_candidate_score: 7.2
+  sector_ignition: 0.65
+  blackhorse_gene_preheat: 6.2
+  blackhorse_gene_d3: 7.0
+  vol_price_preload_d3: 6.0
+caps:
+  missing_theme_seed_score_ceiling: 7.6
+  phase1_lifecycle_max: "D3_CANDIDATE"
+  phase1_execution_mode: "paper"
+  phase1_real_trade_allowed: false

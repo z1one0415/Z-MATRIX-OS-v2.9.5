@@ -1,0 +1,391 @@
+{
+  "version": "1.0",
+  "memories": [
+    {
+      "fingerprint": "d3cea7ff1ef46692",
+      "created_at": "2026-05-11T16:12:58.201727+00:00",
+      "updated_at": "2026-05-11T16:12:58.201727+00:00",
+      "access_count": 0,
+      "confidence": 0.82,
+      "decayed_confidence": 0.82,
+      "insight": {
+        "symbol": "humanoid_robot_chain",
+        "name": "人形机器人产业链2026",
+        "thesis": "Humanoid robot industry at inflection point (2026 = AI 2025-10 position).\nChina leads globally (50% shipments), Ubtech IPO (Q2-Q3 2026) + Tesla Optimus Gen3 mass production (summer) dual catalysts.\nRobot chain 120d return only +3% vs AI chain +192% — massive catch-up potential.\nCore thesis: China leads globally in robots, but stock prices haven't caught up — classic perception gap → pricing gap opportunity.\nIndustry shipments to grow 717% YoY (5.1K units in 2026 vs 5.1K in 2025).\nBOM cost: lead screw 19%, frameless motor 16%, reducer 13%, force sensor 11%.",
+        "anti_thesis": "1) Optimus Gen3 mass production could slip to 2027 (30% prob)\n2) Robot valuation already partially priced in some names (五洲新春 +63% YTD)\n3) Sector rotation out of AI into other themes could delay robot catch-up\n4) Ubtech IPO valuation (420B RMB) may disappoint if market turns",
+        "scenarios": {
+          "bull": "Ubtech IPO + Optimus Gen3 mass produce → sector revaluation PE 30-40x → 双环传动 as flagship up 67-90%",
+          "base": "Catalysts on schedule → gradual catch-up from +3% to +50% in 6 months → 双环传动 target 51 RMB (+21%)",
+          "bear": "Optimus slips to 2027 + Ubtech IPO disappoints → sector consolidates at current levels → 双环传动 stays at 42-45"
+        },
+        "confidence": 0.82,
+        "role": "core_long_term",
+        "source_docs": [
+          "人形机器人产业链_Z2Z8双维分析_2026-05-10"
+        ]
+      }
+    },
+    {
+      "fingerprint": "e1095a0a93e510f8",
+      "created_at": "2026-05-11T16:12:58.202031+00:00",
+      "updated_at": "2026-05-11T16:12:58.202031+00:00",
+      "access_count": 0,
+      "confidence": 0.82,
+      "decayed_confidence": 0.82,
+      "insight": {
+        "symbol": "002472",
+        "name": "双环传动",
+        "thesis": "Primary recommendation as 'robot version of 光迅科技'. RV reducer #1 domestic share, Tesla Optimus exclusive supplier. 2025A EPS 1.48, 12.6B net profit. 4 buy ratings from brokers. Current PE 25x(2026E) — only reflects auto parts. Robot revaluation to 30-40x PE. Target 51-71 RMB (+21-67%). D-Matrix A 7.8.",
+        "anti_thesis": "Q1 auto sector weakness (revenue only +1.5%). Broker consensus may be too optimistic on H2. PE expansion depends on catalyst timing.",
+        "scenarios": {
+          "bull": "双环传动 benefit from robot revaluation → PE expansion to 35-40x",
+          "base": "Gradual catalyst realization → PE 30x reasonable",
+          "bear": "Catalyst delayed → stays at current PE 25x"
+        },
+        "confidence": 0.82,
+        "role": "core_long_term",
+        "source_docs": [
+          "人形机器人产业链_Z2Z8双维分析_2026-05-10"
+        ]
+      }
+    },
+    {
+      "fingerprint": "ff400f50b6977370",
+      "created_at": "2026-05-11T16:12:58.202165+00:00",
+      "updated_at": "2026-05-11T16:12:58.202165+00:00",
+      "access_count": 0,
+      "confidence": 0.7,
+      "decayed_confidence": 0.7,
+      "insight": {
+        "symbol": "603667",
+        "name": "五洲新春",
+        "thesis": "Core lead screw supplier for Tesla Optimus Gen3 (passed mass production audit). Weekly capacity 500 sets, 700M RMB invested. Lead screw = 19% of robot BOM cost. Already +63% YTD but still far from 光迅+192%.",
+        "anti_thesis": "Already up 63% — partially priced. One-share cost 7,817 — above comfort zone. Financial data incomplete.",
+        "scenarios": {
+          "bull": "五洲新春 benefit from robot revaluation → PE expansion to 35-40x",
+          "base": "Gradual catalyst realization → PE 30x reasonable",
+          "bear": "Catalyst delayed → stays at current PE 25x"
+        },
+        "confidence": 0.7,
+        "role": "dark_horse",
+        "source_docs": [
+          "人形机器人产业链_Z2Z8双维分析_2026-05-10"
+        ]
+      }
+    },
+    {
+      "fingerprint": "0b37db96c4987258",
+      "created_at": "2026-05-11T16:12:58.202330+00:00",
+      "updated_at": "2026-05-11T16:12:58.202330+00:00",
+      "access_count": 0,
+      "confidence": 0.55,
+      "decayed_confidence": 0.55,
+      "insight": {
+        "symbol": "002896",
+        "name": "中大力德",
+        "thesis": "Reducer #2 player, Ubtech supply chain. 120d return -14% — most oversold, rebound potential. One-share cost 7,600 — high. Waiting for catalyst.",
+        "anti_thesis": "Lowest certainty in the group. Financial data incomplete. Reducer competition intensifying.",
+        "scenarios": {
+          "bull": "中大力德 benefit from robot revaluation → PE expansion to 35-40x",
+          "base": "Gradual catalyst realization → PE 30x reasonable",
+          "bear": "Catalyst delayed → stays at current PE 25x"
+        },
+        "confidence": 0.55,
+        "role": "dark_horse",
+        "source_docs": [
+          "人形机器人产业链_Z2Z8双维分析_2026-05-10"
+        ]
+      }
+    },
+    {
+      "fingerprint": "352242c636a6318f",
+      "created_at": "2026-05-11T16:12:58.202494+00:00",
+      "updated_at": "2026-05-11T16:12:58.202494+00:00",
+      "access_count": 0,
+      "confidence": 0.5,
+      "decayed_confidence": 0.5,
+      "insight": {
+        "symbol": "600580",
+        "name": "卧龙电驱",
+        "thesis": "Servo motor / robot joint drive. 120d -10%. One-share cost 4,106 — excellent cost. Industrial automation leader but robot revenue share low.",
+        "anti_thesis": "Robot exposure too small to drive significant upside. Industrial automation cyclical.",
+        "scenarios": {
+          "bull": "卧龙电驱 benefit from robot revaluation → PE expansion to 35-40x",
+          "base": "Gradual catalyst realization → PE 30x reasonable",
+          "bear": "Catalyst delayed → stays at current PE 25x"
+        },
+        "confidence": 0.5,
+        "role": "watch_only",
+        "source_docs": [
+          "人形机器人产业链_Z2Z8双维分析_2026-05-10"
+        ]
+      }
+    },
+    {
+      "fingerprint": "f8fecf79e21bfe50",
+      "created_at": "2026-05-11T16:12:58.202660+00:00",
+      "updated_at": "2026-05-11T16:12:58.202660+00:00",
+      "access_count": 0,
+      "confidence": 0.8,
+      "decayed_confidence": 0.8,
+      "insight": {
+        "symbol": "ai_semiconductor_dual",
+        "name": "AI算力+半导体自主可控双链2026",
+        "thesis": "AI computing + semiconductor localization are dual 2026 A-share main narratives.\nBoth confirmed by A-level evidence. Semiconductor equipment is strongest certainty (no matter who wins AI race, they need equipment).\nOptical modules have strongest earnings elasticity but highest valuation risk.\nLiquid cooling is new incremental AI infra segment (Barron's just covered).\nSMIC is national strategic asset, not a high-beta play.",
+        "anti_thesis": "1) Optical module PE 50-80x — 2-3 years of growth already priced in\n2) CPO technology route could disrupt traditional pluggable optical modules\n3) AI CapEx return on investment still unproven (2027-2028 verification window)\n4) SMIC profit quality: government subsidies significant portion, non-recurring items distort net profit\n5) Mature process global capacity migration to China → oversupply risk in 2-3 years",
+        "scenarios": {
+          "bull": "AI CapEx continues + MATCH Act at current level → semiconductor equipment and optical modules lead market",
+          "base": "Gradual dual-chain rotation with valuation digestion → mid-cap winners",
+          "bear": "US further restricts + AI investment return misses → sector correction"
+        },
+        "confidence": 0.8,
+        "role": "core_long_term",
+        "source_docs": [
+          "AI算力与半导体双链_Z2_分析_2026-05-10"
+        ]
+      }
+    },
+    {
+      "fingerprint": "7040491a82de9a56",
+      "created_at": "2026-05-11T16:12:58.202838+00:00",
+      "updated_at": "2026-05-11T16:12:58.202838+00:00",
+      "access_count": 0,
+      "confidence": 0.78,
+      "decayed_confidence": 0.78,
+      "insight": {
+        "symbol": "300308",
+        "name": "中际旭创",
+        "thesis": "Optical module absolute leader, 800G/1.6T global leader. Nvidia/Meta core supplier. Most certain AI hardware play. A-level evidence.",
+        "anti_thesis": "PE 50-80x — high valuation risk. CPO disruption risk if tech route shifts. Single-customer concentration.",
+        "scenarios": {
+          "bull": "中际旭创 benefits from dual-chain narrative → continued rally",
+          "base": "Valuation digest with earnings growth",
+          "bear": "Sector correction + wind change"
+        },
+        "confidence": 0.78,
+        "role": "core_long_term",
+        "source_docs": [
+          "AI算力与半导体双链_Z2_分析_2026-05-10"
+        ]
+      }
+    },
+    {
+      "fingerprint": "961a4ad96e16316d",
+      "created_at": "2026-05-11T16:12:58.203053+00:00",
+      "updated_at": "2026-05-11T16:12:58.203053+00:00",
+      "access_count": 0,
+      "confidence": 0.75,
+      "decayed_confidence": 0.75,
+      "insight": {
+        "symbol": "688041",
+        "name": "海光信息",
+        "thesis": "S&P named beneficiary. x86 CPU+DCU, most commercialized domestic computing option. Xinchuang + AI dual engine. A-level evidence.",
+        "anti_thesis": "US sanctions risk. Tech gap 2-3 generations behind Nvidia. High PE.",
+        "scenarios": {
+          "bull": "海光信息 benefits from dual-chain narrative → continued rally",
+          "base": "Valuation digest with earnings growth",
+          "bear": "Sector correction + wind change"
+        },
+        "confidence": 0.75,
+        "role": "core_long_term",
+        "source_docs": [
+          "AI算力与半导体双链_Z2_分析_2026-05-10"
+        ]
+      }
+    },
+    {
+      "fingerprint": "59543737fe06a728",
+      "created_at": "2026-05-11T16:12:58.203246+00:00",
+      "updated_at": "2026-05-11T16:12:58.203246+00:00",
+      "access_count": 0,
+      "confidence": 0.8,
+      "decayed_confidence": 0.8,
+      "insight": {
+        "symbol": "002371",
+        "name": "北方华创",
+        "thesis": "S&P named. Platform semiconductor equipment leader, etching+thin film+CVD+cleaning full coverage. 2025 revenue expected above 50B. A-level evidence. Strongest certainty in dual chains.",
+        "anti_thesis": "PE 70-100x — optimistic expectations already priced. Sanctions risk (already on entity list).",
+        "scenarios": {
+          "bull": "北方华创 benefits from dual-chain narrative → continued rally",
+          "base": "Valuation digest with earnings growth",
+          "bear": "Sector correction + wind change"
+        },
+        "confidence": 0.8,
+        "role": "core_long_term",
+        "source_docs": [
+          "AI算力与半导体双链_Z2_分析_2026-05-10"
+        ]
+      }
+    },
+    {
+      "fingerprint": "e5bb374b96ab9d27",
+      "created_at": "2026-05-11T16:12:58.203422+00:00",
+      "updated_at": "2026-05-11T16:12:58.203422+00:00",
+      "access_count": 0,
+      "confidence": 0.78,
+      "decayed_confidence": 0.78,
+      "insight": {
+        "symbol": "688012",
+        "name": "中微公司",
+        "thesis": "S&P named. Etching+MOCVD leader. 5nm etching entering TSMC qualification. 3D NAND high aspect ratio leading. A-level evidence.",
+        "anti_thesis": "PE 70-100x. Product category expansion still ongoing.",
+        "scenarios": {
+          "bull": "中微公司 benefits from dual-chain narrative → continued rally",
+          "base": "Valuation digest with earnings growth",
+          "bear": "Sector correction + wind change"
+        },
+        "confidence": 0.78,
+        "role": "core_long_term",
+        "source_docs": [
+          "AI算力与半导体双链_Z2_分析_2026-05-10"
+        ]
+      }
+    },
+    {
+      "fingerprint": "f24f646ce021703a",
+      "created_at": "2026-05-11T16:12:58.203591+00:00",
+      "updated_at": "2026-05-11T16:12:58.203591+00:00",
+      "access_count": 0,
+      "confidence": 0.7,
+      "decayed_confidence": 0.7,
+      "insight": {
+        "symbol": "688981",
+        "name": "中芯国际",
+        "thesis": "S&P named #1 beneficiary. Domestic largest foundry, mature process capacity expansion high certainty. 77% global new mature capacity flows to China. National strategic asset.",
+        "anti_thesis": "Advanced process (sub-7nm) restricted. Mature process (28nm+) oversupply risk. Large market cap limits elasticity. Profit quality concerns.",
+        "scenarios": {
+          "bull": "中芯国际 benefits from dual-chain narrative → continued rally",
+          "base": "Valuation digest with earnings growth",
+          "bear": "Sector correction + wind change"
+        },
+        "confidence": 0.7,
+        "role": "core_long_term",
+        "source_docs": [
+          "AI算力与半导体双链_Z2_分析_2026-05-10"
+        ]
+      }
+    },
+    {
+      "fingerprint": "f1a942c85bc6dcfe",
+      "created_at": "2026-05-11T16:12:58.203802+00:00",
+      "updated_at": "2026-05-11T16:12:58.203802+00:00",
+      "access_count": 0,
+      "confidence": 0.68,
+      "decayed_confidence": 0.68,
+      "insight": {
+        "symbol": "002837",
+        "name": "英维克",
+        "thesis": "Data center cooling leader. Liquid cooling from 'nice-to-have' to 'must-have'. GB200/300 per-rack power >100kW. Penetration 15%→50%+ by 2027. Bullish segment. B-level evidence.",
+        "anti_thesis": "Liquid cooling tech barriers not insurmountable — competition may intensify. Already partly priced.",
+        "scenarios": {
+          "bull": "英维克 benefits from dual-chain narrative → continued rally",
+          "base": "Valuation digest with earnings growth",
+          "bear": "Sector correction + wind change"
+        },
+        "confidence": 0.68,
+        "role": "mid_term_rotation",
+        "source_docs": [
+          "AI算力与半导体双链_Z2_分析_2026-05-10"
+        ]
+      }
+    },
+    {
+      "fingerprint": "1ddafc8dcfa39ab4",
+      "created_at": "2026-05-11T16:12:58.204249+00:00",
+      "updated_at": "2026-05-11T16:12:58.204249+00:00",
+      "access_count": 0,
+      "confidence": 0.68,
+      "decayed_confidence": 0.68,
+      "insight": {
+        "symbol": "688008",
+        "name": "澜起科技",
+        "thesis": "DDR5 memory interface chip global top 3. AI server standard. S&P named. MCU shortage + price hikes catalyze near-term. A-level evidence.",
+        "anti_thesis": "DDR5 penetration rate still monitoring. A-share HBM exposure limited — indirect beneficiary only.",
+        "scenarios": {
+          "bull": "澜起科技 benefits from dual-chain narrative → continued rally",
+          "base": "Valuation digest with earnings growth",
+          "bear": "Sector correction + wind change"
+        },
+        "confidence": 0.68,
+        "role": "mid_term_rotation",
+        "source_docs": [
+          "AI算力与半导体双链_Z2_分析_2026-05-10"
+        ]
+      }
+    },
+    {
+      "fingerprint": "62a42d5dd39e9317",
+      "created_at": "2026-05-11T16:12:58.204470+00:00",
+      "updated_at": "2026-05-11T16:12:58.204470+00:00",
+      "access_count": 0,
+      "confidence": 0.85,
+      "decayed_confidence": 0.85,
+      "insight": {
+        "symbol": "002472",
+        "name": "双环传动(深度验证)",
+        "thesis": "Four-layer business pyramid: auto gear 69%, overseas 23%, smart actuators 8%, robot reducers 8%. 环动科技 subsidiary: RV reducer #1 domestic, 2025 revenue 440M (28%↑), net profit 94M (54%↑), net margin 21.4%. Current 360B mkt cap implies 环动 valuation <5B vs comparable 绿的谐波 200B. If independent valuation → 双环 total cap 400-550B. H2 2026 profit breakdown: base 396M + robot 50M + Hungary 20M + smart actuators 10M = 476M H2 net profit. 2026E net profit: 14.3B — 70% probability meeting broker consensus 14.6B. EPS trajectory: 1.48(2025A)→1.71(2026E)→2.02(2027E). Margin trend: gross margin 25.5%→27.6%, net margin 11.7%→13.6%. D-Matrix A 7.8. Most detailed single-stock analysis.",
+        "anti_thesis": "Broker consensus 14.6B for 2026 may require H2 net profit 11.8B — aggressive. Our H2 estimate 8.5-9B is more conservative. 30% probability consensus miss. Optimus delay is #1 downside risk. Auto sector weakness could pressure gear base.",
+        "scenarios": {
+          "bull": "Optimus Gen3 mass produces Jul-Aug + 环动 IPO separate listing → PE 35-40x on 2027E EPS → target 70-80 RMB (+67-90%)",
+          "base": "Optimus on schedule Q3 + 环动 steady growth → PE 30x on 2026E EPS → target 51 RMB (+21%)",
+          "bear": "Optimus slips to 2027 + auto weakness → PE 25x → target 42-45 RMB (0-+1%)"
+        },
+        "confidence": 0.85,
+        "role": "core_long_term",
+        "source_docs": [
+          "双环传动002472_深度定性定量验证_2026-05-10",
+          "人形机器人产业链_Z2Z8双维分析_2026-05-10"
+        ]
+      }
+    },
+    {
+      "fingerprint": "925cce6f15fbf61d",
+      "created_at": "2026-05-11T16:12:58.204669+00:00",
+      "updated_at": "2026-05-11T16:12:58.204669+00:00",
+      "access_count": 0,
+      "confidence": 0.65,
+      "decayed_confidence": 0.65,
+      "insight": {
+        "symbol": "002185",
+        "name": "华天科技",
+        "thesis": "华天科技 pullback probability matrix: 45% shallow pullback (12.75-13.05), 40% no pullback (13.94+), 15% deep pullback (11.36-12.13).\nThree valuation paths: A) revenue growth to 200B → PS auto-compress to 2.2x (high certainty); B) margin improvement (advanced packaging share↑) → net profit margin 4%→7% (medium certainty); C) sector PE expansion 2.6x→3.5x (high risk).\nCannot replicate 光迅's 232% gain due to margin ceiling difference. Realistic: 50-80% in 2026 → target 20.60-24.70.\nCatalyst pipeline sufficient (DeepSeek, 昇腾950, PanGu project) through Q4 2026.",
+        "anti_thesis": "1) Traditional packaging net margin only 4-5% — far below optical module 30%\n2) Advanced packaging competition: 长电/通富/盛合 all expanding\n3) Already 449B market cap vs 光迅's 300B starting point — less elasticity\n4) 2025 was 'revenue up, profit flat' — margin improvement needs quarterly proof\n5) Cannot replicate 光迅's path — different value chain position",
+        "scenarios": {
+          "bull": "Advanced packaging share rises + sector PE expansion → PS 3.5x on 200B revenue → target 24.70 (+80%)",
+          "base": "Revenue growth steady, margin slowly improves → PS 3x → target 20.60 (+50%)",
+          "bear": "Margin improvement disappoints + sector rotation → PS 2.2x → target 15 (-5%)"
+        },
+        "confidence": 0.65,
+        "role": "mid_term_rotation",
+        "source_docs": [
+          "华天科技002185_深度再评估_2026-05-10",
+          "AI算力与半导体双链_Z2_分析_2026-05-10"
+        ]
+      }
+    },
+    {
+      "fingerprint": "5603b54237b30fdd",
+      "created_at": "2026-05-11T16:12:58.204881+00:00",
+      "updated_at": "2026-05-11T16:12:58.204881+00:00",
+      "access_count": 0,
+      "confidence": 0.6,
+      "decayed_confidence": 0.6,
+      "insight": {
+        "symbol": "market_bias",
+        "name": "L2.5 Front-Night War Report 2026-05-10",
+        "thesis": "Overall market bias: TAILWIND+ driven by Nasdaq +1.71% new high and S&P +0.84%.\nStrongest chains: AI computing (TAILWIND) → semiconductor (TAILWIND). \nKey risk: Hormuz Strait geopolitics (Iran seizure of oil tanker, US strikes).\nAI computing recommended PAPER_ENTER (paper verification, not live trading). \n半导体 at WATCH (await intraday confirmation).\nResource/energy at WATCH (crude oil direction uncertain).\nHormuz geopolitics is #1 variable overriding all bias.",
+        "anti_thesis": "1) Monday Asian session may fade Friday's US gains (30% prob)\n2) Iran escalation could push crude to $110+ → energy sector volatility\n3) AI sector already overheated — rotation risk\n4) L2.5 report expires at 10:30 on Monday — time-sensitive",
+        "scenarios": {
+          "bull": "Nasdaq momentum carries + AI earnings season positive → sector rally continues",
+          "base": "Mixed open → AI computing leads, semiconductors steady, resources neutral",
+          "bear": "Hormuz escalation → global risk-off → AI sector profit-taking"
+        },
+        "confidence": 0.6,
+        "role": "watch_only",
+        "source_docs": [
+          "L2.5_前夜战报_周日前瞻_2026-05-10"
+        ]
+      }
+    }
+  ]
+}

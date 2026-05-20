@@ -1,0 +1,62 @@
+version: B-Matrix-v2.1.1
+rating_thresholds:
+  A: 8.0
+  B: 6.5
+  C: 5.0
+  D: 0.0
+base_types:
+  B1_HIGH_DIVIDEND_ANCHOR:
+    weights:
+      shareholder_return_quality: 0.30
+      cashflow_coverage: 0.25
+      balance_sheet_safety: 0.20
+      policy_stability: 0.15
+      valuation_safety: 0.10
+  B2_COMPOUNDING_REINVESTMENT:
+    weights:
+      roic_roe_persistence: 0.23
+      revenue_profit_quality: 0.17
+      cashflow_quality: 0.18
+      moat_durability: 0.17
+      reinvestment_runway: 0.10
+      valuation_reasonableness: 0.15
+  B3_RESOURCE_CASH_COW:
+    weights:
+      cost_curve_advantage: 0.25
+      resource_quality: 0.20
+      cycle_normalized_earnings: 0.20
+      shareholder_return: 0.15
+      balance_sheet_safety: 0.10
+      mid_cycle_valuation: 0.10
+  B4_STATE_INFRA_MONOPOLY:
+    weights:
+      policy_stability: 0.25
+      cashflow_visibility: 0.25
+      asset_monopoly: 0.20
+      dividend_discipline: 0.15
+      valuation_discount: 0.15
+  B5_BRAND_SCARCITY_MONOPOLY:
+    weights:
+      pricing_power: 0.25
+      scarcity_durability: 0.20
+      brand_mindshare: 0.20
+      channel_health: 0.15
+      cash_conversion_shareholder_return: 0.10
+      policy_demand_risk: 0.10
+classification:
+  brand_scarcity_min_fit_score: 7.2
+  food_beverage_not_auto_b2: true
+rating_caps:
+  earnings_quality_trap: C
+  debt_funded_dividend: C
+  cyclical_peak_earnings_trap: B
+  channel_inventory_risk: B
+  policy_consumption_risk: B
+thesis_stop:
+  price_drop_10pct_is_review_only: true
+  brand_scarcity_rules:
+    - channel_health_score < 4 for 2 consecutive checks
+    - batch_price_trend_score < 4 and inventory risk rises
+    - pricing_power_score falls below 6
+    - brand_mindshare_score materially deteriorates
+    - policy_consumption_risk_score >= 8

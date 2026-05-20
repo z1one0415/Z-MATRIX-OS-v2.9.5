@@ -1,0 +1,215 @@
+{
+  "2026-05-18": {
+    "type": "macro_CN",
+    "event": "中国4月社零/工业/固投/房价 — 全面miss(社零0.2%/工业4.1%/固投-1.6%)",
+    "impact": "HIGH",
+    "M_impact": ["M1","M2","M3"],
+    "status": "confirmed",
+    "note": "40个月社零新低, 地产加速恶化"
+  },
+  "2026-05-18_19": {
+    "type": "macro_GLOBAL",
+    "event": "APEC第二次高官会(上海)",
+    "impact": "MEDIUM",
+    "M_impact": ["M2"]
+  },
+  "2026-05-18_19": {
+    "type": "macro_GLOBAL",
+    "event": "G7财长/央行行长会议",
+    "impact": "HIGH",
+    "M_impact": ["M1","M2"]
+  },
+  "2026-05-19": {
+    "type": "industry",
+    "event": "Google I/O 2026: Gemini 3/4.0 + AI眼镜",
+    "sector": "AI算力/机器人",
+    "impact": "HIGH",
+    "M_impact": ["M1"],
+    "stocks": ["002472","002050","688017"]
+  },
+  "2026-05-19": {
+    "type": "macro_JP",
+    "event": "日本Q1 GDP",
+    "impact": "MEDIUM",
+    "M_impact": ["M2"]
+  },
+  "2026-05-19_20": {
+    "type": "macro_GLOBAL",
+    "event": "普京访华 🇷🇺→🇨🇳",
+    "impact": "HIGH",
+    "M_impact": ["M1"],
+    "sectors": ["能源","军工"]
+  },
+  "2026-05-19": {
+    "type": "industry",
+    "event": "SpaceX Starship V3首飞(最早今日)",
+    "sector": "航天",
+    "impact": "LOW"
+  },
+  "2026-05-20": {
+    "type": "macro_US",
+    "event": "FOMC 4月会议纪要 (April 28-29 meeting)",
+    "impact": "CRITICAL",
+    "M_impact": ["M1","M2","M3"],
+    "time": "18:00 UTC (北京5/21 02:00)",
+    "note": "预期强化长期暂停降息, 可能讨论加息"
+  },
+  "2026-05-20": {
+    "type": "macro_CN",
+    "event": "中国5月LPR报价 (预计1Y 3.0%/5Y 3.5%不变)",
+    "impact": "MEDIUM",
+    "M_impact": ["M3"]
+  },
+  "2026-05-20": {
+    "type": "stock",
+    "code": "NVDA",
+    "event": "英伟达Q1 FY2027财报 (预期营收~$800亿)",
+    "impact": "CRITICAL",
+    "M_impact": ["M1"],
+    "sectors": ["AI算力","半导体"],
+    "note": "关注Blackwell/Rubin市场机会+毛利率能否守75%"
+  },
+  "2026-05-20": {
+    "type": "industry",
+    "event": "武汉国际电子技术博览会",
+    "sector": "电子",
+    "impact": "MEDIUM"
+  },
+  "2026-05-20": {
+    "type": "industry",
+    "event": "Meta裁员10%(~8000人)",
+    "sector": "科技",
+    "impact": "LOW"
+  },
+  "2026-05-21": {
+    "type": "industry",
+    "event": "三星工会18天大规模罢工开始",
+    "sector": "存储芯片",
+    "impact": "HIGH",
+    "stocks": ["佰维存储","江波龙","同有科技"],
+    "note": "国产存储替代逻辑催化"
+  },
+  "2026-05-21": {
+    "type": "industry",
+    "event": "天猫618预售开启",
+    "sector": "消费/电商",
+    "impact": "MEDIUM"
+  },
+  "2026-05-21": {
+    "type": "industry",
+    "event": "世界无人机大会",
+    "sector": "军工",
+    "impact": "MEDIUM"
+  },
+  "2026-05-21": {
+    "type": "stock",
+    "code": "NVDA",
+    "event": "英伟达财报电话会 (北京5:00 AM)",
+    "impact": "CRITICAL",
+    "M_impact": ["M1"]
+  },
+  "2026-05-22": {
+    "type": "macro_JP",
+    "event": "日本4月CPI (预期1.8%)",
+    "impact": "MEDIUM",
+    "M_impact": ["M2"]
+  },
+  "2026-05-23": {
+    "type": "industry",
+    "event": "全球AI技术大会",
+    "sector": "AI/机器人",
+    "impact": "HIGH",
+    "stocks": ["002472","002050","000977"]
+  },
+  "2026-05-26": {
+    "type": "stock",
+    "code": "002472",
+    "event": "双环传动 2025年度股东大会",
+    "impact": "LOW"
+  },
+  "2026-05-27": {
+    "type": "macro_CN",
+    "event": "中国5月PMI",
+    "impact": "MEDIUM",
+    "M_impact": ["M2"]
+  },
+  "2026-05-28": {
+    "type": "industry",
+    "event": "世界智能产业博览会",
+    "sector": "智能制造",
+    "impact": "MEDIUM"
+  },
+  "2026-06-01": {
+    "type": "stock",
+    "code": "002472",
+    "event": "环动科技 预计上市委会议窗口(6-8月)",
+    "impact": "CRITICAL"
+  },
+  "2026-06-05": {
+    "type": "macro_US",
+    "event": "美国5月非农就业",
+    "impact": "HIGH",
+    "M_impact": ["M1","M2"]
+  },
+  "2026-06-10": {
+    "type": "macro_CN",
+    "event": "中国5月CPI/PPI",
+    "impact": "MEDIUM",
+    "M_impact": ["M3"]
+  },
+  "2026-06-11": {
+    "type": "industry",
+    "event": "EHA欧洲血液学大会",
+    "sector": "医药",
+    "impact": "LOW"
+  },
+  "2026-06-16": {
+    "type": "macro_US",
+    "event": "FOMC议息会议(Day1)",
+    "impact": "CRITICAL",
+    "M_impact": ["M1","M2","M3"]
+  },
+  "2026-06-17": {
+    "type": "macro_US",
+    "event": "FOMC利率决议+沃什首次主持",
+    "impact": "CRITICAL",
+    "M_impact": ["M1","M2","M3"]
+  },
+  "2026-07-10": {
+    "type": "macro_US",
+    "event": "美国6月CPI",
+    "impact": "HIGH",
+    "M_impact": ["M3"]
+  },
+  "2026-07-11": {
+    "type": "macro_US",
+    "event": "美国6月PPI",
+    "impact": "HIGH",
+    "M_impact": ["M3"]
+  },
+  "2026-07-29": {
+    "type": "macro_US",
+    "event": "FOMC议息会议(Day1)",
+    "impact": "HIGH",
+    "M_impact": ["M2"]
+  },
+  "_meta": {
+    "last_updated": "2026-05-19T08:03 CST",
+    "current_scenario": "B+",
+    "macro_headwind": true,
+    "active_alerts": [
+      "全球债市暴跌: 美10Y十年新高",
+      "油价$120+: 伊朗战争持续",
+      "中国4月经济全面miss",
+      "FOMC纪要5/20→可能转向加息",
+      "美股未定价通胀风险"
+    ],
+    "MACRO向量": {
+      "M1_地缘政治": "🔴 伊朗战争+普京访华",
+      "M2_经济周期": "🔴 中国全面减速+全球通胀",
+      "M3_货币政策": "🔴 联储可能转向加息+中国LPR不动",
+      "M4_流动性": "🟡 全球债市崩盘抽血股市",
+      "M5_风险偏好": "🔴 VIX可能上行, 避险情绪升温"
+    }
+  }
+}

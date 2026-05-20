@@ -1,0 +1,488 @@
+#!/usr/bin/env python3
+"""📋 Z-MATRIX-OS v2.9.5 全量最小功能模块清单 — 代码级参数文档
+生成: 2026-05-19 19:53 | 格式: 模块名(管线) | 位置 | 输入→输出 | 决策逻辑
+"""
+
+MODULES = """
+# ========================================================================
+# Z-G01 数据后勤保障 — 10个最小功能模块
+# ========================================================================
+
+模块: _sina_quote (Z-G01 gate_data.py:21)
+  位置: 新浪API实时行情适配器
+  输入: ticker:str — 6位股票代码 (如"002463")
+  输出: dict{price:float, open:float, high:float, low:float, volume:str, name:str, source:"sina_api", time:str}
+        | dict{error:str} — 拉取失败
+  参数: 
+    prefix = "sz" if ticker[0] in ("0","3") else "sh"  # 深市/沪市前缀
+    url = f"http://hq.sinajs.cn/list={prefix}{ticker}"  # Sina行情接口
+    headers = {"Referer":"https://finance.sina.com.cn"}  # 防反爬
+    timeout = 5秒  # 超时阈值
+  决策: 返回""或价格=""→error:"empty"; parts长度<32→error:"invalid"
+
+模块: _bs_kline (Z-G01 gate_data.py:35)
+  位置: baostock日K线数据源
+  输入: ticker:str, days:int=10 — 回看天数
+  输出: dict{prices:[{date, close}]} | dict{error}
+  参数:
+    code = f"{prefix}.{ticker}"  # baostock格式 (sz.002463)
+    adjustflag="2"  # 前复权, 匹配新浪复权价
+    start = (now - timedelta(days=days)).strftime("%Y-%m-%d")
+    frequency="d"  # 日线
+  决策: close>0且非空→有效K线; prices为空→error:"no_data"
+
+模块: _bs_finance (Z-G01 gate_data.py:52)
+  位置: baostock财务数据源
+  输入: ticker:str
+  输出: dict{q1_eps:str|None, has_finance:bool, industry:str}
+  参数:
+    query_profit_data(code, year=2026, quarter=1)  # 最近Q1
+    回退: (2025,4) → (2025,3)  # 如Q1未出则查上季度
+    query_stock_industry(code)  # 证监会行业分类
+  决策: r[3] not in ("","0","0.000000") → has_finance=True
+
+模块: _bs_l4 (Z-G01 gate_data.py:77)
+  位置: L4个股健康检查
+  输入: ticker:str
+  输出: dict{name:str, tradable:bool, is_st:bool, errors:list}
+  参数:
+    query_stock_basic(code) → 名称+ST检测
+    "ST" in name.upper() → is_st=True
+    近5日成交量>0 → tradable=True
+  决策: is_st→BLOCK; tradable=False→BLOCK(可能停牌)
+
+模块: market_truth (Z-G01 gate_data.py:102)
+  位置: 闸口① Market Truth
+  输入: ticker:str
+  输出: dict{status:"PASS"|"DEGRADED"|"BLOCK", price:float, cross_validated:bool, 
+            price_conflict:bool, source_diff_pct:float, errors:list}
+  参数:
+    TOLERANCE_BASE = 1.5  # 基础容忍度%
+    tolerance = TOLERANCE_BASE + date_diff * 1.5  # 每天+1.5%
+    CACHE_TTL = 300秒  # 缓存过期时间
+  决策: diff_pct > tolerance → price_conflict=True → DEGRADED
+        diff_pct ≤ tolerance → cross_validated=True → PASS
+        无价格 → BLOCK
+
+模块: source_arbitrate (Z-G01 gate_data.py:124)
+  位置: 闸口② Source Arbitration
+  输入: ticker:str, g1:dict(market_truth输出)
+  输出: dict{status, price, source, cross_validated, errors}
+  决策: cross_validated=True → PASS
+        有价无交叉 → DEGRADED(单源)
+        冲突 → BLOCK
+
+模块: dq_score (Z-G01 gate_data.py:129)
+  位置: 闸口③ Data Quality评分
+  输入: ticker:str
+  输出: dict{status, total:int, breakdown:{6维}, q1_eps, industry}
+  参数:
+    行情: 15(cross) / 12(有价) / 6(无价)
+    财务: 22(有利润) / 8(无)
+    估值: 12(有价) / 5(无)
+    产业链: 12(有Q1EPS) / 10(无)
+    资金: 13(量+cross) / 10(有量) / 3(无)
+    来源: 13(cross) / 6(有价) / 3(无)
+  决策: total<60→BLOCK; total<85→DEGRADED; total≥85→PASS
+
+模块: l4_health (Z-G01 gate_data.py:143)
+  位置: 闸口⑥ L4健康
+  输入: ticker:str
+  输出: dict{status, name, tradable, errors}
+  决策: ST→BLOCK; 无成交→BLOCK; 有错误→DEGRADED; 干净→PASS
+
+模块: get_kline (Z-G01 gate_data.py:150)
+  位置: K线数据获取
+  输入: ticker:str, n:int=60 — 需求日数
+  输出: dict{status, prices:[float], count:int}
+  参数: 实际拉取max(n+10, 70)日以保证充足
+  决策: count≥min(n,20)→PASS; 否则→DEGRADED
+
+模块: l25_macro (Z-G01 gate_data.py:179)
+  位置: 闸口④ L2.5宏观填充度
+  输入: 无 (读取MEMORY.md)
+  输出: dict{status, filled:int, total:8, domains:dict}
+  参数: 8信息域(risk/china/overseas/chip/gold/fx/policy/commodity)
+  决策: filled≥4→PASS; <4→DEGRADED
+
+# ========================================================================
+# Z-G02 前夜战报 — 7个最小功能模块
+# ========================================================================
+
+模块: fetch_all_assets (Z-G02 gate_pipeline.py:103)
+  位置: 隔夜全球资产拉取
+  输入: 无
+  输出: dict[str,dict] — 每个资产{price, change_pct, source}
+  参数:
+    资产列表: VIX, SOX, KWEB, 黄金(XAU), 铜, US10Y, CNH, A50
+    数据源: web_fetch(hq.sinajs.cn) + web_search作为备源
+  决策: change_pct>2%→重点关注; >5%→MacroVeto触发
+
+模块: fetch_overnight_news (Z-G02 gate_pipeline.py:119)
+  位置: 隔夜快讯采集
+  输入: max_items:int=20
+  输出: list[dict{title, source, time, keywords}]
+  参数: web_search新鲜度=day, topic=news, 最大20条
+  决策: 按关键词去重→按板块分类(算力/机器人/宏观/地缘)
+
+模块: quick_sentiment_scan (Z-G02 gate_pipeline.py:159)
+  位置: 叙事水温快扫
+  输入: news:list[dict]
+  输出: dict{heat_map:{主题:热度}, concentration:float, verdict:str}
+  参数:
+    5大主题: AI算力/机器人/半导体/周期资源/消费
+    热度 = 关键词命中数 / 总新闻数 × 10(标准化到0-10)
+    集中度 = 最热主题热度 / sum(所有热度)
+  决策: concentration>0.6→MANIA_ALERT; >0.8→TILT_BLOCK; 正常→NORMAL
+
+模块: run_macro_veto (Z-G02 gate_pipeline.py:202)
+  位置: MacroVeto 8信息域定向冲击
+  输入: assets:dict, macro_data:dict, news:list
+  输出: dict{veto_triggers:list, risk_level:str, actionable_chains:list}
+  参数:
+    8信息域: 地缘/CPI/利率/流动性/VIX/能源/供应链/汇率
+    每个因子: 从MEMORY.md MACRO字典 + assets + news综合判定
+  决策: ≥3因子🔴→不开新仓; ≥5→DEFENSIVE_ONLY; 0-2→PASS
+
+模块: _generate_interpretation (Z-G02 gate_pipeline.py:414)
+  位置: 天师解读生成
+  输入: veto:dict, assets:dict, news:list, sentiment:dict
+  输出: str — 因果链+板块传导+趋势方向
+  参数: 无硬编码参数
+  决策: 顺风被否决→不得解释为低吸; 逆风+板块强→人工标记
+
+# ========================================================================
+# Z-G03 盘中确认 — 4个最小功能模块
+# ========================================================================
+
+模块: _auction_snapshot (Z-G03 gate_pipeline.py:23)
+  位置: 竞价快照
+  输入: ticker:str
+  输出: dict{ticker, name, open, price, gap_pct, source}
+  参数: gap_pct = (open/prev_close-1)*100  # 集合竞价缺口%
+  决策: gap>2%→高开关注; gap<-2%→低开警惕
+
+模块: _vwap_check (Z-G03 gate_pipeline.py:41)
+  位置: VWAP站稳检测 (简化版: 价格vs开盘)
+  输入: ticker:str
+  输出: "ABOVE_OPEN" | "BELOW_OPEN"
+  参数: price >= open → ABOVE_OPEN
+  决策: ABOVE_OPEN→确认信号; BELOW_OPEN→否决信号
+
+模块: _volume_ratio (Z-G03 gate_pipeline.py:49)
+  位置: 量比计算
+  输入: ticker:str
+  输出: float — 当前量/5日均量
+  参数: 取最近20日K线的最后6根
+  决策: >1.5→放量; 0.8-1.2→中性; <0.5→缩量
+
+# ========================================================================
+# Z-G04 尾盘过滤 — 2个最小功能模块
+# ========================================================================
+
+模块: _tail_30min_analysis (Z-G04 gate_pipeline.py:21)
+  位置: 尾盘30分钟异常分析
+  输入: ticker:str
+  输出: dict{type, ticker, reason, action}
+  参数:
+    today_chg = (现价/开盘-1)*100  # 日内涨幅
+    vol_ratio = 今日量/5日均量
+    FALSE_PREHEAT阈值: chg>3% AND vol_ratio<0.7  # 缩量尾盘拉升
+    SMART_MONEY阈值: chg>2% AND vol_ratio>1.5    # 放量逆势抢筹
+  决策:
+    FALSE_PREHEAT→冷却3交易日, lifecycle≤D2_PREHEAT
+    SMART_MONEY→次日L3确认, 禁止当日追入
+    NORMAL→正常流程
+
+# ========================================================================
+# Z-G05 日记忆卡 — 5个最小功能模块
+# ========================================================================
+
+模块: parse_positions_from_memory (Z-G05 gate_pipeline.py:55)
+  位置: 持仓解析
+  输入: memory_path:Path → MEMORY.md
+  输出: list[dict{code, name, shares, cost, price_last, pnl}]
+  参数: 正则r'\|\s*([^|]+?)\s+(\d{6})\s*\|\s*([\d,]+股)\s*\|\s*([\d.]+)\s*\|'
+  决策: 解析失败→返回空列表(人工校对MEMORY.md格式)
+
+模块: fetch_live_prices_for_positions (Z-G05 gate_pipeline.py:97)
+  位置: 实时价格批量拉取
+  输入: positions:list[dict]
+  输出: dict[str,dict{name, price, pct, high, low, open, volume}]
+  参数: 东方财富push2 API, secid格式("0.002463"或"1.688608")
+  决策: 单只失败→用最近已知价; 全失败→降级
+
+模块: get_market_snapshot (Z-G05 gate_pipeline.py:130)
+  位置: 大盘快照
+  输入: 无
+  输出: dict{000001:{name,price,pct}, 399001:{}, 399006:{}}
+  参数: 上证/深证/创业板 三指数
+
+模块: _generate_daily_card_md (Z-G05 gate_pipeline.py:346)
+  位置: 日记忆卡Markdown生成
+  输入: date_str, snapshot, catalysts, _result
+  输出: str — 完整Markdown日卡
+  参数: 模板包含: 今日市场/持仓追踪/催化剂状态/今日操作/场景
+
+模块: _auto_append_memory (Z-G05 gate_pipeline.py:433)
+  位置: MEMORY.md自动追加
+  输入: result, date_str, daily_card_md
+  输出: 无 (副作用: 修改MEMORY.md)
+  参数: Z-END-OF-DAY-MARKER 作为替换定位标记
+
+# ========================================================================
+# Z-G06 复盘反馈 — 4个最小功能模块
+# ========================================================================
+
+模块: _compute_accuracy (Z-G06 gate_pipeline.py:100)
+  位置: 准确率计算
+  输入: today:str
+  输出: dict{summary:{总预测数,正确数,拒绝率,遗漏因子,滑点}, calibrated:bool}
+  参数: min_samples_for_z9=50  # Z9启用最低样本数
+  决策: 样本<50→标uncalibrated, 不可用于Z9调参
+
+模块: _detect_patterns (Z-G06 gate_pipeline.py:115)
+  位置: 异常模式检测
+  输入: tickers:list, today:str
+  输出: list[dict{type, ticker, reason}]
+  参数:
+    chg = (prices[-1]/prices[-2]-1)*100  # 当日涨跌%
+    chg > 9.5 → SLIPPAGE(涨停滑点)
+    chg < -9.5 → REJECTION(跌停否决)
+  决策: 无异常→返回NORMAL标记
+
+模块: _z9_attribute (Z-G06 gate_pipeline.py:131)
+  位置: Z9偏差归因
+  输入: patterns, accuracy
+  输出: dict{primary_bias, driver, calibration_note}
+  参数: 样本不足→不输出归因, 仅记录
+
+模块: _hermes_input (Z-G06 gate_pipeline.py:139)
+  位置: Hermes学习输入
+  输入: attribution, patterns
+  输出: dict{lesson, memory_candidates, approval_required}
+  参数: memory_candidates = [{"type":p["type"],"ticker":p["ticker"],"note":p["reason"]}]
+  决策: 有严重模式→mark approval_required=True
+
+# ========================================================================
+# Z-G07 轮动黑马 — 10个独立闸口模块
+# ========================================================================
+
+模块: gate1_market_truth (Z-G07 gate_pipeline_v1.0.py:72)
+  输入: ticker:str
+  输出: GateResult
+  参数: TOLERANCE_BASE=1.5, adjustflag="2"(前复权), 10日K线验证
+  决策: 同Z-G01.market_truth
+
+模块: gate2_source_arbitration (Z-G07:150)
+  输入: ticker, g1_details:dict
+  输出: GateResult
+  参数: 调用Z-G01.source_arbitrate; 只承接MT.status; 不私造仲裁
+
+模块: gate3_dq_score (Z-G07:167)
+  输入: ticker
+  输出: GateResult{dq_score}
+  参数: 6维评分权重同Z-G01
+  决策: total<60→BLOCK; total<85→DEGRADED; ≥85→PASS
+
+模块: gate4_l25_macro (Z-G07:221)
+  输入: 无 (读MEMORY.md)
+  输出: GateResult
+  参数: 8信息域关键词扫描
+  决策: filled≥4→PASS
+
+模块: gate5_l3_sectors (Z-G07:254)
+  输入: 无
+  输出: GateResult
+  参数: 新浪5指数快照(上证/深证/创业板/科创50/沪深300)
+  决策: ≥3可用→PASS
+
+模块: gate6_l4_health (Z-G07:278)
+  输入: ticker
+  输出: GateResult
+  参数: ST检查+近5日成交
+  决策: ST/停牌→BLOCK→后续闸口全SKIP
+
+模块: gate7_l5_matrix (Z-G07:329)
+  输入: ticker, g1_details
+  输出: GateResult{d_score, r_score}
+  参数:
+    D-Matrix: evaluate_d_early_v22({"code":ticker}) → payload必须是dict
+    R-Matrix: rank_type_b_rising_channel(ticker, "", daily_prices)
+    K线: 250日前复权, adjustflag="2"
+  决策: 导入失败→SKIPPED; 无K线→DEGRADED; 有评分→PASS
+
+模块: gate8_v3_scenarios (Z-G07:399)
+  输入: g1_details
+  输出: GateResult{scenarios:[保守/基准/乐观], calibration:"uncalibrated"}
+  参数: subjective_weight (NOT probability), calibration_status=uncalibrated
+
+模块: gate9_z8_action (Z-G07:413)
+  输入: gates:List[GateResult]
+  输出: (ActionLevel, reason)
+  参数:
+    pass_count = sum(PASS)
+    block_count = sum(BLOCK+DATA_INCOMPLETE)
+    ≥3 BLOCK → BLOCK
+    ≥1 BLOCK → WAIT
+    ≥2 SKIP → WATCH
+    ≥7 PASS+0 BLOCK → PAPER_TRACK
+    ≥5 PASS → WATCH
+
+模块: gate10_report (Z-G07:434)
+  输入: stocks:List[StockResult]
+  输出: dict{stocks, summary}
+  参数: 非PAPER_WORLD动作→SafetyLock降为WATCH
+
+# ========================================================================
+# Z-G09 全局轮动 — 1个核心模块
+# ========================================================================
+
+模块: _quick_r_score (Z-G09 gate_pipeline.py:20)
+  位置: R-Matrix快速评分
+  输入: ticker:str
+  输出: dict{ticker, name, price, amp_20d, position, trend, score} | None
+  参数:
+    amp = (max(prices[-20:]) / min(prices[-20:]) - 1) * 100  # 20日振幅%
+    pos = (price[-1] - min) / (max - min)  # 当前位置(0-1)
+    trend = (price[-1] / ma20 - 1) * 100  # 偏离MA20%
+    score = amp * (1 - |pos-0.5|*1.5) + |trend|*0.5  # 低位+宽振幅=高分
+  决策: K线<20日→None(不纳入候选); score降序→取TOP80
+
+# ========================================================================
+# Z-G10 全局黑马 — 1个核心模块
+# ========================================================================
+
+模块: _quick_d_score (Z-G10 gate_pipeline.py:22)
+  位置: D-Matrix快速评分
+  输入: ticker:str
+  输出: dict{ticker, name, price, score, lifecycle, chg_3m} | None
+  参数:
+    gene = max(0, 10 - |chg_3m|)  # 低涨幅→高基因分 (max=10)
+    sector = 8 if has_finance else 4  # 财务可得→基础分
+    silent = 10 - min(vol5*100, 10)  # 5日低波→高静默分
+    vol_preload = 5  # 基础量能分
+    dq_bonus = dq/20  # DQ加权 (max≈5)
+    total = gene + sector + silent + vol_preload + dq_bonus
+  决策:
+    (>30) → D3_CANDIDATE
+    (>20) → D2_PREHEAT
+    (≤20) → D1_THEME_SEED
+    L4 BLOCK → None(跳过)
+
+# ========================================================================
+# Z-G11 组合风控 — 2个核心模块
+# ========================================================================
+
+模块: _parse_positions (Z-G11 gate_pipeline.py:21)
+  位置: 持仓解析+实时估值
+  输入: 无 (读MEMORY.md + 调Z-G01价格)
+  输出: list[dict{code, name, shares, cost, price, value}]
+  参数: market_truth(code) → 拉实时价; value = shares × price
+
+模块: _classify_chain (Z-G11 gate_pipeline.py:38)
+  位置: 产业链分类
+  输入: name:str
+  输出: str — "机器人"|"AI算力"|"资源"|"其他"
+  参数:
+    机器人: 双环|雷赛|绿的|三花|步科|兆威|奥比|柯力
+    AI算力: 中际|天孚|新易盛|寒武纪|海光|浪潮|华工|沪电|中贝|英维克
+    资源: 紫金|中煤|黄金
+
+# ========================================================================
+# Z-G12 系统巡检 — 3个核心模块
+# ========================================================================
+
+模块: _check_data_sources (Z-G12 gate_pipeline.py:21)
+  位置: 数据源3路健康检查
+  输入: 无
+  输出: dict{sina:"UP"|"DOWN", baostock:"UP"|"DOWN", tushare:"UP"|"DOWN"}
+  参数: market_truth("002463") → 隐式测试Sina+baostock
+  决策: ≥2 UP → 系统可用; 1 UP → 降级运行; 0 UP → 暂停所有管线
+
+模块: _count_memory_files (Z-G12 gate_pipeline.py:31)
+  位置: 记忆宫殿盘存
+  输入: 无
+  输出: dict{root:"OK"|"MISSING", files:int}
+  参数: 递归计数投资记忆银行下所有.md文件
+
+模块: _check_cron (Z-G12 gate_pipeline.py:40)
+  位置: Cron健康
+  输入: 无
+  输出: dict{status, output_lines}
+  参数: subprocess.run(["openclaw","cron","list"])
+  决策: returncode=0→accessible; 异常→unavailable
+
+# ========================================================================
+# Z-G14 月度全量·流A — 2个核心模块
+# ========================================================================
+
+模块: _quick_scan (Z-G14 gate_pipeline.py:12)
+  位置: B-R-D三维快速扫描
+  输入: tickers:list
+  输出: list[dict{code, name, b, r, d, cross, price}]
+  参数:
+    b_score = min(DQ, 100) * 0.5  # 底仓分(DQ加权)
+    r_score = 振幅% * 0.6         # 轮动分(振幅加权)
+    d_score = (8 if finance else 4) + (5 if DQ>70 else 2)  # 黑马分
+    b_ok = b>40; r_ok = r>15; d_ok = d>8
+    cross:
+      B∩D→"B∩D☆"(钻石) | B∩R→"B∩R★"(黄金) | D∩R→"D∩R◇"(白银)
+      纯B→"纯B" | 纯D→"纯D" | 纯R→"纯R"
+  决策: 三维叠加排序→TOP30终选; 交叉多重验证→优先级更高
+
+模块: 产业链浓度 (Z-G14 gate_pipeline.py:92)
+  位置: 10链候选人分布
+  输入: candidates(前50)
+  输出: dict{chain:hit_count}
+  参数: 关键词匹配 机器人/AI算力/半导体/资源/消费
+  决策: hit_count=0→盲区警告⚠️
+
+# ========================================================================
+# Z-G17 人类风控 — 2个核心模块
+# ========================================================================
+
+模块: Tilt检测 (Z-G17 gate_pipeline.py:27)
+  位置: 人类行为Tilt检测
+  输入: override:dict{system_action, human_action, reason}
+  输出: tilt:bool, tilt_reasons:list
+  参数:
+    主观关键词: ["觉得","一定","肯定","绝对","稳","必"]
+    动作覆盖: system=BLOCK/WAIT + human=WATCH → TILT
+  决策: 任一触发→TILT; 双触发→严重TILT
+
+模块: Ledger记录 (Z-G17 gate_pipeline.py:60)
+  位置: HumanBehaviorLedger
+  输入: entry:dict
+  输出: 无 (副作用: 追加human_behavior_ledger.jsonl)
+  参数: JSONL格式, 每行一个override记录
+  决策: 后验统计override收益 vs 系统收益→调L1.6敏感度
+
+# ========================================================================
+# 跨管线共享参数总表
+# ========================================================================
+
+全局参数:
+  CACHE_TTL              = 300          # 秒, 数据缓存过期
+  TOLERANCE_BASE         = 1.5          # %, 价格容忍度基础值
+  TOLERANCE_PER_DAY      = 1.5          # %, 每天增加的容忍度
+  DQ_BLOCK_THRESHOLD     = 60           # DQ分, 低于此值禁止买卖
+  DQ_V4_THRESHOLD        = 85           # DQ分, 低于此值禁止V4纸面
+  KLINE_MIN_BARS         = 20           # 根, 最少K线数
+  FALSE_PREHEAT_COOLDOWN = 3            # 天, 假预热冷却期
+  SLIPPAGE_RATE          = 0.0015       # 0.15%, 纸面滑点率
+  L25_DOMAIN_MIN         = 4            # 域, L2.5最低填充域数
+  L25_DOMAIN_TOTAL       = 8            # 域, L2.5总信息域数
+  Z9_MIN_SAMPLES         = 50           # 样本, Z9启用最低数
+  SENTIMENT_CONCENTRATION_MANIA = 0.6   # 叙事集中度过热阈值
+  SENTIMENT_CONCENTRATION_TILT = 0.8    # 叙事集中度TILT阈值
+  VOLUME_RATIO_SILENT    = 0.7          # 量比: 缩量阈值
+  VOLUME_RATIO_SMART     = 1.5          # 量比: 放量阈值
+  GAP_ALERT_PCT          = 2.0          # %, 竞价缺口告警阈值
+  TAIL_CHG_FALSE         = 3.0          # %, 尾盘涨幅假预热阈值
+  TAIL_CHG_SMART         = 2.0          # %, 尾盘涨幅抢筹阈值
+  CONCENTRATION_WARN     = 25           # %, 单票集中度关注线
+  CONCENTRATION_CRITICAL = 40           # %, 单票集中度严重线
+  CHAIN_CONCENTRATION_WARN = 60         # %, 产业链集中度告警线
+"""
+print(MODULES)

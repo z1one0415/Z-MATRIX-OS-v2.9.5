@@ -1,0 +1,1430 @@
+{
+  "predictions": [
+    {
+      "timestamp": "2026-05-18T16:25:09.281545",
+      "report_date": "2026-05-18",
+      "tickers": {
+        "002979": {
+          "name": "雷赛智能",
+          "price": 65.09,
+          "total": 58.871,
+          "action": "WATCH",
+          "cf_state": "EARLY_START",
+          "scores": {
+            "ISS": 81.0,
+            "BVS": 66.5,
+            "EVL": 60,
+            "FQS": 61.48,
+            "VSS": 25.0,
+            "CFS": 69.5,
+            "CTS": 95.0,
+            "RISK": 0.0
+          }
+        },
+        "688017": {
+          "name": "绿的谐波",
+          "price": 322.88,
+          "total": 63.102500000000006,
+          "action": "WATCH",
+          "cf_state": "EARLY_START",
+          "scores": {
+            "ISS": 83.0,
+            "BVS": 73.75,
+            "EVL": 80,
+            "FQS": 69.45,
+            "VSS": 15.0,
+            "CFS": 64.5,
+            "CTS": 100.0,
+            "RISK": 0.0
+          }
+        },
+        "002472": {
+          "name": "双环传动",
+          "price": 44.11,
+          "total": 52.1115,
+          "action": "TRACK_ONLY",
+          "cf_state": "RETREAT",
+          "scores": {
+            "ISS": 81.0,
+            "BVS": 63.25,
+            "EVL": 60,
+            "FQS": 37.37,
+            "VSS": 45.0,
+            "CFS": 42.5,
+            "CTS": 60.0,
+            "RISK": 0.0
+          }
+        },
+        "300580": {
+          "name": "贝斯特",
+          "price": 27.4,
+          "total": 29.682499999999997,
+          "action": "EXCLUDE",
+          "cf_state": "INDUCED_LONG",
+          "scores": {
+            "ISS": 79.0,
+            "BVS": 71.75,
+            "EVL": 40,
+            "FQS": 42.85,
+            "VSS": 50.0,
+            "CFS": 30.0,
+            "CTS": 0.0,
+            "RISK": 18.0
+          }
+        },
+        "603662": {
+          "name": "柯力传感",
+          "price": 67.85,
+          "total": 47.142500000000005,
+          "action": "TRACK_ONLY",
+          "cf_state": "UNKNOWN",
+          "scores": {
+            "ISS": 79.0,
+            "BVS": 64.75,
+            "EVL": 40,
+            "FQS": 44.4,
+            "VSS": 20.0,
+            "CFS": 47.0,
+            "CTS": 60.0,
+            "RISK": 0.0
+          }
+        },
+        "688322": {
+          "name": "奥比中光",
+          "price": 95.4,
+          "total": 35.362500000000004,
+          "action": "EXCLUDE",
+          "cf_state": "HIGH_DIVERGENCE",
+          "scores": {
+            "ISS": 79.0,
+            "BVS": 62.75,
+            "EVL": 40,
+            "FQS": 58.25,
+            "VSS": 10.0,
+            "CFS": 47.0,
+            "CTS": 85.0,
+            "RISK": 14.0
+          }
+        },
+        "003021": {
+          "name": "兆威机电",
+          "price": 111.89,
+          "total": 39.4375,
+          "action": "EXCLUDE",
+          "cf_state": "UNKNOWN",
+          "scores": {
+            "ISS": 79.0,
+            "BVS": 62.25,
+            "EVL": 40,
+            "FQS": 7.25,
+            "VSS": 40.0,
+            "CFS": 48.0,
+            "CTS": 0.0,
+            "RISK": 0.0
+          }
+        },
+        "603667": {
+          "name": "五洲新春",
+          "price": 85.0,
+          "total": 33.7225,
+          "action": "EXCLUDE",
+          "cf_state": "UNKNOWN",
+          "scores": {
+            "ISS": 79.0,
+            "BVS": 72.25,
+            "EVL": 40,
+            "FQS": 22.55,
+            "VSS": 40.0,
+            "CFS": 45.25,
+            "CTS": 0.0,
+            "RISK": 10.0
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-05-19T09:19:55.304128",
+      "report_date": "2026-05-19",
+      "tickers": {
+        "000977": {
+          "name": "浪潮信息",
+          "price": 70.61,
+          "total": 0.0,
+          "action": "TRACK_ONLY",
+          "cf_state": "UNSTARTED",
+          "scores": {
+            "ISS": 50.0,
+            "BVS": 10.0,
+            "EVL": 0,
+            "FQS": 7.25,
+            "VSS": 40.0,
+            "CFS": 32.0,
+            "CTS": 0.0,
+            "RISK": 30
+          }
+        },
+        "300308": {
+          "name": "中际旭创",
+          "price": 1030.0,
+          "total": 0.0,
+          "action": "TRACK_ONLY",
+          "cf_state": "UNKNOWN",
+          "scores": {
+            "ISS": 50.0,
+            "BVS": 10.0,
+            "EVL": 0,
+            "FQS": 7.25,
+            "VSS": 40.0,
+            "CFS": 53.0,
+            "CTS": 0.0,
+            "RISK": 30
+          }
+        },
+        "000988": {
+          "name": "华工科技",
+          "price": 162.1,
+          "total": 0.0,
+          "action": "TRACK_ONLY",
+          "cf_state": "UNKNOWN",
+          "scores": {
+            "ISS": 50.0,
+            "BVS": 10.0,
+            "EVL": 0,
+            "FQS": 7.25,
+            "VSS": 40.0,
+            "CFS": 56.75,
+            "CTS": 0.0,
+            "RISK": 30
+          }
+        },
+        "688256": {
+          "name": "寒武纪",
+          "price": 1217.0,
+          "total": 0.0,
+          "action": "TRACK_ONLY",
+          "cf_state": "UNSTARTED",
+          "scores": {
+            "ISS": 50.0,
+            "BVS": 10.0,
+            "EVL": 0,
+            "FQS": 7.25,
+            "VSS": 40.0,
+            "CFS": 30.5,
+            "CTS": 0.0,
+            "RISK": 30
+          }
+        },
+        "688041": {
+          "name": "海光信息",
+          "price": 303.93,
+          "total": 0.0,
+          "action": "TRACK_ONLY",
+          "cf_state": "UNSTARTED",
+          "scores": {
+            "ISS": 50.0,
+            "BVS": 10.0,
+            "EVL": 0,
+            "FQS": 7.25,
+            "VSS": 40.0,
+            "CFS": 23.0,
+            "CTS": 0.0,
+            "RISK": 30
+          }
+        },
+        "603220": {
+          "name": "中贝通信",
+          "price": 32.5,
+          "total": 0.0,
+          "action": "TRACK_ONLY",
+          "cf_state": "UNKNOWN",
+          "scores": {
+            "ISS": 50.0,
+            "BVS": 10.0,
+            "EVL": 0,
+            "FQS": 7.25,
+            "VSS": 40.0,
+            "CFS": 50.0,
+            "CTS": 0.0,
+            "RISK": 30
+          }
+        },
+        "600126": {
+          "name": "杭钢股份",
+          "price": 8.83,
+          "total": 0.0,
+          "action": "TRACK_ONLY",
+          "cf_state": "UNSTARTED",
+          "scores": {
+            "ISS": 50.0,
+            "BVS": 10.0,
+            "EVL": 0,
+            "FQS": 7.25,
+            "VSS": 40.0,
+            "CFS": 29.75,
+            "CTS": 0.0,
+            "RISK": 30
+          }
+        },
+        "002881": {
+          "name": "美格智能",
+          "price": 46.67,
+          "total": 0.0,
+          "action": "TRACK_ONLY",
+          "cf_state": "UNKNOWN",
+          "scores": {
+            "ISS": 50.0,
+            "BVS": 10.0,
+            "EVL": 0,
+            "FQS": 7.25,
+            "VSS": 40.0,
+            "CFS": 59.75,
+            "CTS": 0.0,
+            "RISK": 30
+          }
+        },
+        "002837": {
+          "name": "英维克",
+          "price": 102.11,
+          "total": 0.0,
+          "action": "TRACK_ONLY",
+          "cf_state": "UNSTARTED",
+          "scores": {
+            "ISS": 50.0,
+            "BVS": 10.0,
+            "EVL": 0,
+            "FQS": 7.25,
+            "VSS": 40.0,
+            "CFS": 39.5,
+            "CTS": 0.0,
+            "RISK": 30
+          }
+        },
+        "300499": {
+          "name": "高澜股份",
+          "price": 43.98,
+          "total": 0.0,
+          "action": "TRACK_ONLY",
+          "cf_state": "UNSTARTED",
+          "scores": {
+            "ISS": 50.0,
+            "BVS": 10.0,
+            "EVL": 0,
+            "FQS": 7.25,
+            "VSS": 40.0,
+            "CFS": 36.5,
+            "CTS": 0.0,
+            "RISK": 30
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-05-19T09:23:45.531789",
+      "report_date": "2026-05-19",
+      "tickers": {
+        "000977": {
+          "name": "浪潮信息",
+          "price": 70.61,
+          "total": 41.85850000000001,
+          "action": "EXCLUDE",
+          "cf_state": "UNSTARTED",
+          "scores": {
+            "ISS": 58.0,
+            "BVS": 70.75,
+            "EVL": 80,
+            "FQS": 46.73,
+            "VSS": 40.0,
+            "CFS": 32.0,
+            "CTS": 0.0,
+            "RISK": 8.0
+          }
+        },
+        "300308": {
+          "name": "中际旭创",
+          "price": 1028.38,
+          "total": 61.482,
+          "action": "WATCH",
+          "cf_state": "UNKNOWN",
+          "scores": {
+            "ISS": 60.0,
+            "BVS": 72.0,
+            "EVL": 100,
+            "FQS": 76.91,
+            "VSS": 40.0,
+            "CFS": 53.0,
+            "CTS": 0.0,
+            "RISK": 0.0
+          }
+        },
+        "000988": {
+          "name": "华工科技",
+          "price": 160.0,
+          "total": 51.099999999999994,
+          "action": "TRACK_ONLY",
+          "cf_state": "UNKNOWN",
+          "scores": {
+            "ISS": 56.0,
+            "BVS": 66.5,
+            "EVL": 60,
+            "FQS": 60.25,
+            "VSS": 40.0,
+            "CFS": 56.75,
+            "CTS": 0.0,
+            "RISK": 0.0
+          }
+        },
+        "688256": {
+          "name": "寒武纪",
+          "price": 1217.0,
+          "total": 56.9875,
+          "action": "WATCH",
+          "cf_state": "UNSTARTED",
+          "scores": {
+            "ISS": 56.0,
+            "BVS": 89.25,
+            "EVL": 60,
+            "FQS": 85.75,
+            "VSS": 40.0,
+            "CFS": 30.5,
+            "CTS": 0.0,
+            "RISK": 0.0
+          }
+        },
+        "688041": {
+          "name": "海光信息",
+          "price": 303.93,
+          "total": 52.4,
+          "action": "TRACK_ONLY",
+          "cf_state": "UNSTARTED",
+          "scores": {
+            "ISS": 56.0,
+            "BVS": 84.0,
+            "EVL": 60,
+            "FQS": 70.5,
+            "VSS": 40.0,
+            "CFS": 23.0,
+            "CTS": 0.0,
+            "RISK": 0.0
+          }
+        },
+        "603220": {
+          "name": "中贝通信",
+          "price": 32.49,
+          "total": 34.875,
+          "action": "EXCLUDE",
+          "cf_state": "UNKNOWN",
+          "scores": {
+            "ISS": 54.0,
+            "BVS": 55.5,
+            "EVL": 40,
+            "FQS": 7.25,
+            "VSS": 40.0,
+            "CFS": 50.0,
+            "CTS": 0.0,
+            "RISK": 0.0
+          }
+        },
+        "600126": {
+          "name": "杭钢股份",
+          "price": 8.82,
+          "total": 32.25,
+          "action": "EXCLUDE",
+          "cf_state": "UNSTARTED",
+          "scores": {
+            "ISS": 54.0,
+            "BVS": 51.5,
+            "EVL": 40,
+            "FQS": 7.25,
+            "VSS": 40.0,
+            "CFS": 29.75,
+            "CTS": 0.0,
+            "RISK": 0.0
+          }
+        },
+        "002881": {
+          "name": "美格智能",
+          "price": 44.87,
+          "total": 34.9875,
+          "action": "EXCLUDE",
+          "cf_state": "UNKNOWN",
+          "scores": {
+            "ISS": 54.0,
+            "BVS": 52.25,
+            "EVL": 40,
+            "FQS": 7.25,
+            "VSS": 40.0,
+            "CFS": 56.0,
+            "CTS": 0.0,
+            "RISK": 0.0
+          }
+        },
+        "002837": {
+          "name": "英维克",
+          "price": 101.0,
+          "total": 47.9575,
+          "action": "TRACK_ONLY",
+          "cf_state": "UNSTARTED",
+          "scores": {
+            "ISS": 56.0,
+            "BVS": 54.25,
+            "EVL": 60,
+            "FQS": 62.35,
+            "VSS": 40.0,
+            "CFS": 39.5,
+            "CTS": 0.0,
+            "RISK": 0.0
+          }
+        },
+        "300499": {
+          "name": "高澜股份",
+          "price": 43.98,
+          "total": 46.171,
+          "action": "TRACK_ONLY",
+          "cf_state": "UNSTARTED",
+          "scores": {
+            "ISS": 56.0,
+            "BVS": 50.5,
+            "EVL": 60,
+            "FQS": 57.73,
+            "VSS": 40.0,
+            "CFS": 36.5,
+            "CTS": 0.0,
+            "RISK": 0.0
+          }
+        }
+      }
+    }
+  ],
+  "weights": {
+    "ISS": 0.157,
+    "BVS": 0.157,
+    "EVL": 0.157,
+    "FQS": 0.233,
+    "VSS": 0.157,
+    "CFS": 0.087,
+    "CTS": 0.052
+  },
+  "weight_history": [
+    {
+      "timestamp": "2026-05-19T16:10:31.256184",
+      "calibration_count": 3,
+      "old_weights": {
+        "ISS": 0.15,
+        "BVS": 0.15,
+        "EVL": 0.15,
+        "FQS": 0.2,
+        "VSS": 0.15,
+        "CFS": 0.1,
+        "CTS": 0.05
+      },
+      "new_weights": {
+        "ISS": 0.157,
+        "BVS": 0.157,
+        "EVL": 0.157,
+        "FQS": 0.233,
+        "VSS": 0.157,
+        "CFS": 0.087,
+        "CTS": 0.052
+      },
+      "adjustments": [
+        {
+          "dimension": "FQS",
+          "name": "财务质量",
+          "avg_correlation": 0.233,
+          "signal": "🟢 正相关",
+          "old_weight": 0.2,
+          "new_weight": 0.223,
+          "delta": 0.023
+        },
+        {
+          "dimension": "CTS",
+          "name": "催化剂时序",
+          "avg_correlation": 0.132,
+          "signal": "🟢 正相关",
+          "old_weight": 0.05,
+          "new_weight": 0.05,
+          "delta": 0.0
+        },
+        {
+          "dimension": "BVS",
+          "name": "业务价值评分",
+          "avg_correlation": 0.077,
+          "signal": "🟡 弱相关",
+          "old_weight": 0.15,
+          "new_weight": 0.15,
+          "delta": 0.0
+        },
+        {
+          "dimension": "EVL",
+          "name": "估值合理性",
+          "avg_correlation": 0.051,
+          "signal": "🟡 弱相关",
+          "old_weight": 0.15,
+          "new_weight": 0.15,
+          "delta": 0.0
+        },
+        {
+          "dimension": "ISS",
+          "name": "行业板块强度",
+          "avg_correlation": 0.043,
+          "signal": "🟡 弱相关",
+          "old_weight": 0.15,
+          "new_weight": 0.15,
+          "delta": 0.0
+        },
+        {
+          "dimension": "VSS",
+          "name": "量价信号",
+          "avg_correlation": -0.041,
+          "signal": "🟡 弱相关",
+          "old_weight": 0.15,
+          "new_weight": 0.15,
+          "delta": 0.0
+        },
+        {
+          "dimension": "CFS",
+          "name": "现金流状态",
+          "avg_correlation": -0.172,
+          "signal": "🔴 负相关",
+          "old_weight": 0.1,
+          "new_weight": 0.083,
+          "delta": -0.017
+        }
+      ]
+    }
+  ],
+  "calibration_log": [
+    {
+      "calibration_id": "cal_20260512_seed",
+      "timestamp": "2026-05-12T16:00:00",
+      "target_days": 5,
+      "actual_data_note": "T+5回验, 使用5/12收盘数据验证4/28-5/7交易",
+      "total_predictions": 5,
+      "direction_accuracy": 60.0,
+      "score_return_spread": 2.5,
+      "action_accuracy": {
+        "BUY": {
+          "correct": 2,
+          "total": 4,
+          "accuracy": 50.0
+        },
+        "SELL": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 100.0
+        }
+      },
+      "dimension_correlations": {
+        "ISS": 0.12,
+        "BVS": 0.08,
+        "EVL": 0.05,
+        "FQS": 0.22,
+        "VSS": -0.05,
+        "CFS": -0.1,
+        "CTS": 0.18
+      },
+      "ticker_details": []
+    },
+    {
+      "calibration_id": "cal_20260515_seed",
+      "timestamp": "2026-05-15T16:00:00",
+      "target_days": 5,
+      "actual_data_note": "T+5回验, 使用5/15收盘快照(VERIFICATION字典)",
+      "total_predictions": 7,
+      "direction_accuracy": 71.4,
+      "score_return_spread": 3.8,
+      "action_accuracy": {
+        "BUY_DIP": {
+          "correct": 2,
+          "total": 2,
+          "accuracy": 100.0
+        },
+        "BUY": {
+          "correct": 2,
+          "total": 4,
+          "accuracy": 50.0
+        },
+        "SELL": {
+          "correct": 1,
+          "total": 1,
+          "accuracy": 100.0
+        }
+      },
+      "dimension_correlations": {
+        "ISS": 0.25,
+        "BVS": 0.15,
+        "EVL": 0.1,
+        "FQS": 0.3,
+        "VSS": 0.08,
+        "CFS": -0.05,
+        "CTS": 0.2
+      },
+      "ticker_details": []
+    },
+    {
+      "calibration_id": "cal_20260519_160910",
+      "timestamp": "2026-05-19T16:09:10.264836",
+      "target_days": 5,
+      "actual_data_note": "T+5目标, 实际使用T+0~T+1数据",
+      "total_predictions": 28,
+      "direction_accuracy": 32.1,
+      "score_return_spread": -0.19,
+      "action_accuracy": {
+        "WATCH": {
+          "correct": 3,
+          "total": 4,
+          "accuracy": 75.0
+        },
+        "TRACK_ONLY": {
+          "correct": 4,
+          "total": 16,
+          "accuracy": 25.0
+        },
+        "EXCLUDE": {
+          "correct": 2,
+          "total": 8,
+          "accuracy": 25.0
+        }
+      },
+      "dimension_correlations": {
+        "ISS": -0.242,
+        "BVS": 0.002,
+        "EVL": 0.004,
+        "FQS": 0.179,
+        "VSS": -0.152,
+        "CFS": -0.367,
+        "CTS": 0.015
+      },
+      "ticker_details": [
+        {
+          "code": "002979",
+          "name": "雷赛智能",
+          "pred_date": "2026-05-18",
+          "pred_price": 65.09,
+          "actual_price": 66.39,
+          "actual_days": 1,
+          "target_days": 5,
+          "actual_return_pct": 2.0,
+          "predicted_action": "WATCH",
+          "predicted_direction": "bullish",
+          "actual_direction": "bullish",
+          "direction_correct": true,
+          "total_score": 58.871,
+          "cf_state": "EARLY_START",
+          "scores": {
+            "ISS": 81.0,
+            "BVS": 66.5,
+            "EVL": 60,
+            "FQS": 61.48,
+            "VSS": 25.0,
+            "CFS": 69.5,
+            "CTS": 95.0,
+            "RISK": 0.0
+          }
+        },
+        {
+          "code": "688017",
+          "name": "绿的谐波",
+          "pred_date": "2026-05-18",
+          "pred_price": 322.88,
+          "actual_price": 326.17,
+          "actual_days": 1,
+          "target_days": 5,
+          "actual_return_pct": 1.02,
+          "predicted_action": "WATCH",
+          "predicted_direction": "bullish",
+          "actual_direction": "bullish",
+          "direction_correct": true,
+          "total_score": 63.102500000000006,
+          "cf_state": "EARLY_START",
+          "scores": {
+            "ISS": 83.0,
+            "BVS": 73.75,
+            "EVL": 80,
+            "FQS": 69.45,
+            "VSS": 15.0,
+            "CFS": 64.5,
+            "CTS": 100.0,
+            "RISK": 0.0
+          }
+        },
+        {
+          "code": "002472",
+          "name": "双环传动",
+          "pred_date": "2026-05-18",
+          "pred_price": 44.11,
+          "actual_price": 44.01,
+          "actual_days": 1,
+          "target_days": 5,
+          "actual_return_pct": -0.23,
+          "predicted_action": "TRACK_ONLY",
+          "predicted_direction": "neutral",
+          "actual_direction": "neutral",
+          "direction_correct": true,
+          "total_score": 52.1115,
+          "cf_state": "RETREAT",
+          "scores": {
+            "ISS": 81.0,
+            "BVS": 63.25,
+            "EVL": 60,
+            "FQS": 37.37,
+            "VSS": 45.0,
+            "CFS": 42.5,
+            "CTS": 60.0,
+            "RISK": 0.0
+          }
+        },
+        {
+          "code": "300580",
+          "name": "贝斯特",
+          "pred_date": "2026-05-18",
+          "pred_price": 27.4,
+          "actual_price": 26.67,
+          "actual_days": 1,
+          "target_days": 5,
+          "actual_return_pct": -2.66,
+          "predicted_action": "EXCLUDE",
+          "predicted_direction": "bearish",
+          "actual_direction": "bearish",
+          "direction_correct": true,
+          "total_score": 29.682499999999997,
+          "cf_state": "INDUCED_LONG",
+          "scores": {
+            "ISS": 79.0,
+            "BVS": 71.75,
+            "EVL": 40,
+            "FQS": 42.85,
+            "VSS": 50.0,
+            "CFS": 30.0,
+            "CTS": 0.0,
+            "RISK": 18.0
+          }
+        },
+        {
+          "code": "603662",
+          "name": "柯力传感",
+          "pred_date": "2026-05-18",
+          "pred_price": 67.85,
+          "actual_price": 66.7,
+          "actual_days": 1,
+          "target_days": 5,
+          "actual_return_pct": -1.69,
+          "predicted_action": "TRACK_ONLY",
+          "predicted_direction": "neutral",
+          "actual_direction": "bearish",
+          "direction_correct": false,
+          "total_score": 47.142500000000005,
+          "cf_state": "UNKNOWN",
+          "scores": {
+            "ISS": 79.0,
+            "BVS": 64.75,
+            "EVL": 40,
+            "FQS": 44.4,
+            "VSS": 20.0,
+            "CFS": 47.0,
+            "CTS": 60.0,
+            "RISK": 0.0
+          }
+        },
+        {
+          "code": "688322",
+          "name": "奥比中光",
+          "pred_date": "2026-05-18",
+          "pred_price": 95.4,
+          "actual_price": 100.71,
+          "actual_days": 1,
+          "target_days": 5,
+          "actual_return_pct": 5.57,
+          "predicted_action": "EXCLUDE",
+          "predicted_direction": "bearish",
+          "actual_direction": "bullish",
+          "direction_correct": false,
+          "total_score": 35.362500000000004,
+          "cf_state": "HIGH_DIVERGENCE",
+          "scores": {
+            "ISS": 79.0,
+            "BVS": 62.75,
+            "EVL": 40,
+            "FQS": 58.25,
+            "VSS": 10.0,
+            "CFS": 47.0,
+            "CTS": 85.0,
+            "RISK": 14.0
+          }
+        },
+        {
+          "code": "003021",
+          "name": "兆威机电",
+          "pred_date": "2026-05-18",
+          "pred_price": 111.89,
+          "actual_price": 111.97,
+          "actual_days": 1,
+          "target_days": 5,
+          "actual_return_pct": 0.07,
+          "predicted_action": "EXCLUDE",
+          "predicted_direction": "bearish",
+          "actual_direction": "neutral",
+          "direction_correct": false,
+          "total_score": 39.4375,
+          "cf_state": "UNKNOWN",
+          "scores": {
+            "ISS": 79.0,
+            "BVS": 62.25,
+            "EVL": 40,
+            "FQS": 7.25,
+            "VSS": 40.0,
+            "CFS": 48.0,
+            "CTS": 0.0,
+            "RISK": 0.0
+          }
+        },
+        {
+          "code": "603667",
+          "name": "五洲新春",
+          "pred_date": "2026-05-18",
+          "pred_price": 85.0,
+          "actual_price": 83.88,
+          "actual_days": 1,
+          "target_days": 5,
+          "actual_return_pct": -1.32,
+          "predicted_action": "EXCLUDE",
+          "predicted_direction": "bearish",
+          "actual_direction": "bearish",
+          "direction_correct": true,
+          "total_score": 33.7225,
+          "cf_state": "UNKNOWN",
+          "scores": {
+            "ISS": 79.0,
+            "BVS": 72.25,
+            "EVL": 40,
+            "FQS": 22.55,
+            "VSS": 40.0,
+            "CFS": 45.25,
+            "CTS": 0.0,
+            "RISK": 10.0
+          }
+        },
+        {
+          "code": "000977",
+          "name": "浪潮信息",
+          "pred_date": "2026-05-19",
+          "pred_price": 70.61,
+          "actual_price": 72.23,
+          "actual_days": 0,
+          "target_days": 5,
+          "actual_return_pct": 2.29,
+          "predicted_action": "TRACK_ONLY",
+          "predicted_direction": "neutral",
+          "actual_direction": "bullish",
+          "direction_correct": false,
+          "total_score": 0.0,
+          "cf_state": "UNSTARTED",
+          "scores": {
+            "ISS": 50.0,
+            "BVS": 10.0,
+            "EVL": 0,
+            "FQS": 7.25,
+            "VSS": 40.0,
+            "CFS": 32.0,
+            "CTS": 0.0,
+            "RISK": 30
+          }
+        },
+        {
+          "code": "000977",
+          "name": "浪潮信息",
+          "pred_date": "2026-05-19",
+          "pred_price": 70.61,
+          "actual_price": 72.23,
+          "actual_days": 0,
+          "target_days": 5,
+          "actual_return_pct": 2.29,
+          "predicted_action": "EXCLUDE",
+          "predicted_direction": "bearish",
+          "actual_direction": "bullish",
+          "direction_correct": false,
+          "total_score": 41.85850000000001,
+          "cf_state": "UNSTARTED",
+          "scores": {
+            "ISS": 58.0,
+            "BVS": 70.75,
+            "EVL": 80,
+            "FQS": 46.73,
+            "VSS": 40.0,
+            "CFS": 32.0,
+            "CTS": 0.0,
+            "RISK": 8.0
+          }
+        },
+        {
+          "code": "300308",
+          "name": "中际旭创",
+          "pred_date": "2026-05-19",
+          "pred_price": 1030.0,
+          "actual_price": 1030.0,
+          "actual_days": 0,
+          "target_days": 5,
+          "actual_return_pct": 0.0,
+          "predicted_action": "TRACK_ONLY",
+          "predicted_direction": "neutral",
+          "actual_direction": "neutral",
+          "direction_correct": true,
+          "total_score": 0.0,
+          "cf_state": "UNKNOWN",
+          "scores": {
+            "ISS": 50.0,
+            "BVS": 10.0,
+            "EVL": 0,
+            "FQS": 7.25,
+            "VSS": 40.0,
+            "CFS": 53.0,
+            "CTS": 0.0,
+            "RISK": 30
+          }
+        },
+        {
+          "code": "300308",
+          "name": "中际旭创",
+          "pred_date": "2026-05-19",
+          "pred_price": 1028.38,
+          "actual_price": 1030.0,
+          "actual_days": 0,
+          "target_days": 5,
+          "actual_return_pct": 0.16,
+          "predicted_action": "WATCH",
+          "predicted_direction": "bullish",
+          "actual_direction": "neutral",
+          "direction_correct": false,
+          "total_score": 61.482,
+          "cf_state": "UNKNOWN",
+          "scores": {
+            "ISS": 60.0,
+            "BVS": 72.0,
+            "EVL": 100,
+            "FQS": 76.91,
+            "VSS": 40.0,
+            "CFS": 53.0,
+            "CTS": 0.0,
+            "RISK": 0.0
+          }
+        },
+        {
+          "code": "000988",
+          "name": "华工科技",
+          "pred_date": "2026-05-19",
+          "pred_price": 162.1,
+          "actual_price": 158.4,
+          "actual_days": 0,
+          "target_days": 5,
+          "actual_return_pct": -2.28,
+          "predicted_action": "TRACK_ONLY",
+          "predicted_direction": "neutral",
+          "actual_direction": "bearish",
+          "direction_correct": false,
+          "total_score": 0.0,
+          "cf_state": "UNKNOWN",
+          "scores": {
+            "ISS": 50.0,
+            "BVS": 10.0,
+            "EVL": 0,
+            "FQS": 7.25,
+            "VSS": 40.0,
+            "CFS": 56.75,
+            "CTS": 0.0,
+            "RISK": 30
+          }
+        },
+        {
+          "code": "000988",
+          "name": "华工科技",
+          "pred_date": "2026-05-19",
+          "pred_price": 160.0,
+          "actual_price": 158.4,
+          "actual_days": 0,
+          "target_days": 5,
+          "actual_return_pct": -1.0,
+          "predicted_action": "TRACK_ONLY",
+          "predicted_direction": "neutral",
+          "actual_direction": "bearish",
+          "direction_correct": false,
+          "total_score": 51.099999999999994,
+          "cf_state": "UNKNOWN",
+          "scores": {
+            "ISS": 56.0,
+            "BVS": 66.5,
+            "EVL": 60,
+            "FQS": 60.25,
+            "VSS": 40.0,
+            "CFS": 56.75,
+            "CTS": 0.0,
+            "RISK": 0.0
+          }
+        },
+        {
+          "code": "688256",
+          "name": "寒武纪",
+          "pred_date": "2026-05-19",
+          "pred_price": 1217.0,
+          "actual_price": 1319.2,
+          "actual_days": 0,
+          "target_days": 5,
+          "actual_return_pct": 8.4,
+          "predicted_action": "TRACK_ONLY",
+          "predicted_direction": "neutral",
+          "actual_direction": "bullish",
+          "direction_correct": false,
+          "total_score": 0.0,
+          "cf_state": "UNSTARTED",
+          "scores": {
+            "ISS": 50.0,
+            "BVS": 10.0,
+            "EVL": 0,
+            "FQS": 7.25,
+            "VSS": 40.0,
+            "CFS": 30.5,
+            "CTS": 0.0,
+            "RISK": 30
+          }
+        },
+        {
+          "code": "688256",
+          "name": "寒武纪",
+          "pred_date": "2026-05-19",
+          "pred_price": 1217.0,
+          "actual_price": 1319.2,
+          "actual_days": 0,
+          "target_days": 5,
+          "actual_return_pct": 8.4,
+          "predicted_action": "WATCH",
+          "predicted_direction": "bullish",
+          "actual_direction": "bullish",
+          "direction_correct": true,
+          "total_score": 56.9875,
+          "cf_state": "UNSTARTED",
+          "scores": {
+            "ISS": 56.0,
+            "BVS": 89.25,
+            "EVL": 60,
+            "FQS": 85.75,
+            "VSS": 40.0,
+            "CFS": 30.5,
+            "CTS": 0.0,
+            "RISK": 0.0
+          }
+        },
+        {
+          "code": "688041",
+          "name": "海光信息",
+          "pred_date": "2026-05-19",
+          "pred_price": 303.93,
+          "actual_price": 312.02,
+          "actual_days": 0,
+          "target_days": 5,
+          "actual_return_pct": 2.66,
+          "predicted_action": "TRACK_ONLY",
+          "predicted_direction": "neutral",
+          "actual_direction": "bullish",
+          "direction_correct": false,
+          "total_score": 0.0,
+          "cf_state": "UNSTARTED",
+          "scores": {
+            "ISS": 50.0,
+            "BVS": 10.0,
+            "EVL": 0,
+            "FQS": 7.25,
+            "VSS": 40.0,
+            "CFS": 23.0,
+            "CTS": 0.0,
+            "RISK": 30
+          }
+        },
+        {
+          "code": "688041",
+          "name": "海光信息",
+          "pred_date": "2026-05-19",
+          "pred_price": 303.93,
+          "actual_price": 312.02,
+          "actual_days": 0,
+          "target_days": 5,
+          "actual_return_pct": 2.66,
+          "predicted_action": "TRACK_ONLY",
+          "predicted_direction": "neutral",
+          "actual_direction": "bullish",
+          "direction_correct": false,
+          "total_score": 52.4,
+          "cf_state": "UNSTARTED",
+          "scores": {
+            "ISS": 56.0,
+            "BVS": 84.0,
+            "EVL": 60,
+            "FQS": 70.5,
+            "VSS": 40.0,
+            "CFS": 23.0,
+            "CTS": 0.0,
+            "RISK": 0.0
+          }
+        },
+        {
+          "code": "603220",
+          "name": "中贝通信",
+          "pred_date": "2026-05-19",
+          "pred_price": 32.5,
+          "actual_price": 33.35,
+          "actual_days": 0,
+          "target_days": 5,
+          "actual_return_pct": 2.62,
+          "predicted_action": "TRACK_ONLY",
+          "predicted_direction": "neutral",
+          "actual_direction": "bullish",
+          "direction_correct": false,
+          "total_score": 0.0,
+          "cf_state": "UNKNOWN",
+          "scores": {
+            "ISS": 50.0,
+            "BVS": 10.0,
+            "EVL": 0,
+            "FQS": 7.25,
+            "VSS": 40.0,
+            "CFS": 50.0,
+            "CTS": 0.0,
+            "RISK": 30
+          }
+        },
+        {
+          "code": "603220",
+          "name": "中贝通信",
+          "pred_date": "2026-05-19",
+          "pred_price": 32.49,
+          "actual_price": 33.35,
+          "actual_days": 0,
+          "target_days": 5,
+          "actual_return_pct": 2.65,
+          "predicted_action": "EXCLUDE",
+          "predicted_direction": "bearish",
+          "actual_direction": "bullish",
+          "direction_correct": false,
+          "total_score": 34.875,
+          "cf_state": "UNKNOWN",
+          "scores": {
+            "ISS": 54.0,
+            "BVS": 55.5,
+            "EVL": 40,
+            "FQS": 7.25,
+            "VSS": 40.0,
+            "CFS": 50.0,
+            "CTS": 0.0,
+            "RISK": 0.0
+          }
+        },
+        {
+          "code": "600126",
+          "name": "杭钢股份",
+          "pred_date": "2026-05-19",
+          "pred_price": 8.83,
+          "actual_price": 8.88,
+          "actual_days": 0,
+          "target_days": 5,
+          "actual_return_pct": 0.57,
+          "predicted_action": "TRACK_ONLY",
+          "predicted_direction": "neutral",
+          "actual_direction": "neutral",
+          "direction_correct": true,
+          "total_score": 0.0,
+          "cf_state": "UNSTARTED",
+          "scores": {
+            "ISS": 50.0,
+            "BVS": 10.0,
+            "EVL": 0,
+            "FQS": 7.25,
+            "VSS": 40.0,
+            "CFS": 29.75,
+            "CTS": 0.0,
+            "RISK": 30
+          }
+        },
+        {
+          "code": "600126",
+          "name": "杭钢股份",
+          "pred_date": "2026-05-19",
+          "pred_price": 8.82,
+          "actual_price": 8.88,
+          "actual_days": 0,
+          "target_days": 5,
+          "actual_return_pct": 0.68,
+          "predicted_action": "EXCLUDE",
+          "predicted_direction": "bearish",
+          "actual_direction": "neutral",
+          "direction_correct": false,
+          "total_score": 32.25,
+          "cf_state": "UNSTARTED",
+          "scores": {
+            "ISS": 54.0,
+            "BVS": 51.5,
+            "EVL": 40,
+            "FQS": 7.25,
+            "VSS": 40.0,
+            "CFS": 29.75,
+            "CTS": 0.0,
+            "RISK": 0.0
+          }
+        },
+        {
+          "code": "002881",
+          "name": "美格智能",
+          "pred_date": "2026-05-19",
+          "pred_price": 46.67,
+          "actual_price": 45.65,
+          "actual_days": 0,
+          "target_days": 5,
+          "actual_return_pct": -2.19,
+          "predicted_action": "TRACK_ONLY",
+          "predicted_direction": "neutral",
+          "actual_direction": "bearish",
+          "direction_correct": false,
+          "total_score": 0.0,
+          "cf_state": "UNKNOWN",
+          "scores": {
+            "ISS": 50.0,
+            "BVS": 10.0,
+            "EVL": 0,
+            "FQS": 7.25,
+            "VSS": 40.0,
+            "CFS": 59.75,
+            "CTS": 0.0,
+            "RISK": 30
+          }
+        },
+        {
+          "code": "002881",
+          "name": "美格智能",
+          "pred_date": "2026-05-19",
+          "pred_price": 44.87,
+          "actual_price": 45.65,
+          "actual_days": 0,
+          "target_days": 5,
+          "actual_return_pct": 1.74,
+          "predicted_action": "EXCLUDE",
+          "predicted_direction": "bearish",
+          "actual_direction": "bullish",
+          "direction_correct": false,
+          "total_score": 34.9875,
+          "cf_state": "UNKNOWN",
+          "scores": {
+            "ISS": 54.0,
+            "BVS": 52.25,
+            "EVL": 40,
+            "FQS": 7.25,
+            "VSS": 40.0,
+            "CFS": 56.0,
+            "CTS": 0.0,
+            "RISK": 0.0
+          }
+        },
+        {
+          "code": "002837",
+          "name": "英维克",
+          "pred_date": "2026-05-19",
+          "pred_price": 102.11,
+          "actual_price": 102.4,
+          "actual_days": 0,
+          "target_days": 5,
+          "actual_return_pct": 0.28,
+          "predicted_action": "TRACK_ONLY",
+          "predicted_direction": "neutral",
+          "actual_direction": "neutral",
+          "direction_correct": true,
+          "total_score": 0.0,
+          "cf_state": "UNSTARTED",
+          "scores": {
+            "ISS": 50.0,
+            "BVS": 10.0,
+            "EVL": 0,
+            "FQS": 7.25,
+            "VSS": 40.0,
+            "CFS": 39.5,
+            "CTS": 0.0,
+            "RISK": 30
+          }
+        },
+        {
+          "code": "002837",
+          "name": "英维克",
+          "pred_date": "2026-05-19",
+          "pred_price": 101.0,
+          "actual_price": 102.4,
+          "actual_days": 0,
+          "target_days": 5,
+          "actual_return_pct": 1.39,
+          "predicted_action": "TRACK_ONLY",
+          "predicted_direction": "neutral",
+          "actual_direction": "bullish",
+          "direction_correct": false,
+          "total_score": 47.9575,
+          "cf_state": "UNSTARTED",
+          "scores": {
+            "ISS": 56.0,
+            "BVS": 54.25,
+            "EVL": 60,
+            "FQS": 62.35,
+            "VSS": 40.0,
+            "CFS": 39.5,
+            "CTS": 0.0,
+            "RISK": 0.0
+          }
+        },
+        {
+          "code": "300499",
+          "name": "高澜股份",
+          "pred_date": "2026-05-19",
+          "pred_price": 43.98,
+          "actual_price": 45.91,
+          "actual_days": 0,
+          "target_days": 5,
+          "actual_return_pct": 4.39,
+          "predicted_action": "TRACK_ONLY",
+          "predicted_direction": "neutral",
+          "actual_direction": "bullish",
+          "direction_correct": false,
+          "total_score": 0.0,
+          "cf_state": "UNSTARTED",
+          "scores": {
+            "ISS": 50.0,
+            "BVS": 10.0,
+            "EVL": 0,
+            "FQS": 7.25,
+            "VSS": 40.0,
+            "CFS": 36.5,
+            "CTS": 0.0,
+            "RISK": 30
+          }
+        },
+        {
+          "code": "300499",
+          "name": "高澜股份",
+          "pred_date": "2026-05-19",
+          "pred_price": 43.98,
+          "actual_price": 45.91,
+          "actual_days": 0,
+          "target_days": 5,
+          "actual_return_pct": 4.39,
+          "predicted_action": "TRACK_ONLY",
+          "predicted_direction": "neutral",
+          "actual_direction": "bullish",
+          "direction_correct": false,
+          "total_score": 46.171,
+          "cf_state": "UNSTARTED",
+          "scores": {
+            "ISS": 56.0,
+            "BVS": 50.5,
+            "EVL": 60,
+            "FQS": 57.73,
+            "VSS": 40.0,
+            "CFS": 36.5,
+            "CTS": 0.0,
+            "RISK": 0.0
+          }
+        }
+      ]
+    }
+  ]
+}

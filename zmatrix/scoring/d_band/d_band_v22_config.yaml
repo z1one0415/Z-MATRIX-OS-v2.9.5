@@ -1,0 +1,25 @@
+version: D-Matrix v2.2
+phase: source_radar_foundation
+weights:
+  blackhorse_gene: 0.22
+  sector_ignition: 0.18
+  theme_seed: 0.15
+  silent_accumulation: 0.18
+  smart_money_preload: 0.10
+  micro_absorption: 0.10
+  volume_price_preload: 0.07
+false_preheat_penalty_max: 2.0
+coverage:
+  threshold: 0.70
+  d3_ignition_ready_min: 0.85
+  critical_missing_action: DATA_INCOMPLETE
+m1:
+  bar_label_policy: bar_end
+  expected_bar_count: 240
+  allow_missing_minutes: 3
+  fatal_missing_minutes: 10
+late_day:
+  time_window: ["14:30", "15:00"]
+  false_preheat_gain_contribution: 0.70
+  smart_money_tail_volume_share: 0.30
+  cooldown_days: 3

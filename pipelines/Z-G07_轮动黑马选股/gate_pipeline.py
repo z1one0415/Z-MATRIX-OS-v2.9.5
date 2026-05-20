@@ -274,18 +274,17 @@ def gate6_l4_health(ticker: str) -> GateResult:
 
 
 def gate7_l5_matrix(ticker: str, g1_details: dict) -> GateResult:
-    """闸口7: L5 B/D/R/OKR Matrix — 使用当前仓库 zmatrix.scoring 包, 不依赖外部绝对路径"""
+    """闸口7: L5 B/D/R/OKR Matrix — 使用 zmatrix.scoring 包导入, 不依赖特定目录"""
     errors = []
     details = {"b_matrix": "not_run", "d_matrix": "not_run", "r_matrix": "not_run"}
     
-    # Use Z-G01 kline, not baostock direct
     kl = get_kline(ticker, 500)
     prices = kl.get("prices", [])
     if len(prices) < 60:
         errors.append(f"R/D-Matrix: KLINE_LT_60D({len(prices)}日)")
         return GateResult(7, "L5 Matrix", GateStatus.DEGRADED, details, errors, 0)
     
-    # D-Matrix v2.2 — current repo package, no absolute path check
+    # D-Matrix v2.2
     try:
         from zmatrix.scoring.d_band.d_early_v22_scorer import evaluate_d_early_v22
         payload = {
@@ -307,7 +306,7 @@ def gate7_l5_matrix(ticker: str, g1_details: dict) -> GateResult:
     except Exception as e:
         errors.append(f"D-Matrix: {str(e)[:80]}")
     
-    # R-Matrix v1.1 — Type A/B dual mode, requires 260+ bars
+    # R-Matrix v1.1 — Type A/B dual mode
     if len(prices) >= 260:
         try:
             from zmatrix.scoring.r_matrix.oscillation_king_ranker_v11 import (

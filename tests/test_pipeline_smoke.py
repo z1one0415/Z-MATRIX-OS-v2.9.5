@@ -1,4 +1,4 @@
-"""v2.9.5-RC pipeline smoke test — 验证核心管线可加载, 不调用真实行情"""
+"""v2.9.5-RC 核心管线 smoke test (7条核心, 非18条全量release smoke) — 验证核心管线可加载, 不调用真实行情"""
 import importlib.util, sys, os
 from pathlib import Path
 

@@ -5,27 +5,29 @@ echo "═══ Z-MATRIX-OS v2.9.5-RC 发布前验证 ═══"
 
 echo ""
 echo "== Compile all =="
-python -m compileall pipelines tests 2>/dev/null && echo "✅ compileall PASS" || echo "❌ compileall FAIL"
+python3 -m compileall pipelines tests
+echo "✅ compileall PASS"
 
 echo ""
 echo "== Core contract tests =="
-python tests/test_core_contracts.py 2>&1 | tail -3
+python3 tests/test_core_contracts.py
 
 echo ""
 echo "== Pipeline smoke test =="
-python tests/test_pipeline_smoke.py 2>&1 | tail -3
+python3 tests/test_pipeline_smoke.py
 
 echo ""
 echo "== Pytest =="
 if command -v pytest >/dev/null 2>&1; then
-    pytest tests/test_core_contracts.py tests/test_pipeline_smoke.py -q 2>&1 | tail -5
+    pytest tests/test_core_contracts.py tests/test_pipeline_smoke.py -q
 else
     echo "pytest not installed, skip"
 fi
 
 echo ""
 echo "== Git diff check =="
-git diff --check 2>/dev/null && echo "✅ no whitespace errors" || true
+git diff --check
+echo "✅ no whitespace errors"
 
 echo ""
-echo "═══ Done ═══"
+echo "═══ RC verification PASS ═══"

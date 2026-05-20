@@ -1,5 +1,8 @@
 # Z-MATRIX-OS v2.9.5-RC
 
+> 状态: code-ready candidate | 发布验证: core smoke(7条)+contract tests(9/9) 已接入
+> 18条全量 release smoke 待确认
+
 个人量化投资操作系统 | OpenClaw 固化管线版
 
 ## 18条固化管线

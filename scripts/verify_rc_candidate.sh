@@ -51,7 +51,7 @@ if command -v pytest >/dev/null 2>&1; then
         tests/test_pipeline_manifest_smoke.py tests/test_zg09_zg10_contracts.py \
         tests/test_zg09_type_a_horizontal.py tests/test_b_matrix_v211.py \
         tests/test_zg13_bmatrix_integration.py tests/test_data_contract_ohlcv.py \
-        tests/test_zg03_intraday_contract.py tests/test_capability_mask_contract.py tests/test_zg10_payload_ohlcv.py tests/test_intraday_tail_precision_flags.py -q
+        tests/test_zg03_intraday_contract.py tests/test_capability_mask_contract.py tests/test_zg10_payload_ohlcv.py tests/test_intraday_tail_precision_flags.py tests/test_zg13_financial_coverage.py -q
 else
     echo "pytest not installed, skip"
 fi
@@ -67,6 +67,10 @@ python3 tests/test_zg10_payload_ohlcv.py
 echo ""
 echo "== Precision flags tests =="
 python3 tests/test_intraday_tail_precision_flags.py
+
+echo ""
+echo "== Z-G13 financial coverage tests =="
+python3 tests/test_zg13_financial_coverage.py
 
 echo ""
 echo "== Git diff check =="

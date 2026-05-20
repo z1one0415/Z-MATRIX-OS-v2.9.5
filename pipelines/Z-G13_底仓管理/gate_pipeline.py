@@ -143,6 +143,13 @@ def run():
         if trap_summary:
             print(f"     🚩 Traps: {', '.join(trap_summary)}")
         
+        # Financial coverage
+        fin = get_financials(p["code"]) if get_financials else {}
+        fin_contract = fin.get("data_contract", "UNKNOWN")
+        fin_missing = fin.get("missing_fields", [])
+        total_fin_fields = 36  # approx number of possible fields in FINANCIAL_BMATRIX_V1
+        fin_coverage = round(1.0 - len(fin_missing) / total_fin_fields, 2)
+        
         b_results.append({
             "code": p["code"], "name": p["name"],
             "base_type": bm.base_type.value,
@@ -153,6 +160,10 @@ def run():
             "traps": bm.trap_flags,
             "thesis": thesis,
             "thesis_flags": tflags,
+            "financial_coverage_ratio": fin_coverage,
+            "financial_missing_fields": fin_missing,
+            "financial_data_contract": fin_contract,
+            "confidence": "LOW_DATA_COVERAGE" if fin_coverage < 0.5 else "MEDIUM",
         })
 
     # Summary

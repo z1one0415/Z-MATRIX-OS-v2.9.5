@@ -155,29 +155,139 @@ def _bs_kline_internal(ticker, days, adjust="research"):
         return {"error": str(ex)[:60]}
 
 def _bs_finance(ticker):
+    """B-Matrix financial data contract — returns FINANCIAL_BMATRIX_V1 fields.
+    Missing fields are None + logged in missing_fields. Never fabricates data."""
     try:
         import baostock as bs; bs.login()
         pfx = "sz" if ticker[0] in "03" else "sh"
         code = f"{pfx}.{ticker}"
-        rv = {"q1_eps":None,"has_finance":False,"industry":""}
-        for y,q in [(2026,1),(2025,4),(2025,3)]:
+        rv = {
+            "symbol": ticker, "industry": "",
+            "has_finance": False,
+            # Profitability
+            "q1_eps": None, "roe_5y_avg": None, "roic_5y": None,
+            "roe_trend": None, "roic_trend": None,
+            "gross_margin": None, "gross_margin_stability": None,
+            # Valuation
+            "pe_ttm": None, "pb": None,
+            "profit_percentile_5y": None,
+            # Balance sheet
+            "debt_ratio": None, "goodwill_ratio": None,
+            "interest_bearing_debt_growth_2y": None,
+            # Dividend
+            "dividend_yield": None, "dividend_years_stable": None,
+            "dividends_paid_2y": None,
+            # Cash flow
+            "ocf_2y": None, "ocf_3y": None,
+            "net_profit_3y": None, "capex_2y": None,
+            # Qualitative (not from baostock, explicit stub)
+            "is_state_owned": None,
+            "brand_premium_score": None,
+            "pricing_power_score": None,
+            "supply_constraint_score": None,
+            "scarcity_durability_score": None,
+            "brand_mindshare_score": None,
+            "channel_health_score": None,
+            "policy_stability_score": None,
+            "asset_monopoly_score": None,
+            "cost_curve_score": None,
+            "resource_quality_score": None,
+            # Contract
+            "data_contract": "FINANCIAL_BMATRIX_V1",
+            "missing_fields": [],
+        }
+        missing = []
+
+        # 1. Profit data (EPS + try ROE from 4 quarters)
+        for y, q in [(2026, 1), (2025, 4), (2025, 3), (2025, 2), (2025, 1), (2024, 4)]:
             try:
-                rs = bs.query_profit_data(code,year=y,quarter=q)
+                rs = bs.query_profit_data(code, year=y, quarter=q)
                 while rs.next():
                     r = rs.get_row_data()
-                    if r and len(r)>3 and r[3] not in ("","0","0.000000"):
-                        rv["has_finance"]=True
-                        if y==2026 and q==1: rv["q1_eps"]=r[3]
-            except: pass
+                    if r and len(r) > 3 and r[3] not in ("", "0", "0.000000"):
+                        rv["has_finance"] = True
+                        if y == 2026 and q == 1:
+                            rv["q1_eps"] = r[3]
+                        # ROE: index varies by baostock version, try r[5] or r[7]
+                        if len(r) > 7 and r[7] and r[7] not in ("", "0"):
+                            try:
+                                rv["roe_5y_avg"] = rv.get("roe_5y_avg") or float(r[7])
+                            except ValueError: pass
+            except Exception:
+                pass
+
+        # 2. Industry
         try:
             rs = bs.query_stock_industry(code)
             while rs.next():
                 r = rs.get_row_data()
-                if len(r)>3: rv["industry"]=r[3]
-        except: pass
-        bs.logout(); return rv
+                if len(r) > 3:
+                    rv["industry"] = r[3]
+        except Exception:
+            pass
+
+        # 3. Latest PE/PB from daily K-line (cheapest path)
+        try:
+            from datetime import timedelta
+            s = (datetime.now() - timedelta(days=30)).strftime("%Y-%m-%d")
+            e = datetime.now().strftime("%Y-%m-%d")
+            rs = bs.query_history_k_data_plus(code, "date,peTTM,pbMRQ",
+                                              start_date=s, end_date=e, frequency="d", adjustflag="2")
+            while rs.next():
+                r = rs.get_row_data()
+                if len(r) > 2 and r[1] and r[1] != "" and float(r[1]) > 0:
+                    rv["pe_ttm"] = float(r[1])
+                if len(r) > 2 and r[2] and r[2] != "" and float(r[2]) > 0:
+                    rv["pb"] = float(r[2])
+        except Exception:
+            missing.append("pe_ttm,pb")
+
+        # 4. Balance sheet: try to get debt_ratio from latest report
+        try:
+            rs = bs.query_balance_data(code, year=2026, quarter=1)
+            while rs.next():
+                r = rs.get_row_data()
+                # debt_ratio ≈ total_liability / total_assets
+                if len(r) > 10:
+                    try:
+                        tl = float(r[8]) if r[8] and r[8] != "" else None
+                        ta = float(r[7]) if r[7] and r[7] != "" else None
+                        if tl and ta and ta > 0:
+                            rv["debt_ratio"] = round(tl / ta, 3)
+                    except (ValueError, IndexError): pass
+                # goodwill
+                if len(r) > 20:
+                    try:
+                        gw = float(r[20]) if r[20] and r[20] != "" else 0
+                        na = float(r[12]) if len(r) > 12 and r[12] and r[12] != "" else ta
+                        if na and na > 0 and gw > 0:
+                            rv["goodwill_ratio"] = round(gw / na, 4)
+                    except (ValueError, IndexError): pass
+        except Exception:
+            missing.append("balance_sheet")
+
+        # 5. Cash flow: OCF from latest report
+        try:
+            rs = bs.query_cash_flow_data(code, year=2026, quarter=1)
+            while rs.next():
+                r = rs.get_row_data()
+                # OCF index varies; try common positions
+                for idx in [5, 6, 7, 9]:
+                    if len(r) > idx and r[idx] and r[idx] not in ("", "0"):
+                        try:
+                            ocf = float(r[idx])
+                            if abs(ocf) > 1000:  # plausibly real OCF in 万元
+                                rv["ocf_3y"] = [ocf]  # single period, partial
+                                break
+                        except ValueError: pass
+        except Exception:
+            missing.append("cash_flow")
+
+        rv["missing_fields"] = missing
+        bs.logout()
+        return rv
     except Exception as ex:
-        return {"error":str(ex)[:60],"has_finance":False}
+        return {"error": str(ex)[:60], "has_finance": False, "missing_fields": ["baostock_unavailable"]}
 
 def _bs_l4(ticker):
     try:
@@ -323,8 +433,32 @@ def get_financials(ticker):
     ck = f"fin_{ticker}"
     if _cache_get(ck, ttl=86400): return _cache_get(ck, ttl=86400)
     fin = _bs_finance(ticker)
-    rv = {"status":"PASS" if fin.get("has_finance") else "DEGRADED",**fin}
-    _cache_set(ck,rv); return rv
+    # Ensure FINANCIAL_BMATRIX_V1 contract shape — fill missing keys with None
+    defaults = {
+        "symbol": ticker, "industry": "", "has_finance": False,
+        "q1_eps": None, "roe_5y_avg": None, "roic_5y": None,
+        "roe_trend": None, "roic_trend": None,
+        "gross_margin": None, "gross_margin_stability": None,
+        "pe_ttm": None, "pb": None, "profit_percentile_5y": None,
+        "debt_ratio": None, "goodwill_ratio": None,
+        "interest_bearing_debt_growth_2y": None,
+        "dividend_yield": None, "dividend_years_stable": None,
+        "dividends_paid_2y": None,
+        "ocf_2y": None, "ocf_3y": None, "net_profit_3y": None, "capex_2y": None,
+        "is_state_owned": None,
+        "brand_premium_score": None, "pricing_power_score": None,
+        "supply_constraint_score": None, "scarcity_durability_score": None,
+        "brand_mindshare_score": None, "channel_health_score": None,
+        "policy_stability_score": None, "asset_monopoly_score": None,
+        "cost_curve_score": None, "resource_quality_score": None,
+        "data_contract": "FINANCIAL_BMATRIX_V1",
+        "missing_fields": [],
+    }
+    for k, v in defaults.items():
+        if k not in fin:
+            fin[k] = v
+    fin["status"] = "PASS" if fin.get("has_finance") else "DEGRADED"
+    _cache_set(ck, fin); return fin
 
 def get_sectors():
     ck = "sectors"

@@ -135,10 +135,16 @@ def gate3_dq_score(ticker: str) -> GateResult:
     details = {"total": total, "breakdown": scores}
     
     if total < 60:
-        errors.append(f"DQ={total}<60, 禁止买卖建议")
-        return GateResult(3, "DQ Score", GateStatus.BLOCK, details, errors, 3)
+        errors.append(f"DQ_FAIL: DQ={total}<60→O2_DIAGNOSTIC")
+        details["output_level"] = "O2_DIAGNOSTIC"
+        details["disabled_capabilities"] = ["action_proposal","zg16_full","paper_probe","fill_price"]
+        details["allowed_outputs"] = ["diagnostic_report","condition_route","evidence_gap_report"]
+        return GateResult(3, "DQ Score", GateStatus.DEGRADED, details, errors, 3)
     if total < 85:
-        errors.append(f"DQ={total}<85→禁Z-G16 Full, 允Z-G16 Lite")
+        errors.append(f"DQ={total}<85→O3_CONDITIONAL")
+        details["output_level"] = "O3_CONDITIONAL"
+        details["disabled_capabilities"] = ["zg16_full","price_zones","position_playbook","paper_probe"]
+        details["allowed_outputs"] = ["zg16_lite","watch","wait","condition_route","evidence_gap_report"]
         return GateResult(3, "DQ Score", GateStatus.DEGRADED, details, errors, 3)
     return GateResult(3, "DQ Score", GateStatus.PASS, details, [], 3)
 
@@ -242,10 +248,25 @@ def gate6_l4_health(ticker: str) -> GateResult:
         errors.append(f"L4检查异常: {e}")
     
     if errors:
-        if any("ST" in e for e in errors):
-            return GateResult(6, "L4 Health", GateStatus.BLOCK, details, errors, 0)
-        if any("停牌" in e or "无成交" in e for e in errors):
-            return GateResult(6, "L4 Health", GateStatus.BLOCK, details, errors, 0)
+        for e in errors:
+            if "ST" in e:
+                details["reason"] = "ST"; details["action"] = "BLOCK_ENTER"
+                details["output_level"] = "O2_DIAGNOSTIC"
+                details["allowed_outputs"] = ["diagnostic_report","condition_route"]
+                details["disabled_capabilities"] = ["paper_probe","human_confirm_probe"]
+                return GateResult(6, "L4 Health", GateStatus.BLOCK, details, errors, 0)
+            if "停牌" in e:
+                details["reason"] = "SUSPENDED"; details["action"] = "DIAGNOSTIC_ONLY"
+                details["output_level"] = "O2_DIAGNOSTIC"
+                details["disabled_capabilities"] = ["execution_price","paper_fill_price","reduce_risk_execution","harvest_execution"]
+                details["allowed_outputs"] = ["holding_status_note","reopen_watch_plan"]
+                return GateResult(6, "L4 Health", GateStatus.BLOCK, details, errors, 0)
+            if "无成交" in e:
+                details["reason"] = "NO_VOLUME"; details["action"] = "DIAGNOSTIC_ONLY"
+                details["output_level"] = "O2_DIAGNOSTIC"
+                details["disabled_capabilities"] = ["fill_price","paper_probe"]
+                details["allowed_outputs"] = ["liquidity_gap_report"]
+                return GateResult(6, "L4 Health", GateStatus.BLOCK, details, errors, 0)
         return GateResult(6, "L4 Health", GateStatus.DEGRADED, details, errors, 0)
     
     return GateResult(6, "L4 Health", GateStatus.PASS, details, [], 0)

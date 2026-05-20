@@ -8,7 +8,7 @@ from pathlib import Path
 PIPELINE_MANIFEST = {
     "Z-G01": {"path": "pipelines/Z-G01_数据后勤保障/gate_data.py", "status": "executable_core"},
     "Z-G02": {"path": "pipelines/Z-G02_前夜战报/gate_pipeline.py", "status": "prototype"},
-    "Z-G03": {"path": "pipelines/Z-G03_盘中确认/gate_pipeline.py", "status": "prototype"},
+    "Z-G03": {"path": "pipelines/Z-G03_盘中确认/gate_pipeline.py", "status": "executable_light"},
     "Z-G04": {"path": "pipelines/Z-G04_尾盘过滤/gate_pipeline.py", "status": "executable_light"},
     "Z-G05": {"path": "pipelines/Z-G05_日记忆卡/gate_pipeline.py", "status": "executable_core"},
     "Z-G06": {"path": "pipelines/Z-G06_复盘反馈/gate_pipeline.py", "status": "executable_core"},
@@ -19,7 +19,7 @@ PIPELINE_MANIFEST = {
     "Z-G11": {"path": "pipelines/Z-G11_组合风控/gate_pipeline.py", "status": "executable_light"},
     "Z-G12": {"path": "pipelines/Z-G12_系统巡检/gate_pipeline.py", "status": "executable_core"},
     "Z-G13": {"path": "pipelines/Z-G13_底仓管理/gate_pipeline.py", "status": "executable_light"},
-    "Z-G14": {"path": "pipelines/Z-G14_月度全量选股/gate_pipeline.py", "status": "prototype"},
+    "Z-G14": {"path": "pipelines/Z-G14_月度全量选股/gate_pipeline.py", "status": "executable_light"},
     "Z-G15": {"path": "pipelines/Z-G15_产业链深研/gate_pipeline.py", "status": "prototype"},
     "Z-G16": {"path": "pipelines/Z-G16_纸面验证/gate_pipeline.py", "status": "executable_core"},
     "Z-G16A": {"path": "pipelines/Z-G16A_Alpha平行验证仓/gate_pipeline.py", "status": "executable_core"},

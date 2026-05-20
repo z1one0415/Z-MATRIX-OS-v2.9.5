@@ -46,9 +46,19 @@ def test_zg07_gate7_uses_500_day_kline():
     print("✅ gate7: 500-day window + 260D minimum check")
 
 
+
+def test_zg07_gate3_industry_chain_uses_details_q1_eps():
+    """产业链评分 reads details['q1_eps'], not g1['q1_eps']"""
+    source = open("pipelines/Z-G07_轮动黑马选股/gate_pipeline.py", encoding="utf-8").read()
+    gate3 = source.split("def gate3_dq_score")[1].split("def gate4")[0]
+    assert 'details.get("q1_eps")' in gate3, "产业链 should read details.q1_eps"
+    assert 'g1.get("q1_eps")' not in gate3, "产业链 should NOT read g1.q1_eps"
+    print("✅ 产业链: reads details.q1_eps, not g1.q1_eps")
+
 if __name__ == "__main__":
     test_zg07_gate3_details_initialized_before_loop()
     test_zg07_gate7_no_absolute_path()
     test_zg07_gate7_uses_zmatrix_scoring_package()
+    test_zg07_gate3_industry_chain_uses_details_q1_eps()
     test_zg07_gate7_uses_500_day_kline()
     print("\n🏁 Z-G07 contracts tests PASS")

@@ -126,7 +126,7 @@ def gate3_dq_score(ticker: str) -> GateResult:
     # 估值 (max 15) — 有价格+行业分类
     scores["估值"] = 12 if g1.get("price") else 5
     # 产业链 (max 15) — 有行业数据
-    scores["产业链"] = 12 if g1.get("q1_eps") else 10
+    scores["产业链"] = 12 if details.get("q1_eps") else 10
     # 资金 (max 15) — 有成交量+交叉验证
     scores["资金"] = 13 if (g1.get("volume") and g1.get("cross_validated")) else (10 if g1.get("volume") else 3)
     # 来源 (max 15) — 有新浪+baostock=双源验证

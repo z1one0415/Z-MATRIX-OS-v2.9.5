@@ -46,7 +46,7 @@ def _build_bmatrix_input(ticker, name):
         profit_percentile_5y=fin.get("profit_percentile_5y"),
         # Balance sheet
         debt_ratio=fin.get("debt_ratio"),
-        goodwill_to_net_assets=fin.get("goodwill_to_net_assets"),
+        goodwill_to_net_assets=fin.get("goodwill_to_net_assets", fin.get("goodwill_ratio")),
         # Dividend
         dividend_yield=fin.get("dividend_yield"),
         dividend_years_stable=fin.get("dividend_years_stable"),

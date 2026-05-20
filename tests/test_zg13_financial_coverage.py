@@ -151,9 +151,17 @@ def test_zg13_low_coverage_marks_degraded():
         os.unlink(mem_path)
 
 
+
+def test_zg13_goodwill_compatibility():
+    """Z-G13 reads goodwill_to_net_assets from both field names"""
+    source = open("pipelines/Z-G13_底仓管理/gate_pipeline.py", encoding="utf-8").read()
+    assert 'fin.get("goodwill_to_net_assets", fin.get("goodwill_ratio"))' in source,         "Z-G13 goodwill field not compatible with Z-G01 goodwill_ratio"
+    print("✅ goodwill: compatible with both goodwill_to_net_assets and goodwill_ratio")
+
 if __name__ == "__main__":
     test_get_financials_returns_bmatrix_v1_contract()
     test_get_financials_marks_missing_not_fabricates()
     test_zg13_outputs_financial_coverage()
     test_zg13_low_coverage_marks_degraded()
+    test_zg13_goodwill_compatibility()
     print("\n🏁 Z-G13 financial coverage tests PASS")

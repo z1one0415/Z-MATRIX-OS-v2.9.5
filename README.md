@@ -1,6 +1,6 @@
 # Z-MATRIX-OS v2.9.5-RC
 
-> 状态: release-ready candidate | 发布验证: contract(9/9)+core smoke(7/7)+18条manifest smoke 已接入
+> 状态: release-ready candidate | 发布验证: contract(9/9)+core smoke(7/7)+manifest smoke(18/18)+Z-G09/Z-G10 scorer contracts 已接入
 > 18条管线 manifest smoke 全部通过 ✅
 
 个人量化投资操作系统 | OpenClaw 固化管线版

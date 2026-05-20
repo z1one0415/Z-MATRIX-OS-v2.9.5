@@ -5,7 +5,7 @@ echo "═══ Z-MATRIX-OS v2.9.5-RC 发布前验证 ═══"
 
 echo ""
 echo "== Compile all =="
-python3 -m compileall pipelines tests
+python3 -m compileall pipelines tests zmatrix
 echo "✅ compileall PASS"
 
 echo ""
@@ -21,9 +21,14 @@ echo "== 18-pipeline manifest smoke =="
 python3 tests/test_pipeline_manifest_smoke.py
 
 echo ""
+echo "== Z-G09/Z-G10 scorer contract tests =="
+python3 tests/test_zg09_zg10_contracts.py
+
+echo ""
 echo "== Pytest =="
 if command -v pytest >/dev/null 2>&1; then
-    pytest tests/test_core_contracts.py tests/test_pipeline_smoke.py tests/test_pipeline_manifest_smoke.py -q
+    pytest tests/test_core_contracts.py tests/test_pipeline_smoke.py \
+        tests/test_pipeline_manifest_smoke.py tests/test_zg09_zg10_contracts.py -q
 else
     echo "pytest not installed, skip"
 fi

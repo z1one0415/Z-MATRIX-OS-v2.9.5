@@ -33,12 +33,29 @@ def _d_matrix_score(ticker):
     
     try:
         from zmatrix.scoring.d_band.d_early_v22_scorer import evaluate_d_early_v22
-        payload = {"code":ticker, "name":g1.get("name",""), "sector":"", "theme":"",
-                   "prices": prices}
+        payload = {"code":ticker, "name":g1.get("name",""), "sector":"", "theme":{},
+                   "prices": prices, "market": {"prices": prices}}
         result = evaluate_d_early_v22(payload)
+        
+        # DEarlyV22Result dataclass → 通过to_dict()获取字段
+        if hasattr(result, "to_dict"):
+            rd = result.to_dict()
+            score = rd.get("final_score", rd.get("raw_score", 0))
+            lifecycle = rd.get("stage_hint", rd.get("lifecycle_max", "D1_THEME_SEED"))
+            return {
+                "ticker":ticker,"name":g1.get("name",""),
+                "status":"PASS","score":float(score or 0),
+                "raw_score":float(rd.get("raw_score",0) or 0),
+                "coverage_ratio":rd.get("coverage_ratio"),
+                "lifecycle":lifecycle,
+                "allowed_action_max":rd.get("allowed_action_max","WATCH"),
+                "details":rd.get("score_breakdown",{}),
+                "warnings":rd.get("warnings",[])
+            }
+        
         if isinstance(result, dict):
-            score = result.get("d_score", result.get("total", 0))
-            lifecycle = result.get("lifecycle", "D1_THEME_SEED")
+            score = result.get("d_score", result.get("total", result.get("final_score", 0)))
+            lifecycle = result.get("lifecycle", result.get("stage_hint", "D1_THEME_SEED"))
             return {
                 "ticker":ticker,"name":g1.get("name",""),
                 "status":"PASS","score":float(score) if score else 0,

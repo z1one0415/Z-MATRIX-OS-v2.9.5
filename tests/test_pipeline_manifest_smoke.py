@@ -79,13 +79,18 @@ def test_pipeline_readme_status_consistent():
     print("  ✅ pipelines/README状态与manifest一致")
 
 def test_root_and_pipeline_readme_consistent():
-    """根README与pipelines README release状态一致"""
+    """根README与pipelines README release/code状态精确一致"""
+    def extract(text):
+        if "release-ready candidate" in text: return "release-ready candidate"
+        if "code-ready candidate" in text: return "code-ready candidate"
+        return None
     root = Path("README.md").read_text(encoding="utf-8")
     pipe = Path("pipelines/README.md").read_text(encoding="utf-8")
-    root_rc = "release-ready candidate" in root or "code-ready candidate" in root
-    pipe_rc = "release-ready candidate" in pipe or "code-ready candidate" in pipe
-    assert root_rc and pipe_rc, "Both READMEs must have state label"
-    print("  ✅ 根README与pipelines README状态一致")
+    rs = extract(root); ps = extract(pipe)
+    assert rs is not None, "README.md missing candidate state"
+    assert ps is not None, "pipelines/README.md missing candidate state"
+    assert rs == ps, f"State mismatch: root={rs}, pipelines={ps}"
+    print(f"  ✅ root={rs}, pipelines={ps}")
 
 if __name__ == "__main__":
     test_manifest_all_18()

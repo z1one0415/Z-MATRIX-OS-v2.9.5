@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""☯️ Z-G09 全局轮动筛选 — R-Matrix OscillationKing v1.1
-运行: 每周全量 + 每日增量 | 算法: Type A水平震荡 / Type B上升通道 + 熊陷阱 + 波动锥
+"""☯️ Z-G09 全局轮动筛选 — R-Matrix OscillationKing v1.1 Type B优先版
+运行: 每周全量 + 每日增量 | 算法: Type B上升通道 + 残差均值回归 + 熊陷阱 + 波动锥 (Type A水平震荡待补)
 """
 
 import argparse, json, sys, os
@@ -18,7 +18,7 @@ except ImportError:
     l4_health = lambda t: {"status":"stub"}
 
 def _r_matrix_score(ticker):
-    """R-Matrix OscillationKing v1.1 评分"""
+    """R-Matrix OscillationKing v1.1 Type B优先版 评分"""
     g1 = market_truth(ticker)
     l4 = l4_health(ticker)
     if g1.get("status") == "BLOCK" or l4.get("status") == "BLOCK":
@@ -56,7 +56,7 @@ def run(pool_size=80):
     print("=" * 60)
     
     tickers = _scan_list()
-    print(f"📡 扫描: {len(tickers)}标的 → Type B上升通道 + BearTrap + VolCone")
+    print(f"📡 扫描: {len(tickers)}标的 → Type B上升通道 + 残差均值回归 + BearTrap + VolCone")
     
     candidates = []; degraded = []
     for t in tickers:

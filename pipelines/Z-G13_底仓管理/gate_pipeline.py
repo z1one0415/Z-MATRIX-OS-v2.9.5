@@ -129,10 +129,11 @@ def run():
         
         icon_map = {
             BEligibility.B_ELIGIBLE: "🟢",
-            BEligibility.WATCH: "🟡",
-            BEligibility.HOLD: "🔵",
-            BEligibility.REVIEW: "🟠",
-            BEligibility.DISQUALIFIED: "🔴",
+            BEligibility.B_WATCH: "🟡",
+            BEligibility.B_ACCUMULATION_CANDIDATE: "🟣",
+            BEligibility.B_HOLD: "🔵",
+            BEligibility.B_REVIEW: "🟠",
+            BEligibility.B_DISQUALIFIED: "🔴",
         }
         icon = icon_map.get(bm.eligibility, "❓")
 
@@ -158,18 +159,21 @@ def run():
     types = {bm["base_type"] for bm in b_results}
     eligible = sum(1 for bm in b_results if bm["eligibility"] == "B_ELIGIBLE")
     print(f"\n📊 底仓小结: {len(b_results)}只 | 类型{len(types)}种 | B_ELIGIBLE {eligible}只 | "
-          f"WATCH {sum(1 for b in b_results if b['eligibility']=='WATCH')} | "
-          f"REVIEW {sum(1 for b in b_results if b['eligibility']=='REVIEW')}")
+          f"B_WATCH {sum(1 for b in b_results if b['eligibility']=='B_WATCH')} | "
+          f"B_HOLD {sum(1 for b in b_results if b['eligibility']=='B_HOLD')} | "
+          f"B_REVIEW {sum(1 for b in b_results if b['eligibility']=='B_REVIEW')} | "
+          f"DISQ {sum(1 for b in b_results if b['eligibility']=='B_DISQUALIFIED')}")
 
     result["b_pool"] = b_results
     result["sections"] = {
         "total": len(b_results),
         "types_count": len(types),
         "eligible": eligible,
-        "watch": sum(1 for b in b_results if b["eligibility"] == "WATCH"),
-        "hold": sum(1 for b in b_results if b["eligibility"] == "HOLD"),
-        "review": sum(1 for b in b_results if b["eligibility"] == "REVIEW"),
-        "disqualified": sum(1 for b in b_results if b["eligibility"] == "DISQUALIFIED"),
+        "watch": sum(1 for b in b_results if b["eligibility"] == "B_WATCH"),
+        "accumulation_candidate": sum(1 for b in b_results if b["eligibility"] == "B_ACCUMULATION_CANDIDATE"),
+        "hold": sum(1 for b in b_results if b["eligibility"] == "B_HOLD"),
+        "review": sum(1 for b in b_results if b["eligibility"] == "B_REVIEW"),
+        "disqualified": sum(1 for b in b_results if b["eligibility"] == "B_DISQUALIFIED"),
     }
     return result
 

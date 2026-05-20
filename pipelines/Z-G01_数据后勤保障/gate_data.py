@@ -81,7 +81,7 @@ def _bs_research_kline(ticker, days=10):
 def _bs_kline_internal(ticker, days, adjust="research"):
     """拉取baostock日K — 按用途分离adjustflag
     adjust="research" → adjustflag=2 (前复权, 用于均线/收益率/形态)
-    adjust="raw"      → adjustflag=1 (不复权, 用于execution交叉验证)
+    adjust="raw"      → adjustflag=3 (不复权, 用于execution交叉验证)
     """
     try:
         import baostock as bs; bs.login()
@@ -175,12 +175,25 @@ def market_truth(ticker):
     # Capability Mask: 根据status确定输出等级
     cap_level = "O5" if st=="PASS" else ("O3" if st=="DEGRADED" else "O2")
     cap_disabled = [] if st=="PASS" else (["exact_price_zone","paper_fill_price"] if st=="DEGRADED" else ["exact_price_zone","paper_fill_price","execution_proposal"])
-    dt["price_basis"] = "raw_unadjusted"; dt["quote_domain"] = "execution_quote"; rv = {**dt,"status":st,"errors":errs}; _cache_set(ck,rv); return rv
+    dt["price_basis"] = "raw_unadjusted"; dt["quote_domain"] = "execution_quote"; dt["output_level"] = cap_level
+    dt["capability_mask"] = capability_mask(cap_disabled, cap_level, errs)
+    rv = {**dt,"status":st,"errors":errs}; _cache_set(ck,rv); return rv
 
 def source_arbitrate(ticker, g1):
-    if g1.get("cross_validated"): return {"status":"PASS","price":g1["price"],"source":g1.get("source",""),"diff_pct":g1.get("source_diff_pct",0),"cross_validated":True,"price_basis":g1.get("price_basis",""),"quote_domain":g1.get("quote_domain",""),"errors":[]}
-    if g1.get("price") and not g1.get("price_conflict"): return {"status":"DEGRADED","price":g1["price"],"price_basis":g1.get("price_basis",""),"quote_domain":g1.get("quote_domain",""),"errors":["单源"]}
-    return {"status":"BLOCK","errors":[f"冲突{g1.get('source_diff_pct')}"]}
+    """Source Arbitration — 只承接MarketTruth状态, 不二次裁决"""
+    st = g1.get("status","BLOCK")
+    return {
+        "status": st,
+        "price": g1.get("price") if st != "BLOCK" else None,
+        "source": g1.get("source",""),
+        "price_basis": g1.get("price_basis",""),
+        "quote_domain": g1.get("quote_domain",""),
+        "output_level": g1.get("output_level",""),
+        "capability_mask": g1.get("capability_mask",{}),
+        "cross_validated": g1.get("cross_validated",False),
+        "selected_sources": g1.get("selected_sources",[]),
+        "errors": g1.get("errors",[])
+    }
 
 def dq_score(ticker):
     g1 = market_truth(ticker); fin = _bs_finance(ticker)

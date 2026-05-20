@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 """
-🔒 Z2 10-GATE ROTATION PIPELINE v1.0 ENFORCED
+🔒 Z-G07 轮动+黑马选股 v2.9.5-RC
 =============================================
-硬脚本强制执行轮动选股10闸口管线。
-绕过LLM语义化——每闸口返回 PASS / DEGRADED / BLOCK / SKIPPED。
-任一闸口不通过 → 自动降级, 禁止输出未经PAPER_WORLD验证的动作。
+调用Z-G01统一数据层; 闸口输出Capability Mask; 开放智能降级
 
 用法:
   python3 gate_pipeline_v1.0.py --tickers 002463,688608,000988 --mode watch
@@ -70,101 +68,26 @@ class StockResult:
 # ===================== 数据采集工具 =====================
 
 def gate1_market_truth(ticker: str) -> GateResult:
-    """闸口1: 拉实时行情, 验证可溯源性。宪法第1条: 永不编造数据。"""
-    errors = []
-    details = {}
-    
-    # 新浪API实时行情
-    prefix = "sz" if ticker.startswith(("0","3")) else "sh"
-    full_code = f"{prefix}{ticker}"
+    """闸口1: Market Truth — 委托Z-G01统一数据层"""
+    from pipelines.z17_loader import market_truth as z01_market_truth
     try:
-        import urllib.request
-        url = f"http://hq.sinajs.cn/list={full_code}"
-        req = urllib.request.Request(url, headers={"Referer":"https://finance.sina.com.cn"})
-        resp = urllib.request.urlopen(req, timeout=6)
-        raw = resp.read().decode("gbk")
-        if '=""' in raw or raw.strip() == "":
-            errors.append(f"新浪API返回空数据 for {ticker}")
-        else:
-            parts = raw.split('"')[1].split(",")
-            if len(parts) >= 32 and parts[3] not in ("", "0.000", "0.00"):
-                details["price"] = float(parts[3])  # 当前价
-                details["open"] = float(parts[1])
-                details["high"] = float(parts[4])
-                details["low"] = float(parts[5])
-                details["volume"] = parts[8]
-                details["name"] = parts[0]
-                details["source"] = "sina_api"
-                details["time"] = parts[31]
-            else:
-                errors.append(f"价格字段异常: {parts[3] if len(parts)>3 else 'N/A'}")
+        g1 = z01_market_truth(ticker)
+        return GateResult(1, "Market Truth", 
+            GateStatus.PASS if g1.get("status")=="PASS" else (GateStatus.DEGRADED if g1.get("status")=="DEGRADED" else GateStatus.BLOCK),
+            g1, g1.get("errors",[]), 1)
     except Exception as e:
-        errors.append(f"新浪API异常: {e}")
-    
-    # 验证 (baostock备源, 拉最近10日取最新)
-    try:
-        import baostock as bs
-        bs.login()
-        bs_code = f"{prefix}.{ticker}"
-        today_str = datetime.now().strftime("%Y-%m-%d")
-        start_str = (datetime.now()-timedelta(days=10)).strftime("%Y-%m-%d")
-        rs = bs.query_history_k_data_plus(bs_code, "date,close",
-            start_date=start_str, end_date=today_str,
-            frequency="d", adjustflag="2")  # 前复权, 匹配新浪复权价
-        k_data = []
-        while rs.next():
-            r = rs.get_row_data()
-            if r[1] and r[1] != "" and float(r[1]) > 0:
-                k_data.append(r)
-        bs.logout()
-        if k_data:
-            bs_latest = k_data[-1]
-            bs_close = float(bs_latest[1])
-            bs_date = bs_latest[0]
-            details["baostock_close"] = bs_close
-            details["baostock_date"] = bs_date
-            if "price" in details:
-                diff_pct = abs(details["price"] - bs_close) / details["price"] * 100
-                details["source_diff_pct"] = round(diff_pct, 2)
-                # baostock T+1延迟, 容忍度随日期差增大
-                date_diff = (datetime.strptime(today_str,"%Y-%m-%d") - datetime.strptime(bs_date,"%Y-%m-%d")).days
-                tolerance = 1.5 + date_diff * 1.5  # 每天1.5%容忍
-                if diff_pct > tolerance:
-                    errors.append(f"价格源冲突: sina={details['price']} vs baostock({bs_date})={bs_close} ({diff_pct:.1f}%, 容忍{tolerance}%)")
-                    details["price_conflict"] = True
-                else:
-                    details["price_conflict"] = False
-                    details["cross_validated"] = True
-        else:
-            errors.append("baostock最近10日无K线数据")
-    except Exception as e:
-        errors.append(f"baostock异常: {e}")
-    
-    if errors:
-        if any("冲突" in e for e in errors):
-            return GateResult(1, "Market Truth", GateStatus.DEGRADED, details, errors, 1)
-        return GateResult(1, "Market Truth", GateStatus.DATA_INCOMPLETE, details, errors, 1)
-    return GateResult(1, "Market Truth", GateStatus.PASS, details, [], 1)
-
+        return GateResult(1, "Market Truth", GateStatus.BLOCK, {}, [str(e)], 1)
 
 def gate2_source_arbitration(ticker: str, g1_details: dict) -> GateResult:
-    """闸口2: Source Arbitration — 调用Z-G01统一接口, 只承接MT.status, 不二次裁决"""
-    status = g1_details.get("status", "BLOCK")
-    if status == "PASS":
-        return GateResult(2, "Source Arbitration", GateStatus.PASS,
-            {"price": g1_details["price"], "source": g1_details.get("source",""),
-             "output_level": g1_details.get("output_level","O5"),
-             "capability_mask": g1_details.get("capability_mask",{})}, [], 0)
-    if status == "DEGRADED":
-        return GateResult(2, "Source Arbitration", GateStatus.DEGRADED,
-            {"output_level": g1_details.get("output_level","O3"),
-             "capability_mask": g1_details.get("capability_mask",{})},
-            ["承接MT DEGRADED"], 0)
-    return GateResult(2, "Source Arbitration", GateStatus.BLOCK,
-        {"output_level": g1_details.get("output_level","O2"),
-         "capability_mask": g1_details.get("capability_mask",{})},
-        ["承接MT BLOCK"], 0)
-
+    """闸口2: Source Arbitration — 委托Z-G01, 只承接不二次裁决"""
+    from pipelines.z17_loader import source_arbitrate as z01_source_arbitrate
+    try:
+        g2 = z01_source_arbitrate(ticker, g1_details)
+        return GateResult(2, "Source Arbitration",
+            GateStatus.PASS if g2.get("status")=="PASS" else (GateStatus.DEGRADED if g2.get("status")=="DEGRADED" else GateStatus.BLOCK),
+            g2, g2.get("errors",[]), 0)
+    except Exception as e:
+        return GateResult(2, "Source Arbitration", GateStatus.DEGRADED, {}, [str(e)], 0)
 
 def gate3_dq_score(ticker: str) -> GateResult:
     """闸口3: Data Quality评分。DQ<60→禁买卖, DQ<85→禁V4。宪法第3条: 能力边界诚实。"""
@@ -592,7 +515,7 @@ def run_pipeline(tickers: List[str], mode: str = "watch") -> dict:
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Z2 10-GATE ROTATION PIPELINE v1.0 ENFORCED")
+    parser = argparse.ArgumentParser(description="Z-G07 轮动+黑马选股 v2.9.5-RC")
     parser.add_argument("--tickers", type=str, required=True, help="逗号分隔的股票代码 e.g. 002463,688608,000988")
     parser.add_argument("--mode", type=str, default="watch", choices=["watch","full"],
                        help="模式: watch(观察) / full(全链)")

@@ -39,20 +39,23 @@ def _auction_snapshot(ticker):
     }
 
 def _vwap_check(ticker):
-    """VWAP站稳检测 — 简化为价格vs开盘对比"""
+    """VWAP站稳检测 — 日内VWAP近似 (high+low+close)/3 vs price"""
     g1 = market_truth(ticker)
-    kl = get_kline(ticker, 20)
-    if g1.get("price") and g1.get("open") and g1["price"] >= g1["open"]:
-        return "ABOVE_OPEN"
-    return "BELOW_OPEN"
+    if g1.get("price") and g1.get("high") and g1.get("low"):
+        vwap_est = (g1["high"] + g1["low"] + g1["price"]) / 3
+        if g1["price"] >= vwap_est:
+            return "ABOVE_VWAP"
+    return "BELOW_VWAP"
 
 def _volume_ratio(ticker):
-    """量比 = 当前量 / 5日均量"""
+    """量比 = 当前量 / 5日均量 (NOTE: get_kline不返回volume, 返回估算值)"""
+    g1 = market_truth(ticker)
     kl = get_kline(ticker, 20)
     if kl.get("prices") and len(kl["prices"]) >= 6:
-        avg5 = sum(kl["prices"][-6:-1]) / 5 if len(kl["prices"]) >= 6 else kl["prices"][-1]
-        return round(kl["prices"][-1] / avg5, 2) if avg5 else 0
-    return 0
+        vol_est = abs(kl["prices"][-1] - kl["prices"][-2]) / kl["prices"][-2] * 100 if kl["prices"][-2] else 0
+        vol_avg = sum(abs(kl["prices"][i]-kl["prices"][i-1])/kl["prices"][i-1] for i in range(-5,0)) / 5 * 100 if len(kl["prices"])>=6 else 0
+        return round(vol_est / vol_avg, 2) if vol_avg else 1.0
+    return 1.0  # default neutral
 
 def run(tickers=None, mode="confirm"):
     """Z-G03 主管线"""

@@ -75,10 +75,13 @@ def run(pool_size=100):
     tickers = _extract_list()
     print(f"📡 扫描: {len(tickers)}标的")
     
-    candidates = []
+    candidates = []; degraded = []
     for i, t in enumerate(tickers):
         sc = _quick_d_score(t)
-        if sc: candidates.append(sc)
+        if sc and sc.get("status") != "DATA_INSUFFICIENT" and "score" in sc:
+            candidates.append(sc)
+        elif sc:
+            degraded.append(sc)  # 数据不足落盘, 不进入排序
         if (i+1) % 30 == 0: print(f"  进度: {i+1}/{len(tickers)}")
     
     candidates.sort(key=lambda x: x["score"], reverse=True)

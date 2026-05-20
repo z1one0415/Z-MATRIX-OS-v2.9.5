@@ -47,10 +47,13 @@ def run(pool_size=80):
     tickers = _extract_scan_list()
     print(f"📡 扫描范围: {len(tickers)}标的 → 筛选TOP{pool_size}")
     
-    candidates = []
+    candidates = []; degraded = []
     for t in tickers:
         sc = _quick_r_score(t)
-        if sc: candidates.append(sc)
+        if sc and sc.get("status") != "DATA_INSUFFICIENT" and "score" in sc:
+            candidates.append(sc)
+        elif sc:
+            degraded.append(sc)  # 数据不足落盘, 不进入排序
         if len(candidates) % 50 == 0:
             print(f"  进度: {len(candidates)}/{len(tickers)}")
     

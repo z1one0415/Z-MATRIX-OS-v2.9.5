@@ -29,11 +29,29 @@ echo "== Z-G09/Z-G10 scorer contract tests =="
 python3 tests/test_zg09_zg10_contracts.py
 
 echo ""
+echo "== B-Matrix v2.1.1 tests =="
+python3 tests/test_b_matrix_v211.py
+
+echo ""
+echo "== Z-G13 B-Matrix integration tests =="
+python3 tests/test_zg13_bmatrix_integration.py
+
+echo ""
+echo "== OHLCV data contract tests =="
+python3 tests/test_data_contract_ohlcv.py
+
+echo ""
+echo "== Z-G03 intraday contract tests =="
+python3 tests/test_zg03_intraday_contract.py
+
+echo ""
 echo "== Pytest =="
 if command -v pytest >/dev/null 2>&1; then
     pytest tests/test_core_contracts.py tests/test_pipeline_smoke.py \
         tests/test_pipeline_manifest_smoke.py tests/test_zg09_zg10_contracts.py \
-        tests/test_zg09_type_a_horizontal.py -q
+        tests/test_zg09_type_a_horizontal.py tests/test_b_matrix_v211.py \
+        tests/test_zg13_bmatrix_integration.py tests/test_data_contract_ohlcv.py \
+        tests/test_zg03_intraday_contract.py -q
 else
     echo "pytest not installed, skip"
 fi

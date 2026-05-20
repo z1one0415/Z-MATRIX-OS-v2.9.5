@@ -48,14 +48,15 @@ def _vwap_check(ticker):
     return "BELOW_VWAP"
 
 def _volume_ratio(ticker):
-    """量比 = 当前量 / 5日均量 (NOTE: get_kline不返回volume, 返回估算值)"""
-    g1 = market_truth(ticker)
+    """量比 = 今日成交量 / 5日均量 (OHLCV daily volume)"""
     kl = get_kline(ticker, 20)
-    if kl.get("prices") and len(kl["prices"]) >= 6:
-        vol_est = abs(kl["prices"][-1] - kl["prices"][-2]) / kl["prices"][-2] * 100 if kl["prices"][-2] else 0
-        vol_avg = sum(abs(kl["prices"][i]-kl["prices"][i-1])/kl["prices"][i-1] for i in range(-5,0)) / 5 * 100 if len(kl["prices"])>=6 else 0
-        return round(vol_est / vol_avg, 2) if vol_avg else 1.0
-    return 1.0  # default neutral
+    volumes = kl.get("volume", [])
+    if len(volumes) >= 6:
+        avg = sum(volumes[-6:-1]) / 5
+        today = volumes[-1]
+        return round(today / avg, 2) if avg > 0 else 1.0
+    # Fallback to neutral when no OHLCV volume
+    return 1.0
 
 def run(tickers=None, mode="confirm"):
     """Z-G03 主管线"""
@@ -105,9 +106,9 @@ def run(tickers=None, mode="confirm"):
         vwap = _vwap_check(t)
         vr = _volume_ratio(t)
         verdict = "UNCERTAIN"
-        if vwap == "ABOVE_OPEN" and vr > 0.8:
+        if vwap == "ABOVE_VWAP" and vr > 0.8:
             verdict = "CONFIRMED"
-        elif vwap == "BELOW_OPEN" or vr < 0.5:
+        elif vwap == "BELOW_VWAP" or vr < 0.5:
             verdict = "REJECTED"
         
         entry = {

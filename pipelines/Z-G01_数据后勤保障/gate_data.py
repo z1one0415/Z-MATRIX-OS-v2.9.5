@@ -207,13 +207,15 @@ def market_truth(ticker):
     bs = _bs_raw_kline(ticker, 10)
     if bs.get("error"): errs.append(f"bs:{bs['error']}")
     elif bs.get("prices"):
-        lt = bs["prices"][-1]; dt["baostock_close"]=lt["close"]; dt["baostock_date"]=lt["date"]
+        lt_close = bs["close"][-1] if bs.get("close") else bs["prices"][-1]
+        lt_date = bs["dates"][-1] if bs.get("dates") else ""
+        dt["baostock_close"] = lt_close; dt["baostock_date"] = lt_date
         if "price" in dt:
             today = datetime.now().strftime("%Y-%m-%d")
-            dp = abs(dt["price"]-lt["close"])/dt["price"]*100
+            dp = abs(dt["price"]-lt_close)/dt["price"]*100
             dt["source_diff_pct"]=round(dp,2)
-            dd = max(0,(datetime.strptime(today,"%Y-%m-%d")-datetime.strptime(lt["date"],"%Y-%m-%d")).days)
-            is_same_trading_date = lt["date"] == today
+            dd = max(0,(datetime.strptime(today,"%Y-%m-%d")-datetime.strptime(lt_date,"%Y-%m-%d")).days) if lt_date else 0
+            is_same_trading_date = lt_date == today
             if is_same_trading_date:
                 # Same trading day: standard thresholds apply
                 if dp <= 0.30: dt["cross_validated"]=True; dt["price_conflict"]=False
@@ -221,7 +223,7 @@ def market_truth(ticker):
                 else: dt["price_conflict"]=True; errs.append(f"execution_quote BLOCK:{dt['price']}vs{lt['close']}({dp:.1f}%>1.0%)")
             else:
                 # Real-time vs previous close: never BLOCK on diff alone
-                dt["historical_close_date"] = lt["date"]
+                dt["historical_close_date"] = lt_date
                 dt["comparison_mode"] = "realtime_vs_previous_close_reference"
                 dt["cross_validated"] = False
                 dt["degraded"] = True

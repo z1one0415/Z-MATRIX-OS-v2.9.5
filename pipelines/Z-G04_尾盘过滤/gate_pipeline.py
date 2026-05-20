@@ -49,15 +49,18 @@ def _tail_30min_analysis(ticker):
         return {"type": "FALSE_PREHEAT", "ticker": ticker,
                 "reason": f"缩量尾盘拉升 (+{today_chg:.1f}%, 量比{vol_ratio:.1f}x)",
                 "action": "冷却3交易日, 禁止生命周期升级",
-                "data_contract": data_contract, "volume_source": vol_source}
+                "data_contract": data_contract, "volume_source": vol_source,
+                "confidence": "MEDIUM" if vol_source == "daily_ohlcv" else "DEGRADED"}
     if today_chg > 2 and vol_ratio > 1.5:
         return {"type": "SMART_MONEY_TAIL", "ticker": ticker,
                 "reason": f"放量逆势抢筹 (+{today_chg:.1f}%, 量比{vol_ratio:.1f}x)",
                 "action": "次日观察优先级, 需L3确认",
-                "data_contract": data_contract, "volume_source": vol_source}
+                "data_contract": data_contract, "volume_source": vol_source,
+                "confidence": "MEDIUM" if vol_source == "daily_ohlcv" else "DEGRADED"}
     
     return {"type": "NORMAL", "ticker": ticker, "reason": "尾盘无异常",
-            "data_contract": data_contract, "volume_source": vol_source}
+            "data_contract": data_contract, "volume_source": vol_source,
+            "confidence": "MEDIUM" if vol_source == "daily_ohlcv" else "DEGRADED"}
 
 def run(tickers=None, mode="tail_filter"):
     """Z-G04 主管线"""

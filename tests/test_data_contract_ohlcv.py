@@ -85,9 +85,41 @@ def test_zg11_cash_ratio_not_placeholder():
     print("✅ Z-G11 cash_ratio=None / NOT_CONNECTED")
 
 
+
+
+def test_market_truth_handles_ohlcv_raw_kline_shape():
+    """market_truth must handle OHLCV dict (prices=float list), not crash on float-as-dict"""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("zg01", "pipelines/Z-G01_数据后勤保障/gate_data.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    
+    mod._cache_get = lambda ck, ttl=None: None
+    mod._cache_set = lambda ck, rv, ttl=None: None
+    mod._sina_quote = lambda t: {
+        "price": 10.5, "open": 10.3, "high": 10.8, "low": 10.1,
+        "volume": "1000000", "name": "测试", "source": "sina_api", "time": "15:00:00",
+    }
+    mod._bs_raw_kline = lambda t, d: {
+        "dates": ["2026-05-19"],
+        "close": [10.0],
+        "prices": [10.0],  # float list, NOT dict list
+        "count": 1,
+        "data_contract": "OHLCV_DAILY_V1",
+    }
+    
+    r = mod.market_truth("002463")
+    
+    assert r["status"] in {"PASS", "DEGRADED"}, f"status={r['status']}"
+    assert r["baostock_close"] == 10.0, f"close={r['baostock_close']}"
+    assert r["baostock_date"] == "2026-05-19"
+    assert r.get("comparison_mode") == "realtime_vs_previous_close_reference"
+    print(f"✅ market_truth OHLCV shape: status={r['status']} close={r['baostock_close']} mode={r.get('comparison_mode')}")
+
 if __name__ == "__main__":
     test_get_kline_contract_has_ohlcv_keys()
     test_zg04_uses_volume_not_prices()
     test_market_truth_realtime_vs_prev_close_not_block()
     test_zg11_cash_ratio_not_placeholder()
+    test_market_truth_handles_ohlcv_raw_kline_shape()
     print("\n🏁 OHLCV data contract tests PASS")

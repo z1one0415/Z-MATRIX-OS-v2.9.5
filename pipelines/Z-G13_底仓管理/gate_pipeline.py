@@ -101,9 +101,9 @@ def run():
         # Financial coverage — authoritative source is G01, do not recompute
         fin = get_financials(p["code"]) if get_financials else {}
         fin_contract = fin.get("data_contract", "UNKNOWN")
+        fin_missing = fin.get("missing_fields", [])
         fin_coverage = fin.get("financial_coverage_ratio")
         if fin_coverage is None:
-            fin_missing = fin.get("missing_fields", [])
             total = max(len(fin_missing), 1)
             fin_coverage = round(1.0 - len(fin_missing) / total, 2)
         

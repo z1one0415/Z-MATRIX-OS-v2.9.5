@@ -24,10 +24,10 @@ Z-G11  🟢-light  组合风控 (集中度可用, 现金未接入)
 Z-G12  🟢        系统巡检
 Z-G13  🟢-light  底仓管理 (B-Matrix v2.1.1 5类真评分, 数据源字段待补)
 Z-G14  🟢-light  月度全量选股 (B/R/D真评分, A_SHARE_ALL强制, fail-closed)
-Z-G15  🟡        产业链深研 (V3证据分层 原型)
+Z-G15  🟢-light  产业链深研 (B/R/D矩阵+同行比对+催化剂日历)
 Z-G16  🟢        V4纸面执行教练 (Full/Lite双模式)
 Z-G16A 🟢        Alpha平行验证仓
-Z-G17  🟢-light  人类风控 (Tilt账本可用, 心理风控待增强)
+Z-G17  🟢-light  人类风控 (Sina行情+组合上下文+Ledger, 实时数据已接入)
 ```
 
 > 🟢 = 核心可执行 / 🟢-light = 有入口可运行但轻量 / 🟡 = 原型需升级 / 🔴 = 待建

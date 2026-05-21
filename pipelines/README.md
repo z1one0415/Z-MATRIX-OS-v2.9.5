@@ -20,10 +20,10 @@
 | Z-G12 | 系统巡检 | 🟢 | 6模块+DQ+Cron |
 | Z-G13 | 底仓管理 | 🟢-light | B-Matrix v2.1.1已接入 5类真评分；数据源(get_financials)字段仍为stub |
 | Z-G14 | 月度全量选股(流A) | 🟢-light | A_SHARE_ALL强制, UniverseProvider, count>=4000 fail-closed; B/R/D真评分; chain_taxonomy已接入 |
-| Z-G15 | 产业链深研 | 🟡 | V3证据分层 |
+| Z-G15 | 产业链深研 | 🟢-light | B/R/D矩阵+同行比对+催化剂日历; 实时数据已接入 |
 | Z-G16 | V4纸面执行教练 | 🟢 | Full/Lite双模式，PAPER_PROBE conditional_output |
 | Z-G16A | Alpha平行验证仓 | 🟢 | PAPER_WORLD+幽灵基准 |
-| Z-G17 | 人类风控 | 🟢-light | Tilt账本可用；完整心理风控待增强 |
+| Z-G17 | 人类风控 | 🟢-light | Sina行情+Z-G01+组合上下文+Tilt检测+Ledger; 实时数据已接入 |
 
 ## 状态说明
 🟢 = 核心可执行 / 契约较完整 | 🟢-light = 有入口可运行但轻量 | 🟡 = 原型 / 需升级 | 🔴 = 待建

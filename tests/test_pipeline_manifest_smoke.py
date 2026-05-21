@@ -20,7 +20,7 @@ PIPELINE_MANIFEST = {
     "Z-G12": {"path": "pipelines/Z-G12_系统巡检/gate_pipeline.py", "status": "executable_core"},
     "Z-G13": {"path": "pipelines/Z-G13_底仓管理/gate_pipeline.py", "status": "executable_light"},
     "Z-G14": {"path": "pipelines/Z-G14_月度全量选股/gate_pipeline.py", "status": "executable_light"},
-    "Z-G15": {"path": "pipelines/Z-G15_产业链深研/gate_pipeline.py", "status": "prototype"},
+    "Z-G15": {"path": "pipelines/Z-G15_产业链深研/gate_pipeline.py", "status": "executable_light"},
     "Z-G16": {"path": "pipelines/Z-G16_纸面验证/gate_pipeline.py", "status": "executable_core"},
     "Z-G16A": {"path": "pipelines/Z-G16A_Alpha平行验证仓/gate_pipeline.py", "status": "executable_core"},
     "Z-G17": {"path": "pipelines/Z-G17_人类风控/gate_pipeline.py", "status": "executable_light"},

@@ -12,7 +12,7 @@
 ```
 Z-G01  🟢        数据后勤保障 (Data Service Layer)
 Z-G02  🟡        前夜战报+叙事水温
-Z-G03  🟡        盘中确认
+Z-G03  🟢-light  盘中确认 (DAILY_OHLCV_PROXY, VWAP+量比已接入; M1真实盘中待增强)
 Z-G04  🟢-light  尾盘过滤 (日线volume已接入, M1尾盘待增强)
 Z-G05  🟢        日记忆卡
 Z-G06  🟢        复盘反馈

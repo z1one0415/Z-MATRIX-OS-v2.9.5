@@ -42,7 +42,12 @@ def test_builder_maps_brand_scarcity_fields():
             "scarcity_durability_score": 9.0,
             "brand_mindshare_score": 9.5,
             "channel_health_score": 8.0,
+            "terminal_price_stability_score": 8.5,
+            "young_consumer_relevance_score": 7.5,
+            "demand_generation_risk_score": 2.0,
             "financial_coverage_ratio": 0.6,
+            "b5_evidence_coverage_ratio": 0.86,
+            "b5_missing_fields": ["policy_consumption_risk_score"],
             "missing_fields": ["ocf_3y"],
         },
         dq_score_fn=lambda t: {"total": 90},
@@ -52,7 +57,12 @@ def test_builder_maps_brand_scarcity_fields():
     assert inp.scarcity_durability_score == 9.0
     assert inp.brand_mindshare_score == 9.5
     assert inp.channel_health_score == 8.0
+    assert inp.terminal_price_stability_score == 8.5
+    assert inp.young_consumer_relevance_score == 7.5
+    assert inp.demand_generation_risk_score == 2.0
     assert inp.data_completeness == 0.6
+    assert inp.extra["b5_evidence_coverage_ratio"] == 0.86
+    assert inp.extra["b5_missing_fields"] == ["policy_consumption_risk_score"]
     assert inp.extra["financial_missing_fields"] == ["ocf_3y"]
     print(f"✅ B5 fields: brand={inp.brand_premium_score} scarcity={inp.scarcity_durability_score}")
 

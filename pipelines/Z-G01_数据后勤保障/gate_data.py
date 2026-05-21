@@ -469,6 +469,17 @@ def get_financials(ticker):
     fin["missing_fields"] = sorted(set(fin.get("missing_fields", []) + missing))
     fin["financial_coverage_ratio"] = round(1 - len(missing) / len(BMATRIX_REQUIRED), 3) if BMATRIX_REQUIRED else 1.0
     
+    # B5 brand scarcity evidence coverage (separate from financial coverage)
+    B5_REQUIRED = [
+        "brand_premium_score", "pricing_power_score",
+        "scarcity_durability_score", "brand_mindshare_score",
+        "channel_health_score", "terminal_price_stability_score",
+        "young_consumer_relevance_score",
+    ]
+    b5_missing = [k for k in B5_REQUIRED if fin.get(k) is None]
+    fin["b5_missing_fields"] = b5_missing
+    fin["b5_evidence_coverage_ratio"] = round(1 - len(b5_missing) / len(B5_REQUIRED), 3) if B5_REQUIRED else 0.0
+    
     if fin["financial_coverage_ratio"] < 0.5:
         fin["status"] = "DATA_INCOMPLETE"
     elif fin.get("has_finance"):

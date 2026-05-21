@@ -69,9 +69,14 @@ def _real_b_score(ticker, name):
                 "traps": [], "error": "BMatrixInput build failed"}
     try:
         bm = evaluate_bm(inp)
-        return {"score": round(bm.score_final * 10, 1), "status": "PASS",
+        coverage = getattr(inp, "data_completeness", 1.0)
+        status = "PASS" if coverage >= 0.5 else "DEGRADED"
+        return {"score": round(bm.score_final * 10, 1), "status": status,
                 "base_type": bm.base_type.value, "rating": bm.rating.value,
-                "traps": bm.trap_flags, "error": None}
+                "traps": bm.trap_flags, "error": None,
+                "data_completeness": coverage,
+                "missing_fields": inp.extra.get("financial_missing_fields", []),
+                "b5_evidence_coverage_ratio": inp.extra.get("b5_evidence_coverage_ratio")}
     except Exception as e:
         return {"score": None, "status": "ERROR", "base_type": None, "rating": None,
                 "traps": [], "error": str(e)[:120]}

@@ -99,7 +99,7 @@ def test_zg13_outputs_financial_coverage():
             "dividend_yield": 1.0, "debt_ratio": 0.35,
             "ocf_3y": [50, 60, 70], "net_profit_3y": [40, 50, 60],
             "data_contract": "FINANCIAL_BMATRIX_V1",
-            "missing_fields": ["brand_premium_score"],
+            "financial_coverage_ratio": 0.89,"missing_fields": ["brand_premium_score"],
             "cost_curve_score": None, "resource_quality_score": None,
             "pricing_power_score": None, "supply_constraint_score": None,
             "roic_5y": None, "gross_margin": None,
@@ -113,8 +113,9 @@ def test_zg13_outputs_financial_coverage():
         assert "financial_missing_fields" in b
         assert "financial_data_contract" in b
         assert b["financial_data_contract"] == "FINANCIAL_BMATRIX_V1"
-        # 1 missing out of 36 ≈ 0.97 coverage, not LOW
-        assert b["confidence"] != "LOW_DATA_COVERAGE", f"should not be LOW at {b['financial_coverage_ratio']}"
+        # 0.89 coverage from G01 authoritative source, not LOW
+        assert b["financial_coverage_ratio"] == 0.89
+        assert b["confidence"] != "LOW_DATA_COVERAGE"
         print(f"✅ coverage={b['financial_coverage_ratio']} missing={b['financial_missing_fields']} confidence={b['confidence']}")
     finally:
         os.unlink(mem_path)
@@ -138,7 +139,7 @@ def test_zg13_low_coverage_marks_degraded():
         mod.get_financials = lambda t: {
             "has_finance": True, "industry": "电子",
             "data_contract": "FINANCIAL_BMATRIX_V1",
-            "missing_fields": [f"field_{i}" for i in range(25)],  # 25 missing out of ~36
+            "financial_coverage_ratio": 0.2,"missing_fields": [f"field_{i}" for i in range(25)],  # 25 missing out of ~36
         }
         mod.dq_score = lambda t: {"total": 85}
         mod.l4_health = lambda t: {"status": "PASS", "errors": []}

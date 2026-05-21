@@ -99,6 +99,8 @@ def run():
             print(f"     🚩 Traps: {', '.join(trap_summary)}")
         
         # Financial coverage — authoritative source is G01, do not recompute
+        fin = get_financials(p["code"]) if get_financials else {}
+        fin_contract = fin.get("data_contract", "UNKNOWN")
         fin_coverage = fin.get("financial_coverage_ratio")
         if fin_coverage is None:
             fin_missing = fin.get("missing_fields", [])

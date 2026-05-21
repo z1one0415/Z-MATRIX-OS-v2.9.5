@@ -69,7 +69,14 @@ def build_bmatrix_input(ticker: str, name: str = "",
         capex_reinvestment_need=fin.get("capex_reinvestment_need"),
         reinvestment_runway_score=fin.get("reinvestment_runway_score"),
         policy_consumption_risk_score=fin.get("policy_consumption_risk_score"),
+        demand_generation_risk_score=fin.get("demand_generation_risk_score"),
+        terminal_price_stability_score=fin.get("terminal_price_stability_score"),
+        young_consumer_relevance_score=fin.get("young_consumer_relevance_score"),
         # Data completeness
         data_completeness=fin.get("financial_coverage_ratio", 0.0),
-        extra={"financial_missing_fields": fin.get("missing_fields", [])},
+        extra={
+            "financial_missing_fields": fin.get("missing_fields", []),
+            "b5_missing_fields": fin.get("b5_missing_fields", []),
+            "b5_evidence_coverage_ratio": fin.get("b5_evidence_coverage_ratio"),
+        },
     )

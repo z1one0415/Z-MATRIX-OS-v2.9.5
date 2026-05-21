@@ -163,6 +163,29 @@ def test_zg14_candidate_has_chain_field():
     assert "chain_taxonomy" in r["sections"]
     print(f"✅ candidate chain={c['chain']} density={r['sections'].get('chain_density',{})}")
 
+
+def test_zg14_b5_low_evidence_coverage_degrades_status():
+    """B5 brand_scarcity with b5_cov=0.2→DEGRADED_B5_EVIDENCE_LOW"""
+    import importlib.util
+    from types import SimpleNamespace
+    spec = importlib.util.spec_from_file_location("zg14", "pipelines/Z-G14_月度全量选股/gate_pipeline.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    class FakeBaseType: value = "BRAND_SCARCITY_MONOPOLY"
+    class FakeRating: value = "A"
+    class FakeBM:
+        score_final = 8.0; base_type = FakeBaseType(); rating = FakeRating(); trap_flags = []
+    fake_input = SimpleNamespace(
+        data_completeness=0.9,
+        extra={"financial_missing_fields": [], "b5_evidence_coverage_ratio": 0.2,
+               "b5_missing_fields": ["brand_mindshare_score"]})
+    mod._build_bmatrix_input = lambda t, n: fake_input
+    mod._get_b_matrix = lambda: (object, lambda inp: FakeBM())
+    b = mod._real_b_score("600519", "贵州茅台")
+    assert b["status"] == "DEGRADED_B5_EVIDENCE_LOW", f"got {b['status']}"
+    assert b["b5_evidence_coverage_ratio"] == 0.2
+    print(f"✅ B5 degrade→{b['status']} b5_cov={b['b5_evidence_coverage_ratio']}")
+
 if __name__ == "__main__":
     test_zg14_dmatrix_error_not_zero_score_silently()
     test_zg14_r_matrix_error_visible()
@@ -170,6 +193,7 @@ if __name__ == "__main__":
     test_dmatrix_payload_builder_used_by_all_three()
     test_zg14_sorts_by_weighted_total_not_raw_total()
     test_zg14_data_gap_confidence_not_pass()
+    test_zg14_b5_low_evidence_coverage_degrades_status()
     test_zg14_uses_chain_taxonomy_provider_not_hardcoded_chains()
     test_zg14_candidate_has_chain_field()
     print("\n🏁 Z-G14 matrix reliability tests PASS")

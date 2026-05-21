@@ -172,10 +172,48 @@ def test_zg13_goodwill_via_unified_builder():
     assert inp.extra["financial_missing_fields"] == ["roe_5y_avg"]
     print(f"✅ builder: goodwill={inp.goodwill_to_net_assets} coverage={inp.data_completeness}")
 
+
+def test_zg13_b5_low_evidence_marks_confidence():
+    """B5 type with low b5_evidence_coverage→LOW_B5_EVIDENCE_COVERAGE"""
+    import tempfile
+    spec = importlib.util.spec_from_file_location("zg13", "pipelines/Z-G13_底仓管理/gate_pipeline.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    
+    with tempfile.NamedTemporaryFile(mode="w", suffix=".md", delete=False) as f:
+        f.write("| 贵州茅台 600519 | 100股 | 1500 |\n")
+        mem_path = f.name
+    
+    try:
+        mod.MEMORY_MD = __import__("pathlib").Path(mem_path)
+        mod.market_truth = lambda t: {"status": "PASS", "name": "贵州茅台", "industry": "高端白酒"}
+        mod.get_financials = lambda t: {
+            "has_finance": True, "industry": "高端白酒",
+            "data_contract": "FINANCIAL_BMATRIX_V1",
+            "financial_coverage_ratio": 0.9, "missing_fields": [],
+            "b5_evidence_coverage_ratio": 0.2,
+            "b5_missing_fields": ["brand_mindshare_score"],
+            "brand_premium_score": 9, "pricing_power_score": 9,
+            "supply_constraint_score": 9, "roe_5y_avg": 30,
+        }
+        mod.dq_score = lambda t: {"total": 90}
+        mod.l4_health = lambda t: {"status": "PASS", "errors": []}
+        
+        r = mod.run()
+        b = r["b_pool"][0]
+        assert b["b5_evidence_coverage_ratio"] == 0.2
+        assert b["b5_missing_fields"] == ["brand_mindshare_score"]
+        if b["base_type"] == "BRAND_SCARCITY_MONOPOLY":
+            assert b["confidence"] == "LOW_B5_EVIDENCE_COVERAGE"
+        print(f"✅ b5 conf={b['confidence']} cov={b['b5_evidence_coverage_ratio']}")
+    finally:
+        os.unlink(mem_path)
+
 if __name__ == "__main__":
     test_get_financials_returns_bmatrix_v1_contract()
     test_get_financials_marks_missing_not_fabricates()
     test_zg13_outputs_financial_coverage()
     test_zg13_low_coverage_marks_degraded()
     test_zg13_goodwill_via_unified_builder()
+    test_zg13_b5_low_evidence_marks_confidence()
     print("\n🏁 Z-G13 financial coverage tests PASS")

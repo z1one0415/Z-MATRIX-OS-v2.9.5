@@ -107,6 +107,13 @@ def run():
             total = max(len(fin_missing), 1)
             fin_coverage = round(1.0 - len(fin_missing) / total, 2)
         
+        b5_cov = fin.get("b5_evidence_coverage_ratio")
+        b5_missing = fin.get("b5_missing_fields", [])
+        confidence = "LOW_DATA_COVERAGE" if fin_coverage < 0.5 else "MEDIUM"
+        if bm.base_type == BaseType.BRAND_SCARCITY_MONOPOLY:
+            if b5_cov is not None and b5_cov < 0.5:
+                confidence = "LOW_B5_EVIDENCE_COVERAGE"
+        
         b_results.append({
             "code": p["code"], "name": p["name"],
             "base_type": bm.base_type.value,
@@ -120,12 +127,9 @@ def run():
             "financial_coverage_ratio": fin_coverage,
             "financial_missing_fields": fin_missing,
             "financial_data_contract": fin_contract,
-                                    confidence = "LOW_DATA_COVERAGE" if fin_coverage < 0.5 else "MEDIUM"
-            if bm.base_type == BaseType.BRAND_SCARCITY_MONOPOLY:
-                b5_cov = fin.get("b5_evidence_coverage_ratio")
-                if b5_cov is not None and b5_cov < 0.5:
-                    confidence = "LOW_B5_EVIDENCE_COVERAGE"
-            
+            "b5_evidence_coverage_ratio": b5_cov,
+            "b5_missing_fields": b5_missing,
+            "confidence": confidence,
         })
 
     # Summary

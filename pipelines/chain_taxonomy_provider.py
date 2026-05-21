@@ -28,8 +28,7 @@ CHAINS = {
         "sw_sectors": ["电子", "半导体"],
     },
     "资源周期": {
-        "codes": ["601899", "601898", "600519", "000858", "601088", "600028",
-                  "600188", "600547"],
+        "codes": ["601899", "601898", "601088", "600028", "600188", "600547"],
         "keywords": ["紫金", "中煤", "神华", "黄金", "石油", "铜", "铝", "锂"],
         "sw_sectors": ["有色金属", "煤炭", "石油石化"],
     },
@@ -43,26 +42,56 @@ CHAINS = {
 
 def match_chain(ticker: str, name: str, industry: str = "") -> str | None:
     """Match a stock to its primary chain. Returns chain name or None."""
+    return match_chain_detail(ticker, name, industry).get("primary_chain")
+
+
+def match_chain_detail(ticker: str, name: str, industry: str = "") -> dict:
+    """Match a stock to chain(s) with multi-chain support.
+    
+    Returns:
+        primary_chain: str | None — highest-confidence chain
+        secondary_chains: list[str] — other matching chains
+        match_reason: "code" | "industry" | "keyword" | "none"
+        confidence: "HIGH" | "MEDIUM" | "LOW" | "UNMAPPED"
+    """
+    hits = []  # (chain, reason, confidence)
     for chain, info in CHAINS.items():
         if ticker in info["codes"]:
-            return chain
-        if industry and industry in info.get("sw_sectors", []):
-            return chain
-        if name:
+            hits.append((chain, "code", "HIGH"))
+        elif industry and industry in info.get("sw_sectors", []):
+            hits.append((chain, "industry", "MEDIUM"))
+        elif name:
             for kw in info.get("keywords", []):
                 if kw in name:
-                    return chain
-    return None
+                    hits.append((chain, "keyword", "LOW"))
+                    break
+    
+    if not hits:
+        return {
+            "primary_chain": None,
+            "secondary_chains": [],
+            "match_reason": "none",
+            "confidence": "UNMAPPED",
+        }
+    
+    primary = hits[0]
+    return {
+        "primary_chain": primary[0],
+        "secondary_chains": [h[0] for h in hits[1:]],
+        "match_reason": primary[1],
+        "confidence": primary[2],
+    }
 
 
 def chain_density(tickers, names=None, industries=None) -> dict[str, int]:
-    """Count tickers per chain. Returns {chain_name: count}."""
+    """Count tickers per chain using match_chain_detail. Returns {chain_name: count}."""
     density = {c: 0 for c in CHAINS}
     blind = 0
     for i, t in enumerate(tickers):
         n = names[i] if names and i < len(names) else ""
         ind = industries[i] if industries and i < len(industries) else ""
-        ch = match_chain(t, n, ind)
+        detail = match_chain_detail(t, n, ind)
+        ch = detail["primary_chain"]
         if ch:
             density[ch] += 1
         else:

@@ -203,14 +203,16 @@ def _full_scan(tickers):
 
         # Chain mapping
         try:
-            from pipelines.chain_taxonomy_provider import match_chain
-            chain = match_chain(ticker=t, name=name, industry=g1.get("industry", ""))
+            from pipelines.chain_taxonomy_provider import match_chain_detail
+            chain_detail = match_chain_detail(ticker=t, name=name, industry=g1.get("industry", ""))
+            chain = chain_detail.get("primary_chain")
         except Exception:
             chain = None
 
         candidates.append({
             "code": t, "name": name,
             "chain": chain or "未映射",
+            "chain_detail": chain_detail,
             "b": b_final, "r": r_final, "d": d_final,
             "b_type": b.get("base_type"), "b_rating": b.get("rating"),
             "r_subtype": r.get("subtype"), "d_lifecycle": d.get("lifecycle"),

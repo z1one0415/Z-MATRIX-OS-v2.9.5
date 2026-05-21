@@ -158,13 +158,18 @@ def test_zg14_candidate_has_chain_field():
     assert r["candidates"], "no candidates"
     c = r["candidates"][0]
     assert "chain" in c, f"missing chain field: {list(c.keys())}"
-    assert c["chain"] in {"消费品牌", "资源周期", "未映射"}, f"unexpected chain: {c['chain']}"
+    assert c["chain"] == "消费品牌", f"茅台应为消费品牌, 实际: {c['chain']}"
+    assert c.get("industry") == "食品饮料"
+    assert "chain_detail" in c
+    assert c["chain_detail"]["primary_chain"] == "消费品牌"
+    assert c["chain_detail"]["confidence"] in {"HIGH", "MEDIUM"}
     assert "chain_density" in r["sections"]
     assert "chain_taxonomy" in r["sections"]
     print(f"✅ candidate chain={c['chain']} density={r['sections'].get('chain_density',{})}")
 
 
-def test_zg14_b5_low_evidence_coverage_degrades_status():
+def test_zg14_b5_low_evidence_coverage_degrades_status()
+    test_zg14_candidate_confidence_reflects_b5_low_evidence():
     """B5 brand_scarcity with b5_cov=0.2→DEGRADED_B5_EVIDENCE_LOW"""
     import importlib.util
     from types import SimpleNamespace
@@ -186,6 +191,26 @@ def test_zg14_b5_low_evidence_coverage_degrades_status():
     assert b["b5_evidence_coverage_ratio"] == 0.2
     print(f"✅ B5 degrade→{b['status']} b5_cov={b['b5_evidence_coverage_ratio']}")
 
+
+
+def test_zg14_candidate_confidence_reflects_b5_low_evidence():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location('zg14', 'pipelines/Z-G14_月度全量选股/gate_pipeline.py')
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    mod.market_truth = lambda t: {'status':'PASS','name':'贵州茅台','industry':'食品饮料','price':1500}
+    mod.l4_health = lambda t: {'status':'PASS'}
+    mod.get_kline = lambda t,d: {'prices':[100]*500,'close':[100]*500,'open':[100]*500,'high':[101]*500,'low':[99]*500,'volume':[1000]*500,'amount':[10000]*500,'dates':['2026-05-20']*500,'data_contract':'OHLCV_DAILY_V1'}
+    mod._real_b_score = lambda t,n: {'score':60,'status':'DEGRADED_B5_EVIDENCE_LOW','base_type':'BRAND_SCARCITY_MONOPOLY','rating':'A','traps':[],'error':None}
+    mod._real_r_score = lambda t,n,p: {'score':40,'status':'PASS','subtype':'A','error':None}
+    mod._real_d_score = lambda t,n,p,kl: {'score':30,'status':'PASS','lifecycle':'D1','error':None}
+    candidates = mod._full_scan(['600519'])
+    assert candidates
+    c = candidates[0]
+    assert c['score_status']['b'] == 'DEGRADED_B5_EVIDENCE_LOW'
+    assert c['confidence'] == 'DEGRADED_B5_EVIDENCE_LOW', f"got {c['confidence']}"
+    print(f"✅ candidate confidence={c['confidence']} (from B5 status)")
+
 if __name__ == "__main__":
     test_zg14_dmatrix_error_not_zero_score_silently()
     test_zg14_r_matrix_error_visible()
@@ -194,6 +219,7 @@ if __name__ == "__main__":
     test_zg14_sorts_by_weighted_total_not_raw_total()
     test_zg14_data_gap_confidence_not_pass()
     test_zg14_b5_low_evidence_coverage_degrades_status()
+    test_zg14_candidate_confidence_reflects_b5_low_evidence()
     test_zg14_uses_chain_taxonomy_provider_not_hardcoded_chains()
     test_zg14_candidate_has_chain_field()
     print("\n🏁 Z-G14 matrix reliability tests PASS")

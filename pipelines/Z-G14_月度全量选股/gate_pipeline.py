@@ -181,7 +181,9 @@ def _full_scan(tickers):
             confidence = "DEGRADED_MATRIX_ERROR"
         elif "DATA_GAP" in statuses:
             confidence = "DEGRADED_MATRIX_DATA_GAP"
-        elif "DEGRADED" in statuses:
+        elif "DEGRADED_B5_EVIDENCE_LOW" in statuses:
+            confidence = "DEGRADED_B5_EVIDENCE_LOW"
+        elif any(str(s).startswith("DEGRADED") for s in statuses):
             confidence = "DEGRADED_MATRIX_PARTIAL"
         else:
             confidence = "PASS"

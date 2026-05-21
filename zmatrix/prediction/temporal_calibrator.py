@@ -22,8 +22,8 @@ def evaluate_temporal_consistency(t1_score: float | None, t5_score: float | None
     low = [(h, s) for h, s in scores if s < 0.58]
 
     # INV-TG18-03: T5 high but T1 weak
-    has_t5_high = any(h == "T5" and s > 0.65 for h, s in high)
-    has_t1_weak = any(h == "T1" and s < 0.40 for h, s in low)
+    has_t5_high = any(h == "T5" and s >= 0.75 for h, s in high)
+    has_t1_weak = any(h == "T1" and s < 0.58 for h, s in low)
     has_all_high = len(high) == len(scores) and len(scores) >= 2
     has_all_low = len(low) == len(scores) and len(scores) >= 2
 

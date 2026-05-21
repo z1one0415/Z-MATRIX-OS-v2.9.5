@@ -2,7 +2,8 @@
 """☯️ Z-G11 组合风控 — gate_pipeline.py v1.0
 运行: 每周+调仓前 | 功能: 持仓集中度/角色桶/因子暴露检查
 依赖: Z-G01 (via z17_loader) + MEMORY.md持仓
-输出: 风险警告 + REDUCE_RISK建议
+输出: 风险警告 + RISK_ALERT_REQUIRES_ACCOUNT_CONFIRMATION
+注意: 当前未接券商账户真相，不输出实盘减仓动作
 """
 
 import argparse, json, os, re, sys

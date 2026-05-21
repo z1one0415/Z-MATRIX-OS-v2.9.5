@@ -36,7 +36,12 @@ def test_zg11_positions_ok_returns_pass_proxy():
     
     try:
         mod.MEMORY_MD = __import__("pathlib").Path(mem_path)
-        mod.market_truth = lambda t: {"status": "PASS", "price": 44, "name": "双环传动"}
+        prices = {
+            "002472": {"status": "PASS", "price": 44, "name": "双环传动"},
+            "601899": {"status": "PASS", "price": 31, "name": "紫金矿业"},
+            "600519": {"status": "PASS", "price": 1500, "name": "贵州茅台"},
+        }
+        mod.market_truth = lambda t: prices[t]
         
         r = mod.run()
         assert r["status"] == "PASS_PROXY", f"got {r['status']}"
@@ -67,7 +72,12 @@ def test_zg11_degraded_when_concentrated():
     
     try:
         mod.MEMORY_MD = __import__("pathlib").Path(mem_path)
-        mod.market_truth = lambda t: {"status": "PASS", "price": 44, "name": "双环传动"}
+        prices = {
+            "002472": {"status": "PASS", "price": 44, "name": "双环传动"},
+            "601899": {"status": "PASS", "price": 31, "name": "紫金矿业"},
+            "600519": {"status": "PASS", "price": 1500, "name": "贵州茅台"},
+        }
+        mod.market_truth = lambda t: prices[t]
         
         r = mod.run()
         assert r["status"] == "DEGRADED_ACCOUNT_TRUTH_REQUIRED", f"got {r['status']}"

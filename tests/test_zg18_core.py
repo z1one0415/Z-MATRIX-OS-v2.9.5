@@ -99,8 +99,7 @@ def test_z9_auto_adjust_always_false():
     print("✅ z9 auto_adjust_allowed=False in all predictions")
 
 
-def test_horizon_clamped_to_lineage_cap()
-    test_zg18_sections_auto_adjust_always_false():
+def test_horizon_clamped_to_lineage_cap():
     """P0-3: T1/T5/T20 never exceed probability_cap"""
     import importlib.util
     spec = importlib.util.spec_from_file_location("zg18","pipelines/Z-G18_天机引擎/gate_pipeline.py")

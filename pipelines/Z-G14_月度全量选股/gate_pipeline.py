@@ -24,34 +24,9 @@ def _get_b_matrix():
     return _B_MATRIX
 
 def _build_bmatrix_input(ticker, name):
-    BMatrixInput, _ = _get_b_matrix()
-    if BMatrixInput is None: return None
-    g1 = market_truth(ticker)
-    fin = get_financials(ticker) if get_financials else {}
-    dq = dq_score(ticker) if dq_score else {"total":0}
-    l4 = l4_health(ticker) if l4_health else {"status":"stub"}
-    return BMatrixInput(
-        symbol=ticker, name=name or g1.get("name",""),
-        industry=g1.get("industry", fin.get("industry", "")),
-        is_state_owned=fin.get("is_state_owned", False),
-        is_market_leader=g1.get("is_market_leader", False),
-        is_st=g1.get("is_st", False),
-        suspended=l4.get("status") == "BLOCK",
-        roe_5y=fin.get("roe_5y_avg"), roic_5y=fin.get("roic_5y"),
-        pe_ttm=fin.get("pe_ttm"), pb=fin.get("pb"),
-        dividend_yield=fin.get("dividend_yield"),
-        debt_ratio=fin.get("debt_ratio"),
-        ocf_3y=fin.get("ocf_3y"), net_profit_3y=fin.get("net_profit_3y"),
-        brand_premium_score=fin.get("brand_premium_score"),
-        pricing_power_score=fin.get("pricing_power_score"),
-        supply_constraint_score=fin.get("supply_constraint_score"),
-        gross_margin=fin.get("gross_margin"),
-        cost_curve_score=fin.get("cost_curve_score"),
-        resource_quality_score=fin.get("resource_quality_score"),
-        asset_monopoly_score=fin.get("asset_monopoly_score"),
-        profit_percentile_5y=fin.get("profit_percentile_5y"),
-        policy_stability_score=fin.get("policy_stability_score"),
-    )
+    """Build BMatrixInput via unified builder — shared with Z-G13"""
+    from pipelines.bmatrix_input_builder import build_bmatrix_input
+    return build_bmatrix_input(ticker, name, market_truth, get_financials, dq_score, l4_health)
 
 # ============================================================
 # Real R-Matrix v1.1 scoring
@@ -201,17 +176,27 @@ def _full_scan(tickers):
         else:
             confidence = "PASS"
 
+        industry = g1.get("industry", "")
+
         # Chain mapping
         try:
             from pipelines.chain_taxonomy_provider import match_chain_detail
             chain_detail = match_chain_detail(ticker=t, name=name, industry=g1.get("industry", ""))
             chain = chain_detail.get("primary_chain")
-        except Exception:
+        except Exception as e:
             chain = None
+            chain_detail = {
+                "primary_chain": None,
+                "secondary_chains": [],
+                "match_reason": "error",
+                "confidence": "UNMAPPED",
+                "error": str(e)[:120],
+            }
 
         candidates.append({
             "code": t, "name": name,
             "chain": chain or "未映射",
+            "industry": industry,
             "chain_detail": chain_detail,
             "b": b_final, "r": r_final, "d": d_final,
             "b_type": b.get("base_type"), "b_rating": b.get("rating"),

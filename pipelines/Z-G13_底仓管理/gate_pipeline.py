@@ -18,54 +18,9 @@ except ImportError as e:
 
 
 def _build_bmatrix_input(ticker, name):
-    """Build BMatrixInput from available data sources. Fields absent from
-    get_financials default to None — B-Matrix pricers degrade gracefully."""
-    g1 = market_truth(ticker)
-    fin = get_financials(ticker)
-    dq = dq_score(ticker)
-    l4 = l4_health(ticker)
-
-    return BMatrixInput(
-        symbol=ticker,
-        name=name or g1.get("name",""),
-        industry=g1.get("industry", fin.get("industry", "")),
-        is_state_owned=fin.get("is_state_owned", g1.get("is_state_owned", False)),
-        is_market_leader=g1.get("is_market_leader", False),
-        is_st=g1.get("is_st", False),
-        suspended=l4.get("status") == "BLOCK",
-        delisting_risk=bool(l4.get("delisting_risk")),
-        # Profitability
-        roe_5y=fin.get("roe_5y_avg"),
-        roe_trend=fin.get("roe_trend"),
-        roic_5y=fin.get("roic_5y"),
-        roic_trend=fin.get("roic_trend"),
-        gross_margin=fin.get("gross_margin"),
-        # Valuation
-        pe_ttm=fin.get("pe_ttm"),
-        pb=fin.get("pb"),
-        profit_percentile_5y=fin.get("profit_percentile_5y"),
-        # Balance sheet
-        debt_ratio=fin.get("debt_ratio"),
-        goodwill_to_net_assets=fin.get("goodwill_to_net_assets", fin.get("goodwill_ratio")),
-        # Dividend
-        dividend_yield=fin.get("dividend_yield"),
-        dividend_years_stable=fin.get("dividend_years_stable"),
-        dividends_paid_2y=fin.get("dividends_paid_2y"),
-        capex_2y=fin.get("capex_2y"),
-        ocf_2y=fin.get("ocf_2y"),
-        # Time-series
-        ocf_3y=fin.get("ocf_3y"),
-        net_profit_3y=fin.get("net_profit_3y"),
-        # Qualitative
-        policy_stability_score=fin.get("policy_stability_score"),
-        asset_monopoly_score=fin.get("asset_monopoly_score"),
-        cost_curve_score=fin.get("cost_curve_score"),
-        resource_quality_score=fin.get("resource_quality_score"),
-        # Brand scarcity (B5)
-        brand_premium_score=fin.get("brand_premium_score"),
-        pricing_power_score=fin.get("pricing_power_score"),
-        supply_constraint_score=fin.get("supply_constraint_score"),
-    )
+    """Build BMatrixInput via unified builder — shared with Z-G14"""
+    from pipelines.bmatrix_input_builder import build_bmatrix_input
+    return build_bmatrix_input(ticker, name, market_truth, get_financials, dq_score, l4_health)
 
 
 def _check_thesis(ticker, name):

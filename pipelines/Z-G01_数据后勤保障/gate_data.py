@@ -6,6 +6,7 @@ NOT a pipeline script. All pipelines consume this service via z17_loader. (v1.0)
 """
 
 import json, time, urllib.request, sys, os
+from pathlib import Path
 
 # ═══ 输出等级 (O1-O5) + Capability Mask 范式 (v2.9.5 open-intelligence) ═══
 OUTPUT_LEVELS = {
@@ -457,7 +458,23 @@ def get_financials(ticker):
     for k, v in defaults.items():
         if k not in fin:
             fin[k] = v
-    fin["status"] = "PASS" if fin.get("has_finance") else "DEGRADED"
+    
+    # Real missing_fields + coverage computation
+    BMATRIX_REQUIRED = [
+        "roe_5y_avg", "roic_5y", "pe_ttm", "pb",
+        "dividend_yield", "debt_ratio",
+        "ocf_3y", "net_profit_3y", "goodwill_ratio",
+    ]
+    missing = [k for k in BMATRIX_REQUIRED if fin.get(k) is None]
+    fin["missing_fields"] = sorted(set(fin.get("missing_fields", []) + missing))
+    fin["financial_coverage_ratio"] = round(1 - len(missing) / len(BMATRIX_REQUIRED), 3) if BMATRIX_REQUIRED else 1.0
+    
+    if fin["financial_coverage_ratio"] < 0.5:
+        fin["status"] = "DATA_INCOMPLETE"
+    elif fin.get("has_finance"):
+        fin["status"] = "PASS"
+    else:
+        fin["status"] = "DEGRADED"
     _cache_set(ck, fin); return fin
 
 def get_sectors():
@@ -474,7 +491,10 @@ def get_sectors():
     _cache_set(ck,rv); return rv
 
 def l25_macro():
-    mem = os.path.expanduser("~/.openclaw/agents/z2-analyst/workspace/MEMORY.md")
+    mem = os.environ.get(
+        "Z_MATRIX_MEMORY_FILE",
+        str(Path(__file__).resolve().parents[2] / "MEMORY.md")
+    )
     dm = {"risk":0,"china":0,"overseas":0,"chip":0,"gold":0,"fx":0,"policy":0,"commodity":0}
     try:
         txt = open(mem).read()
@@ -488,7 +508,11 @@ def l25_macro():
         if "油价" in txt or "铜" in txt: dm["commodity"]=1
     except: pass
     f = sum(dm.values())
-    return {"status":"PASS" if f>=4 else "DEGRADED","filled":f,"total":8,"domains":dm}
+    rv = {"status":"PASS" if f>=4 else "DEGRADED","filled":f,"total":8,"domains":dm,
+          "proxy_level":"KEYWORD_PROXY",
+          "transmission":"NOT_FULL_MACRO_TRANSMISSION",
+          "memory_source": mem}
+    return rv
 
 if __name__ == "__main__":
     t = sys.argv[1] if len(sys.argv)>1 else "002463"

@@ -33,18 +33,24 @@ def _parse_positions():
         price = g1.get("price") or cost
         value = shares * price
         positions.append({"code":code,"name":name,"shares":shares,"cost":cost,
-                          "price":price,"value":value})
+                          "price":price,"value":value,
+                          "industry": g1.get("industry", "")})
     return positions
 
-def _classify_chain(name):
-    """简单产业链分类"""
-    chains = {"机器人":["双环","雷赛","绿的","三花","步科","兆威","奥比","柯力"],
-              "AI算力":["中际","天孚","新易盛","寒武纪","海光","浪潮","华工","沪电","中贝","英维克"],
-              "资源":["紫金","中煤","黄金"]}
-    for chain, keywords in chains.items():
-        for kw in keywords:
-            if kw in name: return chain
-    return "其他"
+def _classify_chain(code, name, industry=""):
+    """产业链分类 — unified chain taxonomy provider"""
+    try:
+        from pipelines.chain_taxonomy_provider import match_chain_detail
+        detail = match_chain_detail(ticker=code, name=name, industry=industry)
+        return detail.get("primary_chain") or "未映射", detail
+    except Exception as e:
+        return "未映射", {
+            "primary_chain": None,
+            "secondary_chains": [],
+            "match_reason": "error",
+            "confidence": "UNMAPPED",
+            "error": str(e)[:120],
+        }
 
 def run():
     now = datetime.now(timezone(timedelta(hours=8)))
@@ -85,7 +91,9 @@ def run():
     print(f"\n🔗 产业链分布:")
     chain_map = {}
     for p in positions:
-        ch = _classify_chain(p["name"])
+        ch, detail = _classify_chain(p["code"], p["name"], p.get("industry", ""))
+        p["chain"] = ch
+        p["chain_detail"] = detail
         chain_map[ch] = chain_map.get(ch, 0) + p["value"]
     for ch, val in sorted(chain_map.items(), key=lambda x: x[1], reverse=True):
         pct = val/total_value*100 if total_value else 0

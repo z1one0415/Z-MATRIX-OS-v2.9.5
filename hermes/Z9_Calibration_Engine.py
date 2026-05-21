@@ -262,15 +262,32 @@ class Z9CalibrationEngine:
         cal_count = len(self.db["calibration_log"])
         print(f"  📋 累计校准次数: {cal_count}")
 
-        # ≥3次则触发权重修正
-        if cal_count >= 3 and len(predictions) >= 50:
-            print(f"\n  ⚡ 累计{cal_count}次校准, {len(predictions)}条预测 → 触发 adjust_weights()")
+        # Mark backtest mode — current-price proxy, not strict T+N
+        calibration_record["backtest_mode"] = "CURRENT_PRICE_PROXY"
+        calibration_record["is_strict_t_plus_n"] = False
+        calibration_record["warning"] = "Uses current live price as validation point; not strict historical T+N close."
+        print("  ⚠️ CURRENT_PRICE_PROXY: 当前为实时价代理回验，不是严格T+N历史收盘。")
+
+        # ≥3次 + ≥50条 + strictly T+N → 才触发权重修正
+        is_strict = calibration_record.get("is_strict_t_plus_n") is True
+        if is_strict and cal_count >= 3 and len(predictions) >= 50:
+            print(f"\n  ⚡ 严格T+N回验 {cal_count}次, {len(predictions)}条 → 触发 adjust_weights()")
             weight_report = self.adjust_weights()
             calibration_record["weight_adjustment"] = weight_report
             self._save_db()
-        elif cal_count >= 3:
-            print(f"\n  ⚠️ 累计{cal_count}次校准但仅{len(predictions)}条预测(<50) → 跳过权重调整 (min_sample=50)")
-            calibration_record["weight_adjustment"] = {"status": "SKIPPED", "reason": f"min_sample=50 not met ({len(predictions)} predictions)"}
+        else:
+            reason = "NOT_STRICT_T_PLUS_N_OR_MIN_SAMPLE_NOT_MET"
+            print(f"\n  ⛔ 跳过自动调权: {reason}")
+            calibration_record["auto_adjust_skipped"] = {
+                "reason": reason,
+                "is_strict_t_plus_n": calibration_record["is_strict_t_plus_n"],
+                "backtest_mode": calibration_record["backtest_mode"],
+                "cal_count": cal_count,
+                "predictions": len(predictions),
+                "min_required": 50,
+            }
+            calibration_record["weight_adjustment"] = {"status": "SKIPPED", "reason": reason}
+            self._save_db()
 
         return calibration_record
 

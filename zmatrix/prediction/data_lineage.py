@@ -10,6 +10,13 @@ from __future__ import annotations
 PROXY_KEYWORDS = {"DAILY_OHLCV_PROXY", "PROXY", "M1_NOT_CONNECTED", "L2_NOT_CONNECTED",
                   "NOT_CONNECTED", "UNKNOWN_PROXY", "DEGRADED_MISSING_LINEAGE"}
 
+
+def normalize_upstream_lineage(upstream: dict | None) -> dict:
+    """INV-TG18-07: if upstream lacks data_provenance_mask → degraded defaults."""
+    if not upstream or "data_provenance_mask" not in upstream:
+        return DEFAULT_DEGRADED_PROXY.copy()
+    return upstream["data_provenance_mask"]
+
 DEFAULT_DEGRADED_PROXY = {
     "market_data": "UNKNOWN_PROXY",
     "intraday": "NOT_CONNECTED",
@@ -37,6 +44,8 @@ def evaluate_lineage(lineage: dict | None) -> dict:
 
     is_data_gap = "DATA_GAP" in str(lineage.get("upstream_status", ""))
     is_unknown = lineage.get("trust", "") == "LOW" or "UNKNOWN" in str(lineage.get("source", ""))
+    # INV-TG18-07: m1/l2 false → proxy detected
+    missing_m1_l2 = lineage.get("m1") is False or lineage.get("l2") is False
 
     if is_data_gap or is_unknown:
         return {
@@ -46,7 +55,7 @@ def evaluate_lineage(lineage: dict | None) -> dict:
             "upstream_status": lineage.get("upstream_status", "DEGRADED_LINEAGE"),
             "reason": "data_gap_or_unknown_source",
         }
-    elif has_proxy:
+    elif has_proxy or missing_m1_l2:
         return {
             "confidence_cap": "MEDIUM",
             "probability_cap": 0.75,

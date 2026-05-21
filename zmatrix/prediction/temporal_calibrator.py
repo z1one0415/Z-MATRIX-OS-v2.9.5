@@ -18,8 +18,8 @@ def evaluate_temporal_consistency(t1_score: float | None, t5_score: float | None
     if not scores:
         return {"consistency": "UNKNOWN", "action_cap": "WAIT", "next_triggers": []}
 
-    high = [(h, s) for h, s in scores if s > 0.65]
-    low = [(h, s) for h, s in scores if s < 0.40]
+    high = [(h, s) for h, s in scores if s >= 0.75]
+    low = [(h, s) for h, s in scores if s < 0.58]
 
     # INV-TG18-03: T5 high but T1 weak
     has_t5_high = any(h == "T5" and s > 0.65 for h, s in high)

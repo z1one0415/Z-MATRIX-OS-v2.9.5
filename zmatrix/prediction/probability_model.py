@@ -14,56 +14,41 @@ def sigmoid(x: float, midpoint: float = 0.0, steepness: float = 0.15) -> float:
 
 def fermi_weighted(raw_score: float,
                    coverage_adj: float = 1.0,
-                   risk_penalty: float = 0.0,
-                   conflict_penalty: float = 0.0,
-                   macro_penalty: float = 0.0) -> dict:
-    """INV-TG18-01: raw_score→sigmoid, THEN penalties in probability space.
+                   risk_penalty: float = 1.0,
+                   conflict_penalty: float = 1.0,
+                   macro_probability_gate: float = 1.0) -> dict:
+    """INV-TG18-01: raw_score→sigmoid, THEN multiplicative penalties in probability space.
 
-    Args:
-        raw_score: aggregated factor score (-20 to +20)
-        coverage_adj: 0.0-1.0, evidence coverage multiplier
-        risk_penalty: 0.0-1.0, deducted from probability
-        conflict_penalty: 0.0-1.0, deducted from probability
-        macro_penalty: 0.0-1.0, deducted from probability
-
-    Returns:
-        {probability, raw_sigmoid, penalties_applied}
+    risk_penalty=0.5 means "keep 50% of probability after risk discount".
+    All penalties are multiplicative (not additive subtraction).
     """
     # Step 1: raw_score → sigmoid (NOT multiplied by coverage)
     raw_sigmoid = sigmoid(raw_score)
 
-    # Step 2: penalties in probability space
-    total_penalty = risk_penalty + conflict_penalty + macro_penalty
-    total_penalty = min(total_penalty, 0.95)  # never zero out completely
-
-    prob = raw_sigmoid * coverage_adj - total_penalty
+    # Step 2: multiplicative penalties in probability space
+    prob = raw_sigmoid * coverage_adj * risk_penalty * conflict_penalty * macro_probability_gate
     prob = max(0.01, min(0.99, prob))
 
     return {
         "probability": round(prob, 4),
         "raw_sigmoid": round(raw_sigmoid, 4),
         "penalties": {
-            "risk": risk_penalty,
-            "conflict": conflict_penalty,
-            "macro": macro_penalty,
-            "total": total_penalty,
+            "risk_retention": risk_penalty,
+            "conflict_retention": conflict_penalty,
+            "macro_gate": macro_probability_gate,
         },
         "coverage_adj": coverage_adj,
     }
 
 
 def test_sigmoid_shield_extreme():
-    """INV-TG18-01 verification: extreme score + heavy penalty must cap ≤0.50"""
-    r = fermi_weighted(raw_score=20, coverage_adj=1.0, risk_penalty=0.5, conflict_penalty=0.0, macro_penalty=0.0)
+    """INV-TG18-01: extreme + heavy penalty must cap ≤0.50"""
+    r = fermi_weighted(raw_score=20, coverage_adj=1.0, risk_penalty=0.5)
     assert r["probability"] <= 0.50, f"Shield failed: {r['probability']} > 0.50"
-    # raw sigmoid at +20 should be near 1.0
-    assert r["raw_sigmoid"] > 0.90, f"Unexpected raw_sigmoid: {r['raw_sigmoid']}"
+    assert r["raw_sigmoid"] > 0.90
 
 
 def test_sigmoid_shield_coverage_separate():
-    """Coverage adjustment comes AFTER sigmoid, not before"""
-    # Correct: sigmoid first, then ×0.3 coverage
-    r_correct = fermi_weighted(raw_score=10, coverage_adj=0.3)
-    # Wrong would be: sigmoid(10 * 0.3) = sigmoid(3) ≈ 0.88 — much higher
-    # Correct yields: sigmoid(10) * 0.3 ≈ 0.76 * 0.3 ≈ 0.23
-    assert r_correct["probability"] < 0.40, f"Coverage penalty too weak: {r_correct['probability']}"
+    """Coverage comes AFTER sigmoid, not before"""
+    r = fermi_weighted(raw_score=10, coverage_adj=0.3)
+    assert r["probability"] < 0.40, f"Coverage penalty too weak: {r['probability']}"

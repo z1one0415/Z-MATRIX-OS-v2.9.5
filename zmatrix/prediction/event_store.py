@@ -57,3 +57,12 @@ class PredictionEventStore:
 
     def can_auto_adjust(self) -> bool:
         return self.count_resolved_strict() >= self.min_strict_samples
+
+    def adjust_weights(self) -> dict:
+        """INV-TG18-04: attempt auto-adjust — throws ConfigurationLockedError if <50 strict T+N."""
+        self.assert_auto_adjust_safe()
+        return {
+            "status": "ELIGIBLE_BUT_NOT_IMPLEMENTED",
+            "strict_samples": self.count_resolved_strict(),
+            "min_required": self.min_strict_samples,
+        }

@@ -79,11 +79,15 @@ def _predict_single(ticker: str, name: str = "", lineage: dict | None = None) ->
 
     # ── INV-TG18-02: Lineage cap ──
     raw_prob = apply_lineage_cap(result_raw["probability"], lin)
+    cap = lin["probability_cap"]
 
-    # ── Multi-horizon estimates (simplified) ──
-    t1 = raw_prob - 0.05  # short-term: slightly discounted
-    t5 = raw_prob
-    t20 = raw_prob + 0.05 if score > 3 else raw_prob - 0.05
+    def _clamp(x, lo=0.0, hi=cap):
+        return round(max(lo, min(x, hi)), 4)
+
+    # ── Multi-horizon estimates (clamped to lineage cap) ──
+    t1 = _clamp(raw_prob - 0.05)
+    t5 = _clamp(raw_prob)
+    t20 = _clamp(raw_prob + 0.05 if score > 3 else raw_prob - 0.05)
 
     # ── INV-TG18-03: Temporal consistency ──
     temporal = evaluate_temporal_consistency(t1, t5, t20)
@@ -92,7 +96,8 @@ def _predict_single(ticker: str, name: str = "", lineage: dict | None = None) ->
     z9_allowed = False
     try:
         store = PredictionEventStore()
-        z9_allowed, z9_reason = store.is_auto_adjust_allowed()
+        z9_allowed = False  # P0-1: Z-G18 NEVER allows auto-adjust
+    z9_reason = "Z_G18_WRITES_PREDICTION_SAMPLE_ONLY_AUTO_ADJUST_FORBIDDEN"
     except Exception:
         z9_reason = "store_unavailable"
 

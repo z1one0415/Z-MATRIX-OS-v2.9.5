@@ -99,7 +99,8 @@ def test_z9_auto_adjust_always_false():
     print("✅ z9 auto_adjust_allowed=False in all predictions")
 
 
-def test_horizon_clamped_to_lineage_cap():
+def test_horizon_clamped_to_lineage_cap()
+    test_zg18_sections_auto_adjust_always_false():
     """P0-3: T1/T5/T20 never exceed probability_cap"""
     import importlib.util
     spec = importlib.util.spec_from_file_location("zg18","pipelines/Z-G18_天机引擎/gate_pipeline.py")
@@ -113,6 +114,16 @@ def test_horizon_clamped_to_lineage_cap():
     print("✅ all horizons clamped to lineage cap")
 
 
+
+def test_zg18_sections_auto_adjust_always_false():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location('zg18','pipelines/Z-G18_天机引擎/gate_pipeline.py')
+    mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
+    r = mod.run(tickers=['002472'])
+    assert r['sections']['auto_adjust_allowed'] is False
+    assert 'SAMPLE_ONLY' in r['sections']['auto_adjust_reason'] or 'FORBIDDEN' in r['sections']['auto_adjust_reason']
+    print(f"✅ sections auto_adjust_allowed=False: {r['sections']['auto_adjust_reason']}")
+
 if __name__ == "__main__":
     test_sigmoid_shield()
     test_coverage_after_sigmoid()
@@ -124,4 +135,5 @@ if __name__ == "__main__":
     test_normalize_missing_lineage()
     test_z9_auto_adjust_always_false()
     test_horizon_clamped_to_lineage_cap()
+    test_zg18_sections_auto_adjust_always_false()
     print("\n🏁 Z-G18 Tianji engine tests PASS (P0/P1 hardened)")

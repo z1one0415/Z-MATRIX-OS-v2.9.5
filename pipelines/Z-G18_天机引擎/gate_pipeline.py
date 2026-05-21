@@ -92,14 +92,14 @@ def _predict_single(ticker: str, name: str = "", lineage: dict | None = None) ->
     # ── INV-TG18-03: Temporal consistency ──
     temporal = evaluate_temporal_consistency(t1, t5, t20)
 
-    # ── INV-TG18-04: Auto-weight freeze check ──
+    # ── INV-TG18-04: Auto-weight freeze — Z-G18 never allows auto-adjust ──
     z9_allowed = False
+    z9_reason = "Z_G18_WRITES_PREDICTION_SAMPLE_ONLY_AUTO_ADJUST_FORBIDDEN"
     try:
         store = PredictionEventStore()
-        z9_allowed = False  # P0-1: Z-G18 NEVER allows auto-adjust
-    z9_reason = "Z_G18_WRITES_PREDICTION_SAMPLE_ONLY_AUTO_ADJUST_FORBIDDEN"
+        _ = store.count_resolved_strict()  # for diagnostic, not for permission
     except Exception:
-        z9_reason = "store_unavailable"
+        pass  # store unavailable is fine, Z-G18 never adjusts
 
     # ── INV-TG18-08: Action capped, never direct PAPER_PROBE ──
     action = temporal["action_cap"]
@@ -147,9 +147,12 @@ def run(tickers=None, mode="daily"):
     print(f"   {'Z-G01已连接' if _HAS_Z01 else '⚠️ stub模式'}")
     print("=" * 60)
 
-    store = PredictionEventStore()
-    strict_count = store.count_resolved_strict()
-    print(f"\n📊 Z9状态: {strict_count}/50 strict T+N samples")
+    try:
+        store = PredictionEventStore()
+        n = store.count_resolved_strict()
+        print(f"\n📊 Z9状态: {n}/50 strict T+N samples")
+    except Exception:
+        print(f"\n📊 Z9状态: store unavailable")
 
     predictions = []
     for t in tickers:
@@ -174,8 +177,9 @@ def run(tickers=None, mode="daily"):
         "z9": p.z9_sample,
     } for p in predictions]
 
-    result["sections"]["z9_strict_samples"] = strict_count
-    result["sections"]["auto_adjust_allowed"] = strict_count >= 50
+    result["sections"]["z9_strict_samples"] = store.count_resolved_strict() if 'store' in dir() else 0
+    result["sections"]["auto_adjust_allowed"] = False
+    result["sections"]["auto_adjust_reason"] = "Z_G18_WRITES_PREDICTION_SAMPLE_ONLY_AUTO_ADJUST_FORBIDDEN"
 
     return result
 

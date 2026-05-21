@@ -152,16 +152,29 @@ def test_zg13_low_coverage_marks_degraded():
 
 
 
-def test_zg13_goodwill_compatibility():
-    """Z-G13 reads goodwill_to_net_assets from both field names"""
-    source = open("pipelines/Z-G13_底仓管理/gate_pipeline.py", encoding="utf-8").read()
-    assert 'fin.get("goodwill_to_net_assets", fin.get("goodwill_ratio"))' in source,         "Z-G13 goodwill field not compatible with Z-G01 goodwill_ratio"
-    print("✅ goodwill: compatible with both goodwill_to_net_assets and goodwill_ratio")
+def test_zg13_goodwill_via_unified_builder():
+    """BMatrixInput via unified builder maps goodwill_ratio correctly"""
+    from pipelines.bmatrix_input_builder import build_bmatrix_input
+    inp = build_bmatrix_input(
+        "002463", "测试股",
+        market_truth_fn=lambda t: {"name": "测试股", "industry": "电子"},
+        get_financials_fn=lambda t: {
+            "goodwill_ratio": 0.25,
+            "financial_coverage_ratio": 0.7,
+            "missing_fields": ["roe_5y_avg"],
+        },
+        dq_score_fn=lambda t: {"total": 80},
+        l4_health_fn=lambda t: {"status": "PASS"},
+    )
+    assert inp.goodwill_to_net_assets == 0.25
+    assert inp.data_completeness == 0.7
+    assert inp.extra["financial_missing_fields"] == ["roe_5y_avg"]
+    print(f"✅ builder: goodwill={inp.goodwill_to_net_assets} coverage={inp.data_completeness}")
 
 if __name__ == "__main__":
     test_get_financials_returns_bmatrix_v1_contract()
     test_get_financials_marks_missing_not_fabricates()
     test_zg13_outputs_financial_coverage()
     test_zg13_low_coverage_marks_degraded()
-    test_zg13_goodwill_compatibility()
+    test_zg13_goodwill_via_unified_builder()
     print("\n🏁 Z-G13 financial coverage tests PASS")

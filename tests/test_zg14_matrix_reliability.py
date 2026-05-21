@@ -168,8 +168,7 @@ def test_zg14_candidate_has_chain_field():
     print(f"✅ candidate chain={c['chain']} density={r['sections'].get('chain_density',{})}")
 
 
-def test_zg14_b5_low_evidence_coverage_degrades_status()
-    test_zg14_candidate_confidence_reflects_b5_low_evidence():
+def test_zg14_b5_low_evidence_coverage_degrades_status():
     """B5 brand_scarcity with b5_cov=0.2→DEGRADED_B5_EVIDENCE_LOW"""
     import importlib.util
     from types import SimpleNamespace

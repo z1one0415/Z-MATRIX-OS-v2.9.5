@@ -120,7 +120,12 @@ def run():
             "financial_coverage_ratio": fin_coverage,
             "financial_missing_fields": fin_missing,
             "financial_data_contract": fin_contract,
-            "confidence": "LOW_DATA_COVERAGE" if fin_coverage < 0.5 else "MEDIUM",
+                                    confidence = "LOW_DATA_COVERAGE" if fin_coverage < 0.5 else "MEDIUM"
+            if bm.base_type == BaseType.BRAND_SCARCITY_MONOPOLY:
+                b5_cov = fin.get("b5_evidence_coverage_ratio")
+                if b5_cov is not None and b5_cov < 0.5:
+                    confidence = "LOW_B5_EVIDENCE_COVERAGE"
+            
         })
 
     # Summary

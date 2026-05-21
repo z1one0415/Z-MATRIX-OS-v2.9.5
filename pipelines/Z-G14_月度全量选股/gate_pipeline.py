@@ -70,7 +70,12 @@ def _real_b_score(ticker, name):
     try:
         bm = evaluate_bm(inp)
         coverage = getattr(inp, "data_completeness", 1.0)
-        status = "PASS" if coverage >= 0.5 else "DEGRADED"
+        b5_cov = inp.extra.get("b5_evidence_coverage_ratio")
+        status = "PASS"
+        if coverage < 0.5:
+            status = "DEGRADED"
+        elif bm.base_type.value == "BRAND_SCARCITY_MONOPOLY" and b5_cov is not None and b5_cov < 0.5:
+            status = "DEGRADED_B5_EVIDENCE_LOW"
         return {"score": round(bm.score_final * 10, 1), "status": status,
                 "base_type": bm.base_type.value, "rating": bm.rating.value,
                 "traps": bm.trap_flags, "error": None,

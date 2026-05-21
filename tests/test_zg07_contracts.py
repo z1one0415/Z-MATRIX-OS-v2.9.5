@@ -103,6 +103,20 @@ def test_zg07_l25_no_absolute_memory_path():
     assert "Path(__file__)" in gate4 or "z17_loader" in gate4, "gate4 should use repo-relative path"
     print("✅ gate4: no ~/.openclaw MEMORY path")
 
+
+def test_zg07_gate4_l25_macro_runtime_no_path_name_error():
+    """gate4_l25_macro runs without NameError (Path imported)"""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("zg07", "pipelines/Z-G07_轮动黑马选股/gate_pipeline.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    r = mod.gate4_l25_macro()
+    assert r.gate_id == 4
+    assert r.gate_name == "L2.5 Macro"
+    assert isinstance(r.details, dict)
+    assert "filled_domains" in r.details
+    print(f"✅ gate4 runtime: filled={r.details['filled_domains']}/{r.details['total_domains']}")
+
 if __name__ == "__main__":
     test_zg07_gate3_details_initialized_before_loop()
     test_zg07_gate7_fail_closed_no_absolute_path()
@@ -111,4 +125,5 @@ if __name__ == "__main__":
     test_zg07_gate3_q1_eps_preserved_in_details_runtime()
     test_zg07_gate7_has_minimum_kline_window()
     test_zg07_l25_no_absolute_memory_path()
+    test_zg07_gate4_l25_macro_runtime_no_path_name_error()
     print("\n🏁 Z-G07 contracts tests PASS")

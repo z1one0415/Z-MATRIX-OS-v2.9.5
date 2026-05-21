@@ -98,10 +98,32 @@ def test_zg14_sorts_by_weighted_total_not_raw_total():
     assert 'key=lambda x: x["total"]' not in source,         "G14 still sorts by raw total"
     print("✅ G14 sorts by weighted_total")
 
+
+def test_zg14_data_gap_confidence_not_pass():
+    """DATA_GAP scorer → confidence=DEGRADED_MATRIX_DATA_GAP, not PASS"""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("zg14", "pipelines/Z-G14_月度全量选股/gate_pipeline.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    mod.market_truth = lambda t: {"status":"PASS","name":"测试","price":10}
+    mod.l4_health = lambda t: {"status":"PASS"}
+    mod.get_kline = lambda t,d: {"prices":[10]*300,"volume":[1000]*300,"amount":[10000]*300,
+                                  "close":[10]*300,"open":[10]*300,"high":[11]*300,"low":[9]*300,
+                                  "dates":["2026-05-20"]*300,"data_contract":"OHLCV_DAILY_V1"}
+    mod._real_b_score = lambda t,n: {"score":None,"status":"DATA_GAP","base_type":None,"rating":None,"traps":[],"error":"b gap"}
+    mod._real_r_score = lambda t,n,p: {"score":50,"status":"PASS","subtype":"A","error":None}
+    mod._real_d_score = lambda t,n,p,kl: {"score":50,"status":"PASS","lifecycle":"D1","error":None}
+    candidates = mod._full_scan(["002463"])
+    assert candidates, "no candidates"
+    assert candidates[0]["score_status"]["b"] == "DATA_GAP"
+    assert candidates[0]["confidence"] == "DEGRADED_MATRIX_DATA_GAP", f"got {candidates[0]['confidence']}"
+    print(f"✅ DATA_GAP→confidence={candidates[0]['confidence']}")
+
 if __name__ == "__main__":
     test_zg14_dmatrix_error_not_zero_score_silently()
     test_zg14_r_matrix_error_visible()
     test_zg14_candidate_has_score_scale_and_status()
     test_dmatrix_payload_builder_used_by_all_three()
     test_zg14_sorts_by_weighted_total_not_raw_total()
+    test_zg14_data_gap_confidence_not_pass()
     print("\n🏁 Z-G14 matrix reliability tests PASS")

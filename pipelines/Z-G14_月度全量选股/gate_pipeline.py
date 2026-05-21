@@ -190,10 +190,16 @@ def _full_scan(tickers):
         if r_ok and not b_ok and not d_ok: cross.append("纯R")
         if not cross: cross.append("观察")
 
-        # Confidence when any scorer had errors
-        confidence = "PASS"
-        if any(s["status"] == "ERROR" for s in [b, r, d]):
+        # Confidence when any scorer had errors or data gaps
+        statuses = [b["status"], r["status"], d["status"]]
+        if "ERROR" in statuses:
             confidence = "DEGRADED_MATRIX_ERROR"
+        elif "DATA_GAP" in statuses:
+            confidence = "DEGRADED_MATRIX_DATA_GAP"
+        elif "DEGRADED" in statuses:
+            confidence = "DEGRADED_MATRIX_PARTIAL"
+        else:
+            confidence = "PASS"
 
         candidates.append({
             "code": t, "name": name,

@@ -17,15 +17,14 @@
 
 import sys, os, json, time, argparse, statistics, subprocess
 from datetime import datetime, timedelta
+from pathlib import Path
 from typing import Dict, List, Tuple, Optional, Any
 from dataclasses import dataclass, field, asdict
 from enum import Enum
 
 # ===================== 常量 =====================
-VENV_PYTHON = os.path.expanduser("~/workspace-dev/.venv_glm5/bin/python3")
-MEMORY_ROOT = os.path.expanduser(
-    "~/Documents/openclaw memory/openclaw memory/Z2信息熔炉/投资记忆银行/超级预测系统"
-)
+# Legacy constant removed (was ~/workspace-dev/.venv_glm5/bin/python3, unused)
+MEMORY_ROOT = str(Path(__file__).resolve().parents[2] / "记忆宫殿" / "Z2信息熔炉" / "投资记忆银行" / "超级预测系统" / "监控中心")
 
 class GateStatus(Enum):
     PASS = "PASS"

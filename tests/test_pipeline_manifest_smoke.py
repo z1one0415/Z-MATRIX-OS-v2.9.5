@@ -13,7 +13,7 @@ PIPELINE_MANIFEST = {
     "Z-G05": {"path": "pipelines/Z-G05_日记忆卡/gate_pipeline.py", "status": "executable_core"},
     "Z-G06": {"path": "pipelines/Z-G06_复盘反馈/gate_pipeline.py", "status": "executable_core"},
     "Z-G07": {"path": "pipelines/Z-G07_轮动黑马选股/gate_pipeline.py", "status": "executable_core"},
-    "Z-G08": {"path": "pipelines/Z-G08_叙事雷达深度/gate_pipeline.py", "status": "prototype"},
+    "Z-G08": {"path": "pipelines/Z-G08_叙事雷达深度/gate_pipeline.py", "status": "executable_light"},
     "Z-G09": {"path": "pipelines/Z-G09_全局轮动筛选/gate_pipeline.py", "status": "executable_core"},
     "Z-G10": {"path": "pipelines/Z-G10_全局黑马筛选/gate_pipeline.py", "status": "executable_core"},
     "Z-G11": {"path": "pipelines/Z-G11_组合风控/gate_pipeline.py", "status": "executable_light"},

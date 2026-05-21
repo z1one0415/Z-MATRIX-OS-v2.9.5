@@ -17,7 +17,7 @@ Z-G04  🟢-light  尾盘过滤 (日线volume已接入, M1尾盘待增强)
 Z-G05  🟢        日记忆卡
 Z-G06  🟢        复盘反馈
 Z-G07  🟢        轮动+黑马选股 (10闸口, 已调用Z-G01)
-Z-G08  🟡        叙事雷达深度
+Z-G08  🟢-light  叙事雷达深度 (板块指数实时, L1.6信号)
 Z-G09  🟢        全局轮动筛选 (R-Matrix v1.1, UniverseProvider 6种universe)
 Z-G10  🟢        全局黑马筛选 (D-Matrix v2.2, UniverseProvider)
 Z-G11  🟢-light  组合风控 (集中度可用, 现金未接入)

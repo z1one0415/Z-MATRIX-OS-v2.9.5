@@ -119,6 +119,50 @@ def test_zg14_data_gap_confidence_not_pass():
     assert candidates[0]["confidence"] == "DEGRADED_MATRIX_DATA_GAP", f"got {candidates[0]['confidence']}"
     print(f"✅ DATA_GAP→confidence={candidates[0]['confidence']}")
 
+
+def test_zg14_uses_chain_taxonomy_provider_not_hardcoded_chains():
+    """G14 must use chain_taxonomy_provider, no hardcoded chains dict"""
+    source = open("pipelines/Z-G14_月度全量选股/gate_pipeline.py", encoding="utf-8").read()
+    assert "chain_taxonomy_provider" in source
+    assert "match_chain" in source
+    assert "chain_density" in source
+    assert 'chains = {' not in source
+    assert 'kw.split("|")' not in source
+    print("✅ G14: chain_taxonomy_provider, no hardcoded chains")
+
+def test_zg14_candidate_has_chain_field():
+    """Each G14 candidate includes chain field"""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("zg14", "pipelines/Z-G14_月度全量选股/gate_pipeline.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    
+    import pipelines.universe_provider as up
+    up.load_universe = lambda **kw: {
+        "status": "PASS", "source": "A_SHARE_ALL",
+        "tickers": ["600519"], "count": 4000,
+        "is_global": True, "universe_level": "FULL_MARKET",
+        "fallback_used": False, "warnings": [],
+    }
+    mod.market_truth = lambda t: {"status":"PASS","name":"贵州茅台","industry":"食品饮料","price":1500}
+    mod.l4_health = lambda t: {"status":"PASS"}
+    mod.get_kline = lambda t,d: {"prices":[100]*500,"close":[100]*500,"open":[100]*500,
+                                  "high":[101]*500,"low":[99]*500,"volume":[1000]*500,
+                                  "amount":[10000]*500,"dates":["2026-05-20"]*500,
+                                  "data_contract":"OHLCV_DAILY_V1"}
+    mod._real_b_score = lambda t,n: {"score":60,"status":"PASS","base_type":"BRAND_SCARCITY_MONOPOLY","rating":"A","traps":[],"error":None}
+    mod._real_r_score = lambda t,n,p: {"score":40,"status":"PASS","subtype":"A","error":None}
+    mod._real_d_score = lambda t,n,p,kl: {"score":30,"status":"PASS","lifecycle":"D1","error":None}
+    
+    r = mod.run()
+    assert r["candidates"], "no candidates"
+    c = r["candidates"][0]
+    assert "chain" in c, f"missing chain field: {list(c.keys())}"
+    assert c["chain"] in {"消费品牌", "资源周期", "未映射"}, f"unexpected chain: {c['chain']}"
+    assert "chain_density" in r["sections"]
+    assert "chain_taxonomy" in r["sections"]
+    print(f"✅ candidate chain={c['chain']} density={r['sections'].get('chain_density',{})}")
+
 if __name__ == "__main__":
     test_zg14_dmatrix_error_not_zero_score_silently()
     test_zg14_r_matrix_error_visible()
@@ -126,4 +170,6 @@ if __name__ == "__main__":
     test_dmatrix_payload_builder_used_by_all_three()
     test_zg14_sorts_by_weighted_total_not_raw_total()
     test_zg14_data_gap_confidence_not_pass()
+    test_zg14_uses_chain_taxonomy_provider_not_hardcoded_chains()
+    test_zg14_candidate_has_chain_field()
     print("\n🏁 Z-G14 matrix reliability tests PASS")

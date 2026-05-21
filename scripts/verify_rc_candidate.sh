@@ -5,7 +5,7 @@ echo "═══ Z-MATRIX-OS v2.9.5-RC 发布前验证 ═══"
 
 echo ""
 echo "== Compile all =="
-python3 -m compileall pipelines tests zmatrix
+python3 -m compileall pipelines tests zmatrix hermes
 echo "✅ compileall PASS"
 
 echo ""

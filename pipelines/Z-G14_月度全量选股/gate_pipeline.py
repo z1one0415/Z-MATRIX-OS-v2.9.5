@@ -201,8 +201,16 @@ def _full_scan(tickers):
         else:
             confidence = "PASS"
 
+        # Chain mapping
+        try:
+            from pipelines.chain_taxonomy_provider import match_chain
+            chain = match_chain(ticker=t, name=name, industry=g1.get("industry", ""))
+        except Exception:
+            chain = None
+
         candidates.append({
             "code": t, "name": name,
+            "chain": chain or "未映射",
             "b": b_final, "r": r_final, "d": d_final,
             "b_type": b.get("base_type"), "b_rating": b.get("rating"),
             "r_subtype": r.get("subtype"), "d_lifecycle": d.get("lifecycle"),
@@ -269,27 +277,31 @@ def run():
         meta = f" B={c.get('b_type','')}/{c.get('b_rating','')}" if c.get("b_type") else ""
         print(f"  {i+1:2d}. {c['code']} {c['name']:<8s} B={c['b']:.0f} R={c['r']:.0f}({c.get('r_subtype','')}) D={c['d']:.0f}({c.get('d_lifecycle','')}) [{c['cross']}] w={c.get('weighted_total',0):.1f} raw={c.get('total',0):.0f}")
 
-    # 产业链映射
-    chains = {"机器人":"双环|雷赛|绿的|三花|步科|兆威|奥比|柯力",
-              "AI算力":"中际|天孚|新易盛|寒武纪|海光|浪潮|华工|沪电|中贝|英维克|高澜|美格|恒玄",
-              "半导体":"688|002049|603986|300782",
-              "资源":"紫金|中煤|黄金|601899|601898",
-              "消费":"600519|000858|002304"}
-    chain_hits = {}
-    for c in candidates[:50]:
-        for ch, kw in chains.items():
-            if any(k in c["name"] for k in kw.split("|")):
-                chain_hits[ch] = chain_hits.get(ch, 0) + 1
-
-    print(f"\n🔗 产业链浓度 (TOP50):")
-    for ch in chains:
-        h = chain_hits.get(ch, 0)
-        flag = "⚠️盲区" if h == 0 else f"{h}只"
-        print(f"  {ch}: {flag}")
+    # 产业链映射 — unified chain taxonomy provider
+    try:
+        from pipelines.chain_taxonomy_provider import chain_density
+        names = [c["name"] for c in candidates[:50]]
+        density = chain_density([c["code"] for c in candidates[:50]], names, [c.get("industry", "") for c in candidates[:50]])
+        print(f"\n🔗 产业链浓度 (TOP50):")
+        for ch, cnt in sorted(density.items(), key=lambda x: x[1], reverse=True):
+            flag = "⚠️盲区" if cnt == 0 else f"{cnt}只"
+            print(f"  {ch}: {flag}")
+        result["sections"]["chain_density"] = density
+        result["sections"]["chain_taxonomy"] = {
+            "provider": "pipelines.chain_taxonomy_provider",
+            "method": "ticker/name/industry matching",
+            "coverage": {
+                "mapped": sum(v for k, v in density.items() if "未映射" not in k),
+                "unmapped": density.get("⚠️未映射(盲区)", 0),
+                "sample_size": min(len(candidates), 50),
+            },
+        }
+    except ImportError:
+        result["sections"]["chain_density"] = {}
+        result["sections"]["chain_taxonomy"] = {"status": "unavailable"}
 
     result["candidates"] = candidates[:30]
     result["sections"]["cross_matrix"] = cross_counts
-    # chain_density populated above
     result["sections"]["scorer_versions"] = {
         "b_matrix": "v2.1.1 (5-class heterogeneous)",
         "r_matrix": "v1.1 (Type A/B dual mode)",

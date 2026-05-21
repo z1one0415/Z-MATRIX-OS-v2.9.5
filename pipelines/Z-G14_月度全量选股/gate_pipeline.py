@@ -289,7 +289,7 @@ def run():
 
     result["candidates"] = candidates[:30]
     result["sections"]["cross_matrix"] = cross_counts
-    result["sections"]["chain_density"] = chain_hits
+    # chain_density populated above
     result["sections"]["scorer_versions"] = {
         "b_matrix": "v2.1.1 (5-class heterogeneous)",
         "r_matrix": "v1.1 (Type A/B dual mode)",

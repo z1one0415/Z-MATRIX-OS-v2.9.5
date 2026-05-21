@@ -263,11 +263,14 @@ class Z9CalibrationEngine:
         print(f"  📋 累计校准次数: {cal_count}")
 
         # ≥3次则触发权重修正
-        if cal_count >= 3:
-            print(f"\n  ⚡ 累计{cal_count}次校准 → 触发 adjust_weights()")
+        if cal_count >= 3 and len(predictions) >= 50:
+            print(f"\n  ⚡ 累计{cal_count}次校准, {len(predictions)}条预测 → 触发 adjust_weights()")
             weight_report = self.adjust_weights()
             calibration_record["weight_adjustment"] = weight_report
             self._save_db()
+        elif cal_count >= 3:
+            print(f"\n  ⚠️ 累计{cal_count}次校准但仅{len(predictions)}条预测(<50) → 跳过权重调整 (min_sample=50)")
+            calibration_record["weight_adjustment"] = {"status": "SKIPPED", "reason": f"min_sample=50 not met ({len(predictions)} predictions)"}
 
         return calibration_record
 

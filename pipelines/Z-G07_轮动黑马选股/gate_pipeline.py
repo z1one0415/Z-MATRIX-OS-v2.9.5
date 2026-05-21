@@ -24,7 +24,11 @@ from enum import Enum
 
 # ===================== 常量 =====================
 # Legacy constant removed (was ~/workspace-dev/.venv_glm5/bin/python3, unused)
-MEMORY_ROOT = str(Path(__file__).resolve().parents[2] / "记忆宫殿" / "Z2信息熔炉" / "投资记忆银行" / "超级预测系统" / "监控中心")
+# Report output directory — env var with repo-relative fallback
+MEMORY_ROOT = os.environ.get(
+    "Z_MATRIX_MEMORY_ROOT",
+    str(Path(__file__).resolve().parents[2] / "记忆宫殿" / "Z2信息熔炉" / "投资记忆银行" / "超级预测系统" / "监控中心")
+)
 
 class GateStatus(Enum):
     PASS = "PASS"
@@ -175,11 +179,18 @@ def gate4_l25_macro() -> GateResult:
     except:
         pass
     
-    details = {"filled_domains": filled, "total_domains": 8, "domains": domains}
+    details = {
+        "filled_domains": filled, "total_domains": 8, "domains": domains,
+        "proxy_level": "KEYWORD_PROXY",
+        "transmission": "NOT_FULL_MACRO_TRANSMISSION",
+        "method": "MEMORY.md keyword scan — not factor→sector→chain conduction",
+        "coverage": f"{filled}/8",
+    }
     if filled < 4:
         return GateResult(4, "L2.5 Macro", GateStatus.DEGRADED, details,
-            [f"仅{filled}/8信息域填充"], 0)
-    return GateResult(4, "L2.5 Macro", GateStatus.PASS, details, [], 0)
+            [f"仅{filled}/8信息域填充 (KEYWORD_PROXY, not full macro transmission)"], 0)
+    return GateResult(4, "L2.5 Macro", GateStatus.PASS, details,
+        ["L2.5_PROXY: keyword-based, not complete factor→31-sector→10-chain conduction"], 0)
 
 
 def gate5_l3_sectors() -> GateResult:

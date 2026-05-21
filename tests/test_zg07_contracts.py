@@ -117,6 +117,23 @@ def test_zg07_gate4_l25_macro_runtime_no_path_name_error():
     assert "filled_domains" in r.details
     print(f"✅ gate4 runtime: filled={r.details['filled_domains']}/{r.details['total_domains']}")
 
+
+def test_zg07_gate4_l25_outputs_proxy_level():
+    """gate4 details include proxy_level and transmission metadata"""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("zg07", "pipelines/Z-G07_轮动黑马选股/gate_pipeline.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    r = mod.gate4_l25_macro()
+    assert r.details.get("proxy_level") == "KEYWORD_PROXY"
+    assert r.details.get("transmission") == "NOT_FULL_MACRO_TRANSMISSION"
+    assert "method" in r.details
+    assert "coverage" in r.details
+    # PASS also carries L2.5_PROXY warning
+    if r.status.name == "PASS":
+        assert any("L2.5_PROXY" in e for e in r.errors), "PASS should still carry proxy warning"
+    print(f"✅ proxy_level={r.details['proxy_level']} coverage={r.details['coverage']}")
+
 if __name__ == "__main__":
     test_zg07_gate3_details_initialized_before_loop()
     test_zg07_gate7_fail_closed_no_absolute_path()
@@ -126,4 +143,5 @@ if __name__ == "__main__":
     test_zg07_gate7_has_minimum_kline_window()
     test_zg07_l25_no_absolute_memory_path()
     test_zg07_gate4_l25_macro_runtime_no_path_name_error()
+    test_zg07_gate4_l25_outputs_proxy_level()
     print("\n🏁 Z-G07 contracts tests PASS")

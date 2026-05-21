@@ -99,11 +99,19 @@ def run():
     # 4. 裁决
     print(f"\n📋 裁决:")
     if warnings:
+        result["status"] = "DEGRADED_ACCOUNT_TRUTH_REQUIRED"
         print(f"  ⚠️ {len(warnings)}条风险警告")
         for w in warnings: print(f"    - {w}")
         result["sections"]["action"] = "RISK_ALERT_REQUIRES_ACCOUNT_CONFIRMATION"
+        result["sections"]["suggested_human_check"] = [
+            "确认真实账户持仓",
+            "确认现金与可用资金",
+            "确认成交成本与实际仓位",
+            "确认是否需要减仓",
+        ]
     else:
         print(f"  ✅ 组合风险正常")
+        result["status"] = "PASS_PROXY"
         result["sections"]["action"] = "PORTFOLIO_OK_PROXY"
     
     result["sections"]["positions"] = positions

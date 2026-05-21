@@ -194,18 +194,21 @@ def test_zg13_b5_low_evidence_marks_confidence():
             "b5_evidence_coverage_ratio": 0.2,
             "b5_missing_fields": ["brand_mindshare_score"],
             "brand_premium_score": 9, "pricing_power_score": 9,
-            "supply_constraint_score": 9, "roe_5y_avg": 30,
+            "supply_constraint_score": 9, "scarcity_durability_score": 9,
+            "brand_mindshare_score": None, "channel_health_score": 8,
+            "terminal_price_stability_score": 8, "young_consumer_relevance_score": 8,
+            "roe_5y_avg": 30, "gross_margin": 80,
         }
         mod.dq_score = lambda t: {"total": 90}
         mod.l4_health = lambda t: {"status": "PASS", "errors": []}
         
         r = mod.run()
         b = r["b_pool"][0]
+        assert b["base_type"] == "BRAND_SCARCITY_MONOPOLY", f"not B5: {b}"
+        assert b["confidence"] == "LOW_B5_EVIDENCE_COVERAGE"
         assert b["b5_evidence_coverage_ratio"] == 0.2
         assert b["b5_missing_fields"] == ["brand_mindshare_score"]
-        if b["base_type"] == "BRAND_SCARCITY_MONOPOLY":
-            assert b["confidence"] == "LOW_B5_EVIDENCE_COVERAGE"
-        print(f"✅ b5 conf={b['confidence']} cov={b['b5_evidence_coverage_ratio']}")
+        print(f"✅ B5 conf={b['confidence']} cov={b['b5_evidence_coverage_ratio']}")
     finally:
         os.unlink(mem_path)
 

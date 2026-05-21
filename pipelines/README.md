@@ -19,7 +19,7 @@
 | Z-G11 | 组合风控 | 🟢-light | 集中度可用；现金/账户实盘数据待接入(NOT_CONNECTED) |
 | Z-G12 | 系统巡检 | 🟢 | 6模块+DQ+Cron |
 | Z-G13 | 底仓管理 | 🟢-light | B-Matrix v2.1.1已接入 5类真评分；数据源(get_financials)字段仍为stub |
-| Z-G14 | 月度全量选股(流A) | 🟢-light | B-Matrix v2.1.1 + R-Matrix v1.1 + D-Matrix v2.2 真评分; ticker universe待扩展 |
+| Z-G14 | 月度全量选股(流A) | 🟢-light | A_SHARE_ALL强制, UniverseProvider, count>=4000 fail-closed; B/R/D真评分; chain_taxonomy已接入 |
 | Z-G15 | 产业链深研 | 🟡 | V3证据分层 |
 | Z-G16 | V4纸面执行教练 | 🟢 | Full/Lite双模式，PAPER_PROBE conditional_output |
 | Z-G16A | Alpha平行验证仓 | 🟢 | PAPER_WORLD+幽灵基准 |

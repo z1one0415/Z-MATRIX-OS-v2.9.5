@@ -145,6 +145,17 @@ def run(tickers=None, mode="confirm"):
         "rejected_count": len(rejected),
         "rule": "盘中确认只决定观察优先级, 不决定买入"
     }
+    # Final status: proxy only, never running
+    if any(e.get("price") is None for e in l3):
+        result["status"] = "DEGRADED_DATA_GAP"
+    else:
+        result["status"] = "PASS_PROXY"
+    result["sections"]["status_contract"] = {
+        "data_precision": "DAILY_OHLCV_PROXY",
+        "m1_connected": False,
+        "allows_buy_signal": False,
+        "allowed_actions": ["WATCH", "WAIT"],
+    }
     
     return result
 

@@ -1,9 +1,9 @@
 # ☯️ Z-MATRIX-OS v2.9.5-RC
 
 > 状态: release-ready candidate | 全部测试通过
-> 管线: 12条核心可执行(🟢) + 3条轻量可执行(🟢-light) + 3条原型(🟡) = 18/18入口齐全
-> 注意: Z-G04/Z-G11/Z-G17 为 executable-light (有入口可运行但仍是轻量实现)
-> Z-G13/Z-G14/Z-G15 为 prototype (需升级)
+> 管线: 9条核心可执行(🟢) + 6条轻量可执行(🟢-light) + 3条原型(🟡) = 18/18入口齐全
+> 注意: Z-G03/Z-G04/Z-G11/Z-G13/Z-G14/Z-G17 为 executable-light (有入口可运行但数据精度/账户真相仍为proxy)
+> Z-G02/Z-G08/Z-G15 为 prototype (需升级)
 
 个人量化投资操作系统 | OpenClaw 固化管线版
 

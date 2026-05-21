@@ -89,7 +89,9 @@ def test_zg11_uses_chain_taxonomy_provider_for_consumer_brand():
     finally: os.unlink(mem_path)
 
 
-def test_zg11_no_local_hardcoded_chain_table():
+def test_zg11_no_local_hardcoded_chain_table()
+    test_zg11_outputs_structured_chain_exposure()
+    test_zg11_outputs_structured_single_position_exposure():
     source = open("pipelines/Z-G11_组合风控/gate_pipeline.py", encoding="utf-8").read()
     assert "chain_taxonomy_provider" in source
     assert "match_chain_detail" in source
@@ -99,6 +101,48 @@ def test_zg11_no_local_hardcoded_chain_table():
     print("✅ no hardcoded chain table")
 
 
+
+
+def test_zg11_outputs_structured_chain_exposure():
+    import tempfile, importlib.util
+    spec = importlib.util.spec_from_file_location('zg11','pipelines/Z-G11_组合风控/gate_pipeline.py')
+    mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
+    with tempfile.NamedTemporaryFile(mode='w',suffix='.md',delete=False) as f:
+        f.write('| 贵州茅台 600519 | 3股 | 1500.00 |\n')
+        f.write('| 双环传动 002472 | 100股 | 44.01 |\n')
+        mem_path = f.name
+    try:
+        mod.MEMORY_MD = __import__('pathlib').Path(mem_path)
+        prices = {'600519':{'status':'PASS','price':1500,'name':'贵州茅台','industry':'食品饮料'},
+                  '002472':{'status':'PASS','price':44,'name':'双环传动','industry':'机器人'}}
+        mod.market_truth = lambda t: prices[t]
+        r = mod.run()
+        assert 'chain_exposure' in r['sections'], f'keys: {list(r["sections"].keys())}'
+        assert '消费品牌' in r['sections']['chain_exposure']
+        assert 'pct' in r['sections']['chain_exposure']['消费品牌']
+        ce = r['sections']['chain_exposure']['消费品牌']
+        assert ce['pct'] > 0
+        print(f'✅ chain_exposure: 消费品牌 {ce["pct"]}%')
+    finally: os.unlink(mem_path)
+
+def test_zg11_outputs_structured_single_position_exposure():
+    import tempfile, importlib.util
+    spec = importlib.util.spec_from_file_location('zg11','pipelines/Z-G11_组合风控/gate_pipeline.py')
+    mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
+    with tempfile.NamedTemporaryFile(mode='w',suffix='.md',delete=False) as f:
+        f.write('| 贵州茅台 600519 | 3股 | 1500.00 |\n')
+        mem_path = f.name
+    try:
+        mod.MEMORY_MD = __import__('pathlib').Path(mem_path)
+        mod.market_truth = lambda t: {'status':'PASS','price':1500,'name':'贵州茅台','industry':'食品饮料'}
+        r = mod.run()
+        assert 'single_position_exposure' in r['sections']
+        assert '600519' in r['sections']['single_position_exposure']
+        sp = r['sections']['single_position_exposure']['600519']
+        assert sp['pct'] == 100.0
+        print(f'✅ single_exposure: 600519 {sp["pct"]}%')
+    finally: os.unlink(mem_path)
+
 if __name__ == "__main__":
     test_zg11_no_positions_returns_data_gap()
     test_zg11_positions_ok_returns_pass_proxy()
@@ -106,4 +150,6 @@ if __name__ == "__main__":
     test_zg11_degraded_when_concentrated()
     test_zg11_uses_chain_taxonomy_provider_for_consumer_brand()
     test_zg11_no_local_hardcoded_chain_table()
+    test_zg11_outputs_structured_chain_exposure()
+    test_zg11_outputs_structured_single_position_exposure()
     print("\n🏁 Z-G11 account truth contract tests PASS")

@@ -123,6 +123,23 @@ def run():
         result["status"] = "PASS_PROXY"
         result["sections"]["action"] = "PORTFOLIO_OK_PROXY"
     
+    # Structured chain exposure
+    chain_exposure = {}
+    for ch, val in sorted(chain_map.items(), key=lambda x: x[1], reverse=True):
+        pct = val / total_value * 100 if total_value else 0
+        chain_exposure[ch] = {"value": round(val, 2), "pct": round(pct, 2),
+                              "status": "OVER_CONCENTRATED" if pct > 60 else "OK"}
+    result["sections"]["chain_exposure"] = chain_exposure
+
+    # Structured single position exposure
+    single_exposure = {}
+    for p in positions:
+        pct = p["value"] / total_value * 100 if total_value else 0
+        single_exposure[p["code"]] = {"name": p["name"], "value": round(p["value"], 2),
+                                        "pct": round(pct, 2),
+                                        "status": "OVER_CONCENTRATED" if pct > 40 else ("WATCH" if pct > 25 else "OK")}
+    result["sections"]["single_position_exposure"] = single_exposure
+
     result["sections"]["positions"] = positions
     result["sections"]["total_value"] = total_value
     result["sections"]["warnings"] = warnings

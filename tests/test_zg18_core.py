@@ -67,15 +67,23 @@ def test_temporal_anchor():
 
 
 def test_auto_weight_freeze():
-    """INV-TG18-04: adjust_weights() throws when <50 strict"""
+    """INV-TG18-04: adjust_weights() throws when <50 strict (temp DB, no real dep)"""
+    import tempfile, json, os
     from zmatrix.prediction.event_store import PredictionEventStore, ConfigurationLockedError
-    store = PredictionEventStore()
+    with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
+        json.dump({"predictions":[],"calibration_log":[],"resolved_samples":[]}, f)
+        db_path = f.name
     try:
-        store.adjust_weights()
-        assert store.count_resolved_strict() >= 50, "Should have thrown"
-    except ConfigurationLockedError:
-        pass
-    print(f"✅ weight freeze: adjust_weights blocked ({store.count_resolved_strict()}/50 strict)")
+        store = PredictionEventStore(db_path=db_path)
+        try:
+            store.adjust_weights()
+            assert False, "Should raise ConfigurationLockedError"
+        except ConfigurationLockedError:
+            pass
+        assert store.count_resolved_strict() == 0
+    finally:
+        os.unlink(db_path)
+    print("✅ weight freeze: temp DB 0/50→ConfigurationLockedError")
 
 
 def test_normalize_missing_lineage():

@@ -147,10 +147,11 @@ def run(tickers=None, mode="daily"):
     print(f"   {'Z-G01已连接' if _HAS_Z01 else '⚠️ stub模式'}")
     print("=" * 60)
 
+    strict_count = 0
     try:
         store = PredictionEventStore()
-        n = store.count_resolved_strict()
-        print(f"\n📊 Z9状态: {n}/50 strict T+N samples")
+        strict_count = store.count_resolved_strict()
+        print(f"\n📊 Z9状态: {strict_count}/50 strict T+N samples")
     except Exception:
         print(f"\n📊 Z9状态: store unavailable")
 
@@ -177,7 +178,7 @@ def run(tickers=None, mode="daily"):
         "z9": p.z9_sample,
     } for p in predictions]
 
-    result["sections"]["z9_strict_samples"] = store.count_resolved_strict() if 'store' in dir() else 0
+    result["sections"]["z9_strict_samples"] = strict_count
     result["sections"]["auto_adjust_allowed"] = False
     result["sections"]["auto_adjust_reason"] = "Z_G18_WRITES_PREDICTION_SAMPLE_ONLY_AUTO_ADJUST_FORBIDDEN"
 

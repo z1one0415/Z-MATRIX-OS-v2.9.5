@@ -93,6 +93,16 @@ def test_zg07_gate3_q1_eps_preserved_in_details_runtime():
     assert r.details["breakdown"]["产业链"] == 12, f"chain score should be 12: {r.details['breakdown']}"
     print(f"✅ q1_eps={r.details['q1_eps']} preserved, 产业链={r.details['breakdown']['产业链']}")
 
+
+def test_zg07_l25_no_absolute_memory_path():
+    """gate4_l25_macro must not use ~/.openclaw absolute MEMORY path"""
+    source = open("pipelines/Z-G07_轮动黑马选股/gate_pipeline.py", encoding="utf-8").read()
+    gate4 = source.split("def gate4_l25_macro")[1].split("def gate5")[0]
+    assert "~/.openclaw/agents" not in gate4, "gate4 still uses ~/.openclaw for MEMORY.md"
+    # Should use repo-relative path
+    assert "Path(__file__)" in gate4 or "z17_loader" in gate4, "gate4 should use repo-relative path"
+    print("✅ gate4: no ~/.openclaw MEMORY path")
+
 if __name__ == "__main__":
     test_zg07_gate3_details_initialized_before_loop()
     test_zg07_gate7_fail_closed_no_absolute_path()
@@ -100,4 +110,5 @@ if __name__ == "__main__":
     test_zg07_gate3_industry_chain_uses_details_q1_eps()
     test_zg07_gate3_q1_eps_preserved_in_details_runtime()
     test_zg07_gate7_has_minimum_kline_window()
+    test_zg07_l25_no_absolute_memory_path()
     print("\n🏁 Z-G07 contracts tests PASS")

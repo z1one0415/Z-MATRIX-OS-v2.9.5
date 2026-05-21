@@ -246,7 +246,7 @@ def run():
     print(f"\n📡 扫描: {len(tickers)}标的 → 真实B/R/D三维评分 (非简化quick_scan)")
 
     candidates = _full_scan(tickers)
-    candidates.sort(key=lambda x: x["total"], reverse=True)
+    candidates.sort(key=lambda x: x.get("weighted_total", x.get("total", 0)), reverse=True)
 
     # 交叉统计
     cross_counts = {}
@@ -260,8 +260,8 @@ def run():
     top15 = candidates[:15]
     print(f"\n🏆 TOP15终选:")
     for i, c in enumerate(top15):
-        meta = f" B={c['b_type']}/{c['b_rating']}" if c.get("b_type") else ""
-        print(f"  {i+1:2d}. {c['code']} {c['name']:<8s} B={c['b']:.0f} R={c['r']:.0f}({c.get('r_subtype','')}) D={c['d']:.0f}({c.get('d_lifecycle','')}) [{c['cross']}] total={c['total']:.0f}")
+        meta = f" B={c.get('b_type','')}/{c.get('b_rating','')}" if c.get("b_type") else ""
+        print(f"  {i+1:2d}. {c['code']} {c['name']:<8s} B={c['b']:.0f} R={c['r']:.0f}({c.get('r_subtype','')}) D={c['d']:.0f}({c.get('d_lifecycle','')}) [{c['cross']}] w={c.get('weighted_total',0):.1f} raw={c.get('total',0):.0f}")
 
     # 产业链映射
     chains = {"机器人":"双环|雷赛|绿的|三花|步科|兆威|奥比|柯力",

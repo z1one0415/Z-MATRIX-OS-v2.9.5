@@ -162,8 +162,8 @@ def gate4_l25_macro() -> GateResult:
         "fx": "unknown",
         "policy": "unknown"
     }
-    # 从MEMORY.md拉宏观字典
-    mem = os.path.expanduser("~/.openclaw/agents/z2-analyst/workspace/MEMORY.md")
+    # 从MEMORY.md拉宏观字典 — use repo-relative path, not ~/.openclaw
+    mem = str(Path(__file__).resolve().parents[2] / "MEMORY.md")
     filled = 0
     try:
         with open(mem) as f:

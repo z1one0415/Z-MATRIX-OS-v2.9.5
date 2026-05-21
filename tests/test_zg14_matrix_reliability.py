@@ -49,7 +49,7 @@ def test_zg14_candidate_has_score_scale_and_status():
     import pipelines.universe_provider as up
     orig_load = up.load_universe
     up.load_universe = lambda **kw: {
-        "status": "PASS", "source": "A_SHARE_ALL", "tickers": ["002463"], "count": 1,
+        "status": "PASS", "source": "A_SHARE_ALL", "tickers": ["002463"], "count": 4000,
         "is_global": True, "universe_level": "FULL_MARKET",
         "fallback_used": False, "warnings": [],
     }
@@ -64,20 +64,17 @@ def test_zg14_candidate_has_score_scale_and_status():
                                        "amount": [10000]*300}
         
         r = mod.run()
-        candidates = r.get("candidates", r.get("_full_scan_result", []))
-        # If full scan returned results
-        if candidates:
-            c = candidates[0]
-            assert "score_scale" in c, f"missing score_scale: {list(c.keys())}"
-            assert c["score_scale"]["b"] == "0-100"
-            assert c["score_scale"]["r"] == "0-100"
-            assert c["score_scale"]["d"] == "0-100"
-            assert "score_status" in c
-            assert "weighted_total" in c
-            assert "confidence" in c
-            print(f"✅ candidate: scale={c['score_scale']} status={c['score_status']} weighted={c['weighted_total']}")
-        else:
-            print("✅ no candidates (scorers may be DATA_GAP) — structure verified")
+        candidates = r.get("candidates", [])
+        assert candidates, f"expected at least one candidate, got status={r.get('status')} sections={r.get('sections',{}).keys()}"
+        c = candidates[0]
+        assert "score_scale" in c, f"missing score_scale: {list(c.keys())}"
+        assert c["score_scale"]["b"] == "0-100"
+        assert c["score_scale"]["r"] == "0-100"
+        assert c["score_scale"]["d"] == "0-100"
+        assert "score_status" in c
+        assert "weighted_total" in c
+        assert "confidence" in c
+        print(f"✅ candidate: scale={c['score_scale']} status={c['score_status']} weighted={c['weighted_total']}")
     finally:
         up.load_universe = orig_load
 
@@ -92,9 +89,19 @@ def test_dmatrix_payload_builder_used_by_all_three():
     print("✅ G07/G10/G14 all use build_dmatrix_payload")
 
 
+
+def test_zg14_sorts_by_weighted_total_not_raw_total():
+    """G14 run() sorts by weighted_total, not raw total"""
+    source = open("pipelines/Z-G14_月度全量选股/gate_pipeline.py", encoding="utf-8").read()
+    # Check the sort line
+    assert 'key=lambda x: x.get("weighted_total"' in source,         "G14 does not sort by weighted_total"
+    assert 'key=lambda x: x["total"]' not in source,         "G14 still sorts by raw total"
+    print("✅ G14 sorts by weighted_total")
+
 if __name__ == "__main__":
     test_zg14_dmatrix_error_not_zero_score_silently()
     test_zg14_r_matrix_error_visible()
     test_zg14_candidate_has_score_scale_and_status()
     test_dmatrix_payload_builder_used_by_all_three()
+    test_zg14_sorts_by_weighted_total_not_raw_total()
     print("\n🏁 Z-G14 matrix reliability tests PASS")

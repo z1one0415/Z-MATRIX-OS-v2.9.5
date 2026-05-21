@@ -30,7 +30,8 @@ def test_zg11_positions_ok_returns_pass_proxy():
     spec.loader.exec_module(mod)
     
     with tempfile.NamedTemporaryFile(mode="w", suffix=".md", delete=False) as f:
-        f.write("| 双环传动 002472 | 1800股 | 44.01 |\n")
+        f.write("| 双环传动 002472 | 900股 | 44.01 |\n")
+        f.write("| 紫金矿业 601899 | 800股 | 31.00 |\n")
         mem_path = f.name
     
     try:

@@ -56,6 +56,17 @@ def run():
     positions = _parse_positions()
     if not positions:
         print("⚠️ 无持仓数据")
+        result["status"] = "DATA_GAP"
+        result["sections"]["reason"] = "NO_POSITION_DATA"
+        result["sections"]["action"] = "NO_ACCOUNT_TRUTH"
+        result["sections"]["account_truth"] = {
+            "connected": False,
+            "position_source": "MEMORY_MD_REGEX",
+            "cash_source": "NOT_CONNECTED",
+            "fills_source": "NOT_CONNECTED",
+            "broker_source": "NOT_CONNECTED",
+            "confidence": "LOW_ACCOUNT_TRUTH",
+        }
         return result
     
     total_value = sum(p["value"] for p in positions)
@@ -90,15 +101,23 @@ def run():
     if warnings:
         print(f"  ⚠️ {len(warnings)}条风险警告")
         for w in warnings: print(f"    - {w}")
-        result["sections"]["action"] = "REDUCE_RISK"
+        result["sections"]["action"] = "RISK_ALERT_REQUIRES_ACCOUNT_CONFIRMATION"
     else:
         print(f"  ✅ 组合风险正常")
-        result["sections"]["action"] = "PORTFOLIO_OK"
+        result["sections"]["action"] = "PORTFOLIO_OK_PROXY"
     
     result["sections"]["positions"] = positions
     result["sections"]["total_value"] = total_value
     result["sections"]["warnings"] = warnings
     result["sections"]["cash"] = {"cash_ratio": None, "source": "NOT_CONNECTED", "capability": "cash_exposure_disabled"}
+    result["sections"]["account_truth"] = {
+        "connected": False,
+        "position_source": "MEMORY_MD_REGEX",
+        "cash_source": "NOT_CONNECTED",
+        "fills_source": "NOT_CONNECTED",
+        "broker_source": "NOT_CONNECTED",
+        "confidence": "LOW_ACCOUNT_TRUTH",
+    }
     return result
 
 if __name__ == "__main__":

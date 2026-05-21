@@ -10,9 +10,9 @@ def test_z9_current_price_proxy_not_strict_t_plus_n():
 
     # Pre-fill with enough predictions and cal log
     engine.db["predictions"] = [
-        {"ticker": "600519", "name": "茅台", "predicted_price": 100,
+        {"report_date": "2026-05-15", "target_days": 5,
          "action": "WATCH", "scoring_weights": {"FQS": 0.2, "ISS": 0.15},
-         "date": "2026-05-15", "target_days": 5}
+         "tickers": {"600519": {"price": 100, "name": "贵州茅台"}}}
     ] * 60
     engine.db["calibration_log"] = [
         {"cal_count": i, "calibrated_at": "2026-05-15T00:00:00",
@@ -21,9 +21,8 @@ def test_z9_current_price_proxy_not_strict_t_plus_n():
     ]
     engine._save_db = lambda: None
 
-    r = engine.backtest_at(days=5, live_prices={
-        "600519": {"price": 110, "pct": 10.0, "name": "贵州茅台"},
-    })
+    # Mock live price fetch
+    r = engine.backtest_at(days=5, live_prices={"600519": {"price": 110, "pct": 10.0}})
 
     assert r["backtest_mode"] == "CURRENT_PRICE_PROXY"
     assert r["is_strict_t_plus_n"] is False
@@ -37,9 +36,9 @@ def test_z9_current_price_proxy_does_not_auto_adjust_weights():
     engine = Z9CalibrationEngine()
 
     engine.db["predictions"] = [
-        {"ticker": "600519", "name": "茅台", "predicted_price": 100,
+        {"report_date": "2026-05-15", "target_days": 5,
          "action": "WATCH", "scoring_weights": {"FQS": 0.2, "ISS": 0.15},
-         "date": "2026-05-15", "target_days": 5}
+         "tickers": {"600519": {"price": 100, "name": "贵州茅台"}}}
     ] * 60
     engine.db["calibration_log"] = [
         {"cal_count": i, "calibrated_at": "2026-05-15T00:00:00",
@@ -50,9 +49,8 @@ def test_z9_current_price_proxy_does_not_auto_adjust_weights():
     called = {"adjust": False}
     engine.adjust_weights = lambda: called.__setitem__("adjust", True) or {}
 
-    r = engine.backtest_at(days=5, live_prices={
-        "600519": {"price": 110, "pct": 10.0, "name": "贵州茅台"},
-    })
+    # Mock live price fetch
+    r = engine.backtest_at(days=5, live_prices={"600519": {"price": 110, "pct": 10.0}})
 
     assert called["adjust"] is False, "adjust_weights was called despite CURRENT_PRICE_PROXY"
     assert r["weight_adjustment"]["status"] == "SKIPPED"

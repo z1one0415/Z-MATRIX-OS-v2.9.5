@@ -179,8 +179,7 @@ def run(tickers=None, mode="daily", universe="WATCHLIST"):
         bank = load_bank()
         result["sections"]["decision_cards_created"] = cards_created
         result["sections"]["decision_cards_total"] = len(bank.get("cards",[]))
-        print("
-📇 决策卡: +{}张 → 累计{}张".format(cards_created, len(bank.get("cards",[]))))
+        print("\n📇 决策卡: +{}张 → 累计{}张".format(cards_created, len(bank.get("cards",[]))))
     except Exception as e:
         result["sections"]["decision_cards_created"] = 0
         result["sections"]["decision_cards_note"] = f"auto-create failed: {e}"
@@ -331,7 +330,7 @@ def _save_oracle(report, now):
     """落盘天机签到专属目录"""
     paths = []
     for base in [
-        Path(__file__).resolve().parents[2] / "记忆宫殿" / "Z2信息熔炉" / "投资记忆银行" / "超级预测系统" / "天机引擎",
+        Path.home() / "Documents" / "openclaw memory" / "openclaw memory" / "Z2信息熔炉" / "投资记忆银行" / "超级预测系统" / "天机引擎",
         Path.home() / "Documents" / "openclaw memory" / "openclaw memory" / "Z2信息熔炉" / "投资记忆银行" / "超级预测系统" / "天机引擎",
     ]:
         try:

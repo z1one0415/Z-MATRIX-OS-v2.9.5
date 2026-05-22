@@ -1,8 +1,8 @@
-"""月度轮动天王 — Monthly Rotation King
+"""轮动天王 — Bi-weekly Rotation King (双周线)
 
 与波动天王(OscillationKing)的区别:
   波动天王: 日线级别, Type A(水平箱体)/Type B(上升通道) — 日内/周内波动
-  轮动天王: 月线级别, 识别月线趋势 + 周期轮动阶段 + 位置操作建议
+  轮动天王: 双周线级别 (bi-weekly), 识别月线趋势 + 周期轮动阶段 + 位置操作建议
 
 分类:
   RISING:   月线β>0.8% — 上升趋势中
@@ -18,7 +18,7 @@ from __future__ import annotations
 from datetime import datetime, timedelta
 
 
-def classify_monthly_trend(closes: list[float], dates: list[str] | None = None,
+def classify_rotation_trend(closes: list[float], dates: list[str] | None = None,
                            beta_threshold: float = 0.008) -> dict:
     """月线轮动分类 — 基于最近12个月close数据。
 

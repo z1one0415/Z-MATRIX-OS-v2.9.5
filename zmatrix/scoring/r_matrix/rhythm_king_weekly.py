@@ -1,4 +1,10 @@
-"""周线律动天王 — Weekly Rhythm King
+"""R-Matrix 律动天王 / 波动天王 — multi-scale BOX/TREND classifier
+
+Usage:
+  冲动天王(日线): window=500, beta=0.008 → Type A/B via oscillation_king_ranker
+  波动天王(5日): window=50, beta=0.002, step=5 → BOX hunter (17% BOX optimal)
+  律动天王(周线): window=26, beta=0.004 → mid-term swing (30% BOX)
+  轮动天王(双周): window=30, beta=0.004, step=10 → rotation entry (13% BOX)
 
 与波动天王/轮动天王的区别:
   波动天王(日): OscillationKing — Type A水平箱体 / Type B上升通道 (500日K, 日线级别)
@@ -38,7 +44,7 @@ from __future__ import annotations
 from typing import List
 
 
-def classify_weekly_rhythm(
+def classify_rhythm(
     closes: List[float],
     dates: List[str] | None = None,
     beta_threshold: float = 0.004,
@@ -160,3 +166,29 @@ def _data_insufficient() -> dict:
         "residual_range_pct": 0, "channel_upper_ratio": 1, "channel_lower_ratio": 1,
         "weeks": 0, "latest_close": 0, "ma13": 0,
     }
+
+
+# ── Four King aliases ──
+
+def impulse_king_daily(closes, dates=None):
+    """冲动天王: 日线500K → 委托 oscillation_king_ranker Type A/B.
+    不在此模块实现, 仅提供接口别名。"""
+    return {"type": "IMPULSE_DELEGATED", "note": "use oscillation_king_ranker_v11 for daily"}
+
+
+def oscillation_king_5d(closes, dates=None):
+    """波动天王: 5日线50K → BOX hunter (17% BOX optimal)."""
+    return classify_rhythm(closes, dates, beta_threshold=0.002, box_amp_min=5.0, box_amp_max=200.0)
+
+
+def rhythm_king_weekly(closes, dates=None):
+    """律动天王: 7日/周线26K → mid-term swing (30% BOX)."""
+    return classify_rhythm(closes, dates, beta_threshold=0.004, box_amp_min=10.0, box_amp_max=150.0)
+
+
+def rotation_king_biweekly(closes, dates=None):
+    """轮动天王: 双周线30K → rotation entry (13% BOX, 3x entries vs monthly)."""
+    return classify_rhythm(closes, dates, beta_threshold=0.004, box_amp_min=8.0, box_amp_max=200.0)
+
+# Backward compat
+classify_weekly_rhythm = rhythm_king_weekly

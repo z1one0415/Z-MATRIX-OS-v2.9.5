@@ -117,9 +117,47 @@ def run(tickers=None, mode="daily", universe="WATCHLIST"):
     except Exception:
         print(f"\n📊 Z9状态: store unavailable")
 
+    # ── Load G09 cycle signals (upstream constraint) ──
+    g09_r_pool = None
+    try:
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("zg09_gate",
+            str(Path(__file__).resolve().parents[1] / "Z-G09_全局轮动筛选" / "gate_pipeline.py"))
+        zg09 = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(zg09)
+        g09_result = zg09.run(universe=universe, pool_size=20, kings_enabled="all")
+        g09_r_pool = g09_result.get("r_pool", [])
+        print(f"\n📡 G09周期信号: {len(g09_r_pool)}只已加载 → 约束G18预测")
+    except Exception as e:
+        print(f"\n⚠️ G09周期信号: 未加载 ({str(e)[:60]})")
+
+    from zmatrix.prediction.g09_signal_adapter import load_g09_signals, apply_g09_constraints
+
     predictions = []
     for t in tickers:
         pred = _predict_single(t)
+        
+        # Apply G09 cycle constraints
+        if g09_r_pool:
+            g09_sig = load_g09_signals(t, g09_r_pool)
+            constraint = apply_g09_constraints(
+                g09_sig, pred.action_proposal, pred.probability,
+                pred.data_lineage.get("probability_cap", 0.75))
+            
+            if constraint["action_override"] != pred.action_proposal:
+                pred.action_proposal = constraint["action_override"]
+                pred.warnings.extend(constraint["warnings"])
+            
+            prob_before = pred.probability
+            pred.probability = constraint["probability_override"]
+            # Add G09 evidence to the prediction output
+            pred.temporal_consistency["g09_cycle"] = {
+                "resonance": g09_sig.get("resonance_status"),
+                "exit_alert": g09_sig.get("exit_alert"),
+                "position_action": g09_sig.get("position_action"),
+                "constraints_applied": constraint["reason_codes"],
+            }
+        
         pred.validate_action()
         predictions.append(pred)
         icon = "🟢" if pred.probability>0.65 else ("🟡" if pred.probability>0.40 else "🔴")

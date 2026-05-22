@@ -14,7 +14,7 @@
 | Z-G06 | 复盘反馈 | 🟢 | Z9校准+模式检测+Hermes |
 | Z-G07 | 轮动+黑马选股 | 🟢 | 10闸口全量, 已调用Z-G01统一数据层, 3模式(full/lite/watch) |
 | Z-G08 | 叙事雷达深度 | 🟢-light | 新浪板块指数实时采集 + L1.6信号; 新闻NLP待增强 |
-| Z-G09 | 全局轮动筛选 | 🟢 | R-Matrix v1.1 Type A/B, UniverseProvider, 支持6种universe |
+| Z-G09 | 全局轮动筛选 | 🟢 | R-Matrix v1.2 双周期: 波动天王(日线Type A/B) + 轮动天王(月线RISING/HORIZONTAL/DECLINING) |
 | Z-G10 | 全局黑马筛选 | 🟢 | D-Matrix v2.2, UniverseProvider, OHLCV enriched |
 | Z-G11 | 组合风控 | 🟢-light | 集中度可用；现金/账户实盘数据待接入(NOT_CONNECTED) |
 | Z-G12 | 系统巡检 | 🟢 | 6模块+DQ+Cron |

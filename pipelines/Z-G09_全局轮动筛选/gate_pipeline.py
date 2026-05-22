@@ -187,9 +187,18 @@ def run(pool_size=80, universe="A_SHARE_ALL", allow_fallback=True,
             kings.get("rhythm"), kings.get("rotation"))
         r["ticker"] = ticker
         # Anchor to portfolio positions
+        # Cost-anchored sell decision
+        pos_data = _read_positions()
         r["cost_anchor"] = _anchor_to_cost(ticker, r.get("rhythm",{}).get("position",0.5) if r.get("rhythm") else 0.5,
-                                           r.get("rhythm",{}).get("type","?"), r["entry_action_cap"],
-                                           _read_positions())
+                                           r.get("rhythm",{}).get("type","?"), r["entry_action_cap"], pos_data)
+        if ticker in pos_data:
+            from zmatrix.scoring.r_matrix.position_sell_decision import evaluate_position_sell_decision
+            p = pos_data[ticker]
+            price = market_truth(ticker).get("price") or p["cost"]
+            r["sell_decision"] = evaluate_position_sell_decision(
+                ticker=ticker, shares=p["shares"], cost=p["cost"], current_price=price, resonance=r)
+        else:
+            r["sell_decision"] = {"position_action":"NO_POSITION","sell_ratio":0,"reason_codes":["NO_HOLDING"]}
         resonance_pool.append(r)
     
     resonance_pool.sort(key=lambda x: (len(x["hard_blocks"])==0, x["resonance_score"]), reverse=True)

@@ -3,7 +3,7 @@ from __future__ import annotations
 import baostock as bs
 
 
-def scan_monthly_rotation(tickers: list[str], names: dict | None = None) -> list[dict]:
+def scan_monthly_rotation(tickers: list[str], names: dict | None = None, end_date=None) -> list[dict]:
     """扫描月度轮动信号"""
     from zmatrix.scoring.r_matrix.rotation_king_monthly import classify_monthly_trend
     if names is None: names = {}
@@ -14,7 +14,7 @@ def scan_monthly_rotation(tickers: list[str], names: dict | None = None) -> list
     for t in tickers:
         prefix = "sz" if t[0] in "03" else "sh"
         rs = bs.query_history_k_data_plus(f"{prefix}.{t}",
-            "date,close", start_date="2024-01-01", end_date=end_date or _today(),
+            "date,close", start_date="2024-01-01", end_date = end_date or _today(),
             frequency="m", adjustflag="2")
         closes = []
         while rs.next():
@@ -49,7 +49,7 @@ def scan_oscillation_king(tickers: list[str], end_date=None) -> list[dict]:
     for t in tickers:
         prefix = "sz" if t[0] in "03" else "sh"
         rs = bs.query_history_k_data_plus(f"{prefix}.{t}","date,close",
-            start_date="2024-01-01",end_date=end_date or _today(),frequency="d",adjustflag="2")
+            start_date="2024-01-01",end_date = end_date or _today(),frequency="d",adjustflag="2")
         all_c = []
         while rs.next():
             r = rs.get_row_data()
@@ -71,7 +71,7 @@ def scan_rhythm_king(tickers: list[str], end_date=None) -> list[dict]:
     for t in tickers:
         prefix = "sz" if t[0] in "03" else "sh"
         rs = bs.query_history_k_data_plus(f"{prefix}.{t}","date,close",
-            start_date="2024-01-01",end_date=end_date or _today(),frequency="w",adjustflag="2")
+            start_date="2024-01-01",end_date = end_date or _today(),frequency="w",adjustflag="2")
         closes = []
         while rs.next():
             r = rs.get_row_data()
@@ -92,7 +92,7 @@ def scan_rotation_king(tickers: list[str], end_date=None) -> list[dict]:
     for t in tickers:
         prefix = "sz" if t[0] in "03" else "sh"
         rs = bs.query_history_k_data_plus(f"{prefix}.{t}","date,close",
-            start_date="2024-01-01",end_date=end_date or _today(),frequency="d",adjustflag="2")
+            start_date="2024-01-01",end_date = end_date or _today(),frequency="d",adjustflag="2")
         all_c = []
         while rs.next():
             r = rs.get_row_data()
@@ -116,7 +116,7 @@ def scan_impulse_king(tickers: list[str], end_date=None) -> list[dict]:
     for t in tickers:
         prefix = "sz" if t[0] in "03" else "sh"
         rs = bs.query_history_k_data_plus(f"{prefix}.{t}","date,close",
-            start_date="2024-01-01",end_date=end_date or _today(),frequency="d",adjustflag="2")
+            start_date="2024-01-01",end_date = end_date or _today(),frequency="d",adjustflag="2")
         closes = []
         while rs.next():
             r = rs.get_row_data()

@@ -160,59 +160,138 @@ def run(tickers=None, mode="daily", universe="WATCHLIST"):
 
 
 def _render_oracle(predictions, strict_count, source, now):
-    """生成人类友好天机签报告"""
+    """人类友好天机签 — 多维度分析 + 信号明细 + 情景推演"""
     lines = []
-    lines.append(f"# ☯️ 今日天机 — {now.strftime('%Y-%m-%d %H:%M')} 盘前")
-    lines.append(f"")
-    lines.append(f"> 管道: Z-G18 天机引擎 v2.1.1 | 25因子+8不变量 | Z9: {strict_count}/50 strict T+N")
-    lines.append(f"> Universe: {source} | 预测标的: {len(predictions)}只")
-    lines.append(f"")
-    
     sorted_preds = sorted(predictions, key=lambda p: p.probability, reverse=True)
-    
-    lines.append("## 🔥 高概率 (>65%)")
     high = [p for p in sorted_preds if p.probability > 0.65]
+    mid = [p for p in sorted_preds if 0.40 < p.probability <= 0.65]
+    low = [p for p in sorted_preds if p.probability <= 0.40]
+    
+    # ── Header ──
+    lines.append(f"# ☯️ 今日天机 — {now.strftime('%Y-%m-%d %H:%M')} CST")
+    lines.append(f"")
+    lines.append(f"> **管道**: Z-G18 天机引擎 v2.1.1 | **因子**: 25因子(M/I/F/T/R) + 8不变量 | **Z9**: {strict_count}/50 strict T+N")
+    lines.append(f"> **Universe**: {source} | **预测标的**: {len(predictions)}只 | **高概率**: {len(high)}只 | **中概率**: {len(mid)}只 | **低概率**: {len(low)}只")
+    lines.append(f"")
+    
+    # ── 宏观体温 ──
+    lines.append("## 🌡️ 市场体温")
+    lines.append(f"")
+    try:
+        from scripts.predict_engine import MACRO
+        m_labels = {'M1':'美元指数','M2':'美联储','M3':'市场情绪','M4':'流动性','M5':'风险偏好'}
+        m_icons = {-1:'🔴逆风',0:'⚪中性',1:'🟢顺风'}
+        macro_str = ' | '.join(f"{m_labels.get(k,k)}: {m_icons.get(v,'?')}" for k,v in MACRO.items())
+        lines.append(f"**宏观信号**: {macro_str}")
+        headwinds = sum(1 for v in MACRO.values() if v < 0)
+        tailwinds = sum(1 for v in MACRO.values() if v > 0)
+        verdict = "偏谨慎" if headwinds > tailwinds else ("偏乐观" if tailwinds > headwinds else "中性")
+        lines.append(f"")
+        lines.append(f"**综合**: {headwinds}逆风 {tailwinds}顺风 → **{verdict}**。")
+        lines.append(f"")
+        if headwinds >= 3:
+            lines.append(f"⚠️ 宏观逆风偏多({headwinds}/5)，高概率标的需额外确认。不急于开新仓。")
+        elif tailwinds >= 3:
+            lines.append(f"✅ 宏观顺风为主({tailwinds}/5)，可适度积极。")
+        else:
+            lines.append(f"↔️ 宏观信号混合，精选个股优于仓位择时。")
+    except Exception:
+        lines.append(f"*宏观信号数据暂不可用*")
+    lines.append(f"")
+    
+    # ── 高概率详解 ──
+    lines.append("## 🔥 高概率标的 ({n}只)".format(n=len(high)))
     if high:
         for p in high:
             lines.append(f"")
             lines.append(f"### 🟢 {p.name}({p.ticker}) — {p.probability*100:.0f}%")
             lines.append(f"")
-            lines.append(f"| 维度 | 值 |")
-            lines.append(f"|------|------|")
-            lines.append(f"| T1短期 | {p.horizon['T1']*100:.0f}% |")
-            lines.append(f"| T5中期 | {p.horizon['T5']*100:.0f}% |")
-            lines.append(f"| T20长期 | {p.horizon['T20']*100:.0f}% |")
-            lines.append(f"| 动作建议 | {p.action_proposal} |")
-            lines.append(f"| 时间一致性 | {p.temporal_consistency.get('consistency','?')} |")
-            lines.append(f"| 置信度 | {p.confidence} |")
+            lines.append(f"| 维度 | T1短期 | T5中期 | T20长期 | 动作 | 置信度 |")
+            lines.append(f"|------|:--:|:--:|:--:|------|:--:|")
+            lines.append(f"| 概率 | {p.horizon['T1']*100:.0f}% | {p.horizon['T5']*100:.0f}% | {p.horizon['T20']*100:.0f}% | {p.action_proposal} | {p.confidence} |")
+            lines.append(f"")
+            # Signal analysis
+            lines.append(f"**时间一致性**: {p.temporal_consistency.get('consistency','?')}")
+            if p.temporal_consistency.get('consistency') == 'ALL_HORIZON_STRONG':
+                lines.append(f"  → 短中长三期共振，信号可靠性较高。")
+            elif p.temporal_consistency.get('consistency') == 'LONG_STRONG_SHORT_WEAK':
+                lines.append(f"  → 中长期看好但短期偏弱，建议等待短期确认后再行动。典型的'好事但需要等一等'。")
+            elif p.temporal_consistency.get('consistency') == 'MIXED':
+                lines.append(f"  → 各周期信号不一致，需结合基本面独立判断。")
+            lines.append(f"")
+            # Triggers
             if p.next_triggers:
-                lines.append(f"")
-                lines.append(f"**下一步触发:**")
+                lines.append(f"**下一步触发条件**:")
                 for t in p.next_triggers:
-                    lines.append(f"- {t['trigger_id']}: {t['on_pass']} / {t['on_fail']}")
+                    lines.append(f"- 📋 **{t['trigger_id']}**: 满足 → {t['on_pass']} | 不满足 → {t['on_fail']}")
+                    lines.append(f"  截止: {t.get('deadline','?')} | 来源: {t.get('source_pipeline','?')}")
+                lines.append(f"")
+            # Interpretation
+            lines.append(f"**天师解读**:")
+            pe = None
+            try:
+                from scripts.predict_engine import STOCK_DB
+                pe = STOCK_DB.get(p.ticker,{}).get('pe')
+            except: pass
+            if p.probability >= 70:
+                if p.action_proposal == "PAPER_PROBE_ELIGIBLE_PENDING_Z16_Z17":
+                    lines.append(f"  概率{p.probability*100:.0f}%反映多因子共振。" + (f" PE{pe}x估值合理" if pe and pe<30 else "") + (f" PE{pe}x偏高需谨慎" if pe and pe>=30 else "") + "。")
+                    lines.append(f"  当前为纸面验证级别——需要Z-G16确认执行计划后才能提升到paper_probe。")
+                else:
+                    lines.append(f"  概率{p.probability*100:.0f}%，{p.action_proposal}级别。")
+                    lines.append(f"  当前市场环境偏谨慎(MACRO逆风)，即使高概率也建议轻仓或等待确认。")
+            elif p.probability >= 65:
+                lines.append(f"  概率{p.probability*100:.0f}%处于边界区间。" + (f" PE{pe}x估值有安全边际" if pe and pe<15 else "") + "。")
+                lines.append(f"  建议观察下一个交易日的开盘确认，不急于行动。")
     else:
         lines.append(f"")
-        lines.append(f"暂无高概率标的。当前市场偏谨慎。")
+        lines.append(f"今日无高概率(>65%)标的。市场整体偏谨慎，等待催化。")
+    lines.append(f"")
     
+    # ── 全量排名 ──
+    lines.append("## 📊 全量预测排名")
     lines.append(f"")
-    lines.append("## 📊 全量预测")
-    lines.append(f"")
-    lines.append(f"| 标的 | 概率 | T1 | T5 | T20 | 动作 | 置信度 |")
-    lines.append(f"|------|:--:|:--:|:--:|:--:|------|:--:|")
-    for p in sorted_preds:
+    lines.append(f"| # | 标的 | 概率 | T1 | T5 | T20 | 动作 | 置信度 |")
+    lines.append(f"|:--:|------|:--:|:--:|:--:|:--:|------|:--:|")
+    for i, p in enumerate(sorted_preds):
         icon = "🟢" if p.probability>0.65 else ("🟡" if p.probability>0.40 else "🔴")
-        lines.append(f"| {icon} {p.name}({p.ticker}) | {p.probability*100:.0f}% | {p.horizon['T1']*100:.0f}% | {p.horizon['T5']*100:.0f}% | {p.horizon['T20']*100:.0f}% | {p.action_proposal} | {p.confidence} |")
-    
+        lines.append(f"| {i+1} | {icon} {p.name}({p.ticker}) | {p.probability*100:.0f}% | {p.horizon['T1']*100:.0f}% | {p.horizon['T5']*100:.0f}% | {p.horizon['T20']*100:.0f}% | {p.action_proposal} | {p.confidence} |")
     lines.append(f"")
+    
+    # ── 情景推演 ──
+    lines.append("## 🎯 情景推演")
+    lines.append(f"")
+    if high:
+        top3 = sorted_preds[:3]
+        lines.append(f"**乐观情景**: " + "、".join(f"{p.name}+{p.horizon['T5']*100:.0f}%" for p in top3) + "同时兑现 → 组合有较好表现。催化剂需持续跟踪。")
+        lines.append(f"")
+        lines.append(f"**基准情景**: 高概率标的震荡上行，中低概率标的维持观望。正常节奏执行持仓管理。")
+        lines.append(f"")
+        lines.append(f"**悲观情景**: 宏观逆风加剧(美元破99或FOMC鹰派升级) → 高概率标的也可能被拖累。做好止损准备。")
+    else:
+        lines.append(f"当前无高概率标的。三种情景均建议保持现金或轻仓。等待下一轮催化确认。")
+    lines.append(f"")
+    
+    # ── 校准参考 ──
+    lines.append("## 📐 校准参考")
+    lines.append(f"")
+    lines.append(f"- **Z9 严格样本**: {strict_count}/50 ({"已可触发自动调权" if strict_count>=50 else "不足,自动调权已冻结"})")
+    lines.append(f"- **数据精度**: DAILY_OHLCV_PROXY (日线OHLCV代理，非M1/Tick)")
+    lines.append(f"- **Lineage Cap**: 概率上限0.75 (因proxy数据源)")
+    lines.append(f"- **下次校准**: 需严格T+N历史收盘数据，当前使用实时价代理回验")
+    lines.append(f"")
+    
+    # ── 边界声明 ──
     lines.append("## ⚠️ 边界声明")
     lines.append(f"")
-    lines.append(f"- 不输出 BUY/SELL/AUTO_TRADE/MARKET_ORDER")
-    lines.append(f"- DAILY_OHLCV_PROXY, M1/L2未连接")
-    lines.append(f"- auto_adjust_allowed=False, Z9写状态=DEFERRED")
-    lines.append(f"- 非实盘交易信号，仅供研究参考")
+    lines.append(f"- 本报告为**概率预测**，非买卖建议。不输出 BUY/SELL/AUTO_TRADE/MARKET_ORDER")
+    lines.append(f"- **数据精度**: DAILY_OHLCV_PROXY, M1/L2未连接。盘口级预测能力受限")
+    lines.append(f"- **权重冻结**: auto_adjust_allowed=False，Z9严格样本不足50时自动调权已锁定")
+    lines.append(f"- **适用场景**: 投研分析 + 候选池排序 + 纸面执行验证")
+    lines.append(f"- **不适用**: 自动实盘交易、M1盘口决策、无人工确认的买卖执行")
     lines.append(f"")
     lines.append(f"---")
-    lines.append(f"**签章**: ☯️ Z2天师 Hermes Research Kernel | Z-G18 v2.1.1")
+    lines.append(f"*签章: ☯️ Z2天师 Hermes Research Kernel | Z-G18 v2.1.1*")
     
     return "\n".join(lines)
 

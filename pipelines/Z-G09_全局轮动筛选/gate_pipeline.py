@@ -103,25 +103,7 @@ def _impulse_score(ticker):
     except Exception as e:
         return {"status":"ERROR","ticker":ticker,"error":str(e)[:80]}
 
-def _rhythm_scan(tickers, step, window, beta, amp_min, amp_max, king_name):
-    """通用律动扫描 — 采样+分类"""
-    import baostock as bs; bs.login()
-    from zmatrix.scoring.r_matrix.rhythm_king_weekly import classify_rhythm
-    results = []
-    for t in tickers:
-        prefix = "sz" if t[0] in "03" else "sh"
-        rs = bs.query_history_k_data_plus(f"{prefix}.{t}","date,close",
-            start_date="2024-01-01",end_date="2026-05-23",frequency="d",adjustflag="2")
-        all_c = []
-        while rs.next():
-            r = rs.get_row_data()
-            if r[1] and r[1]!='': all_c.append(float(r[1]))
-        sampled = all_c[::step] if step > 1 else all_c
-        if len(sampled) >= 20:
-            r = classify_rhythm(sampled, beta_threshold=beta, box_amp_min=amp_min, box_amp_max=amp_max)
-            results.append({"ticker":t,"king":king_name,**r})
-    bs.logout()
-    return results
+# _rhythm_scan removed — use rotation_scan.py + rhythm_king_weekly.py instead
 
 def run(pool_size=80, universe="A_SHARE_ALL", allow_fallback=True,
         kings_enabled="all"):
@@ -158,51 +140,23 @@ def run(pool_size=80, universe="A_SHARE_ALL", allow_fallback=True,
         print(f"  入选: {len(daily)}只 (TypeA={sum(1 for c in daily if 'HORIZONTAL' in c.get('type',''))} TypeB={sum(1 for c in daily if 'RISING' in c.get('type',''))})")
         result["sections"]["impulse_king"] = {"pool":daily,"scanned":len(tickers),"pool_size":len(daily)}
 
-    # ═══ 波动/律动/轮动: 多尺度律动 ═══
+    # ═══ 波动/律动/轮动: via rotation_scan + rhythm_king_weekly ═══
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("rotscan",
+        str(Path(__file__).parent / "rotation_scan.py"))
+    rotscan = importlib.util.module_from_spec(spec); spec.loader.exec_module(rotscan)
+    
     for king_key in ["oscillation","rhythm","rotation"]:
         if king_key not in kings_list: continue
         cfg = KINGS[king_key]
         print(f"\n📡 [{cfg['name']}] {cfg['desc']} | {cfg['scale']} window={cfg['window']} | {len(tickers)}只")
         try:
             if king_key == "oscillation":
-                r = _rhythm_scan(tickers, step=5, window=50, beta=0.002, amp_min=5, amp_max=200, king_name=cfg['name'])
+                r = rotscan.scan_oscillation_king(tickers)
             elif king_key == "rhythm":
-                r = _rhythm_scan(tickers, step=1, window=26, beta=0.004, amp_min=10, amp_max=150, king_name=cfg['name'])
-                # resample: use weekly baostock instead of daily step
-                import baostock as bs; bs.login()
-                r2 = []
-                for t in tickers[:len(tickers)]:
-                    prefix = "sz" if t[0] in "03" else "sh"
-                    rs = bs.query_history_k_data_plus(f"{prefix}.{t}","date,close",
-                        start_date="2024-01-01",end_date="2026-05-23",frequency="w",adjustflag="2")
-                    closes = []
-                    while rs.next():
-                        rr = rs.get_row_data()
-                        if rr[1] and rr[1]!='': closes.append(float(rr[1]))
-                    if len(closes)>=20:
-                        from zmatrix.scoring.r_matrix.rhythm_king_weekly import classify_rhythm
-                        x = classify_rhythm(closes, beta_threshold=0.004, box_amp_min=10, box_amp_max=150)
-                        r2.append({"ticker":t,"king":cfg['name'],**x})
-                bs.logout()
-                r = r2
-            else:  # rotation: bi-weekly
-                import baostock as bs; bs.login()
-                r3 = []
-                for t in tickers[:len(tickers)]:
-                    prefix = "sz" if t[0] in "03" else "sh"
-                    rs = bs.query_history_k_data_plus(f"{prefix}.{t}","date,close",
-                        start_date="2024-01-01",end_date="2026-05-23",frequency="d",adjustflag="2")
-                    all_c = []
-                    while rs.next():
-                        rr = rs.get_row_data()
-                        if rr[1] and rr[1]!='': all_c.append(float(rr[1]))
-                    sampled = all_c[::10]
-                    if len(sampled)>=6:
-                        from zmatrix.scoring.r_matrix.rhythm_king_weekly import classify_rhythm
-                        x = classify_rhythm(sampled, beta_threshold=0.004, box_amp_min=8, box_amp_max=200)
-                        r3.append({"ticker":t,"king":cfg['name'],**x})
-                bs.logout()
-                r = r3
+                r = rotscan.scan_rhythm_king(tickers)
+            else:
+                r = rotscan.scan_rotation_king(tickers)
 
             box = [x for x in r if x["type"]=="BOX"]
             up = [x for x in r if x["type"]=="TREND_UP"]

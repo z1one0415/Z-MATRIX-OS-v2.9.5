@@ -154,6 +154,36 @@ def run(tickers=None, mode="daily", universe="WATCHLIST"):
     # ── Oracle Report + 落盘 ──
     report = _render_oracle(predictions, strict_count, universe, now)
     result["sections"]["oracle_report_path"] = _save_oracle(report, now)
+    
+    # ── Auto-create decision cards for high-probability stocks ──
+    try:
+        from hermes.memory_bank import create_card, load_bank
+        high_probs = [p for p in predictions if p.probability >= 0.65]
+        cards_created = 0
+        for p in high_probs:
+            macro_summary = "MACRO:3逆风1顺风"  # simplified
+            card = create_card(
+                stock=p.ticker,
+                situation=f"{now.strftime('%Y-%m-%d')} | {macro_summary} | Universe:{universe}",
+                your_view="用户尚未操作(等待确认)",
+                my_advice=f"Z-G18: {p.probability*100:.0f}% {p.action_proposal} T1:{p.horizon['T1']*100:.0f}% T5:{p.horizon['T5']*100:.0f}% T20:{p.horizon['T20']*100:.0f}%",
+                actual_action="PENDING",
+                outcome=None,
+                cost=None,
+                lesson=None,
+                tags=["天机引擎","auto",p.action_proposal],
+                emotion="中性",
+                priority_scene="A" if p.probability>0.70 else "C"
+            )
+            if card: cards_created += 1
+        bank = load_bank()
+        result["sections"]["decision_cards_created"] = cards_created
+        result["sections"]["decision_cards_total"] = len(bank.get("cards",[]))
+        print("
+📇 决策卡: +{}张 → 累计{}张".format(cards_created, len(bank.get("cards",[]))))
+    except Exception as e:
+        result["sections"]["decision_cards_created"] = 0
+        result["sections"]["decision_cards_note"] = f"auto-create failed: {e}"
     result["sections"]["oracle_text"] = report
     
     return result

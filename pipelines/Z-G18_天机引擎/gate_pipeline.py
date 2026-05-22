@@ -184,6 +184,24 @@ def run(tickers=None, mode="daily"):
     result["sections"]["z9_prediction_samples_ready"] = len(predictions)
     result["sections"]["auto_adjust_allowed"] = False
     result["sections"]["auto_adjust_reason"] = "Z_G18_WRITES_PREDICTION_SAMPLE_ONLY_AUTO_ADJUST_FORBIDDEN"
+    
+    # Aggregate top-level data_lineage from predictions
+    if predictions:
+        caps = [p.data_lineage.get("probability_cap", 0.60) for p in predictions]
+        confs = [p.data_lineage.get("confidence_cap", "LOW") for p in predictions]
+        result["data_lineage"] = {
+            "global_data_precision": "DAILY_OHLCV_PROXY",
+            "probability_cap": round(min(caps), 3),
+            "confidence_cap": "LOW" if "LOW" in confs else ("MEDIUM" if "MEDIUM" in confs else "HIGH"),
+            "m1_connected": False, "l2_connected": False,
+            "source": "AGGREGATED_FROM_PREDICTIONS",
+        }
+    else:
+        result["data_lineage"] = {
+            "global_data_precision": "DATA_GAP", "probability_cap": 0.60,
+            "confidence_cap": "LOW", "m1_connected": False, "l2_connected": False,
+            "source": "NO_PREDICTIONS",
+        }
 
     return result
 

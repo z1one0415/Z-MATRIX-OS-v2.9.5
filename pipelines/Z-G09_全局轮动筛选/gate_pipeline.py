@@ -143,7 +143,7 @@ def run(pool_size=80, universe="A_SHARE_ALL", allow_fallback=True,
         result["sections"]["impulse_king"] = {"pool":daily,"scanned":len(tickers),"pool_size":len(daily)}
 
     # ═══ 波动/律动/轮动: via rotation_scan + rhythm_king_weekly ═══
-
+    for king_key in ["oscillation","rhythm","rotation"]:
         if king_key not in kings_list: continue
         cfg = KINGS[king_key]
         print(f"\n📡 [{cfg['name']}] {cfg['desc']} | {cfg['scale']} window={cfg['window']} | {len(tickers)}只")

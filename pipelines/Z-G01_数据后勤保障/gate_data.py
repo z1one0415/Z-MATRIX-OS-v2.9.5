@@ -525,6 +525,89 @@ def l25_macro():
           "memory_source": mem}
     return rv
 
+# ═══ 海外资产 + 新闻快讯 (Z-G02/Z-G08消费) ═══
+
+OVERSEAS_ASSETS: dict[str, dict] = {
+    "VIX":   {"sina": "gb_vix",  "name": "恐慌指数", "decimals": 1},
+    "SOX":   {"sina": "gb_sox",  "name": "费城半导体", "decimals": 0},
+    "KWEB":  {"sina": "gb_kweb", "name": "中概互联网", "decimals": 1},
+    "GC":    {"sina": "hf_GC",   "name": "COMEX黄金",  "decimals": 0},
+    "CL":    {"sina": "hf_CL",   "name": "WTI原油",    "decimals": 2},
+    "CNH":   {"sina": "USDCNH",  "name": "离岸人民币", "decimals": 4},
+    "A50":   {"sina": "nq_sf",   "name": "A50期货",    "decimals": 0},
+}
+
+
+def _fetch_overseas_sina(sina_code: str) -> tuple:
+    """Sina海外资产 — gb_*: field[0]=name, field[1]=price, field[2]=pct.
+    hf_*: field[0]=price. Returns (price, pct)."""
+    try:
+        url = f"https://hq.sinajs.cn/list={sina_code}"
+        req = urllib.request.Request(url, headers={"Referer":"https://finance.sina.com.cn"})
+        raw = urllib.request.urlopen(req, timeout=8).read().decode("gbk", errors="replace")
+        if "=" not in raw: return None, None
+        parts = raw.split("=",1)[1].strip().strip('";').split(",")
+        if len(parts) < 2: return None, None
+        try:
+            price = float(parts[0])
+            pct = float(parts[1]) if len(parts) > 1 and parts[1] else None
+        except ValueError:
+            try: price = float(parts[1]); pct = float(parts[2]) if len(parts) > 2 and parts[2] else None
+            except (ValueError, IndexError): return None, None
+        return round(price, 6), round(pct, 2) if pct is not None else None
+    except: return None, None
+
+
+def fetch_overseas_assets() -> dict:
+    """统一海外资产数据 — Z-G01中枢提供，Z-G02直接消费"""
+    ck = "overseas"
+    if _cache_get(ck, ttl=60): return _cache_get(ck, ttl=60)
+    results = {}
+    for key, meta in OVERSEAS_ASSETS.items():
+        price, pct = _fetch_overseas_sina(meta["sina"])
+        results[key] = {
+            "name": meta["name"], "decimals": meta["decimals"],
+            "price": round(price, meta["decimals"]) if price is not None else None,
+            "pct": pct, "key": key, "status": "ok" if price is not None else "fetch_failed",
+        }
+    rv = {"status": "PASS" if sum(1 for r in results.values() if r["price"]) >= 3 else "DEGRADED",
+          "assets": results, "count": len(results),
+          "online": sum(1 for r in results.values() if r["price"]),
+          "pipeline_signature": "Z-G01_overseas_v1"}
+    _cache_set(ck, rv); return rv
+
+
+def fetch_news_headlines(max_items: int = 15) -> dict:
+    """统一新闻快讯 — 东方财富+Sina"""
+    ck = "news"
+    if _cache_get(ck, ttl=300): return _cache_get(ck, ttl=300)
+    headlines = []
+    errors = []
+    # 东方财富公告
+    try:
+        url = "https://np-anotice-stock.eastmoney.com/api/security/ann?page_size=10&page_index=1&ann_type=SHA"
+        req = urllib.request.Request(url, headers={"User-Agent":"Mozilla/5.0"})
+        data = json.loads(urllib.request.urlopen(req, timeout=8).read())
+        for item in data.get("data",{}).get("list",[])[:10]:
+            headlines.append(item.get("title","")[:120])
+    except Exception as e: errors.append(f"eastmoney:{str(e)[:60]}")
+    # Sina finance headlines
+    try:
+        url = "https://finance.sina.com.cn/"
+        req = urllib.request.Request(url, headers={"User-Agent":"Mozilla/5.0","Referer":"https://finance.sina.com.cn/"})
+        raw = urllib.request.urlopen(req, timeout=8).read().decode("gbk", errors="replace")
+        import re
+        for m in re.finditer(r'<title>(.*?)</title>', raw):
+            t = m.group(1).strip()
+            if len(t) > 10 and t not in headlines:
+                headlines.append(t[:120])
+    except Exception as e: errors.append(f"sina:{str(e)[:60]}")
+    if not headlines: errors.append("no_news_sources")
+    rv = {"status": "PASS" if headlines else "DEGRADED",
+          "headlines": headlines[:max_items], "count": len(headlines[:max_items]),
+          "errors": errors, "pipeline_signature": "Z-G01_news_v1"}
+    _cache_set(ck, rv); return rv
+
 if __name__ == "__main__":
     t = sys.argv[1] if len(sys.argv)>1 else "002463"
     g1 = market_truth(t); print(f"闸①:{g1['status']} price={g1.get('price')} cross={g1.get('cross_validated')}")

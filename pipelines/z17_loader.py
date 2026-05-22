@@ -42,3 +42,9 @@ def get_sectors():
 
 def l25_macro():
     return mod.l25_macro()
+
+def fetch_overseas_assets():
+    return mod.fetch_overseas_assets()
+
+def fetch_news_headlines(max_items: int = 15):
+    return mod.fetch_news_headlines(max_items)

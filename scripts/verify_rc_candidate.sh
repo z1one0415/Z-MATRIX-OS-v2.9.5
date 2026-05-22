@@ -51,7 +51,7 @@ if command -v pytest >/dev/null 2>&1; then
         tests/test_pipeline_manifest_smoke.py tests/test_zg09_zg10_contracts.py \
         tests/test_zg09_type_a_horizontal.py tests/test_b_matrix_v211.py \
         tests/test_zg13_bmatrix_integration.py tests/test_data_contract_ohlcv.py \
-        tests/test_zg03_intraday_contract.py tests/test_capability_mask_contract.py tests/test_zg10_payload_ohlcv.py tests/test_intraday_tail_precision_flags.py tests/test_zg13_financial_coverage.py tests/test_universe_provider.py tests/test_global_pipelines_universe_contract.py tests/test_zg07_contracts.py tests/test_zg14_matrix_reliability.py tests/test_chain_taxonomy_provider.py tests/test_bmatrix_input_builder.py tests/test_l25_macro_contract.py tests/test_z9_calibration_contract.py tests/test_zg11_account_truth.py -q
+        tests/test_zg03_intraday_contract.py tests/test_capability_mask_contract.py tests/test_zg10_payload_ohlcv.py tests/test_intraday_tail_precision_flags.py tests/test_zg13_financial_coverage.py tests/test_universe_provider.py tests/test_global_pipelines_universe_contract.py tests/test_zg07_contracts.py tests/test_zg14_matrix_reliability.py tests/test_chain_taxonomy_provider.py tests/test_bmatrix_input_builder.py tests/test_l25_macro_contract.py tests/test_z9_calibration_contract.py tests/test_zg11_account_truth.py tests/test_zg18_core.py -q
 else
     echo "pytest not installed, skip"
 fi
@@ -107,6 +107,10 @@ python3 tests/test_z9_calibration_contract.py
 echo ""
 echo "== Z-G11 account truth tests =="
 python3 tests/test_zg11_account_truth.py
+
+echo ""
+echo "== Z-G18 Tianji engine tests =="
+python3 tests/test_zg18_core.py
 
 echo ""
 echo "== Git diff check =="

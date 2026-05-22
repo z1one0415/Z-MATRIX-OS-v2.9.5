@@ -44,13 +44,16 @@ MEMORY_BANK_DIR = Path(os.path.expanduser(
 
 # ═══ Z-G01 导入 ═══
 try:
-    from pipelines.z17_loader import l25_macro, get_sectors
+    from pipelines.z17_loader import l25_macro, get_sectors, fetch_overseas_assets
 except ImportError:
     # 回退: z17_loader 尚未完全固化时的内联实现
     def l25_macro() -> dict:
         return {"status": "stub", "note": "z17_loader.l25_macro not available"}
     def get_sectors() -> dict:
         return {"status": "stub", "note": "z17_loader.get_sectors not available"}
+    def fetch_overseas_assets() -> dict:
+        return {"status": "DATA_GAP", "assets": {}, "online": 0, "count": 0}
+
 
 # ═══ 外部组件 (可选) ═══
 try:
@@ -63,19 +66,21 @@ except ImportError:
 
 # ═══ 资产符号与新浪行情URL映射 ═══
 ASSET_SYMBOLS: dict[str, dict] = {
-    "VIX":   {"sina": "gb_vix",      "name": "恐慌指数", "decimals": 1},
-    "SOX":   {"sina": "gb_sox",      "name": "费城半导体", "decimals": 0},
-    "KWEB":  {"sina": "gb_kweb",     "name": "中概互联网", "decimals": 1},
-    "GC":    {"sina": "hf_GC",       "name": "COMEX黄金",  "decimals": 0},
-    "CL":    {"sina": "hf_CL",       "name": "WTI原油",    "decimals": 2},
-    "CNH":   {"sina": "USDCNH",      "name": "离岸人民币", "decimals": 4},
-    "A50":   {"sina": "nq_sf",       "name": "A50期货",    "decimals": 0},
+    "VIX":   {"sina": "gb_vix",  "yf": "^VIX",     "name": "恐慌指数", "decimals": 1},
+    "SOX":   {"sina": "gb_sox",  "yf": "^SOX",     "name": "费城半导体", "decimals": 0},
+    "KWEB":  {"sina": "gb_kweb", "yf": "KWEB",     "name": "中概互联网", "decimals": 1},
+    "GC":    {"sina": "hf_GC",   "yf": "GC=F",     "name": "COMEX黄金",  "decimals": 0},
+    "CL":    {"sina": "hf_CL",   "yf": "CL=F",     "name": "WTI原油",    "decimals": 2},
+    "CNH":   {"sina": "USDCNH",  "yf": "CNH=X",    "name": "离岸人民币", "decimals": 4},
+    "A50":   {"sina": "nq_sf",   "yf": "XINA50=F", "name": "A50期货",    "decimals": 0},
 }
 FALLBACK_DECIMALS: dict[str, int] = {k: v["decimals"] for k, v in ASSET_SYMBOLS.items()}
 
 
-def _fetch_sina_price(sina_code: str) -> Optional[float]:
-    """从新浪财经拉取单个资产实时价格"""
+def _fetch_sina_price(sina_code: str) -> tuple[float | None, float | None]:
+    """从新浪财经拉取单个资产实时价格和变动率。
+    Returns (price, change_pct). gb_* codes have name in field[0], price in field[1].
+    """
     try:
         import urllib.request
         url = f"https://hq.sinajs.cn/list={sina_code}"
@@ -85,34 +90,71 @@ def _fetch_sina_price(sina_code: str) -> Optional[float]:
         })
         with urllib.request.urlopen(req, timeout=8) as resp:
             raw = resp.read().decode("gbk", errors="replace")
-        # 解析: var hq_str_gb_vix="27.60,0.45,2026-05-19 04:00:00";
-        # 或: var hq_str_USDCNH="7.1234,0.0012,..."
         if "=" not in raw:
-            return None
+            return None, None
         data = raw.split("=", 1)[1].strip().strip('";')
         parts = data.split(",")
-        if len(parts) >= 1:
-            val = parts[0].strip()
-            if val:
-                return float(val)
+        if len(parts) < 2:
+            return None, None
+        # gb_* codes: field[0]=name, field[1]=price, field[2]=change_pct
+        # hf_* codes: field[0]=price, field[1] may be empty
+        # Test if field[0] is numeric — if not, gb_* format
+        try:
+            price = float(parts[0])
+            pct_field = 1
+        except ValueError:
+            # gb_* format: name in [0], price in [1], pct in [2]
+            if len(parts) >= 2:
+                try:
+                    price = float(parts[1])
+                    pct_field = 2
+                except ValueError:
+                    return None, None
+            else:
+                return None, None
+        # Try to get change_pct
+        pct = None
+        if len(parts) > pct_field:
+            try:
+                pct = float(parts[pct_field])
+            except ValueError:
+                pass
+        return price, pct
     except Exception as e:
         print(f"  ⚠️ Sina {sina_code}: {e}", file=sys.stderr)
-    return None
+    return None, None
+
+
+def _fetch_yfinance_price(ticker: str) -> tuple[float | None, float | None]:
+    """yfinance fallback for overseas assets"""
+    try:
+        import yfinance as yf
+        t = yf.Ticker(ticker)
+        info = t.info
+        price = info.get("regularMarketPrice") or info.get("previousClose")
+        prev = info.get("previousClose")
+        pct = round((price / prev - 1) * 100, 2) if price and prev else None
+        return price, pct
+    except Exception:
+        return None, None
 
 
 def fetch_all_assets() -> dict[str, dict]:
-    """拉取全部8项隔夜资产的实时价格与变动"""
+    """拉取全部8项隔夜资产 — Sina优先, yfinance fallback"""
     results = {}
     for key, meta in ASSET_SYMBOLS.items():
-        price = _fetch_sina_price(meta["sina"])
+        price, pct = _fetch_sina_price(meta["sina"])
+        source = "sina"
+        # yfinance fallback if Sina failed
+        if price is None and meta.get("yf"):
+            price, pct = _fetch_yfinance_price(meta["yf"])
+            source = "yfinance" if price is not None else "all_failed"
         if price is None:
             results[key] = {"name": meta["name"], "price": None, "pct": None, "status": "fetch_failed"}
-            continue
-        # 变动率暂用0（新浪含变动字段但简化解码）
-        pct = None
-        if len(key) > 1:
-            pass  # 变动率从新浪第2字段获取，为简化先跳过
-        results[key] = {"name": meta["name"], "price": price, "pct": pct, "status": "ok"}
+        else:
+            results[key] = {"name": meta["name"], "price": round(price, meta.get("decimals", 2)),
+                            "pct": round(pct, 2) if pct is not None else None,
+                            "status": "ok", "source": source}
     return results
 
 
@@ -334,7 +376,8 @@ def run(tickers: list[str] | None = None, mode: str = "full", dry_run: bool = Fa
         result["errors"].append(f"get_sectors: {e}")
 
     # 拉取隔夜资产
-    assets = fetch_all_assets()
+    # Use Z-G01 unified overseas assets
+    assets = fetch_overseas_assets().get("assets", fetch_all_assets())
     status_info["data_sources"].append("sina_assets")
     assets_ok = sum(1 for v in assets.values() if v["status"] == "ok")
     print(f"  ✅ Z-G01: {status_info['z_g01_status']} | 资产: {assets_ok}/7 在线")

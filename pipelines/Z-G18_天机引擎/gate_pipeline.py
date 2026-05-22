@@ -232,7 +232,7 @@ def _render_oracle(predictions, strict_count, source, now):
                 from scripts.predict_engine import STOCK_DB
                 pe = STOCK_DB.get(p.ticker,{}).get('pe')
             except: pe = None
-            if p.probability >= 70:
+            if p.probability >= 0.70:
                 lines.append(f"  {p.probability*100:.0f}%概率由25因子多维共振驱动。" + (f"PE{pe:.0f}x估值合理" if pe and pe<30 else (f"PE{pe:.0f}x需关注估值" if pe else "")) + "。")
                 if p.action_proposal == "PAPER_PROBE_ELIGIBLE_PENDING_Z16_Z17":
                     lines.append(f"  纸面验证级别——需Z-G16确认执行计划后才能升级。")
@@ -240,7 +240,7 @@ def _render_oracle(predictions, strict_count, source, now):
                     lines.append(f"  PAPER_TRACK级别——可纳入观察增强列表，但受MACRO逆风(3/5)限制，建议轻仓试探。")
                 else:
                     lines.append(f"  当前{p.action_proposal}级别。MACRO逆风偏多，等待确认信号。")
-            elif p.probability >= 65:
+            elif p.probability >= 0.65:
                 lines.append(f"  {p.probability*100:.0f}%处于边界区间。" + (f"PE{pe:.0f}x有安全边际" if pe and pe<15 else "") + "。建议确认开盘信号后再行动。")
             else:
                 lines.append(f"  当前概率偏低，不纳入主动候选池。")

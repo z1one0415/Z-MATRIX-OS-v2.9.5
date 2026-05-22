@@ -373,7 +373,8 @@ def run(tickers: list[str] | None = None, mode: str = "full", dry_run: bool = Fa
         result["errors"].append(f"get_sectors: {e}")
 
     # 拉取隔夜资产
-    assets = fetch_all_assets()
+    # Use Z-G01 unified overseas assets
+    assets = fetch_overseas_assets().get("assets", fetch_all_assets())
     status_info["data_sources"].append("sina_assets")
     assets_ok = sum(1 for v in assets.values() if v["status"] == "ok")
     print(f"  ✅ Z-G01: {status_info['z_g01_status']} | 资产: {assets_ok}/7 在线")

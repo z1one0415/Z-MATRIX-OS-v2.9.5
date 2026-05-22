@@ -89,9 +89,8 @@ def test_zg11_uses_chain_taxonomy_provider_for_consumer_brand():
     finally: os.unlink(mem_path)
 
 
-def test_zg11_no_local_hardcoded_chain_table()
-    test_zg11_outputs_structured_chain_exposure()
-    test_zg11_outputs_structured_single_position_exposure():
+def test_zg11_no_local_hardcoded_chain_table():
+    
     source = open("pipelines/Z-G11_组合风控/gate_pipeline.py", encoding="utf-8").read()
     assert "chain_taxonomy_provider" in source
     assert "match_chain_detail" in source

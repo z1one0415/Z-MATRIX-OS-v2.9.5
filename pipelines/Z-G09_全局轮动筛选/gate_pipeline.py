@@ -128,6 +128,12 @@ def run(pool_size=80, universe="A_SHARE_ALL", allow_fallback=True,
     print(f"   启用: {', '.join(KINGS[k]['name'] for k in kings_list if k in KINGS)}")
     print("="*60)
 
+    # ── Load rotation scan (before all kings) ──
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("rotscan",
+        str(Path(__file__).parent / "rotation_scan.py"))
+    rotscan = importlib.util.module_from_spec(spec); spec.loader.exec_module(rotscan)
+
     # ═══ 冲动天王: 日线 Type A/B ═══
     if "impulse" in kings_list:
         print(f"\n⚡ [冲动天王] {KINGS['impulse']['desc']} | {len(tickers)}只")
@@ -137,12 +143,7 @@ def run(pool_size=80, universe="A_SHARE_ALL", allow_fallback=True,
         result["sections"]["impulse_king"] = {"pool":daily,"scanned":len(tickers),"pool_size":len(daily)}
 
     # ═══ 波动/律动/轮动: via rotation_scan + rhythm_king_weekly ═══
-    import importlib.util
-    spec = importlib.util.spec_from_file_location("rotscan",
-        str(Path(__file__).parent / "rotation_scan.py"))
-    rotscan = importlib.util.module_from_spec(spec); spec.loader.exec_module(rotscan)
-    
-    for king_key in ["oscillation","rhythm","rotation"]:
+
         if king_key not in kings_list: continue
         cfg = KINGS[king_key]
         print(f"\n📡 [{cfg['name']}] {cfg['desc']} | {cfg['scale']} window={cfg['window']} | {len(tickers)}只")
@@ -168,6 +169,38 @@ def run(pool_size=80, universe="A_SHARE_ALL", allow_fallback=True,
         except Exception as e:
             result["sections"][f"{king_key}_king"] = {"error":str(e)[:120]}
 
+    # ═══ 四王共振 + r_pool ═══
+    from zmatrix.scoring.r_matrix.cycle_four_king_resonance import evaluate_cycle_four_king
+    per_ticker = {}
+    for king_key in ["impulse","oscillation","rhythm","rotation"]:
+        section = result["sections"].get(f"{king_key}_king", {})
+        details = section.get("details", section.get("pool", []))
+        for d in details:
+            t = d.get("ticker","")
+            if t not in per_ticker: per_ticker[t] = {}
+            per_ticker[t][king_key] = d
+    
+    resonance_pool = []
+    for ticker, kings in per_ticker.items():
+        r = evaluate_cycle_four_king(
+            kings.get("impulse"), kings.get("oscillation"),
+            kings.get("rhythm"), kings.get("rotation"))
+        r["ticker"] = ticker
+        # Anchor to portfolio positions
+        r["cost_anchor"] = _anchor_to_cost(ticker, r.get("rhythm",{}).get("position",0.5) if r.get("rhythm") else 0.5,
+                                           r.get("rhythm",{}).get("type","?"), r["entry_action_cap"],
+                                           _read_positions())
+        resonance_pool.append(r)
+    
+    resonance_pool.sort(key=lambda x: (len(x["hard_blocks"])==0, x["resonance_score"]), reverse=True)
+    result["r_pool"] = resonance_pool[:pool_size]
+    result["sections"]["four_king_resonance"] = {
+        "pool_size": len(result["r_pool"]),
+        "scanned": len(tickers),
+        "resonance_strong": sum(1 for r in resonance_pool if r["resonance_status"]=="CYCLE_RESONANCE_STRONG"),
+        "blocked": sum(1 for r in resonance_pool if r["hard_blocks"]),
+    }
+    
     return result
 
 if __name__ == "__main__":

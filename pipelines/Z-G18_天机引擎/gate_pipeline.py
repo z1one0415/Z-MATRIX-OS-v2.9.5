@@ -228,21 +228,22 @@ def _render_oracle(predictions, strict_count, source, now):
                 lines.append(f"")
             # Interpretation
             lines.append(f"**天师解读**:")
-            pe = None
             try:
                 from scripts.predict_engine import STOCK_DB
                 pe = STOCK_DB.get(p.ticker,{}).get('pe')
-            except: pass
+            except: pe = None
             if p.probability >= 70:
+                lines.append(f"  {p.probability*100:.0f}%概率由25因子多维共振驱动。" + (f"PE{pe:.0f}x估值合理" if pe and pe<30 else (f"PE{pe:.0f}x需关注估值" if pe else "")) + "。")
                 if p.action_proposal == "PAPER_PROBE_ELIGIBLE_PENDING_Z16_Z17":
-                    lines.append(f"  概率{p.probability*100:.0f}%反映多因子共振。" + (f" PE{pe}x估值合理" if pe and pe<30 else "") + (f" PE{pe}x偏高需谨慎" if pe and pe>=30 else "") + "。")
-                    lines.append(f"  当前为纸面验证级别——需要Z-G16确认执行计划后才能提升到paper_probe。")
+                    lines.append(f"  纸面验证级别——需Z-G16确认执行计划后才能升级。")
+                elif p.action_proposal == "PAPER_TRACK":
+                    lines.append(f"  PAPER_TRACK级别——可纳入观察增强列表，但受MACRO逆风(3/5)限制，建议轻仓试探。")
                 else:
-                    lines.append(f"  概率{p.probability*100:.0f}%，{p.action_proposal}级别。")
-                    lines.append(f"  当前市场环境偏谨慎(MACRO逆风)，即使高概率也建议轻仓或等待确认。")
+                    lines.append(f"  当前{p.action_proposal}级别。MACRO逆风偏多，等待确认信号。")
             elif p.probability >= 65:
-                lines.append(f"  概率{p.probability*100:.0f}%处于边界区间。" + (f" PE{pe}x估值有安全边际" if pe and pe<15 else "") + "。")
-                lines.append(f"  建议观察下一个交易日的开盘确认，不急于行动。")
+                lines.append(f"  {p.probability*100:.0f}%处于边界区间。" + (f"PE{pe:.0f}x有安全边际" if pe and pe<15 else "") + "。建议确认开盘信号后再行动。")
+            else:
+                lines.append(f"  当前概率偏低，不纳入主动候选池。")
     else:
         lines.append(f"")
         lines.append(f"今日无高概率(>65%)标的。市场整体偏谨慎，等待催化。")
@@ -297,20 +298,21 @@ def _render_oracle(predictions, strict_count, source, now):
 
 
 def _save_oracle(report, now):
-    """落盘天机签到记忆宫殿"""
-    try:
-        root = Path(__file__).resolve().parents[2] / "记忆宫殿" / "Z2信息熔炉" / "投资记忆银行" / "超级预测系统" / "监控中心"
-        root.mkdir(parents=True, exist_ok=True)
-        filename = now.strftime("%Y-%m-%d_天机签.md")
-        path = root / filename
-        path.write_text(report)
-        # Also save to Obsidian vault
-        obsidian = Path.home() / "Documents" / "openclaw memory" / "openclaw memory" / "Z2信息熔炉" / "投资记忆银行" / "超级预测系统" / "监控中心"
-        obsidian.mkdir(parents=True, exist_ok=True)
-        (obsidian / filename).write_text(report)
-        return str(path)
-    except Exception as e:
-        return f"save_failed: {e}"
+    """落盘天机签到专属目录"""
+    paths = []
+    for base in [
+        Path(__file__).resolve().parents[2] / "记忆宫殿" / "Z2信息熔炉" / "投资记忆银行" / "超级预测系统" / "天机引擎",
+        Path.home() / "Documents" / "openclaw memory" / "openclaw memory" / "Z2信息熔炉" / "投资记忆银行" / "超级预测系统" / "天机引擎",
+    ]:
+        try:
+            base.mkdir(parents=True, exist_ok=True)
+            filename = now.strftime("%Y-%m-%d_天机签.md")
+            path = base / filename
+            path.write_text(report)
+            paths.append(str(path))
+        except Exception:
+            pass
+    return paths[0] if paths else "save_failed"
 
 
 if __name__ == "__main__":

@@ -101,3 +101,27 @@ def scan_rotation_king(tickers: list[str]) -> list[dict]:
             results.append({"ticker":t,"king":"轮动天王",**r})
     bs.logout()
     return results
+
+
+def scan_impulse_king(tickers: list[str]) -> list[dict]:
+    """冲动天王: 日线500K Type A/B oscillation — 日内超买超卖警报"""
+    import baostock as bs
+    from zmatrix.scoring.r_matrix.oscillation_king_ranker_v11 import rank_type_a_horizontal, rank_type_b_rising_channel
+    bs.login()
+    results = []
+    for t in tickers:
+        prefix = "sz" if t[0] in "03" else "sh"
+        rs = bs.query_history_k_data_plus(f"{prefix}.{t}","date,close",
+            start_date="2024-01-01",end_date="2026-05-23",frequency="d",adjustflag="2")
+        closes = []
+        while rs.next():
+            r = rs.get_row_data()
+            if r[1] and r[1]!='': closes.append(float(r[1]))
+        if len(closes)>=260:
+            ra = rank_type_a_horizontal(t,"",closes)
+            rb = rank_type_b_rising_channel(t,"",closes)
+            best = ra if ra.score>=rb.score else rb
+            results.append({"ticker":t,"king":"冲动天王","type":best.oscillation_type,
+                           "score":best.score,"action":best.allowed_action})
+    bs.logout()
+    return results

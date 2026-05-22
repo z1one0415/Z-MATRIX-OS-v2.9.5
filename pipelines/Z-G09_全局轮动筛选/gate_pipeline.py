@@ -131,13 +131,9 @@ def run(pool_size=80, universe="A_SHARE_ALL", allow_fallback=True,
     # ═══ 冲动天王: 日线 Type A/B ═══
     if "impulse" in kings_list:
         print(f"\n⚡ [冲动天王] {KINGS['impulse']['desc']} | {len(tickers)}只")
-        candidates = []
-        for t in tickers:
-            sc = _impulse_score(t)
-            if sc and sc.get("status")=="PASS": candidates.append(sc)
-        candidates.sort(key=lambda x:x["score"],reverse=True)
-        daily = candidates[:pool_size]
-        print(f"  入选: {len(daily)}只 (TypeA={sum(1 for c in daily if 'HORIZONTAL' in c.get('type',''))} TypeB={sum(1 for c in daily if 'RISING' in c.get('type',''))})")
+        imp = rotscan.scan_impulse_king(tickers)
+        daily = sorted(imp, key=lambda x: x.get("score",0), reverse=True)[:pool_size]
+        print(f"  入选: {len(daily)}只 (TypeA={sum(1 for c in daily if 'HORIZONTAL' in str(c.get('type','')))} TypeB={sum(1 for c in daily if 'RISING' in str(c.get('type','')))})")
         result["sections"]["impulse_king"] = {"pool":daily,"scanned":len(tickers),"pool_size":len(daily)}
 
     # ═══ 波动/律动/轮动: via rotation_scan + rhythm_king_weekly ═══

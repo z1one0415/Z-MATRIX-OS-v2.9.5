@@ -152,7 +152,7 @@ def run(tickers=None, mode="daily", universe="WATCHLIST"):
             "confidence_cap":"LOW","m1_connected":False,"l2_connected":False,"source":"NO_PREDICTIONS"}
     
     # ── Oracle Report + 落盘 ──
-    report = _render_oracle(predictions, strict_count, uni_source if 'uni' in dir() else "manual", now)
+    report = _render_oracle(predictions, strict_count, universe, now)
     result["sections"]["oracle_report_path"] = _save_oracle(report, now)
     result["sections"]["oracle_text"] = report
     
@@ -317,6 +317,8 @@ def _save_oracle(report, now):
 
 if __name__ == "__main__":
     p = argparse.ArgumentParser(description="Z-G18 天机引擎 v2.1.1")
-    p.add_argument("--tickers", type=str, default="002472,601899,600519,688981")
+    p.add_argument("--tickers", type=str, default=None, help="逗号分隔代码(留空则用UniverseProvider)")
+    p.add_argument("--universe", default="PRESET_DEV", help="Universe source")
     args = p.parse_args()
-    run(args.tickers.split(","))
+    tickers = args.tickers.split(",") if args.tickers else None
+    run(tickers=tickers, universe=args.universe)

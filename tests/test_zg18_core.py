@@ -122,7 +122,9 @@ def test_horizon_clamped_to_lineage_cap():
 
 
 
-def test_zg18_sections_auto_adjust_always_false():
+def test_zg18_sections_auto_adjust_always_false()
+    test_zg18_top_level_data_lineage_not_empty()
+    test_zg18_z9_write_status_is_deferred():
     import importlib.util
     spec = importlib.util.spec_from_file_location('zg18','pipelines/Z-G18_天机引擎/gate_pipeline.py')
     mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
@@ -130,6 +132,28 @@ def test_zg18_sections_auto_adjust_always_false():
     assert r['sections']['auto_adjust_allowed'] is False
     assert 'SAMPLE_ONLY' in r['sections']['auto_adjust_reason'] or 'FORBIDDEN' in r['sections']['auto_adjust_reason']
     print(f"✅ sections auto_adjust_allowed=False: {r['sections']['auto_adjust_reason']}")
+
+
+def test_zg18_top_level_data_lineage_not_empty():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location('zg18','pipelines/Z-G18_天机引擎/gate_pipeline.py')
+    mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
+    r = mod.run(tickers=['002472'])
+    assert r['data_lineage'] is not None
+    assert 'global_data_precision' in r['data_lineage']
+    assert 'probability_cap' in r['data_lineage']
+    assert r['data_lineage']['m1_connected'] is False
+    print(f"✅ top-level data_lineage: precision={r['data_lineage']['global_data_precision']}")
+
+def test_zg18_z9_write_status_is_deferred():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location('zg18','pipelines/Z-G18_天机引擎/gate_pipeline.py')
+    mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
+    r = mod.run(tickers=['002472'])
+    assert r['sections']['z9_samples_written'] == 0
+    assert r['sections']['z9_write_status'] == 'DEFERRED_NOT_CONNECTED'
+    assert r['sections']['z9_prediction_samples_ready'] == len(r['predictions'])
+    print(f"✅ z9: written={r['sections']['z9_samples_written']} ready={r['sections']['z9_prediction_samples_ready']}")
 
 if __name__ == "__main__":
     test_sigmoid_shield()
@@ -143,4 +167,6 @@ if __name__ == "__main__":
     test_z9_auto_adjust_always_false()
     test_horizon_clamped_to_lineage_cap()
     test_zg18_sections_auto_adjust_always_false()
+    test_zg18_top_level_data_lineage_not_empty()
+    test_zg18_z9_write_status_is_deferred()
     print("\n🏁 Z-G18 Tianji engine tests PASS (P0/P1 hardened)")

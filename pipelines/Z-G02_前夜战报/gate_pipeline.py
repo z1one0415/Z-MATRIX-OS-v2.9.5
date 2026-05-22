@@ -44,7 +44,7 @@ MEMORY_BANK_DIR = Path(os.path.expanduser(
 
 # ═══ Z-G01 导入 ═══
 try:
-    from pipelines.z17_loader import l25_macro, get_sectors, fetch_overseas_assets, fetch_news_headlines
+    from pipelines.z17_loader import l25_macro, get_sectors, fetch_overseas_assets
 except ImportError:
     # 回退: z17_loader 尚未完全固化时的内联实现
     def l25_macro() -> dict:
@@ -53,8 +53,7 @@ except ImportError:
         return {"status": "stub", "note": "z17_loader.get_sectors not available"}
     def fetch_overseas_assets() -> dict:
         return {"status": "DATA_GAP", "assets": {}, "online": 0, "count": 0}
-    def fetch_news_headlines(max_items=15) -> dict:
-        return {"status": "DATA_GAP", "headlines": [], "count": 0}
+
 
 # ═══ 外部组件 (可选) ═══
 try:

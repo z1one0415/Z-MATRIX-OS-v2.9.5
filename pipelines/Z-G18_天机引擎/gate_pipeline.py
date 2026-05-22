@@ -179,6 +179,9 @@ def run(tickers=None, mode="daily"):
     } for p in predictions]
 
     result["sections"]["z9_strict_samples"] = strict_count
+    result["sections"]["z9_samples_written"] = 0
+    result["sections"]["z9_write_status"] = "DEFERRED_NOT_CONNECTED"
+    result["sections"]["z9_prediction_samples_ready"] = len(predictions)
     result["sections"]["auto_adjust_allowed"] = False
     result["sections"]["auto_adjust_reason"] = "Z_G18_WRITES_PREDICTION_SAMPLE_ONLY_AUTO_ADJUST_FORBIDDEN"
 

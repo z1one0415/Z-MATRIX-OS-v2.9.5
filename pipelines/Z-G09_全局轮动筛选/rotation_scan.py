@@ -4,11 +4,9 @@ import baostock as bs
 
 
 def scan_monthly_rotation(tickers: list[str], names: dict | None = None) -> list[dict]:
-    """扫描月度轮动信号 — 月线β + 通道位置 + 动作建议
-    
-    Returns list of {ticker, name, type, beta_norm, channel_amp, position, action}
-    """
+    """扫描月度轮动信号"""
     from zmatrix.scoring.r_matrix.rotation_king_monthly import classify_monthly_trend
+    if names is None: names = {}
     
     bs.login()
     results = []

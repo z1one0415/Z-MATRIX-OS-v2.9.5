@@ -305,10 +305,11 @@ def _render_oracle(predictions, strict_count, source, now):
     # ── 校准参考 ──
     lines.append("## 📐 校准参考")
     lines.append(f"")
-    lines.append(f"- **Z9 严格样本**: {strict_count}/50 ({"已可触发自动调权" if strict_count>=50 else "不足,自动调权已冻结"})")
+    z9_status = "已可触发自动调权" if strict_count >= 50 else "不足,自动调权已冻结"
+    lines.append(f"- **Z9 严格样本**: {strict_count}/50 ({z9_status})")
     lines.append(f"- **数据精度**: DAILY_OHLCV_PROXY (日线OHLCV代理，非M1/Tick)")
     lines.append(f"- **Lineage Cap**: 概率上限0.75 (因proxy数据源)")
-    lines.append(f"- **下次校准**: 需严格T+N历史收盘数据，当前使用实时价代理回验")
+    lines.append(f"- **下次校准**: 仅允许严格T+N历史收盘样本；当前不进行自动调权。")
     lines.append(f"")
     
     # ── 边界声明 ──

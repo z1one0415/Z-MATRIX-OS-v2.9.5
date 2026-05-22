@@ -34,7 +34,7 @@ def _d_matrix_score(ticker):
     try:
         from zmatrix.scoring.d_band.d_early_v22_scorer import evaluate_d_early_v22
         from pipelines.dmatrix_payload_builder import build_dmatrix_payload
-        payload = build_dmatrix_payload(ticker, g1.get("name", ""), kl)
+        payload = build_dmatrix_payload(ticker, g1.get("name", ""), kl, g1.get("industry", "") or g1.get("sector", ""))
         result = evaluate_d_early_v22(payload)
         
         # DEarlyV22Result dataclass → 通过to_dict()获取字段

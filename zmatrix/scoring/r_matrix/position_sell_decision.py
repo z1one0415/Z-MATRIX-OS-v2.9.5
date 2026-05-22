@@ -70,14 +70,14 @@ def evaluate_position_sell_decision(
         reason_codes.append("FORCE_HARVEST_REDUCE_CORE")
     
     elif exit_alert == "HARVEST":
-        if rhythm_action == "HARVEST" and rot_type != "TREND_DOWN":
-            position_action = "SELL_TRADING_KEEP_CORE"
-            sell_ratio = 0.33
-            reason_codes.append("RHYTHM_HIGH_SELL_TRADING_KEEP_ROTATION_CORE")
-        elif rhythm_action == "HARVEST" and rot_action == "HARVEST":
+        if rhythm_action == "HARVEST" and rot_action == "HARVEST":
             position_action = "REDUCE_CORE"
             sell_ratio = 0.50
             reason_codes.append("RHYTHM_AND_ROTATION_HIGH_REDUCE_CORE")
+        elif rhythm_action == "HARVEST" and rot_type != "TREND_DOWN":
+            position_action = "SELL_TRADING_KEEP_CORE"
+            sell_ratio = 0.33
+            reason_codes.append("RHYTHM_HIGH_SELL_TRADING_KEEP_ROTATION_CORE")
         else:
             if profit_pct >= 5:
                 position_action = "SELL_TRADING_KEEP_CORE"
@@ -128,7 +128,7 @@ def evaluate_position_sell_decision(
         reason_codes.append("LOSS_15_PLUS_REVIEW")
     
     # ── 5. 计算卖出股数 ──
-    sell_shares = round(shares * sell_ratio) if sell_ratio > 0 else 0
+    sell_shares = round(shares * sell_ratio / 100) * 100 if sell_ratio > 0 else 0
     keep_shares = shares - sell_shares
     
     # ── 6. 保护线 + 利润线 ──

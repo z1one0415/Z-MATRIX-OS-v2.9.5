@@ -113,6 +113,10 @@ echo "== Z-G18 Tianji engine tests =="
 python3 tests/test_zg18_core.py
 
 echo ""
+echo "== Z-G09 sell decision tests =="
+python3 tests/test_zg09_sell_decision.py
+
+echo ""
 echo "== Git diff check =="
 git diff --check
 echo "✅ no whitespace errors"

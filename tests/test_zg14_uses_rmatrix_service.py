@@ -1,22 +1,31 @@
-"""Verify G14 uses r_matrix_service v2.0, not old R-Matrix v1.1"""
-import sys, os
+"""G14 behavior tests — actual function calls with monkeypatched service"""
+import sys, os, importlib.util
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-def test_g14_no_old_rmatrix():
-    s = open("pipelines/Z-G14_月度全量选股/gate_pipeline.py").read()
-    assert "oscillation_king_ranker_v11" not in s, "G14 still imports old R-Matrix"
-    assert "rank_type_a_horizontal" not in s, "G14 still calls Type A"
-    assert "def _get_r_matrix" not in s, "G14 still has old _get_r_matrix function def"
-    print("✅ no old R-Matrix")
-
-def test_g14_uses_r_matrix_service():
-    s = open("pipelines/Z-G14_月度全量选股/gate_pipeline.py").read()
-    assert "r_matrix_service" in s or "evaluate_r_matrix_cycle" in s, "G14 doesn't use r_matrix_service"
-    assert "v2.0-cycle-four-king" in s, "G14 doesn't reference v2.0"
-    assert "R-Matrix v1.1" not in s, "G14 still references v1.1"
-    print("✅ uses r_matrix_service v2.0")
+def test_g14_real_r_score_calls_service():
+    spec = importlib.util.spec_from_file_location("zg14", "pipelines/Z-G14_月度全量选股/gate_pipeline.py")
+    mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
+    
+    # Monkeypatch r_matrix_service
+    called = {"count": 0}
+    def fake_service(ticker, prices, position=None, **kw):
+        called["count"] += 1
+        return {"ticker": ticker, "version": "v2.0-cycle-four-king", "status": "PASS",
+                "r_score": 7.5, "r_resonance_status": "CYCLE_RESONANCE_ENTRY", "r_action_cap": "WATCH_ENTRY",
+                "kings": {}, "sell_decision": None, "errors": [], "warnings": [], "legacy_fallback": False}
+    
+    import zmatrix.scoring.r_matrix.r_matrix_service as rms
+    orig = rms.evaluate_r_matrix_cycle
+    rms.evaluate_r_matrix_cycle = fake_service
+    try:
+        r = mod._real_r_score("002472", "双环传动", [10]*300)
+        assert called["count"] == 1, f"service not called: {called}"
+        assert r["r_version"] == "v2.0-cycle-four-king"
+        assert r["status"] == "PASS"
+    finally:
+        rms.evaluate_r_matrix_cycle = orig
+    print(f"✅ G14: r_version={r['r_version']} status={r['status']}")
 
 if __name__ == "__main__":
-    test_g14_no_old_rmatrix()
-    test_g14_uses_r_matrix_service()
+    test_g14_real_r_score_calls_service()
     print("\n🏁 Z-G14 R-Matrix service tests PASS")

@@ -175,6 +175,7 @@ def run(tickers=None, mode="daily", universe="WATCHLIST"):
     result["sections"]["final_decision_envelope_version"] = "v1.0"
 
     result["predictions"] = [{"ticker":p.ticker,"name":p.name,"probability":p.probability,
+        "final_decision": getattr(p, "final_decision", None),
         "horizon":p.horizon,"evidence_coverage":p.evidence_coverage,
         "data_lineage":p.data_lineage,"temporal_consistency":p.temporal_consistency,
         "next_triggers":p.next_triggers,"action_proposal":p.action_proposal,"z9":p.z9_sample}

@@ -67,9 +67,13 @@ def evaluate_r_matrix_cycle(ticker: str, prices: List[float] | None = None,
         result["status"] = "ERROR"
         result["errors"].append(str(e)[:120])
 
-    if not result["errors"]:
-        result["status"] = result["status"] or "PASS"
+    if result["errors"]:
+        result["status"] = "DEGRADED"
+    elif result.get("legacy_fallback"):
+        result["status"] = "DEGRADED"
     elif not result["kings"]:
         result["status"] = "DATA_GAP"
+    else:
+        result["status"] = "PASS"
 
     return result

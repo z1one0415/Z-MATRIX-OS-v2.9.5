@@ -179,99 +179,55 @@ def gate5_l3_sectors() -> GateResult:
     """闸口5: L3 31板块确认 — via Z-G01 get_sectors"""
     try:
         from pipelines.z17_loader import get_sectors as z01_sectors
-        count = z01_sectors().get("sectors", 0)
-        scores = {"sectors": 15 if count >= 3 else 10}
-        return GateResult(5, "L3 Sectors", GateStatus.PASS, {"sectors_available": count}, [], 0)
-        
+        data = z01_sectors()
+        if isinstance(data, dict):
+            raw = data.get("sectors", data.get("items", []))
+        else:
+            raw = data
+        if isinstance(raw, dict): count = len(raw)
+        elif isinstance(raw, list): count = len(raw)
+        elif isinstance(raw, int): count = raw
+        else: count = 0
+        details = {"sectors_available": count, "source": "Z-G01.get_sectors"}
         if count < 3:
-            return GateResult(5, "L3 Sectors", GateStatus.DATA_INCOMPLETE,
-                {"sectors_available": count}, ["板块数据不足"], 0)
-        
-        return GateResult(5, "L3 Sectors", GateStatus.PASS,
-            {"sectors_available": count, "sources": "sina_api"}, [], 0)
+            return GateResult(5, "L3 Sectors", GateStatus.DATA_INCOMPLETE, details, ["板块数据不足"], 0)
+        return GateResult(5, "L3 Sectors", GateStatus.PASS, details, [], 0)
     except Exception as e:
-        return GateResult(5, "L3 Sectors", GateStatus.DATA_INCOMPLETE,
-            {}, [f"板块数据拉取失败: {e}"], 0)
-
+        return GateResult(5, "L3 Sectors", GateStatus.DATA_INCOMPLETE, {"source": "Z-G01"}, [f"板块数据拉取失败: {str(e)[:60]}"], 0)
 
 def gate6_l4_health(ticker: str) -> GateResult:
-    """闸口6: L4健康检查 — ST→BLOCK_ENTER, 停牌→O2, 无成交→O2 (分级降级)"""
+    """闸口6: L4健康检查 — via Z-G01 l4_health"""
     errors = []
-    details = {}
-    
+    details = {"source": "Z-G01"}
     try:
-        # G07 gate6: delegated to Z-G01 l4_health — no baostock
-        bs.login()
-        prefix = "sz" if ticker.startswith(("0","3")) else "sh"
-        code = f"{prefix}.{ticker}"
+        from pipelines.z17_loader import l4_health as z01_l4
+        l4 = z01_l4(ticker)
+        st = l4.get("status", "?")
+        is_st = l4.get("is_st", False)
+        name = l4.get("name", ticker)
+        details["name"] = name; details["status"] = st; details["is_st"] = is_st
         
-        # 检查ST
-        rs = bs.query_stock_basic(code)
-        while rs.next():
-            r = rs.get_row_data()
-            name = r[1] if r[1] else ""
-            details["stock_name"] = name
-            if "ST" in name.upper() or "*ST" in name:
-                errors.append(f"ST股票: {name}")
-        
-        # 检查交易状态
-        from datetime import datetime
-        rs2 = bs.query_history_k_data_plus(code, "date,volume,tradestatus",
-            start_date=(datetime.now()-timedelta(days=3)).strftime("%Y-%m-%d"),
-            end_date=datetime.now().strftime("%Y-%m-%d"),
-            frequency="d", adjustflag="2")
-        has_volume = False
-        while rs2.next():
-            r = rs2.get_row_data()
-            if r[2] == '1' and float(r[1]) > 0:
-                has_volume = True
-        
-        # logout removed — G07 delegated to Z-G01
-        
-        details["tradable"] = has_volume
-        if not has_volume:
-            errors.append("近3日无成交, 可能停牌")
-        
+        if st == "BLOCK":
+            if is_st: return GateResult(6, "L4 Health", GateStatus.BLOCK, details, ["ST"], 0)
+            return GateResult(6, "L4 Health", GateStatus.DEGRADED, details, [f"L4:{l4.get('errors',['BLOCK'])}"], 0)
+        if st == "DATA_INCOMPLETE":
+            return GateResult(6, "L4 Health", GateStatus.DATA_INCOMPLETE, details, l4.get("errors", []), 0)
+        return GateResult(6, "L4 Health", GateStatus.PASS, details, [], 0)
     except Exception as e:
-        errors.append(f"L4检查异常: {e}")
-    
-    if errors:
-        for e in errors:
-            if "ST" in e:
-                details["reason"] = "ST"; details["action"] = "BLOCK_ENTER"
-                details["output_level"] = "O2_DIAGNOSTIC"
-                details["allowed_outputs"] = ["diagnostic_report","condition_route"]
-                details["disabled_capabilities"] = ["paper_probe","human_confirm_probe"]
-                return GateResult(6, "L4 Health", GateStatus.BLOCK, details, errors, 0)
-            if "停牌" in e:
-                details["reason"] = "SUSPENDED"; details["action"] = "DIAGNOSTIC_ONLY"
-                details["output_level"] = "O2_DIAGNOSTIC"
-                details["disabled_capabilities"] = ["execution_price","paper_fill_price","reduce_risk_execution","harvest_execution"]
-                details["allowed_outputs"] = ["holding_status_note","reopen_watch_plan"]
-                return GateResult(6, "L4 Health", GateStatus.DATA_INCOMPLETE, details, errors, 0)
-            if "无成交" in e:
-                details["reason"] = "NO_VOLUME"; details["action"] = "DIAGNOSTIC_ONLY"
-                details["output_level"] = "O2_DIAGNOSTIC"
-                details["disabled_capabilities"] = ["fill_price","paper_probe"]
-                details["allowed_outputs"] = ["liquidity_gap_report"]
-                return GateResult(6, "L4 Health", GateStatus.DATA_INCOMPLETE, details, errors, 0)
-        return GateResult(6, "L4 Health", GateStatus.DEGRADED, details, errors, 0)
-    
-    return GateResult(6, "L4 Health", GateStatus.PASS, details, [], 0)
-
+        return GateResult(6, "L4 Health", GateStatus.DEGRADED, details, [f"L4检查异常: {str(e)[:60]}"], 0)
 
 def gate7_l5_matrix(ticker: str, g1_details: dict) -> GateResult:
-    """闸口7: L5 B/D/R/OKR Matrix — 使用 zmatrix.scoring 包导入, 不依赖特定目录"""
+    """闸口7: L5 B/D/R Matrix — B/D via current repo, R deferred to G09"""
     errors = []
-    details = {"b_matrix": "not_run", "d_matrix": "not_run", "r_matrix": "not_run"}
-    
+    details = {"b_matrix": "not_run", "d_matrix": "not_run", "r_matrix": "deferred_to_g09"}
+
     kl = get_kline(ticker, 500)
     prices = kl.get("prices", [])
     if len(prices) < 60:
-        errors.append(f"R/D-Matrix: KLINE_LT_60D({len(prices)}日)")
+        errors.append(f"KLINE_LT_60D({len(prices)}日)")
         return GateResult(7, "L5 Matrix", GateStatus.DEGRADED, details, errors, 0)
-    
-    # D-Matrix v2.2
+
+    # D-Matrix via shared payload builder
     try:
         from zmatrix.scoring.d_band.d_early_v22_scorer import evaluate_d_early_v22
         from pipelines.dmatrix_payload_builder import build_dmatrix_payload
@@ -285,31 +241,16 @@ def gate7_l5_matrix(ticker: str, g1_details: dict) -> GateResult:
         details["d_matrix"] = "ran"
     except Exception as e:
         errors.append(f"D-Matrix: {str(e)[:80]}")
-    
-    # R-Matrix v1.1 — Type A/B dual mode
-    if len(prices) >= 260:
-        try:
-            # R-Matrix deferred to Z-G09 cycle four-king service — not run in G07
-            details["r_matrix"] = "deferred_to_g09"
-            details["matrix_source"] = "DEFERRED_TO_G09_G10"
-            # Old r_score removed. Use G09 adapter for cycle signal.
-            # ra removed — G07 R-Matrix deferred to G09
-            # rb removed — G07 R-Matrix deferred to G09
-            best = None  # removed — G07 R-Matrix deferred
-            details["r_score"] = round(best.score, 1)
-            details["r_subtype"] = best.oscillation_type
-            details["r_matrix"] = "ran"
-        except Exception as e:
-            errors.append(f"R-Matrix: {str(e)[:80]}")
-    else:
-        errors.append(f"R-Matrix: KLINE_LT_260D({len(prices)}日)")
-    
-    if details["d_matrix"] == "not_run" and details["r_matrix"] == "not_run":
+
+    # R-Matrix: deferred to Z-G09 cycle four-king service
+    details["matrix_source"] = "DEFERRED_TO_G09_G10"
+    details["r_score"] = None
+
+    if details["d_matrix"] == "not_run":
         return GateResult(7, "L5 Matrix", GateStatus.SKIPPED, details, errors, 0)
     if errors:
         return GateResult(7, "L5 Matrix", GateStatus.DEGRADED, details, errors, 0)
     return GateResult(7, "L5 Matrix", GateStatus.PASS, details, [], 0)
-
 
 def gate8_v3_scenarios(g1_details: dict) -> GateResult:
     """闸口8: V3情景推演 — 三情景/主观权重/uncalibrated。宪法第4条: 置信度标注。"""

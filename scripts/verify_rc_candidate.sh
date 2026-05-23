@@ -51,7 +51,7 @@ if command -v pytest >/dev/null 2>&1; then
         tests/test_pipeline_manifest_smoke.py tests/test_zg09_zg10_contracts.py \
         tests/test_zg09_type_a_horizontal.py tests/test_b_matrix_v211.py \
         tests/test_zg13_bmatrix_integration.py tests/test_data_contract_ohlcv.py \
-        tests/test_zg03_intraday_contract.py tests/test_capability_mask_contract.py tests/test_zg10_payload_ohlcv.py tests/test_intraday_tail_precision_flags.py tests/test_zg13_financial_coverage.py tests/test_universe_provider.py tests/test_global_pipelines_universe_contract.py tests/test_zg07_contracts.py tests/test_zg14_matrix_reliability.py tests/test_chain_taxonomy_provider.py tests/test_bmatrix_input_builder.py tests/test_l25_macro_contract.py tests/test_z9_calibration_contract.py tests/test_zg11_account_truth.py tests/test_zg18_core.py tests/test_zg01_covers_zg07_data_channels.py tests/test_zg14_uses_rmatrix_service.py tests/test_zg18_g09_constraint_consistency.py tests/test_rmatrix_service_v20_four_king.py tests/test_rmatrix_service_degraded_contract.py tests/test_g09_g14_rmatrix_consistency.py -q
+        tests/test_zg03_intraday_contract.py tests/test_capability_mask_contract.py tests/test_zg10_payload_ohlcv.py tests/test_intraday_tail_precision_flags.py tests/test_zg13_financial_coverage.py tests/test_universe_provider.py tests/test_global_pipelines_universe_contract.py tests/test_zg07_contracts.py tests/test_zg14_matrix_reliability.py tests/test_chain_taxonomy_provider.py tests/test_bmatrix_input_builder.py tests/test_l25_macro_contract.py tests/test_z9_calibration_contract.py tests/test_zg11_account_truth.py tests/test_zg18_core.py tests/test_zg01_covers_zg07_data_channels.py tests/test_zg14_uses_rmatrix_service.py tests/test_zg18_g09_constraint_consistency.py tests/test_rmatrix_service_v20_four_king.py tests/test_rmatrix_service_degraded_contract.py tests/test_zg09_uses_rmatrix_service_only.py tests/test_g09_g14_rmatrix_consistency.py -q
 else
     echo "pytest not installed, skip"
 fi
@@ -135,6 +135,10 @@ python3 tests/test_rmatrix_service_v20_four_king.py
 echo ""
 echo "== R-Matrix degraded contract tests =="
 python3 tests/test_rmatrix_service_degraded_contract.py
+
+echo ""
+echo "== Z-G09 r_matrix_service-only tests =="
+python3 tests/test_zg09_uses_rmatrix_service_only.py
 
 echo ""
 echo "== G09/G14 R-Matrix consistency tests =="

@@ -2,8 +2,7 @@
 import sys, os, importlib.util
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-def test_g09_g14_same_version_and_fields()
-    test_g09_and_g14_call_same_service_consistently():
+def test_g09_g14_same_version_and_fields():
     # Verify both G09 and G14 reference r_matrix_service
     for name, path in [("G09", "pipelines/Z-G09_全局轮动筛选/gate_pipeline.py"),
                         ("G14", "pipelines/Z-G14_月度全量选股/gate_pipeline.py")]:

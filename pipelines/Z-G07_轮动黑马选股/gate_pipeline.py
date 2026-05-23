@@ -140,7 +140,8 @@ def gate3_dq_score(ticker: str) -> GateResult:
 
 
 def gate4_l25_macro() -> GateResult:
-    """闸口4: L2.5前夜战报 — 8信息域检查。"""
+    """闸口4: L2.5前夜战报 — via Z-G01 l25_macro"""
+    filled = 0
     domains = {
         "commodity": "unknown",
         "china_proxy": "unknown", 
@@ -229,7 +230,7 @@ def gate6_l4_health(ticker: str) -> GateResult:
             if r[2] == '1' and float(r[1]) > 0:
                 has_volume = True
         
-        bs.logout()
+        # logout removed — G07 delegated to Z-G01
         
         details["tradable"] = has_volume
         if not has_volume:

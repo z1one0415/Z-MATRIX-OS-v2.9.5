@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""☯️ Z-G14 月度全量选股 (流A) — v2.1 | 每月 | B-Matrix v2.1.1 + R-Matrix v1.1 + D-Matrix v2.2 全量评分"""
+"""☯️ Z-G14 月度全量选股 (流A) — v2.1 | 每月 | B-Matrix v2.1.1 + R-Matrix v2.0-cycle-four-king + D-Matrix v2.2 全量评分"""
 import argparse, json, os, re, sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -29,18 +29,9 @@ def _build_bmatrix_input(ticker, name):
     return build_bmatrix_input(ticker, name, market_truth, get_financials, dq_score, l4_health)
 
 # ============================================================
-# Real R-Matrix v1.1 scoring
+# Real R-Matrix v2.0-cycle-four-king scoring
 # ============================================================
-_R_MATRIX = None
-def _get_r_matrix():
-    global _R_MATRIX
-    if _R_MATRIX is None:
-        try:
-            from zmatrix.scoring.r_matrix.oscillation_king_ranker_v11 import rank_type_a_horizontal, rank_type_b_rising_channel
-            _R_MATRIX = (rank_type_a_horizontal, rank_type_b_rising_channel)
-        except ImportError:
-            _R_MATRIX = (None, None)
-    return _R_MATRIX
+# R-Matrix now via r_matrix_service — _get_r_matrix removed
 
 # ============================================================
 # Real D-Matrix v2.2 scoring
@@ -120,7 +111,7 @@ def _real_d_score(ticker, name, prices, kl):
 
 
 def _full_scan(tickers):
-    """B-R-D 全量三维评分 — 使用真 B-Matrix v2.1.1 / R-Matrix v1.1 / D-Matrix v2.2"""
+    """B-R-D 全量三维评分 — 使用真 B-Matrix v2.1.1 / R-Matrix v2.0-cycle-four-king / D-Matrix v2.2"""
     candidates = []
     for t in tickers:
         g1 = market_truth(t)
@@ -136,7 +127,7 @@ def _full_scan(tickers):
 
         # --- B-Matrix v2.1.1 ---
         b = _real_b_score(t, name)
-        # --- R-Matrix v1.1 ---
+        # --- R-Matrix v2.0-cycle-four-king ---
         r = _real_r_score(t, name, prices)
         # --- D-Matrix v2.2 ---
         d = _real_d_score(t, name, prices, kl)
@@ -240,7 +231,7 @@ def run():
 
     print(f"\n☯️ Z-G14 月度全量选股 (流A) — {now.strftime('%Y-%m')}")
     print(f"    A_SHARE_ALL {uni['count']}只 → 防局部视角陷阱")
-    print("⚠️ 目的: B-Matrix v2.1.1 + R-Matrix v1.1 + D-Matrix v2.2 全量评分 + 交叉矩阵 + 产业链映射")
+    print("⚠️ 目的: B-Matrix v2.1.1 + R-Matrix v2.0-cycle-four-king + D-Matrix v2.2 全量评分 + 交叉矩阵 + 产业链映射")
     print("=" * 60)
     print(f"\n📡 扫描: {len(tickers)}标的 → 真实B/R/D三维评分 (非简化quick_scan)")
 

@@ -24,11 +24,13 @@ def evaluate_r_matrix_cycle(ticker: str, prices: List[float] | None = None,
 
         # Impulse (daily) — fallback to old Type A/B for now
         try:
-            from zmatrix.scoring.r_matrix.oscillation_king_ranker_v11 import rank_type_a_horizontal, rank_type_b_rising_channel
+    # Legacy fallback: only for impulse king, explicitly degraded
             a = rank_type_a_horizontal(ticker, "", prices)
             b = rank_type_b_rising_channel(ticker, "", prices)
             best = a if a.score >= b.score else b
             result["kings"]["impulse"] = {"type": best.oscillation_type, "score": best.score, "action": best.allowed_action}
+            result["legacy_fallback"] = True
+            result["warnings"].append("impulse_king: legacy oscillation_king_ranker fallback")
         except Exception as e:
             result["errors"].append(f"impulse: {str(e)[:80]}")
 

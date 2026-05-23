@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-echo "═══ Z-MATRIX-OS v2.9.5-RC 发布前验证 ═══"
+echo "═══ Z-MATRIX-OS v2.9.6-BatchA ═══"
 
 echo ""
 echo "== Compile all =="
-python3 -m compileall pipelines tests zmatrix hermes
+python3 -m compileall pipelines tests zmatrix hermes scripts
 echo "✅ compileall PASS"
 
 echo ""
@@ -115,6 +115,18 @@ python3 tests/test_zg18_core.py
 echo ""
 echo "== Z-G09 sell decision tests =="
 python3 tests/test_zg09_sell_decision.py
+
+echo ""
+echo "== Z-G07 data channel tests =="
+python3 tests/test_zg01_covers_zg07_data_channels.py
+
+echo ""
+echo "== Z-G14 R-Matrix service tests =="
+python3 tests/test_zg14_uses_rmatrix_service.py
+
+echo ""
+echo "== Z-G18 constraint consistency tests =="
+python3 tests/test_zg18_g09_constraint_consistency.py
 
 echo ""
 echo "== Git diff check =="

@@ -120,9 +120,9 @@ def run(tickers=None, mode="daily", universe="WATCHLIST"):
     # ── Load G09 cycle signals via targeted adapter (not full G09 run) ──
     from zmatrix.prediction.g09_signal_adapter import load_g09_signals_for_tickers
     g09_signals = load_g09_signals_for_tickers(tickers)
-    g09_r_pool = g09_signals.get("r_pool", [])
+    g09_signal_map = g09_signals.get("signals", {})
     if g09_signals.get("available"):
-        print(f"\n📡 G09周期信号: {len(g09_r_pool)}只已加载 → 约束G18预测")
+        print(f"\n📡 G09周期信号: {len(g09_signal_map)}只已加载 → 约束G18预测")
     else:
         print(f"\n⚠️ G09周期信号: 未加载 ({g09_signals.get('reason','unknown')})")
 
@@ -133,8 +133,8 @@ def run(tickers=None, mode="daily", universe="WATCHLIST"):
         pred = _predict_single(t)
         
         # Apply G09 cycle constraints
-        if g09_r_pool:
-            g09_sig = load_g09_signals(t, g09_r_pool)
+        if g09_signal_map:
+            g09_sig = g09_signal_map.get(t, {"available": False, "reason": "no_signal_for_ticker"})
             constraint = apply_g09_constraints(
                 g09_sig, pred.action_proposal, pred.probability,
                 pred.data_lineage.get("probability_cap", 0.75))
@@ -171,7 +171,7 @@ def run(tickers=None, mode="daily", universe="WATCHLIST"):
     # ── Final decision envelope ──
     from zmatrix.prediction.final_decision_envelope import build_final_decision
     for p in predictions:
-        p.final_decision = build_final_decision(p, g09_signals.get(str(p.ticker), {}))
+        p.final_decision = build_final_decision(p, {"g09": g09_signal_map.get(p.ticker, {}), "g08": {}, "g11": {}, "g14": {}})
     result["sections"]["final_decision_envelope_version"] = "v1.0"
 
     result["predictions"] = [{"ticker":p.ticker,"name":p.name,"probability":p.probability,

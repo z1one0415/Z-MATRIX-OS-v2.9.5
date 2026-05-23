@@ -88,30 +88,16 @@ def _real_b_score(ticker, name):
 
 
 def _real_r_score(ticker, name, prices):
-    """True R-Matrix v1.1 score — structured return, never silent zero"""
-    rank_a, rank_b = _get_r_matrix()
-    if rank_a is None:
-        return {"score": None, "status": "DATA_GAP", "subtype": None,
-                "error": "R-Matrix scorer not available"}
-    errors = []
-    s_a, s_b = 0, 0
+    """R-Matrix v2.0-cycle-four-king via r_matrix_service"""
     try:
-        ra = rank_a(ticker, name, prices)
-        s_a = ra.score
+        from zmatrix.scoring.r_matrix.r_matrix_service import evaluate_r_matrix_cycle
+        r = evaluate_r_matrix_cycle(ticker, prices)
+        return {"score": r.get("r_score"), "status": r["status"],
+                "subtype": r.get("r_resonance_status", "?"),
+                "r_version": r["version"], "error": None}
     except Exception as e:
-        errors.append(f"TypeA: {str(e)[:80]}")
-    try:
-        rb = rank_b(ticker, name, prices)
-        s_b = rb.score
-    except Exception as e:
-        errors.append(f"TypeB: {str(e)[:80]}")
-    if errors and s_a == 0 and s_b == 0:
         return {"score": None, "status": "ERROR", "subtype": None,
-                "error": "; ".join(errors)}
-    best_type = "A" if s_a >= s_b else "B"
-    status = "DEGRADED" if errors else "PASS"
-    return {"score": round(max(s_a, s_b) * 10, 1), "status": status,
-            "subtype": best_type, "error": "; ".join(errors) if errors else None}
+                "r_version": "v2.0-cycle-four-king", "error": str(e)[:120]}
 
 
 def _real_d_score(ticker, name, prices, kl):
@@ -303,7 +289,7 @@ def run():
     result["sections"]["cross_matrix"] = cross_counts
     result["sections"]["scorer_versions"] = {
         "b_matrix": "v2.1.1 (5-class heterogeneous)",
-        "r_matrix": "v1.1 (Type A/B dual mode)",
+        "r_matrix": "v2.0-cycle-four-king",
         "d_matrix": "v2.2 (DEarlyV22Result)",
         "scan_tickers": len(tickers),
         "scanned": len(candidates),

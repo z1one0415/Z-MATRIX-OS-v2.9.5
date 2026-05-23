@@ -117,19 +117,14 @@ def run(tickers=None, mode="daily", universe="WATCHLIST"):
     except Exception:
         print(f"\n📊 Z9状态: store unavailable")
 
-    # ── Load G09 cycle signals (upstream constraint) ──
-    g09_r_pool = None
-    try:
-        import importlib.util
-        spec = importlib.util.spec_from_file_location("zg09_gate",
-            str(Path(__file__).resolve().parents[1] / "Z-G09_全局轮动筛选" / "gate_pipeline.py"))
-        zg09 = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(zg09)
-        g09_result = zg09.run(universe=universe, pool_size=20, kings_enabled="all")
-        g09_r_pool = g09_result.get("r_pool", [])
+    # ── Load G09 cycle signals via targeted adapter (not full G09 run) ──
+    from zmatrix.prediction.g09_signal_adapter import load_g09_signals_for_tickers
+    g09_signals = load_g09_signals_for_tickers(tickers)
+    g09_r_pool = g09_signals.get("r_pool", [])
+    if g09_signals.get("available"):
         print(f"\n📡 G09周期信号: {len(g09_r_pool)}只已加载 → 约束G18预测")
-    except Exception as e:
-        print(f"\n⚠️ G09周期信号: 未加载 ({str(e)[:60]})")
+    else:
+        print(f"\n⚠️ G09周期信号: 未加载 ({g09_signals.get('reason','unknown')})")
 
     from zmatrix.prediction.g09_signal_adapter import load_g09_signals, apply_g09_constraints
 
@@ -149,7 +144,15 @@ def run(tickers=None, mode="daily", universe="WATCHLIST"):
                 pred.warnings.extend(constraint["warnings"])
             
             prob_before = pred.probability
-            pred.probability = constraint["probability_override"]
+            cap = constraint["probability_override"]
+            pred.probability = cap
+            # Sync horizon when probability is constrained
+            pred.horizon["T1"] = round(min(pred.horizon.get("T1", 0.5), cap), 4)
+            pred.horizon["T5"] = round(min(pred.horizon.get("T5", 0.5), cap), 4)
+            pred.horizon["T20"] = round(min(pred.horizon.get("T20", 0.5), cap), 4)
+            pred.temporal_consistency = evaluate_temporal_consistency(
+                pred.horizon["T1"], pred.horizon["T5"], pred.horizon["T20"])
+            pred.next_triggers = pred.temporal_consistency.get("next_triggers", [])
             # Add G09 evidence to the prediction output
             pred.temporal_consistency["g09_cycle"] = {
                 "resonance": g09_sig.get("resonance_status"),
@@ -164,6 +167,12 @@ def run(tickers=None, mode="daily", universe="WATCHLIST"):
         print(f"\n  {icon} {pred.ticker} {pred.name:<8s} {pred.probability*100:.0f}%"
               f" T1:{pred.horizon['T1']*100:.0f}% T5:{pred.horizon['T5']*100:.0f}%"
               f" {pred.action_proposal} [{pred.confidence}]")
+
+    # ── Final decision envelope ──
+    from zmatrix.prediction.final_decision_envelope import build_final_decision
+    for p in predictions:
+        p.final_decision = build_final_decision(p, g09_signals.get(str(p.ticker), {}))
+    result["sections"]["final_decision_envelope_version"] = "v1.0"
 
     result["predictions"] = [{"ticker":p.ticker,"name":p.name,"probability":p.probability,
         "horizon":p.horizon,"evidence_coverage":p.evidence_coverage,

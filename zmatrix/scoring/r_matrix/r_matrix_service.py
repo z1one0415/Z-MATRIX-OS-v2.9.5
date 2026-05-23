@@ -1,80 +1,73 @@
-"""R-Matrix Service v2.0 — unified entry point for four-king cycle evaluation.
-
-G09, G14, and any pipeline needing cycle analysis must call this service.
-Do not call oscillation_king_ranker or rhythm_king_weekly directly from pipelines.
-"""
+"""R-Matrix Service v2.0-cycle-four-king — shared entry for G09/G14."""
 from __future__ import annotations
 from typing import List
 
 
-def evaluate_r_matrix_cycle(
-    ticker: str,
-    daily_prices: List[float] | None = None,
-    weekly_prices: List[float] | None = None,
-    biweekly_prices: List[float] | None = None,
-    five_day_prices: List[float] | None = None,
-    position: dict | None = None,
-) -> dict:
-    """Run full four-king cycle evaluation for a ticker.
+def evaluate_r_matrix_cycle(ticker: str, prices: List[float] | None = None,
+                            position: dict | None = None, **kwargs) -> dict:
+    """Run four-king cycle evaluation. Returns standardized dict."""
+    result = {
+        "ticker": ticker, "version": "v2.0-cycle-four-king",
+        "status": "DATA_GAP", "r_score": None,
+        "r_resonance_status": "UNKNOWN", "r_action_cap": "WAIT",
+        "kings": {}, "sell_decision": None, "errors": [], "warnings": [],
+    }
 
-    Returns dict with impulse/oscillation/rhythm/rotation + resonance + sell_decision.
-    """
-    result = {"ticker": ticker, "kings": {}, "available": False}
-
-    try:
-        from zmatrix.scoring.r_matrix.oscillation_king_ranker_v11 import (
-            rank_type_a_horizontal, rank_type_b_rising_channel)
-        
-        # Impulse king (daily)
-        if daily_prices and len(daily_prices) >= 260:
-            a = rank_type_a_horizontal(ticker, "", daily_prices)
-            b = rank_type_b_rising_channel(ticker, "", daily_prices)
-            best = a if a.score >= b.score else b
-            result["kings"]["impulse"] = {
-                "type": best.oscillation_type, "score": best.score,
-                "action": best.allowed_action,
-            }
-    except Exception:
-        pass
+    if not prices or len(prices) < 60:
+        result["errors"].append(f"insufficient data: {len(prices or [])} bars")
+        return result
 
     try:
-        from zmatrix.scoring.r_matrix.rhythm_king_weekly import classify_rhythm
+        from zmatrix.scoring.r_matrix.rhythm_king_weekly import classify_rhythm, rhythm_king_weekly
         from zmatrix.scoring.r_matrix.cycle_four_king_resonance import evaluate_cycle_four_king
         from zmatrix.scoring.r_matrix.position_sell_decision import evaluate_position_sell_decision
 
-        # Oscillation king (5-day)
-        if five_day_prices and len(five_day_prices) >= 20:
-            result["kings"]["oscillation"] = classify_rhythm(
-                five_day_prices, beta_threshold=0.002, box_amp_min=5, box_amp_max=200)
+        # Impulse (daily) — fallback to old Type A/B for now
+        try:
+            from zmatrix.scoring.r_matrix.oscillation_king_ranker_v11 import rank_type_a_horizontal, rank_type_b_rising_channel
+            a = rank_type_a_horizontal(ticker, "", prices)
+            b = rank_type_b_rising_channel(ticker, "", prices)
+            best = a if a.score >= b.score else b
+            result["kings"]["impulse"] = {"type": best.oscillation_type, "score": best.score, "action": best.allowed_action}
+        except Exception as e:
+            result["errors"].append(f"impulse: {str(e)[:80]}")
 
-        # Rhythm king (weekly)
-        if weekly_prices and len(weekly_prices) >= 20:
-            result["kings"]["rhythm"] = classify_rhythm(
-                weekly_prices, beta_threshold=0.004, box_amp_min=10, box_amp_max=150)
+        # Rhythm (weekly) — sample every 5th bar
+        weekly = prices[::5]
+        if len(weekly) >= 20:
+            result["kings"]["rhythm"] = rhythm_king_weekly(weekly)
+        else:
+            result["errors"].append(f"weekly insufficient: {len(weekly)} bars")
 
-        # Rotation king (biweekly)
-        if biweekly_prices and len(biweekly_prices) >= 6:
-            result["kings"]["rotation"] = classify_rhythm(
-                biweekly_prices, beta_threshold=0.004, box_amp_min=8, box_amp_max=200)
+        # Oscillation (5-day proxy) — sample every bar
+        if len(prices) >= 100:
+            sampled = prices[::2][:50]
+            if len(sampled) >= 20:
+                result["kings"]["oscillation"] = classify_rhythm(sampled, beta_threshold=0.002, box_amp_min=5, box_amp_max=200)
 
-        # Resonance
-        resonance = evaluate_cycle_four_king(
-            result["kings"].get("impulse"),
-            result["kings"].get("oscillation"),
-            result["kings"].get("rhythm"),
-            result["kings"].get("rotation"))
-        result["resonance"] = resonance
+        # Resonance if enough kings
+        if len(result["kings"]) >= 2:
+            resonance = evaluate_cycle_four_king(
+                result["kings"].get("impulse"),
+                result["kings"].get("oscillation"),
+                result["kings"].get("rhythm"),
+                result["kings"].get("rotation"))
+            result["r_resonance_status"] = resonance["resonance_status"]
+            result["r_score"] = resonance["resonance_score"]
+            result["r_action_cap"] = resonance["entry_action_cap"]
+            result["status"] = "PASS"
 
-        # Sell decision
-        if position:
-            price = position.get("price", position.get("cost", 0))
-            result["sell_decision"] = evaluate_position_sell_decision(
-                ticker=ticker, shares=position.get("shares", 0),
-                cost=position.get("cost", 0), current_price=price,
-                resonance=resonance)
+            if position:
+                price = position.get("price", position.get("cost", 0))
+                result["sell_decision"] = evaluate_position_sell_decision(
+                    ticker, position.get("shares", 0), position.get("cost", 0), price, resonance)
+    except Exception as e:
+        result["status"] = "ERROR"
+        result["errors"].append(str(e)[:120])
 
-        result["available"] = bool(result["kings"])
-    except Exception:
-        pass
+    if not result["errors"]:
+        result["status"] = result["status"] or "PASS"
+    elif not result["kings"]:
+        result["status"] = "DATA_GAP"
 
     return result

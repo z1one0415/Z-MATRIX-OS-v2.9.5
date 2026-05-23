@@ -27,7 +27,7 @@ from enum import Enum
 # Report output directory — env var with repo-relative fallback
 MEMORY_ROOT = os.environ.get(
     "Z_MATRIX_MEMORY_ROOT",
-    str(Path(__file__).resolve().parents[2] / "记忆宫殿" / "Z2信息熔炉" / "投资记忆银行" / "超级预测系统" / "监控中心")
+    str(Path.home() / "Documents" / "openclaw memory" / "openclaw memory" / "Z2信息熔炉" / "投资记忆银行" / "超级预测系统" / "监控中心")
 )
 
 class GateStatus(Enum):
@@ -93,35 +93,21 @@ def gate2_source_arbitration(ticker: str, g1_details: dict) -> GateResult:
         return GateResult(2, "Source Arbitration", GateStatus.DEGRADED, {}, [str(e)], 0)
 
 def gate3_dq_score(ticker: str) -> GateResult:
-    """闸口3: DQ评分 → CapabilityDecision (开放智能降级)"""
+    """闸口3: DQ评分 — via Z-G01 dq_score"""
     scores = {"行情": 0, "财务": 0, "估值": 0, "产业链": 0, "资金": 0, "来源": 0}
     errors = []
-    details = {}  # initialize before loop — P0: was undefined when q1_eps written below
+    details = {}
     
-    # 行情 (max 15) — 交叉验证=加分
     g1 = g1_details_for(ticker)
     scores["行情"] = 15 if g1.get("cross_validated") else (12 if g1.get("price") else 6)
     
-    # 财务 (max 25) — baostock query_profit_data
+    # 财务 — delegated to Z-G01
     try:
-        import baostock as bs
-        bs.login()
-        prefix = "sz" if ticker.startswith(("0","3")) else "sh"
-        code = f"{prefix}.{ticker}"
-        has_finance = False
-        for y, q in [(2026,1), (2025,4), (2025,3)]:
-            try:
-                rs = bs.query_profit_data(code, year=y, quarter=q)
-                while rs.next():
-                    r = rs.get_row_data()
-                    if r and len(r) > 3 and r[3] not in ("", "0", "0.000000"):
-                        has_finance = True
-                        if y == 2026 and q == 1:
-                            details["q1_eps"] = r[3]
-            except:
-                pass
-        bs.logout()
-        scores["财务"] = 22 if has_finance else 8
+        from pipelines.z17_loader import dq_score as z01_dq
+        dq_r = z01_dq(ticker)
+        scores["财务"] = min(25, dq_r.get("total", 0) // 4)
+        details.update({"dq_total": dq_r.get("total", 0), "dq_status": dq_r.get("status", "?"),
+                        "dq_source": "Z-G01"})
     except Exception as e:
         scores["财务"] = 5
         errors.append(f"财务接口异常: {str(e)[:60]}")
@@ -165,18 +151,13 @@ def gate4_l25_macro() -> GateResult:
         "fx": "unknown",
         "policy": "unknown"
     }
-    # 从MEMORY.md拉宏观字典 — use repo-relative path, not ~/.openclaw
-    mem = str(Path(__file__).resolve().parents[2] / "MEMORY.md")
-    filled = 0
+    # L2.5 macro — delegated to Z-G01
     try:
-        with open(mem) as f:
-            for line in f:
-                line = line.strip()
-                if "地缘政治" in line: domains["risk"] = "filled"; filled += 1
-                if "社零" in line: domains["china_proxy"] = "filled"; filled += 1
-                if "利率" in line: domains["overseas"] = "filled"; filled += 1
-                if "VIX" in line: domains["chip"] = "filled"; filled += 1
-    except:
+        from pipelines.z17_loader import l25_macro as z01_macro
+        l25 = z01_macro()
+        filled = l25.get("filled", 0)
+        domains = l25.get("domains", domains)
+    except Exception:
         pass
     
     details = {
@@ -196,9 +177,8 @@ def gate4_l25_macro() -> GateResult:
 def gate5_l3_sectors() -> GateResult:
     """闸口5: L3 31板块确认。需SW31涨跌幅/宽度数据。"""
     try:
-        import urllib.request
-        url = "http://hq.sinajs.cn/list=" + ",".join([f"sh0000{i}" if i<10 else f"sz399{i}" for i in range(1, 32)])
-        # 简化: 只拉几个关键板块指数
+        from pipelines.z17_loader import get_sectors as z01_sectors
+        sectors_data = z01_sectors()
         key_sectors = ["sh000001","sz399001","sz399006","sh000688","sh000300","sz399005"]
         url2 = "http://hq.sinajs.cn/list=" + ",".join(key_sectors)
         req = urllib.request.Request(url2, headers={"Referer":"https://finance.sina.com.cn"})
@@ -312,9 +292,10 @@ def gate7_l5_matrix(ticker: str, g1_details: dict) -> GateResult:
     # R-Matrix v1.1 — Type A/B dual mode
     if len(prices) >= 260:
         try:
-            from zmatrix.scoring.r_matrix.oscillation_king_ranker_v11 import (
-                rank_type_a_horizontal, rank_type_b_rising_channel
-            )
+            # R-Matrix deferred to Z-G09 cycle four-king service — not run in G07
+            details["r_matrix"] = "deferred_to_g09"
+            details["matrix_source"] = "DEFERRED_TO_G09_G10"
+            # Old r_score removed. Use G09 adapter for cycle signal.
             ra = rank_type_a_horizontal(ticker, "", prices)
             rb = rank_type_b_rising_channel(ticker, "", prices)
             best = ra if ra.score >= rb.score else rb

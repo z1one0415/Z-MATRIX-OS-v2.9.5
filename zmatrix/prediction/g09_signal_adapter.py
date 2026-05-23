@@ -124,3 +124,29 @@ def apply_g09_constraints(
         "reason_codes": reasons,
         "warnings": warnings,
     }
+
+from pathlib import Path
+
+def load_g09_signals_for_tickers(tickers: list[str], universe: str = "WATCHLIST") -> dict:
+    """Targeted G09 signal fetch — does NOT run full universe G09 scan."""
+    result = {"available": False, "reason": "not_implemented", "signals": {}, "r_pool": []}
+    try:
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("zg09_gate",
+            str(Path(__file__).resolve().parents[2] / "Z-G09_全局轮动筛选" / "gate_pipeline.py"))
+        zg09 = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(zg09)
+        # Targeted scan: only requested tickers, not full universe top20
+        for t in tickers:
+            from pipelines.z17_loader import get_kline
+            kl = get_kline(t, 500)
+            prices = kl.get("prices", [])
+            if len(prices) >= 260:
+                from zmatrix.scoring.r_matrix.r_matrix_service import evaluate_r_matrix_cycle
+                cycle = evaluate_r_matrix_cycle(t, prices)
+                result["signals"][t] = cycle
+        result["available"] = bool(result["signals"])
+        result["reason"] = "targeted_scan" if result["available"] else "no_data"
+    except Exception as e:
+        result["reason"] = str(e)[:120]
+    return result

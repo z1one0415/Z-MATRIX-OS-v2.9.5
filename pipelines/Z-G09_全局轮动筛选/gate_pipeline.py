@@ -128,86 +128,42 @@ def run(pool_size=80, universe="A_SHARE_ALL", allow_fallback=True,
     print(f"   启用: {', '.join(KINGS[k]['name'] for k in kings_list if k in KINGS)}")
     print("="*60)
 
-    # ── Load rotation scan (before all kings) ──
-    import importlib.util
-    spec = importlib.util.spec_from_file_location("rotscan",
-        str(Path(__file__).parent / "rotation_scan.py"))
-    rotscan = importlib.util.module_from_spec(spec); spec.loader.exec_module(rotscan)
-
-    # ═══ 冲动天王: 日线 Type A/B ═══
-    if "impulse" in kings_list:
-        print(f"\n⚡ [冲动天王] {KINGS['impulse']['desc']} | {len(tickers)}只")
-        imp = rotscan.scan_impulse_king(tickers)
-        daily = sorted(imp, key=lambda x: x.get("score",0), reverse=True)[:pool_size]
-        print(f"  入选: {len(daily)}只 (TypeA={sum(1 for c in daily if 'HORIZONTAL' in str(c.get('type','')))} TypeB={sum(1 for c in daily if 'RISING' in str(c.get('type','')))})")
-        result["sections"]["impulse_king"] = {"pool":daily,"scanned":len(tickers),"pool_size":len(daily)}
-
-    # ═══ 波动/律动/轮动: via rotation_scan + rhythm_king_weekly ═══
-    for king_key in ["oscillation","rhythm","rotation"]:
-        if king_key not in kings_list: continue
-        cfg = KINGS[king_key]
-        print(f"\n📡 [{cfg['name']}] {cfg['desc']} | {cfg['scale']} window={cfg['window']} | {len(tickers)}只")
-        try:
-            if king_key == "oscillation":
-                r = rotscan.scan_oscillation_king(tickers)
-            elif king_key == "rhythm":
-                r = rotscan.scan_rhythm_king(tickers)
-            else:
-                r = rotscan.scan_rotation_king(tickers)
-
-            box = [x for x in r if x["type"]=="BOX"]
-            up = [x for x in r if x["type"]=="TREND_UP"]
-            down = [x for x in r if x["type"]=="TREND_DOWN"]
-            entries = [x for x in r if x["position"]<0.35]
-            
-            print(f"  BOX={len(box)}({len(box)*100//max(len(r),1)}%) UP={len(up)} DOWN={len(down)} ENTRY={len(entries)}")
-            if entries:
-                tops = sorted(entries,key=lambda x:x["position"])[:4]
-                print(f"  🟢entry: "+", ".join(f"{x['ticker']}({x['position']:.2f})" for x in tops))
-            
-            result["sections"][f"{king_key}_king"] = {"summary":{"BOX":len(box),"UP":len(up),"DOWN":len(down),"ENTRY":len(entries)},"details":r}
-        except Exception as e:
-            result["sections"][f"{king_key}_king"] = {"error":str(e)[:120]}
-
-    # ═══ 四王共振 + r_pool ═══
-    from zmatrix.scoring.r_matrix.cycle_four_king_resonance import evaluate_cycle_four_king
-    per_ticker = {}
-    for king_key in ["impulse","oscillation","rhythm","rotation"]:
-        section = result["sections"].get(f"{king_key}_king", {})
-        details = section.get("details", section.get("pool", []))
-        for d in details:
-            t = d.get("ticker","")
-            if t not in per_ticker: per_ticker[t] = {}
-            per_ticker[t][king_key] = d
+    # ═══ R-Matrix v2.0 unified service — single truth source ═══
+    from zmatrix.scoring.r_matrix.r_matrix_service import evaluate_r_matrix_cycle
+    positions = _read_positions()
+    
+    print(f"\n📡 R-Matrix v2.0: {len(tickers)}只 → 四天王周期扫描")
     
     resonance_pool = []
-    for ticker, kings in per_ticker.items():
-        r = evaluate_cycle_four_king(
-            kings.get("impulse"), kings.get("oscillation"),
-            kings.get("rhythm"), kings.get("rotation"))
-        r["ticker"] = ticker
-        # Anchor to portfolio positions
-        # Cost-anchored sell decision
-        pos_data = _read_positions()
-        r["cost_anchor"] = _anchor_to_cost(ticker, r.get("rhythm",{}).get("position",0.5) if r.get("rhythm") else 0.5,
-                                           r.get("rhythm",{}).get("type","?"), r["entry_action_cap"], pos_data)
-        if ticker in pos_data:
-            from zmatrix.scoring.r_matrix.position_sell_decision import evaluate_position_sell_decision
-            p = pos_data[ticker]
-            price = market_truth(ticker).get("price") or p["cost"]
-            r["sell_decision"] = evaluate_position_sell_decision(
-                ticker=ticker, shares=p["shares"], cost=p["cost"], current_price=price, resonance=r)
-        else:
-            r["sell_decision"] = {"position_action":"NO_POSITION","sell_ratio":0,"reason_codes":["NO_HOLDING"]}
-        resonance_pool.append(r)
+    for t in tickers:
+        try:
+            kl = get_kline(t, 500)
+            prices = kl.get("prices", [])
+            if len(prices) < 60:
+                continue
+            g1 = market_truth(t)
+            pos_data = positions.get(t)
+            if pos_data:
+                pos_data = {"shares": pos_data["shares"], "cost": pos_data["cost"],
+                            "price": g1.get("price", pos_data["cost"])}
+            r = evaluate_r_matrix_cycle(t, prices=prices, position=pos_data)
+            r["name"] = g1.get("name", "?")
+            resonance_pool.append(r)
+        except Exception as e:
+            result["warnings"].append(f"{t}: {str(e)[:60]}")
     
-    resonance_pool.sort(key=lambda x: (len(x["hard_blocks"])==0, x["resonance_score"]), reverse=True)
+    resonance_pool.sort(key=lambda x: (len(x.get("hard_blocks",[]))==0, x.get("r_score",0)), reverse=True)
     result["r_pool"] = resonance_pool[:pool_size]
+    
+    statuses = {"PASS":0,"DEGRADED":0,"DATA_GAP":0,"ERROR":0}
+    for r in resonance_pool: statuses[r.get("status","?")] = statuses.get(r.get("status","?"),0)+1
+    print(f"  PASS={statuses['PASS']} DEGRADED={statuses['DEGRADED']} DATA_GAP={statuses['DATA_GAP']}")
+    print(f"  STRONG={sum(1 for r in resonance_pool if r.get('r_resonance_status')=='CYCLE_RESONANCE_STRONG')} BLOCKED={sum(1 for r in resonance_pool if r.get('hard_blocks'))}")
+    
     result["sections"]["four_king_resonance"] = {
         "pool_size": len(result["r_pool"]),
         "scanned": len(tickers),
-        "resonance_strong": sum(1 for r in resonance_pool if r["resonance_status"]=="CYCLE_RESONANCE_STRONG"),
-        "blocked": sum(1 for r in resonance_pool if r["hard_blocks"]),
+        "statuses": statuses,
     }
     
     return result

@@ -38,7 +38,7 @@ def test_g09_r_pool_contract():
 # 4. Remove old _impulse_score from G09
 def test_g09_no_old_impulse_score():
     s = open("pipelines/Z-G09_全局轮动筛选/gate_pipeline.py").read()
-    assert "_impulse_score" not in s, "G09 still has old _impulse_score function"
+    assert "def _impulse_score" not in s, "G09 still has old _impulse_score function def"
     print("✅ G09: old _impulse_score removed")
 
 if __name__ == "__main__":

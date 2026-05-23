@@ -19,11 +19,11 @@ def test_g14_real_r_score_calls_service():
     rms.evaluate_r_matrix_cycle = fake_service
     try:
         r = mod._real_r_score("002472", "双环传动", [10]*300)
-        assert called["count"] == 1, f"service not called: {called}"
+        assert called["count"] == 1
         assert r["r_version"] == "v2.0-cycle-four-king"
         assert r["status"] == "PASS"
-    assert "r_resonance_status" in r
-    assert "r_action_cap" in r
+        assert "r_resonance_status" in r
+        assert "r_action_cap" in r
     finally:
         rms.evaluate_r_matrix_cycle = orig
     print(f"✅ G14: r_version={r['r_version']} status={r['status']}")

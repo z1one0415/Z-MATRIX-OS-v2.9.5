@@ -20,8 +20,7 @@ def test_final_decision_sell_overrides():
     assert r["exit_intent"] == "REDUCE_CORE"
     print(f"✅ sell overrides: entry={r['entry_intent']} exit={r['exit_intent']}")
 
-def test_g18_predictions_contain_final_decision()
-    test_g09_adapter_returns_signal_for_every_ticker():
+def test_g18_predictions_contain_final_decision():
     spec = importlib.util.spec_from_file_location("zg18", "pipelines/Z-G18_天机引擎/gate_pipeline.py")
     mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
     r = mod.run(tickers=["002472"])

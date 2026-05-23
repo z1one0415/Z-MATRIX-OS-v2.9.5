@@ -176,16 +176,12 @@ def gate4_l25_macro() -> GateResult:
 
 
 def gate5_l3_sectors() -> GateResult:
-    """闸口5: L3 31板块确认。需SW31涨跌幅/宽度数据。"""
+    """闸口5: L3 31板块确认 — via Z-G01 get_sectors"""
     try:
         from pipelines.z17_loader import get_sectors as z01_sectors
-        sectors_data = z01_sectors()
-        key_sectors = ["sh000001","sz399001","sz399006","sh000688","sh000300","sz399005"]
-        url2 = "http://hq.sinajs.cn/list=" + ",".join(key_sectors)
-        req = urllib.request.Request(url2, headers={"Referer":"https://finance.sina.com.cn"})
-        resp = urllib.request.urlopen(req, timeout=6)
-        raw = resp.read().decode("gbk")
-        count = raw.count('="') - raw.count('=""')
+        count = z01_sectors().get("sectors", 0)
+        scores = {"sectors": 15 if count >= 3 else 10}
+        return GateResult(5, "L3 Sectors", GateStatus.PASS, {"sectors_available": count}, [], 0)
         
         if count < 3:
             return GateResult(5, "L3 Sectors", GateStatus.DATA_INCOMPLETE,

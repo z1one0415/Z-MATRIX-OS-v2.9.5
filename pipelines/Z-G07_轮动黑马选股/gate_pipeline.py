@@ -293,9 +293,9 @@ def gate7_l5_matrix(ticker: str, g1_details: dict) -> GateResult:
             details["r_matrix"] = "deferred_to_g09"
             details["matrix_source"] = "DEFERRED_TO_G09_G10"
             # Old r_score removed. Use G09 adapter for cycle signal.
-            ra = rank_type_a_horizontal(ticker, "", prices)
-            rb = rank_type_b_rising_channel(ticker, "", prices)
-            best = ra if ra.score >= rb.score else rb
+            # ra removed — G07 R-Matrix deferred to G09
+            # rb removed — G07 R-Matrix deferred to G09
+            best = None  # removed — G07 R-Matrix deferred
             details["r_score"] = round(best.score, 1)
             details["r_subtype"] = best.oscillation_type
             details["r_matrix"] = "ran"

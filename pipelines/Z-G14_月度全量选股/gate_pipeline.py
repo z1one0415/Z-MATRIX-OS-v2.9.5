@@ -85,10 +85,10 @@ def _real_r_score(ticker, name, prices):
         r = evaluate_r_matrix_cycle(ticker, prices)
         return {"score": r.get("r_score"), "status": r["status"],
                 "subtype": r.get("r_resonance_status", "?"),
-                "r_version": r["version"], "error": None}
+                "r_version": r["version"], "r_resonance_status": r.get("r_resonance_status"), "r_action_cap": r.get("r_action_cap"), "error": None}
     except Exception as e:
         return {"score": None, "status": "ERROR", "subtype": None,
-                "r_version": "v2.0-cycle-four-king", "error": str(e)[:120]}
+                "r_version": "v2.0-cycle-four-king", "r_resonance_status": None, "r_action_cap": None, "error": str(e)[:120]}
 
 
 def _real_d_score(ticker, name, prices, kl):
@@ -189,7 +189,7 @@ def _full_scan(tickers):
             "chain_detail": chain_detail,
             "b": b_final, "r": r_final, "d": d_final,
             "b_type": b.get("base_type"), "b_rating": b.get("rating"),
-            "r_subtype": r.get("subtype"), "d_lifecycle": d.get("lifecycle"),
+            "r_subtype": r.get("subtype"), "r_version": r.get("r_version"), "r_status": r.get("status"), "r_resonance_status": r.get("r_resonance_status"), "r_action_cap": r.get("r_action_cap"), "d_lifecycle": d.get("lifecycle"),
             "b_traps": b.get("traps", []),
             "score_status": {"b": b["status"], "r": r["status"], "d": d["status"]},
             "score_scale": {"b": "0-100", "r": "0-100", "d": "0-100"},

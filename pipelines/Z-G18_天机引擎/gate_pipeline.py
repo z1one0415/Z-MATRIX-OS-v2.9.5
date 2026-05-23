@@ -126,7 +126,7 @@ def run(tickers=None, mode="daily", universe="WATCHLIST"):
     else:
         print(f"\n⚠️ G09周期信号: 未加载 ({g09_signals.get('reason','unknown')})")
 
-    from zmatrix.prediction.g09_signal_adapter import load_g09_signals, apply_g09_constraints
+    from zmatrix.prediction.g09_signal_adapter import apply_g09_constraints
 
     predictions = []
     for t in tickers:

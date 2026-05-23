@@ -20,7 +20,8 @@ def test_final_decision_sell_overrides():
     assert r["exit_intent"] == "REDUCE_CORE"
     print(f"✅ sell overrides: entry={r['entry_intent']} exit={r['exit_intent']}")
 
-def test_g18_predictions_contain_final_decision():
+def test_g18_predictions_contain_final_decision()
+    test_g09_adapter_returns_signal_for_every_ticker():
     spec = importlib.util.spec_from_file_location("zg18", "pipelines/Z-G18_天机引擎/gate_pipeline.py")
     mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
     r = mod.run(tickers=["002472"])
@@ -28,8 +29,18 @@ def test_g18_predictions_contain_final_decision():
         assert "final_decision" in p, f"missing final_decision in prediction: {list(p.keys())}"
     print(f"✅ predictions contain final_decision: {len(r['predictions'])} entries")
 
+
+def test_g09_adapter_returns_signal_for_every_ticker():
+    from zmatrix.prediction.g09_signal_adapter import load_g09_signals_for_tickers
+    r = load_g09_signals_for_tickers(["000001", "002472"])
+    assert "000001" in r["signals"], "missing signal for 000001"
+    assert "002472" in r["signals"], "missing signal for 002472"
+    assert "available" in r["signals"]["000001"], "missing available field"
+    print(f"✅ every ticker has signal: {list(r['signals'].keys())}")
+
 if __name__ == "__main__":
     test_apply_g09_constraints_hard_blocks_cap_prob()
     test_final_decision_sell_overrides()
     test_g18_predictions_contain_final_decision()
+    test_g09_adapter_returns_signal_for_every_ticker()
     print("\n🏁 Z-G18 constraint consistency tests PASS")

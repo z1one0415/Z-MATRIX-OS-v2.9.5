@@ -22,6 +22,8 @@ def test_g14_real_r_score_calls_service():
         assert called["count"] == 1, f"service not called: {called}"
         assert r["r_version"] == "v2.0-cycle-four-king"
         assert r["status"] == "PASS"
+    assert "r_resonance_status" in r
+    assert "r_action_cap" in r
     finally:
         rms.evaluate_r_matrix_cycle = orig
     print(f"✅ G14: r_version={r['r_version']} status={r['status']}")

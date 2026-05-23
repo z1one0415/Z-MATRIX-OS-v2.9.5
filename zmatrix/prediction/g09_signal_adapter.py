@@ -138,14 +138,21 @@ def load_g09_signals_for_tickers(tickers: list[str], universe: str = "WATCHLIST"
         spec.loader.exec_module(zg09)
         # Targeted scan: only requested tickers, not full universe top20
         for t in tickers:
-            from pipelines.z17_loader import get_kline
-            kl = get_kline(t, 500)
-            prices = kl.get("prices", [])
-            if len(prices) >= 260:
-                from zmatrix.scoring.r_matrix.r_matrix_service import evaluate_r_matrix_cycle
-                cycle = evaluate_r_matrix_cycle(t, prices)
-                result["signals"][t] = cycle
-        result["available"] = bool(result["signals"])
+            try:
+                from pipelines.z17_loader import get_kline
+                kl = get_kline(t, 500)
+                prices = kl.get("prices", [])
+                if len(prices) >= 260:
+                    from zmatrix.scoring.r_matrix.r_matrix_service import evaluate_r_matrix_cycle
+                    cycle = evaluate_r_matrix_cycle(t, prices)
+                    result["signals"][t] = cycle
+                else:
+                    result["signals"][t] = {"ticker": t, "available": False,
+                        "reason": f"INSUFFICIENT_BARS:{len(prices)}", "source": "G09_TARGETED_SCAN"}
+            except Exception as e:
+                result["signals"][t] = {"ticker": t, "available": False,
+                    "reason": f"SERVICE_ERROR:{str(e)[:60]}", "source": "G09_TARGETED_SCAN"}
+        result["available"] = any(sig.get("available") for sig in result["signals"].values()) if result["signals"] else False
         result["reason"] = "targeted_scan" if result["available"] else "no_data"
     except Exception as e:
         result["reason"] = str(e)[:120]

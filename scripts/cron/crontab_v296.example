@@ -1,0 +1,15 @@
+# Z-MATRIX-OS v2.9.6 cron plan
+SHELL=/bin/bash
+TZ=Asia/Shanghai
+ZMATRIX_HOME=/path/to/Z-MATRIX-OS-v2.9.5
+PYTHON=python3
+
+0 8 * * 1-5 cd $ZMATRIX_HOME && $PYTHON scripts/workflows/run_daily_ops_v296.py --stage premarket
+35 9 * * 1-5 cd $ZMATRIX_HOME && $PYTHON scripts/workflows/run_tianji_control_v296.py --stage preopen
+35 14 * * 1-5 cd $ZMATRIX_HOME && $PYTHON scripts/workflows/run_daily_ops_v296.py --stage tail
+15 15 * * 1-5 cd $ZMATRIX_HOME && $PYTHON scripts/workflows/run_position_management_v296.py
+30 16 * * 1-5 cd $ZMATRIX_HOME && $PYTHON scripts/workflows/run_daily_ops_v296.py --stage review
+0 20 * * 3 cd $ZMATRIX_HOME && $PYTHON scripts/workflows/run_base_health_v296.py
+0 10 * * 6 cd $ZMATRIX_HOME && $PYTHON scripts/workflows/run_alpha_discovery_v296.py
+0 20 1 * * cd $ZMATRIX_HOME && $PYTHON scripts/workflows/run_global_selection_v296.py
+30 21 * * 1-5 cd $ZMATRIX_HOME && ./scripts/verify_rc_candidate.sh

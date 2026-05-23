@@ -66,7 +66,10 @@ def run():
         result["status"] = "DATA_GAP"
         result["sections"]["reason"] = "NO_POSITION_DATA"
         result["sections"]["action"] = "NO_ACCOUNT_TRUTH"
-        result["sections"]["account_truth"] = {
+        result["sections"]["risk_authority"] = "STRONG_WARNING_ONLY"
+    result["sections"]["hard_veto_allowed"] = False
+    result["sections"]["requires_g17_confirmation"] = True
+    result["sections"]["account_truth"] = {
             "connected": False,
             "position_source": "MEMORY_MD_REGEX",
             "cash_source": "NOT_CONNECTED",
@@ -144,6 +147,9 @@ def run():
     result["sections"]["total_value"] = total_value
     result["sections"]["warnings"] = warnings
     result["sections"]["cash"] = {"cash_ratio": None, "source": "NOT_CONNECTED", "capability": "cash_exposure_disabled"}
+    result["sections"]["risk_authority"] = "STRONG_WARNING_ONLY"
+    result["sections"]["hard_veto_allowed"] = False
+    result["sections"]["requires_g17_confirmation"] = True
     result["sections"]["account_truth"] = {
         "connected": False,
         "position_source": "MEMORY_MD_REGEX",

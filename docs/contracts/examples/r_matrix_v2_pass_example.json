@@ -1,0 +1,51 @@
+{
+  "ticker": "002472",
+  "version": "v2.0-cycle-four-king",
+  "status": "PASS",
+  "legacy_fallback": false,
+  "r_score": 7.0,
+  "r_resonance_status": "CYCLE_RESONANCE_ENTRY",
+  "r_action_cap": "WATCH_ENTRY",
+  "entry_action_cap": "WATCH_ENTRY",
+  "exit_alert": "NONE",
+  "hard_blocks": [],
+  "conflicts": [],
+  "kings": {
+    "impulse": {
+      "king": "impulse",
+      "type": "NEUTRAL",
+      "score": 70,
+      "action": "WATCH_ENTRY"
+    },
+    "oscillation": {
+      "type": "BOX",
+      "position": 0.25,
+      "action": "WATCH_ENTRY"
+    },
+    "rhythm": {
+      "type": "BOX",
+      "position": 0.24,
+      "action": "WATCH_ENTRY"
+    },
+    "rotation": {
+      "type": "TREND_UP",
+      "position": 0.4,
+      "action": "RIDE"
+    }
+  },
+  "sell_decision": {
+    "position_action": "HOLD_PROFIT",
+    "sell_ratio": 0,
+    "sell_shares": 0,
+    "keep_shares": 1800
+  },
+  "data_lineage": {
+    "daily_bars": 300,
+    "weekly_bars": 60,
+    "biweekly_bars": 30,
+    "five_day_bars": 100,
+    "source": "R_MATRIX_SERVICE"
+  },
+  "errors": [],
+  "warnings": []
+}

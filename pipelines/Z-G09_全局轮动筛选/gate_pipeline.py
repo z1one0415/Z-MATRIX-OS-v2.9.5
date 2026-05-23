@@ -85,26 +85,7 @@ KINGS = {
     "rotation": {"name":"轮动天王","scale":"双周线","window":30,"desc":"轮动选股entry"},
 }
 
-def _impulse_score(ticker):
-    """冲动天王: 日线 Type A/B"""
-    g1 = market_truth(ticker); l4 = l4_health(ticker)
-    if g1.get("status")=="BLOCK" or l4.get("status")=="BLOCK":
-        return {"status":"BLOCKED","ticker":ticker}
-    kl = get_kline(ticker, 500); prices = kl.get("prices",[])
-    if len(prices) < 260:
-        return {"status":"DATA_INSUFFICIENT","ticker":ticker}
-    try:
-        from zmatrix.scoring.r_matrix.oscillation_king_ranker_v11 import rank_type_a_horizontal, rank_type_b_rising_channel
-        a = rank_type_a_horizontal(ticker, g1.get("name",""), prices)
-        b = rank_type_b_rising_channel(ticker, g1.get("name",""), prices)
-        best = a if a.score >= b.score else b
-        return {"ticker":ticker,"name":g1.get("name","?"),"status":"PASS","score":best.score,
-                "type":best.oscillation_type,"action":best.allowed_action}
-    except Exception as e:
-        return {"status":"ERROR","ticker":ticker,"error":str(e)[:80]}
-
-# _rhythm_scan removed — use rotation_scan.py + rhythm_king_weekly.py instead
-
+# _impulse_score removed — use r_matrix_service instead
 def run(pool_size=80, universe="A_SHARE_ALL", allow_fallback=True,
         kings_enabled="all"):
     """Z-G09 R-Matrix v2.0 — 四天王全周期

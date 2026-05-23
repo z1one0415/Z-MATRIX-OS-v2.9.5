@@ -1,0 +1,9 @@
+[
+  {
+    "ticker": "002472",
+    "name": "双环传动",
+    "r_score": 7.0,
+    "r_resonance_status": "CYCLE_RESONANCE_ENTRY",
+    "r_action_cap": "WATCH_ENTRY"
+  }
+]

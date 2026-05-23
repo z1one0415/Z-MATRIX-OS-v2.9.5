@@ -2,7 +2,8 @@
 import sys, os, importlib.util
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-def test_g09_g14_same_version_and_fields():
+def test_g09_g14_same_version_and_fields()
+    test_g09_and_g14_call_same_service_consistently():
     # Verify both G09 and G14 reference r_matrix_service
     for name, path in [("G09", "pipelines/Z-G09_全局轮动筛选/gate_pipeline.py"),
                         ("G14", "pipelines/Z-G14_月度全量选股/gate_pipeline.py")]:
@@ -33,6 +34,25 @@ def test_g09_g14_same_version_and_fields():
     finally:
         rms.evaluate_r_matrix_cycle = orig
 
+
+def test_g09_and_g14_call_same_service_consistently():
+    """G09 run() and G14 _real_r_score both call evaluate_r_matrix_cycle"""
+    # Verify G09 run() path uses evaluate_r_matrix_cycle
+    zg09_source = open("pipelines/Z-G09_全局轮动筛选/gate_pipeline.py").read()
+    assert "evaluate_r_matrix_cycle" in zg09_source, "G09 doesn't use r_matrix_service"
+    assert "scan_impulse_king" not in zg09_source.split("def run")[1], "G09 still uses old scan in run()"
+    assert "scan_oscillation_king" not in zg09_source.split("def run")[1], "G09 still uses old scan"
+    assert "scan_rhythm_king" not in zg09_source.split("def run")[1]
+    assert "scan_rotation_king" not in zg09_source.split("def run")[1]
+    assert "evaluate_cycle_four_king" not in zg09_source.split("def run")[1]
+    
+    # Verify G14 uses same service
+    zg14_source = open("pipelines/Z-G14_月度全量选股/gate_pipeline.py").read()
+    assert "r_matrix_service" in zg14_source
+    
+    print(f"✅ G09 run() and G14 both use r_matrix_service (no old scan in G09)")
+
 if __name__ == "__main__":
     test_g09_g14_same_version_and_fields()
+    test_g09_and_g14_call_same_service_consistently()
     print("\n🏁 G09/G14 R-Matrix consistency tests PASS")

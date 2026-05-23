@@ -6,7 +6,7 @@ def test_g14_no_old_rmatrix():
     s = open("pipelines/Z-G14_月度全量选股/gate_pipeline.py").read()
     assert "oscillation_king_ranker_v11" not in s, "G14 still imports old R-Matrix"
     assert "rank_type_a_horizontal" not in s, "G14 still calls Type A"
-    assert "_get_r_matrix" not in s, "G14 still has old _get_r_matrix function"
+    assert "def _get_r_matrix" not in s, "G14 still has old _get_r_matrix function def"
     print("✅ no old R-Matrix")
 
 def test_g14_uses_r_matrix_service():

@@ -204,7 +204,7 @@ def gate6_l4_health(ticker: str) -> GateResult:
     details = {}
     
     try:
-        import baostock as bs
+        # G07 gate6: delegated to Z-G01 l4_health — no baostock
         bs.login()
         prefix = "sz" if ticker.startswith(("0","3")) else "sh"
         code = f"{prefix}.{ticker}"

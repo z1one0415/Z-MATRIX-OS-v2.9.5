@@ -1,0 +1,10 @@
+{
+  "code": "002472",
+  "name": "双环传动",
+  "r": 7.0,
+  "r_subtype": "CYCLE_RESONANCE_ENTRY",
+  "r_version": "v2.0-cycle-four-king",
+  "r_status": "PASS",
+  "r_resonance_status": "CYCLE_RESONANCE_ENTRY",
+  "r_action_cap": "WATCH_ENTRY"
+}

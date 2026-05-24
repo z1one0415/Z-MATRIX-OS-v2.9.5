@@ -1,0 +1,17 @@
+{
+  "ticker": "002472",
+  "available": true,
+  "version": "v2.0-cycle-four-king",
+  "status": "PASS",
+  "r_score": 7.0,
+  "r_resonance_status": "CYCLE_RESONANCE_ENTRY",
+  "r_action_cap": "WATCH_ENTRY",
+  "entry_action_cap": "WATCH_ENTRY",
+  "exit_alert": "NONE",
+  "hard_blocks": [],
+  "conflicts": [],
+  "sell_decision": {
+    "position_action": "NO_POSITION"
+  },
+  "source": "G09_TARGETED_SCAN"
+}

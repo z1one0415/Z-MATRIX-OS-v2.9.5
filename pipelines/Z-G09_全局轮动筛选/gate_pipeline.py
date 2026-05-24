@@ -85,7 +85,7 @@ KINGS = {
     "rotation": {"name":"轮动天王","scale":"双周线","window":30,"desc":"轮动选股entry"},
 }
 
-# _impulse_score removed — use r_matrix_service instead
+# Legacy impulse helper removed; use r_matrix_service instead
 def run(pool_size=80, universe="A_SHARE_ALL", allow_fallback=True,
         kings_enabled="all"):
     """Z-G09 R-Matrix v2.0 — 四天王全周期

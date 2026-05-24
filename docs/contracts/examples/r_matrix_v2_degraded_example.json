@@ -26,11 +26,6 @@
       "type": "BOX",
       "position": 0.24,
       "action": "WATCH_ENTRY"
-    },
-    "rotation": {
-      "type": "TREND_UP",
-      "position": 0.4,
-      "action": "RIDE"
     }
   },
   "sell_decision": {
@@ -48,7 +43,7 @@
   },
   "errors": [],
   "warnings": [
+    "partial_kings:3/4",
     "rotation_missing"
-  ],
-  "king_count": 3
+  ]
 }

@@ -2,8 +2,27 @@
   {
     "ticker": "002472",
     "name": "双环传动",
+    "version": "v2.0-cycle-four-king",
+    "status": "PASS",
+    "legacy_fallback": false,
     "r_score": 7.0,
     "r_resonance_status": "CYCLE_RESONANCE_ENTRY",
-    "r_action_cap": "WATCH_ENTRY"
+    "r_action_cap": "WATCH_ENTRY",
+    "entry_action_cap": "WATCH_ENTRY",
+    "exit_alert": "NONE",
+    "hard_blocks": [],
+    "conflicts": [],
+    "kings": {
+      "impulse": {},
+      "oscillation": {},
+      "rhythm": {},
+      "rotation": {}
+    },
+    "sell_decision": null,
+    "data_lineage": {
+      "source": "R_MATRIX_SERVICE"
+    },
+    "errors": [],
+    "warnings": []
   }
 ]

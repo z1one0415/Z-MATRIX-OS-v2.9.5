@@ -36,13 +36,50 @@ def test_g09_r_pool_contract():
         up.load_universe = orig; rms.evaluate_r_matrix_cycle = orig_svc
 
 # 4. Remove old _impulse_score from G09
-def test_g09_no_old_impulse_score():
+def test_g09_no_old_impulse_score()
+    test_contract_examples_exist()
+    test_rmatrix_examples_schema()
+    test_degraded_example_consistency():
     s = open("pipelines/Z-G09_全局轮动筛选/gate_pipeline.py").read()
     assert "def _impulse_score" not in s, "G09 still has old _impulse_score function def"
     print("✅ G09: old _impulse_score removed")
+
+
+def test_contract_examples_exist():
+    from pathlib import Path
+    base = Path("docs/contracts/examples")
+    required = ["r_matrix_v2_pass_example.json","r_matrix_v2_degraded_example.json",
+                "g09_r_pool_example.json","g14_candidate_r_fields_example.json",
+                "g18_g09_signal_example.json"]
+    for name in required:
+        assert (base/name).exists(), f"missing: {name}"
+    print(f"✅ 5 examples present")
+
+def test_rmatrix_examples_schema():
+    import json
+    base = Path("docs/contracts/examples")
+    req = ["ticker","version","status","legacy_fallback","r_score","r_resonance_status",
+           "r_action_cap","entry_action_cap","exit_alert","hard_blocks","conflicts",
+           "kings","sell_decision","data_lineage","errors","warnings"]
+    for name in ["r_matrix_v2_pass_example.json","r_matrix_v2_degraded_example.json"]:
+        data = json.loads((base/name).read_text())
+        for k in req: assert k in data, f"{name} missing {k}"
+        assert data["version"] == "v2.0-cycle-four-king"
+    print("✅ pass + degraded examples schema OK")
+
+def test_degraded_example_consistency():
+    import json
+    data = json.loads(Path("docs/contracts/examples/r_matrix_v2_degraded_example.json").read_text())
+    assert data["status"] == "DEGRADED"
+    if "rotation_missing" in data.get("warnings",[]):
+        assert "rotation" not in data["kings"], "rotation_missing but kings has rotation"
+    print("✅ degraded example consistent")
 
 if __name__ == "__main__":
     test_rmatrix_service_contract_fields()
     test_g09_r_pool_contract()
     test_g09_no_old_impulse_score()
+    test_contract_examples_exist()
+    test_rmatrix_examples_schema()
+    test_degraded_example_consistency()
     print("\n🏁 R-Matrix contract schema tests PASS")

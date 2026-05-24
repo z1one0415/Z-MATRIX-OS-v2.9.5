@@ -1,0 +1,38 @@
+{
+  "decision_version": "v1.1",
+  "version": "v1.1",
+  "ticker": "002472",
+  "entry_intent": "WAIT",
+  "exit_intent": "REDUCE_CORE",
+  "paper_action": null,
+  "action_cap": "WAIT",
+  "probability_after_constraints": 0.55,
+  "required_confirmations": [],
+  "risk_warnings": [],
+  "blocking_reasons": [
+    "G09_SELL_DECISION_ACTIVE"
+  ],
+  "provenance": {
+    "g09": {
+      "available": true,
+      "source": "G09_TARGETED_SCAN",
+      "version": "v2.0-cycle-four-king",
+      "status": "PASS",
+      "r_score": 7.0,
+      "r_resonance_status": "CYCLE_RESONANCE_ENTRY",
+      "r_action_cap": "WATCH_ENTRY",
+      "position_action": "REDUCE_CORE",
+      "hard_blocks": []
+    },
+    "g08": {},
+    "g11": {},
+    "g14": {},
+    "z16": {
+      "required": false
+    },
+    "g17": {
+      "required": false
+    }
+  },
+  "forbidden_real_trade_checked": true
+}

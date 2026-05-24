@@ -172,7 +172,7 @@ def run(tickers=None, mode="daily", universe="WATCHLIST"):
     from zmatrix.prediction.final_decision_envelope import build_final_decision
     for p in predictions:
         p.final_decision = build_final_decision(p, {"g09": g09_signal_map.get(p.ticker, {}), "g08": {}, "g11": {}, "g14": {}})
-    result["sections"]["final_decision_envelope_version"] = "v1.0"
+    result["sections"]["final_decision_envelope_version"] = "v1.1"
 
     result["predictions"] = [{"ticker":p.ticker,"name":p.name,"probability":p.probability,
         "final_decision": getattr(p, "final_decision", None),

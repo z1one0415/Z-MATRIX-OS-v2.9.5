@@ -43,7 +43,10 @@ def test_paper_action_requires_z16_g17():
     assert "G17_ACCOUNT_CONFIRMATION" in r["required_confirmations"]
     print(f"✅ Z16/G17 required: {r['required_confirmations']}")
 
-def test_forbidden_real_trade_rejected():
+def test_forbidden_real_trade_rejected()
+    test_nested_sell_decision_blocks_entry()
+    test_rmatrix_status_counts_as_available()
+    test_g18_sections_v11():
     from zmatrix.prediction.final_decision_envelope import build_final_decision
     from zmatrix.prediction.contracts import PredictionResult
     for bad in ["BUY", "SELL", "AUTO_TRADE"]:
@@ -55,10 +58,41 @@ def test_forbidden_real_trade_rejected():
             pass
     print("✅ forbidden real trade actions rejected")
 
+
+def test_nested_sell_decision_blocks_entry():
+    from zmatrix.prediction.final_decision_envelope import build_final_decision
+    from zmatrix.prediction.contracts import PredictionResult
+    p = PredictionResult(ticker="002472", probability=0.75, action_proposal="PAPER_TRACK")
+    g09 = {"status":"PASS","sell_decision":{"position_action":"REDUCE_CORE"},"hard_blocks":[]}
+    r = build_final_decision(p, {"g09":g09,"g08":{},"g11":{},"g14":{}})
+    assert r["entry_intent"] == "WAIT"
+    assert r["exit_intent"] == "REDUCE_CORE"
+    print("✅ nested sell_decision blocks entry")
+
+def test_rmatrix_status_counts_as_available():
+    from zmatrix.prediction.final_decision_envelope import build_final_decision
+    from zmatrix.prediction.contracts import PredictionResult
+    p = PredictionResult(ticker="002472", probability=0.75, action_proposal="PAPER_TRACK")
+    g09 = {"status":"DEGRADED","position_action":"REDUCE_CORE","hard_blocks":[]}
+    r = build_final_decision(p, {"g09":g09,"g08":{},"g11":{},"g14":{}})
+    assert r["entry_intent"] == "WAIT"
+    print("✅ DEGRADED status counts as available")
+
+def test_g18_sections_v11():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("zg18","pipelines/Z-G18_天机引擎/gate_pipeline.py")
+    mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
+    r = mod.run(tickers=["002472"])
+    assert r["sections"]["final_decision_envelope_version"] == "v1.1"
+    print("✅ G18 sections v1.1")
+
 if __name__ == "__main__":
     test_g09_sell_decision_blocks_entry()
     test_g09_hard_blocks_prevent_paper_entry()
     test_g11_warning_only_no_hard_veto()
     test_paper_action_requires_z16_g17()
     test_forbidden_real_trade_rejected()
+    test_nested_sell_decision_blocks_entry()
+    test_rmatrix_status_counts_as_available()
+    test_g18_sections_v11()
     print("\n🏁 G18 Final Decision Envelope v1.1 tests PASS")

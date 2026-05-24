@@ -24,8 +24,10 @@ def build_final_decision(prediction, upstream_evidence: dict | None = None) -> d
     required_confirmations = []
 
     # ── Rule 1: G09 sell_decision overrides G18 buy ──
-    if g09 and g09.get("available"):
-        pos_action = g09.get("position_action", "")
+    g09_avail = g09.get("available") is True or g09.get("status") in ("PASS", "DEGRADED")
+    if g09 and g09_avail:
+        sell = g09.get("sell_decision") or {}
+        pos_action = g09.get("position_action") or sell.get("position_action", "")
         sell_actions = ("REDUCE_CORE", "MAJOR_REDUCE_OR_EXIT", "SELL_TRADING_KEEP_CORE", "LIGHTEN_TRADING")
         if pos_action in sell_actions:
             entry = "WAIT"
@@ -33,7 +35,7 @@ def build_final_decision(prediction, upstream_evidence: dict | None = None) -> d
             blocking_reasons.append("G09_SELL_DECISION_ACTIVE")
 
     # ── Rule 2: G09 hard_blocks prevent paper entry ──
-    if g09 and g09.get("hard_blocks"):
+    if g09 and (g09.get("hard_blocks") or (g09.get("sell_decision") or {}).get("hard_blocks")):
         entry = "WAIT"
         paper_action = None
         blocking_reasons.append("G09_HARD_BLOCKS")
@@ -65,7 +67,13 @@ def build_final_decision(prediction, upstream_evidence: dict | None = None) -> d
         "risk_warnings": risk_warnings,
         "blocking_reasons": blocking_reasons,
         "provenance": {
-            "g09": {"available": g09.get("available", False), "source": "targeted_scan"},
+            "g09": {
+                "available": g09_avail, "source": g09.get("source", "targeted_scan"),
+                "version": g09.get("version"), "status": g09.get("status"),
+                "r_score": g09.get("r_score"), "r_resonance_status": g09.get("r_resonance_status"),
+                "r_action_cap": g09.get("r_action_cap"), "position_action": pos_action,
+                "hard_blocks": g09.get("hard_blocks", []),
+            },
             "g08": {"available": g08.get("available", False)},
             "g11": {"risk_authority": g11.get("risk_authority", "STRONG_WARNING_ONLY")},
             "g14": {"role": g14.get("role", "GLOBAL_BASELINE_ONLY")},

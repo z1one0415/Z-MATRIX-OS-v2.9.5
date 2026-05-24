@@ -145,7 +145,16 @@ def load_g09_signals_for_tickers(tickers: list[str], universe: str = "WATCHLIST"
                 if len(prices) >= 260:
                     from zmatrix.scoring.r_matrix.r_matrix_service import evaluate_r_matrix_cycle
                     cycle = evaluate_r_matrix_cycle(t, prices)
-                    result["signals"][t] = cycle
+                    sell = cycle.get("sell_decision") or {}
+                    result["signals"][t] = {
+                        "ticker": t, "available": True, "source": "G09_TARGETED_SCAN",
+                        "version": cycle.get("version"), "status": cycle.get("status"),
+                        "r_score": cycle.get("r_score"), "r_resonance_status": cycle.get("r_resonance_status"),
+                        "r_action_cap": cycle.get("r_action_cap"), "entry_action_cap": cycle.get("entry_action_cap"),
+                        "exit_alert": cycle.get("exit_alert", "NONE"), "hard_blocks": cycle.get("hard_blocks", []),
+                        "conflicts": cycle.get("conflicts", []), "sell_decision": sell,
+                        "position_action": sell.get("position_action", "NO_POSITION"),
+                    }
                 else:
                     result["signals"][t] = {"ticker": t, "available": False,
                         "reason": f"INSUFFICIENT_BARS:{len(prices)}", "source": "G09_TARGETED_SCAN"}

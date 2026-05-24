@@ -1,6 +1,8 @@
 """R-Matrix v2.0 contract schema tests"""
-import sys, os
+import sys, os, json
+from pathlib import Path
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 
 def test_rmatrix_service_contract_fields():
     from zmatrix.scoring.r_matrix.r_matrix_service import evaluate_r_matrix_cycle
@@ -11,7 +13,8 @@ def test_rmatrix_service_contract_fields():
     for k in required: assert k in r, f"missing {k}"
     assert r["version"] == "v2.0-cycle-four-king"
     assert r["legacy_fallback"] is False
-    print(f"✅ contract: {len(required)} fields present, version={r['version']}")
+    print(f"✅ contract: {len(required)} fields, version={r['version']}")
+
 
 def test_g09_r_pool_contract():
     import importlib.util
@@ -31,32 +34,28 @@ def test_g09_r_pool_contract():
         p = r["r_pool"][0]
         for k in ["ticker","r_score","r_resonance_status","r_action_cap","entry_action_cap","exit_alert","kings"]:
             assert k in p, f"G09 r_pool missing {k}"
-        print(f"✅ G09 r_pool contract OK")
+        print(f"✅ G09 r_pool contract: {list(p.keys())[:8]}")
     finally:
         up.load_universe = orig; rms.evaluate_r_matrix_cycle = orig_svc
 
-# 4. Remove old _impulse_score from G09
-def test_g09_no_old_impulse_score()
-    test_contract_examples_exist()
-    test_rmatrix_examples_schema()
-    test_degraded_example_consistency():
+
+def test_g09_no_old_impulse_score():
     s = open("pipelines/Z-G09_全局轮动筛选/gate_pipeline.py").read()
     assert "def _impulse_score" not in s, "G09 still has old _impulse_score function def"
-    print("✅ G09: old _impulse_score removed")
+    print("✅ G09: old _impulse_score definition removed")
 
 
 def test_contract_examples_exist():
-    from pathlib import Path
     base = Path("docs/contracts/examples")
     required = ["r_matrix_v2_pass_example.json","r_matrix_v2_degraded_example.json",
                 "g09_r_pool_example.json","g14_candidate_r_fields_example.json",
                 "g18_g09_signal_example.json"]
     for name in required:
         assert (base/name).exists(), f"missing: {name}"
-    print(f"✅ 5 examples present")
+    print("✅ 5 examples present")
+
 
 def test_rmatrix_examples_schema():
-    import json
     base = Path("docs/contracts/examples")
     req = ["ticker","version","status","legacy_fallback","r_score","r_resonance_status",
            "r_action_cap","entry_action_cap","exit_alert","hard_blocks","conflicts",
@@ -67,13 +66,14 @@ def test_rmatrix_examples_schema():
         assert data["version"] == "v2.0-cycle-four-king"
     print("✅ pass + degraded examples schema OK")
 
+
 def test_degraded_example_consistency():
-    import json
     data = json.loads(Path("docs/contracts/examples/r_matrix_v2_degraded_example.json").read_text())
     assert data["status"] == "DEGRADED"
     if "rotation_missing" in data.get("warnings",[]):
         assert "rotation" not in data["kings"], "rotation_missing but kings has rotation"
     print("✅ degraded example consistent")
+
 
 if __name__ == "__main__":
     test_rmatrix_service_contract_fields()

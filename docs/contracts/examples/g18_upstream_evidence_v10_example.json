@@ -1,0 +1,51 @@
+{
+  "ticker": "002472",
+  "evidence_version": "v1.0",
+  "evidence_available": {
+    "g09": true,
+    "g08": false,
+    "g11": false,
+    "g14": false,
+    "z16": false,
+    "g17": false
+  },
+  "missing_sources": [
+    "g08",
+    "g11",
+    "g14",
+    "z16",
+    "g17"
+  ],
+  "g09": {
+    "available": true,
+    "version": "v2.0-cycle-four-king",
+    "source": "G09_TARGETED_SCAN"
+  },
+  "g08": {
+    "source": "Z-G08",
+    "available": false,
+    "reason": "NOT_CONNECTED"
+  },
+  "g11": {
+    "source": "Z-G11",
+    "available": false,
+    "risk_authority": "STRONG_WARNING_ONLY"
+  },
+  "g14": {
+    "source": "Z-G14",
+    "available": false,
+    "role": "GLOBAL_BASELINE_ONLY"
+  },
+  "z16": {
+    "source": "Z16_PRICE_GATE",
+    "available": false,
+    "required": true,
+    "status": "PLACEHOLDER_NOT_CONNECTED"
+  },
+  "g17": {
+    "source": "G17_ACCOUNT_CONFIRMATION",
+    "available": false,
+    "required": true,
+    "status": "PLACEHOLDER_NOT_CONNECTED"
+  }
+}

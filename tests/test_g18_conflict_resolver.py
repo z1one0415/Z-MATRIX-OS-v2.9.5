@@ -48,7 +48,9 @@ def test_z16_g17_missing_confirmation():
     assert any(c["code"] == "Z16_G17_CONFIRMATION_MISSING" for c in r["conflicts"])
     print("✅ Z16/G17 missing: MEDIUM")
 
-def test_final_decision_contains_conflict_resolution():
+def test_final_decision_contains_conflict_resolution()
+    test_conflict_resolver_never_upgrades_wait_to_paper()
+    test_final_decision_never_upgrades_wait_to_paper_pending():
     from zmatrix.prediction.final_decision_envelope import build_final_decision
     from zmatrix.prediction.contracts import PredictionResult
     p = PredictionResult(ticker="002472", probability=0.75, action_proposal="PAPER_TRACK")
@@ -59,6 +61,24 @@ def test_final_decision_contains_conflict_resolution():
     assert "conflicts" in r
     print(f"✅ final_decision: conflict_resolution={r.get('conflict_level','?')}")
 
+
+def test_conflict_resolver_never_upgrades_wait_to_paper():
+    from zmatrix.prediction.conflict_resolver import resolve_upstream_conflicts
+    p = type("", (), {"action_proposal": "WAIT"})()
+    up = {"g09": {}, "g08": {}, "g11": {}, "g14": {}, "z16": {"available": False}, "g17": {"available": False}}
+    r = resolve_upstream_conflicts(up, p)
+    assert r["suggested_action_cap"] == "WAIT"
+    print("✅ conflict: never upgrades WAIT to paper")
+
+def test_final_decision_never_upgrades_wait_to_paper_pending():
+    from zmatrix.prediction.final_decision_envelope import build_final_decision
+    from zmatrix.prediction.contracts import PredictionResult
+    p = PredictionResult(ticker="002472", probability=0.50, action_proposal="WAIT")
+    up = {"g09": {}, "g08": {}, "g11": {}, "g14": {}, "z16": {"available": False}, "g17": {"available": False}}
+    r = build_final_decision(p, up)
+    assert r["entry_intent"] == "WAIT"
+    print("✅ final_decision: never upgrades WAIT")
+
 if __name__ == "__main__":
     test_g09_sell_vs_g18_entry_high_conflict()
     test_g09_hard_blocks_high_conflict()
@@ -66,4 +86,6 @@ if __name__ == "__main__":
     test_g11_warning_only_does_not_force_wait()
     test_z16_g17_missing_confirmation()
     test_final_decision_contains_conflict_resolution()
+    test_conflict_resolver_never_upgrades_wait_to_paper()
+    test_final_decision_never_upgrades_wait_to_paper_pending()
     print("\n🏁 G18 Conflict Resolver v1.0 tests PASS")

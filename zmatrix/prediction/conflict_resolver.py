@@ -108,9 +108,9 @@ def resolve_upstream_conflicts(upstream_evidence: dict, prediction=None) -> dict
 def _lower_cap(current, proposed):
     """Return the more conservative action cap (lower = more restrictive).
     Order: AVOID > BLOCKED > WAIT > WATCH > PAPER_TRACK > PAPER_PROBE_ELIGIBLE > ..."""
-    order = ["AVOID", "BLOCKED", "WAIT", "WATCH_CONFIRM", "WAIT_CONFIRM", "WATCH",
-             "PAPER_PROBE_ELIGIBLE_PENDING_Z16_Z17", "PAPER_TRACK", "PAPER_PROBE_ELIGIBLE", "HOLD"]
-    for a in order:
+    _ORDER = ["AVOID", "BLOCKED", "WAIT", "WATCH", "WAIT_CONFIRM", "WATCH_CONFIRM",
+                "PAPER_PROBE_ELIGIBLE_PENDING_Z16_Z17", "PAPER_TRACK", "PAPER_PROBE_ELIGIBLE", "HOLD"]
+    for a in _ORDER:
         if current == a or proposed == a:
             return a
     return current

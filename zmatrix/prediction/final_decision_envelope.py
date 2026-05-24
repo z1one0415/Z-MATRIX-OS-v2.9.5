@@ -9,7 +9,7 @@ from __future__ import annotations
 from zmatrix.action.action_contracts import assert_no_real_trade
 
 
-_ORDER = ["PAPER_PROBE_ELIGIBLE_PENDING_Z16_Z17", "PAPER_PROBE_ELIGIBLE", "PAPER_TRACK", "WATCH", "WAIT", "BLOCKED", "AVOID"]
+_ORDER = ["AVOID", "BLOCKED", "WAIT", "WATCH", "PAPER_PROBE_ELIGIBLE_PENDING_Z16_Z17", "PAPER_TRACK", "PAPER_PROBE_ELIGIBLE"]
 
 def _lowest_cap(lhs, rhs):
     """Return the more conservative action cap."""

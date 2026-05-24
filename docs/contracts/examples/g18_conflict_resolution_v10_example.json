@@ -1,0 +1,21 @@
+{
+  "conflict_version": "v1.0",
+  "has_conflict": true,
+  "conflict_level": "HIGH",
+  "suggested_action_cap": "WAIT",
+  "conflicts": [
+    {
+      "code": "G09_SELL_VS_G18_ENTRY",
+      "level": "HIGH",
+      "description": "G09 recommends REDUCE_CORE but G18 action is PAPER_TRACK",
+      "suggested_action_cap": "WAIT",
+      "source_pair": [
+        "g09",
+        "g18"
+      ]
+    }
+  ],
+  "warnings": [
+    "G09 recommends REDUCE_CORE but G18 action is PAPER_TRACK"
+  ]
+}

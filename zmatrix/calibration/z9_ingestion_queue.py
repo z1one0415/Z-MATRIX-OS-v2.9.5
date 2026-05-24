@@ -40,8 +40,14 @@ def build_z9_ingestion_queue_item(sample: dict, *, queue_id: str | None = None, 
     status = "PENDING_REVIEW"
     if reject_reasons:
         status = "REJECTED"
-    elif _get(sample, "outcome_placeholder.review_status") == "WAITING_FOR_FUTURE_MARKET_DATA":
-        status = "WAITING_MARKET_DATA"
+    else:
+        review_status = (sample.get("outcome_placeholder") or {}).get("review_status")
+        if review_status == "WAITING_FOR_FUTURE_MARKET_DATA":
+            status = "WAITING_MARKET_DATA"
+
+    # source_record_ref from nested source_record
+    source_record = sample.get("source_record") or {}
+    source_record_ref = source_record.get("record_ref", "")
 
     return {
         "queue_version": "v1.0",
@@ -55,7 +61,7 @@ def build_z9_ingestion_queue_item(sample: dict, *, queue_id: str | None = None, 
             "idempotency_key": make_z9_queue_idempotency_key(sample),
             "dedup_key": f"{ticker}_{sample_id}",
             "source_sample_id": sample_id,
-            "source_record_ref": _get(sample, "source_record.record_ref", ""),
+            "source_record_ref": source_record_ref,
             "same_sample_reenqueue_allowed": False,
         },
         "state": {"status": status, "allowed_statuses": ALLOWED_STATUSES, "reason": "D2_QUEUE_CONTRACT_ONLY_NO_REAL_WRITE" if not reject_reasons else "; ".join(reject_reasons)},

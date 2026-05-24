@@ -7,7 +7,7 @@
   "ticker": "002472",
   "created_at": "2026-05-24 23:59:00",
   "idempotency": {
-    "idempotency_key": "abc123",
+    "idempotency_key": "6ecf3446fd02e38fb983761adebff4e4",
     "dedup_key": "002472_Z9S_20260524_235900",
     "source_sample_id": "Z9S_20260524_235900",
     "source_record_ref": "Z9S_20260524_235900",

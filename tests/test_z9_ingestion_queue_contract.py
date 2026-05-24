@@ -68,6 +68,37 @@ def test_conflict_code_not_rejected():
     assert r["state"]["status"] != "REJECTED"  # conflict codes are in the sample, not in action fields
     print("✅ conflict code not rejected")
 
+def test_source_record_ref_preserved():
+    """source_record_ref从sample.source_record.record_ref保留"""
+    from zmatrix.calibration.z9_ingestion_queue import build_z9_ingestion_queue_item
+    r = build_z9_ingestion_queue_item(_make_valid_sample())
+    assert r["idempotency"]["source_record_ref"] == "Z9S_001"
+    print("✅ source_record_ref: preserved from sample")
+
+
+def test_idempotency_key_changes_when_record_ref_changes():
+    """record_ref变化时, idempotency_key必须变化"""
+    from zmatrix.calibration.z9_ingestion_queue import build_z9_ingestion_queue_item
+    s1 = _make_valid_sample()
+    s2 = _make_valid_sample()
+    s2["source_record"]["record_ref"] = "Z9S_001_ALT"
+    r1 = build_z9_ingestion_queue_item(s1)
+    r2 = build_z9_ingestion_queue_item(s2)
+    assert r1["idempotency"]["idempotency_key"] != r2["idempotency"]["idempotency_key"]
+    print("✅ idempotency_key: changes with record_ref")
+
+
+def test_idempotency_key_is_real_sha256_hex():
+    """idempotency_key是32位hex字符串(不是abc123)"""
+    from zmatrix.calibration.z9_ingestion_queue import build_z9_ingestion_queue_item
+    r = build_z9_ingestion_queue_item(_make_valid_sample())
+    key = r["idempotency"]["idempotency_key"]
+    assert len(key) == 32
+    assert all(c in "0123456789abcdef" for c in key)
+    assert key != "abc123"
+    print(f"✅ idempotency_key: {key} (32-char hex)")
+
+
 def test_g18_output_contains_queue_preview():
     import importlib.util
     spec = importlib.util.spec_from_file_location("zg18","pipelines/Z-G18_天机引擎/gate_pipeline.py")
@@ -87,5 +118,8 @@ if __name__ == "__main__":
     test_missing_required_field_rejected()
     test_forbidden_real_trade_rejected()
     test_conflict_code_not_rejected()
+    test_source_record_ref_preserved()
+    test_idempotency_key_changes_when_record_ref_changes()
+    test_idempotency_key_is_real_sha256_hex()
     test_g18_output_contains_queue_preview()
     print("\n🏁 Z9 Ingestion Queue v1.0 contract tests PASS")

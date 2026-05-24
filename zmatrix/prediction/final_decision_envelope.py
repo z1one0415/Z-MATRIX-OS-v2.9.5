@@ -15,6 +15,8 @@ def build_final_decision(prediction, upstream_evidence: dict | None = None) -> d
     g11 = up.get("g11", {})
     g14 = up.get("g14", {})
     g08 = up.get("g08", {})
+    z16 = up.get("z16", {})
+    g17 = up.get("g17", {})
 
     entry = prediction.action_proposal or "WAIT"
     exit_intent = None
@@ -77,8 +79,20 @@ def build_final_decision(prediction, upstream_evidence: dict | None = None) -> d
             "g08": {"available": g08.get("available", False)},
             "g11": {"risk_authority": g11.get("risk_authority", "STRONG_WARNING_ONLY")},
             "g14": {"role": g14.get("role", "GLOBAL_BASELINE_ONLY")},
-            "z16": {"required": "Z16_PRICE_GATE" in required_confirmations},
-            "g17": {"required": "G17_ACCOUNT_CONFIRMATION" in required_confirmations},
+            "z16": {
+                "required": z16.get("required", "Z16_PRICE_GATE" in required_confirmations),
+                "available": z16.get("available", False),
+                "status": z16.get("status"),
+                "source": z16.get("source", "Z16_PRICE_GATE"),
+                "warnings": z16.get("warnings", []),
+            },
+            "g17": {
+                "required": g17.get("required", "G17_ACCOUNT_CONFIRMATION" in required_confirmations),
+                "available": g17.get("available", False),
+                "status": g17.get("status"),
+                "source": g17.get("source", "G17_ACCOUNT_CONFIRMATION"),
+                "warnings": g17.get("warnings", []),
+            },
         },
         "forbidden_real_trade_checked": True,
     }

@@ -186,6 +186,7 @@ def run(tickers=None, mode="daily", universe="WATCHLIST"):
             z16_signal=load_z16_signal(p.ticker),
             g17_signal=load_g17_signal(p.ticker),
         )
+        p.upstream_evidence = upstream
         p.final_decision = build_final_decision(p, upstream)
     result["sections"]["final_decision_envelope_version"] = "v1.1"
 

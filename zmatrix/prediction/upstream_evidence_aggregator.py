@@ -41,7 +41,11 @@ def build_upstream_evidence(
     }
 
     for key, (sig, default) in named.items():
-        if sig and sig.get("available") is not False or (sig and sig.get("status") in ("PASS", "DEGRADED")):
+        if sig:
+            is_avail = sig.get("available") is True or sig.get("status") in ("PASS", "DEGRADED")
+        else:
+            is_avail = False
+        if is_avail:
             evidence[key] = sig
             available[key] = True
         elif default is not None:

@@ -178,6 +178,7 @@ def run(tickers=None, mode="daily", universe="WATCHLIST"):
     from zmatrix.prediction.final_decision_envelope import build_final_decision
     from zmatrix.prediction.paper_execution_record import build_paper_execution_record
     from zmatrix.calibration.z9_calibration_sample import build_z9_calibration_sample
+    from zmatrix.calibration.z9_ingestion_queue import build_z9_ingestion_queue_item
     run_id = now.strftime("%Y%m%d_%H%M%S")
     for p in predictions:
         upstream = build_upstream_evidence(
@@ -193,13 +194,18 @@ def run(tickers=None, mode="daily", universe="WATCHLIST"):
         p.final_decision = build_final_decision(p, upstream)
         p.paper_execution_record = build_paper_execution_record(p, run_id=run_id)
         p.z9_calibration_sample_preview = build_z9_calibration_sample(p.paper_execution_record, run_id=run_id)
+        p.z9_ingestion_queue_preview = build_z9_ingestion_queue_item(p.z9_calibration_sample_preview, enqueue_run_id=run_id)
     result["sections"]["final_decision_envelope_version"] = "v1.1"
     result["sections"]["paper_execution_record_version"] = "v1.0"
     result["sections"]["paper_execution_records_ready"] = len(predictions)
     result["sections"]["z9_calibration_sample_version"] = "v1.0"
     result["sections"]["z9_calibration_samples_ready"] = len(predictions)
+    result["sections"]["z9_ingestion_queue_version"] = "v1.0"
+    result["sections"]["z9_ingestion_queue_items_ready"] = len(predictions)
     result["sections"]["z9_real_write_allowed"] = False
     result["sections"]["z9_write_status"] = "DEFERRED_NOT_CONNECTED"
+    result["sections"]["z9_queue_write_allowed"] = False
+    result["sections"]["z9_queue_write_status"] = "DEFERRED_NOT_CONNECTED"
     result["sections"]["z9_calibration_hooks_ready"] = True
 
     result["predictions"] = [{"ticker":p.ticker,"name":p.name,"probability":p.probability,
@@ -209,6 +215,7 @@ def run(tickers=None, mode="daily", universe="WATCHLIST"):
         "missing_sources": getattr(p, "upstream_evidence", {}).get("missing_sources", []),
         "paper_execution_record": getattr(p, "paper_execution_record", None),
         "z9_calibration_sample_preview": getattr(p, "z9_calibration_sample_preview", None),
+        "z9_ingestion_queue_preview": getattr(p, "z9_ingestion_queue_preview", None),
         "horizon":p.horizon,"evidence_coverage":p.evidence_coverage,
         "data_lineage":p.data_lineage,"temporal_consistency":p.temporal_consistency,
         "next_triggers":p.next_triggers,"action_proposal":p.action_proposal,"z9":p.z9_sample}

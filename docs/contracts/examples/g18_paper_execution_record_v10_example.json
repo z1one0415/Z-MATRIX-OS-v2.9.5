@@ -47,5 +47,30 @@
       "decision_outcome"
     ]
   },
-  "forbidden_real_trade_checked": true
+  "forbidden_real_trade_checked": true,
+  "final_decision": {
+    "entry_intent": "PAPER_TRACK",
+    "exit_intent": null,
+    "paper_action": "PAPER_TRACK",
+    "action_cap": "PAPER_TRACK",
+    "required_confirmations": [
+      "Z16_PRICE_GATE",
+      "G17_ACCOUNT_CONFIRMATION"
+    ]
+  },
+  "upstream_evidence_available": {
+    "g09": true,
+    "g08": false,
+    "g11": false,
+    "g14": false,
+    "z16": false,
+    "g17": false
+  },
+  "missing_sources": [
+    "g08",
+    "g11",
+    "g14",
+    "z16",
+    "g17"
+  ]
 }

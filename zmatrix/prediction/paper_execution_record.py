@@ -7,10 +7,16 @@ from datetime import datetime
 from zmatrix.action.action_contracts import assert_no_real_trade
 
 
+def _get(obj, key, default=None):
+    if isinstance(obj, dict):
+        return obj.get(key, default)
+    return getattr(obj, key, default)
+
+
 def build_paper_execution_record(prediction, *, run_id: str | None = None) -> dict:
     """Build a paper execution record from a G18 prediction object."""
 
-    fd = getattr(prediction, "final_decision", {}) or {}
+    fd = _get(prediction, "final_decision", {}) or {}
     conflicts = fd.get("conflicts", [])
     conflict_codes = [c["code"] for c in conflicts]
     paper_action = fd.get("paper_action")
@@ -20,18 +26,18 @@ def build_paper_execution_record(prediction, *, run_id: str | None = None) -> di
         "record_version": "v1.0",
         "record_type": "PAPER_EXECUTION_RECORD",
         "run_id": run_id or datetime.now().strftime("%Y%m%d_%H%M%S"),
-        "ticker": prediction.ticker,
-        "name": getattr(prediction, "name", ""),
+        "ticker": _get(prediction, "ticker"),
+        "name": _get(prediction, "name", ""),
         "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "prediction": {
-            "probability": prediction.probability,
-            "horizon": getattr(prediction, "horizon", {}),
-            "action_proposal": getattr(prediction, "action_proposal", "WAIT"),
-            "confidence": getattr(prediction, "confidence", "LOW"),
+            "probability": _get(prediction, "probability"),
+            "horizon": _get(prediction, "horizon", {}),
+            "action_proposal": _get(prediction, "action_proposal", "WAIT"),
+            "confidence": _get(prediction, "confidence", "LOW"),
         },
         "final_decision": fd,
-        "upstream_evidence_available": fd.get("provenance", {}),
-        "missing_sources": fd.get("conflict_resolution", {}).get("warnings", []),
+        "upstream_evidence_available": _get(prediction, "upstream_evidence", {}).get("evidence_available", {}),
+        "missing_sources": _get(prediction, "upstream_evidence", {}).get("missing_sources", []),
         "conflict_summary": {
             "has_conflict": fd.get("conflict_resolution", {}).get("has_conflict", False),
             "conflict_level": fd.get("conflict_resolution", {}).get("conflict_level", "NONE"),

@@ -18,3 +18,18 @@
 - risk_warnings: G11 warnings only
 - provenance: g09/g08/g11/g14/z16/g17
 - forbidden_real_trade_checked: True
+
+
+## G09 Evidence Input
+
+Supports:
+1. Flat: g09.position_action = REDUCE_CORE
+2. Nested: g09.sell_decision.position_action = REDUCE_CORE
+
+Availability: g09.available==True OR g09.status in (PASS, DEGRADED)
+
+Adapter must output: available, source, version, status, r_score,
+r_resonance_status, r_action_cap, entry_action_cap, exit_alert,
+hard_blocks, conflicts, sell_decision, position_action
+
+Example: docs/contracts/examples/g18_final_decision_v11_example.json

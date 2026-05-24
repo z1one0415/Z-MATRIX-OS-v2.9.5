@@ -72,13 +72,40 @@ def test_rmatrix_status_counts_as_available():
     assert r["entry_intent"] == "WAIT"
     print("✅ DEGRADED status counts as available")
 
-def test_g18_sections_v11():
+def test_g18_sections_v11()
+    test_g09_adapter_signal_shape_for_final_decision():
     import importlib.util
     spec = importlib.util.spec_from_file_location("zg18", "pipelines/Z-G18_天机引擎/gate_pipeline.py")
     mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
     r = mod.run(tickers=["002472"])
     assert r["sections"]["final_decision_envelope_version"] == "v1.1"
     print("✅ G18 sections v1.1")
+
+
+def test_g09_adapter_signal_shape_for_final_decision():
+    import zmatrix.prediction.g09_signal_adapter as adapter
+    import pipelines.z17_loader as z17
+    import zmatrix.scoring.r_matrix.r_matrix_service as rms
+    orig_get_kline = z17.get_kline
+    orig_eval = rms.evaluate_r_matrix_cycle
+    z17.get_kline = lambda t,d: {'prices':[100+i*0.1 for i in range(300)]}
+    rms.evaluate_r_matrix_cycle = lambda t,prices=None,**kw: {
+        'ticker':t,'version':'v2.0-cycle-four-king','status':'PASS','r_score':7.0,
+        'r_resonance_status':'CYCLE_RESONANCE_ENTRY','r_action_cap':'WATCH_ENTRY',
+        'entry_action_cap':'WATCH_ENTRY','exit_alert':'NONE','hard_blocks':[],'conflicts':[],
+        'sell_decision':{'position_action':'REDUCE_CORE'},'kings':{},'data_lineage':{},'errors':[],'warnings':[]}
+    try:
+        r = adapter.load_g09_signals_for_tickers(['002472'])
+        sig = r['signals']['002472']
+        assert sig['available'] is True
+        assert sig['source'] == 'G09_TARGETED_SCAN'
+        assert sig['position_action'] == 'REDUCE_CORE'
+        assert sig['sell_decision']['position_action'] == 'REDUCE_CORE'
+        assert sig['r_resonance_status'] == 'CYCLE_RESONANCE_ENTRY'
+        print('✅ adapter shape: available=True position_action=REDUCE_CORE')
+    finally:
+        z17.get_kline = orig_get_kline
+        rms.evaluate_r_matrix_cycle = orig_eval
 
 if __name__ == "__main__":
     test_g09_sell_decision_blocks_entry()
@@ -89,4 +116,5 @@ if __name__ == "__main__":
     test_nested_sell_decision_blocks_entry()
     test_rmatrix_status_counts_as_available()
     test_g18_sections_v11()
+    test_g09_adapter_signal_shape_for_final_decision()
     print("\n🏁 G18 Final Decision Envelope v1.1 tests PASS")

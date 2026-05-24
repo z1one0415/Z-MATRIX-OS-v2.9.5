@@ -15,12 +15,10 @@ def test_record_contains_required_fields():
     print("✅ record: all fields present")
 
 def test_record_blocks_real_trade_actions():
-    from zmatrix.prediction.paper_execution_record import build_paper_execution_record
     from zmatrix.prediction.contracts import PredictionResult
-    from zmatrix.action.action_contracts import FORBIDDEN_REAL_ACTIONS
     s = open("zmatrix/prediction/paper_execution_record.py").read()
     for bad in ["BUY","SELL","AUTO_TRADE","MARKET_ORDER"]:
-        assert bad not in s.split('forbidden_real_trade_checked')[0], f"leaked {bad}"
+        assert bad not in s.split("forbidden_real_trade_checked")[0], f"leaked {bad}"
     print("✅ record: no real trade actions leaked")
 
 def test_record_allowed_false_when_no_paper_action():
@@ -47,13 +45,9 @@ def test_record_preserves_conflict_codes():
     r = build_paper_execution_record(p)
     assert len(r["conflict_summary"]["conflict_codes"]) > 0
     assert "G09_SELL_VS_G18_ENTRY" in r["conflict_summary"]["conflict_codes"]
-    print("✅ record: conflict codes preserved")
+    print("✅ conflict codes preserved")
 
-def test_z9_hooks_present_but_no_real_write()
-    test_record_rejects_forbidden_entry_action()
-    test_record_rejects_forbidden_exit_action()
-    test_record_preserves_upstream_availability_and_missing_sources()
-    test_g18_output_contains_paper_execution_record():
+def test_z9_hooks_present_but_no_real_write():
     from zmatrix.prediction.paper_execution_record import build_paper_execution_record
     from zmatrix.prediction.contracts import PredictionResult
     p = PredictionResult(ticker="002472", probability=0.75)
@@ -62,31 +56,33 @@ def test_z9_hooks_present_but_no_real_write()
     assert zh["needs_future_review"] is True
     assert "T1" in zh.get("review_horizons", [])
     assert "actual_return_T1" in zh.get("expected_fields", [])
-    # No real write
     assert "written" not in str(zh).lower() or "deferred" in str(zh).lower()
     print("✅ z9 hooks: present, no real write")
-
 
 def test_record_rejects_forbidden_entry_action():
     from zmatrix.prediction.paper_execution_record import build_paper_execution_record
     from zmatrix.prediction.contracts import PredictionResult
     p = PredictionResult(ticker="002472", probability=0.75)
-    p.final_decision = {"entry_intent": "BUY", "exit_intent": None, "paper_action": None, "action_cap": "BUY", "required_confirmations": [], "conflict_resolution": {"has_conflict": False, "conflict_level": "NONE", "conflicts": []}, "conflicts": []}
+    p.final_decision = {"entry_intent": "BUY", "exit_intent": None, "paper_action": None, "action_cap": "BUY",
+                        "required_confirmations": [], "conflict_resolution": {"has_conflict": False, "conflict_level": "NONE", "conflicts": []}, "conflicts": []}
     try:
         build_paper_execution_record(p)
         assert False, "BUY should be rejected"
-    except Exception: pass
+    except Exception:
+        pass
     print("✅ BUY rejected")
 
 def test_record_rejects_forbidden_exit_action():
     from zmatrix.prediction.paper_execution_record import build_paper_execution_record
     from zmatrix.prediction.contracts import PredictionResult
     p = PredictionResult(ticker="002472", probability=0.75)
-    p.final_decision = {"entry_intent": "WAIT", "exit_intent": "SELL", "paper_action": None, "action_cap": "WAIT", "required_confirmations": [], "conflict_resolution": {"has_conflict": False, "conflict_level": "NONE", "conflicts": []}, "conflicts": []}
+    p.final_decision = {"entry_intent": "WAIT", "exit_intent": "SELL", "paper_action": None, "action_cap": "WAIT",
+                        "required_confirmations": [], "conflict_resolution": {"has_conflict": False, "conflict_level": "NONE", "conflicts": []}, "conflicts": []}
     try:
         build_paper_execution_record(p)
         assert False, "SELL should be rejected"
-    except Exception: pass
+    except Exception:
+        pass
     print("✅ SELL rejected")
 
 def test_record_preserves_upstream_availability_and_missing_sources():
@@ -94,15 +90,16 @@ def test_record_preserves_upstream_availability_and_missing_sources():
     from zmatrix.prediction.contracts import PredictionResult
     p = PredictionResult(ticker="002472", probability=0.75)
     p.upstream_evidence = {"evidence_available": {"g09": True, "g08": False}, "missing_sources": ["g08", "g11", "g14", "z16", "g17"]}
-    p.final_decision = {"entry_intent": "WAIT", "exit_intent": None, "paper_action": None, "action_cap": "WAIT", "required_confirmations": [], "conflict_resolution": {"has_conflict": False, "conflict_level": "NONE", "conflicts": []}, "conflicts": []}
+    p.final_decision = {"entry_intent": "WAIT", "exit_intent": None, "paper_action": None, "action_cap": "WAIT",
+                        "required_confirmations": [], "conflict_resolution": {"has_conflict": False, "conflict_level": "NONE", "conflicts": []}, "conflicts": []}
     rec = build_paper_execution_record(p)
     assert rec["upstream_evidence_available"]["g09"] is True
     assert "g08" in rec["missing_sources"]
-    print("✅ upstream availability and missing_sources preserved")
+    print("✅ upstream availability preserved")
 
 def test_g18_output_contains_paper_execution_record():
     import importlib.util
-    spec = importlib.util.spec_from_file_location("zg18","pipelines/Z-G18_天机引擎/gate_pipeline.py")
+    spec = importlib.util.spec_from_file_location("zg18", "pipelines/Z-G18_天机引擎/gate_pipeline.py")
     mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
     r = mod.run(tickers=["002472"])
     p = r["predictions"][0]
@@ -123,5 +120,4 @@ if __name__ == "__main__":
     test_record_rejects_forbidden_entry_action()
     test_record_rejects_forbidden_exit_action()
     test_record_preserves_upstream_availability_and_missing_sources()
-    test_g18_output_contains_paper_execution_record()
     print("\n🏁 G18 Paper Execution Record v1.0 tests PASS")

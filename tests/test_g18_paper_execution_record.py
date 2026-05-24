@@ -97,7 +97,8 @@ def test_record_preserves_upstream_availability_and_missing_sources():
     assert "g08" in rec["missing_sources"]
     print("✅ upstream availability preserved")
 
-def test_g18_output_contains_paper_execution_record():
+def test_g18_output_contains_paper_execution_record()
+    test_record_allows_sell_word_inside_conflict_code():
     import importlib.util
     spec = importlib.util.spec_from_file_location("zg18", "pipelines/Z-G18_天机引擎/gate_pipeline.py")
     mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
@@ -110,6 +111,16 @@ def test_g18_output_contains_paper_execution_record():
     assert "z9_calibration_hooks" in rec
     assert r["sections"]["z9_write_status"] == "DEFERRED_NOT_CONNECTED"
     print("✅ G18 output: paper_execution_record present")
+
+
+def test_record_allows_sell_word_inside_conflict_code():
+    from zmatrix.prediction.paper_execution_record import build_paper_execution_record
+    from zmatrix.prediction.contracts import PredictionResult
+    p = PredictionResult(ticker="002472", probability=0.75, action_proposal="WAIT")
+    p.final_decision = {"entry_intent": "WAIT", "exit_intent": None, "paper_action": None, "action_cap": "WAIT", "required_confirmations": [], "conflict_resolution": {"has_conflict": True, "conflict_level": "HIGH", "conflicts": [{"code": "G09_SELL_VS_G18_ENTRY"}]}, "conflicts": [{"code": "G09_SELL_VS_G18_ENTRY"}]}
+    rec = build_paper_execution_record(p)
+    assert "G09_SELL_VS_G18_ENTRY" in rec["conflict_summary"]["conflict_codes"]
+    print("✅ conflict code G09_SELL_VS_G18_ENTRY allowed")
 
 if __name__ == "__main__":
     test_record_contains_required_fields()

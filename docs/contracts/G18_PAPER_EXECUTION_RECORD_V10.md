@@ -11,7 +11,14 @@
 - z9_calibration_hooks: needs_future_review, review_horizons, expected_fields
 - forbidden_real_trade_checked: True
 
+
+- upstream_evidence_available: copied from prediction.upstream_evidence.evidence_available
+- missing_sources: copied from prediction.upstream_evidence.missing_sources
+
 ## Rules
+- Conflict codes may contain words like SELL as semantic labels; forbidden action checks only apply to executable action fields.
+- Forbidden real trade: targeted field check (entry_intent, exit_intent, paper_action, action_cap), NOT str(record) scan.
+
 - No BUY/SELL/AUTO_TRADE/MARKET_ORDER
 - paper_action=None → allowed=False
 - Z9 hooks present but never written

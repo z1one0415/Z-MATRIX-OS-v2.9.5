@@ -4,7 +4,7 @@ No real trade actions allowed. Z9 hooks present but never real write.
 """
 from __future__ import annotations
 from datetime import datetime
-from zmatrix.action.action_contracts import assert_no_real_trade
+# No longer needed — using targeted field check
 
 
 def _get(obj, key, default=None):
@@ -59,11 +59,19 @@ def build_paper_execution_record(prediction, *, run_id: str | None = None) -> di
         "forbidden_real_trade_checked": True,
     }
 
-    # Forbidden real trade actions
-    assert_no_real_trade(record["paper_execution"]["entry_intent"])
-    if record["paper_execution"]["exit_intent"]:
-        assert_no_real_trade(record["paper_execution"]["exit_intent"])
-    for bad in ["BUY", "SELL", "AUTO_TRADE", "MARKET_ORDER"]:
-        assert bad not in str(record), f"record leaked {bad}"
+    # Forbidden real trade actions — targeted field check, NOT str(record) scan
+    FORBIDDEN = {"BUY", "SELL", "ADD", "CLEAR", "AUTO_TRADE", "MARKET_ORDER", "BROKER_ORDER", "REAL_TRADE"}
+    for action in [
+        record["paper_execution"]["entry_intent"],
+        record["paper_execution"]["exit_intent"],
+        record["paper_execution"]["paper_action"],
+        record["paper_execution"]["action_cap"],
+        fd.get("entry_intent"),
+        fd.get("exit_intent"),
+        fd.get("paper_action"),
+        fd.get("action_cap"),
+    ]:
+        if action and action in FORBIDDEN:
+            raise ValueError(f"forbidden real trade action leaked: {action}")
 
     return record

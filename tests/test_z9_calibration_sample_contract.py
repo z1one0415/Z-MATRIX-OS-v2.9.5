@@ -48,9 +48,32 @@ def test_g18_output_contains_z9_calibration_sample_preview():
     assert r["sections"]["z9_write_status"] == "DEFERRED_NOT_CONNECTED"
     print("✅ G18: z9_calibration_sample_preview + write disabled")
 
+
+def test_z9_sample_preserves_paper_record_snapshots():
+    from zmatrix.calibration.z9_calibration_sample import build_z9_calibration_sample
+    rec = {
+        "ticker":"002472","name":"双环传动",
+        "prediction":{"probability":0.75,"horizon":{"T1":0.7,"T5":0.75,"T20":0.7},"action_proposal":"PAPER_TRACK","confidence":"MEDIUM"},
+        "paper_execution":{"entry_intent":"PAPER_TRACK","exit_intent":None,"paper_action":"PAPER_TRACK","action_cap":"PAPER_TRACK","required_confirmations":["Z16_PRICE_GATE","G17_ACCOUNT_CONFIRMATION"]},
+        "final_decision":{"blocking_reasons":["G09_HARD_BLOCKS"],"risk_warnings":["G11_WARNING_ONLY"]},
+        "conflict_summary":{"has_conflict":True,"conflict_level":"HIGH","conflict_codes":["G09_SELL_VS_G18_ENTRY"]},
+        "upstream_evidence_available":{"g09":True,"g08":False,"g11":False,"g14":False,"z16":False,"g17":False},
+        "missing_sources":["g08","g11","g14","z16","g17"]
+    }
+    r = build_z9_calibration_sample(rec)
+    assert r["prediction_snapshot"]["probability"] == 0.75
+    assert r["decision_snapshot"]["entry_intent"] == "PAPER_TRACK"
+    assert "G09_HARD_BLOCKS" in r["decision_snapshot"]["blocking_reasons"]
+    assert r["evidence_snapshot"]["upstream_evidence_available"]["g09"] is True
+    assert "g08" in r["evidence_snapshot"]["missing_sources"]
+    assert "G09_SELL_VS_G18_ENTRY" in r["evidence_snapshot"]["conflict_summary"]["conflict_codes"]
+    print("✅ snapshots preserved: prediction/decision/evidence")
+
 if __name__ == "__main__":
     test_z9_sample_required_fields()
     test_z9_sample_write_policy_disabled()
     test_z9_sample_outcome_placeholders_pending()
     test_z9_sample_forbidden_real_trade_rejected()
+    test_z9_sample_preserves_paper_record_snapshots()
+    test_g18_output_contains_z9_calibration_sample_preview()
     print("\n🏁 Z9 Calibration Sample contract tests PASS")

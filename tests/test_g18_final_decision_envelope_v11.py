@@ -72,8 +72,7 @@ def test_rmatrix_status_counts_as_available():
     assert r["entry_intent"] == "WAIT"
     print("✅ DEGRADED status counts as available")
 
-def test_g18_sections_v11()
-    test_g09_adapter_signal_shape_for_final_decision():
+def test_g18_sections_v11():
     import importlib.util
     spec = importlib.util.spec_from_file_location("zg18", "pipelines/Z-G18_天机引擎/gate_pipeline.py")
     mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)

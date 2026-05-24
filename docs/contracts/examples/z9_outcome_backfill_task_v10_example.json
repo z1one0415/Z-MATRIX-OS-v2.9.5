@@ -15,7 +15,7 @@
     "dedup_key": "002472_Z9S_20260524_235900"
   },
   "idempotency": {
-    "backfill_task_key": "a1b2c3d4e5f6789012345678abcdef90fedcba9876543210abcdef1234567890",
+    "backfill_task_key": "a1b2c3d4e5f6789012345678abcdef90",
     "source_queue_id": "Q_20260524_235900",
     "source_sample_id": "Z9S_20260524_235900",
     "source_queue_idempotency_key": "6ecf3446fd02e38fb983761adebff4e4",

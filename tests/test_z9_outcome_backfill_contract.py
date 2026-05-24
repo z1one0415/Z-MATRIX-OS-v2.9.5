@@ -253,6 +253,18 @@ def test_no_real_ops():
 
 # ── 10. G18 集成测试 ──
 
+def test_example_backfill_task_key_is_32_hex():
+    """example JSON 的 backfill_task_key 必须为 32 位 hex"""
+    import json
+    from pathlib import Path
+    example_path = Path("docs/contracts/examples/z9_outcome_backfill_task_v10_example.json")
+    data = json.loads(example_path.read_text())
+    key = data["idempotency"]["backfill_task_key"]
+    assert len(key) == 32, f"expected 32 hex chars, got {len(key)}"
+    assert all(c in "0123456789abcdef" for c in key), "non-hex chars in key"
+    print(f"✅ example backfill_task_key: 32-char hex ({key})")
+
+
 def test_g18_output_contains_outcome_backfill_task_preview():
     import importlib.util
     spec = importlib.util.spec_from_file_location(
@@ -289,5 +301,6 @@ if __name__ == "__main__":
     test_conflict_code_with_sell_not_rejected()
     test_outcome_fields_template()
     test_no_real_ops()
+    test_example_backfill_task_key_is_32_hex()
     test_g18_output_contains_outcome_backfill_task_preview()
     print("\n🏁 Z9 Outcome Backfill Contract v1.0 — all D-3 tests PASS")

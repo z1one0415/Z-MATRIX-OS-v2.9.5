@@ -192,6 +192,9 @@ def run(tickers=None, mode="daily", universe="WATCHLIST"):
 
     result["predictions"] = [{"ticker":p.ticker,"name":p.name,"probability":p.probability,
         "final_decision": getattr(p, "final_decision", None),
+        "upstream_evidence": getattr(p, "upstream_evidence", None),
+        "upstream_evidence_available": getattr(p, "upstream_evidence", {}).get("evidence_available", {}),
+        "missing_sources": getattr(p, "upstream_evidence", {}).get("missing_sources", []),
         "horizon":p.horizon,"evidence_coverage":p.evidence_coverage,
         "data_lineage":p.data_lineage,"temporal_consistency":p.temporal_consistency,
         "next_triggers":p.next_triggers,"action_proposal":p.action_proposal,"z9":p.z9_sample}

@@ -169,9 +169,24 @@ def run(tickers=None, mode="daily", universe="WATCHLIST"):
               f" {pred.action_proposal} [{pred.confidence}]")
 
     # ── Final decision envelope ──
+    from zmatrix.prediction.upstream_evidence_aggregator import build_upstream_evidence
+    from zmatrix.prediction.adapters.g08_narrative_adapter import load_g08_signal
+    from zmatrix.prediction.adapters.g11_risk_adapter import load_g11_signal
+    from zmatrix.prediction.adapters.g14_global_baseline_adapter import load_g14_signal
+    from zmatrix.prediction.adapters.z16_price_gate_adapter import load_z16_signal
+    from zmatrix.prediction.adapters.g17_account_confirm_adapter import load_g17_signal
     from zmatrix.prediction.final_decision_envelope import build_final_decision
     for p in predictions:
-        p.final_decision = build_final_decision(p, {"g09": g09_signal_map.get(p.ticker, {}), "g08": {}, "g11": {}, "g14": {}})
+        upstream = build_upstream_evidence(
+            p.ticker,
+            g09_signal=g09_signal_map.get(p.ticker, {}),
+            g08_signal=load_g08_signal(p.ticker),
+            g11_signal=load_g11_signal(p.ticker),
+            g14_signal=load_g14_signal(p.ticker),
+            z16_signal=load_z16_signal(p.ticker),
+            g17_signal=load_g17_signal(p.ticker),
+        )
+        p.final_decision = build_final_decision(p, upstream)
     result["sections"]["final_decision_envelope_version"] = "v1.1"
 
     result["predictions"] = [{"ticker":p.ticker,"name":p.name,"probability":p.probability,

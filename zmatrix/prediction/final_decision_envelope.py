@@ -9,6 +9,15 @@ from __future__ import annotations
 from zmatrix.action.action_contracts import assert_no_real_trade
 
 
+_ORDER = ["PAPER_PROBE_ELIGIBLE_PENDING_Z16_Z17", "PAPER_PROBE_ELIGIBLE", "PAPER_TRACK", "WATCH", "WAIT", "BLOCKED", "AVOID"]
+
+def _lowest_cap(lhs, rhs):
+    """Return the more conservative action cap."""
+    for a in _ORDER:
+        if lhs == a or rhs == a: return a
+    return lhs
+
+
 def build_final_decision(prediction, upstream_evidence: dict | None = None) -> dict:
     up = upstream_evidence or {}
     g09 = up.get("g09", {})
@@ -51,6 +60,13 @@ def build_final_decision(prediction, upstream_evidence: dict | None = None) -> d
         if not blocking_reasons:
             paper_action = "PAPER_TRACK"
 
+    # ── Conflict resolution ──
+    from zmatrix.prediction.conflict_resolver import resolve_upstream_conflicts
+    conflict = resolve_upstream_conflicts(up, prediction)
+    if conflict["suggested_action_cap"] in ("WAIT", "WATCH"):
+        entry = conflict["suggested_action_cap"]
+    entry = _lowest_cap(entry, conflict["suggested_action_cap"])
+
     # ── Rule 6: Forbidden real trade ──
     assert_no_real_trade(entry)
     if exit_intent:
@@ -60,6 +76,8 @@ def build_final_decision(prediction, upstream_evidence: dict | None = None) -> d
         "decision_version": "v1.1",
         "version": "v1.1",
         "ticker": prediction.ticker,
+        "conflict_resolution": conflict,
+        "conflicts": conflict["conflicts"],
         "entry_intent": entry,
         "exit_intent": exit_intent,
         "paper_action": paper_action,

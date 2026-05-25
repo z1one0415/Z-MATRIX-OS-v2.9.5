@@ -158,8 +158,8 @@
       "priority_scene": "C"
     },
     {
-      "id": "3ae2343e",
-      "timestamp": "2026-05-22 19:17:53",
+      "id": "a4570585",
+      "timestamp": "2026-05-22 21:04:58",
       "stock": "601899",
       "situation": "2026-05-22 | MACRO:3逆风1顺风 | Universe:PRESET_DEV",
       "your_view": "用户尚未操作(等待确认)",
@@ -196,10 +196,10 @@
       "priority_scene": "A"
     },
     {
-      "id": "a4570585",
-      "timestamp": "2026-05-22 21:04:58",
-      "stock": "601899",
-      "situation": "2026-05-22 | MACRO:3逆风1顺风 | Universe:PRESET_DEV",
+      "id": "0b85d9ff",
+      "timestamp": "2026-05-23 22:43:14",
+      "stock": "002472",
+      "situation": "2026-05-23 | MACRO:3逆风1顺风 | Universe:WATCHLIST",
       "your_view": "用户尚未操作(等待确认)",
       "my_advice": "Z-G18: 75% PAPER_TRACK T1:70% T5:75% T20:70%",
       "actual_action": "PENDING",
@@ -215,38 +215,61 @@
       "priority_scene": "A"
     },
     {
-      "id": "golden_002472_20260523",
-      "timestamp": "2026-05-23 01:43",
+      "id": "5ae0ed4b",
+      "timestamp": "2026-05-25 08:12:00",
       "stock": "002472",
-      "name": "双环传动",
-      "cost": 41.71,
-      "current_price": 44.4,
-      "profit_pct": 6.4,
-      "situation": "R-Matrix v2.0 四天王全扫描 + 成本锚定分析。日线HARVEST pos=0.74, 周线BOX pos=0.75, 月线HOLD pos=0.43。成本41.71, 浮盈+6.4%。环动科技IPO仍在问询阶段(α催化未兑现)。",
-      "your_view": "是否该止盈? 浪潮信息卖早了(72→74卖→后来78)的教训仍在。",
-      "my_advice": "分层止盈, 不一次清仓。45元卖300股锁利, 47-48卖500股, 50+卖500股, 留500股纪念仓等IPO结果。跌破41全部止损。核心原则: 催化未兑现前不跑, 加密止盈而非一次清仓。",
+      "situation": "2026-05-25 | MACRO:3逆风1顺风 | Universe:PRESET_DEV",
+      "your_view": "用户尚未操作(等待确认)",
+      "my_advice": "Z-G18: 75% PAPER_TRACK T1:70% T5:75% T20:70%",
       "actual_action": "PENDING",
       "outcome": null,
-      "cost_of_action": null,
-      "lesson": "【经典案例】止损分层规则: 1) α催化(环动IPO)未兑现 → 不全部清仓; 2) 日线HARVEST + 成本之上 → 不加仓不止盈; 3) 加密止盈(45/47/50) > 一次清仓; 4) 成本线(41) = 硬止损。此案例应成为Z-G18天机引擎的标准决策模板。",
+      "cost": null,
+      "lesson": null,
       "tags": [
-        "经典案例",
-        "分层止盈",
-        "成本锚定",
         "天机引擎",
-        "双环传动",
-        "环动IPO",
-        "D1模式",
-        "不重蹈浪潮",
-        "HOLD_PROFIT"
+        "auto",
+        "PAPER_TRACK"
       ],
-      "emotion": "平静",
-      "priority_scene": "A",
-      "golden_case": true,
-      "pattern_id": "catalyst_not_expired_position_hold",
-      "related_cases": [
-        "浪潮信息-卖早-20260428"
-      ]
+      "emotion": "中性",
+      "priority_scene": "A"
+    },
+    {
+      "id": "a4a6e7e3",
+      "timestamp": "2026-05-25 08:12:00",
+      "stock": "600519",
+      "situation": "2026-05-25 | MACRO:3逆风1顺风 | Universe:PRESET_DEV",
+      "your_view": "用户尚未操作(等待确认)",
+      "my_advice": "Z-G18: 75% PAPER_TRACK T1:70% T5:75% T20:70%",
+      "actual_action": "PENDING",
+      "outcome": null,
+      "cost": null,
+      "lesson": null,
+      "tags": [
+        "天机引擎",
+        "auto",
+        "PAPER_TRACK"
+      ],
+      "emotion": "中性",
+      "priority_scene": "A"
+    },
+    {
+      "id": "80175ef6",
+      "timestamp": "2026-05-25 08:12:00",
+      "stock": "601898",
+      "situation": "2026-05-25 | MACRO:3逆风1顺风 | Universe:PRESET_DEV",
+      "your_view": "用户尚未操作(等待确认)",
+      "my_advice": "Z-G18: 75% PAPER_TRACK T1:70% T5:75% T20:70%",
+      "actual_action": "PENDING",
+      "outcome": null,
+      "cost": null,
+      "lesson": null,
+      "tags": [
+        "天机引擎",
+        "auto",
+        "PAPER_TRACK"
+      ],
+      "emotion": "中性",
+      "priority_scene": "A"
     }
   ],
   "patterns": {
@@ -267,14 +290,15 @@
     }
   },
   "stats": {
-    "total": 12,
+    "total": 14,
     "by_stock": {
-      "002472": 3,
+      "002472": 40,
       "601899": 3,
       "000977": 2,
       "518880": 1,
       "002979": 1,
-      "601898": 1
+      "601898": 2,
+      "600519": 1
     },
     "by_type": {
       "D1洗盘": 1,
@@ -291,9 +315,9 @@
       "框架缺陷": 1,
       "BOM偏差": 1,
       "遗漏": 1,
-      "天机引擎": 6,
-      "auto": 6,
-      "PAPER_TRACK": 5,
+      "天机引擎": 45,
+      "auto": 45,
+      "PAPER_TRACK": 44,
       "WAIT": 1
     }
   }

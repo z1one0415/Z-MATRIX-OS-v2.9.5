@@ -104,7 +104,7 @@ def test_rc_release_gates():
 
 def test_gate_type_diversity():
     types = {g["gate_type"] for g in GATE_REGISTRY.values()}
-    expected = {"safety", "write_boundary", "contract", "release", "data_contract"}
+    expected = {"safety", "write_boundary", "contract", "release", "data_contract", "investment_control"}
     assert types == expected, f"gate types: {types} != {expected}"
     print(f"✅ gate types: {', '.join(sorted(types))}")
 

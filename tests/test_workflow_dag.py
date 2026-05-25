@@ -83,10 +83,10 @@ def test_rc_workflow_contains_all_steps():
 
 def test_topological_order():
     order = topological_order("Z-G18.paper_z9_preview_workflow")
-    assert len(order) == 9
-    assert order[0] == "r_matrix.evaluate_cycle"
+    assert len(order) == 10
+    assert order[0] == "investment.role_review.build"
     assert order[-1] == "z9.calibration_policy.preview"
-    print(f"✅ topological_order: {order[0]} → ... → {order[-1]} (9 nodes)")
+    print(f"✅ topological_order: {order[0]} → ... → {order[-1]} (10 nodes)")
 
 
 def test_workflow_integrity_clean():

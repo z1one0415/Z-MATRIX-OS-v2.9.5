@@ -40,6 +40,24 @@ def test_g18_workflow_has_role_review():
     print("✅ G18: investment.role_review required in workflow")
 
 
+
+def test_g18_role_review_has_path_to_paper_record():
+    from zmatrix.architecture.workflow_dag import WORKFLOW_DAG_REGISTRY
+    w = WORKFLOW_DAG_REGISTRY["Z-G18.paper_z9_preview_workflow"]
+    edges = w["edges"]
+    def has_path(source, target):
+        graph = {}
+        for a, b in edges: graph.setdefault(a, []).append(b)
+        seen = set(); stack = [source]
+        while stack:
+            node = stack.pop()
+            if node == target: return True
+            if node in seen: continue
+            seen.add(node); stack.extend(graph.get(node, []))
+        return False
+    assert has_path("investment.role_review.build", "paper.record")
+    print("✅ G18 role review has DAG path to paper.record")
+
 def test_investment_review_pipeline_has_gates():
     p = PIPELINE_REGISTRY.get("Z-InvestmentRoleReview")
     assert p is not None
@@ -53,5 +71,6 @@ if __name__ == "__main__":
     test_d_matrix_cannot_convert_to_base()
     test_b_pass_gives_a(); test_d_alone_gives_c(); test_b_plus_d_gives_watch_only()
     test_g18_workflow_has_role_review()
+    test_g18_role_review_has_path_to_paper_record()
     test_investment_review_pipeline_has_gates()
     print("\n🏁 BRD Conflict Audit — tests PASS")

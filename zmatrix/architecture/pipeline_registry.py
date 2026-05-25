@@ -33,6 +33,7 @@ PIPELINE_REGISTRY: dict[str, dict[str, Any]] = {
             "z9.backfill_task.build",
             "z9.calibration_policy.preview",
             "safety.no_real_trade",
+            "investment.role_review.build",
         ],
         "required_gates": [
             "safety.no_real_trade",

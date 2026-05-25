@@ -91,8 +91,53 @@ def audit_z9_preview_boundary_consistency() -> list[str]:
             if "z9.preview_only" not in gates:
                 violations.append(f"{pid}: uses Z9 skills but missing z9.preview_only gate")
 
+    # B/R/D single source of truth: 不同 pipeline 不得私造同类型矩阵
+    from zmatrix.architecture.pipeline_registry import PIPELINE_REGISTRY
+    from zmatrix.architecture.skill_registry import SHARED_SKILL_REGISTRY
+    for pid, p in PIPELINE_REGISTRY.items():
+        skills = set(p.get("allowed_skills", []))
+        # Z-G14 如果声明 B-R-D selection rerun, 则不应只有 r_matrix
+        if pid == "Z-G14" and "B" in p.get("purpose", "") and "b_matrix.evaluate_base" not in skills:
+            violations.append(f"{pid}: purpose mentions B-R-D but only uses r_matrix.evaluate_cycle")
+        # D-Matrix 不得允许 convert_to_base
+        if "d_matrix.evaluate_event" in skills:
+            # 检查 pipeline 层的 forbidden_capabilities 是否包含 convert_to_base
+            fc = p.get("forbidden_capabilities", [])
+            if "convert_to_base" not in fc and "long_hold" not in fc:
+                violations.append(f"{pid}: uses D-Matrix but missing convert_to_base/long_hold in forbidden")
+
+    # Stock Role Classifier 必须消费 B/R/D
+    sr_skills = [s for s in SHARED_SKILL_REGISTRY if "stock_role" in SHARED_SKILL_REGISTRY[s].get("module", "")]
+    if not sr_skills:
+        violations.append("stock_role.classify not found in SHARED_SKILL_REGISTRY")
+
     return violations
 
+
+
+
+def audit_g18_role_review_dag_dependency() -> list[str]:
+    from zmatrix.architecture.workflow_dag import WORKFLOW_DAG_REGISTRY
+    violations = []
+    w = WORKFLOW_DAG_REGISTRY.get("Z-G18.paper_z9_preview_workflow")
+    if not w:
+        return ["Z-G18.paper_z9_preview_workflow missing"]
+    nodes = w.get("nodes", []); edges = w.get("edges", [])
+    if "investment.role_review.build" not in nodes:
+        violations.append("Z-G18 workflow missing investment.role_review.build")
+    if ["investment.role_review.build", "r_matrix.evaluate_cycle"] not in edges:
+        violations.append("Z-G18 role review not connected before r_matrix")
+    def has_path(src, tgt):
+        g = {}; [g.setdefault(a,[]).append(b) for a,b in edges]; seen=set(); stack=[src]
+        while stack:
+            n=stack.pop()
+            if n==tgt: return True
+            if n in seen: continue
+            seen.add(n); stack.extend(g.get(n,[]))
+        return False
+    if "investment.role_review.build" in nodes and "paper.record" in nodes and not has_path("investment.role_review.build", "paper.record"):
+        violations.append("Z-G18 role review has no DAG path to paper.record")
+    return violations
 
 def run_cross_pipeline_conflict_audit() -> list[str]:
     v = []
@@ -100,4 +145,5 @@ def run_cross_pipeline_conflict_audit() -> list[str]:
     v.extend(audit_z9_preview_boundary_consistency())
     v.extend(audit_gate_coverage_gaps())
     v.extend(audit_pipeline_skill_conflicts())
+    v.extend(audit_g18_role_review_dag_dependency())
     return v

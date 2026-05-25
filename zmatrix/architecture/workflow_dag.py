@@ -34,6 +34,7 @@ WORKFLOW_DAG_REGISTRY: dict[str, dict[str, Any]] = {
             "z9.calibration_policy.preview",
         ],
         "edges": [
+            ["investment.role_review.build", "r_matrix.evaluate_cycle"],
             ["r_matrix.evaluate_cycle", "evidence.aggregate_upstream"],
             ["evidence.aggregate_upstream", "conflict.resolve"],
             ["conflict.resolve", "decision.finalize"],
@@ -93,7 +94,6 @@ WORKFLOW_DAG_REGISTRY: dict[str, dict[str, Any]] = {
         "pipeline": "Z-G09",
         "purpose": "Run R-Matrix cycle validation before rotation scan",
         "nodes": [
-            "investment.role_review.build",
             "r_matrix.evaluate_cycle",
             "r_matrix.cycle_valid",
         ],

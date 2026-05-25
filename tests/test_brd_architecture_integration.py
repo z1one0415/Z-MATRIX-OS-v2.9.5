@@ -5,6 +5,20 @@ from zmatrix.architecture.gate_registry import GATE_REGISTRY
 from zmatrix.architecture.pipeline_registry import PIPELINE_REGISTRY
 from zmatrix.architecture.workflow_dag import WORKFLOW_DAG_REGISTRY
 
+def _has_path(edges, source, target):
+    graph = {}
+    for a, b in edges:
+        graph.setdefault(a, []).append(b)
+    seen = set(); stack = [source]
+    while stack:
+        node = stack.pop()
+        if node == target: return True
+        if node in seen: continue
+        seen.add(node)
+        stack.extend(graph.get(node, []))
+    return False
+
+
 REQUIRED_SKILLS = ["chain_force.evaluate_10x5","sector_stage.detect","financial.health_gate","b_matrix.evaluate_base","r_matrix.evaluate_cycle","d_matrix.evaluate_event","stock_role.classify","account.constitution.check","portfolio.exposure.analyze","z8.position_control","pre_trade.checklist.validate","g17.manual_veto.preview","investment.role_review.build"]
 
 REQUIRED_GATES = ["chain_force.valid","sector_stage.valid","financial.health_valid","b_matrix.base_valid","r_matrix.cycle_valid","d_matrix.event_valid","stock_role.classification_valid","account.constitution.valid","portfolio.exposure.valid","z8.position_control.valid","pre_trade.checklist.complete","human.final_override.required","investment.role_review.required"]
@@ -40,12 +54,29 @@ def test_z_investment_role_review_pipeline_registered():
 def test_workflow_contains_role_review_before_paper():
     w = WORKFLOW_DAG_REGISTRY.get("Z-G18.paper_z9_preview_workflow")
     assert w is not None
-    nodes = w.get("nodes", [])
-    paper_idx = nodes.index("paper.record") if "paper.record" in nodes else 999
-    review_idx = nodes.index("investment.role_review.build") if "investment.role_review.build" in nodes else 999
-    assert review_idx < paper_idx, f"investment.role_review.build ({review_idx}) not before paper.record ({paper_idx})"
+    nodes = w.get("nodes", []); edges = w.get("edges", [])
+    assert "investment.role_review.build" in nodes
+    assert "paper.record" in nodes
+    assert "r_matrix.evaluate_cycle" in nodes
+    assert ["investment.role_review.build", "r_matrix.evaluate_cycle"] in edges, "missing review→r_matrix edge"
+    assert _has_path(edges, "investment.role_review.build", "paper.record"), "role_review has no DAG path to paper.record"
     assert "investment.role_review.required" in w.get("required_gates", [])
-    print("✅ Z-G18 workflow: role_review before paper.record")
+    print("✅ Z-G18 workflow: role_review → r_matrix edge + DAG path to paper.record")
+
+
+def test_z_g18_allowed_skills_include_role_review():
+    p = PIPELINE_REGISTRY.get("Z-G18")
+    assert p is not None
+    assert "investment.role_review.build" in p.get("allowed_skills", [])
+    assert "investment.role_review.required" in p.get("required_gates", [])
+    print("✅ Z-G18: allowed_skills + required_gates include role_review")
+
+
+def test_rmatrix_workflow_does_not_embed_investment_role_review():
+    w = WORKFLOW_DAG_REGISTRY.get("RMatrix.cycle_validation_workflow")
+    assert w is not None
+    assert "investment.role_review.build" not in w.get("nodes", [])
+    print("✅ RMatrix workflow: no investment.role_review.build (single responsibility)")
 
 
 def test_g17_registered_and_required():
@@ -60,5 +91,8 @@ if __name__ == "__main__":
     test_z_g18_cannot_bypass_investment_role_review()
     test_z_investment_role_review_pipeline_registered()
     test_workflow_contains_role_review_before_paper()
+    test_z_g18_allowed_skills_include_role_review()
+    test_rmatrix_workflow_does_not_embed_investment_role_review()
+    test_z_g18_allowed_skills_include_role_review()
     test_g17_registered_and_required()
     print("\n🏁 BRD Architecture Integration — tests PASS")

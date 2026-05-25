@@ -69,12 +69,11 @@ def test_verify_commands_packaging_count_is_10():
 def test_tag_record_exists_and_mentions_target_commit():
     content = (RC_DIR / "TAG_RECORD_v2.9.6-RC1.md").read_text()
     assert "v2.9.6-RC1" in content
-    assert "966d3cafb7df9c72c367483b67df895ec1de4d07" in content  # actual tag target
-    assert "9364df7467053350010e7afdbbbc9fbb316b6dc8" in content  # original E-4 commit
+    assert "refs/tags/v2.9.6-RC1^{}" in content, "TAG_RECORD should use git ref, not hardcoded hash"
     assert "verify_rc_candidate.sh" in content
     assert "no real trade" in content
     assert "no real Z9 write" in content
-    print("✅ TAG_RECORD: commit + safety boundaries verified")
+    print("✅ TAG_RECORD: git ref + safety boundaries verified")
 
 
 def test_release_notes_mentions_core_chain_and_safety_boundaries():

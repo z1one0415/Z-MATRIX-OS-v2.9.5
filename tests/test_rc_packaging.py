@@ -24,11 +24,12 @@ def test_rc_package_required_files_exist():
         "RC_VERIFICATION_REPORT_TEMPLATE_v2.9.6.md",
         "VERIFY_COMMANDS.md",
         "ARTIFACT_CHECKSUMS.txt",
+        "RELEASE_NOTES_v2.9.6-RC1.md",
     ]
     for f in files:
         path = RC_DIR / f
         assert path.exists(), f"missing required file: {path}"
-    print(f"✅ RC package required files: {len(files)}/7 present")
+    print(f"✅ RC package required files: {len(files)}/8 present")
 
 
 def test_rc_package_readme_mentions_no_real_ops():
@@ -59,6 +60,24 @@ def test_verify_commands_packaging_count_is_6():
     assert "test_rc_packaging.py" in content
     assert "6/6 PASS" in content
     print("✅ VERIFY_COMMANDS: packaging test count is 6")
+
+
+def test_release_notes_mentions_core_chain_and_safety_boundaries():
+    content = (RC_DIR / "RELEASE_NOTES_v2.9.6-RC1.md").read_text()
+    for keyword in [
+        "G18 prediction",
+        "z9_calibration_policy_preview",
+        "Real trade",
+        "Real Z9 write",
+        "Real market data fetch",
+        "Auto calibration",
+        "禁止",
+        "Release Candidate",
+        "Operator Runbook",
+        "Tag v2.9.6-RC1",
+    ]:
+        assert keyword in content, f"release notes missing: {keyword}"
+    print("✅ RELEASE_NOTES: core chain + safety boundaries confirmed")
 
 
 def test_verify_commands_mentions_rc_gate():
@@ -114,6 +133,7 @@ if __name__ == "__main__":
     test_rc_package_readme_mentions_no_real_ops()
     test_rc_package_readme_mentions_package_commit()
     test_verify_commands_packaging_count_is_6()
+    test_release_notes_mentions_core_chain_and_safety_boundaries()
     test_verify_commands_mentions_rc_gate()
     test_artifact_checksums_exist_and_non_empty()
     test_checksums_are_consistent()

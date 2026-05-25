@@ -3,6 +3,7 @@ import sys, os; sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspa
 from zmatrix.architecture.skill_registry import SHARED_SKILL_REGISTRY
 from zmatrix.architecture.gate_registry import GATE_REGISTRY
 from zmatrix.architecture.pipeline_registry import PIPELINE_REGISTRY
+from pathlib import Path
 from zmatrix.architecture.workflow_dag import WORKFLOW_DAG_REGISTRY
 
 REQUIRED_SKILLS = ["data_facts.load_price_bars","paper_trade.ledger.build","paper_trade.outcome_backfill.calculate","portfolio.exposure.calculate_from_history","backtest.lightweight_role.run","monthly_review.build"]
@@ -47,6 +48,19 @@ def test_no_real_z9_write_declared():
         assert "no real z9 write" in sb.lower(), f"{sid}: missing no real Z9 write"
     print("✅ no real Z9 write declared")
 
+def test_personal_quant_docs_exist():
+    required=["docs/architecture/PERSONAL_QUANT_DATA_VALIDITY_LAYER_V10.md",
+              "docs/contracts/DATA_FACT_LAYER_V10.md",
+              "docs/contracts/PAPER_TRADE_LEDGER_V10.md",
+              "docs/contracts/OUTCOME_BACKFILL_RUNNER_V10.md",
+              "docs/contracts/PORTFOLIO_EXPOSURE_HISTORY_V10.md",
+              "docs/contracts/LIGHTWEIGHT_BACKTEST_V10.md",
+              "docs/contracts/MONTHLY_REVIEW_V10.md"]
+    missing=[p for p in required if not Path(p).exists()]
+    assert not missing, f"missing: {missing}"
+    print(f"✅ {len(required)} docs/contracts exist")
+
+
 def test_paper_data_workflow_has_dag_path():
     w=WORKFLOW_DAG_REGISTRY.get("Z-PaperData.paper_outcome_loop_workflow")
     edges=w.get("edges",[])
@@ -65,4 +79,5 @@ if __name__ == "__main__":
     test_paper_data_pipeline_registered(); test_paper_data_workflow_registered()
     test_external_api_disabled_by_default(); test_no_real_z9_write_declared()
     test_paper_data_workflow_has_dag_path()
+    test_personal_quant_docs_exist()
     print("\n🏁 Personal Quant Data Architecture — tests PASS")

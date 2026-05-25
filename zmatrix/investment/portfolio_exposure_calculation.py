@@ -86,6 +86,7 @@ def calculate_exposure_from_price_history(candidate: dict, portfolio: list[dict]
     proposed_weight = float(candidate.get("proposed_weight", candidate.get("target_weight", 0.0)) or 0.0)
     same_chain_weight = sum(p.get("weight",0) for p in (portfolio or []) if p.get("chain")==chain and p.get("ticker")!=ticker)
     duplicate_exposure = same_chain_weight + proposed_weight
+    exposure_gate_passed = not degraded and duplicate_exposure <= 35
     add_position_allowed = not degraded and duplicate_exposure <= 35
     if duplicate_exposure > 35:
         warnings.append(f"CHAIN_EXPOSURE:{duplicate_exposure:.1f}>35")
@@ -97,7 +98,7 @@ def calculate_exposure_from_price_history(candidate: dict, portfolio: list[dict]
         "correlation_120d": correlations.get("120d"),
         "correlation_250d": correlations.get("250d"),
         "degraded": degraded, "duplicate_exposure_pct": round(duplicate_exposure,1),
-        "exposure_gate_passed": not degraded and duplicate_exposure <= 35,
-        "add_position_allowed": not degraded,
+        "exposure_gate_passed": exposure_gate_passed,
+        "add_position_allowed": add_position_allowed,
         "warnings": warnings,
     }

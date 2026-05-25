@@ -9,12 +9,6 @@ def validate_rows(schema_name: str, rows: list[dict]) -> list[str]:
                 errors.append(f"row {i}: MISSING_FIELD:{f}")
     return errors
 
-
-import datetime
-def _type_error(v, type_name):
-    try: return None if type(v) == type_name else f"type_error: expected {type_name}"
-    except: return f"type_error: cannot check"
-
 def deep_validate_price_bars(rows):
     errors = []
     for i, r in enumerate(rows):
@@ -42,11 +36,24 @@ def deep_validate_paper_ledger(rows):
         if h not in ("T5","T20","T60"): errors.append(f"row {i}: invalid target_horizon={h}")
     return errors
 
-validate_price_bars = lambda rows: validate_rows("price_bars", rows)
-validate_financial_snapshots = lambda rows: validate_rows("financial_snapshot", rows)
-validate_paper_ledger = lambda rows: deep_validate_paper_ledger(rows)
-validate_outcomes = lambda rows: validate_rows("outcome", rows)
+def validate_price_bars(rows):
+    base = validate_rows("price_bars", rows)
+    deep = deep_validate_price_bars(rows)
+    return base + deep
 
-validate_financial_snapshots = lambda rows: validate_rows("financial_snapshot", rows)
-validate_paper_ledger = lambda rows: validate_rows("paper_ledger", rows)
-validate_outcomes = lambda rows: validate_rows("outcome", rows)
+def validate_financial_snapshots(rows):
+    return validate_rows("financial_snapshot", rows)
+
+def validate_paper_ledger(rows):
+    base = validate_rows("paper_ledger", rows)
+    deep = deep_validate_paper_ledger(rows)
+    return base + deep
+
+def validate_outcomes(rows):
+    base = validate_rows("outcome", rows)
+    errors = []
+    for i, r in enumerate(rows):
+        status = r.get("outcome_status")
+        if status not in ("READY", "INSUFFICIENT_DATA"):
+            errors.append(f"row {i}: invalid outcome_status={status}")
+    return base + errors

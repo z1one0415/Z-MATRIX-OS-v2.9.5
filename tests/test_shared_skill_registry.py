@@ -23,14 +23,15 @@ def test_registry_exists_and_non_empty():
     print(f"✅ registry exists: {len(SHARED_SKILL_REGISTRY)} skills registered")
 
 
-def test_every_skill_has_owner_moduel_test():
+def test_every_skill_has_owner_module_contract_test():
     for sid, skill in SHARED_SKILL_REGISTRY.items():
         assert skill.get("owner"), f"{sid}: missing owner"
         assert skill.get("module"), f"{sid}: missing module"
+        assert skill.get("contract"), f"{sid}: missing contract"
         assert skill.get("test"), f"{sid}: missing test"
         assert skill.get("safety_boundary"), f"{sid}: missing safety_boundary"
         assert "layer" in skill and skill["layer"] == "shared_skill", f"{sid}: layer != shared_skill"
-    print(f"✅ every skill has owner + module + test + safety_boundary + layer")
+    print(f"✅ every skill has owner + module + contract + test + safety_boundary + layer")
 
 
 def test_duplicate_allowed_defaults_to_false():
@@ -75,6 +76,13 @@ def test_r_matrix_only_one_canonical():
     assert len(r_skills) == 1, f"expected exactly 1 r_matrix skill, got {len(r_skills)}: {r_skills}"
     assert r_skills[0] == "r_matrix.evaluate_cycle"
     print("✅ R-Matrix: exactly 1 canonical skill (r_matrix.evaluate_cycle)")
+
+
+def test_contract_paths_are_non_empty():
+    for sid, skill in SHARED_SKILL_REGISTRY.items():
+        assert isinstance(skill.get("contract"), str), f"{sid}: contract not a string"
+        assert skill["contract"].strip(), f"{sid}: contract is empty"
+    print(f"✅ all {len(SHARED_SKILL_REGISTRY)} skills have non-empty contract paths")
 
 
 def test_registry_integrity_clean():
@@ -126,7 +134,8 @@ def test_get_skills_by_pipeline_api():
 
 if __name__ == "__main__":
     test_registry_exists_and_non_empty()
-    test_every_skill_has_owner_moduel_test()
+    test_every_skill_has_owner_module_contract_test()
+    test_contract_paths_are_non_empty()
     test_duplicate_allowed_defaults_to_false()
     test_g18_z9_rc_skills_present()
     test_no_skill_declares_real_trade_enabled()

@@ -135,7 +135,7 @@ SHARED_SKILL_REGISTRY: dict[str, dict[str, Any]] = {
         "public_function": "main (CLI)",
         "owner": "RC",
         "used_by": ["RC-release"],
-        "contract": None,
+        "contract": "docs/architecture/SHARED_SKILL_REGISTRY_V10.md",
         "test": "tests/test_rc_packaging.py",
         "duplicate_allowed": False,
         "safety_boundary": "no real trade, no Z9 write, only SHA256 checksum generation",
@@ -176,6 +176,10 @@ def check_registry_integrity() -> list[str]:
         # 每个 skill 必须有 module
         if not skill.get("module"):
             violations.append(f"{sid}: missing module")
+
+        # 每个 skill 必须有 contract
+        if not skill.get("contract"):
+            violations.append(f"{sid}: missing contract")
 
         # 每个 skill 必须有 test
         if not skill.get("test"):

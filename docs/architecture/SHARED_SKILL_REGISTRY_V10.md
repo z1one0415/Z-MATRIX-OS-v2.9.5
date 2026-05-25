@@ -13,7 +13,7 @@
 | public_function | str | ✅ | 对外暴露的公开函数名 |
 | owner | str | ✅ | 技能归属方 (R-Matrix / G18 / Z9 / SystemCore / RC) |
 | used_by | list[str] | ✅ | 消费该技能的管线 ID 列表 |
-| contract | str | ❌ | 合约文档路径 (可选，部分技能无独立 contract) |
+| contract | str | ✅ | 合约文档路径。如果无独立 contract，必须指向所属上层 contract 或本 registry contract。不得存在 contract=None 的 shared skill。 |
 | test | str | ✅ | 测试文件路径 |
 | duplicate_allowed | bool | ✅ | 默认为 False，禁止重复建设 |
 | safety_boundary | str | ✅ | 安全边界说明 |

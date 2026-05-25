@@ -64,7 +64,7 @@ bash scripts/verify_architecture_candidate.sh
 |------|------|
 | Tag candidate | v2.9.7-arch-RC1 |
 | Tag status | CREATED_EXTERNAL_TARGET_VERIFIED |
-| Verified tag target | `393469050bb10816060706250b9301439c1246b4` |
+| Verified tag target | `refs/tags/v2.9.7-arch-RC1^{}` |
 | Tag record | docs/architecture/TAG_RECORD_v2.9.7-arch-RC1.md |
 
 ## 下一步

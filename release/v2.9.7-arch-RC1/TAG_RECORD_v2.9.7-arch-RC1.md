@@ -91,7 +91,7 @@ CREATED_EXTERNAL_TARGET_VERIFIED
 | Field | Value |
 |-------|-------|
 | Target expression | `refs/tags/v2.9.7-arch-RC1^{}` |
-| Verified tag target | `393469050bb10816060706250b9301439c1246b4` |
+| Verified tag target | `refs/tags/v2.9.7-arch-RC1^{}` |
 
 ## Notes
 

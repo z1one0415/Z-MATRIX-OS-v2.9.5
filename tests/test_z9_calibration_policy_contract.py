@@ -318,17 +318,33 @@ def test_g18_output_contains_calibration_policy_preview():
 
 # ── 11. example JSON test ──
 
-def test_example_json():
-    """example 样例文件结构正确"""
+def test_example_json_exists_and_structure():
+    """example 样例文件必须存在且结构正确"""
     example_path = Path("docs/contracts/examples/z9_calibration_policy_preview_v10_example.json")
-    if not example_path.exists():
-        print("⚠️ example JSON not yet created (will be after G18 integration)")
-        return
+    assert example_path.exists(), "example JSON file missing"
     data = json.loads(example_path.read_text())
     assert data["preview_version"] == "v1.0"
-    assert data["write_policy"]["ev_write_allowed"] is False
+    for w in ["ev_write_allowed", "r_matrix_write_allowed", "g18_write_allowed", "z9_write_allowed"]:
+        assert data["write_policy"][w] is False, f"{w} must be False in example"
     assert data["validation"]["auto_calibration_allowed"] is False
-    print("✅ example JSON: structure correct")
+    # 检查三域示例都有 content
+    for domain in ["ev_calibration", "r_matrix_calibration", "g18_rule_calibration"]:
+        d = data["policy_domains"][domain]
+        assert d["direction"] not in (None, ""), f"{domain} direction is empty"
+        assert len(d["recommendations"]) > 0, f"{domain} has no recommendations"
+    print(f"✅ example JSON: {example_path.name} verified ({len(data['policy_domains'])} domains)")
+
+
+def test_policy_key_is_32_hex():
+    """calibration_policy_key 必须是 32 位 hex"""
+    from zmatrix.calibration.z9_calibration_policy import build_calibration_policy_preview, make_calibration_policy_key
+    key = make_calibration_policy_key({
+        "task_id": "BF_T1", "ticker": "000001",
+        "outcome_fields": {"actual_return_T5": 3.0},
+    })
+    assert len(key) == 32
+    assert all(c in "0123456789abcdef" for c in key)
+    print(f"✅ policy key: 32-char hex ({key})")
 
 
 if __name__ == "__main__":
@@ -354,5 +370,6 @@ if __name__ == "__main__":
     test_no_real_ops()
     test_report_generated()
     test_g18_output_contains_calibration_policy_preview()
-    test_example_json()
+    test_example_json_exists_and_structure()
+    test_policy_key_is_32_hex()
     print("\n🏁 Z9 Calibration Policy Preview v1.0 — all D-4 tests PASS")

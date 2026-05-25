@@ -69,7 +69,8 @@ def test_verify_commands_packaging_count_is_10():
 def test_tag_record_exists_and_mentions_target_commit():
     content = (RC_DIR / "TAG_RECORD_v2.9.6-RC1.md").read_text()
     assert "v2.9.6-RC1" in content
-    assert "9364df7467053350010e7afdbbbc9fbb316b6dc8" in content
+    assert "087805ab731216c111354b13393ad75999036996" in content  # actual tag target
+    assert "9364df7467053350010e7afdbbbc9fbb316b6dc8" in content  # original E-4 commit
     assert "verify_rc_candidate.sh" in content
     assert "no real trade" in content
     assert "no real Z9 write" in content

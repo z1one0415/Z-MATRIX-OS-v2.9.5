@@ -123,4 +123,4 @@ python3 tests/test_g18_paper_execution_record.py      # C-4
 | Batch | 内容 |
 |:----:|------|
 | E-4 | Operator Runbook | ✅ completed |
-| E-5 | Tag v2.9.6-RC1 |
+| E-5 | Tag v2.9.6-RC1 | ✅ completed |

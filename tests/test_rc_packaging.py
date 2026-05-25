@@ -26,11 +26,12 @@ def test_rc_package_required_files_exist():
         "ARTIFACT_CHECKSUMS.txt",
         "RELEASE_NOTES_v2.9.6-RC1.md",
         "OPERATOR_RUNBOOK_v2.9.6-RC1.md",
+        "TAG_RECORD_v2.9.6-RC1.md",
     ]
     for f in files:
         path = RC_DIR / f
         assert path.exists(), f"missing required file: {path}"
-    print(f"✅ RC package required files: {len(files)}/9 present")
+    print(f"✅ RC package required files: {len(files)}/10 present")
 
 
 def test_rc_package_readme_mentions_no_real_ops():
@@ -58,11 +59,21 @@ def test_rc_package_readme_mentions_package_commit():
     print("✅ README: 3 commits matched (gate closeout + package base + release notes)")
 
 
-def test_verify_commands_packaging_count_is_9():
+def test_verify_commands_packaging_count_is_10():
     content = (RC_DIR / "VERIFY_COMMANDS.md").read_text()
     assert "test_rc_packaging.py" in content
-    assert "10/10 PASS" in content
-    print("✅ VERIFY_COMMANDS: packaging test count is 10")
+    assert "11/11 PASS" in content
+    print("✅ VERIFY_COMMANDS: packaging test count is 11")
+
+
+def test_tag_record_exists_and_mentions_target_commit():
+    content = (RC_DIR / "TAG_RECORD_v2.9.6-RC1.md").read_text()
+    assert "v2.9.6-RC1" in content
+    assert "9364df7467053350010e7afdbbbc9fbb316b6dc8" in content
+    assert "verify_rc_candidate.sh" in content
+    assert "no real trade" in content
+    assert "no real Z9 write" in content
+    print("✅ TAG_RECORD: commit + safety boundaries verified")
 
 
 def test_release_notes_mentions_core_chain_and_safety_boundaries():
@@ -156,10 +167,11 @@ if __name__ == "__main__":
     test_rc_package_required_files_exist()
     test_rc_package_readme_mentions_no_real_ops()
     test_rc_package_readme_mentions_package_commit()
-    test_verify_commands_packaging_count_is_9()
+    test_verify_commands_packaging_count_is_10()
     test_release_notes_mentions_core_chain_and_safety_boundaries()
     test_verify_commands_mentions_rc_gate()
     test_artifact_checksums_exist_and_non_empty()
+    test_tag_record_exists_and_mentions_target_commit()
     test_operator_runbook_mentions_required_operations()
     test_checksums_are_consistent()
     print("\n🏁 Z-MATRIX-OS v2.9.6-RC1 — RC Packaging tests PASS")

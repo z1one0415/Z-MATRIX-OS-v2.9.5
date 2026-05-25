@@ -48,6 +48,7 @@ python3 tests/test_rc_verification_gate.py
 | `ARTIFACT_CHECKSUMS.txt` | 文件校验和 |
 | `RELEASE_NOTES_v2.9.6-RC1.md` | 发布说明 |
 | `OPERATOR_RUNBOOK_v2.9.6-RC1.md` | 操作手册 |
+| `TAG_RECORD_v2.9.6-RC1.md` | Tag 记录 |
 
 ## 下一步
 

@@ -111,15 +111,18 @@ def test_architecture_tag_record_exists_and_mentions_boundaries():
     assert "no real market fetch" in content
     assert "auto calibration" in content
     assert "plan-only" in content
-    print("✅ TAG_RECORD: boundaries + scope + ref declared")
+    assert "CREATED_EXTERNAL_TARGET_VERIFIED" in content
+    assert "393469050bb10816060706250b9301439c1246b4" in content
+    print("✅ TAG_RECORD: boundaries + scope + ref + verified status")
 
 
-def test_architecture_manifest_mentions_tag_candidate():
+def test_architecture_manifest_tag_status_created_and_verified():
     content = (ARCH_DIR / "ARCHITECTURE_MANIFEST_v2.9.7.md").read_text()
     assert "v2.9.7-arch-RC1" in content
-    assert "CREATED_PENDING_FINAL_TAG" in content
+    assert "CREATED_EXTERNAL_TARGET_VERIFIED" in content
+    assert "393469050bb10816060706250b9301439c1246b4" in content
     assert "TAG_RECORD_v2.9.7-arch-RC1.md" in content
-    print("✅ manifest: tag candidate + status + record path")
+    print("✅ manifest: tag status = CREATED_EXTERNAL_TARGET_VERIFIED")
 
 
 def test_no_real_ops_in_boundaries():
@@ -144,6 +147,6 @@ if __name__ == "__main__":
     test_workflow_dag_node_types_declared()
     test_manifest_known_limitation_declared()
     test_architecture_tag_record_exists_and_mentions_boundaries()
-    test_architecture_manifest_mentions_tag_candidate()
+    test_architecture_manifest_tag_status_created_and_verified()
     test_no_real_ops_in_boundaries()
     print("\n🏁 Architecture Package v1.0 — all F-7 tests PASS")

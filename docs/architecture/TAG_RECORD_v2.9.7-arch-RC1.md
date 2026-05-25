@@ -84,9 +84,16 @@ git status --short
 
 ## Tag Status
 
-CREATED_PENDING_FINAL_TAG
+CREATED_EXTERNAL_TARGET_VERIFIED
+
+## Target
+
+| Field | Value |
+|-------|-------|
+| Target expression | `refs/tags/v2.9.7-arch-RC1^{}` |
+| Verified tag target | `393469050bb10816060706250b9301439c1246b4` |
 
 ## Notes
 
-The tag target is represented as `refs/tags/v2.9.7-arch-RC1^{}` to avoid self-referential commit hash mutation.
-Final target must be verified externally after tag creation.
+The target expression avoids self-referential commit hash mutation.
+The actual target was externally verified after tag creation.

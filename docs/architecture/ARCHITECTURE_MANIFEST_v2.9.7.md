@@ -63,9 +63,10 @@ bash scripts/verify_architecture_candidate.sh
 | 字段 | 值 |
 |------|------|
 | Tag candidate | v2.9.7-arch-RC1 |
-| Tag status | CREATED_PENDING_FINAL_TAG |
+| Tag status | CREATED_EXTERNAL_TARGET_VERIFIED |
+| Verified tag target | `393469050bb10816060706250b9301439c1246b4` |
 | Tag record | docs/architecture/TAG_RECORD_v2.9.7-arch-RC1.md |
 
 ## 下一步
 
-人工审核后决定是否 tag v2.9.7-arch-RC1
+v2.9.7-arch-RC1 tag has been created and externally verified.

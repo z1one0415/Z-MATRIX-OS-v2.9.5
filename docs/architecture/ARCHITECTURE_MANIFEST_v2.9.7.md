@@ -58,6 +58,14 @@ bash scripts/verify_architecture_candidate.sh
 - 它不扫描 pipeline 源文件中的未注册内部能力构造
 - Source-level enforcement 将在下一轮架构加固阶段处理
 
+## Tag
+
+| 字段 | 值 |
+|------|------|
+| Tag candidate | v2.9.7-arch-RC1 |
+| Tag status | CREATED_PENDING_FINAL_TAG |
+| Tag record | docs/architecture/TAG_RECORD_v2.9.7-arch-RC1.md |
+
 ## 下一步
 
 人工审核后决定是否 tag v2.9.7-arch-RC1

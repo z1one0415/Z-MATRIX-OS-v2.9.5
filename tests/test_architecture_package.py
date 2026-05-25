@@ -26,10 +26,11 @@ def test_required_files_exist():
         "SYSTEM_CONTROLLER_MVP_V10.md",
         "VERIFY_ARCHITECTURE_COMMANDS.md",
         "ARTIFACT_CHECKSUMS.txt",
+        "TAG_RECORD_v2.9.7-arch-RC1.md",
     ]
     for f in files:
         assert (ARCH_DIR / f).exists(), f"missing: {f}"
-    print(f"✅ required files: {len(files)}/11 present")
+    print(f"✅ required files: {len(files)}/12 present")
 
 
 def test_checksum_file_exists_and_non_empty():
@@ -99,6 +100,28 @@ def test_manifest_known_limitation_declared():
     print("✅ manifest: known limitation declared")
 
 
+def test_architecture_tag_record_exists_and_mentions_boundaries():
+    content = (ARCH_DIR / "TAG_RECORD_v2.9.7-arch-RC1.md").read_text()
+    assert "v2.9.7-arch-RC1" in content
+    assert "refs/tags/v2.9.7-arch-RC1^{}" in content
+    assert "registry-level enforcement" in content
+    assert "source-level" in content
+    assert "no real trade" in content
+    assert "no real Z9 write" in content
+    assert "no real market fetch" in content
+    assert "auto calibration" in content
+    assert "plan-only" in content
+    print("✅ TAG_RECORD: boundaries + scope + ref declared")
+
+
+def test_architecture_manifest_mentions_tag_candidate():
+    content = (ARCH_DIR / "ARCHITECTURE_MANIFEST_v2.9.7.md").read_text()
+    assert "v2.9.7-arch-RC1" in content
+    assert "CREATED_PENDING_FINAL_TAG" in content
+    assert "TAG_RECORD_v2.9.7-arch-RC1.md" in content
+    print("✅ manifest: tag candidate + status + record path")
+
+
 def test_no_real_ops_in_boundaries():
     content = (ARCH_DIR / "README.md").read_text() + \
               (ARCH_DIR / "ARCHITECTURE_MANIFEST_v2.9.7.md").read_text()
@@ -120,5 +143,7 @@ if __name__ == "__main__":
     test_architecture_enforcement_scope_declared()
     test_workflow_dag_node_types_declared()
     test_manifest_known_limitation_declared()
+    test_architecture_tag_record_exists_and_mentions_boundaries()
+    test_architecture_manifest_mentions_tag_candidate()
     test_no_real_ops_in_boundaries()
     print("\n🏁 Architecture Package v1.0 — all F-7 tests PASS")

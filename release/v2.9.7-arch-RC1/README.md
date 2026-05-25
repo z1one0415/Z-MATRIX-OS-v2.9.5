@@ -14,6 +14,7 @@ release/v2.9.7-arch-RC1/
 ├── SYSTEM_CONTROLLER_MVP_V10.md
 ├── README.md
 ├── VERIFY_ARCHITECTURE_COMMANDS.md
+├── TAG_RECORD_v2.9.7-arch-RC1.md
 └── ARTIFACT_CHECKSUMS.txt
 ```
 

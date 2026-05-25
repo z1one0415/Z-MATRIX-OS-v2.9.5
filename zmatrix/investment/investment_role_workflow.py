@@ -104,6 +104,10 @@ def build_investment_role_review(ticker: str, inputs: dict | None = None) -> dic
             "pre_trade_checklist": "PASS" if checklist_result.get("paper_trade_allowed") else "FAIL",
             "g17_human_veto": "REQUIRED",
         },
+        "paper_ledger_required": True,
+        "outcome_backfill_required": True,
+        "data_fact_required": True,
+        "next_required_workflow": "paper_trade_ledger" if all_gates_passed else None,
         "g17_human_veto_required": True,
         "forbidden_real_trade_checked": True,
     }

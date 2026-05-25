@@ -157,6 +157,34 @@ PIPELINE_REGISTRY: dict[str, dict[str, Any]] = {
         "contract": "docs/architecture/PIPELINE_REGISTRY_V10.md",
         "test": "tests/test_pipeline_registry.py",
     },
+    "Z-PaperDataLoop": {
+        "layer": "pipeline_application",
+        "pipeline_path": "zmatrix.paper_trading",
+        "purpose": "Run paper ledger, local outcome backfill, exposure calculation, lightweight backtest, and monthly review",
+        "allowed_skills": [
+            "data_facts.load_price_bars",
+            "paper_trade.ledger.build",
+            "paper_trade.outcome_backfill.calculate",
+            "portfolio.exposure.calculate_from_history",
+            "backtest.lightweight_role.run",
+            "monthly_review.build",
+            "safety.no_real_trade",
+        ],
+        "required_gates": [
+            "data_facts.valid",
+            "paper_ledger.valid",
+            "outcome_backfill.valid",
+            "backtest.report.valid",
+            "safety.no_real_trade",
+        ],
+        "forbidden_capabilities": [
+            "real_trade", "broker_order", "real_z9_write",
+            "real_market_fetch", "external_api_default_on", "auto_calibration",
+        ],
+        "owner": "PaperTrading",
+        "contract": "docs/architecture/PERSONAL_QUANT_DATA_VALIDITY_LAYER_V10.md",
+        "test": "tests/test_lightweight_backtest.py",
+    },
 }
 
 

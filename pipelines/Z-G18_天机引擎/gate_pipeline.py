@@ -180,6 +180,7 @@ def run(tickers=None, mode="daily", universe="WATCHLIST"):
     from zmatrix.calibration.z9_calibration_sample import build_z9_calibration_sample
     from zmatrix.calibration.z9_ingestion_queue import build_z9_ingestion_queue_item
     from zmatrix.calibration.z9_outcome_backfill import build_z9_outcome_backfill_task
+    from zmatrix.calibration.z9_calibration_policy import build_calibration_policy_preview
     run_id = now.strftime("%Y%m%d_%H%M%S")
     for p in predictions:
         upstream = build_upstream_evidence(
@@ -199,6 +200,9 @@ def run(tickers=None, mode="daily", universe="WATCHLIST"):
         p.z9_outcome_backfill_task_preview = build_z9_outcome_backfill_task(
             p.z9_ingestion_queue_preview, run_id=run_id,
         )
+        p.z9_calibration_policy_preview = build_calibration_policy_preview(
+            p.z9_outcome_backfill_task_preview, run_id=run_id,
+        )
     result["sections"]["final_decision_envelope_version"] = "v1.1"
     result["sections"]["paper_execution_record_version"] = "v1.0"
     result["sections"]["paper_execution_records_ready"] = len(predictions)
@@ -215,6 +219,8 @@ def run(tickers=None, mode="daily", universe="WATCHLIST"):
     result["sections"]["z9_outcome_write_allowed"] = False
     result["sections"]["z9_market_fetch_allowed"] = False
     result["sections"]["z9_auto_calibration_allowed"] = False
+    result["sections"]["z9_calibration_policy_version"] = "v1.0"
+    result["sections"]["z9_calibration_policies_ready"] = len(predictions)
     result["sections"]["z9_calibration_hooks_ready"] = True
 
     result["predictions"] = [{"ticker":p.ticker,"name":p.name,"probability":p.probability,
@@ -226,6 +232,7 @@ def run(tickers=None, mode="daily", universe="WATCHLIST"):
         "z9_calibration_sample_preview": getattr(p, "z9_calibration_sample_preview", None),
         "z9_ingestion_queue_preview": getattr(p, "z9_ingestion_queue_preview", None),
         "z9_outcome_backfill_task_preview": getattr(p, "z9_outcome_backfill_task_preview", None),
+        "z9_calibration_policy_preview": getattr(p, "z9_calibration_policy_preview", None),
         "horizon":p.horizon,"evidence_coverage":p.evidence_coverage,
         "data_lineage":p.data_lineage,"temporal_consistency":p.temporal_consistency,
         "next_triggers":p.next_triggers,"action_proposal":p.action_proposal,"z9":p.z9_sample}

@@ -1,0 +1,104 @@
+{
+  "preview_version": "v1.0",
+  "preview_type": "CALIBRATION_POLICY_PREVIEW",
+  "preview_id": "CP_BF_Q_20260524_235900_000000_20260525_023900_20260525_030000",
+  "run_id": "20260525_030000",
+  "task_id": "BF_Q_20260524_235900_000000_20260525_023900",
+  "ticker": "002472",
+  "created_at": "2026-05-25 03:00:00",
+  "source_backfill_task": {
+    "task_id": "BF_Q_20260524_235900_000000_20260525_023900",
+    "task_version": "v1.0",
+    "task_type": "Z9_OUTCOME_BACKFILL_TASK",
+    "backfill_task_key": "018f5bb8df965e4bf5ea83b47766a85b"
+  },
+  "idempotency": {
+    "calibration_policy_key": "a1b2c3d4e5f6789012345678abcdef90",
+    "source_task_id": "BF_Q_20260524_235900_000000_20260525_023900",
+    "same_preview_recreate_allowed": false
+  },
+  "outcome_summary": {
+    "outcome_status": "BACKFILLED",
+    "t1_return": 2.1,
+    "t5_return": 5.2,
+    "t20_return": null,
+    "max_drawdown_t5": -3.5,
+    "max_drawdown_t20": null,
+    "max_runup_t5": 6.8,
+    "max_runup_t20": null,
+    "decision_outcome": "CORRECT",
+    "is_positive_t5": true,
+    "has_positive_trend": true,
+    "trend": "accelerating"
+  },
+  "policy_domains": {
+    "ev_calibration": {
+      "domain": "EV_CALIBRATION",
+      "status": "PREVIEW_GENERATED",
+      "direction": "STRENGTHEN_POSITIVE",
+      "confidence": "HIGH",
+      "recommendations": [
+        "FQS: 高正收益→财务质量维度保持当前权重或略升",
+        "CTS: 催化剂时序维度验证为正→建议保持权重",
+        "VSS: 量价信号—验证在正收益样本中是否有效"
+      ],
+      "explanation": "T5=+5.2% 正收益，说明评分系统中部分维度具备预测力。建议保持 FQS/CTS 权重，检查 VSS 区分度。"
+    },
+    "r_matrix_calibration": {
+      "domain": "R_MATRIX_CALIBRATION",
+      "status": "PREVIEW_GENERATED",
+      "direction": "MAINTAIN_OR_LIGHTEN",
+      "confidence": "MEDIUM",
+      "recommendations": [
+        "SHORT_TERM: 加速趋势→维持当前轮动信号",
+        "MEDIUM_TERM: 观察是否演变为持续性突破",
+        "LONG_TERM: 无需调整"
+      ],
+      "explanation": "T1→T5 加速走强，R-Matrix 短周期信号有参考价值。建议维持现状。"
+    },
+    "g18_rule_calibration": {
+      "domain": "G18_RULE_CALIBRATION",
+      "status": "PREVIEW_GENERATED",
+      "direction": "MAINTAIN_PROBABILITY_THRESHOLD",
+      "confidence": "MEDIUM",
+      "recommendations": [
+        "PROBABILITY_THRESHOLD: 当前阈值合理",
+        "G09_SELL_OVERRIDE: 未触发错误卖出"
+      ],
+      "explanation": "T5=+5.2% 正收益且决策正确，G18 规则集在当前样本上有效。",
+      "calibratable_rules": [
+        "G09_SELL_OVERRIDE",
+        "G09_HARD_BLOCKS",
+        "G11_STRONG_WARNING_ONLY",
+        "Z16_PRICE_GATE",
+        "G17_ACCOUNT_CONFIRMATION",
+        "PROBABILITY_THRESHOLD"
+      ]
+    }
+  },
+  "state": {
+    "status": "POLICY_PREVIEW_GENERATED",
+    "allowed_statuses": [
+      "AWAITING_BACKFILL",
+      "READY_FOR_REVIEW",
+      "POLICY_PREVIEW_GENERATED",
+      "REJECTED"
+    ],
+    "reason": "D4_PREVIEW_MODE",
+    "ready_for_calibration": true
+  },
+  "validation": {
+    "backfill_task_valid": true,
+    "reject_reasons": [],
+    "auto_calibration_allowed": false
+  },
+  "write_policy": {
+    "ev_write_allowed": false,
+    "r_matrix_write_allowed": false,
+    "g18_write_allowed": false,
+    "z9_write_allowed": false,
+    "write_status": "DEFERRED_NOT_CONNECTED",
+    "reason": "D4_CALIBRATION_POLICY_PREVIEW_ONLY_NO_REAL_WRITE"
+  },
+  "forbidden_real_trade_checked": true
+}

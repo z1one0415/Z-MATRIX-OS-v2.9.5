@@ -16,7 +16,10 @@ def test_rc_manifest_exists():
     content = path.read_text()
     for keyword in ["Z-MATRIX-OS v2.9.6-RC1", "禁止边界", "回滚策略", "已知保留项"]:
         assert keyword in content, f"manifest missing keyword: {keyword}"
-    print("✅ RC_MANIFEST_v2.9.6.md exists with key sections")
+    # 锁住 closeout commit
+    assert "79d4e593164e7e826dadc98a0f545d1a6d1f922f" in content, "manifest closeout commit mismatch"
+    assert "RC_KNOWN_LIMITATIONS_v2.9.6.md" in content, "manifest missing known limitations reference"
+    print("✅ RC_MANIFEST_v2.9.6.md exists with key sections + verified closeout commit")
 
 
 # ── 2. Contract Index ──
@@ -36,6 +39,7 @@ def test_contract_index_exists_and_mentions_core_contracts():
         "G18_CONFLICT_RESOLVER_V10.md",
         "G18_PAPER_EXECUTION_RECORD_V10.md",
         "RC_MANIFEST_v2.9.6.md",
+        "RC_KNOWN_LIMITATIONS_v2.9.6.md",
         "no real trade",
     ]:
         assert keyword in content, f"contract index missing reference: {keyword}"

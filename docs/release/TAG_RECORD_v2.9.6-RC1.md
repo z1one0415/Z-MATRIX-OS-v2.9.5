@@ -5,9 +5,9 @@
 | 字段 | 值 |
 |------|------|
 | Tag name | v2.9.6-RC1 |
-| Target commit | `47f6e44cdab6e8b47ac53c725b82dc72d4175185` |
+| Target commit | `966d3cafb7df9c72c367483b67df895ec1de4d07` |
 | Original E-4 commit | `9364df7467053350010e7afdbbbc9fbb316b6dc8` |
-| Final tag record commit | `47f6e44cdab6e8b47ac53c725b82dc72d4175185` |
+| Final tag record commit | `966d3cafb7df9c72c367483b67df895ec1de4d07` |
 | Branch | master |
 | Tag status | CREATED |
 | Tag date | 2026-05-25 |

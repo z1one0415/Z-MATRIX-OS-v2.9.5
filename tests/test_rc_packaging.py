@@ -69,7 +69,7 @@ def test_verify_commands_packaging_count_is_10():
 def test_tag_record_exists_and_mentions_target_commit():
     content = (RC_DIR / "TAG_RECORD_v2.9.6-RC1.md").read_text()
     assert "v2.9.6-RC1" in content
-    assert "47f6e44cdab6e8b47ac53c725b82dc72d4175185" in content  # actual tag target
+    assert "966d3cafb7df9c72c367483b67df895ec1de4d07" in content  # actual tag target
     assert "9364df7467053350010e7afdbbbc9fbb316b6dc8" in content  # original E-4 commit
     assert "verify_rc_candidate.sh" in content
     assert "no real trade" in content

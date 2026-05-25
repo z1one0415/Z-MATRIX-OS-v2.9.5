@@ -47,6 +47,7 @@ python3 tests/test_rc_verification_gate.py
 | `VERIFY_COMMANDS.md` | 验收命令速查 |
 | `ARTIFACT_CHECKSUMS.txt` | 文件校验和 |
 | `RELEASE_NOTES_v2.9.6-RC1.md` | 发布说明 |
+| `OPERATOR_RUNBOOK_v2.9.6-RC1.md` | 操作手册 |
 
 ## 下一步
 

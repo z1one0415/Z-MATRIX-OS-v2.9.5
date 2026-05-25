@@ -33,7 +33,7 @@ python3 tests/test_g18_paper_execution_record.py      # 8/8 PASS
 
 ```bash
 python3 tests/test_rc_packaging.py
-# 预期: 9/9 PASS
+# 预期: 10/10 PASS
 ```
 
 ## 完整 Verify 脚本

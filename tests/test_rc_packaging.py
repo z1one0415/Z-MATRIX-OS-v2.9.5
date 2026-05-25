@@ -25,11 +25,12 @@ def test_rc_package_required_files_exist():
         "VERIFY_COMMANDS.md",
         "ARTIFACT_CHECKSUMS.txt",
         "RELEASE_NOTES_v2.9.6-RC1.md",
+        "OPERATOR_RUNBOOK_v2.9.6-RC1.md",
     ]
     for f in files:
         path = RC_DIR / f
         assert path.exists(), f"missing required file: {path}"
-    print(f"✅ RC package required files: {len(files)}/8 present")
+    print(f"✅ RC package required files: {len(files)}/9 present")
 
 
 def test_rc_package_readme_mentions_no_real_ops():
@@ -60,8 +61,8 @@ def test_rc_package_readme_mentions_package_commit():
 def test_verify_commands_packaging_count_is_9():
     content = (RC_DIR / "VERIFY_COMMANDS.md").read_text()
     assert "test_rc_packaging.py" in content
-    assert "9/9 PASS" in content
-    print("✅ VERIFY_COMMANDS: packaging test count is 9")
+    assert "10/10 PASS" in content
+    print("✅ VERIFY_COMMANDS: packaging test count is 10")
 
 
 def test_release_notes_mentions_core_chain_and_safety_boundaries():
@@ -116,6 +117,23 @@ def test_artifact_checksums_exist_and_non_empty():
     print(f"✅ ARTIFACT_CHECKSUMS: {len(checksum_lines)} files with valid sha256")
 
 
+def test_operator_runbook_mentions_required_operations():
+    content = (RC_DIR / "OPERATOR_RUNBOOK_v2.9.6-RC1.md").read_text()
+    for keyword in [
+        "verify_rc_candidate.sh",
+        "paper_execution_record",
+        "z9_calibration_policy_preview",
+        "Real trade",
+        "Real Z9 write",
+        "Real market data fetch",
+        "Auto calibration",
+        "git revert",
+        "checksum mismatch",
+    ]:
+        assert keyword in content, f"runbook missing: {keyword}"
+    print("✅ OPERATOR_RUNBOOK: required operations covered")
+
+
 def test_checksums_are_consistent():
     """每个文件的checksum应与实际计算一致"""
     checksums = RC_DIR / "ARTIFACT_CHECKSUMS.txt"
@@ -142,5 +160,6 @@ if __name__ == "__main__":
     test_release_notes_mentions_core_chain_and_safety_boundaries()
     test_verify_commands_mentions_rc_gate()
     test_artifact_checksums_exist_and_non_empty()
+    test_operator_runbook_mentions_required_operations()
     test_checksums_are_consistent()
     print("\n🏁 Z-MATRIX-OS v2.9.6-RC1 — RC Packaging tests PASS")

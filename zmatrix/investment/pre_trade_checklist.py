@@ -63,7 +63,7 @@ def validate_pre_trade_checklist(candidate: dict) -> dict:
     checklist_complete = len(missing_items) == 0
 
     # ── 检查角色 ──
-    role = candidate.get("role", "UNKNOWN")
+    role = candidate.get("stock_role") or candidate.get("role", "UNKNOWN")
     if role not in ("A_LONG_CORE", "B_MID_ROTATION", "C_SHORT_EVENT"):
         if not missing_items:
             missing_items.append("stock_role: not a tradeable role")

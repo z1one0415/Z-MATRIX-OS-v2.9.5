@@ -52,6 +52,12 @@ Gate / Enforcement / Audit / Controller。
 bash scripts/verify_architecture_candidate.sh
 ```
 
+## 已知限制
+
+- Architecture Enforcement v1.0 是 registry-level enforcement
+- 它不扫描 pipeline 源文件中的未注册内部能力构造
+- Source-level enforcement 将在下一轮架构加固阶段处理
+
 ## 下一步
 
 人工审核后决定是否 tag v2.9.7-arch-RC1

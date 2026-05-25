@@ -52,7 +52,11 @@ python3 tests/test_rc_packaging.py
 
 echo ""
 echo "== Git diff check =="
-git diff --check 2>/dev/null || echo "(non-git workspace)"
+if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+ git diff --check
+else
+ echo "(non-git workspace, skip git diff check)"
+fi
 
 echo ""
 echo "== Git clean check =="

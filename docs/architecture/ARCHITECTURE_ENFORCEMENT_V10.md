@@ -17,3 +17,18 @@
 ## 集成
 
 `run_architecture_enforcement()` 一次性执行所有检查，返回违规列表。
+
+## Enforcement Scope
+
+Current version is registry-level enforcement.
+
+It validates:
+- registry cross references
+- allowed_skills registration
+- required_gates registration
+- duplicate skill module/function declarations
+- no-real-ops declarations
+
+It does not yet perform full source-level static analysis over all pipeline implementation files.
+
+Source-level enforcement is reserved for the next architecture hardening phase.

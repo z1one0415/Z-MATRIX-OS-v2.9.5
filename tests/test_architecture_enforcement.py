@@ -49,6 +49,14 @@ def test_no_real_ops_enabled():
     print("✅ enforcement: no real ops enabled anywhere")
 
 
+def test_enforcement_is_registry_level_scope():
+    from pathlib import Path
+    content = Path("docs/architecture/ARCHITECTURE_ENFORCEMENT_V10.md").read_text()
+    assert "registry-level enforcement" in content
+    assert "source-level" in content
+    print("✅ enforcement docs: registry-level scope declared")
+
+
 if __name__ == "__main__":
     test_run_architecture_enforcement_clean()
     test_pipeline_allowed_skills_registered()
@@ -56,4 +64,5 @@ if __name__ == "__main__":
     test_no_duplicate_skill_modules()
     test_pipeline_forbidden_capabilities_complete()
     test_no_real_ops_enabled()
+    test_enforcement_is_registry_level_scope()
     print("\n🏁 Architecture Enforcement v1.0 — all F-5 tests PASS")

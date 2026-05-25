@@ -34,3 +34,12 @@ Workflow DAG 把 Shared Skill 连接成有向无环图。每条 workflow 属于�
 - required_gates 必须存在于 GATE_REGISTRY
 - 不允许环（topological_order 检测）
 - forbidden_capabilities 必须包含 no-real-ops 四项
+
+## Node Types
+
+workflow.nodes may contain two node types:
+
+1. **skill nodes** — must exist in `SHARED_SKILL_REGISTRY`
+2. **gate nodes** — must exist in `GATE_REGISTRY`
+
+A workflow may mix skill nodes and gate nodes when the workflow itself represents verification or release control.

@@ -76,6 +76,29 @@ def test_verify_commands_mentions_script():
     print("✅ verify commands: references verify_architecture_candidate.sh")
 
 
+def test_architecture_enforcement_scope_declared():
+    content = (ARCH_DIR / "ARCHITECTURE_ENFORCEMENT_V10.md").read_text()
+    assert "registry-level enforcement" in content
+    assert "source-level" in content
+    print("✅ enforcement docs: declare registry-level scope")
+
+
+def test_workflow_dag_node_types_declared():
+    content = (ARCH_DIR / "WORKFLOW_DAG_V10.md").read_text()
+    assert "skill nodes" in content
+    assert "gate nodes" in content
+    assert "SHARED_SKILL_REGISTRY" in content
+    assert "GATE_REGISTRY" in content
+    print("✅ workflow DAG docs: declare skill/gate node types")
+
+
+def test_manifest_known_limitation_declared():
+    content = (ARCH_DIR / "ARCHITECTURE_MANIFEST_v2.9.7.md").read_text()
+    assert "registry-level enforcement" in content
+    assert "source-level" in content.lower() or "Source-level" in content
+    print("✅ manifest: known limitation declared")
+
+
 def test_no_real_ops_in_boundaries():
     content = (ARCH_DIR / "README.md").read_text() + \
               (ARCH_DIR / "ARCHITECTURE_MANIFEST_v2.9.7.md").read_text()
@@ -94,5 +117,8 @@ if __name__ == "__main__":
     test_readme_mentions_three_layer_architecture()
     test_manifest_mentions_f1_to_f6()
     test_verify_commands_mentions_script()
+    test_architecture_enforcement_scope_declared()
+    test_workflow_dag_node_types_declared()
+    test_manifest_known_limitation_declared()
     test_no_real_ops_in_boundaries()
     print("\n🏁 Architecture Package v1.0 — all F-7 tests PASS")

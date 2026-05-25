@@ -109,6 +109,14 @@ def test_get_workflow_api():
     print("✅ get_workflow API works")
 
 
+def test_workflow_docs_define_skill_and_gate_nodes():
+    from pathlib import Path
+    content = Path("docs/architecture/WORKFLOW_DAG_V10.md").read_text()
+    assert "skill nodes" in content
+    assert "gate nodes" in content
+    print("✅ workflow docs: node types declared")
+
+
 def test_get_workflows_for_pipeline_api():
     g18_flows = get_workflows_for_pipeline("Z-G18")
     assert len(g18_flows) >= 1
@@ -129,5 +137,6 @@ if __name__ == "__main__":
     test_workflow_integrity_clean()
     test_forbidden_capabilities_complete()
     test_get_workflow_api()
+    test_workflow_docs_define_skill_and_gate_nodes()
     test_get_workflows_for_pipeline_api()
     print("\n🏁 Workflow DAG v1.0 — all F-4 tests PASS")

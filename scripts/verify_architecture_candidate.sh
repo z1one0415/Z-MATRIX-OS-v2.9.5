@@ -18,6 +18,10 @@ echo "== Pipeline Registry tests =="
 python3 tests/test_pipeline_registry.py
 
 echo ""
+echo "== Gate Registry tests =="
+python3 tests/test_gate_registry.py
+
+echo ""
 echo "== Existing RC safety gate smoke =="
 python3 tests/test_rc_verification_gate.py
 python3 tests/test_rc_packaging.py

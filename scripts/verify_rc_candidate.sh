@@ -263,10 +263,11 @@ echo "== Z9 calibration policy contract tests =="
 python3 tests/test_z9_calibration_policy_contract.py
 
 echo ""
-echo "== RC verification gate tests =="
-echo ""
 echo "== RC packaging tests =="
 python3 tests/test_rc_packaging.py
+
+echo ""
+echo "== RC verification gate tests =="
 python3 tests/test_rc_verification_gate.py
 echo ""
 echo "== Git diff check =="

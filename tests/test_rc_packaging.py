@@ -45,6 +45,22 @@ def test_rc_package_readme_mentions_no_real_ops():
     print("✅ README: no-real-ops boundaries declared")
 
 
+def test_rc_package_readme_mentions_package_commit():
+    content = (RC_DIR / "README.md").read_text()
+    assert "RC gate closeout commit" in content
+    assert "a2ad4991ba224b532edbce7e1c03cbd4c6f43195" in content
+    assert "RC package commit" in content
+    assert "0882a7802dc68fdc0080933ac6e0fdc1b280eec8" in content
+    print("✅ README: commits matched (gate closeout + package)")
+
+
+def test_verify_commands_packaging_count_is_6():
+    content = (RC_DIR / "VERIFY_COMMANDS.md").read_text()
+    assert "test_rc_packaging.py" in content
+    assert "6/6 PASS" in content
+    print("✅ VERIFY_COMMANDS: packaging test count is 6")
+
+
 def test_verify_commands_mentions_rc_gate():
     vc = RC_DIR / "VERIFY_COMMANDS.md"
     content = vc.read_text()
@@ -96,6 +112,8 @@ if __name__ == "__main__":
     test_rc_package_directory_exists()
     test_rc_package_required_files_exist()
     test_rc_package_readme_mentions_no_real_ops()
+    test_rc_package_readme_mentions_package_commit()
+    test_verify_commands_packaging_count_is_6()
     test_verify_commands_mentions_rc_gate()
     test_artifact_checksums_exist_and_non_empty()
     test_checksums_are_consistent()

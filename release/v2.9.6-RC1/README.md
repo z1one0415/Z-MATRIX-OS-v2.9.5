@@ -5,7 +5,8 @@
 | 字段 | 值 |
 |------|------|
 | RC 名称 | Z-MATRIX-OS v2.9.6-RC1 |
-| 当前 commit | `a2ad4991ba224b532edbce7e1c03cbd4c6f43195` |
+| RC gate closeout commit | `a2ad4991ba224b532edbce7e1c03cbd4c6f43195` |
+| RC package commit | `0882a7802dc68fdc0080933ac6e0fdc1b280eec8` |
 | 分支 | master |
 | 发布日期 | 2026-05-25 |
 

@@ -50,16 +50,18 @@ def test_rc_package_readme_mentions_package_commit():
     content = (RC_DIR / "README.md").read_text()
     assert "RC gate closeout commit" in content
     assert "a2ad4991ba224b532edbce7e1c03cbd4c6f43195" in content
-    assert "RC package commit" in content
-    assert "0882a7802dc68fdc0080933ac6e0fdc1b280eec8" in content
-    print("✅ README: commits matched (gate closeout + package)")
+    assert "RC package base commit" in content
+    assert "7b7741d81d84aebb291c3f5b64a78e03aeb4d86f" in content
+    assert "Release notes commit" in content
+    assert "4a78331158449a83473cf1985bd261e2418b1b13" in content
+    print("✅ README: 3 commits matched (gate closeout + package base + release notes)")
 
 
-def test_verify_commands_packaging_count_is_6():
+def test_verify_commands_packaging_count_is_9():
     content = (RC_DIR / "VERIFY_COMMANDS.md").read_text()
     assert "test_rc_packaging.py" in content
-    assert "6/6 PASS" in content
-    print("✅ VERIFY_COMMANDS: packaging test count is 6")
+    assert "9/9 PASS" in content
+    print("✅ VERIFY_COMMANDS: packaging test count is 9")
 
 
 def test_release_notes_mentions_core_chain_and_safety_boundaries():
@@ -77,7 +79,11 @@ def test_release_notes_mentions_core_chain_and_safety_boundaries():
         "Tag v2.9.6-RC1",
     ]:
         assert keyword in content, f"release notes missing: {keyword}"
-    print("✅ RELEASE_NOTES: core chain + safety boundaries confirmed")
+    assert "Release notes commit" in content
+    assert "4a78331158449a83473cf1985bd261e2418b1b13" in content
+    assert "RC gate closeout commit" in content
+    assert "a2ad4991ba224b532edbce7e1c03cbd4c6f43195" in content
+    print("✅ RELEASE_NOTES: core chain + safety boundaries + commit metadata confirmed")
 
 
 def test_verify_commands_mentions_rc_gate():
@@ -132,7 +138,7 @@ if __name__ == "__main__":
     test_rc_package_required_files_exist()
     test_rc_package_readme_mentions_no_real_ops()
     test_rc_package_readme_mentions_package_commit()
-    test_verify_commands_packaging_count_is_6()
+    test_verify_commands_packaging_count_is_9()
     test_release_notes_mentions_core_chain_and_safety_boundaries()
     test_verify_commands_mentions_rc_gate()
     test_artifact_checksums_exist_and_non_empty()

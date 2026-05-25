@@ -5,7 +5,9 @@
 | 字段 | 值 |
 |------|------|
 | RC 名称 | Z-MATRIX-OS v2.9.6-RC1 |
-| 基准 commit | `310b6c54256f5b4b6b2df415b9deffb99c47440b` |
+| 基准 commit (Batch D 放行) | `310b6c54256f5b4b6b2df415b9deffb99c47440b` |
+| RC gate commit (E-1) | `445d5cd254f825ceb0e20cb1c80cc739712e4e53` |
+| RC gate closeout | `adcda0a0b3c87b2dfece7d30f9d41f71c1c6abf9` |
 | 分支 | master |
 | 发布日期 | 2026-05-25 |
 | 发布类型 | Release Candidate 1 |
@@ -96,13 +98,15 @@ python3 tests/test_rc_verification_gate.py
 
 ## 7. 已知保留项
 
+详细文档: `docs/release/RC_KNOWN_LIMITATIONS_v2.9.6.md`
+
 | 项 | 说明 | 状态 |
 |:--|------|:----:|
-| G09 周期信号桥 | G09信号文件路径依赖本地绝对路径 | ⚠️ 非阻塞，只在无该文件时降级为 WATCH |
-| test_hermes_full.py | memory_bank 接口变更导致 import error | ⚠️ pre-existing，不影响核心管线 |
-| test_zg09_type_a_horizontal | R-Matrix 重构后旧接口不兼容 | ⚠️ pre-existing，不影响核心管线 |
-| test_zg09_zg10_contracts | R-Matrix 重构后旧接口不兼容 | ⚠️ pre-existing，不影响核心管线 |
-| test_zg14_matrix_reliability | R-Matrix 重构后旧接口不兼容 | ⚠️ pre-existing，不影响核心管线 |
-| test_zg09_sell_decision | 价格精度漂移 6.4→6.5 | ⚠️ 微小精度偏移，不影响决策 |
-| 真实行情回填 | D-3 未实现，需 D-5 或 E 后推进 | ⏳ 预留 |
-| 自动调参 | D-4 仅预览，需 D-6 或 E 后推进 | ⏳ 预留 |
+| G09 周期信号桥 | G09信号文件路径依赖本地绝对路径 | ⚠️ non-blocking |
+| legacy test_hermes_full.py | memory_bank 接口变更 import error | ⚠️ non-blocking |
+| legacy test_zg09_type_a_horizontal | R-Matrix 重构后旧接口不兼容 | ⚠️ non-blocking |
+| legacy test_zg09_zg10_contracts | R-Matrix 重构后旧接口不兼容 | ⚠️ non-blocking |
+| legacy test_zg14_matrix_reliability | R-Matrix 重构后旧接口不兼容 | ⚠️ non-blocking |
+| test_zg09_sell_decision | 价格精度漂移 6.4→6.5 | ⚠️ non-blocking |
+| 真实行情回填 | D-3 未实现 | ⏳ 预留 |
+| 自动调参 | D-4 仅预览 | ⏳ 预留 |

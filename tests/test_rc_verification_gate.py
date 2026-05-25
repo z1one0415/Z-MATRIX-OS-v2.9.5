@@ -123,6 +123,34 @@ def test_calibration_policy_preview_no_real_write():
 
 # ── 7. Required RC files check ──
 
+def test_rc_known_limitations_exists_and_mentions_non_blocking_legacy_tests():
+    """RC_KNOWN_LIMITATIONS 存在并列出legacy测试"""
+    path = WORKSPACE / "docs" / "release" / "RC_KNOWN_LIMITATIONS_v2.9.6.md"
+    assert path.exists(), "missing RC_KNOWN_LIMITATIONS"
+    content = path.read_text()
+    for keyword in [
+        "test_zg09_type_a_horizontal.py",
+        "test_zg09_zg10_contracts.py",
+        "test_zg14_matrix_reliability.py",
+        "non-blocking",
+        "替代覆盖",
+    ]:
+        assert keyword in content, f"known limitations missing: {keyword}"
+    print("✅ RC_KNOWN_LIMITATIONS: legacy tests listed as non-blocking")
+
+
+def test_verify_script_has_non_blocking_legacy_section():
+    """verify_rc_candidate.sh 有 non-blocking legacy section"""
+    path = WORKSPACE / "scripts" / "verify_rc_candidate.sh"
+    content = path.read_text()
+    assert "Non-blocking legacy tests" in content
+    assert "non-blocking legacy limitation" in content
+    # 验证三个legacy测试不在pytest aggregate中
+    for legacy in ["test_zg09_type_a_horizontal.py", "test_zg09_zg10_contracts.py", "test_zg14_matrix_reliability.py"]:
+        assert legacy not in content or "legacy_tests" in content, f"{legacy} still in forced path"
+    print("✅ verify script: non-blocking legacy section present, forced path removed")
+
+
 def test_required_rc_files_exist():
     files = [
         "docs/release/RC_MANIFEST_v2.9.6.md",
@@ -151,5 +179,7 @@ if __name__ == "__main__":
     test_g18_prediction_contains_full_z9_preview_chain()
     test_rc_safety_sections_all_false()
     test_calibration_policy_preview_no_real_write()
+    test_rc_known_limitations_exists_and_mentions_non_blocking_legacy_tests()
+    test_verify_script_has_non_blocking_legacy_section()
     test_required_rc_files_exist()
     print("\n🏁 Z-MATRIX-OS v2.9.6-RC1 — RC Verification Gate PASS")

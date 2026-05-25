@@ -106,6 +106,7 @@
 |:--|------|:----:|
 | RC Manifest | `docs/release/RC_MANIFEST_v2.9.6.md` | ✅ |
 | RC Verification Template | `docs/release/RC_VERIFICATION_REPORT_TEMPLATE_v2.9.6.md` | ✅ |
+| RC Known Limitations | `docs/release/RC_KNOWN_LIMITATIONS_v2.9.6.md` | ✅ |
 | RC Gate Test | `tests/test_rc_verification_gate.py` | ✅ |
 | Verify script | `scripts/verify_rc_candidate.sh` | ✅ |
 | Real-write boundary | no real trade, no real Z9 write, no real market fetch, no auto calibration |

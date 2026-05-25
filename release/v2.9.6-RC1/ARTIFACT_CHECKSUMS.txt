@@ -1,0 +1,12 @@
+# Z-MATRIX-OS v2.9.6-RC1 — Artifact Checksums
+# Generated: 2026-05-25 21:35:32 CST
+# Directory: /Users/z1/.openclaw/agents/z2-analyst/workspace/release/v2.9.6-RC1
+
+95809f7bd23de7c65fe97b4e36947fc16fccbfbab6aa7e861d62d2283182acba  CONTRACT_INDEX_v2.9.6.md  (4316 bytes)
+025895c2c9d6575adbc148a5f0aaea5ddc45f9a088f2c3992eb32d8b84288de3  RC_KNOWN_LIMITATIONS_v2.9.6.md  (2338 bytes)
+f8b1c08b2ca4d38bdd83df360af03b00eb4ba98cf3bd0979812a4fba84c34071  RC_MANIFEST_v2.9.6.md  (3935 bytes)
+d3413e2eaeb72ef97bf3c0cd1fb300f040cb544fe7084ce06b208d7e22e1bcdd  RC_VERIFICATION_REPORT_TEMPLATE_v2.9.6.md  (2162 bytes)
+11e116fd558096cdf08fec3332dfe34dd62b493c4f9f8204f40629c7ad45a090  README.md  (1218 bytes)
+df20f7eccadd950cd65995c67b635f6501bfb7484b674bf852348802c893ec78  VERIFY_COMMANDS.md  (1174 bytes)
+
+Total files: 6

@@ -1,6 +1,13 @@
 """Approval Policy tests"""
 import sys, os; sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from zmatrix.approval_loop.approval_policy import assert_no_auto_effects, validate_approval_request
+from zmatrix.approval_loop.approval_policy import assert_no_auto_effects, validate_approval_request, validate_approval_decision
+
+def _safe_safety():
+    return {
+        "real_trade_allowed": False, "broker_order_allowed": False,
+        "real_z9_write_allowed": False, "hermes_memory_write_allowed": False,
+        "auto_calibration_allowed": False, "prompt_auto_injection_allowed": False,
+    }
 
 def test_policy_rejects_auto_effects_true():
     record = {"safety": {"real_trade_allowed": True, "auto_calibration_allowed": True}}
@@ -14,7 +21,30 @@ def test_policy_passes_clean_record():
     assert len(v) == 0
     print("✅ policy passes clean record")
 
+def test_policy_requires_source_preview_id_and_hash():
+    request = {
+        "approval_request_id": "r1", "request_type": "MEMORY_CANDIDATE_APPROVAL",
+        "status": "PENDING_REVIEW", "requires_human_approval": True,
+        "source_preview_id": "", "source_preview_hash": "",
+        "safety": _safe_safety(),
+    }
+    errors = validate_approval_request(request)
+    assert errors
+    print("✅ policy requires source_preview_id and hash")
+
+def test_policy_rejects_wrong_decision_result_mapping():
+    decision = {
+        "approval_decision_id": "d1", "approval_request_id": "r1",
+        "decision": "APPROVE", "result_status": "REJECTED",
+        "safety": _safe_safety(),
+    }
+    errors = validate_approval_decision(decision)
+    assert errors
+    print("✅ policy rejects wrong decision/result mapping")
+
 if __name__ == "__main__":
     test_policy_rejects_auto_effects_true()
     test_policy_passes_clean_record()
+    test_policy_requires_source_preview_id_and_hash()
+    test_policy_rejects_wrong_decision_result_mapping()
     print("\n🏁 Approval Policy tests PASS")

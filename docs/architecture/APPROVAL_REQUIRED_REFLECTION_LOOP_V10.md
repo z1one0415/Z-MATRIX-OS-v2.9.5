@@ -28,3 +28,17 @@ Approval Loop is the safety gate for v3.0 self-evolution.
 MemoryCandidate / CalibrationEvent / PromptPatch only enter the
 "write candidate" zone after human approval — in a future version.
 This version does NOT execute writes.
+
+## Event Chain
+
+```
+MemoryCandidatePreview / CalibrationEventPreview / PromptPatchPreview
+→ ApprovalRequest (PENDING_REVIEW)
+→ ApprovalRequestEvent (EventStore)
+→ HumanApprovalDecision (APPROVE/REJECT/QUARANTINE/REQUEST_MORE_EVIDENCE)
+→ HumanApprovalEvent (EventStore)
+→ EventStore
+
+ApprovalRequestEvent is NOT approval.
+HumanApprovalEvent is NOT automatic execution.
+```

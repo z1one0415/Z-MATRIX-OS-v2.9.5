@@ -29,7 +29,19 @@ EVENT_TYPES = frozenset({
     "CalibrationEvent",
     "HumanApprovalEvent",
     "PromptPatchEvent",
+    "ApprovalRequestEvent",
 })
+
+# ApprovalRequestEvent records approval requests only.
+# It does not imply human approval.
+# It does not imply Hermes memory write.
+# It does not imply auto calibration.
+# It does not imply prompt injection.
+#
+# HumanApprovalEvent = human approval decision record
+# ApprovalRequestEvent = approval request record
+# MemoryCandidateEvent = memory candidate record
+# Three types must NOT be mixed.
 
 SAFETY_FIELDS = [
     "real_trade_allowed",

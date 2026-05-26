@@ -23,8 +23,24 @@ def test_approval_request_blocks_auto_effects():
     assert r["safety"]["prompt_auto_injection_allowed"] is False
     print("✅ blocks auto effects")
 
+def test_approval_request_extracts_calibration_event_id():
+    source_preview = {"calibration_event_id": "c" * 32, "target_domain": "R_MATRIX"}
+    r = build_approval_request(request_type="CALIBRATION_EVENT_APPROVAL", source_preview=source_preview, reason="review calibration")
+    assert r["source_preview_id"] == "c" * 32
+    assert r["source_preview_hash"]
+    assert r["status"] == "PENDING_REVIEW"
+    print("✅ extracts calibration_event_id")
+
+def test_approval_request_ids_differ_for_different_source_previews_without_source_event_id():
+    r1 = build_approval_request(request_type="PROMPT_PATCH_APPROVAL", source_preview={"patch_id": "p1", "content": "a"}, reason="review")
+    r2 = build_approval_request(request_type="PROMPT_PATCH_APPROVAL", source_preview={"patch_id": "p2", "content": "b"}, reason="review")
+    assert r1["approval_request_id"] != r2["approval_request_id"]
+    print("✅ different source_previews produce different request_ids")
+
 if __name__ == "__main__":
     test_approval_request_pending_review_only()
     test_approval_request_requires_human_approval()
     test_approval_request_blocks_auto_effects()
+    test_approval_request_extracts_calibration_event_id()
+    test_approval_request_ids_differ_for_different_source_previews_without_source_event_id()
     print("\n🏁 Approval Request tests PASS")

@@ -4,8 +4,22 @@ from zmatrix.event_store.schemas import EVENT_TYPES, DEFAULT_EVENT_SAFETY
 from zmatrix.event_store.validators import validate_event
 
 def test_all_event_types_declared():
-    assert len(EVENT_TYPES) == 13
-    print(f"✅ {len(EVENT_TYPES)} EVENT_TYPES declared")
+    required = {
+        "ResearchEvent", "CandidateReviewEvent", "RoleClassificationEvent",
+        "PaperDecisionEvent", "PaperLedgerEvent", "OutcomeBackfillEvent",
+        "RiskEvent", "HumanDiaryEvent", "MistakeAttributionEvent",
+        "MemoryCandidateEvent", "CalibrationEvent", "HumanApprovalEvent",
+        "PromptPatchEvent", "ApprovalRequestEvent",
+    }
+    missing = required - set(EVENT_TYPES)
+    assert not missing, f"missing: {missing}"
+    print(f"✅ {len(EVENT_TYPES)} EVENT_TYPES declared (all {len(required)} required types present)")
+
+def test_approval_request_event_type_declared():
+    assert "ApprovalRequestEvent" in EVENT_TYPES
+    assert "HumanApprovalEvent" in EVENT_TYPES
+    assert "MemoryCandidateEvent" in EVENT_TYPES
+    print("✅ ApprovalRequestEvent, HumanApprovalEvent, MemoryCandidateEvent all declared")
 
 def test_default_safety_blocks_real_ops():
     s = DEFAULT_EVENT_SAFETY

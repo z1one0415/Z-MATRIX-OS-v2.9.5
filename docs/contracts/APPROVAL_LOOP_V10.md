@@ -18,3 +18,9 @@ APPROVE only records human approval — it does NOT:
 ## Link
 
 MemoryCandidatePreview → ApprovalRequest → HumanApprovalDecision → HumanApprovalEvent → EventStore
+
+## Event Types
+
+- ApprovalRequestEvent records approval request creation.
+- HumanApprovalEvent records human approval decisions.
+- MemoryCandidateEvent must NOT be used for approval requests.

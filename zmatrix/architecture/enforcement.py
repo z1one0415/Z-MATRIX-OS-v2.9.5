@@ -100,6 +100,7 @@ def run_architecture_enforcement() -> list[str]:
     v.extend(check_event_store_components())
     v.extend(check_hermes_memory_kernel_components())
     v.extend(check_approval_loop_components())
+    v.extend(check_prompt_middleware_components())
     return v
 def check_workspace_alignment_components() -> list[str]:
     from pathlib import Path
@@ -333,5 +334,58 @@ def check_approval_loop_components() -> list[str]:
             violations.append(f"docs/contracts/{d} missing")
     if not (root / "docs" / "architecture" / "APPROVAL_REQUIRED_REFLECTION_LOOP_V10.md").exists():
         violations.append("approval architecture doc missing")
+
+    return violations
+
+
+def check_prompt_middleware_components() -> list[str]:
+    """Check Prompt Middleware components existence and safety."""
+    from pathlib import Path
+    violations = []
+    root = Path(__file__).resolve().parent.parent.parent
+
+    # Package existence
+    pkg = root / "zmatrix" / "prompt_middleware"
+    for fname in ["__init__.py", "schemas.py", "patch_request.py", "renderer.py",
+                  "audit.py", "policy.py", "event_adapters.py"]:
+        if not (pkg / fname).exists():
+            violations.append(f"prompt_middleware/{fname} missing")
+
+    # Skills registered
+    from zmatrix.architecture.skill_registry import SHARED_SKILL_REGISTRY
+    for s in ["prompt.patch_request.build", "prompt.render_preview.build", "prompt.audit.build",
+              "prompt.policy.validate_request", "prompt.policy.validate_render", "prompt.policy.validate_audit",
+              "prompt.patch_request_event.build", "prompt.render_preview_event.build", "prompt.audit_event.build"]:
+        if s not in SHARED_SKILL_REGISTRY:
+            violations.append(f"Prompt skill '{s}' not registered")
+
+    # Gates registered
+    from zmatrix.architecture.gate_registry import GATE_REGISTRY
+    for g in ["prompt.preview_only.valid", "prompt.no_runtime_injection.valid",
+              "prompt.no_system_prompt_write.valid", "prompt.no_auto_injection.valid", "prompt.audit.valid"]:
+        if g not in GATE_REGISTRY:
+            violations.append(f"Prompt gate '{g}' not registered")
+
+    # Pipeline registered
+    from zmatrix.architecture.pipeline_registry import PIPELINE_REGISTRY
+    if "Z-PromptMiddlewarePreview" not in PIPELINE_REGISTRY:
+        violations.append("Z-PromptMiddlewarePreview pipeline not registered")
+
+    # Workflow registered
+    from zmatrix.architecture.workflow_dag import WORKFLOW_DAG_REGISTRY
+    if "Z-Prompt.middleware_preview_workflow" not in WORKFLOW_DAG_REGISTRY:
+        violations.append("Prompt workflow not registered")
+
+    # Docs exist
+    for d in ["PROMPT_PATCH_REQUEST_V10.md", "PROMPT_MIDDLEWARE_RENDER_PREVIEW_V10.md",
+              "PROMPT_PATCH_AUDIT_V10.md", "PROMPT_MIDDLEWARE_V10.md",
+              "PROMPT_HOT_PATCHING_MIDDLEWARE_PREVIEW_V10.md"]:
+        doc_path = root / "docs"
+        if d.endswith(".md") and d.startswith("PROMPT_HOT"):
+            doc_path = doc_path / "architecture" / d
+        else:
+            doc_path = doc_path / "contracts" / d
+        if not doc_path.exists():
+            violations.append(f"Prompt doc {d} missing")
 
     return violations

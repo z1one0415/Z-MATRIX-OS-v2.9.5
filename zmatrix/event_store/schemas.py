@@ -32,6 +32,11 @@ EVENT_TYPES = frozenset({
     "ApprovalRequestEvent",
 })
 
+# PromptPatchEvent may record prompt patch request/render/audit preview.
+# It does not imply system_prompt write.
+# It does not imply runtime injection.
+# It does not imply prompt auto injection.
+
 # ApprovalRequestEvent records approval requests only.
 # It does not imply human approval.
 # It does not imply Hermes memory write.

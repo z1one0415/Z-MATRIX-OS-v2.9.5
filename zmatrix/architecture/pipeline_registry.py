@@ -220,7 +220,30 @@ PIPELINE_REGISTRY: dict[str, dict[str, Any]] = {
         "contract": "docs/contracts/EVENT_STORE_V10.md",
         "test": "tests/test_event_store_architecture.py",
     },
-    "Z-ApprovalReflectionLoop": {
+        "Z-PromptMiddlewarePreview": {
+        "layer": "pipeline_application",
+        "pipeline_path": "zmatrix/prompt_middleware/",
+        "owner": "PromptMiddleware",
+        "allowed_skills": [
+            "prompt.patch_request.build", "prompt.render_preview.build", "prompt.audit.build",
+            "prompt.policy.validate_request", "prompt.policy.validate_render", "prompt.policy.validate_audit",
+            "prompt.patch_request_event.build", "prompt.render_preview_event.build", "prompt.audit_event.build",
+            "event_store.event.build", "safety.no_real_trade",
+        ],
+        "required_gates": [
+            "prompt.preview_only.valid", "prompt.no_runtime_injection.valid",
+            "prompt.no_system_prompt_write.valid", "prompt.no_auto_injection.valid",
+            "prompt.audit.valid", "safety.no_real_trade",
+        ],
+        "forbidden_capabilities": [
+            "real_trade", "broker_order", "real_z9_write", "hermes_memory_write",
+            "auto_calibration", "prompt_auto_injection", "system_prompt_write",
+            "runtime_prompt_injection", "real_market_fetch", "external_api_default_on",
+        ],
+        "contract": "docs/contracts/PROMPT_MIDDLEWARE_V10.md",
+        "test": "tests/test_prompt_middleware_architecture.py",
+    },
+"Z-ApprovalReflectionLoop": {
         "layer": "pipeline_application",
         "pipeline_path": "zmatrix/approval_loop/",
         "owner": "ApprovalLoop",

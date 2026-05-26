@@ -101,6 +101,7 @@ def run_architecture_enforcement() -> list[str]:
     v.extend(check_hermes_memory_kernel_components())
     v.extend(check_approval_loop_components())
     v.extend(check_prompt_middleware_components())
+    v.extend(check_tail_risk_components())
     return v
 def check_workspace_alignment_components() -> list[str]:
     from pathlib import Path
@@ -387,5 +388,57 @@ def check_prompt_middleware_components() -> list[str]:
             doc_path = doc_path / "contracts" / d
         if not doc_path.exists():
             violations.append(f"Prompt doc {d} missing")
+
+    return violations
+
+
+def check_tail_risk_components() -> list[str]:
+    """Check Tail-Risk components existence and safety."""
+    from pathlib import Path
+    violations = []
+    root = Path(__file__).resolve().parent.parent.parent
+
+    pkg = root / "zmatrix" / "tail_risk"
+    for fname in ["__init__.py", "schemas.py", "policy.py", "market_signals.py",
+                  "limit_down_blackhole.py", "domestic_liquidity_crash.py",
+                  "hibernate_mode.py", "wakeup_probation.py", "d_matrix_freeze.py",
+                  "risk_isolation_unit.py", "tail_risk_controller.py", "event_adapters.py"]:
+        if not (pkg / fname).exists():
+            violations.append(f"tail_risk/{fname} missing")
+
+    from zmatrix.architecture.skill_registry import SHARED_SKILL_REGISTRY
+    for s in ["tail.market_signals.normalize", "tail.limit_down_blackhole.evaluate",
+              "tail.domestic_liquidity_crash.evaluate", "tail.hibernate_mode.evaluate",
+              "tail.wakeup_probation.evaluate", "tail.d_matrix_freeze.evaluate",
+              "tail.risk_isolation.preview", "tail.controller.preview", "tail.policy.validate",
+              "tail.controller_event.build", "tail.gate_event.build", "tail.isolation_event.build"]:
+        if s not in SHARED_SKILL_REGISTRY:
+            violations.append(f"Tail skill '{s}' not registered")
+
+    from zmatrix.architecture.gate_registry import GATE_REGISTRY
+    for g in ["tail_risk.signal.valid", "tail_risk.preview_only.valid",
+              "tail_risk.no_broker_order.valid", "tail_risk.no_real_trade.valid",
+              "tail_risk.action_degradation.valid", "tail_risk.no_auto_sell.valid"]:
+        if g not in GATE_REGISTRY:
+            violations.append(f"Tail gate '{g}' not registered")
+
+    from zmatrix.architecture.pipeline_registry import PIPELINE_REGISTRY
+    if "Z-TailRiskAutonomicGates" not in PIPELINE_REGISTRY:
+        violations.append("Z-TailRiskAutonomicGates pipeline not registered")
+
+    from zmatrix.architecture.workflow_dag import WORKFLOW_DAG_REGISTRY
+    if "Z-TailRisk.autonomic_gates_preview_workflow" not in WORKFLOW_DAG_REGISTRY:
+        violations.append("Tail workflow not registered")
+
+    for fname in ["TAIL_RISK_GATES_V10.md", "LIMIT_DOWN_BLACKHOLE_V10.md",
+                  "DOMESTIC_LIQUIDITY_CRASH_V10.md", "HIBERNATE_MODE_V10.md",
+                  "WAKEUP_PROBATION_V10.md", "D_MATRIX_FREEZE_V10.md",
+                  "BMO_RISK_ISOLATION_UNIT_V10.md", "TAIL_RISK_CONTROLLER_V10.md",
+                  "TAIL_RISK_AUTONOMIC_GATES_PREVIEW_V10.md"]:
+        candidate = root / "docs" / "contracts" / fname
+        if not candidate.exists():
+            candidate = root / "docs" / "architecture" / fname
+        if not candidate.exists():
+            violations.append(f"Tail risk doc {fname} missing")
 
     return violations

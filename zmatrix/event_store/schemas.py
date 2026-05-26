@@ -23,6 +23,11 @@ EVENT_TYPES = frozenset({
     "PaperLedgerEvent",
     "OutcomeBackfillEvent",
     "RiskEvent",
+# RiskEvent may record tail-risk gate preview, controller preview, or risk isolation preview.
+# It does not imply broker order.
+# It does not imply auto sell.
+# It does not imply position close.
+# It does not imply real trade.
     "HumanDiaryEvent",
     "MistakeAttributionEvent",
     "MemoryCandidateEvent",

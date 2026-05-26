@@ -220,7 +220,34 @@ PIPELINE_REGISTRY: dict[str, dict[str, Any]] = {
         "contract": "docs/contracts/EVENT_STORE_V10.md",
         "test": "tests/test_event_store_architecture.py",
     },
-    "Z-PromptMiddlewarePreview": {
+        "Z-TailRiskAutonomicGates": {
+        "layer": "pipeline_application",
+        "pipeline_path": "zmatrix/tail_risk/",
+        "owner": "TailRisk",
+        "allowed_skills": [
+            "tail.market_signals.normalize", "tail.limit_down_blackhole.evaluate",
+            "tail.domestic_liquidity_crash.evaluate", "tail.hibernate_mode.evaluate",
+            "tail.wakeup_probation.evaluate", "tail.d_matrix_freeze.evaluate",
+            "tail.risk_isolation.preview", "tail.controller.preview", "tail.policy.validate",
+            "tail.controller_event.build", "tail.gate_event.build", "tail.isolation_event.build",
+            "event_store.event.build", "safety.no_real_trade",
+        ],
+        "required_gates": [
+            "tail_risk.signal.valid", "tail_risk.preview_only.valid",
+            "tail_risk.no_broker_order.valid", "tail_risk.no_real_trade.valid",
+            "tail_risk.action_degradation.valid", "tail_risk.no_auto_sell.valid",
+            "safety.no_real_trade",
+        ],
+        "forbidden_capabilities": [
+            "real_trade", "broker_order", "auto_buy", "auto_sell",
+            "auto_position_close", "real_z9_write", "hermes_memory_write",
+            "auto_calibration", "prompt_auto_injection", "real_market_fetch",
+            "external_api_default_on",
+        ],
+        "contract": "docs/contracts/TAIL_RISK_CONTROLLER_V10.md",
+        "test": "tests/test_tail_risk_architecture.py",
+    },
+"Z-PromptMiddlewarePreview": {
         "layer": "pipeline_application",
         "pipeline_path": "zmatrix/prompt_middleware/",
         "owner": "PromptMiddleware",

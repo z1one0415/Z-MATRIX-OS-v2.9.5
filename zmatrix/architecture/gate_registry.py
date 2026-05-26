@@ -397,7 +397,53 @@ GATE_REGISTRY: dict[str, dict[str, Any]] = {
     },
         
     
-    "integration.readiness_map.valid": {
+    
+    "dry_run.only.valid": {
+        "layer": "system_control", "gate_type": "safety",
+        "owner": "SystemCore", "purpose": "Ensure dry-run mode only",
+        "applies_to": ["Z-V3AlphaDryRunRehearsal"],
+        "enforced_by": "zmatrix.dry_run.rehearsal_validator.validate_v3_alpha_dry_run_rehearsal",
+        "blocking": True, "degradable": False,
+        "contract": "docs/contracts/V3_ALPHA_DRY_RUN_REHEARSAL_V10.md",
+        "test": "tests/test_v3_alpha_dry_run_architecture.py",
+    },
+    "dry_run.no_runtime.valid": {
+        "layer": "system_control", "gate_type": "safety",
+        "owner": "SystemCore", "purpose": "Block runtime enable from dry-run",
+        "applies_to": ["Z-V3AlphaDryRunRehearsal"],
+        "enforced_by": "zmatrix.dry_run.rehearsal_validator.validate_v3_alpha_dry_run_rehearsal",
+        "blocking": True, "degradable": False,
+        "contract": "docs/contracts/V3_ALPHA_DRY_RUN_REHEARSAL_V10.md",
+        "test": "tests/test_v3_alpha_dry_run_architecture.py",
+    },
+    "dry_run.no_real_trade.valid": {
+        "layer": "system_control", "gate_type": "safety",
+        "owner": "SystemCore", "purpose": "Block real trade from dry-run",
+        "applies_to": ["Z-V3AlphaDryRunRehearsal"],
+        "enforced_by": "zmatrix.dry_run.rehearsal_validator.validate_v3_alpha_dry_run_rehearsal",
+        "blocking": True, "degradable": False,
+        "contract": "docs/contracts/V3_ALPHA_DRY_RUN_REHEARSAL_V10.md",
+        "test": "tests/test_v3_alpha_dry_run_architecture.py",
+    },
+    "dry_run.no_memory_write.valid": {
+        "layer": "system_control", "gate_type": "safety",
+        "owner": "SystemCore", "purpose": "Block Hermes memory write from dry-run",
+        "applies_to": ["Z-V3AlphaDryRunRehearsal"],
+        "enforced_by": "zmatrix.dry_run.rehearsal_validator.validate_v3_alpha_dry_run_rehearsal",
+        "blocking": True, "degradable": False,
+        "contract": "docs/contracts/V3_ALPHA_DRY_RUN_REHEARSAL_V10.md",
+        "test": "tests/test_v3_alpha_dry_run_architecture.py",
+    },
+    "dry_run.no_prompt_injection.valid": {
+        "layer": "system_control", "gate_type": "safety",
+        "owner": "SystemCore", "purpose": "Block prompt injection from dry-run",
+        "applies_to": ["Z-V3AlphaDryRunRehearsal"],
+        "enforced_by": "zmatrix.dry_run.rehearsal_validator.validate_v3_alpha_dry_run_rehearsal",
+        "blocking": True, "degradable": False,
+        "contract": "docs/contracts/V3_ALPHA_DRY_RUN_REHEARSAL_V10.md",
+        "test": "tests/test_v3_alpha_dry_run_architecture.py",
+    },
+"integration.readiness_map.valid": {
         "layer": "system_control", "gate_type": "contract",
         "owner": "SystemCore", "purpose": "Validate readiness map schema",
         "applies_to": ["Z-V3AlphaReadinessGate"],

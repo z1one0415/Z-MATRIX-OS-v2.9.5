@@ -847,6 +847,35 @@ SHARED_SKILL_REGISTRY: dict[str, dict[str, Any]] = {
         "duplicate_allowed": False,
         "safety_boundary": "no real trade, report only, no runtime enable, no Hermes memory write, no broker order",
     },
+
+    # === Dry-Run skills (v2.9.17-dev) ===
+    "dry_run.rehearsal.build": {
+        "layer": "shared_skill", "module": "zmatrix.dry_run.rehearsal_runner",
+        "public_function": "build_v3_alpha_dry_run_rehearsal", "owner": "DryRun",
+        "used_by": ["Z-V3AlphaDryRunRehearsal"],
+        "contract": "docs/contracts/V3_ALPHA_DRY_RUN_REHEARSAL_V10.md",
+        "test": "tests/test_v3_alpha_dry_run_rehearsal.py",
+        "duplicate_allowed": False,
+        "safety_boundary": "no real trade, dry-run-only, no runtime enable, no Hermes memory write, no real Z9 write, no prompt injection",
+    },
+    "dry_run.rehearsal.validate": {
+        "layer": "shared_skill", "module": "zmatrix.dry_run.rehearsal_validator",
+        "public_function": "validate_v3_alpha_dry_run_rehearsal", "owner": "DryRun",
+        "used_by": ["Z-V3AlphaDryRunRehearsal"],
+        "contract": "docs/contracts/V3_ALPHA_DRY_RUN_VALIDATION_V10.md",
+        "test": "tests/test_v3_alpha_dry_run_validator.py",
+        "duplicate_allowed": False,
+        "safety_boundary": "no real trade, validation only, dry-run-only, no Hermes memory write",
+    },
+    "dry_run.report.build": {
+        "layer": "shared_skill", "module": "zmatrix.dry_run.rehearsal_report",
+        "public_function": "build_v3_alpha_dry_run_report", "owner": "DryRun",
+        "used_by": ["Z-V3AlphaDryRunRehearsal"],
+        "contract": "docs/contracts/V3_ALPHA_DRY_RUN_REPORT_V10.md",
+        "test": "tests/test_v3_alpha_dry_run_report.py",
+        "duplicate_allowed": False,
+        "safety_boundary": "no real trade, report only, dry-run-only, no runtime enable, no Hermes memory write",
+    },
 }
 
 

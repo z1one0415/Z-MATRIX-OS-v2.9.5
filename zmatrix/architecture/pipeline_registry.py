@@ -220,7 +220,30 @@ PIPELINE_REGISTRY: dict[str, dict[str, Any]] = {
         "contract": "docs/contracts/EVENT_STORE_V10.md",
         "test": "tests/test_event_store_architecture.py",
     },
-            "Z-V3AlphaReadinessGate": {
+                "Z-V3AlphaDryRunRehearsal": {
+        "layer": "pipeline_application",
+        "pipeline_path": "zmatrix/dry_run/",
+        "owner": "DryRun",
+        "allowed_skills": [
+            "dry_run.rehearsal.build", "dry_run.rehearsal.validate",
+            "dry_run.report.build", "integration.readiness_report.build",
+            "safety.no_real_trade",
+        ],
+        "required_gates": [
+            "dry_run.only.valid", "dry_run.no_runtime.valid",
+            "dry_run.no_real_trade.valid", "dry_run.no_memory_write.valid",
+            "dry_run.no_prompt_injection.valid", "safety.no_real_trade",
+        ],
+        "forbidden_capabilities": [
+            "real_trade", "broker_order", "auto_buy", "auto_sell",
+            "auto_position_close", "real_z9_write", "hermes_memory_write",
+            "auto_calibration", "prompt_auto_injection", "system_prompt_write",
+            "runtime_prompt_injection", "real_market_fetch", "external_api_default_on",
+        ],
+        "contract": "docs/contracts/V3_ALPHA_DRY_RUN_REHEARSAL_V10.md",
+        "test": "tests/test_v3_alpha_dry_run_architecture.py",
+    },
+"Z-V3AlphaReadinessGate": {
         "layer": "pipeline_application",
         "pipeline_path": "zmatrix/integration/",
         "owner": "IntegrationGate",

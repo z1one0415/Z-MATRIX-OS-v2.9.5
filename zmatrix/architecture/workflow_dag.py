@@ -267,7 +267,36 @@ WORKFLOW_DAG_REGISTRY: dict[str, dict[str, Any]] = {
         "contract": "docs/architecture/HERMES_MEMORY_KERNEL_ARCHITECTURE_V10.md",
         "test": "tests/test_hermes_memory_architecture.py",
     },
-            "Z-Integration.v3_alpha_readiness_gate_workflow": {
+                "Z-DryRun.v3_alpha_rehearsal_workflow": {
+        "layer": "workflow_dag",
+        "pipeline": "Z-V3AlphaDryRunRehearsal",
+        "purpose": "v3.0-alpha dry-run rehearsal: build → validate → report → readiness",
+        "nodes": [
+            "dry_run.rehearsal.build", "dry_run.rehearsal.validate",
+            "dry_run.report.build", "integration.readiness_report.build",
+            "safety.no_real_trade",
+        ],
+        "edges": [
+            ("dry_run.rehearsal.build", "dry_run.rehearsal.validate"),
+            ("dry_run.rehearsal.validate", "dry_run.report.build"),
+            ("dry_run.report.build", "integration.readiness_report.build"),
+            ("integration.readiness_report.build", "safety.no_real_trade"),
+        ],
+        "required_gates": [
+            "dry_run.only.valid", "dry_run.no_runtime.valid",
+            "dry_run.no_real_trade.valid", "dry_run.no_memory_write.valid",
+            "dry_run.no_prompt_injection.valid", "safety.no_real_trade",
+        ],
+        "forbidden_capabilities": [
+            "real_trade", "broker_order", "auto_buy", "auto_sell",
+            "auto_position_close", "real_z9_write", "hermes_memory_write",
+            "auto_calibration", "prompt_auto_injection", "system_prompt_write",
+            "runtime_prompt_injection", "real_market_fetch", "external_api_default_on",
+        ],
+        "contract": "docs/architecture/V3_ALPHA_DRY_RUN_REHEARSAL_V10.md",
+        "test": "tests/test_v3_alpha_dry_run_architecture.py",
+    },
+"Z-Integration.v3_alpha_readiness_gate_workflow": {
         "layer": "workflow_dag",
         "pipeline": "Z-V3AlphaReadinessGate",
         "purpose": "v3.0-alpha integration readiness gate: map → audit → validate → report",

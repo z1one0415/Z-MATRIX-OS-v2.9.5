@@ -215,10 +215,10 @@
       "priority_scene": "A"
     },
     {
-      "id": "3a31d4df",
-      "timestamp": "2026-05-25 23:08:12",
+      "id": "5ae0ed4b",
+      "timestamp": "2026-05-25 08:12:00",
       "stock": "002472",
-      "situation": "2026-05-25 | MACRO:3逆风1顺风 | Universe:WATCHLIST",
+      "situation": "2026-05-25 | MACRO:3逆风1顺风 | Universe:PRESET_DEV",
       "your_view": "用户尚未操作(等待确认)",
       "my_advice": "Z-G18: 75% PAPER_TRACK T1:70% T5:75% T20:70%",
       "actual_action": "PENDING",
@@ -270,63 +270,6 @@
       ],
       "emotion": "中性",
       "priority_scene": "A"
-    },
-    {
-      "id": "38ded8f0",
-      "timestamp": "2026-05-26 08:08:26",
-      "stock": "002472",
-      "situation": "2026-05-26 | MACRO:3逆风1顺风 | Universe:PRESET_DEV",
-      "your_view": "用户尚未操作(等待确认)",
-      "my_advice": "Z-G18: 75% PAPER_TRACK T1:70% T5:75% T20:70%",
-      "actual_action": "PENDING",
-      "outcome": null,
-      "cost": null,
-      "lesson": null,
-      "tags": [
-        "天机引擎",
-        "auto",
-        "PAPER_TRACK"
-      ],
-      "emotion": "中性",
-      "priority_scene": "A"
-    },
-    {
-      "id": "2575e5dc",
-      "timestamp": "2026-05-26 08:08:26",
-      "stock": "600519",
-      "situation": "2026-05-26 | MACRO:3逆风1顺风 | Universe:PRESET_DEV",
-      "your_view": "用户尚未操作(等待确认)",
-      "my_advice": "Z-G18: 75% PAPER_TRACK T1:70% T5:75% T20:70%",
-      "actual_action": "PENDING",
-      "outcome": null,
-      "cost": null,
-      "lesson": null,
-      "tags": [
-        "天机引擎",
-        "auto",
-        "PAPER_TRACK"
-      ],
-      "emotion": "中性",
-      "priority_scene": "A"
-    },
-    {
-      "id": "6406c7b6",
-      "timestamp": "2026-05-26 08:08:26",
-      "stock": "601898",
-      "situation": "2026-05-26 | MACRO:3逆风1顺风 | Universe:PRESET_DEV",
-      "your_view": "用户尚未操作(等待确认)",
-      "my_advice": "Z-G18: 75% PAPER_TRACK T1:70% T5:75% T20:70%",
-      "actual_action": "PENDING",
-      "outcome": null,
-      "cost": null,
-      "lesson": null,
-      "tags": [
-        "天机引擎",
-        "auto",
-        "PAPER_TRACK"
-      ],
-      "emotion": "中性",
-      "priority_scene": "A"
     }
   ],
   "patterns": {
@@ -344,23 +287,18 @@
       "detected_at": "2026-05-22",
       "occurrences": 3,
       "suggestion": "该模式已出现3次, 建议总结规律。"
-    },
-    "WAIT": {
-      "detected_at": "2026-05-25",
-      "occurrences": 3,
-      "suggestion": "该模式已出现3次, 建议总结规律。"
     }
   },
   "stats": {
-    "total": 17,
+    "total": 14,
     "by_stock": {
-      "002472": 110,
+      "002472": 40,
       "601899": 3,
       "000977": 2,
       "518880": 1,
       "002979": 1,
-      "601898": 3,
-      "600519": 2
+      "601898": 2,
+      "600519": 1
     },
     "by_type": {
       "D1洗盘": 1,
@@ -377,10 +315,10 @@
       "框架缺陷": 1,
       "BOM偏差": 1,
       "遗漏": 1,
-      "天机引擎": 117,
-      "auto": 117,
-      "PAPER_TRACK": 92,
-      "WAIT": 25
+      "天机引擎": 45,
+      "auto": 45,
+      "PAPER_TRACK": 44,
+      "WAIT": 1
     }
   }
 }

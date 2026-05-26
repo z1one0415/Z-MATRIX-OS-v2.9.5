@@ -9,6 +9,34 @@ from zmatrix.alpha_rc.known_limitations import build_v3_alpha_known_limitations
 from zmatrix.integration.readiness_report import build_v3_alpha_readiness_report
 from zmatrix.dry_run.rehearsal_report import build_v3_alpha_dry_run_report
 
+
+_BLOCKED_FIELDS = [
+    "real_trade_allowed", "broker_order_allowed", "auto_buy_allowed",
+    "auto_sell_allowed", "auto_position_close_allowed", "real_z9_write_allowed",
+    "hermes_memory_write_allowed", "auto_calibration_allowed",
+    "prompt_auto_injection_allowed", "system_prompt_write_allowed",
+    "runtime_injection_allowed", "runtime_enabled", "external_api_default_on",
+]
+
+
+def _check_blocked_fields(prefix: str, record: dict) -> list[str]:
+    violations = []
+    if not isinstance(record, dict):
+        return violations
+    for field in _BLOCKED_FIELDS:
+        if record.get(field) is True:
+            violations.append(f"{prefix}.{field} must be False")
+    safety = record.get("safety", {})
+    if safety is None:
+        safety = {}
+    if not isinstance(safety, dict):
+        violations.append(f"{prefix}.safety must be dict")
+        return violations
+    for field in _BLOCKED_FIELDS:
+        if safety.get(field) is True:
+            violations.append(f"{prefix}.safety.{field} must be False")
+    return violations
+
 _RC_GATE_VERSION = "V3_ALPHA_RC_GATE_VALIDATION_V10"
 
 
@@ -56,11 +84,26 @@ def validate_v3_alpha_rc_gate() -> dict:
                   "hermes_memory_write_allowed", "real_z9_write_allowed",
                   "auto_calibration_allowed", "prompt_auto_injection_allowed",
                   "system_prompt_write_allowed"]:
-        if manifest.get("safety", {}).get(field) is True:
+        safety = manifest.get("safety", {})
+        if not isinstance(safety, dict):
+            safety = {}
+        if safety.get(field) is True:
             violations.append(f"manifest.safety.{field} must be False")
+
+    # Recursive safety check on all RC outputs
+    for name, obj in {
+        "manifest": manifest,
+        "verification_matrix": ver_matrix,
+        "module_inventory": inventory,
+        "known_limitations": limitations,
+        "readiness_report": readiness,
+        "dry_run_report": dry_run,
+    }.items():
+        violations.extend(_check_blocked_fields(name, obj))
 
     return {
         "rc_gate_version": _RC_GATE_VERSION,
+        "blocked_fields_checked": list(_BLOCKED_FIELDS),
         "pass": len(violations) == 0,
         "violations": violations,
         "manifest": manifest,

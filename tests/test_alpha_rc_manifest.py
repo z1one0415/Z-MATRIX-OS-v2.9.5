@@ -19,8 +19,30 @@ def test_manifest_required_scripts_present():
     assert len(m["required_verify_scripts"]) == 8
     print(f"✅ {len(m['required_verify_scripts'])} required scripts")
 
+def test_manifest_required_scripts_exact_set():
+    from zmatrix.alpha_rc.manifest_builder import build_v3_alpha_release_manifest
+    m = build_v3_alpha_release_manifest()
+    expected = {
+        "scripts/verify_workspace_alignment_candidate.sh",
+        "scripts/verify_event_store_candidate.sh",
+        "scripts/verify_hermes_memory_candidate.sh",
+        "scripts/verify_approval_loop_candidate.sh",
+        "scripts/verify_prompt_middleware_candidate.sh",
+        "scripts/verify_tail_risk_candidate.sh",
+        "scripts/verify_v3_alpha_readiness_candidate.sh",
+        "scripts/verify_v3_alpha_dry_run_candidate.sh",
+    }
+    assert set(m["required_verify_scripts"]) == expected
+    print("✅ manifest required scripts exact set matches")
+
+print("\n🏁 Alpha RC Manifest tests PASS")
+
+
+
 if __name__ == "__main__":
     test_manifest_contains_v2910_to_v2917()
     test_manifest_runtime_false()
     test_manifest_required_scripts_present()
-    print("\n🏁 Alpha RC Manifest tests PASS")
+    test_manifest_required_scripts_exact_set()
+    
+

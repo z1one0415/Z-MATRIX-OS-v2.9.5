@@ -1,4 +1,4 @@
-"""BRD Classifier Adapter v3.2 — connect PIT features to B/R/D or mark BRD_NOT_CONNECTED"""
+"""BRD Classifier Adapter v3.3 — default to real connector, no fake connections"""
 from __future__ import annotations
 from typing import Any
 
@@ -7,30 +7,30 @@ def _safe_float(x, default=0.0):
     except: return default
 
 def _fallback_brd_not_connected(*, ticker, replay_date, reason="BRD_NOT_CONNECTED"):
-    return {"classifier_version":"BRD_CLASSIFIER_ADAPTER_V10","mode":"HISTORICAL_REPLAY_ONLY",
+    return {"classifier_version":"BRD_CLASSIFIER_ADAPTER_V11","mode":"HISTORICAL_REPLAY_ONLY",
             "ticker":ticker,"replay_date":replay_date,"role":"UNKNOWN","role_confidence":0.0,
             "brd_score":0.0,"hard_gate_passed":False,"decision":"WATCH_ONLY",
             "fallback":True,"fallback_reason":reason,"brd_connected":False,
-            "safety":{}, "real_trade_allowed":False,"broker_order_allowed":False}
+            "real_trade_allowed":False,"broker_order_allowed":False}
 
 def run_brd_classifier_adapter(*, ticker, replay_date, pit_features, classifier=None):
     if not pit_features or pit_features.get("feature_status") != "READY":
-        return _fallback_brd_not_connected(ticker=ticker, replay_date=replay_date, reason="DATA_GAP")
-    if classifier is None:
-        return _fallback_brd_not_connected(ticker=ticker, replay_date=replay_date)
+        return _fallback_brd_not_connected(ticker=ticker,replay_date=replay_date,reason="DATA_GAP")
+    active = classifier
+    if active is None:
+        from zmatrix.brd_replay.real_brd_connector import build_real_brd_classifier_connector
+        active = build_real_brd_classifier_connector()
     try:
-        if callable(classifier): raw = classifier(pit_features)
-        elif hasattr(classifier,"classify"): raw = classifier.classify(pit_features)
-        else: return _fallback_brd_not_connected(ticker=ticker,replay_date=replay_date,reason="INVALID_CLASSIFIER_INTERFACE")
-        role = raw.get("role","UNKNOWN")
-        decision = raw.get("decision","WATCH_ONLY")
-        if decision in ("BUY","ENTER","ADD","AUTO_BUY"): decision = "WATCH_ONLY"
-        return {"classifier_version":"BRD_CLASSIFIER_ADAPTER_V10","mode":"HISTORICAL_REPLAY_ONLY",
-                "ticker":ticker,"replay_date":replay_date,"role":role,
-                "role_confidence":_safe_float(raw.get("role_confidence")),
-                "brd_score":_safe_float(raw.get("brd_score")),
-                "hard_gate_passed":bool(raw.get("hard_gate_passed",False)),
-                "decision":decision,"fallback":False,"fallback_reason":"","brd_connected":True,
-                "real_trade_allowed":False,"broker_order_allowed":False}
+        if callable(active): raw = active(pit_features)
+        elif hasattr(active,"classify"): raw = active.classify(pit_features)
+        else: return _fallback_brd_not_connected(ticker=ticker,replay_date=replay_date,reason="INVALID_INTERFACE")
+        from zmatrix.brd_replay.classifier_interface import normalize_brd_classifier_output
+        n = normalize_brd_classifier_output(raw)
+        bcd = bool(raw.get("brd_connected")) or raw.get("connector_status")=="CONNECTED"
+        if not bcd: return _fallback_brd_not_connected(ticker=ticker,replay_date=replay_date,
+            reason=raw.get("fallback_reason","BRD_NOT_CONNECTED"))
+        n.update({"classifier_version":"BRD_CLASSIFIER_ADAPTER_V11","mode":"HISTORICAL_REPLAY_ONLY",
+            "ticker":ticker,"replay_date":replay_date,"fallback":False,"brd_connected":True})
+        return n
     except Exception as e:
         return _fallback_brd_not_connected(ticker=ticker,replay_date=replay_date,reason=f"CLASSIFIER_ERROR:{str(e)[:80]}")

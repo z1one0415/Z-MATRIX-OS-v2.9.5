@@ -8,13 +8,13 @@ from zmatrix.brd_replay.brd_classifier_adapter import run_brd_classifier_adapter
 from zmatrix.brd_replay.paper_action_builder import build_paper_action_from_brd
 from zmatrix.brd_replay.outcome_linker import build_outcome_for_paper_action
 
-def run_single_day_brd_strategy_replay(*, replay_date, local_data_root, max_tickers=None, benchmark_code=None):
+def run_single_day_brd_strategy_replay(*, replay_date, local_data_root, max_tickers=None, benchmark_code=None, classifier=None):
     universe = build_replay_universe(replay_date=replay_date, local_data_root=local_data_root, max_tickers=max_tickers)
     rows, paper_actions, outcomes, failures = [], [], [], []
     for ticker in universe.get("tickers",[]):
         try:
             features = build_pit_features(ticker=ticker, replay_date=replay_date, local_data_root=local_data_root)
-            brd = run_brd_classifier_adapter(ticker=ticker, replay_date=replay_date, pit_features=features)
+            brd = run_brd_classifier_adapter(ticker=ticker, replay_date=replay_date, pit_features=features, classifier=classifier)
             price = features.get("price_snapshot",{})
             paper = build_paper_action_from_brd(replay_date=replay_date, ticker=ticker, brd_result=brd, price_snapshot=price)
             outcome = build_outcome_for_paper_action(paper_action=paper, local_data_root=local_data_root, benchmark_code=benchmark_code)

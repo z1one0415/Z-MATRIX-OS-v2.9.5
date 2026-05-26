@@ -1,8 +1,11 @@
 """Local SQLite EventStore — append-only, idempotent, conflict-safe
 
 - append-only writes
-- Same event_id + same payload → idempotent
-- Same event_id + different payload → conflict (no overwrite)
+- Same event_id + same canonical event → idempotent
+- Same event_id + different canonical event → conflict (no overwrite)
+- Conflict detection compares ALL base fields (event_type, schema_version, created_at,
+  producer_module, source_event_id, parent_event_id, input_hash, output_hash,
+  payload, safety), not just payload
 - No real Z9 write
 - No Hermes memory write
 """
@@ -15,6 +18,28 @@ from typing import Any
 from zmatrix.event_store.validators import validate_event
 
 _DEFAULT_DB_PATH = "data/event_store/event_store.sqlite"
+
+
+def _canonical_event_for_compare(event: dict) -> str:
+    """Serialize a canonical representation of the full event for idempotency comparison.
+
+    Includes ALL base fields: event_type, schema_version, created_at, producer_module,
+    source_event_id, parent_event_id, input_hash, output_hash, payload, safety.
+    Does NOT include event_id (it's the lookup key) or metadata-only fields.
+    """
+    comparable = {
+        "event_type": event.get("event_type"),
+        "schema_version": event.get("schema_version"),
+        "created_at": event.get("created_at"),
+        "producer_module": event.get("producer_module"),
+        "source_event_id": event.get("source_event_id"),
+        "parent_event_id": event.get("parent_event_id"),
+        "input_hash": event.get("input_hash"),
+        "output_hash": event.get("output_hash"),
+        "payload": event.get("payload", {}),
+        "safety": event.get("safety", {}),
+    }
+    return json.dumps(comparable, sort_keys=True, ensure_ascii=False)
 
 
 class LocalEventStore:
@@ -74,13 +99,19 @@ class LocalEventStore:
         conn = self._get_connection()
 
         existing = conn.execute(
-            "SELECT payload_json FROM events WHERE event_id = ?", (eid,)
+            """SELECT event_id, event_type, schema_version, created_at, producer_module,
+            source_event_id, parent_event_id, input_hash, output_hash,
+            payload_json, safety_json
+            FROM events WHERE event_id = ?""",
+            (eid,),
         ).fetchone()
 
         if existing is not None:
-            existing_payload = existing[0]
-            new_payload = json.dumps(event.get("payload", {}), sort_keys=True)
-            if existing_payload == new_payload:
+            existing_event = self._row_to_dict(existing)
+            existing_canon = _canonical_event_for_compare(existing_event)
+            new_canon = _canonical_event_for_compare(event)
+
+            if existing_canon == new_canon:
                 return {
                     "event_id": eid,
                     "stored": True,

@@ -207,6 +207,21 @@ WORKFLOW_DAG_REGISTRY: dict[str, dict[str, Any]] = {
             "event_store.jsonl.export",
             "safety.no_real_trade",
         ],
+        "required_gates": [
+            "event.schema.valid",
+            "event.safety.valid",
+            "event.lineage.valid",
+            "event.append_only.valid",
+            "safety.no_real_trade",
+        ],
+        "edges": [
+            "event_store.event.build",
+            "event_store.local.append",
+            "event_store.local.query",
+            "event_store.lineage.trace",
+            "event_store.jsonl.export",
+            "safety.no_real_trade",
+        ],
         "edges": [
             ("event_store.event.build", "event_store.local.append"),
             ("event_store.local.append", "event_store.local.query"),

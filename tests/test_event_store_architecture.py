@@ -32,7 +32,8 @@ def test_event_store_workflow_registered():
     w = WORKFLOW_DAG_REGISTRY[wid]
     assert len(w["nodes"]) == 6
     assert len(w["edges"]) == 5
-    print(f"✅ EventStore workflow registered: {len(w['nodes'])} nodes, {len(w['edges'])} edges")
+    assert "required_gates" in w
+    print(f"✅ EventStore workflow registered: {len(w['nodes'])} nodes, {len(w['edges'])} edges, required_gates present")
 
 def test_event_store_docs_exist():
     root = Path(__file__).resolve().parent.parent
@@ -55,6 +56,25 @@ def test_event_store_forbids_real_z9_and_hermes_write():
     assert "hermes_memory_write" in fc
     print("✅ Z-EventStore pipeline forbids real_z9 and hermes_memory write")
 
+def test_event_store_workflow_required_gates_registered():
+    from zmatrix.architecture.workflow_dag import WORKFLOW_DAG_REGISTRY
+    wid = "Z-EventStore.unified_event_ledger_workflow"
+    w = WORKFLOW_DAG_REGISTRY.get(wid)
+    assert w is not None, f"workflow {wid} not found"
+
+    required = [
+        "event.schema.valid",
+        "event.safety.valid",
+        "event.lineage.valid",
+        "event.append_only.valid",
+        "safety.no_real_trade",
+    ]
+
+    gates = w.get("required_gates", [])
+    missing = [g for g in required if g not in gates]
+    assert not missing, f"missing workflow required_gates: {missing}"
+    print(f"✅ EventStore workflow has {len(gates)} required_gates (all 5 gates present)")
+
 if __name__ == "__main__":
     test_event_store_skills_registered()
     test_event_store_gates_registered()
@@ -62,4 +82,5 @@ if __name__ == "__main__":
     test_event_store_workflow_registered()
     test_event_store_docs_exist()
     test_event_store_forbids_real_z9_and_hermes_write()
+    test_event_store_workflow_required_gates_registered()
     print("\n🏁 EventStore Architecture tests PASS")

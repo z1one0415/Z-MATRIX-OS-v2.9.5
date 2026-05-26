@@ -54,8 +54,51 @@ def build_b_matrix_pit(*, ticker, replay_date, local_data_root, pit_features=Non
                 "source_fundamentals":fund,"safety":dict(DEFAULT_BRD_MATRIX_PIT_SAFETY),"real_trade_allowed":False,"broker_order_allowed":False}
 
     s = fund.get("snapshot",{})
-    qs = int((_sp(s.get("roe"),8,15)+_sp(s.get("gross_margin"),20,35)+_si(s.get("debt_ratio"),45,75))/3)
-    gs = int((_sp(s.get("revenue_yoy"),5,20)+_sp(s.get("profit_yoy"),5,20))/2)
+    # Percentile-based scoring calibrated to A-share distribution:
+    # ROE: median≈6.9%, top quartile≈12% → ≥2.5%=25pts, ≥median=50pts, ≥12%=75pts, ≥20%=100pts
+    def _roe_score(x):
+        if x is None: return 0
+        if x >= 20: return 100
+        if x >= 12: return 75
+        if x >= 6.9: return 50
+        if x >= 2.5: return 25
+        return 0
+    # GM: median≈25%, top quartile≈40% → ≥10%=25pts, ≥25%=50pts, ≥40%=75pts, ≥60%=100pts
+    def _gm_score(x):
+        if x is None: return 0
+        if x >= 60: return 100
+        if x >= 40: return 75
+        if x >= 25: return 50
+        if x >= 10: return 25
+        return 0
+    # DR: median≈41%, danger>75% → ≤25%=100pts, ≤41%=75pts, ≤60%=50pts, ≤75%=25pts
+    def _dr_score(x):
+        if x is None: return 0
+        if x <= 25: return 100
+        if x <= 41: return 75
+        if x <= 60: return 50
+        if x <= 75: return 25
+        return 0
+    # Growth: ≥0=25pts, ≥5%=50pts, ≥15%=75pts, ≥30%=100pts
+    def _g_score(x):
+        if x is None: return 0
+        if x >= 30: return 100
+        if x >= 15: return 75
+        if x >= 5: return 50
+        if x >= 0: return 25
+        return 0
+
+    # Detect financial sector: high debt + no gross_margin → likely bank/insurance
+    is_financial = (s.get("debt_ratio") is not None and s["debt_ratio"] > 85 and s.get("gross_margin") is None)
+    
+    qs = int((_roe_score(s.get("roe"))+_gm_score(s.get("gross_margin"))+_dr_score(s.get("debt_ratio")))/3)
+    if is_financial:
+        # Financial stocks: use ROE only for quality (debt/gross_margin not applicable)
+        qs = int((_roe_score(s.get("roe"))*2)/2)  # weight ROE 2x for financials
+    gs = int((_g_score(s.get("revenue_yoy"))+_g_score(s.get("profit_yoy")))/2)
+    # If no growth data at all, assume neutral (25pts) — don't penalize missing data
+    if s.get("revenue_yoy") is None and s.get("profit_yoy") is None:
+        gs = 25
 
     pe, pb, valuation_method = _compute_pe_pb(s, pit_features)
     vs = 0
@@ -71,8 +114,8 @@ def build_b_matrix_pit(*, ticker, replay_date, local_data_root, pit_features=Non
     total = int(qs*0.45+gs*0.35+vs*0.20)
 
     # Gate logic: removed vs>=30 hard gate
-    quality_gate = qs >= 50
-    growth_gate = gs >= 40
+    quality_gate = qs >= 40
+    growth_gate = gs >= 30
     hgp = quality_gate and growth_gate
 
     # Role cap based on data completeness

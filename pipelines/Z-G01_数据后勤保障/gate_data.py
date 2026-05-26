@@ -546,9 +546,48 @@ def l4_health(ticker):
     if errs: return {"status":"DEGRADED","name":bs.get("name",""),"errors":errs}
     return {"status":"PASS","name":bs.get("name",""),"tradable":True,"errors":[]}
 
+
+# ═══ 本地持久化缓存优先读取 ═══
+def _disk_get_kline(ticker: str, n: int = 60) -> dict | None:
+    """优先读取 data/price_bars/{ticker}.csv，不调 API"""
+    path = _DATA_CACHE_DIRS["price_bars"] / f"{ticker}.csv"
+    if not path.exists():
+        return None
+    try:
+        import csv
+        rows = []
+        with open(path, "r", encoding="utf-8-sig") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                rows.append(row)
+        if not rows:
+            return None
+        n_rows = rows[-n:] if n < len(rows) else rows
+        return {
+            "dates": [r["date"] for r in n_rows],
+            "open": [float(r["open"]) for r in n_rows],
+            "high": [float(r["high"]) for r in n_rows],
+            "low": [float(r["low"]) for r in n_rows],
+            "close": [float(r["close"]) for r in n_rows],
+            "volume": [float(r["volume"]) for r in n_rows],
+            "prices": [float(r["close"]) for r in n_rows],
+            "count": len(n_rows),
+            "source": "local_cache",
+            "data_contract": "OHLCV_DAILY_V1",
+        }
+    except Exception:
+        return None
+
+
+
 def get_kline(ticker, n=60):
     ck = f"kl_{ticker}_{n}"
     if _cache_get(ck, ttl=30): return _cache_get(ck, ttl=30)
+    # 优先: 本地持久化缓存
+    cached = _disk_get_kline(ticker, n)
+    if cached is not None:
+        _cache_set(ck, cached)
+        return cached
     # 主力: tushare, 降级: baostock
     kdata = _ts_kline(ticker, max(n+30, 100), adjust="qfq")
     if kdata.get("error"):

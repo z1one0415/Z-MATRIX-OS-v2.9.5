@@ -1017,6 +1017,70 @@ SHARED_SKILL_REGISTRY: dict[str, dict[str, Any]] = {
         "test": "tests/test_portfolio_exposure_policy.py", "duplicate_allowed": False,
         "safety_boundary": "no real trade, no broker, validation only, no Hermes memory write",
     },
+
+    "paper_outcome.horizon.build": {
+        "layer": "shared_skill", "module": "zmatrix.paper_outcome.horizon",
+        "public_function": "build_horizon_dates", "owner": "PaperOutcome",
+        "used_by": ["Z-OutcomeBackfill"], "contract": "docs/contracts/PAPER_OUTCOME_BACKFILL_V10.md",
+        "test": "tests/test_paper_outcome_horizon.py", "duplicate_allowed": False,
+        "safety_boundary": "no real trade, trading calendar only, no Hermes memory write",
+    },
+    "paper_outcome.benchmark.calc": {
+        "layer": "shared_skill", "module": "zmatrix.paper_outcome.benchmark_relative",
+        "public_function": "calc_benchmark_comparison", "owner": "PaperOutcome",
+        "used_by": ["Z-OutcomeBackfill"], "contract": "docs/contracts/PAPER_OUTCOME_BACKFILL_V10.md",
+        "test": "tests/test_paper_outcome_return_calculator.py", "duplicate_allowed": False,
+        "safety_boundary": "no real trade, benchmark calc only, no Hermes memory write",
+    },
+    "paper_outcome.batch.run": {
+        "layer": "shared_skill", "module": "zmatrix.paper_outcome.batch_runner",
+        "public_function": "run_outcome_batch", "owner": "PaperOutcome",
+        "used_by": ["Z-OutcomeBackfill"], "contract": "docs/contracts/PAPER_OUTCOME_BACKFILL_V10.md",
+        "test": "tests/test_paper_outcome_batch_runner.py", "duplicate_allowed": False,
+        "safety_boundary": "no real trade, batch calc only, no Hermes memory write",
+    },
+    "paper_outcome.summary.build": {
+        "layer": "shared_skill", "module": "zmatrix.paper_outcome.summary_report",
+        "public_function": "build_outcome_summary", "owner": "PaperOutcome",
+        "used_by": ["Z-OutcomeBackfill"], "contract": "docs/contracts/PAPER_OUTCOME_BACKFILL_V10.md",
+        "test": "tests/test_paper_outcome_summary_report.py", "duplicate_allowed": False,
+        "safety_boundary": "no real trade, summary report only, no Hermes memory write",
+    },
+    "portfolio.normalizer.run": {
+        "layer": "shared_skill", "module": "zmatrix.portfolio_exposure.position_normalizer",
+        "public_function": "normalize_positions", "owner": "PortfolioExposure",
+        "used_by": ["Z-PortfolioExposure"], "contract": "docs/contracts/PORTFOLIO_EXPOSURE_V10.md",
+        "test": "tests/test_portfolio_exposure_report.py", "duplicate_allowed": False,
+        "safety_boundary": "no real trade, normalization only, no broker, no Hermes memory write",
+    },
+    "portfolio.beta.calc": {
+        "layer": "shared_skill", "module": "zmatrix.portfolio_exposure.beta_calculator",
+        "public_function": "calc_beta", "owner": "PortfolioExposure",
+        "used_by": ["Z-PortfolioExposure"], "contract": "docs/contracts/PORTFOLIO_EXPOSURE_V10.md",
+        "test": "tests/test_portfolio_exposure_beta_corr.py", "duplicate_allowed": False,
+        "safety_boundary": "no real trade, beta calc only, local data only, no Hermes memory write",
+    },
+    "portfolio.correlation.calc": {
+        "layer": "shared_skill", "module": "zmatrix.portfolio_exposure.correlation_calculator",
+        "public_function": "build_correlation_matrix", "owner": "PortfolioExposure",
+        "used_by": ["Z-PortfolioExposure"], "contract": "docs/contracts/PORTFOLIO_EXPOSURE_V10.md",
+        "test": "tests/test_portfolio_exposure_beta_corr.py", "duplicate_allowed": False,
+        "safety_boundary": "no real trade, correlation calc only, local data only, no Hermes memory write",
+    },
+    "portfolio.concentration.check": {
+        "layer": "shared_skill", "module": "zmatrix.portfolio_exposure.concentration_checker",
+        "public_function": "check_concentration", "owner": "PortfolioExposure",
+        "used_by": ["Z-PortfolioExposure"], "contract": "docs/contracts/PORTFOLIO_EXPOSURE_V10.md",
+        "test": "tests/test_portfolio_exposure_report.py", "duplicate_allowed": False,
+        "safety_boundary": "no real trade, concentration check only, no broker, no auto sell",
+    },
+    "portfolio.max_loss.calc": {
+        "layer": "shared_skill", "module": "zmatrix.portfolio_exposure.max_loss_budget",
+        "public_function": "calc_max_loss_budget", "owner": "PortfolioExposure",
+        "used_by": ["Z-PortfolioExposure"], "contract": "docs/contracts/PORTFOLIO_EXPOSURE_V10.md",
+        "test": "tests/test_portfolio_exposure_report.py", "duplicate_allowed": False,
+        "safety_boundary": "no real trade, budget calc only, no broker, no Hermes memory write",
+    },
 }
 
 

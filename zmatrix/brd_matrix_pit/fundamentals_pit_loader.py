@@ -57,11 +57,24 @@ def load_pit_fundamental_snapshot(*, ticker, replay_date, local_data_root):
     has_ann_date = bool(r.get("ann_date") or r.get("f_ann_date"))
 
     # Map tushare column names to snapshot keys
+    # gross_margin in tushare = absolute amount (yuan), NOT percentage.
+    # grossprofit_margin = actual margin % (e.g. 89.76 = 89.76%)
+    # roe in tushare = single-quarter ROE, roe_yearly = annualized ROE
+    gm = _to_float(r.get("grossprofit_margin")) or _to_float(r.get("gross_margin"))
+    # Detect if gross_margin is a percentage (<200) or absolute amount (>200)
+    # If >200, it's absolute yuan, not usable as percentage
+    gm_abs = _to_float(r.get("gross_margin"))
+    if gm is None and gm_abs is not None:
+        if gm_abs > 200:
+            gm = None  # absolute yuan, ignore
+        else:
+            gm = gm_abs
+
     s = {
         "disclosure_date": d,
         "report_date": r.get("end_date") or r.get("report_date"),
-        "roe": _to_float(r.get("roe")),
-        "gross_margin": _to_float(r.get("gross_margin") or r.get("grossprofit_margin")),
+        "roe": _to_float(r.get("roe_yearly")) or _to_float(r.get("roe_5y_avg")) or _to_float(r.get("roe")),
+        "gross_margin": gm,
         "revenue_yoy": _to_float(r.get("or_yoy") or r.get("revenue_yoy") or r.get("tr_yoy")),
         "profit_yoy": _to_float(r.get("netprofit_yoy") or r.get("profit_yoy") or r.get("dt_netprofit_yoy")),
         "debt_ratio": _to_float(r.get("debt_to_assets") or r.get("debt_ratio")),

@@ -28,6 +28,19 @@ def build_b_matrix_pit(*, ticker, replay_date, local_data_root, pit_features=Non
     gs = int((_sp(s.get("revenue_yoy"),5,20)+_sp(s.get("profit_yoy"),5,20))/2)
     pe = s.get("pe"); pb = s.get("pb")
     vs = 0
+    # Compute PE/PB from close + eps/bps when not directly available
+    if (pe is None or pb is None) and pit_features:
+        close = None
+        feat = pit_features.get("features",{}) if isinstance(pit_features,dict) else {}
+        close = feat.get("close")
+        if close is None:
+            # Try price_snapshot
+            ps = pit_features.get("price_snapshot",{}) if isinstance(pit_features,dict) else {}
+            close = ps.get("close")
+        eps = s.get("eps")
+        bps_val = s.get("bps")
+        if close and eps and eps > 0: pe = close / eps
+        if close and bps_val and bps_val > 0: pb = close / bps_val
     if pe is not None and 0<pe<=50: vs+=50
     if pb is not None and 0<pb<=8: vs+=50
     total = int(qs*0.45+gs*0.35+vs*0.20)

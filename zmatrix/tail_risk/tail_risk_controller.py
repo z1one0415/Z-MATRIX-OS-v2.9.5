@@ -14,7 +14,14 @@ from zmatrix.tail_risk.risk_isolation_unit import build_risk_isolation_preview
 
 CONTROLLER_VERSION = "TAIL_RISK_CONTROLLER_PREVIEW_V10"
 
-_STATE_RANK = {s: i for i, s in enumerate(["NORMAL", "CAUTION", "STRESS", "CRASH", "HIBERNATE"])}
+_STATE_RANK = {
+    "NORMAL": 0,
+    "CAUTION": 1,
+    "WAKEUP_PROBATION": 2,
+    "STRESS": 3,
+    "CRASH": 4,
+    "HIBERNATE": 5,
+}
 
 
 def build_tail_risk_controller_preview(
@@ -55,8 +62,12 @@ def build_tail_risk_controller_preview(
 
     # Risk isolation
     isolation = {}
-    if final_decision == "ISOLATE":
-        isolation = build_risk_isolation_preview(source_result=g1, position_context=pc)
+    isolate_gate = next((g for g in gates if g.get("decision") == "ISOLATE"), None)
+    if isolate_gate is not None:
+        isolation = build_risk_isolation_preview(
+            source_result=isolate_gate,
+            position_context=pc,
+        )
 
     # Action policy
     freeze_new = any(g.get("freeze_new_entries") for g in gates)
@@ -65,6 +76,10 @@ def build_tail_risk_controller_preview(
         g.get("gate_type") in ("D_MATRIX_FREEZE", "DOMESTIC_LIQUIDITY_CRASH")
         and g.get("decision") in ("FREEZE", "ISOLATE") for g in gates
     )
+    # Override from WAKEUP_PROBATION gate
+    wakeup_gate = next((g for g in gates if g.get("gate_type") == "WAKEUP_PROBATION"), None)
+    if wakeup_gate is not None and wakeup_gate.get("d_matrix_allowed") is False:
+        d_matrix_allowed = False
     requires_review = any(g.get("requires_human_review") for g in gates)
 
     seed = f"{previous_state}|{final_state}|{signals.get('hard_gate_pass_rate','')}"
@@ -78,12 +93,14 @@ def build_tail_risk_controller_preview(
         "created_at": created_at,
         "final_state": final_state,
         "final_decision": final_decision,
+        "has_isolation_trigger": isolate_gate is not None,
         "action_policy_preview": {
             "allow_new_entry": not freeze_new,
             "allow_add_position": not freeze_add,
             "allow_d_matrix": d_matrix_allowed,
             "allow_watch_only": True,
             "requires_human_review": requires_review,
+            "requires_risk_isolation_review": isolate_gate is not None,
         },
         "gate_results": gates,
         "risk_isolation_preview": isolation,

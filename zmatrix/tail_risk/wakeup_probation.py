@@ -16,7 +16,8 @@ def evaluate_wakeup_probation(*, market_signals: dict, previous_state: str = "NO
             "state": "NORMAL", "decision": "ALLOW", "action_downgrade": "NO_ACTION",
             "reason": f"prev={previous_state} hgpr={hgpr:.4f} mbpr={mbpr:.4f}",
             "evidence": {"previous_state": previous_state, "hard_gate_pass_rate": hgpr},
-            "affected_roles": [], "freeze_new_entries": False,
+            "affected_roles": [], "affected_tickers": [],
+            "freeze_new_entries": False,
             "allow_existing_position_review": True, "requires_human_review": False,
             "safety": dict(DEFAULT_TAIL_RISK_SAFETY),
         }

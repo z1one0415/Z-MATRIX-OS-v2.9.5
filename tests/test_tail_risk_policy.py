@@ -19,8 +19,22 @@ def test_hibernate_requires_human_review():
     assert any("requires human review" in x for x in v)
     print("✅ HIBERNATE requires human review")
 
+def test_policy_rejects_nested_safety_auto_sell_true():
+    r = {"safety": {"auto_sell_allowed": True}}
+    errors = assert_no_real_trade_effects(r)
+    assert any("safety.auto_sell_allowed" in e for e in errors)
+    print("✅ policy rejects nested safety.auto_sell_allowed")
+
+def test_policy_rejects_non_dict_safety():
+    r = {"safety": "bad"}
+    errors = assert_no_real_trade_effects(r)
+    assert "safety must be dict" in errors
+    print("✅ policy rejects non-dict safety")
+
 if __name__ == "__main__":
     test_tail_risk_policy_rejects_auto_sell_true()
     test_tail_risk_policy_rejects_broker_order_true()
     test_hibernate_requires_human_review()
+    test_policy_rejects_nested_safety_auto_sell_true()
+    test_policy_rejects_non_dict_safety()
     print("\n🏁 Tail-Risk Policy tests PASS")

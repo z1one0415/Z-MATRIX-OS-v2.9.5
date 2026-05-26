@@ -16,7 +16,8 @@ def evaluate_hibernate_mode(*, market_signals: dict) -> dict:
             "state": "NORMAL", "decision": "ALLOW", "action_downgrade": "NO_ACTION",
             "reason": f"hgpr={hgpr:.4f} mbpr={mbpr:.4f}",
             "evidence": {"hard_gate_pass_rate": hgpr, "market_breadth_pass_rate": mbpr},
-            "affected_roles": [], "freeze_new_entries": False,
+            "affected_roles": [], "affected_tickers": [],
+            "freeze_new_entries": False,
             "allow_existing_position_review": True, "requires_human_review": False,
             "safety": dict(DEFAULT_TAIL_RISK_SAFETY),
         }
@@ -30,6 +31,7 @@ def evaluate_hibernate_mode(*, market_signals: dict) -> dict:
         "reason": f"hard_gate_pass_rate={hgpr:.4f} breadth={mbpr:.4f}",
         "evidence": {"hard_gate_pass_rate": hgpr, "market_breadth_pass_rate": mbpr},
         "affected_roles": ["B_MID_ROTATION", "C_SHORT_EVENT", "D_BLACK_HORSE"],
+        "affected_tickers": [],
         "freeze_new_entries": True, "allow_existing_position_review": True,
         "requires_human_review": True, "safety": dict(DEFAULT_TAIL_RISK_SAFETY),
     }

@@ -19,6 +19,9 @@ def normalize_market_signals(raw: dict) -> dict:
     lsc = scs / max(lcs, 0.01)
     if lsc > 1.0:
         lsc = 1.0 - (lsc - 1.0)
+    # When both scores are 0 (default/unknown), scissor should be 0 (no stress detected)
+    if scs == 0.0 and lcs == 0.0:
+        lsc = 1.0
 
     return {
         "signal_version": SIGNAL_VERSION,

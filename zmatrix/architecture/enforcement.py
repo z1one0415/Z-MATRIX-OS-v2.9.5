@@ -98,6 +98,7 @@ def run_architecture_enforcement() -> list[str]:
     v.extend(check_no_real_ops_enabled_anywhere())
     v.extend(check_workspace_alignment_components())
     v.extend(check_event_store_components())
+    v.extend(check_hermes_memory_kernel_components())
     return v
 def check_workspace_alignment_components() -> list[str]:
     from pathlib import Path
@@ -215,7 +216,71 @@ def check_event_store_components() -> list[str]:
     for sid in required_skills:
         s = SHARED_SKILL_REGISTRY.get(sid, {})
         sb = s.get("safety_boundary", "")
-        if "hermes_memory_write" in sb:
-            pass  # should explicitly forbid
+    return violations
+
+
+def check_hermes_memory_kernel_components() -> list[str]:
+    """Check Hermes Memory Kernel components existence and safety."""
+    from pathlib import Path
+    violations = []
+    root = Path(__file__).resolve().parent.parent.parent
+
+    # Package existence
+    hermes_kernel = root / "zmatrix" / "hermes_kernel"
+    required_files = ["__init__.py", "schemas.py", "validators.py", "core_memory.py",
+                      "working_context.py", "learned_heuristics.py", "memory_candidate.py",
+                      "retrieval.py", "event_bridge.py", "prompt_patch_preview.py"]
+    for f in required_files:
+        if not (hermes_kernel / f).exists():
+            violations.append(f"hermes_kernel/{f} missing")
+
+    hermes_memory = root / "zmatrix" / "hermes_memory"
+    required_mem = ["__init__.py", "memory_candidate_preview.py", "calibration_event_preview.py",
+                    "hermes_memory_kernel.py", "event_adapters.py"]
+    for f in required_mem:
+        if not (hermes_memory / f).exists():
+            violations.append(f"hermes_memory/{f} missing")
+
+    # Skills registered
+    from zmatrix.architecture.skill_registry import SHARED_SKILL_REGISTRY
+    required_skills = [
+        "hermes.core_memory.load", "hermes.working_context.build", "hermes.heuristics.retrieve",
+        "hermes.prompt_patch.preview", "hermes.memory_candidate.preview",
+        "hermes.calendar_event.preview",  # note: actual is `calibration_event.preview`
+    ]
+    for s in required_skills:
+        if s not in SHARED_SKILL_REGISTRY and s == "hermes.calendar_event.preview":
+            # check actual name
+            actual = "hermes.calibration_event.preview"
+            if actual not in SHARED_SKILL_REGISTRY:
+                violations.append(f"Hermes skill '{actual}' not registered")
+        elif s not in SHARED_SKILL_REGISTRY:
+            violations.append(f"Hermes skill '{s}' not registered")
+
+    # Gates registered
+    from zmatrix.architecture.gate_registry import GATE_REGISTRY
+    for g in ["hermes.read_only.valid", "hermes.preview_only.valid",
+              "hermes.no_memory_write.valid", "hermes.no_auto_calibration.valid",
+              "hermes.no_prompt_auto_injection.valid"]:
+        if g not in GATE_REGISTRY:
+            violations.append(f"Hermes gate '{g}' not registered")
+
+    # Pipeline registered
+    from zmatrix.architecture.pipeline_registry import PIPELINE_REGISTRY
+    if "Z-HermesMemoryKernel" not in PIPELINE_REGISTRY:
+        violations.append("Z-HermesMemoryKernel pipeline not registered")
+
+    # Workflow registered
+    from zmatrix.architecture.workflow_dag import WORKFLOW_DAG_REGISTRY
+    if "Z-Hermes.memory_kernel_preview_workflow" not in WORKFLOW_DAG_REGISTRY:
+        violations.append("Hermes workflow not registered")
+
+    # Safety checks
+    for sid in ["hermes.core_memory.load", "hermes.memory_kernel.preview"]:
+        s = SHARED_SKILL_REGISTRY.get(sid, {})
+        sb = s.get("safety_boundary", "")
+        sb_lower = sb.lower()
+        if "hermes_memory_write" not in sb_lower and "hermes memory write" not in sb_lower:
+            violations.append(f"{sid}: safety_boundary missing hermes memory write constraint: {sb}")
 
     return violations

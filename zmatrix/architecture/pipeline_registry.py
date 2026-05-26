@@ -220,6 +220,32 @@ PIPELINE_REGISTRY: dict[str, dict[str, Any]] = {
         "contract": "docs/contracts/EVENT_STORE_V10.md",
         "test": "tests/test_event_store_architecture.py",
     },
+    "Z-HermesMemoryKernel": {
+        "layer": "pipeline_application",
+        "pipeline_path": "zmatrix/hermes_kernel/",
+        "owner": "Hermes",
+        "allowed_skills": [
+            "hermes.core_memory.load", "hermes.working_context.build",
+            "hermes.heuristics.retrieve", "hermes.prompt_patch.preview",
+            "hermes.memory_candidate.preview", "hermes.calibration_event.preview",
+            "hermes.memory_kernel.preview",
+            "hermes.memory_candidate_event.build", "hermes.calibration_event.build",
+            "hermes.prompt_patch_event.build",
+            "event_store.event.build", "safety.no_real_trade",
+        ],
+        "required_gates": [
+            "hermes.read_only.valid", "hermes.preview_only.valid",
+            "hermes.no_memory_write.valid", "hermes.no_auto_calibration.valid",
+            "hermes.no_prompt_auto_injection.valid", "safety.no_real_trade",
+        ],
+        "forbidden_capabilities": [
+            "real_trade", "broker_order", "real_z9_write", "hermes_memory_write",
+            "auto_calibration", "prompt_auto_injection", "real_market_fetch",
+            "external_api_default_on",
+        ],
+        "contract": "docs/contracts/HERMES_MEMORY_KERNEL_V10.md",
+        "test": "tests/test_hermes_memory_architecture.py",
+    },
 }
 
 

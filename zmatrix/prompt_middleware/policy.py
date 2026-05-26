@@ -3,6 +3,16 @@ from __future__ import annotations
 
 from zmatrix.prompt_middleware.schemas import PROMPT_PATCH_REQUEST_TYPES
 
+_BLOCKED_FIELDS = [
+    "runtime_injection_allowed",
+    "system_prompt_write_allowed",
+    "prompt_auto_injection_allowed",
+    "hermes_memory_write_allowed",
+    "real_z9_write_allowed",
+    "auto_calibration_allowed",
+    "real_trade_allowed",
+]
+
 
 def validate_prompt_patch_request(request: dict) -> list[str]:
     """Validate a PromptPatchRequest's structure and safety."""
@@ -18,6 +28,10 @@ def validate_prompt_patch_request(request: dict) -> list[str]:
         violations.append("prompt_patch_preview_id required")
     if not request.get("task_context"):
         violations.append("task_context required/empty")
+
+    safety = request.get("safety", {})
+    if not isinstance(safety, dict):
+        violations.append("safety must be dict")
 
     return violations + assert_no_prompt_runtime_effects(request)
 
@@ -51,19 +65,27 @@ def validate_prompt_patch_audit(audit: dict) -> list[str]:
 def assert_no_prompt_runtime_effects(record: dict) -> list[str]:
     """Check that record does NOT enable prompt runtime effects.
 
-    Must check: runtime_injection, system_prompt_write,
-    prompt_auto_injection, hermes_memory_write,
-    real_z9_write, auto_calibration, real_trade.
+    Checks BOTH top-level fields AND safety nested fields.
+    - top-level True → fails
+    - safety nested True → fails
+    - safety non-dict → fails
+    - missing field → OK
     """
     violations = []
 
-    for field in [
-        "runtime_injection_allowed", "system_prompt_write_allowed",
-        "prompt_auto_injection_allowed", "hermes_memory_write_allowed",
-        "real_z9_write_allowed", "auto_calibration_allowed",
-        "real_trade_allowed",
-    ]:
+    # Check top-level
+    for field in _BLOCKED_FIELDS:
         if record.get(field) is True:
-            violations.append(f"{field} must be False")
+            violations.append(f"top-level {field} must be False")
+
+    # Check safety nested
+    safety = record.get("safety", {})
+    if not isinstance(safety, dict):
+        violations.append("safety must be dict")
+        safety = {}
+
+    for field in _BLOCKED_FIELDS:
+        if safety.get(field) is True:
+            violations.append(f"safety.{field} must be False")
 
     return violations

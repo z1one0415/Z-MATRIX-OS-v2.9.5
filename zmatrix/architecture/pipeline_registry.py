@@ -220,7 +220,7 @@ PIPELINE_REGISTRY: dict[str, dict[str, Any]] = {
         "contract": "docs/contracts/EVENT_STORE_V10.md",
         "test": "tests/test_event_store_architecture.py",
     },
-        "Z-PromptMiddlewarePreview": {
+    "Z-PromptMiddlewarePreview": {
         "layer": "pipeline_application",
         "pipeline_path": "zmatrix/prompt_middleware/",
         "owner": "PromptMiddleware",
@@ -243,7 +243,7 @@ PIPELINE_REGISTRY: dict[str, dict[str, Any]] = {
         "contract": "docs/contracts/PROMPT_MIDDLEWARE_V10.md",
         "test": "tests/test_prompt_middleware_architecture.py",
     },
-"Z-ApprovalReflectionLoop": {
+    "Z-ApprovalReflectionLoop": {
         "layer": "pipeline_application",
         "pipeline_path": "zmatrix/approval_loop/",
         "owner": "ApprovalLoop",

@@ -267,7 +267,7 @@ WORKFLOW_DAG_REGISTRY: dict[str, dict[str, Any]] = {
         "contract": "docs/architecture/HERMES_MEMORY_KERNEL_ARCHITECTURE_V10.md",
         "test": "tests/test_hermes_memory_architecture.py",
     },
-        "Z-Prompt.middleware_preview_workflow": {
+    "Z-Prompt.middleware_preview_workflow": {
         "layer": "workflow_dag",
         "pipeline": "Z-PromptMiddlewarePreview",
         "purpose": "Prompt hot-patching middleware preview: request → render → audit → event",
@@ -303,7 +303,7 @@ WORKFLOW_DAG_REGISTRY: dict[str, dict[str, Any]] = {
         "contract": "docs/architecture/PROMPT_HOT_PATCHING_MIDDLEWARE_PREVIEW_V10.md",
         "test": "tests/test_prompt_middleware_architecture.py",
     },
-"Z-Approval.reflection_loop_workflow": {
+    "Z-Approval.reflection_loop_workflow": {
         "layer": "workflow_dag",
         "pipeline": "Z-ApprovalReflectionLoop",
         "purpose": "Approval-Required Reflection Loop: request → policy → queue → decision → event",

@@ -15,6 +15,9 @@ TAG_GATE_REQUIRED_ARTIFACTS = [
     "release/alpha_rc/v3_alpha_operator_runbook_v10.md",
     "release/alpha_rc/v3_alpha_pre_tag_checklist_v10.md",
     "release/alpha_rc/README.md",
+    "release/alpha_rc/v3_alpha_rc1_release_notes.md",
+    "release/alpha_rc/v3_alpha_tag_command_preview_v10.md",
+    "release/alpha_rc/v3_alpha_final_release_summary_v10.md",
 ]
 
 TAG_GATE_REQUIRED_VERIFY_SCRIPTS = [

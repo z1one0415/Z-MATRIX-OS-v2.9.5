@@ -220,6 +220,30 @@ PIPELINE_REGISTRY: dict[str, dict[str, Any]] = {
         "contract": "docs/contracts/EVENT_STORE_V10.md",
         "test": "tests/test_event_store_architecture.py",
     },
+    "Z-ApprovalReflectionLoop": {
+        "layer": "pipeline_application",
+        "pipeline_path": "zmatrix/approval_loop/",
+        "owner": "ApprovalLoop",
+        "allowed_skills": [
+            "approval.request.build", "approval.decision.build",
+            "approval.policy.validate_request", "approval.policy.validate_decision",
+            "approval.queue.preview",
+            "approval.request_event.build", "approval.human_event.build",
+            "event_store.event.build", "safety.no_real_trade",
+        ],
+        "required_gates": [
+            "approval.request.valid", "approval.decision.valid",
+            "approval.no_auto_effect.valid", "approval.human_required.valid",
+            "safety.no_real_trade",
+        ],
+        "forbidden_capabilities": [
+            "real_trade", "broker_order", "real_z9_write", "hermes_memory_write",
+            "auto_calibration", "prompt_auto_injection", "real_market_fetch",
+            "external_api_default_on",
+        ],
+        "contract": "docs/contracts/APPROVAL_LOOP_V10.md",
+        "test": "tests/test_approval_loop_architecture.py",
+    },
     "Z-HermesMemoryKernel": {
         "layer": "pipeline_application",
         "pipeline_path": "zmatrix/hermes_kernel/ + zmatrix/hermes_memory/",

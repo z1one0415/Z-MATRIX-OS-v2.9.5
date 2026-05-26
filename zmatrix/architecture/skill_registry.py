@@ -522,6 +522,71 @@ SHARED_SKILL_REGISTRY: dict[str, dict[str, Any]] = {
         "safety_boundary": "no real trade, build only, no append, no auto injection, requires human approval",
     },
 
+    # === Approval Loop skills (v2.9.13-dev) ===
+    "approval.request.build": {
+        "layer": "shared_skill", "module": "zmatrix.approval_loop.approval_request",
+        "public_function": "build_approval_request", "owner": "ApprovalLoop",
+        "used_by": ["Z-ApprovalReflectionLoop"],
+        "contract": "docs/contracts/APPROVAL_REQUEST_V10.md",
+        "test": "tests/test_approval_request.py",
+        "duplicate_allowed": False,
+        "safety_boundary": "no real trade, approval required, no Hermes memory write, no real Z9 write, no auto calibration, no prompt injection",
+    },
+    "approval.decision.build": {
+        "layer": "shared_skill", "module": "zmatrix.approval_loop.approval_decision",
+        "public_function": "build_human_approval_decision", "owner": "ApprovalLoop",
+        "used_by": ["Z-ApprovalReflectionLoop"],
+        "contract": "docs/contracts/HUMAN_APPROVAL_DECISION_V10.md",
+        "test": "tests/test_approval_decision.py",
+        "duplicate_allowed": False,
+        "safety_boundary": "no real trade, approval required, no Hermes memory write, no real Z9 write, no auto calibration, no prompt injection",
+    },
+    "approval.policy.validate_request": {
+        "layer": "shared_skill", "module": "zmatrix.approval_loop.approval_policy",
+        "public_function": "validate_approval_request", "owner": "ApprovalLoop",
+        "used_by": ["Z-ApprovalReflectionLoop"],
+        "contract": "docs/contracts/APPROVAL_LOOP_V10.md",
+        "test": "tests/test_approval_policy.py",
+        "duplicate_allowed": False,
+        "safety_boundary": "no real trade, validation only, no auto effects, no write",
+    },
+    "approval.policy.validate_decision": {
+        "layer": "shared_skill", "module": "zmatrix.approval_loop.approval_policy",
+        "public_function": "validate_approval_decision", "owner": "ApprovalLoop",
+        "used_by": ["Z-ApprovalReflectionLoop"],
+        "contract": "docs/contracts/APPROVAL_LOOP_V10.md",
+        "test": "tests/test_approval_policy.py",
+        "duplicate_allowed": False,
+        "safety_boundary": "no real trade, validation only, no auto effects, no write",
+    },
+    "approval.queue.preview": {
+        "layer": "shared_skill", "module": "zmatrix.approval_loop.approval_queue",
+        "public_function": "build_approval_queue_preview", "owner": "ApprovalLoop",
+        "used_by": ["Z-ApprovalReflectionLoop"],
+        "contract": "docs/contracts/APPROVAL_QUEUE_PREVIEW_V10.md",
+        "test": "tests/test_approval_queue.py",
+        "duplicate_allowed": False,
+        "safety_boundary": "no real trade, preview only, no auto process, no write",
+    },
+    "approval.request_event.build": {
+        "layer": "shared_skill", "module": "zmatrix.approval_loop.event_adapters",
+        "public_function": "build_approval_request_event", "owner": "ApprovalLoop",
+        "used_by": ["Z-ApprovalReflectionLoop"],
+        "contract": "docs/contracts/APPROVAL_LOOP_V10.md",
+        "test": "tests/test_approval_event_adapters.py",
+        "duplicate_allowed": False,
+        "safety_boundary": "no real trade, build only, no append, no write, no auto effects",
+    },
+    "approval.human_event.build": {
+        "layer": "shared_skill", "module": "zmatrix.approval_loop.event_adapters",
+        "public_function": "build_human_approval_event", "owner": "ApprovalLoop",
+        "used_by": ["Z-ApprovalReflectionLoop"],
+        "contract": "docs/contracts/APPROVAL_LOOP_V10.md",
+        "test": "tests/test_approval_event_adapters.py",
+        "duplicate_allowed": False,
+        "safety_boundary": "no real trade, build only, no append, no write, no auto effects",
+    },
+
 }
 
 

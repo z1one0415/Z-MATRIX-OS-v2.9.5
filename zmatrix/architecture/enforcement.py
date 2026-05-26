@@ -99,6 +99,7 @@ def run_architecture_enforcement() -> list[str]:
     v.extend(check_workspace_alignment_components())
     v.extend(check_event_store_components())
     v.extend(check_hermes_memory_kernel_components())
+    v.extend(check_approval_loop_components())
     return v
 def check_workspace_alignment_components() -> list[str]:
     from pathlib import Path
@@ -282,5 +283,55 @@ def check_hermes_memory_kernel_components() -> list[str]:
         sb_lower = sb.lower()
         if "hermes_memory_write" not in sb_lower and "hermes memory write" not in sb_lower:
             violations.append(f"{sid}: safety_boundary missing hermes memory write constraint: {sb}")
+
+    return violations
+
+
+def check_approval_loop_components() -> list[str]:
+    """Check Approval Loop components existence and safety."""
+    from pathlib import Path
+    violations = []
+    root = Path(__file__).resolve().parent.parent.parent
+
+    # Package existence
+    pkg = root / "zmatrix" / "approval_loop"
+    for fname in ["__init__.py", "schemas.py", "approval_request.py", "approval_decision.py",
+                  "approval_policy.py", "approval_queue.py", "event_adapters.py"]:
+        if not (pkg / fname).exists():
+            violations.append(f"approval_loop/{fname} missing")
+
+    # Skills registered
+    from zmatrix.architecture.skill_registry import SHARED_SKILL_REGISTRY
+    for s in ["approval.request.build", "approval.decision.build",
+              "approval.policy.validate_request", "approval.policy.validate_decision",
+              "approval.queue.preview", "approval.request_event.build",
+              "approval.human_event.build"]:
+        if s not in SHARED_SKILL_REGISTRY:
+            violations.append(f"Approval skill '{s}' not registered")
+
+    # Gates registered
+    from zmatrix.architecture.gate_registry import GATE_REGISTRY
+    for g in ["approval.request.valid", "approval.decision.valid",
+              "approval.no_auto_effect.valid", "approval.human_required.valid"]:
+        if g not in GATE_REGISTRY:
+            violations.append(f"Approval gate '{g}' not registered")
+
+    # Pipeline registered
+    from zmatrix.architecture.pipeline_registry import PIPELINE_REGISTRY
+    if "Z-ApprovalReflectionLoop" not in PIPELINE_REGISTRY:
+        violations.append("Z-ApprovalReflectionLoop pipeline not registered")
+
+    # Workflow registered
+    from zmatrix.architecture.workflow_dag import WORKFLOW_DAG_REGISTRY
+    if "Z-Approval.reflection_loop_workflow" not in WORKFLOW_DAG_REGISTRY:
+        violations.append("Approval workflow not registered")
+
+    # Docs exist
+    for d in ["APPROVAL_REQUEST_V10.md", "HUMAN_APPROVAL_DECISION_V10.md",
+              "APPROVAL_QUEUE_PREVIEW_V10.md", "APPROVAL_LOOP_V10.md"]:
+        if not (root / "docs" / "contracts" / d).exists():
+            violations.append(f"docs/contracts/{d} missing")
+    if not (root / "docs" / "architecture" / "APPROVAL_REQUIRED_REFLECTION_LOOP_V10.md").exists():
+        violations.append("approval architecture doc missing")
 
     return violations

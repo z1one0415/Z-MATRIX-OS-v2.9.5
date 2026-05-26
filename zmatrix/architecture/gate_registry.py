@@ -395,6 +395,42 @@ GATE_REGISTRY: dict[str, dict[str, Any]] = {
         "contract": "docs/contracts/PROMPT_PATCH_PREVIEW_V10.md",
         "test": "tests/test_hermes_memory_architecture.py",
     },
+    "approval.request.valid": {
+        "layer": "system_control", "gate_type": "contract",
+        "owner": "SystemCore", "purpose": "Validate approval request structure",
+        "applies_to": ["Z-ApprovalReflectionLoop"],
+        "enforced_by": "zmatrix.approval_loop.approval_policy.validate_approval_request",
+        "blocking": True, "degradable": False,
+        "contract": "docs/contracts/APPROVAL_REQUEST_V10.md",
+        "test": "tests/test_approval_loop_architecture.py",
+    },
+    "approval.decision.valid": {
+        "layer": "system_control", "gate_type": "contract",
+        "owner": "SystemCore", "purpose": "Validate approval decision structure",
+        "applies_to": ["Z-ApprovalReflectionLoop"],
+        "enforced_by": "zmatrix.approval_loop.approval_policy.validate_approval_decision",
+        "blocking": True, "degradable": False,
+        "contract": "docs/contracts/HUMAN_APPROVAL_DECISION_V10.md",
+        "test": "tests/test_approval_loop_architecture.py",
+    },
+    "approval.no_auto_effect.valid": {
+        "layer": "system_control", "gate_type": "safety",
+        "owner": "SystemCore", "purpose": "Block auto effects from approval loop",
+        "applies_to": ["Z-ApprovalReflectionLoop"],
+        "enforced_by": "zmatrix.approval_loop.approval_policy.assert_no_auto_effects",
+        "blocking": True, "degradable": False,
+        "contract": "docs/contracts/APPROVAL_LOOP_V10.md",
+        "test": "tests/test_approval_loop_architecture.py",
+    },
+    "approval.human_required.valid": {
+        "layer": "system_control", "gate_type": "safety",
+        "owner": "SystemCore", "purpose": "Ensure human approval is required",
+        "applies_to": ["Z-ApprovalReflectionLoop"],
+        "enforced_by": "zmatrix.approval_loop.approval_policy.assert_no_auto_effects",
+        "blocking": True, "degradable": False,
+        "contract": "docs/contracts/APPROVAL_LOOP_V10.md",
+        "test": "tests/test_approval_loop_architecture.py",
+    },
 }
 
 

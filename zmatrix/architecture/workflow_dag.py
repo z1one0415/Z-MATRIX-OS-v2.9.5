@@ -267,6 +267,42 @@ WORKFLOW_DAG_REGISTRY: dict[str, dict[str, Any]] = {
         "contract": "docs/architecture/HERMES_MEMORY_KERNEL_ARCHITECTURE_V10.md",
         "test": "tests/test_hermes_memory_architecture.py",
     },
+    "Z-Approval.reflection_loop_workflow": {
+        "layer": "workflow_dag",
+        "pipeline": "Z-ApprovalReflectionLoop",
+        "purpose": "Approval-Required Reflection Loop: request → policy → queue → decision → event",
+        "nodes": [
+            "approval.request.build",
+            "approval.policy.validate_request",
+            "approval.queue.preview",
+            "approval.decision.build",
+            "approval.policy.validate_decision",
+            "approval.request_event.build",
+            "approval.human_event.build",
+            "safety.no_real_trade",
+        ],
+        "edges": [
+            ("approval.request.build", "approval.policy.validate_request"),
+            ("approval.policy.validate_request", "approval.queue.preview"),
+            ("approval.queue.preview", "approval.decision.build"),
+            ("approval.decision.build", "approval.policy.validate_decision"),
+            ("approval.policy.validate_decision", "approval.request_event.build"),
+            ("approval.request_event.build", "approval.human_event.build"),
+            ("approval.human_event.build", "safety.no_real_trade"),
+        ],
+        "required_gates": [
+            "approval.request.valid", "approval.decision.valid",
+            "approval.no_auto_effect.valid", "approval.human_required.valid",
+            "safety.no_real_trade",
+        ],
+        "forbidden_capabilities": [
+            "real_trade", "broker_order", "real_z9_write", "hermes_memory_write",
+            "auto_calibration", "prompt_auto_injection", "real_market_fetch",
+            "external_api_default_on",
+        ],
+        "contract": "docs/architecture/APPROVAL_REQUIRED_REFLECTION_LOOP_V10.md",
+        "test": "tests/test_approval_loop_architecture.py",
+    },
 }
 
 

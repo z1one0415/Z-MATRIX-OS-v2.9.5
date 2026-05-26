@@ -220,7 +220,12 @@ PIPELINE_REGISTRY: dict[str, dict[str, Any]] = {
         "contract": "docs/contracts/EVENT_STORE_V10.md",
         "test": "tests/test_event_store_architecture.py",
     },
-                            "Z-V31DataReplay": {
+                                "Z-V32BRDHistoricalStrategyValidation": {"layer":"pipeline_application","pipeline_path":"zmatrix/brd_replay/","owner":"BRDReplay",
+        "allowed_skills":["brd_replay.pit_features.build","brd_replay.classifier.run","brd_replay.paper_action.build","brd_replay.outcome.link","brd_replay.metrics.build","brd_replay.report.build","safety.no_real_trade"],
+        "required_gates":["brd_replay.point_in_time.valid","brd_replay.paper_only.valid","brd_replay.no_real_trade.valid","brd_replay.no_broker.valid","brd_replay.no_z9.valid","safety.no_real_trade"],
+        "forbidden_capabilities":["real_trade","broker_order","auto_buy","auto_sell","auto_position_close","real_z9_write","hermes_memory_write","auto_calibration","prompt_auto_injection","system_prompt_write","runtime_prompt_injection","external_api_default_on"],
+        "contract":"docs/contracts/V32_BRD_HISTORICAL_STRATEGY_VALIDATION_V10.md","test":"tests/test_brd_single_day_strategy_replay.py"},
+"Z-V31DataReplay": {
         "layer": "pipeline_application", "pipeline_path": "zmatrix/historical_replay/",
         "owner": "DataReplay",
         "allowed_skills": ["replay.brd_adapter.build","replay.universe.build","replay.engine.run","replay.window.run","safety.no_real_trade"],

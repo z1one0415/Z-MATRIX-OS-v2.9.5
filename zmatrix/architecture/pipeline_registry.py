@@ -220,7 +220,31 @@ PIPELINE_REGISTRY: dict[str, dict[str, Any]] = {
         "contract": "docs/contracts/EVENT_STORE_V10.md",
         "test": "tests/test_event_store_architecture.py",
     },
-                        "Z-V3AlphaFinalTagGate": {
+                            "Z-V31DataReplay": {
+        "layer": "pipeline_application", "pipeline_path": "zmatrix/historical_replay/",
+        "owner": "DataReplay",
+        "allowed_skills": ["replay.brd_adapter.build","replay.universe.build","replay.engine.run","replay.window.run","safety.no_real_trade"],
+        "required_gates": ["replay.no_future_data.valid","replay.no_real_trade.valid","replay.no_broker.valid","replay.preview_only.valid","safety.no_real_trade"],
+        "forbidden_capabilities": ["real_trade","broker_order","auto_buy","auto_sell","auto_position_close","real_z9_write","hermes_memory_write","auto_calibration","prompt_auto_injection","real_market_fetch","external_api_default_on"],
+        "contract": "docs/contracts/REPLAY_ENGINE_V10.md", "test": "tests/test_historical_replay_engine.py",
+    },
+    "Z-OutcomeBackfill": {
+        "layer": "pipeline_application", "pipeline_path": "zmatrix/paper_outcome/",
+        "owner": "PaperOutcome",
+        "allowed_skills": ["paper_outcome.backfill.run","paper_outcome.policy.validate","event_store.event.build","safety.no_real_trade"],
+        "required_gates": ["paper_outcome.schema.valid","paper_outcome.no_real_trade.valid","paper_outcome.no_hermes.valid","safety.no_real_trade"],
+        "forbidden_capabilities": ["real_trade","broker_order","auto_sell","auto_position_close","real_z9_write","hermes_memory_write","auto_calibration","prompt_auto_injection","real_market_fetch","external_api_default_on"],
+        "contract": "docs/contracts/PAPER_OUTCOME_BACKFILL_V10.md", "test": "tests/test_paper_outcome_backfill_runner.py",
+    },
+    "Z-PortfolioExposure": {
+        "layer": "pipeline_application", "pipeline_path": "zmatrix/portfolio_exposure/",
+        "owner": "PortfolioExposure",
+        "allowed_skills": ["portfolio.exposure.calc","portfolio.exposure.report","portfolio.exposure.policy.validate","safety.no_real_trade"],
+        "required_gates": ["portfolio.exposure.schema.valid","portfolio.exposure.no_auto_sell.valid","portfolio.exposure.no_real_trade.valid","safety.no_real_trade"],
+        "forbidden_capabilities": ["real_trade","broker_order","auto_buy","auto_sell","auto_position_close","real_z9_write","hermes_memory_write","auto_calibration","prompt_auto_injection","real_market_fetch","external_api_default_on"],
+        "contract": "docs/contracts/PORTFOLIO_EXPOSURE_V10.md", "test": "tests/test_portfolio_exposure_report.py",
+    },
+"Z-V3AlphaFinalTagGate": {
         "layer": "pipeline_application",
         "pipeline_path": "zmatrix/alpha_tag/",
         "owner": "AlphaTag",

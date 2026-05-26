@@ -106,6 +106,7 @@ def run_architecture_enforcement() -> list[str]:
     v.extend(check_dry_run_components())
     v.extend(check_alpha_rc_components())
     v.extend(check_alpha_tag_components())
+    v.extend(check_v31_components())
     return v
 def check_workspace_alignment_components() -> list[str]:
     from pathlib import Path
@@ -563,4 +564,23 @@ def check_alpha_tag_components() -> list[str]:
     from zmatrix.architecture.workflow_dag import WORKFLOW_DAG_REGISTRY
     if "Z-AlphaTag.final_tag_gate_workflow" not in WORKFLOW_DAG_REGISTRY:
         violations.append("Alpha Tag workflow not registered")
+    return violations
+
+
+def check_v31_components() -> list[str]:
+    from pathlib import Path
+    violations = []
+    root = Path(__file__).resolve().parent.parent.parent
+    for d in ["historical_replay", "paper_outcome", "portfolio_exposure"]:
+        pkg = root / "zmatrix" / d
+        if not pkg.exists():
+            violations.append(f"zmatrix/{d} missing")
+    from zmatrix.architecture.skill_registry import SHARED_SKILL_REGISTRY
+    for s in ["replay.brd_adapter.build","paper_outcome.backfill.run","portfolio.exposure.calc"]:
+        if s not in SHARED_SKILL_REGISTRY:
+            violations.append(f"v3.1 skill '{s}' not registered")
+    from zmatrix.architecture.pipeline_registry import PIPELINE_REGISTRY
+    for p in ["Z-V31DataReplay","Z-OutcomeBackfill","Z-PortfolioExposure"]:
+        if p not in PIPELINE_REGISTRY:
+            violations.append(f"v3.1 pipeline '{p}' not registered")
     return violations

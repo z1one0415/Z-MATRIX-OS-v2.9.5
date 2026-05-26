@@ -952,6 +952,71 @@ SHARED_SKILL_REGISTRY: dict[str, dict[str, Any]] = {
         "duplicate_allowed": False,
         "safety_boundary": "no real trade, docs only, tag-review-only, no runtime enable, no Hermes memory write",
     },
+
+    # === v3.1 skills ===
+    "replay.brd_adapter.build": {
+        "layer": "shared_skill", "module": "zmatrix.historical_replay.brd_replay_adapter",
+        "public_function": "build_brd_replay_payload", "owner": "DataReplay",
+        "used_by": ["Z-V31DataReplay"], "contract": "docs/contracts/HISTORICAL_REPLAY_BRD_V10.md",
+        "test": "tests/test_historical_replay_brd_adapter.py", "duplicate_allowed": False,
+        "safety_boundary": "no real trade, no broker, historical replay only, no future data, no Hermes memory write",
+    },
+    "replay.universe.build": {
+        "layer": "shared_skill", "module": "zmatrix.historical_replay.replay_universe",
+        "public_function": "build_replay_universe", "owner": "DataReplay",
+        "used_by": ["Z-V31DataReplay"], "contract": "docs/contracts/REPLAY_UNIVERSE_V10.md",
+        "test": "tests/test_historical_replay_universe.py", "duplicate_allowed": False,
+        "safety_boundary": "no real trade, no broker, no future data, no Hermes memory write",
+    },
+    "replay.engine.run": {
+        "layer": "shared_skill", "module": "zmatrix.historical_replay.replay_engine",
+        "public_function": "run_single_day_replay", "owner": "DataReplay",
+        "used_by": ["Z-V31DataReplay"], "contract": "docs/contracts/REPLAY_ENGINE_V10.md",
+        "test": "tests/test_historical_replay_engine.py", "duplicate_allowed": False,
+        "safety_boundary": "no real trade, no broker, historical replay only, no Hermes memory write",
+    },
+    "replay.window.run": {
+        "layer": "shared_skill", "module": "zmatrix.historical_replay.replay_window",
+        "public_function": "run_replay_window", "owner": "DataReplay",
+        "used_by": ["Z-V31DataReplay"], "contract": "docs/contracts/REPLAY_WINDOW_V10.md",
+        "test": "tests/test_historical_replay_engine.py", "duplicate_allowed": False,
+        "safety_boundary": "no real trade, no broker, weekly replay only, no Hermes memory write",
+    },
+    "paper_outcome.backfill.run": {
+        "layer": "shared_skill", "module": "zmatrix.paper_outcome.outcome_backfill_runner",
+        "public_function": "run_outcome_backfill", "owner": "PaperOutcome",
+        "used_by": ["Z-OutcomeBackfill"], "contract": "docs/contracts/PAPER_OUTCOME_BACKFILL_V10.md",
+        "test": "tests/test_paper_outcome_backfill_runner.py", "duplicate_allowed": False,
+        "safety_boundary": "no real trade, no broker, no auto sell, no Hermes memory write, no real Z9 write",
+    },
+    "paper_outcome.policy.validate": {
+        "layer": "shared_skill", "module": "zmatrix.paper_outcome.policy",
+        "public_function": "validate_outcome_record", "owner": "PaperOutcome",
+        "used_by": ["Z-OutcomeBackfill"], "contract": "docs/contracts/PAPER_OUTCOME_BACKFILL_V10.md",
+        "test": "tests/test_paper_outcome_policy.py", "duplicate_allowed": False,
+        "safety_boundary": "no real trade, no broker, validation only, no Hermes memory write",
+    },
+    "portfolio.exposure.calc": {
+        "layer": "shared_skill", "module": "zmatrix.portfolio_exposure.exposure_calculator",
+        "public_function": "calc_exposure", "owner": "PortfolioExposure",
+        "used_by": ["Z-PortfolioExposure"], "contract": "docs/contracts/PORTFOLIO_EXPOSURE_V10.md",
+        "test": "tests/test_portfolio_exposure_report.py", "duplicate_allowed": False,
+        "safety_boundary": "no real trade, no broker, no auto sell, no auto buy, no Hermes memory write",
+    },
+    "portfolio.exposure.report": {
+        "layer": "shared_skill", "module": "zmatrix.portfolio_exposure.exposure_report",
+        "public_function": "build_exposure_report", "owner": "PortfolioExposure",
+        "used_by": ["Z-PortfolioExposure"], "contract": "docs/contracts/PORTFOLIO_EXPOSURE_V10.md",
+        "test": "tests/test_portfolio_exposure_report.py", "duplicate_allowed": False,
+        "safety_boundary": "no real trade, no broker, report only, no Hermes memory write",
+    },
+    "portfolio.exposure.policy.validate": {
+        "layer": "shared_skill", "module": "zmatrix.portfolio_exposure.policy",
+        "public_function": "validate_exposure_record", "owner": "PortfolioExposure",
+        "used_by": ["Z-PortfolioExposure"], "contract": "docs/contracts/PORTFOLIO_EXPOSURE_V10.md",
+        "test": "tests/test_portfolio_exposure_policy.py", "duplicate_allowed": False,
+        "safety_boundary": "no real trade, no broker, validation only, no Hermes memory write",
+    },
 }
 
 

@@ -400,7 +400,18 @@ GATE_REGISTRY: dict[str, dict[str, Any]] = {
     
     
     
-    "alpha_tag.artifact_consistency.valid": {
+    
+    "replay.no_future_data.valid": {"layer":"system_control","gate_type":"safety","owner":"SystemCore","purpose":"Block future data in replay","applies_to":["Z-V31DataReplay"],"blocking":True,"degradable":False,"contract":"docs/contracts/REPLAY_ENGINE_V10.md","test":"tests/test_historical_replay_engine.py"},
+    "replay.no_real_trade.valid": {"layer":"system_control","gate_type":"safety","owner":"SystemCore","purpose":"Block real trade from replay","applies_to":["Z-V31DataReplay"],"blocking":True,"degradable":False,"contract":"docs/contracts/REPLAY_ENGINE_V10.md","test":"tests/test_historical_replay_engine.py"},
+    "replay.no_broker.valid": {"layer":"system_control","gate_type":"safety","owner":"SystemCore","purpose":"Block broker from replay","applies_to":["Z-V31DataReplay"],"blocking":True,"degradable":False,"contract":"docs/contracts/REPLAY_ENGINE_V10.md","test":"tests/test_historical_replay_engine.py"},
+    "replay.preview_only.valid": {"layer":"system_control","gate_type":"safety","owner":"SystemCore","purpose":"Ensure replay is preview only","applies_to":["Z-V31DataReplay"],"blocking":True,"degradable":False,"contract":"docs/contracts/REPLAY_ENGINE_V10.md","test":"tests/test_historical_replay_engine.py"},
+    "paper_outcome.schema.valid": {"layer":"system_control","gate_type":"contract","owner":"SystemCore","purpose":"Validate outcome schema","applies_to":["Z-OutcomeBackfill"],"blocking":True,"degradable":False,"contract":"docs/contracts/PAPER_OUTCOME_BACKFILL_V10.md","test":"tests/test_paper_outcome_schema.py"},
+    "paper_outcome.no_real_trade.valid": {"layer":"system_control","gate_type":"safety","owner":"SystemCore","purpose":"Block real trade from outcome","applies_to":["Z-OutcomeBackfill"],"blocking":True,"degradable":False,"contract":"docs/contracts/PAPER_OUTCOME_BACKFILL_V10.md","test":"tests/test_paper_outcome_policy.py"},
+    "paper_outcome.no_hermes.valid": {"layer":"system_control","gate_type":"safety","owner":"SystemCore","purpose":"Block Hermes write from outcome","applies_to":["Z-OutcomeBackfill"],"blocking":True,"degradable":False,"contract":"docs/contracts/PAPER_OUTCOME_BACKFILL_V10.md","test":"tests/test_paper_outcome_policy.py"},
+    "portfolio.exposure.schema.valid": {"layer":"system_control","gate_type":"contract","owner":"SystemCore","purpose":"Validate exposure schema","applies_to":["Z-PortfolioExposure"],"blocking":True,"degradable":False,"contract":"docs/contracts/PORTFOLIO_EXPOSURE_V10.md","test":"tests/test_portfolio_exposure_report.py"},
+    "portfolio.exposure.no_auto_sell.valid": {"layer":"system_control","gate_type":"safety","owner":"SystemCore","purpose":"Block auto sell from exposure","applies_to":["Z-PortfolioExposure"],"blocking":True,"degradable":False,"contract":"docs/contracts/PORTFOLIO_EXPOSURE_V10.md","test":"tests/test_portfolio_exposure_policy.py"},
+    "portfolio.exposure.no_real_trade.valid": {"layer":"system_control","gate_type":"safety","owner":"SystemCore","purpose":"Block real trade from exposure","applies_to":["Z-PortfolioExposure"],"blocking":True,"degradable":False,"contract":"docs/contracts/PORTFOLIO_EXPOSURE_V10.md","test":"tests/test_portfolio_exposure_policy.py"},
+"alpha_tag.artifact_consistency.valid": {
         "layer": "system_control", "gate_type": "contract",
         "owner": "SystemCore", "purpose": "Validate RC artifact consistency",
         "applies_to": ["Z-V3AlphaFinalTagGate"],

@@ -14,7 +14,10 @@ def run_outcome_backfill(*, paper_entry: dict, price_path: list[float] | None = 
     entry_price = float(paper_entry.get("entry_price", 0) or 0)
     paper_id = paper_entry.get("paper_id", "")
     ticker = paper_entry.get("ticker", "")
-    max_loss_plan = float(paper_entry.get("max_loss_plan", 0) or 0)
+    max_loss_plan_raw = float(paper_entry.get("max_loss_plan", 0) or 0)
+    # Normalize: accepts both -8 (negative pct) and 8 (absolute pct) → stores as positive
+    normalized_max_loss = abs(max_loss_plan_raw) if max_loss_plan_raw != 0 else 0.0
+    max_loss_plan = normalized_max_loss
 
     if price_path is None or entry_price <= 0:
         return {
@@ -75,7 +78,7 @@ def run_outcome_backfill(*, paper_entry: dict, price_path: list[float] | None = 
         "excess_return_t5": excess_t5, "excess_return_t20": excess_t20, "excess_return_t60": excess_t60,
         "invalidation_triggered": invalidation_triggered,
         "invalidation_reason": invalidation_reason,
-        "max_loss_plan": max_loss_plan,
+        "max_loss_plan": normalized_max_loss,
         "error_type": "", "review_note": "",
         "created_at": created_at,
         "real_trade_allowed": False, "broker_order_allowed": False,

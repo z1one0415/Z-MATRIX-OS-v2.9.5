@@ -77,21 +77,24 @@ def run_single_day_replay(*, replay_date: str, local_data_root: str,
             replay_date=replay_date, ticker=ticker, price_snapshot=snap,
         )
         # Real B/R/D evaluation could go here; for now classify by price availability
+        # Real B/R/D evaluation could go here
+        # For now, explicitly mark as BRD_NOT_CONNECTED
         result = normalize_brd_replay_result(
             replay_date=replay_date, ticker=ticker,
             brd_result={
                 "role": "UNKNOWN",
-                "role_confidence": 0.5,
-                "brd_score": 50.0,
-                "hard_gate_passed": True,
+                "role_confidence": 0.0,
+                "brd_score": 0.0,
+                "hard_gate_passed": False,
                 "decision": "WATCH_ONLY",
-                "fallback": False,
-                "fallback_reason": "",
+                "fallback": True,
+                "fallback_reason": "BRD_NOT_CONNECTED",
             },
         )
         results.append({
             "ticker": ticker, "payload": payload, "result": result,
             "data_available": True, "price": snap.get("close"),
+            "fallback": True,
         })
 
     seed = f"{replay_date}|{len(results)}"
@@ -110,7 +113,8 @@ def run_single_day_replay(*, replay_date: str, local_data_root: str,
         "tickers_with_data": data_ok,
         "tickers_without_data": fallback_count,
         "data_coverage_pct": round(data_ok / total * 100, 1) if total > 0 else 0.0,
-        "fallback_count": 0,
+        "brd_connected": False,
+        "fallback_count": sum(1 for r in results if r.get("fallback")),
         "results": results,
         "universe": universe,
         "real_trade_allowed": False,

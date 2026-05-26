@@ -97,8 +97,10 @@ def build_v3_alpha_dry_run_rehearsal() -> dict:
         lineage.append({
             "step": DRY_RUN_STEPS[i] if i < len(DRY_RUN_STEPS) else name,
             "artifact_name": name,
-            "artifact_id": eid[:16] if len(eid) > 16 else eid,
-            "parent_id": parent[:16] if parent and len(str(parent)) > 16 else parent,
+            "artifact_id": eid,
+            "artifact_display_id": eid[:16] if len(str(eid)) > 16 else str(eid),
+            "parent_id": parent,
+            "parent_display_id": str(parent)[:16] if parent and len(str(parent)) > 16 else str(parent) if parent else None,
         })
 
     seed = f"dry_run|{datetime.now(timezone.utc).isoformat()}"

@@ -19,8 +19,12 @@ def test_dry_run_lineage_not_empty():
 
 def test_dry_run_does_not_append_eventstore():
     r = build_v3_alpha_dry_run_rehearsal()
-    assert "stored" not in str(r.get("artifacts", {}))
-    print("✅ does not append EventStore")
+    forbidden_keys = {"stored", "idempotent", "conflict"}
+    for name, artifact in r.get("artifacts", {}).items():
+        if isinstance(artifact, dict):
+            overlap = forbidden_keys & set(artifact.keys())
+            assert not overlap, f"{name} contains append result keys: {overlap}"
+    print("✅ no append result keys in artifacts")
 
 def test_dry_run_no_real_trade():
     r = build_v3_alpha_dry_run_rehearsal()
@@ -33,10 +37,20 @@ def test_dry_run_runtime_disabled():
     assert r["runtime_enabled"] is False
     print("✅ runtime disabled")
 
+def test_dry_run_lineage_keeps_full_artifact_ids():
+    r = build_v3_alpha_dry_run_rehearsal()
+    for item in r["lineage"]:
+        if item.get("artifact_id"):
+            assert len(str(item["artifact_id"])) >= len(str(item.get("artifact_display_id", "")))
+        if len(str(item.get("artifact_id", ""))) >= 32:
+            assert len(str(item.get("artifact_display_id", ""))) == 16
+    print("✅ lineage keeps full artifact IDs")
+
 if __name__ == "__main__":
     test_dry_run_builds_all_9_artifacts()
     test_dry_run_lineage_not_empty()
     test_dry_run_does_not_append_eventstore()
     test_dry_run_no_real_trade()
     test_dry_run_runtime_disabled()
+    test_dry_run_lineage_keeps_full_artifact_ids()
     print("\n🏁 Dry-Run Rehearsal tests PASS")

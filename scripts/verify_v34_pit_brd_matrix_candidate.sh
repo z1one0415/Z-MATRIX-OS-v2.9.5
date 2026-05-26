@@ -8,6 +8,7 @@ for t in test_brd_matrix_pit_builders test_brd_input_bundle_builder test_brd_mat
   test_brd_strategy_connected_report; do
   echo ""; echo "== $t =="; PYTHONPATH=. python3 "tests/${t}.py"
 done
+echo ""; echo "== Real Data Smoke =="; PYTHONPATH=. python3 scripts/run_v34_pit_brd_matrix_smoke.py
 echo ""; echo "== Git check =="
 if [ -n "$(git status --short)" ]; then echo "❌ dirty"; git status --short; exit 1; fi
 echo "✅ clean"

@@ -25,18 +25,14 @@ def build_v3_alpha_readiness_report() -> dict:
     if not capability_audit.get("pass", False):
         blocking_issues.append(f"capability_audit: {len(capability_audit.get('violations', []))} violations")
     if not workflow_alignment.get("pass", False):
-        blocking_issues.append(f"workflow_alignment: missing pipelines={workflow_alignment.get('missing_pipelines')} workflows={workflow_alignment.get('missing_workflows')}")
+        missing_p = workflow_alignment.get("missing_pipelines", [])
+        missing_w = workflow_alignment.get("missing_workflows", [])
+        gate_v = workflow_alignment.get("gate_alignment_violations", [])
+        blocking_issues.append(f"workflow_alignment: pip={missing_p} wf={missing_w} gate_align={gate_v}")
     if not event_chain_validation.get("pass", False):
         blocking_issues.append(f"event_chain: {len(event_chain_validation.get('violations', []))} violations")
     if not safety_matrix.get("pass", False):
         blocking_issues.append(f"safety_matrix: {len(safety_matrix.get('violations', []))} violations")
-
-    missing_pips = readiness_map.get("missing_pipelines", [])
-    if missing_pips:
-        warnings.append(f"missing pipelines: {missing_pips}")
-    missing_gates = readiness_map.get("missing_gates", [])
-    if missing_gates:
-        warnings.append(f"missing required gates: {len(missing_gates)} items")
 
     if blocking_issues:
         overall_status = "BLOCKED"
@@ -51,6 +47,11 @@ def build_v3_alpha_readiness_report() -> dict:
         "ready_for_alpha": overall_status == "READY_FOR_ALPHA",
         "alpha_runtime_allowed": False,
         "real_trade_allowed": False,
+        "readiness_semantics": {
+            "ready_for_alpha_means": "eligible for alpha integration rehearsal only",
+            "runtime_allowed": False,
+            "real_trade_allowed": False,
+        },
         "summary": {
             "capability_audit_pass": capability_audit.get("pass"),
             "workflow_alignment_pass": workflow_alignment.get("pass"),

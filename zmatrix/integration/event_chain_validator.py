@@ -24,17 +24,17 @@ def _sample_event(event_type: str, ticker: str = "002472",
         "safety": {
             "real_trade_allowed": False, "real_z9_write_allowed": False,
             "hermes_memory_write_allowed": False, "append_allowed": False,
+            "prompt_auto_injection_allowed": False,
+            "system_prompt_write_allowed": False,
+            "runtime_injection_allowed": False,
+            "broker_order_allowed": False,
+            "auto_buy_allowed": False, "auto_sell_allowed": False,
+            "auto_position_close_allowed": False,
         },
     }
 
 
 def build_sample_v3_alpha_event_chain() -> dict:
-    """Build a sample v3.0-alpha event chain.
-
-    PaperLedgerEvent → OutcomeBackfillEvent → MemoryCandidateEvent
-    → ApprovalRequestEvent → HumanApprovalEvent
-    → PromptPatchEvent → RiskEvent
-    """
     paper = _sample_event("PaperLedgerEvent")
     outcome = _sample_event("OutcomeBackfillEvent", parent_id=paper["event_id"])
     memory = _sample_event("MemoryCandidateEvent", parent_id=outcome["event_id"])
@@ -42,7 +42,6 @@ def build_sample_v3_alpha_event_chain() -> dict:
     human_app = _sample_event("HumanApprovalEvent", parent_id=approval_req["event_id"])
     prompt = _sample_event("PromptPatchEvent", parent_id=human_app["event_id"])
     risk = _sample_event("RiskEvent", parent_id=prompt["event_id"])
-
     events = [paper, outcome, memory, approval_req, human_app, prompt, risk]
     edges = [
         (paper["event_id"], outcome["event_id"]),
@@ -52,7 +51,6 @@ def build_sample_v3_alpha_event_chain() -> dict:
         (human_app["event_id"], prompt["event_id"]),
         (prompt["event_id"], risk["event_id"]),
     ]
-
     return {
         "chain_version": CHAIN_VERSION,
         "mode": "SAMPLE_ONLY",
@@ -67,14 +65,10 @@ def build_sample_v3_alpha_event_chain() -> dict:
 
 
 def validate_v3_alpha_event_chain(chain: dict) -> dict:
-    """Validate a v3.0-alpha event chain."""
     violations = []
-
     events = chain.get("events", [])
-    event_types = chain.get("event_types", [])
-    edges = chain.get("lineage_edges", [])
     event_map = {e["event_id"]: e for e in events}
-    type_set = set(event_types)
+    type_set = set(e.get("event_type") for e in events)
 
     for e in events:
         eid = e.get("event_id", "")
@@ -83,16 +77,31 @@ def validate_v3_alpha_event_chain(chain: dict) -> dict:
         if e.get("event_type") not in EVENT_TYPES:
             violations.append(f"event_type not in EVENT_TYPES: {e.get('event_type')}")
 
-    # Check MemoryCandidate→ApprovalRequest chain
+    # Chain completeness
     if "MemoryCandidateEvent" in type_set and "ApprovalRequestEvent" not in type_set:
         violations.append("MemoryCandidateEvent without ApprovalRequestEvent")
-    # Check that event safety blocks auto execution
-    for e in events:
-        safety = e.get("safety", {})
-        if safety.get("real_trade_allowed") is True:
-            violations.append(f"{e.get('event_type')} has real_trade_allowed=True")
 
-    for src, dst in edges:
+    # Prompt safety
+    for e in events:
+        et = e.get("event_type")
+        payload = e.get("payload", {})
+        safety = e.get("safety", {})
+        if et == "HumanApprovalEvent" and payload.get("auto_execute_allowed") is True:
+            violations.append("HumanApprovalEvent must not auto execute")
+        if et == "PromptPatchEvent":
+            if safety.get("prompt_auto_injection_allowed") is True:
+                violations.append("PromptPatchEvent must not prompt auto inject")
+            if safety.get("system_prompt_write_allowed") is True:
+                violations.append("PromptPatchEvent must not write system prompt")
+            if payload.get("runtime_injection_allowed") is True:
+                violations.append("PromptPatchEvent must not runtime inject")
+        if et == "RiskEvent":
+            if safety.get("real_trade_allowed") is True:
+                violations.append("RiskEvent must not real trade")
+            if safety.get("broker_order_allowed") is True:
+                violations.append("RiskEvent must not broker order")
+
+    for src, dst in chain.get("lineage_edges", []):
         if src not in event_map:
             violations.append(f"edge source {src[:8]}... not in events")
         if dst not in event_map:

@@ -93,6 +93,8 @@ def validate_v3_alpha_event_chain(chain: dict) -> dict:
                 violations.append("PromptPatchEvent must not prompt auto inject")
             if safety.get("system_prompt_write_allowed") is True:
                 violations.append("PromptPatchEvent must not write system prompt")
+            if safety.get("runtime_injection_allowed") is True:
+                violations.append("PromptPatchEvent must not runtime inject")
             if payload.get("runtime_injection_allowed") is True:
                 violations.append("PromptPatchEvent must not runtime inject")
         if et == "RiskEvent":
@@ -100,6 +102,12 @@ def validate_v3_alpha_event_chain(chain: dict) -> dict:
                 violations.append("RiskEvent must not real trade")
             if safety.get("broker_order_allowed") is True:
                 violations.append("RiskEvent must not broker order")
+            if safety.get("auto_buy_allowed") is True:
+                violations.append("RiskEvent must not auto buy")
+            if safety.get("auto_sell_allowed") is True:
+                violations.append("RiskEvent must not auto sell")
+            if safety.get("auto_position_close_allowed") is True:
+                violations.append("RiskEvent must not auto position close")
 
     for src, dst in chain.get("lineage_edges", []):
         if src not in event_map:

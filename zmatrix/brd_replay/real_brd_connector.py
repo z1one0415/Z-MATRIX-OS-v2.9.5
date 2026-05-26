@@ -40,6 +40,12 @@ class RealBRDClassifierConnector:
             raw = self.impl(ticker, b_matrix, r_matrix, d_matrix, account=account, exposure=exposure)
             from zmatrix.brd_replay.classifier_interface import normalize_brd_classifier_output
             n = normalize_brd_classifier_output(raw)
+            # Respect B-Matrix role_cap: downgrade if classifier gives A but B-Matrix caps lower
+            b_matrix = bundle.get("b_matrix",{})
+            role_cap = b_matrix.get("role_cap")
+            if role_cap and role_cap != "A_LONG_CORE" and n.get("role") == "A_LONG_CORE":
+                n["role"] = role_cap
+                n.setdefault("reason_codes",[]).append(f"ROLE_DOWNGRADED_BY_B_MATRIX_CAP:{role_cap}")
             n.update({"connector_status":"CONNECTED","connector_impl":self.impl_name,
                       "fallback":False,"brd_connected":True})
             return n

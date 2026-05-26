@@ -23,3 +23,9 @@ __pycache__/
 .DS_Store
 *.bak
 .venv/
+
+# 本地数据仓库（不提交到云仓）
+data/price_bars/*.csv
+data/fundamentals/*.csv
+!data/price_bars/.gitkeep
+!data/fundamentals/.gitkeep

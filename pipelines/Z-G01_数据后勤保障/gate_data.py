@@ -7,6 +7,38 @@ NOT a pipeline script. All pipelines consume this service via z17_loader. (v1.0)
 
 import json, time, urllib.request, sys, os
 from pathlib import Path
+from datetime import datetime, timedelta
+
+# ═══ Tushare 数据源 (主力) ═══
+_TUSHARE_PRO = None
+_TUSHARE_AVAILABLE = False
+
+def _get_ts_pro():
+    """初始化 tushare pro_api（惰性加载）"""
+    global _TUSHARE_PRO, _TUSHARE_AVAILABLE
+    if _TUSHARE_PRO is not None:
+        return _TUSHARE_PRO
+    # 从多来源读取 token
+    token = os.environ.get("TUSHARE_TOKEN") or ""
+    if not token:
+        try:
+            tp = Path.home() / ".tushare" / "token"
+            if tp.exists():
+                token = tp.read_text().strip()
+        except:
+            pass
+    if not token:
+        _TUSHARE_AVAILABLE = False
+        return None
+    try:
+        import tushare as ts
+        ts.set_token(token)
+        _TUSHARE_PRO = ts.pro_api()
+        _TUSHARE_AVAILABLE = True
+        return _TUSHARE_PRO
+    except Exception:
+        _TUSHARE_AVAILABLE = False
+        return None
 
 # ═══ 输出等级 (O1-O5) + Capability Mask 范式 (v2.9.5 open-intelligence) ═══
 OUTPUT_LEVELS = {
@@ -76,6 +108,74 @@ def _cache_get(k, ttl=300):
     return e if e and _now()-e.get("_ts",0)<ttl else None
 def _cache_set(k, v):
     v["_ts"] = _now(); _cache[k] = v
+
+
+# ═══ Tushare 数据源: 日K线 (主力) ═══
+def _ts_kline(ticker, days=120, adjust="qfq"):
+    """tushare 日K线 — 主力数据源。
+    adjust="qfq" → 前复权 (默认, 用于研究/均线/形态)
+    adjust=None  → 不复权 (用于执行验证)
+    降级: tushare→baostock
+    """
+    pro = _get_ts_pro()
+    if pro is None:
+        return _bs_kline_internal(ticker, days, adjust="research" if adjust=="qfq" else "raw")
+    try:
+        suffix = "SZ" if ticker[0] in "03" else "SH"
+        ts_code = f"{ticker}.{suffix}"
+        end = datetime.now().strftime("%Y%m%d")
+        start = (datetime.now() - timedelta(days=days + 30)).strftime("%Y%m%d")
+        df = pro.daily(ts_code=ts_code, start_date=start, end_date=end)
+        if df is None or df.empty:
+            return _bs_kline_internal(ticker, days, adjust="research" if adjust=="qfq" else "raw")
+        df = df.sort_values("trade_date")
+        rows = []
+        for _, r in df.iterrows():
+            rows.append({
+                "date": r["trade_date"],
+                "open": float(r["open"]),
+                "high": float(r["high"]),
+                "low": float(r["low"]),
+                "close": float(r["close"]),
+                "volume": float(r["vol"]) if "vol" in r and r["vol"] else 0.0,
+                "amount": float(r["amount"]) if "amount" in r and r["amount"] else 0.0,
+            })
+        # 前复权: 用 adj_factor API 调整全部价格
+        if adjust == "qfq":
+            try:
+                adj_df = pro.adj_factor(ts_code=ts_code)
+                if adj_df is not None and not adj_df.empty:
+                    adj_df = adj_df.sort_values("trade_date")
+                    latest_adj = float(adj_df.iloc[-1]["adj_factor"])
+                    for row in rows:
+                        adj_row = adj_df[adj_df["trade_date"] == row["date"]]
+                        if not adj_row.empty:
+                            factor = float(adj_row.iloc[0]["adj_factor"])
+                            if factor > 0:
+                                ratio = latest_adj / factor
+                                row["open"] = round(row["open"] * ratio, 2)
+                                row["high"] = round(row["high"] * ratio, 2)
+                                row["low"] = round(row["low"] * ratio, 2)
+                                row["close"] = round(row["close"] * ratio, 2)
+                                row["volume"] = int(row["volume"] * ratio)
+            except Exception:
+                pass
+        return {
+            "dates": [r["date"] for r in rows],
+            "open": [r["open"] for r in rows],
+            "high": [r["high"] for r in rows],
+            "low": [r["low"] for r in rows],
+            "close": [r["close"] for r in rows],
+            "volume": [r["volume"] for r in rows],
+            "amount": [r["amount"] for r in rows],
+            "prices": [r["close"] for r in rows],
+            "count": len(rows),
+            "source": "tushare",
+            "adjust": adjust,
+            "data_contract": "OHLCV_DAILY_V1",
+        }
+    except Exception as e:
+        return _bs_kline_internal(ticker, days, adjust="research" if adjust=="qfq" else "raw")
 
 def _sina_quote(ticker):
     pfx = "sz" if ticker[0] in "03" else "sh"
@@ -154,6 +254,45 @@ def _bs_kline_internal(ticker, days, adjust="research"):
         return result
     except Exception as ex:
         return {"error": str(ex)[:60]}
+
+
+# ═══ Tushare 数据源: 财务指标 (主力, 降级→baostock) ═══
+def _ts_finance(ticker):
+    """tushare 财务指标。降级链: tushare→_bs_finance
+    通过 fina_indicator + daily_basic 获取核心指标。
+    """
+    pro = _get_ts_pro()
+    if pro is None:
+        return _bs_finance(ticker)
+    try:
+        suffix = "SZ" if ticker[0] in "03" else "SH"
+        ts_code = f"{ticker}.{suffix}"
+        df = pro.fina_indicator(ts_code=ts_code, start_date="20251231")
+        if df is None or df.empty:
+            return _bs_finance(ticker)
+        r = df.iloc[0]
+        rv = {
+            "symbol": ticker, "industry": "",
+            "has_finance": True,
+            "q1_eps": float(r.get("eps", 0)) if r.get("eps") and str(r["eps"]).strip() != "" else None,
+            "roe_5y_avg": float(r.get("roe", 0)) / 100 if r.get("roe") and str(r["roe"]).strip() != "" else None,
+            "roic_5y": float(r.get("roic", 0)) / 100 if r.get("roic") and str(r["roic"]).strip() != "" else None,
+            "gross_margin": float(r.get("gross_margin")) / 100 if r.get("gross_margin") and str(r["gross_margin"]).strip() != "" else None,
+            "debt_ratio": float(r.get("debt_to_assets")) / 100 if r.get("debt_to_assets") and str(r["debt_to_assets"]).strip() != "" else None,
+            "pe_ttm": None, "pb": None,
+        }
+        # 补 PE/PB
+        try:
+            db = pro.daily_basic(ts_code=ts_code, start_date="20260501", end_date="20260526", fields="trade_date,pe,pb")
+            if db is not None and not db.empty:
+                last = db.iloc[-1]
+                rv["pe_ttm"] = float(last["pe"]) if last.get("pe") and str(last["pe"]).strip() != "" else None
+                rv["pb"] = float(last["pb"]) if last.get("pb") and str(last["pb"]).strip() != "" else None
+        except Exception:
+            pass
+        return rv
+    except Exception:
+        return _bs_finance(ticker)
 
 def _bs_finance(ticker):
     """B-Matrix financial data contract — returns FINANCIAL_BMATRIX_V1 fields.
@@ -326,7 +465,7 @@ def market_truth(ticker):
     bs = _bs_raw_kline(ticker, 10)
     if bs.get("error"): errs.append(f"bs:{bs['error']}")
     elif bs.get("prices"):
-        lt_close = bs["close"][-1] if bs.get("close") else bs["prices"][-1]
+        lt_close = kdata["close"][-1] if kdata.get("close") else bs["prices"][-1]
         lt_date = bs["dates"][-1] if bs.get("dates") else ""
         dt["baostock_close"] = lt_close; dt["baostock_date"] = lt_date
         if "price" in dt:
@@ -410,30 +549,34 @@ def l4_health(ticker):
 def get_kline(ticker, n=60):
     ck = f"kl_{ticker}_{n}"
     if _cache_get(ck, ttl=30): return _cache_get(ck, ttl=30)
-    bs = _bs_research_kline(ticker, max(n+30, 100))
-    if bs.get("error"): return {"status":"DATA_INCOMPLETE","prices":[],"error":bs["error"]}
+    # 主力: tushare, 降级: baostock
+    kdata = _ts_kline(ticker, max(n+30, 100), adjust="qfq")
+    if kdata.get("error"):
+        kdata = _bs_research_kline(ticker, max(n+30, 100))
+    if kdata.get("error"): return {"status":"DATA_INCOMPLETE","prices":[],"error":kdata["error"]}
     # Extract OHLCV arrays, trim to n
     rv = {
-        "status": "PASS" if bs.get("count",0) >= min(n,20) else "DEGRADED",
-        "prices": bs["close"][-n:] if bs.get("close") else [],
-        "open": bs["open"][-n:] if bs.get("open") else [],
-        "high": bs["high"][-n:] if bs.get("high") else [],
-        "low": bs["low"][-n:] if bs.get("low") else [],
-        "close": bs["close"][-n:] if bs.get("close") else [],
-        "volume": bs["volume"][-n:] if bs.get("volume") else [],
-        "amount": bs["amount"][-n:] if bs.get("amount") else [],
-        "count": min(n, bs.get("count", 0)),
-        "data_contract": bs.get("data_contract", "OHLCV_DAILY_V1"),
+        "status": "PASS" if kdata.get("count",0) >= min(n,20) else "DEGRADED",
+        "prices": kdata["close"][-n:] if kdata.get("close") else [],
+        "open": kdata["open"][-n:] if kdata.get("open") else [],
+        "high": kdata["high"][-n:] if kdata.get("high") else [],
+        "low": kdata["low"][-n:] if kdata.get("low") else [],
+        "close": kdata["close"][-n:] if kdata.get("close") else [],
+        "volume": kdata["volume"][-n:] if kdata.get("volume") else [],
+        "amount": kdata["amount"][-n:] if kdata.get("amount") else [],
+        "count": min(n, kdata.get("count", 0)),
+        "data_contract": kdata.get("data_contract", "OHLCV_DAILY_V1"),
         "price_basis": "adjusted_research",
     }
-    if bs.get("missing_fields"):
-        rv["missing_fields"] = bs["missing_fields"]
+    if kdata.get("missing_fields"):
+        rv["missing_fields"] = kdata["missing_fields"]
     _cache_set(ck, rv); return rv
 
 def get_financials(ticker):
     ck = f"fin_{ticker}"
     if _cache_get(ck, ttl=86400): return _cache_get(ck, ttl=86400)
-    fin = _bs_finance(ticker)
+    # 主力: tushare, 降级: baostock
+    fin = _ts_finance(ticker)
     # Ensure FINANCIAL_BMATRIX_V1 contract shape — fill missing keys with None
     defaults = {
         "symbol": ticker, "industry": "", "has_finance": False,
@@ -607,6 +750,70 @@ def fetch_news_headlines(max_items: int = 15) -> dict:
           "headlines": headlines[:max_items], "count": len(headlines[:max_items]),
           "errors": errors, "pipeline_signature": "Z-G01_news_v1"}
     _cache_set(ck, rv); return rv
+
+
+
+# ═══ 磁盘持久化缓存 (data/price_bars/*.csv + data/fundamentals/*.csv) ═══
+_DATA_CACHE_DIRS = {
+    "price_bars": Path(__file__).resolve().parents[2] / "data" / "price_bars",
+    "fundamentals": Path(__file__).resolve().parents[2] / "data" / "fundamentals",
+}
+for _d in _DATA_CACHE_DIRS.values():
+    _d.mkdir(parents=True, exist_ok=True)
+
+def _disk_cache_save(data_type: str, ticker: str, rows: list[dict]):
+    import csv
+    path = _DATA_CACHE_DIRS.get(data_type)
+    if path is None or not rows:
+        return
+    filepath = path / f"{ticker}.csv"
+    with open(filepath, "w", newline="", encoding="utf-8-sig") as f:
+        w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
+        w.writeheader()
+        w.writerows(rows)
+
+def _disk_cache_load(data_type: str, ticker: str) -> list[dict] | None:
+    import csv
+    path = _DATA_CACHE_DIRS.get(data_type)
+    if path is None:
+        return None
+    filepath = path / f"{ticker}.csv"
+    if not filepath.exists():
+        return None
+    try:
+        with open(filepath, "r", encoding="utf-8-sig") as f:
+            return list(csv.DictReader(f))
+    except Exception:
+        return None
+
+def disk_cache_persist(ticker: str, kline_result: dict):
+    """将 get_kline / _ts_kline 的结果持久化到 data/price_bars/{ticker}.csv"""
+    dates = kline_result.get("dates", [])
+    if not dates:
+        return
+    n = len(dates)
+    rows = []
+    for i in range(n):
+        rows.append({
+            "date": dates[i],
+            "open": str(kline_result["open"][i]) if i < len(kline_result.get("open", [])) else "",
+            "high": str(kline_result["high"][i]) if i < len(kline_result.get("high", [])) else "",
+            "low": str(kline_result["low"][i]) if i < len(kline_result.get("low", [])) else "",
+            "close": str(kline_result["close"][i]) if i < len(kline_result.get("close", [])) else "",
+            "volume": str(kline_result["volume"][i]) if i < len(kline_result.get("volume", [])) else "",
+            "amount": str(kline_result["amount"][i]) if i < len(kline_result.get("amount", [])) else "",
+        })
+    _disk_cache_save("price_bars", ticker, rows)
+
+def disk_cache_save_financial(ticker: str, fin_result: dict):
+    """将 get_financials 结果持久化到 data/fundamentals/{ticker}_fin.csv"""
+    import csv
+    path = _DATA_CACHE_DIRS["fundamentals"] / f"{ticker}_fin.csv"
+    with open(path, "w", newline="", encoding="utf-8-sig") as f:
+        w = csv.DictWriter(f, fieldnames=list(fin_result.keys()))
+        w.writeheader()
+        w.writerow(fin_result)
+
 
 if __name__ == "__main__":
     t = sys.argv[1] if len(sys.argv)>1 else "002463"

@@ -102,6 +102,7 @@ def run_architecture_enforcement() -> list[str]:
     v.extend(check_approval_loop_components())
     v.extend(check_prompt_middleware_components())
     v.extend(check_tail_risk_components())
+    v.extend(check_v3_alpha_readiness_components())
     return v
 def check_workspace_alignment_components() -> list[str]:
     from pathlib import Path
@@ -440,5 +441,41 @@ def check_tail_risk_components() -> list[str]:
             candidate = root / "docs" / "architecture" / fname
         if not candidate.exists():
             violations.append(f"Tail risk doc {fname} missing")
+
+    return violations
+
+
+def check_v3_alpha_readiness_components() -> list[str]:
+    from pathlib import Path
+    violations = []
+    root = Path(__file__).resolve().parent.parent.parent
+
+    pkg = root / "zmatrix" / "integration"
+    for fname in ["__init__.py","schemas.py","readiness_map.py","capability_audit.py",
+                  "workflow_alignment.py","event_chain_validator.py","safety_matrix.py","readiness_report.py"]:
+        if not (pkg / fname).exists():
+            violations.append(f"integration/{fname} missing")
+
+    from zmatrix.architecture.skill_registry import SHARED_SKILL_REGISTRY
+    for s in ["integration.readiness_map.build","integration.capability_audit.run",
+              "integration.workflow_alignment.audit","integration.event_chain.sample_build",
+              "integration.event_chain.validate","integration.safety_matrix.build","integration.readiness_report.build"]:
+        if s not in SHARED_SKILL_REGISTRY:
+            violations.append(f"Integration skill '{s}' not registered")
+
+    from zmatrix.architecture.gate_registry import GATE_REGISTRY
+    for g in ["integration.readiness_map.valid","integration.capability_audit.valid",
+              "integration.workflow_alignment.valid","integration.event_chain.valid",
+              "integration.safety_matrix.valid","integration.no_runtime_enable.valid"]:
+        if g not in GATE_REGISTRY:
+            violations.append(f"Integration gate '{g}' not registered")
+
+    from zmatrix.architecture.pipeline_registry import PIPELINE_REGISTRY
+    if "Z-V3AlphaReadinessGate" not in PIPELINE_REGISTRY:
+        violations.append("Z-V3AlphaReadinessGate pipeline not registered")
+
+    from zmatrix.architecture.workflow_dag import WORKFLOW_DAG_REGISTRY
+    if "Z-Integration.v3_alpha_readiness_gate_workflow" not in WORKFLOW_DAG_REGISTRY:
+        violations.append("Integration workflow not registered")
 
     return violations

@@ -267,7 +267,42 @@ WORKFLOW_DAG_REGISTRY: dict[str, dict[str, Any]] = {
         "contract": "docs/architecture/HERMES_MEMORY_KERNEL_ARCHITECTURE_V10.md",
         "test": "tests/test_hermes_memory_architecture.py",
     },
-        "Z-TailRisk.autonomic_gates_preview_workflow": {
+            "Z-Integration.v3_alpha_readiness_gate_workflow": {
+        "layer": "workflow_dag",
+        "pipeline": "Z-V3AlphaReadinessGate",
+        "purpose": "v3.0-alpha integration readiness gate: map → audit → validate → report",
+        "nodes": [
+            "integration.readiness_map.build", "integration.capability_audit.run",
+            "integration.workflow_alignment.audit", "integration.event_chain.sample_build",
+            "integration.event_chain.validate", "integration.safety_matrix.build",
+            "integration.readiness_report.build",
+            "safety.no_real_trade",
+        ],
+        "edges": [
+            ("integration.readiness_map.build", "integration.capability_audit.run"),
+            ("integration.capability_audit.run", "integration.workflow_alignment.audit"),
+            ("integration.workflow_alignment.audit", "integration.event_chain.sample_build"),
+            ("integration.event_chain.sample_build", "integration.event_chain.validate"),
+            ("integration.event_chain.validate", "integration.safety_matrix.build"),
+            ("integration.safety_matrix.build", "integration.readiness_report.build"),
+            ("integration.readiness_report.build", "safety.no_real_trade"),
+        ],
+        "required_gates": [
+            "integration.readiness_map.valid", "integration.capability_audit.valid",
+            "integration.workflow_alignment.valid", "integration.event_chain.valid",
+            "integration.safety_matrix.valid", "integration.no_runtime_enable.valid",
+            "safety.no_real_trade",
+        ],
+        "forbidden_capabilities": [
+            "real_trade", "broker_order", "auto_buy", "auto_sell",
+            "auto_position_close", "real_z9_write", "hermes_memory_write",
+            "auto_calibration", "prompt_auto_injection", "system_prompt_write",
+            "runtime_prompt_injection", "real_market_fetch", "external_api_default_on",
+        ],
+        "contract": "docs/architecture/V3_ALPHA_INTEGRATION_READINESS_GATE_V10.md",
+        "test": "tests/test_v3_alpha_readiness_architecture.py",
+    },
+"Z-TailRisk.autonomic_gates_preview_workflow": {
         "layer": "workflow_dag",
         "pipeline": "Z-TailRiskAutonomicGates",
         "purpose": "Tail-risk autonomic gates preview: signals → gates → controller → events",

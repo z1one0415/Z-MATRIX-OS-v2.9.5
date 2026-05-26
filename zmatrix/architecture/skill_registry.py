@@ -782,6 +782,71 @@ SHARED_SKILL_REGISTRY: dict[str, dict[str, Any]] = {
         "safety_boundary": "no real trade, build only, no append, no auto sell, no position close, no Hermes memory write",
     },
 
+
+    # === Integration skills (v2.9.16-dev) ===
+    "integration.readiness_map.build": {
+        "layer": "shared_skill", "module": "zmatrix.integration.readiness_map",
+        "public_function": "build_v3_alpha_readiness_map", "owner": "IntegrationGate",
+        "used_by": ["Z-V3AlphaReadinessGate"],
+        "contract": "docs/contracts/V3_ALPHA_READINESS_MAP_V10.md",
+        "test": "tests/test_integration_readiness_map.py",
+        "duplicate_allowed": False,
+        "safety_boundary": "no real trade, readiness-check-only, no runtime enable, no Hermes memory write, no broker order",
+    },
+    "integration.capability_audit.run": {
+        "layer": "shared_skill", "module": "zmatrix.integration.capability_audit",
+        "public_function": "audit_forbidden_capabilities", "owner": "IntegrationGate",
+        "used_by": ["Z-V3AlphaReadinessGate"],
+        "contract": "docs/contracts/FORBIDDEN_CAPABILITY_AUDIT_V10.md",
+        "test": "tests/test_integration_capability_audit.py",
+        "duplicate_allowed": False,
+        "safety_boundary": "no real trade, audit only, no runtime enable, no Hermes memory write",
+    },
+    "integration.workflow_alignment.audit": {
+        "layer": "shared_skill", "module": "zmatrix.integration.workflow_alignment",
+        "public_function": "audit_workflow_alignment", "owner": "IntegrationGate",
+        "used_by": ["Z-V3AlphaReadinessGate"],
+        "contract": "docs/contracts/WORKFLOW_ALIGNMENT_AUDIT_V10.md",
+        "test": "tests/test_integration_workflow_alignment.py",
+        "duplicate_allowed": False,
+        "safety_boundary": "no real trade, audit only, no runtime enable, no Hermes memory write",
+    },
+    "integration.event_chain.sample_build": {
+        "layer": "shared_skill", "module": "zmatrix.integration.event_chain_validator",
+        "public_function": "build_sample_v3_alpha_event_chain", "owner": "IntegrationGate",
+        "used_by": ["Z-V3AlphaReadinessGate"],
+        "contract": "docs/contracts/V3_ALPHA_EVENT_CHAIN_SAMPLE_V10.md",
+        "test": "tests/test_integration_event_chain_validator.py",
+        "duplicate_allowed": False,
+        "safety_boundary": "no real trade, sample only, no append, no Hermes memory write, no real Z9 write",
+    },
+    "integration.event_chain.validate": {
+        "layer": "shared_skill", "module": "zmatrix.integration.event_chain_validator",
+        "public_function": "validate_v3_alpha_event_chain", "owner": "IntegrationGate",
+        "used_by": ["Z-V3AlphaReadinessGate"],
+        "contract": "docs/contracts/V3_ALPHA_EVENT_CHAIN_SAMPLE_V10.md",
+        "test": "tests/test_integration_event_chain_validator.py",
+        "duplicate_allowed": False,
+        "safety_boundary": "no real trade, validation only, no append, no runtime enable, no Hermes memory write",
+    },
+    "integration.safety_matrix.build": {
+        "layer": "shared_skill", "module": "zmatrix.integration.safety_matrix",
+        "public_function": "build_cross_layer_safety_matrix", "owner": "IntegrationGate",
+        "used_by": ["Z-V3AlphaReadinessGate"],
+        "contract": "docs/contracts/CROSS_LAYER_SAFETY_MATRIX_V10.md",
+        "test": "tests/test_integration_safety_matrix.py",
+        "duplicate_allowed": False,
+        "safety_boundary": "no real trade, check only, no runtime enable, no Hermes memory write",
+    },
+    "integration.readiness_report.build": {
+        "layer": "shared_skill", "module": "zmatrix.integration.readiness_report",
+        "public_function": "build_v3_alpha_readiness_report", "owner": "IntegrationGate",
+        "used_by": ["Z-V3AlphaReadinessGate"],
+        "contract": "docs/contracts/V3_ALPHA_READINESS_REPORT_V10.md",
+        "test": "tests/test_integration_readiness_report.py",
+        "duplicate_allowed": False,
+        "safety_boundary": "no real trade, report only, no runtime enable, no Hermes memory write, no broker order",
+    },
 }
 
 

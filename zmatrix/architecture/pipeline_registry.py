@@ -220,7 +220,32 @@ PIPELINE_REGISTRY: dict[str, dict[str, Any]] = {
         "contract": "docs/contracts/EVENT_STORE_V10.md",
         "test": "tests/test_event_store_architecture.py",
     },
-        "Z-TailRiskAutonomicGates": {
+            "Z-V3AlphaReadinessGate": {
+        "layer": "pipeline_application",
+        "pipeline_path": "zmatrix/integration/",
+        "owner": "IntegrationGate",
+        "allowed_skills": [
+            "integration.readiness_map.build", "integration.capability_audit.run",
+            "integration.workflow_alignment.audit", "integration.event_chain.sample_build",
+            "integration.event_chain.validate", "integration.safety_matrix.build",
+            "integration.readiness_report.build", "safety.no_real_trade",
+        ],
+        "required_gates": [
+            "integration.readiness_map.valid", "integration.capability_audit.valid",
+            "integration.workflow_alignment.valid", "integration.event_chain.valid",
+            "integration.safety_matrix.valid", "integration.no_runtime_enable.valid",
+            "safety.no_real_trade",
+        ],
+        "forbidden_capabilities": [
+            "real_trade", "broker_order", "auto_buy", "auto_sell",
+            "auto_position_close", "real_z9_write", "hermes_memory_write",
+            "auto_calibration", "prompt_auto_injection", "system_prompt_write",
+            "runtime_prompt_injection", "real_market_fetch", "external_api_default_on",
+        ],
+        "contract": "docs/contracts/V3_ALPHA_READINESS_REPORT_V10.md",
+        "test": "tests/test_v3_alpha_readiness_architecture.py",
+    },
+"Z-TailRiskAutonomicGates": {
         "layer": "pipeline_application",
         "pipeline_path": "zmatrix/tail_risk/",
         "owner": "TailRisk",

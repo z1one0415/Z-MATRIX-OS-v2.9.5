@@ -220,7 +220,32 @@ PIPELINE_REGISTRY: dict[str, dict[str, Any]] = {
         "contract": "docs/contracts/EVENT_STORE_V10.md",
         "test": "tests/test_event_store_architecture.py",
     },
-                    "Z-V3AlphaRCPackaging": {
+                        "Z-V3AlphaFinalTagGate": {
+        "layer": "pipeline_application",
+        "pipeline_path": "zmatrix/alpha_tag/",
+        "owner": "AlphaTag",
+        "allowed_skills": [
+            "alpha_tag.artifact_consistency.validate", "alpha_tag.tag_readiness.validate",
+            "alpha_tag.release_notes.build", "alpha_rc.rc_gate.validate",
+            "safety.no_real_trade",
+        ],
+        "required_gates": [
+            "alpha_tag.artifact_consistency.valid", "alpha_tag.readiness.valid",
+            "alpha_tag.no_git_tag_execute.valid", "alpha_tag.no_git_push_tags.valid",
+            "alpha_tag.no_runtime.valid", "alpha_tag.no_real_trade.valid",
+            "safety.no_real_trade",
+        ],
+        "forbidden_capabilities": [
+            "real_trade", "broker_order", "auto_buy", "auto_sell",
+            "auto_position_close", "real_z9_write", "hermes_memory_write",
+            "auto_calibration", "prompt_auto_injection", "system_prompt_write",
+            "runtime_prompt_injection", "real_market_fetch", "external_api_default_on",
+            "git_tag_execute", "git_push_tags",
+        ],
+        "contract": "docs/contracts/V3_ALPHA_TAG_GATE_V10.md",
+        "test": "tests/test_alpha_tag_architecture.py",
+    },
+"Z-V3AlphaRCPackaging": {
         "layer": "pipeline_application",
         "pipeline_path": "zmatrix/alpha_rc/",
         "owner": "AlphaRC",

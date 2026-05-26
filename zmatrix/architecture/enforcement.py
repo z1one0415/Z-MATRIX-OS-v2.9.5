@@ -105,6 +105,7 @@ def run_architecture_enforcement() -> list[str]:
     v.extend(check_v3_alpha_readiness_components())
     v.extend(check_dry_run_components())
     v.extend(check_alpha_rc_components())
+    v.extend(check_alpha_tag_components())
     return v
 def check_workspace_alignment_components() -> list[str]:
     from pathlib import Path
@@ -537,4 +538,29 @@ def check_alpha_rc_components() -> list[str]:
     from zmatrix.architecture.workflow_dag import WORKFLOW_DAG_REGISTRY
     if "Z-AlphaRC.packaging_freeze_workflow" not in WORKFLOW_DAG_REGISTRY:
         violations.append("Alpha RC workflow not registered")
+    return violations
+
+
+def check_alpha_tag_components() -> list[str]:
+    from pathlib import Path
+    violations = []
+    root = Path(__file__).resolve().parent.parent.parent
+    pkg = root / "zmatrix" / "alpha_tag"
+    for fname in ["__init__.py","schemas.py","artifact_consistency.py","tag_readiness_validator.py","release_notes_builder.py"]:
+        if not (pkg / fname).exists():
+            violations.append(f"alpha_tag/{fname} missing")
+    from zmatrix.architecture.skill_registry import SHARED_SKILL_REGISTRY
+    for s in ["alpha_tag.artifact_consistency.validate","alpha_tag.tag_readiness.validate","alpha_tag.release_notes.build"]:
+        if s not in SHARED_SKILL_REGISTRY:
+            violations.append(f"Alpha Tag skill '{s}' not registered")
+    from zmatrix.architecture.gate_registry import GATE_REGISTRY
+    for g in ["alpha_tag.artifact_consistency.valid","alpha_tag.readiness.valid","alpha_tag.no_git_tag_execute.valid","alpha_tag.no_git_push_tags.valid","alpha_tag.no_runtime.valid","alpha_tag.no_real_trade.valid"]:
+        if g not in GATE_REGISTRY:
+            violations.append(f"Alpha Tag gate '{g}' not registered")
+    from zmatrix.architecture.pipeline_registry import PIPELINE_REGISTRY
+    if "Z-V3AlphaFinalTagGate" not in PIPELINE_REGISTRY:
+        violations.append("Z-V3AlphaFinalTagGate pipeline not registered")
+    from zmatrix.architecture.workflow_dag import WORKFLOW_DAG_REGISTRY
+    if "Z-AlphaTag.final_tag_gate_workflow" not in WORKFLOW_DAG_REGISTRY:
+        violations.append("Alpha Tag workflow not registered")
     return violations

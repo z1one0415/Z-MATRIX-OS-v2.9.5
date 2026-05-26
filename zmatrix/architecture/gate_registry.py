@@ -399,7 +399,62 @@ GATE_REGISTRY: dict[str, dict[str, Any]] = {
     
     
     
-    "alpha_rc.manifest.valid": {
+    
+    "alpha_tag.artifact_consistency.valid": {
+        "layer": "system_control", "gate_type": "contract",
+        "owner": "SystemCore", "purpose": "Validate RC artifact consistency",
+        "applies_to": ["Z-V3AlphaFinalTagGate"],
+        "enforced_by": "zmatrix.alpha_tag.artifact_consistency.validate_alpha_rc_artifact_consistency",
+        "blocking": True, "degradable": False,
+        "contract": "docs/contracts/V3_ALPHA_ARTIFACT_CONSISTENCY_V10.md",
+        "test": "tests/test_alpha_tag_architecture.py",
+    },
+    "alpha_tag.readiness.valid": {
+        "layer": "system_control", "gate_type": "contract",
+        "owner": "SystemCore", "purpose": "Validate tag readiness",
+        "applies_to": ["Z-V3AlphaFinalTagGate"],
+        "enforced_by": "zmatrix.alpha_tag.tag_readiness_validator.validate_v3_alpha_tag_readiness",
+        "blocking": True, "degradable": False,
+        "contract": "docs/contracts/V3_ALPHA_TAG_GATE_V10.md",
+        "test": "tests/test_alpha_tag_architecture.py",
+    },
+    "alpha_tag.no_git_tag_execute.valid": {
+        "layer": "system_control", "gate_type": "safety",
+        "owner": "SystemCore", "purpose": "Block git tag execution from tag gate",
+        "applies_to": ["Z-V3AlphaFinalTagGate"],
+        "enforced_by": "zmatrix.alpha_tag.tag_readiness_validator.validate_v3_alpha_tag_readiness",
+        "blocking": True, "degradable": False,
+        "contract": "docs/contracts/V3_ALPHA_TAG_GATE_V10.md",
+        "test": "tests/test_alpha_tag_architecture.py",
+    },
+    "alpha_tag.no_git_push_tags.valid": {
+        "layer": "system_control", "gate_type": "safety",
+        "owner": "SystemCore", "purpose": "Block git push --tags from tag gate",
+        "applies_to": ["Z-V3AlphaFinalTagGate"],
+        "enforced_by": "zmatrix.alpha_tag.tag_readiness_validator.validate_v3_alpha_tag_readiness",
+        "blocking": True, "degradable": False,
+        "contract": "docs/contracts/V3_ALPHA_TAG_GATE_V10.md",
+        "test": "tests/test_alpha_tag_architecture.py",
+    },
+    "alpha_tag.no_runtime.valid": {
+        "layer": "system_control", "gate_type": "safety",
+        "owner": "SystemCore", "purpose": "Block runtime from tag gate",
+        "applies_to": ["Z-V3AlphaFinalTagGate"],
+        "enforced_by": "zmatrix.alpha_tag.tag_readiness_validator.validate_v3_alpha_tag_readiness",
+        "blocking": True, "degradable": False,
+        "contract": "docs/contracts/V3_ALPHA_TAG_GATE_V10.md",
+        "test": "tests/test_alpha_tag_architecture.py",
+    },
+    "alpha_tag.no_real_trade.valid": {
+        "layer": "system_control", "gate_type": "safety",
+        "owner": "SystemCore", "purpose": "Block real trade from tag gate",
+        "applies_to": ["Z-V3AlphaFinalTagGate"],
+        "enforced_by": "zmatrix.alpha_tag.tag_readiness_validator.validate_v3_alpha_tag_readiness",
+        "blocking": True, "degradable": False,
+        "contract": "docs/contracts/V3_ALPHA_TAG_GATE_V10.md",
+        "test": "tests/test_alpha_tag_architecture.py",
+    },
+"alpha_rc.manifest.valid": {
         "layer": "system_control", "gate_type": "contract",
         "owner": "SystemCore", "purpose": "Validate RC manifest",
         "applies_to": ["Z-V3AlphaRCPackaging"],

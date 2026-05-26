@@ -923,6 +923,35 @@ SHARED_SKILL_REGISTRY: dict[str, dict[str, Any]] = {
         "duplicate_allowed": False,
         "safety_boundary": "no real trade, validation only, no runtime enable, no Hermes memory write, no broker order",
     },
+
+    # === Alpha Tag skills (v2.9.19-dev) ===
+    "alpha_tag.artifact_consistency.validate": {
+        "layer": "shared_skill", "module": "zmatrix.alpha_tag.artifact_consistency",
+        "public_function": "validate_alpha_rc_artifact_consistency", "owner": "AlphaTag",
+        "used_by": ["Z-V3AlphaFinalTagGate"],
+        "contract": "docs/contracts/V3_ALPHA_ARTIFACT_CONSISTENCY_V10.md",
+        "test": "tests/test_alpha_tag_artifact_consistency.py",
+        "duplicate_allowed": False,
+        "safety_boundary": "no real trade, no git tag, no git push, tag-review-only, no runtime enable, no Hermes memory write",
+    },
+    "alpha_tag.tag_readiness.validate": {
+        "layer": "shared_skill", "module": "zmatrix.alpha_tag.tag_readiness_validator",
+        "public_function": "validate_v3_alpha_tag_readiness", "owner": "AlphaTag",
+        "used_by": ["Z-V3AlphaFinalTagGate"],
+        "contract": "docs/contracts/V3_ALPHA_TAG_GATE_V10.md",
+        "test": "tests/test_alpha_tag_readiness_validator.py",
+        "duplicate_allowed": False,
+        "safety_boundary": "no real trade, no git tag, no git push, tag-review-only, no runtime enable, no Hermes memory write",
+    },
+    "alpha_tag.release_notes.build": {
+        "layer": "shared_skill", "module": "zmatrix.alpha_tag.release_notes_builder",
+        "public_function": "build_v3_alpha_rc1_release_notes", "owner": "AlphaTag",
+        "used_by": ["Z-V3AlphaFinalTagGate"],
+        "contract": "docs/contracts/V3_ALPHA_RC1_RELEASE_NOTES_V10.md",
+        "test": "tests/test_alpha_tag_release_notes.py",
+        "duplicate_allowed": False,
+        "safety_boundary": "no real trade, docs only, tag-review-only, no runtime enable, no Hermes memory write",
+    },
 }
 
 

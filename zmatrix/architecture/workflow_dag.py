@@ -267,7 +267,38 @@ WORKFLOW_DAG_REGISTRY: dict[str, dict[str, Any]] = {
         "contract": "docs/architecture/HERMES_MEMORY_KERNEL_ARCHITECTURE_V10.md",
         "test": "tests/test_hermes_memory_architecture.py",
     },
-                    "Z-AlphaRC.packaging_freeze_workflow": {
+                        "Z-AlphaTag.final_tag_gate_workflow": {
+        "layer": "workflow_dag",
+        "pipeline": "Z-V3AlphaFinalTagGate",
+        "purpose": "v3.0-alpha final tag gate: consistency → readiness → release notes → rc gate",
+        "nodes": [
+            "alpha_tag.artifact_consistency.validate", "alpha_tag.tag_readiness.validate",
+            "alpha_tag.release_notes.build", "alpha_rc.rc_gate.validate",
+            "safety.no_real_trade",
+        ],
+        "edges": [
+            ("alpha_tag.artifact_consistency.validate", "alpha_tag.tag_readiness.validate"),
+            ("alpha_tag.tag_readiness.validate", "alpha_tag.release_notes.build"),
+            ("alpha_tag.release_notes.build", "alpha_rc.rc_gate.validate"),
+            ("alpha_rc.rc_gate.validate", "safety.no_real_trade"),
+        ],
+        "required_gates": [
+            "alpha_tag.artifact_consistency.valid", "alpha_tag.readiness.valid",
+            "alpha_tag.no_git_tag_execute.valid", "alpha_tag.no_git_push_tags.valid",
+            "alpha_tag.no_runtime.valid", "alpha_tag.no_real_trade.valid",
+            "safety.no_real_trade",
+        ],
+        "forbidden_capabilities": [
+            "real_trade", "broker_order", "auto_buy", "auto_sell",
+            "auto_position_close", "real_z9_write", "hermes_memory_write",
+            "auto_calibration", "prompt_auto_injection", "system_prompt_write",
+            "runtime_prompt_injection", "real_market_fetch", "external_api_default_on",
+            "git_tag_execute", "git_push_tags",
+        ],
+        "contract": "docs/architecture/V3_ALPHA_FINAL_TAG_GATE_V10.md",
+        "test": "tests/test_alpha_tag_architecture.py",
+    },
+"Z-AlphaRC.packaging_freeze_workflow": {
         "layer": "workflow_dag",
         "pipeline": "Z-V3AlphaRCPackaging",
         "purpose": "v3.0-alpha RC packaging: manifest → matrix → inventory → limitations → validate → readiness → dry-run",

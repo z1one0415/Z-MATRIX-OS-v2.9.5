@@ -53,11 +53,28 @@ def test_controller_action_policy_marks_isolation_review():
     assert r["action_policy_preview"]["requires_risk_isolation_review"] is True
     print("✅ action policy marks isolation review")
 
+def test_wakeup_probation_triggered_gate_has_affected_tickers():
+    r = build_tail_risk_controller_preview(
+        previous_state="HIBERNATE",
+        market_signals={"hard_gate_pass_rate": 0.03, "market_breadth_pass_rate": 0.03},
+    )
+    wakeup = next(g for g in r["gate_results"] if g.get("gate_type") == "WAKEUP_PROBATION")
+    assert wakeup["state"] == "WAKEUP_PROBATION"
+    assert "affected_tickers" in wakeup
+    assert wakeup["affected_tickers"] == []
+    print("✅ wakeup trigger branch has affected_tickers")
+
 def test_all_gate_results_have_affected_tickers():
-    r = build_tail_risk_controller_preview(market_signals={})
-    for g in r["gate_results"]:
-        assert "affected_tickers" in g, f"gate {g.get('gate_type')} missing affected_tickers"
-    print("✅ all gate results have affected_tickers")
+    scenarios = [
+        {"market_signals": {}},
+        {"previous_state": "HIBERNATE", "market_signals": {"hard_gate_pass_rate": 0.03, "market_breadth_pass_rate": 0.03}},
+        {"market_signals": {"limit_down_count": 120, "hard_gate_pass_rate": 0.005, "market_breadth_pass_rate": 0.005}},
+    ]
+    for kwargs in scenarios:
+        r = build_tail_risk_controller_preview(**kwargs)
+        for g in r["gate_results"]:
+            assert "affected_tickers" in g, f"gate {g.get('gate_type')} missing affected_tickers"
+    print(f"✅ all gate results have affected_tickers across {len(scenarios)} scenarios")
 
 if __name__ == "__main__":
     test_controller_hibernates_when_pass_rate_below_1_percent()
@@ -65,5 +82,6 @@ if __name__ == "__main__":
     test_controller_wakeup_probation_can_be_final_state()
     test_controller_generates_isolation_even_when_hibernate_overrides_final_decision()
     test_controller_action_policy_marks_isolation_review()
+    test_wakeup_probation_triggered_gate_has_affected_tickers()
     test_all_gate_results_have_affected_tickers()
     print("\n🏁 Tail-Risk Controller tests PASS")

@@ -31,6 +31,7 @@ def evaluate_wakeup_probation(*, market_signals: dict, previous_state: str = "NO
         "reason": f"recovered hgpr={hgpr:.4f} mbpr={mbpr:.4f}",
         "evidence": {"previous_state": previous_state, "hard_gate_pass_rate": hgpr},
         "affected_roles": ["B_MID_ROTATION"],
+        "affected_tickers": [],
         "freeze_new_entries": False, "allow_existing_position_review": True,
         "max_role_allowed": "B_MID_ROTATION",
         "d_matrix_allowed": False,

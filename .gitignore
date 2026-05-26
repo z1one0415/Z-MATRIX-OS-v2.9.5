@@ -38,3 +38,4 @@ data/**/*.parquet
 data/**/*.feather
 data/**/*.db
 data/**/*.sqlite
+runtime_reports/

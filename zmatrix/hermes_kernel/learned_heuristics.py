@@ -37,6 +37,7 @@ def build_learned_heuristic_preview(
         "confidence": confidence,
         "evidence_count": evidence_count,
         "last_validated_at": last_validated_at,
+        "decay_status": "ACTIVE",
         "status": "ACTIVE",
     }
 

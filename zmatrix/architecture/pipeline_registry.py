@@ -222,7 +222,7 @@ PIPELINE_REGISTRY: dict[str, dict[str, Any]] = {
     },
     "Z-HermesMemoryKernel": {
         "layer": "pipeline_application",
-        "pipeline_path": "zmatrix/hermes_kernel/",
+        "pipeline_path": "zmatrix/hermes_kernel/ + zmatrix/hermes_memory/",
         "owner": "Hermes",
         "allowed_skills": [
             "hermes.core_memory.load", "hermes.working_context.build",

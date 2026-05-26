@@ -42,9 +42,13 @@ def build_prompt_patch_preview(
     """
     task_type = task_context.get("task_type", "unknown")
 
-    # Filter active heuristics first, then limit to max_items
-    active = [h for h in heuristics if h.get("status") == "ACTIVE"]
-    inactive = [h for h in heuristics if h.get("status") != "ACTIVE"]
+    # Heuristic decay status — prioritize decay_status, fall back to status
+    def _heuristic_decay_status(h: dict) -> str:
+        return str(h.get("decay_status", h.get("status", "UNKNOWN"))).upper()
+
+    # Filter active heuristics first (by decay_status), then limit to max_items
+    active = [h for h in heuristics if _heuristic_decay_status(h) == "ACTIVE"]
+    inactive = [h for h in heuristics if _heuristic_decay_status(h) != "ACTIVE"]
     selected = (active + inactive)[:max_items]
 
     # Build patch text
@@ -60,8 +64,8 @@ def build_prompt_patch_preview(
     for i, h in enumerate(selected, 1):
         title = h.get("title", "untitled")
         conf = h.get("confidence", "UNKNOWN")
-        status = h.get("status", "UNKNOWN")
-        lines.append(f"  {i}. [{status}] {title} (confidence: {conf})")
+        decay_status = _heuristic_decay_status(h)
+        lines.append(f"  {i}. [{decay_status}] {title} (confidence: {conf})")
 
     lines.append("")
     lines.append("Task-specific cautions:")

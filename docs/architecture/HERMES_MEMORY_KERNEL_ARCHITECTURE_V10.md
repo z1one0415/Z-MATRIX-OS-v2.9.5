@@ -42,3 +42,18 @@ Prompt Hot-Patching = future version (decides whether to inject)
 - zmatrix/hermes_memory/ — MemoryCandidate, CalibrationEvent, Kernel coordinator, EventStore adapters
 - docs/contracts/ — 7 contract documents
 - docs/architecture/ — This document
+
+## Namespace Boundary
+
+v2.9.12-dev currently uses two namespaces:
+
+- `zmatrix/hermes_kernel/`
+  Core Memory Preview, Working Context, Learned Heuristics,
+  Retrieval, Prompt Patch Preview, shared schemas/validators.
+
+- `zmatrix/hermes_memory/`
+  MemoryCandidate Preview, CalibrationEvent Preview,
+  Kernel Coordinator, EventStore event adapters.
+
+This is accepted for v2.9.12-dev as a compatibility layout.
+Future cleanup may consolidate under zmatrix/hermes_memory_kernel/.

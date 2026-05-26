@@ -20,7 +20,22 @@ def test_heuristic_has_safety():
     assert r["safety"]["auto_calibration_allowed"] is False
     print("✅ heuristic has safety")
 
+def test_learned_heuristic_has_decay_status():
+    r = build_learned_heuristic_preview(
+        source_event_id="a" * 32,
+        title="test",
+        rule="observe risk",
+        scope={"ticker": "002472"},
+        confidence="HIGH",
+        evidence_count=3,
+    )
+    h = r["heuristic"]
+    assert h["decay_status"] == "ACTIVE"
+    assert h["status"] == "ACTIVE"
+    print("✅ heuristic has both decay_status and status")
+
 if __name__ == "__main__":
     test_heuristic_preview_read_only()
     test_heuristic_has_safety()
+    test_learned_heuristic_has_decay_status()
     print("\n🏁 Learned Heuristics tests PASS")

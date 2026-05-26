@@ -68,6 +68,24 @@ def test_hermes_workflow_required_gates():
     assert not missing, f"missing: {missing}"
     print(f"✅ workflow has {len(gates)} required gates (all present)")
 
+def test_hermes_pipeline_path_declares_both_namespaces():
+    from zmatrix.architecture.pipeline_registry import PIPELINE_REGISTRY
+    p = PIPELINE_REGISTRY["Z-HermesMemoryKernel"]
+    path = p.get("pipeline_path", "")
+    assert "zmatrix/hermes_kernel" in path
+    assert "zmatrix/hermes_memory" in path
+    print(f"✅ pipeline_path declares both namespaces: {path}")
+
+def test_prompt_patch_uses_decay_status_contract():
+    from zmatrix.hermes_kernel.prompt_patch_preview import build_prompt_patch_preview
+    hs = [
+        {"title": "expired", "confidence": "LOW", "decay_status": "EXPIRED"},
+        {"title": "active", "confidence": "HIGH", "decay_status": "ACTIVE"},
+    ]
+    r = build_prompt_patch_preview(task_context={"task_type": "test"}, heuristics=hs, max_items=1)
+    assert r["selected_heuristics"][0]["decay_status"] == "ACTIVE"
+    print("✅ prompt patch uses decay_status contract")
+
 if __name__ == "__main__":
     test_hermes_memory_skills_registered()
     test_hermes_memory_gates_registered()
@@ -76,4 +94,6 @@ if __name__ == "__main__":
     test_hermes_memory_docs_exist()
     test_hermes_memory_forbids_write_and_auto_ops()
     test_hermes_workflow_required_gates()
+    test_hermes_pipeline_path_declares_both_namespaces()
+    test_prompt_patch_uses_decay_status_contract()
     print("\n🏁 Hermes Memory Architecture tests PASS")

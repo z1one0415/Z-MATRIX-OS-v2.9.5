@@ -304,7 +304,7 @@ SHARED_SKILL_REGISTRY: dict[str, dict[str, Any]] = {
         "contract": "docs/contracts/OUTCOME_BACKFILL_RUNNER_V10.md",
         "test": "tests/test_outcome_backfill_runner.py",
         "duplicate_allowed": False,
-        "safety_boundary": "no real Z9 write, local price bars only",
+        "safety_boundary": "no real trade, no real Z9 write, local price bars only",
     },
     "portfolio.exposure.calculate_from_history": {
         "layer": "shared_skill",

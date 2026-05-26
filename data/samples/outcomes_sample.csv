@@ -1,0 +1,2 @@
+paper_id,ticker,entry_date,actual_return_t5,actual_return_t20,actual_return_t60,max_drawdown_t20,max_drawdown_t60,outcome_status,error_type,review_note
+a1b2,002472,2026-05-01,2.5,,,,,READY,,

@@ -1,6 +1,10 @@
-__pycache__/
-*.pyc
-*.pyo
-.DS_Store
-*.bak
-.venv/
+# Z-MATRIX local data — real data NEVER committed
+data/price_bars/*.csv
+data/fundamentals/*.csv
+data/sector_map/*.csv
+data/paper_ledger/*.csv
+data/outcomes/*.csv
+
+!data/samples/*.csv
+!data/**/.gitkeep
+!data/README.md

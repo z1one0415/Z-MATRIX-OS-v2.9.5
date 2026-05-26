@@ -1,0 +1,2 @@
+paper_id,ticker,role,entry_date,entry_price,paper_action,reason,target_horizon,max_loss_plan,invalidation_condition,created_at
+a1b2,002472,A_LONG_CORE,2026-05-01,45.5,PAPER_TRACK,长期底仓,T20,10,业绩miss,2026-05-01

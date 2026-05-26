@@ -79,6 +79,13 @@ def check_no_real_ops_enabled_anywhere() -> list[str]:
                 # skill 的 safety_boundary 必须包含 no real trade
                 if entity.get("layer") == "shared_skill":
                     violations.append(f"{name}/{eid}: safety_boundary must forbid real trade")
+
+    # B/R/D 三个 matrix skill 必须全部存在
+    from zmatrix.architecture.skill_registry import SHARED_SKILL_REGISTRY
+    for required in ["b_matrix.evaluate_base", "r_matrix.evaluate_cycle", "d_matrix.evaluate_event"]:
+        if required not in SHARED_SKILL_REGISTRY:
+            violations.append(f"missing required skill: {required}")
+
     return violations
 
 
@@ -90,3 +97,54 @@ def run_architecture_enforcement() -> list[str]:
     v.extend(check_no_pipeline_declares_forbidden_capability())
     v.extend(check_no_real_ops_enabled_anywhere())
     return v
+def check_workspace_alignment_components() -> list[str]:
+    from pathlib import Path
+    violations = []
+    root = Path(__file__).resolve().parent.parent.parent
+    
+    # pipeline census
+    p = root / "zmatrix" / "architecture" / "pipeline_census.py"
+    if p.exists():
+        from zmatrix.architecture.pipeline_census import list_pipeline_census
+        c = list_pipeline_census()
+        if len(c) < 18:
+            violations.append(f"pipeline_census: only {len(c)}/18 pipelines")
+    else:
+        violations.append("pipeline_census.py missing")
+    
+    # hermes adapter
+    h = root / "zmatrix" / "architecture" / "hermes_adapter_registry.py"
+    if h.exists():
+        from zmatrix.architecture.hermes_adapter_registry import list_hermes_adapters
+        for a in list_hermes_adapters().values():
+            for k in ["real_trade_allowed","write_allowed","auto_calibration_allowed"]:
+                if a.get(k): violations.append(f"hermes adapter: {k} should be False")
+    
+    # script index
+    s = root / "zmatrix" / "architecture" / "script_index.py"
+    if s.exists():
+        from zmatrix.architecture.script_index import list_script_index
+        for sid, si in list_script_index().items():
+            if si.get("real_trade_allowed"): violations.append(f"script {sid}: real_trade_allowed")
+    
+    # research asset
+    ra = root / "zmatrix" / "architecture" / "research_asset_index.py"
+    if ra.exists():
+        from zmatrix.architecture.research_asset_index import RESEARCH_ASSET_INDEX_POLICY
+        if RESEARCH_ASSET_INDEX_POLICY.get("full_text_import_allowed"):
+            violations.append("research: full_text_import_allowed should be False")
+    
+    # data/ samples
+    for sf in ["price_bars_sample.csv","paper_ledger_sample.csv"]:
+        if not (root / "data" / "samples" / sf).exists():
+            violations.append(f"data/samples/{sf} missing")
+    
+    return violations
+
+def check_workspace_alignment_doc_exists() -> list[str]:
+    from pathlib import Path
+    root = Path(__file__).resolve().parent.parent.parent
+    docs = ["WORKSPACE_LAYOUT_V10.md","WORKSPACE_ALIGNMENT_V10.md","PIPELINE_CENSUS_V10.md",
+            "HERMES_ADAPTER_REGISTRY_V10.md","SCRIPT_INDEX_V10.md","RESEARCH_ASSET_INDEX_V10.md"]
+    missing = [d for d in docs if not (root / "docs" / "architecture" / d).exists()]
+    return [f"missing doc: {d}" for d in missing]

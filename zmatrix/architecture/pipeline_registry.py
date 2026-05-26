@@ -185,6 +185,41 @@ PIPELINE_REGISTRY: dict[str, dict[str, Any]] = {
         "contract": "docs/architecture/PERSONAL_QUANT_DATA_VALIDITY_LAYER_V10.md",
         "test": "tests/test_lightweight_backtest.py",
     },
+    "Z-EventStore": {
+        "layer": "pipeline_application",
+        "pipeline_path": "zmatrix/event_store/",
+        "owner": "EventStore",
+        "allowed_skills": [
+            "event_store.event.build",
+            "event_store.local.append",
+            "event_store.local.query",
+            "event_store.lineage.trace",
+            "event_store.jsonl.export",
+            "event_store.paper_event.build",
+            "event_store.outcome_event.build",
+            "event_store.role_event.build",
+            "safety.no_real_trade",
+        ],
+        "required_gates": [
+            "event.schema.valid",
+            "event.safety.valid",
+            "event.lineage.valid",
+            "event.append_only.valid",
+            "safety.no_real_trade",
+        ],
+        "forbidden_capabilities": [
+            "real_trade",
+            "broker_order",
+            "real_z9_write",
+            "hermes_memory_write",
+            "auto_calibration",
+            "prompt_auto_injection",
+            "real_market_fetch",
+            "external_api_default_on",
+        ],
+        "contract": "docs/contracts/EVENT_STORE_V10.md",
+        "test": "tests/test_event_store_architecture.py",
+    },
 }
 
 

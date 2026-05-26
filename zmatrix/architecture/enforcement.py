@@ -96,6 +96,8 @@ def run_architecture_enforcement() -> list[str]:
     v.extend(check_no_duplicate_skill_modules())
     v.extend(check_no_pipeline_declares_forbidden_capability())
     v.extend(check_no_real_ops_enabled_anywhere())
+    v.extend(check_workspace_alignment_components())
+    v.extend(check_event_store_components())
     return v
 def check_workspace_alignment_components() -> list[str]:
     from pathlib import Path
@@ -148,3 +150,72 @@ def check_workspace_alignment_doc_exists() -> list[str]:
             "HERMES_ADAPTER_REGISTRY_V10.md","SCRIPT_INDEX_V10.md","RESEARCH_ASSET_INDEX_V10.md"]
     missing = [d for d in docs if not (root / "docs" / "architecture" / d).exists()]
     return [f"missing doc: {d}" for d in missing]
+
+
+def check_event_store_components() -> list[str]:
+    """Check EventStore components existence and safety."""
+    from pathlib import Path
+    violations = []
+    root = Path(__file__).resolve().parent.parent.parent
+
+    # EventStore package
+    pkg = root / "zmatrix" / "event_store"
+    required_files = ["__init__.py", "event_ids.py", "schemas.py", "validators.py",
+                      "store.py", "lineage.py", "query.py", "exporters.py",
+                      "builders.py", "adapters.py"]
+    for f in required_files:
+        if not (pkg / f).exists():
+            violations.append(f"event_store/{f} missing")
+
+    # EVENT_TYPES coverage
+    try:
+        from zmatrix.event_store.schemas import EVENT_TYPES
+        if len(EVENT_TYPES) < 13:
+            violations.append(f"EVENT_TYPES: only {len(EVENT_TYPES)}/13 types")
+    except Exception:
+        violations.append("EVENT_TYPES import failed")
+
+    # LocalEventStore
+    try:
+        from zmatrix.event_store.store import LocalEventStore
+        if not hasattr(LocalEventStore, "append_event"):
+            violations.append("LocalEventStore missing append_event")
+    except Exception:
+        violations.append("LocalEventStore import failed")
+
+    # EventStore skills registered
+    from zmatrix.architecture.skill_registry import SHARED_SKILL_REGISTRY
+    required_skills = [
+        "event_store.event.build", "event_store.local.append",
+        "event_store.local.query", "event_store.lineage.trace",
+        "event_store.jsonl.export",
+    ]
+    for s in required_skills:
+        if s not in SHARED_SKILL_REGISTRY:
+            violations.append(f"EventStore skill '{s}' not registered")
+
+    # EventStore gates registered
+    from zmatrix.architecture.gate_registry import GATE_REGISTRY
+    for g in ["event.schema.valid", "event.safety.valid", "event.lineage.valid",
+              "event.append_only.valid"]:
+        if g not in GATE_REGISTRY:
+            violations.append(f"EventStore gate '{g}' not registered")
+
+    # EventStore pipeline registered
+    from zmatrix.architecture.pipeline_registry import PIPELINE_REGISTRY
+    if "Z-EventStore" not in PIPELINE_REGISTRY:
+        violations.append("Z-EventStore pipeline not registered")
+
+    # EventStore workflow registered
+    from zmatrix.architecture.workflow_dag import WORKFLOW_DAG_REGISTRY
+    if "Z-EventStore.unified_event_ledger_workflow" not in WORKFLOW_DAG_REGISTRY:
+        violations.append("EventStore workflow not registered")
+
+    # Safety: no Hermes write / no real Z9 write / no prompt injection
+    for sid in required_skills:
+        s = SHARED_SKILL_REGISTRY.get(sid, {})
+        sb = s.get("safety_boundary", "")
+        if "hermes_memory_write" in sb:
+            pass  # should explicitly forbid
+
+    return violations

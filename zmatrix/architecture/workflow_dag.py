@@ -195,6 +195,33 @@ WORKFLOW_DAG_REGISTRY: dict[str, dict[str, Any]] = {
         "contract": "docs/architecture/PERSONAL_QUANT_DATA_VALIDITY_LAYER_V10.md",
         "test": "tests/test_lightweight_backtest.py",
     },
+    "Z-EventStore.unified_event_ledger_workflow": {
+        "layer": "workflow_dag",
+        "pipeline": "Z-EventStore",
+        "purpose": "Unified event ledger: build → store → query → lineage → export → safety",
+        "nodes": [
+            "event_store.event.build",
+            "event_store.local.append",
+            "event_store.local.query",
+            "event_store.lineage.trace",
+            "event_store.jsonl.export",
+            "safety.no_real_trade",
+        ],
+        "edges": [
+            ("event_store.event.build", "event_store.local.append"),
+            ("event_store.local.append", "event_store.local.query"),
+            ("event_store.local.query", "event_store.lineage.trace"),
+            ("event_store.lineage.trace", "event_store.jsonl.export"),
+            ("event_store.jsonl.export", "safety.no_real_trade"),
+        ],
+        "forbidden_capabilities": [
+            "real_trade", "broker_order", "real_z9_write",
+            "hermes_memory_write", "auto_calibration", "prompt_auto_injection",
+            "real_market_fetch", "external_api_default_on",
+        ],
+        "contract": "docs/architecture/EVENT_STORE_ARCHITECTURE_V10.md",
+        "test": "tests/test_event_store_architecture.py",
+    },
 }
 
 

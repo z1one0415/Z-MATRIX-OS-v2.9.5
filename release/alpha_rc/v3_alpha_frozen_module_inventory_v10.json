@@ -1,0 +1,94 @@
+{
+  "inventory_version": "V3_ALPHA_FROZEN_MODULE_INVENTORY_V10",
+  "frozen_modules": [
+    {
+      "path": "zmatrix/event_store/",
+      "status": "FROZEN",
+      "notes": "local append-only, no Z9/Hermes write"
+    },
+    {
+      "path": "zmatrix/hermes_kernel/",
+      "status": "FROZEN",
+      "notes": "read-only / preview-only core memory"
+    },
+    {
+      "path": "zmatrix/hermes_memory/",
+      "status": "FROZEN",
+      "notes": "preview-only MemoryCandidate/Calibration/Kernel"
+    },
+    {
+      "path": "zmatrix/approval_loop/",
+      "status": "FROZEN",
+      "notes": "approval record only, no auto effect"
+    },
+    {
+      "path": "zmatrix/prompt_middleware/",
+      "status": "FROZEN",
+      "notes": "preview-only, no runtime injection"
+    },
+    {
+      "path": "zmatrix/tail_risk/",
+      "status": "FROZEN",
+      "notes": "preview-only, no broker / no auto sell"
+    },
+    {
+      "path": "zmatrix/integration/",
+      "status": "FROZEN",
+      "notes": "readiness-check-only"
+    },
+    {
+      "path": "zmatrix/dry_run/",
+      "status": "FROZEN",
+      "notes": "rehearsal-only"
+    }
+  ],
+  "preview_only_modules": [
+    "zmatrix/hermes_kernel/",
+    "zmatrix/hermes_memory/",
+    "zmatrix/prompt_middleware/",
+    "zmatrix/tail_risk/"
+  ],
+  "read_only_modules": [
+    "zmatrix/hermes_kernel/"
+  ],
+  "runtime_disabled_modules": [
+    "zmatrix/event_store/",
+    "zmatrix/hermes_kernel/",
+    "zmatrix/hermes_memory/",
+    "zmatrix/approval_loop/",
+    "zmatrix/prompt_middleware/",
+    "zmatrix/tail_risk/",
+    "zmatrix/integration/",
+    "zmatrix/dry_run/"
+  ],
+  "forbidden_capabilities": [
+    "real_trade",
+    "broker_order",
+    "auto_buy",
+    "auto_sell",
+    "auto_position_close",
+    "real_z9_write",
+    "hermes_memory_write",
+    "auto_calibration",
+    "prompt_auto_injection",
+    "system_prompt_write",
+    "runtime_prompt_injection",
+    "external_api_default_on"
+  ],
+  "safety": {
+    "real_trade_allowed": false,
+    "broker_order_allowed": false,
+    "auto_buy_allowed": false,
+    "auto_sell_allowed": false,
+    "auto_position_close_allowed": false,
+    "real_z9_write_allowed": false,
+    "hermes_memory_write_allowed": false,
+    "auto_calibration_allowed": false,
+    "prompt_auto_injection_allowed": false,
+    "system_prompt_write_allowed": false,
+    "runtime_injection_allowed": false,
+    "runtime_enabled": false,
+    "external_api_default_on": false,
+    "rc_packaging_only": true
+  }
+}

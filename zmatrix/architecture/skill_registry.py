@@ -876,6 +876,53 @@ SHARED_SKILL_REGISTRY: dict[str, dict[str, Any]] = {
         "duplicate_allowed": False,
         "safety_boundary": "no real trade, report only, dry-run-only, no runtime enable, no Hermes memory write",
     },
+
+    # === Alpha RC skills (v2.9.18-dev) ===
+    "alpha_rc.manifest.build": {
+        "layer": "shared_skill", "module": "zmatrix.alpha_rc.manifest_builder",
+        "public_function": "build_v3_alpha_release_manifest", "owner": "AlphaRC",
+        "used_by": ["Z-V3AlphaRCPackaging"],
+        "contract": "docs/contracts/V3_ALPHA_RELEASE_MANIFEST_V10.md",
+        "test": "tests/test_alpha_rc_manifest.py",
+        "duplicate_allowed": False,
+        "safety_boundary": "no real trade, RC packaging only, no runtime enable, no Hermes memory write, no broker order",
+    },
+    "alpha_rc.verification_matrix.build": {
+        "layer": "shared_skill", "module": "zmatrix.alpha_rc.verification_matrix",
+        "public_function": "build_v3_alpha_verification_matrix", "owner": "AlphaRC",
+        "used_by": ["Z-V3AlphaRCPackaging"],
+        "contract": "docs/contracts/V3_ALPHA_VERIFICATION_MATRIX_V10.md",
+        "test": "tests/test_alpha_rc_verification_matrix.py",
+        "duplicate_allowed": False,
+        "safety_boundary": "no real trade, matrix only, no runtime enable, no Hermes memory write",
+    },
+    "alpha_rc.module_inventory.build": {
+        "layer": "shared_skill", "module": "zmatrix.alpha_rc.module_inventory",
+        "public_function": "build_v3_alpha_frozen_module_inventory", "owner": "AlphaRC",
+        "used_by": ["Z-V3AlphaRCPackaging"],
+        "contract": "docs/contracts/V3_ALPHA_FROZEN_MODULE_INVENTORY_V10.md",
+        "test": "tests/test_alpha_rc_module_inventory.py",
+        "duplicate_allowed": False,
+        "safety_boundary": "no real trade, inventory only, no runtime enable, no Hermes memory write",
+    },
+    "alpha_rc.known_limitations.build": {
+        "layer": "shared_skill", "module": "zmatrix.alpha_rc.known_limitations",
+        "public_function": "build_v3_alpha_known_limitations", "owner": "AlphaRC",
+        "used_by": ["Z-V3AlphaRCPackaging"],
+        "contract": "docs/contracts/V3_ALPHA_KNOWN_LIMITATIONS_V10.md",
+        "test": "tests/test_alpha_rc_known_limitations.py",
+        "duplicate_allowed": False,
+        "safety_boundary": "no real trade, docs only, no runtime enable, no Hermes memory write",
+    },
+    "alpha_rc.rc_gate.validate": {
+        "layer": "shared_skill", "module": "zmatrix.alpha_rc.rc_gate_validator",
+        "public_function": "validate_v3_alpha_rc_gate", "owner": "AlphaRC",
+        "used_by": ["Z-V3AlphaRCPackaging"],
+        "contract": "docs/contracts/V3_ALPHA_RC_GATE_VALIDATION_V10.md",
+        "test": "tests/test_alpha_rc_gate_validator.py",
+        "duplicate_allowed": False,
+        "safety_boundary": "no real trade, validation only, no runtime enable, no Hermes memory write, no broker order",
+    },
 }
 
 

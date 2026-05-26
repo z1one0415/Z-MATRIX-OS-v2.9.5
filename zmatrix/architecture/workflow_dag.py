@@ -267,7 +267,42 @@ WORKFLOW_DAG_REGISTRY: dict[str, dict[str, Any]] = {
         "contract": "docs/architecture/HERMES_MEMORY_KERNEL_ARCHITECTURE_V10.md",
         "test": "tests/test_hermes_memory_architecture.py",
     },
-                "Z-DryRun.v3_alpha_rehearsal_workflow": {
+                    "Z-AlphaRC.packaging_freeze_workflow": {
+        "layer": "workflow_dag",
+        "pipeline": "Z-V3AlphaRCPackaging",
+        "purpose": "v3.0-alpha RC packaging: manifest → matrix → inventory → limitations → validate → readiness → dry-run",
+        "nodes": [
+            "alpha_rc.manifest.build", "alpha_rc.verification_matrix.build",
+            "alpha_rc.module_inventory.build", "alpha_rc.known_limitations.build",
+            "alpha_rc.rc_gate.validate",
+            "integration.readiness_report.build", "dry_run.report.build",
+            "safety.no_real_trade",
+        ],
+        "edges": [
+            ("alpha_rc.manifest.build", "alpha_rc.verification_matrix.build"),
+            ("alpha_rc.verification_matrix.build", "alpha_rc.module_inventory.build"),
+            ("alpha_rc.module_inventory.build", "alpha_rc.known_limitations.build"),
+            ("alpha_rc.known_limitations.build", "alpha_rc.rc_gate.validate"),
+            ("alpha_rc.rc_gate.validate", "integration.readiness_report.build"),
+            ("integration.readiness_report.build", "dry_run.report.build"),
+            ("dry_run.report.build", "safety.no_real_trade"),
+        ],
+        "required_gates": [
+            "alpha_rc.manifest.valid", "alpha_rc.verification_matrix.valid",
+            "alpha_rc.module_inventory.valid", "alpha_rc.known_limitations.valid",
+            "alpha_rc.no_runtime.valid", "alpha_rc.no_real_trade.valid",
+            "safety.no_real_trade",
+        ],
+        "forbidden_capabilities": [
+            "real_trade", "broker_order", "auto_buy", "auto_sell",
+            "auto_position_close", "real_z9_write", "hermes_memory_write",
+            "auto_calibration", "prompt_auto_injection", "system_prompt_write",
+            "runtime_prompt_injection", "real_market_fetch", "external_api_default_on",
+        ],
+        "contract": "docs/architecture/V3_ALPHA_RC_PACKAGING_AND_FREEZE_V10.md",
+        "test": "tests/test_alpha_rc_architecture.py",
+    },
+"Z-DryRun.v3_alpha_rehearsal_workflow": {
         "layer": "workflow_dag",
         "pipeline": "Z-V3AlphaDryRunRehearsal",
         "purpose": "v3.0-alpha dry-run rehearsal: build → validate → report → readiness",

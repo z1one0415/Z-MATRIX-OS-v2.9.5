@@ -398,7 +398,62 @@ GATE_REGISTRY: dict[str, dict[str, Any]] = {
         
     
     
-    "dry_run.only.valid": {
+    
+    "alpha_rc.manifest.valid": {
+        "layer": "system_control", "gate_type": "contract",
+        "owner": "SystemCore", "purpose": "Validate RC manifest",
+        "applies_to": ["Z-V3AlphaRCPackaging"],
+        "enforced_by": "zmatrix.alpha_rc.manifest_builder.build_v3_alpha_release_manifest",
+        "blocking": True, "degradable": False,
+        "contract": "docs/contracts/V3_ALPHA_RELEASE_MANIFEST_V10.md",
+        "test": "tests/test_alpha_rc_architecture.py",
+    },
+    "alpha_rc.verification_matrix.valid": {
+        "layer": "system_control", "gate_type": "contract",
+        "owner": "SystemCore", "purpose": "Validate verification matrix",
+        "applies_to": ["Z-V3AlphaRCPackaging"],
+        "enforced_by": "zmatrix.alpha_rc.verification_matrix.build_v3_alpha_verification_matrix",
+        "blocking": True, "degradable": False,
+        "contract": "docs/contracts/V3_ALPHA_VERIFICATION_MATRIX_V10.md",
+        "test": "tests/test_alpha_rc_architecture.py",
+    },
+    "alpha_rc.module_inventory.valid": {
+        "layer": "system_control", "gate_type": "contract",
+        "owner": "SystemCore", "purpose": "Validate frozen module inventory",
+        "applies_to": ["Z-V3AlphaRCPackaging"],
+        "enforced_by": "zmatrix.alpha_rc.module_inventory.build_v3_alpha_frozen_module_inventory",
+        "blocking": True, "degradable": False,
+        "contract": "docs/contracts/V3_ALPHA_FROZEN_MODULE_INVENTORY_V10.md",
+        "test": "tests/test_alpha_rc_architecture.py",
+    },
+    "alpha_rc.known_limitations.valid": {
+        "layer": "system_control", "gate_type": "contract",
+        "owner": "SystemCore", "purpose": "Validate known limitations doc",
+        "applies_to": ["Z-V3AlphaRCPackaging"],
+        "enforced_by": "zmatrix.alpha_rc.known_limitations.build_v3_alpha_known_limitations",
+        "blocking": True, "degradable": False,
+        "contract": "docs/contracts/V3_ALPHA_KNOWN_LIMITATIONS_V10.md",
+        "test": "tests/test_alpha_rc_architecture.py",
+    },
+    "alpha_rc.no_runtime.valid": {
+        "layer": "system_control", "gate_type": "safety",
+        "owner": "SystemCore", "purpose": "Block runtime enable from RC packaging",
+        "applies_to": ["Z-V3AlphaRCPackaging"],
+        "enforced_by": "zmatrix.alpha_rc.rc_gate_validator.validate_v3_alpha_rc_gate",
+        "blocking": True, "degradable": False,
+        "contract": "docs/contracts/V3_ALPHA_RC_GATE_VALIDATION_V10.md",
+        "test": "tests/test_alpha_rc_architecture.py",
+    },
+    "alpha_rc.no_real_trade.valid": {
+        "layer": "system_control", "gate_type": "safety",
+        "owner": "SystemCore", "purpose": "Block real trade from RC packaging",
+        "applies_to": ["Z-V3AlphaRCPackaging"],
+        "enforced_by": "zmatrix.alpha_rc.rc_gate_validator.validate_v3_alpha_rc_gate",
+        "blocking": True, "degradable": False,
+        "contract": "docs/contracts/V3_ALPHA_RC_GATE_VALIDATION_V10.md",
+        "test": "tests/test_alpha_rc_architecture.py",
+    },
+"dry_run.only.valid": {
         "layer": "system_control", "gate_type": "safety",
         "owner": "SystemCore", "purpose": "Ensure dry-run mode only",
         "applies_to": ["Z-V3AlphaDryRunRehearsal"],

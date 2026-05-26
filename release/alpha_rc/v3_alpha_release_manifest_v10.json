@@ -1,0 +1,64 @@
+{
+  "manifest_version": "V3_ALPHA_RELEASE_MANIFEST_V10",
+  "rc_version": "V3_ALPHA_RC_V10",
+  "mode": "RELEASE_CANDIDATE_PACKAGING_ONLY",
+  "base_branch": "v2.9.17-dev",
+  "target_tag_candidate": "v3.0-alpha-rc1",
+  "frozen_version_range": [
+    "v2.9.10-dev",
+    "v2.9.11-dev",
+    "v2.9.12-dev",
+    "v2.9.13-dev",
+    "v2.9.14-dev",
+    "v2.9.15-dev",
+    "v2.9.16-dev",
+    "v2.9.17-dev"
+  ],
+  "components": [
+    "Workspace Alignment & Pipeline Census",
+    "EventStore & Unified Event Ledger",
+    "Hermes Memory Kernel Preview",
+    "Approval-Required Reflection Loop",
+    "Prompt Hot-Patching Middleware Preview",
+    "Tail-Risk Autonomic Gates Preview",
+    "v3.0-alpha Integration Readiness Gate",
+    "v3.0-alpha Dry-Run Rehearsal"
+  ],
+  "required_verify_scripts": [
+    "scripts/verify_workspace_alignment_candidate.sh",
+    "scripts/verify_event_store_candidate.sh",
+    "scripts/verify_hermes_memory_candidate.sh",
+    "scripts/verify_approval_loop_candidate.sh",
+    "scripts/verify_prompt_middleware_candidate.sh",
+    "scripts/verify_tail_risk_candidate.sh",
+    "scripts/verify_v3_alpha_readiness_candidate.sh",
+    "scripts/verify_v3_alpha_dry_run_candidate.sh"
+  ],
+  "release_artifacts": [
+    "release/alpha_rc/v3_alpha_release_manifest_v10.json",
+    "release/alpha_rc/v3_alpha_verification_matrix_v10.json",
+    "release/alpha_rc/v3_alpha_frozen_module_inventory_v10.json",
+    "release/alpha_rc/v3_alpha_known_limitations_v10.md",
+    "release/alpha_rc/v3_alpha_operator_runbook_v10.md",
+    "release/alpha_rc/v3_alpha_pre_tag_checklist_v10.md",
+    "release/alpha_rc/README.md"
+  ],
+  "safety": {
+    "real_trade_allowed": false,
+    "broker_order_allowed": false,
+    "auto_buy_allowed": false,
+    "auto_sell_allowed": false,
+    "auto_position_close_allowed": false,
+    "real_z9_write_allowed": false,
+    "hermes_memory_write_allowed": false,
+    "auto_calibration_allowed": false,
+    "prompt_auto_injection_allowed": false,
+    "system_prompt_write_allowed": false,
+    "runtime_injection_allowed": false,
+    "runtime_enabled": false,
+    "external_api_default_on": false,
+    "rc_packaging_only": true
+  },
+  "runtime_enabled": false,
+  "real_trade_allowed": false
+}

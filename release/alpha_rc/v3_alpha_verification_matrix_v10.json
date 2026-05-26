@@ -1,0 +1,148 @@
+{
+  "matrix_version": "V3_ALPHA_VERIFICATION_MATRIX_V10",
+  "rows": [
+    {
+      "component": "Workspace Alignment & Pipeline Census",
+      "version": "v2.9.10-dev",
+      "verify_script": "scripts/verify_workspace_alignment_candidate.sh",
+      "critical_tests": [
+        "test_workspace_layout",
+        "test_pipeline_census"
+      ],
+      "status": "FROZEN_PASS",
+      "runtime_allowed": false,
+      "real_trade_allowed": false
+    },
+    {
+      "component": "EventStore & Unified Event Ledger",
+      "version": "v2.9.11-dev",
+      "verify_script": "scripts/verify_event_store_candidate.sh",
+      "critical_tests": [
+        "test_event_ids",
+        "test_event_schema",
+        "test_event_store_local",
+        "test_event_lineage"
+      ],
+      "status": "FROZEN_PASS",
+      "runtime_allowed": false,
+      "real_trade_allowed": false
+    },
+    {
+      "component": "Hermes Memory Kernel Preview",
+      "version": "v2.9.12-dev",
+      "verify_script": "scripts/verify_hermes_memory_candidate.sh",
+      "critical_tests": [
+        "test_core_memory",
+        "test_working_context",
+        "test_learned_heuristics",
+        "test_prompt_patch_preview"
+      ],
+      "status": "FROZEN_PASS",
+      "runtime_allowed": false,
+      "real_trade_allowed": false
+    },
+    {
+      "component": "Approval-Required Reflection Loop",
+      "version": "v2.9.13-dev",
+      "verify_script": "scripts/verify_approval_loop_candidate.sh",
+      "critical_tests": [
+        "test_approval_request",
+        "test_approval_decision",
+        "test_approval_policy"
+      ],
+      "status": "FROZEN_PASS",
+      "runtime_allowed": false,
+      "real_trade_allowed": false
+    },
+    {
+      "component": "Prompt Hot-Patching Middleware Preview",
+      "version": "v2.9.14-dev",
+      "verify_script": "scripts/verify_prompt_middleware_candidate.sh",
+      "critical_tests": [
+        "test_prompt_patch_request",
+        "test_prompt_middleware_renderer",
+        "test_prompt_middleware_policy"
+      ],
+      "status": "FROZEN_PASS",
+      "runtime_allowed": false,
+      "real_trade_allowed": false
+    },
+    {
+      "component": "Tail-Risk Autonomic Gates Preview",
+      "version": "v2.9.15-dev",
+      "verify_script": "scripts/verify_tail_risk_candidate.sh",
+      "critical_tests": [
+        "test_limit_down_blackhole",
+        "test_tail_risk_controller",
+        "test_tail_risk_policy"
+      ],
+      "status": "FROZEN_PASS",
+      "runtime_allowed": false,
+      "real_trade_allowed": false
+    },
+    {
+      "component": "v3.0-alpha Integration Readiness Gate",
+      "version": "v2.9.16-dev",
+      "verify_script": "scripts/verify_v3_alpha_readiness_candidate.sh",
+      "critical_tests": [
+        "test_integration_readiness_map",
+        "test_integration_capability_audit",
+        "test_integration_event_chain_validator"
+      ],
+      "status": "FROZEN_PASS",
+      "runtime_allowed": false,
+      "real_trade_allowed": false
+    },
+    {
+      "component": "v3.0-alpha Dry-Run Rehearsal",
+      "version": "v2.9.17-dev",
+      "verify_script": "scripts/verify_v3_alpha_dry_run_candidate.sh",
+      "critical_tests": [
+        "test_v3_alpha_dry_run_rehearsal",
+        "test_v3_alpha_dry_run_validator"
+      ],
+      "status": "FROZEN_PASS",
+      "runtime_allowed": false,
+      "real_trade_allowed": false
+    }
+  ],
+  "required_scripts": [
+    "scripts/verify_workspace_alignment_candidate.sh",
+    "scripts/verify_event_store_candidate.sh",
+    "scripts/verify_hermes_memory_candidate.sh",
+    "scripts/verify_approval_loop_candidate.sh",
+    "scripts/verify_prompt_middleware_candidate.sh",
+    "scripts/verify_tail_risk_candidate.sh",
+    "scripts/verify_v3_alpha_readiness_candidate.sh",
+    "scripts/verify_v3_alpha_dry_run_candidate.sh"
+  ],
+  "required_tests": [
+    "test_workspace_layout",
+    "test_pipeline_census",
+    "test_event_ids",
+    "test_event_schema",
+    "test_event_store_local",
+    "test_event_lineage",
+    "test_core_memory",
+    "test_working_context",
+    "test_learned_heuristics",
+    "test_prompt_patch_preview",
+    "test_approval_request",
+    "test_approval_decision",
+    "test_approval_policy",
+    "test_prompt_patch_request",
+    "test_prompt_middleware_renderer",
+    "test_prompt_middleware_policy",
+    "test_limit_down_blackhole",
+    "test_tail_risk_controller",
+    "test_tail_risk_policy",
+    "test_integration_readiness_map",
+    "test_integration_capability_audit",
+    "test_integration_event_chain_validator",
+    "test_v3_alpha_dry_run_rehearsal",
+    "test_v3_alpha_dry_run_validator"
+  ],
+  "all_required_present": true,
+  "runtime_enabled": false,
+  "real_trade_allowed": false
+}

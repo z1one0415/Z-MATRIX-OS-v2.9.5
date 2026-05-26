@@ -220,7 +220,33 @@ PIPELINE_REGISTRY: dict[str, dict[str, Any]] = {
         "contract": "docs/contracts/EVENT_STORE_V10.md",
         "test": "tests/test_event_store_architecture.py",
     },
-                "Z-V3AlphaDryRunRehearsal": {
+                    "Z-V3AlphaRCPackaging": {
+        "layer": "pipeline_application",
+        "pipeline_path": "zmatrix/alpha_rc/",
+        "owner": "AlphaRC",
+        "allowed_skills": [
+            "alpha_rc.manifest.build", "alpha_rc.verification_matrix.build",
+            "alpha_rc.module_inventory.build", "alpha_rc.known_limitations.build",
+            "alpha_rc.rc_gate.validate",
+            "integration.readiness_report.build", "dry_run.report.build",
+            "safety.no_real_trade",
+        ],
+        "required_gates": [
+            "alpha_rc.manifest.valid", "alpha_rc.verification_matrix.valid",
+            "alpha_rc.module_inventory.valid", "alpha_rc.known_limitations.valid",
+            "alpha_rc.no_runtime.valid", "alpha_rc.no_real_trade.valid",
+            "safety.no_real_trade",
+        ],
+        "forbidden_capabilities": [
+            "real_trade", "broker_order", "auto_buy", "auto_sell",
+            "auto_position_close", "real_z9_write", "hermes_memory_write",
+            "auto_calibration", "prompt_auto_injection", "system_prompt_write",
+            "runtime_prompt_injection", "real_market_fetch", "external_api_default_on",
+        ],
+        "contract": "docs/contracts/V3_ALPHA_RC_GATE_VALIDATION_V10.md",
+        "test": "tests/test_alpha_rc_architecture.py",
+    },
+"Z-V3AlphaDryRunRehearsal": {
         "layer": "pipeline_application",
         "pipeline_path": "zmatrix/dry_run/",
         "owner": "DryRun",

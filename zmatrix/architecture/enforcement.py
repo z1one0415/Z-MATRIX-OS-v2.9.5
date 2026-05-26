@@ -104,6 +104,7 @@ def run_architecture_enforcement() -> list[str]:
     v.extend(check_tail_risk_components())
     v.extend(check_v3_alpha_readiness_components())
     v.extend(check_dry_run_components())
+    v.extend(check_alpha_rc_components())
     return v
 def check_workspace_alignment_components() -> list[str]:
     from pathlib import Path
@@ -511,4 +512,29 @@ def check_dry_run_components() -> list[str]:
     if "Z-DryRun.v3_alpha_rehearsal_workflow" not in WORKFLOW_DAG_REGISTRY:
         violations.append("Dry-run workflow not registered")
 
+    return violations
+
+
+def check_alpha_rc_components() -> list[str]:
+    from pathlib import Path
+    violations = []
+    root = Path(__file__).resolve().parent.parent.parent
+    pkg = root / "zmatrix" / "alpha_rc"
+    for fname in ["__init__.py","schemas.py","manifest_builder.py","verification_matrix.py","module_inventory.py","known_limitations.py","rc_gate_validator.py"]:
+        if not (pkg / fname).exists():
+            violations.append(f"alpha_rc/{fname} missing")
+    from zmatrix.architecture.skill_registry import SHARED_SKILL_REGISTRY
+    for s in ["alpha_rc.manifest.build","alpha_rc.verification_matrix.build","alpha_rc.module_inventory.build","alpha_rc.known_limitations.build","alpha_rc.rc_gate.validate"]:
+        if s not in SHARED_SKILL_REGISTRY:
+            violations.append(f"Alpha RC skill '{s}' not registered")
+    from zmatrix.architecture.gate_registry import GATE_REGISTRY
+    for g in ["alpha_rc.manifest.valid","alpha_rc.verification_matrix.valid","alpha_rc.module_inventory.valid","alpha_rc.known_limitations.valid","alpha_rc.no_runtime.valid","alpha_rc.no_real_trade.valid"]:
+        if g not in GATE_REGISTRY:
+            violations.append(f"Alpha RC gate '{g}' not registered")
+    from zmatrix.architecture.pipeline_registry import PIPELINE_REGISTRY
+    if "Z-V3AlphaRCPackaging" not in PIPELINE_REGISTRY:
+        violations.append("Z-V3AlphaRCPackaging pipeline not registered")
+    from zmatrix.architecture.workflow_dag import WORKFLOW_DAG_REGISTRY
+    if "Z-AlphaRC.packaging_freeze_workflow" not in WORKFLOW_DAG_REGISTRY:
+        violations.append("Alpha RC workflow not registered")
     return violations

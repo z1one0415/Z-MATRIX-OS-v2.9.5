@@ -29,3 +29,12 @@ data/price_bars/*.csv
 data/fundamentals/*.csv
 !data/price_bars/.gitkeep
 !data/fundamentals/.gitkeep
+
+# v3.1 full local data protection
+data/raw/
+data/full_a_share/
+data/local_a_share/
+data/**/*.parquet
+data/**/*.feather
+data/**/*.db
+data/**/*.sqlite

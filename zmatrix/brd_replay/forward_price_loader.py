@@ -4,7 +4,8 @@ import csv
 from pathlib import Path
 
 def load_forward_price_path(*, ticker, entry_date, local_data_root, max_horizon=60, price_field="close"):
-    path = Path(local_data_root) / "data" / "price_bars" / f"{ticker}.csv"
+    bare = ticker.split(".")[0]  # strip .SZ/.SH/.BJ suffix
+    path = Path(local_data_root) / "data" / "price_bars" / f"{bare}.csv"
     if not path.exists(): return {"ticker":ticker,"entry_date":entry_date,"price_path":[],"status":"MISSING_FILE","real_trade_allowed":False}
     entry_clean = entry_date.replace("-","")
     valid = []

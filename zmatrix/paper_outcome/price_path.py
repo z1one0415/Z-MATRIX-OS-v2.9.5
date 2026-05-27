@@ -6,7 +6,8 @@ def get_price_path(ticker: str, entry_date: str, data_root: str, max_days: int =
     """Read close prices from data/price_bars/{ticker}.csv starting from entry_date.
     Returns list[float] of close prices, or None if unavailable or insufficient data.
     """
-    path = Path(data_root) / "data" / "price_bars" / f"{ticker}.csv"
+    bare = ticker.split(".")[0]  # strip .SZ/.SH/.BJ suffix
+    path = Path(data_root) / "data" / "price_bars" / f"{bare}.csv"
     if not path.exists():
         return None
     try:

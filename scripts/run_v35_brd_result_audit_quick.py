@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """v3.5 Quick BRD Result Audit — parallel, configurable dates/tickers/workers"""
 import json, sys, os, time, argparse
-from concurrent.futures import ProcessPoolExecutor, as_completed
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -43,7 +43,9 @@ def main():
 
     t0 = time.time()
 
+    print("Sampling dates...", flush=True)
     sampled = sample_replay_dates_from_index(local_data_root=LOCAL_DATA_ROOT, index_code="000001", max_dates=args.max_dates + 20)
+    print(f"  dates sampled in {time.time()-t0:.1f}s", flush=True)
     if sampled.get("sample_status") != "READY":
         print("BLOCKED: no dates"); sys.exit(2)
 
@@ -72,7 +74,7 @@ def main():
     outcomes = []
     failures = []
 
-    with ProcessPoolExecutor(max_workers=args.workers) as executor:
+    with ThreadPoolExecutor(max_workers=args.workers) as executor:
         futures = {executor.submit(_process_one_ticker, t): t for t in tasks}
         done = 0
         for fut in as_completed(futures):
@@ -83,9 +85,9 @@ def main():
             else:
                 paper_actions.append(paper)
                 outcomes.append(outcome)
-            if done % 1000 == 0:
+            if done % 100 == 0:  # more frequent progress
                 elapsed = time.time() - t0
-                print(f"  [{done}/{len(tasks)}] {done/elapsed:.0f}/s")
+                print(f"  [{done}/{len(tasks)}] {done/elapsed:.0f}/s", flush=True)
 
     elapsed = time.time() - t0
     throughput = len(tasks) / elapsed if elapsed > 0 else 0

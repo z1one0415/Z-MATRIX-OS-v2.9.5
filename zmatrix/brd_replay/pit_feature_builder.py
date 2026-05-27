@@ -33,7 +33,8 @@ def _rolling_volatility(closes, n) -> float | None:
 
 
 def _load_bars_until(*, ticker, replay_date, local_data_root):
-    path = Path(local_data_root) / "data" / "price_bars" / f"{ticker}.csv"
+    bare = ticker.split(".")[0]  # strip .SZ/.SH/.BJ suffix
+    path = Path(local_data_root) / "data" / "price_bars" / f"{bare}.csv"
     if not path.exists(): return []
     clean_r = _clean_date(replay_date)
     rows = []

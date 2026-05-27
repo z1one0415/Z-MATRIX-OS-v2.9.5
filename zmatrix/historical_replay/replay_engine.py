@@ -19,7 +19,8 @@ _HISTORICAL_REPLAY_SAFETY = {
 def _load_price_snapshot(ticker: str, replay_date: str, data_root: str) -> dict | None:
     """Read a single ticker's CSV and extract the close price on or before replay_date."""
     bar_dir = Path(data_root) / "data" / "price_bars"
-    path = bar_dir / f"{ticker}.csv"
+    bare = ticker.split(".")[0]
+    path = bar_dir / f"{bare}.csv"
     if not path.exists():
         return None
     try:

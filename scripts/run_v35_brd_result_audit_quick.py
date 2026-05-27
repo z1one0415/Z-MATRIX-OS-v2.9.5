@@ -135,7 +135,6 @@ def main():
         "ready_outcome_rate": ao["ready_outcome_rate"],
         "unknown_rate": mrd["unknown_rate"],
         "reason_violation_count": report["role_reason_integrity"]["violation_count"],
-        "fallback_rate": report.get("fallback_rate"),
         "role_distribution": {r: d["count"] for r, d in mrd["role_distribution"].items() if d["count"] > 0},
         "workers": args.workers,
         "policy_violations": report["policy_violations"],

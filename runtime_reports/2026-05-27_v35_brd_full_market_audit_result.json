@@ -1,0 +1,220 @@
+{
+  "report_version": "BRD_RESULT_AUDIT_REPORT_V10",
+  "mode": "AUDIT_ONLY",
+  "market_role_distribution": {
+    "report_version": "BRD_MARKET_ROLE_DISTRIBUTION_V10",
+    "total": 268140,
+    "active_paper_actions": 103558,
+    "active_rate": 0.38620869694935483,
+    "role_distribution": {
+      "A_LONG_CORE": {
+        "count": 32,
+        "rate": 0.00011934064294771389
+      },
+      "B_MID_ROTATION": {
+        "count": 103526,
+        "rate": 0.3860893563064071
+      },
+      "C_SHORT_EVENT": {
+        "count": 0,
+        "rate": 0.0
+      },
+      "D_REJECT": {
+        "count": 164582,
+        "rate": 0.6137913030506452
+      },
+      "UNKNOWN": {
+        "count": 0,
+        "rate": 0.0
+      }
+    },
+    "paper_action_distribution": {
+      "NO_ACTION": 164582,
+      "PAPER_WATCH_ROTATION": 103526,
+      "PAPER_WATCH_CORE": 32
+    },
+    "top_reason_codes": [],
+    "unknown_rate": 0.0,
+    "distribution_status": "PASS",
+    "safety": {
+      "real_trade_allowed": false,
+      "broker_order_allowed": false,
+      "auto_buy_allowed": false,
+      "auto_sell_allowed": false,
+      "auto_position_close_allowed": false,
+      "real_z9_write_allowed": false,
+      "hermes_memory_write_allowed": false,
+      "auto_calibration_allowed": false,
+      "prompt_auto_injection_allowed": false,
+      "system_prompt_write_allowed": false,
+      "runtime_injection_allowed": false,
+      "runtime_enabled": false,
+      "external_api_default_on": false,
+      "audit_only": true
+    },
+    "real_trade_allowed": false,
+    "broker_order_allowed": false
+  },
+  "role_reason_integrity": {
+    "audit_version": "ROLE_REASON_INTEGRITY_AUDIT_V10",
+    "checked_active_roles": 103558,
+    "violation_count": 0,
+    "violations": [],
+    "pass": true,
+    "safety": {
+      "real_trade_allowed": false,
+      "broker_order_allowed": false,
+      "auto_buy_allowed": false,
+      "auto_sell_allowed": false,
+      "auto_position_close_allowed": false,
+      "real_z9_write_allowed": false,
+      "hermes_memory_write_allowed": false,
+      "auto_calibration_allowed": false,
+      "prompt_auto_injection_allowed": false,
+      "system_prompt_write_allowed": false,
+      "runtime_injection_allowed": false,
+      "runtime_enabled": false,
+      "external_api_default_on": false,
+      "audit_only": true
+    },
+    "real_trade_allowed": false,
+    "broker_order_allowed": false
+  },
+  "active_outcome_validation": {
+    "validator_version": "ACTIVE_OUTCOME_VALIDATOR_V10",
+    "active_paper_actions": 103558,
+    "ready_outcomes": 103542,
+    "ready_outcome_rate": 0.9998454972092934,
+    "missing_outcome_count": 0,
+    "insufficient_outcome_count": 16,
+    "status": "PASS",
+    "missing_samples": [],
+    "insufficient_samples": [
+      {
+        "paper_id": "4dd5cda4b4469a93537e38e846590116",
+        "ticker": "601898",
+        "outcome_status": "INSUFFICIENT_DATA",
+        "issue": "OUTCOME_NOT_READY"
+      },
+      {
+        "paper_id": "4207d8e19a3ca933cbec4fb517ce9409",
+        "ticker": "601898",
+        "outcome_status": "INSUFFICIENT_DATA",
+        "issue": "OUTCOME_NOT_READY"
+      },
+      {
+        "paper_id": "b38d15e9d56d95cfc28a85d8b8c41233",
+        "ticker": "601898",
+        "outcome_status": "INSUFFICIENT_DATA",
+        "issue": "OUTCOME_NOT_READY"
+      },
+      {
+        "paper_id": "e07aaa3e722badee08b681fabbbdf2d7",
+        "ticker": "601898",
+        "outcome_status": "INSUFFICIENT_DATA",
+        "issue": "OUTCOME_NOT_READY"
+      },
+      {
+        "paper_id": "2f089e2e0c1c15fb9a9c3d9b9976ebeb",
+        "ticker": "601898",
+        "outcome_status": "INSUFFICIENT_DATA",
+        "issue": "OUTCOME_NOT_READY"
+      },
+      {
+        "paper_id": "3cef72ea4af9d95b58c168b35aa357d7",
+        "ticker": "601898",
+        "outcome_status": "INSUFFICIENT_DATA",
+        "issue": "OUTCOME_NOT_READY"
+      },
+      {
+        "paper_id": "ac1ddaee4e8eb71fe3d9456973c82204",
+        "ticker": "601898",
+        "outcome_status": "INSUFFICIENT_DATA",
+        "issue": "OUTCOME_NOT_READY"
+      },
+      {
+        "paper_id": "de8e87ef54a0fc299a8e7a4ab5eaca10",
+        "ticker": "601898",
+        "outcome_status": "INSUFFICIENT_DATA",
+        "issue": "OUTCOME_NOT_READY"
+      },
+      {
+        "paper_id": "32db822c46fa2e279476b9376cf74248",
+        "ticker": "601898",
+        "outcome_status": "INSUFFICIENT_DATA",
+        "issue": "OUTCOME_NOT_READY"
+      },
+      {
+        "paper_id": "77d541a792fdbe609267af84403d3919",
+        "ticker": "601898",
+        "outcome_status": "INSUFFICIENT_DATA",
+        "issue": "OUTCOME_NOT_READY"
+      },
+      {
+        "paper_id": "1fbf7f3fd238bd713dd969169db63003",
+        "ticker": "601898",
+        "outcome_status": "INSUFFICIENT_DATA",
+        "issue": "OUTCOME_NOT_READY"
+      },
+      {
+        "paper_id": "21a559489ac496a837395e94555996ee",
+        "ticker": "601898",
+        "outcome_status": "INSUFFICIENT_DATA",
+        "issue": "OUTCOME_NOT_READY"
+      },
+      {
+        "paper_id": "4343906ceded06810faf1d89fefe47d5",
+        "ticker": "601898",
+        "outcome_status": "INSUFFICIENT_DATA",
+        "issue": "OUTCOME_NOT_READY"
+      },
+      {
+        "paper_id": "6bbf4e9dd791325a7ad906fb95ca4c32",
+        "ticker": "601898",
+        "outcome_status": "INSUFFICIENT_DATA",
+        "issue": "OUTCOME_NOT_READY"
+      },
+      {
+        "paper_id": "913076b52ee158df18d1d45d8ba24292",
+        "ticker": "601898",
+        "outcome_status": "INSUFFICIENT_DATA",
+        "issue": "OUTCOME_NOT_READY"
+      },
+      {
+        "paper_id": "00bfc45f2fe28cb16fb291b0b4d0e638",
+        "ticker": "601898",
+        "outcome_status": "INSUFFICIENT_DATA",
+        "issue": "OUTCOME_NOT_READY"
+      }
+    ],
+    "safety": {
+      "real_trade_allowed": false,
+      "broker_order_allowed": false,
+      "auto_buy_allowed": false,
+      "auto_sell_allowed": false,
+      "auto_position_close_allowed": false,
+      "real_z9_write_allowed": false,
+      "hermes_memory_write_allowed": false,
+      "auto_calibration_allowed": false,
+      "prompt_auto_injection_allowed": false,
+      "system_prompt_write_allowed": false,
+      "runtime_injection_allowed": false,
+      "runtime_enabled": false,
+      "external_api_default_on": false,
+      "audit_only": true
+    },
+    "real_trade_allowed": false,
+    "broker_order_allowed": false
+  },
+  "audit_status": "PASS",
+  "real_trade_allowed": false,
+  "broker_order_allowed": false,
+  "auto_buy_allowed": false,
+  "auto_sell_allowed": false,
+  "auto_position_close_allowed": false,
+  "real_z9_write_allowed": false,
+  "hermes_memory_write_allowed": false,
+  "auto_calibration_allowed": false,
+  "runtime_enabled": false,
+  "policy_violations": []
+}

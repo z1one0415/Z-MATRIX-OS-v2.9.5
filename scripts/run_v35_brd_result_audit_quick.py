@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """v3.5 Quick BRD Result Audit — parallel, configurable dates/tickers/workers"""
 import json, sys, os, time, argparse, multiprocessing as mp
-from concurrent.futures import ProcessPoolExecutor, as_completed
+from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -76,17 +76,16 @@ def main():
 
     ctx = mp.get_context('fork')
     with ProcessPoolExecutor(max_workers=args.workers, mp_context=ctx) as executor:
-        futures = {executor.submit(_process_one_ticker, t): t for t in tasks}
+        results = executor.map(_process_one_ticker, tasks, chunksize=500)
         done = 0
-        for fut in as_completed(futures):
+        for paper, outcome, error in results:
             done += 1
-            paper, outcome, error = fut.result()
             if error:
                 failures.append(error)
             else:
                 paper_actions.append(paper)
                 outcomes.append(outcome)
-            if done % 100 == 0:  # more frequent progress
+            if done % 100 == 0:
                 elapsed = time.time() - t0
                 print(f"  [{done}/{len(tasks)}] {done/elapsed:.0f}/s", flush=True)
 

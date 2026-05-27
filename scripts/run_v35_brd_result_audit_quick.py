@@ -76,7 +76,7 @@ def main():
 
     ctx = mp.get_context('fork')
     with ProcessPoolExecutor(max_workers=args.workers, mp_context=ctx) as executor:
-        results = executor.map(_process_one_ticker, tasks, chunksize=500)
+        results = executor.map(_process_one_ticker, tasks, chunksize=1)
         done = 0
         for paper, outcome, error in results:
             done += 1

@@ -157,3 +157,31 @@ A(信号执行)>B(宏观逆风)>C(分歧观望)>D(等待)>E(止损)
 ### Flow A RC — 16 Node 选股主链
 - `zmatrixctl graph run-daily --enable-frontnight` 已验证
 - TruthGate + 16 Node → EventStore 全通
+
+
+## 📋 2026-05-27 会话关键记忆
+
+**会话时间**: 2026-05-27 00:30-10:10 CST
+**当前分支**: v3.5-closeout-brd-explainability-validation @ 9d93ef7
+**数据状态**: 5年全A数据库(5523只/467MB)已完成。002472/601899 CSV仅到2025-04需补。
+
+### B-Matrix 降级体系
+- 移除 vs>=30 硬门 → 基于百分位评分校准
+- 新增: role_cap/valuation_confidence/valuation_method/downgrade
+- 估值缺失→B_MID_ROTATION,质量缺失→D_REJECT
+- 金融股识别: 高负债+无毛利率→ROE加权
+
+### 真实连接已打通
+- connector=CONNECTED: classify_stock_role(ticker,b_matrix,r_matrix,d_matrix)
+- PIT fundamentals loader 双格式支持(tushare/old)
+- PE/PB 从 close+EPS/BPS 反推 → valuation_score 生效
+
+### 审计框架
+- Quick audit 10×1000: PASS (354s, 28 tasks/s, 16 workers)
+- B_MID_ROTATION:4868, D_REJECT:5132, ready_rate=100%
+- 全部门槛: violations=0, fallback=0, unknown=0, real_trade=False
+
+### 待修复
+- 002472/601899 CSV需重新拉取(数据到2025-04,缺失2026年)
+- 全市场审计(60×5523)尚未执行
+- Z-G01 gate_data.py 的 get_kline 仍引用 bs → kdata 修复但可能有残留

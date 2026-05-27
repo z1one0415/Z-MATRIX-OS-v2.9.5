@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """v3.5 Full-Market BRD Result Audit — 60 dates, all tickers"""
-import json, sys
+import json, sys, os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from pathlib import Path
 from zmatrix.brd_strategy_validation.date_sampler import sample_replay_dates_from_index
 from zmatrix.brd_replay.multi_day_runner import run_multi_day_brd_strategy_replay
@@ -39,12 +40,9 @@ def main():
     
     print(json.dumps(summary, indent=2, ensure_ascii=False))
     
-    # Validation gates
     if report["audit_status"] != "PASS":
         print(f"BLOCKED: audit_status={report['audit_status']}")
         sys.exit(3)
-    
-    # Extra checks for full-market
     if mrd["total"] < 1000:
         print(f"BLOCKED: total={mrd['total']} < 1000")
         sys.exit(4)

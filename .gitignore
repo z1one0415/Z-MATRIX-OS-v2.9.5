@@ -41,3 +41,4 @@ data/**/*.sqlite
 runtime_reports/
 data/**/*.log
 data/universe/
+v35_brd_strategy_replay_result.json

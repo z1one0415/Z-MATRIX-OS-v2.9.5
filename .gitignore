@@ -39,3 +39,4 @@ data/**/*.feather
 data/**/*.db
 data/**/*.sqlite
 runtime_reports/
+data/**/*.log

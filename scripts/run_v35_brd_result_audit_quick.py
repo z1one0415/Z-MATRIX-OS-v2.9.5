@@ -113,6 +113,12 @@ def main():
     mrd = report["market_role_distribution"]
     ao = report["active_outcome_validation"]
 
+    # Calculate quality metrics from paper_actions
+    fallback_count = sum(1 for p in paper_actions if p and p.get("source_brd_result",{}).get("fallback") is True)
+    fallback_rate = round(fallback_count / len(paper_actions), 4) if paper_actions else None
+    data_gap_count = sum(1 for p in paper_actions if p and p.get("paper_action") == "DATA_GAP")
+    data_gap_rate = round(data_gap_count / len(paper_actions), 4) if paper_actions else None
+
     summary = {
         "elapsed_seconds": round(elapsed, 1),
         "throughput": round(throughput, 1),
@@ -130,13 +136,38 @@ def main():
         "role_distribution": {r: d["count"] for r, d in mrd["role_distribution"].items() if d["count"] > 0},
         "workers": args.workers,
         "policy_violations": report["policy_violations"],
+        "fallback_rate": fallback_rate,
+        "data_gap_rate": data_gap_rate,
+        "real_trade_allowed": False,
+        "broker_order_allowed": False,
     }
 
     print(json.dumps(summary, indent=2, ensure_ascii=False))
 
+    if summary["total"] < 10000:
+        print(f"BLOCKED: total={summary['total']} < 10000")
+        sys.exit(3)
+    if summary.get("unknown_rate") is not None and summary["unknown_rate"] >= 0.05:
+        print(f"BLOCKED: unknown_rate={summary['unknown_rate']}")
+        sys.exit(4)
+    if summary.get("fallback_rate") is not None and summary["fallback_rate"] >= 0.05:
+        print(f"BLOCKED: fallback_rate={summary['fallback_rate']}")
+        sys.exit(5)
+    if summary["active_paper_actions"] <= 0:
+        print("BLOCKED: active=0")
+        sys.exit(6)
+    if summary["ready_outcomes"] <= 0:
+        print("BLOCKED: ready_outcomes=0")
+        sys.exit(7)
+    if summary.get("reason_violation_count", 0) > 0:
+        print(f"BLOCKED: reason_violations={summary['reason_violation_count']}")
+        sys.exit(8)
+    if summary.get("policy_violations"):
+        print("BLOCKED: policy violations")
+        sys.exit(9)
     if report["audit_status"] != "PASS":
         print(f"BLOCKED: audit_status={report['audit_status']}")
-        sys.exit(3)
+        sys.exit(10)
 
     print(f"\n✅ Quick Audit PASS ({elapsed:.0f}s, {throughput:.0f} tasks/s)")
 

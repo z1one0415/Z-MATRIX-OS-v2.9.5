@@ -9,7 +9,7 @@ from zmatrix.brd_result_audit.audit_report_builder import build_brd_result_audit
 def main():
     sampled = sample_replay_dates_from_index(local_data_root=".",index_code="000001",max_dates=3)
     if sampled.get("sample_status")!="READY": print("BLOCKED"); sys.exit(2)
-    replay = run_multi_day_brd_strategy_replay(replay_dates=sampled["dates"],local_data_root=".",max_tickers=200)
+    replay = run_multi_day_brd_strategy_replay(replay_dates=sampled["dates"],local_data_root=".",max_tickers=500)
     report = build_brd_result_audit_report(replay_result=replay)
     out = Path("runtime_reports"); out.mkdir(exist_ok=True)
     (out/"v35_brd_result_audit_report.json").write_text(json.dumps(report,ensure_ascii=False,indent=2))

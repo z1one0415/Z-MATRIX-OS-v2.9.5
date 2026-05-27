@@ -40,6 +40,10 @@ class RealBRDClassifierConnector:
             raw = self.impl(ticker, b_matrix, r_matrix, d_matrix, account=account, exposure=exposure)
             from zmatrix.brd_replay.classifier_interface import normalize_brd_classifier_output
             n = normalize_brd_classifier_output(raw)
+            # Inject B-Matrix reason_codes into result for audit trail
+            brc = b_matrix.get("reason_codes", [])
+            if brc:
+                n.setdefault("reason_codes", []).extend(brc)
             # Respect B-Matrix role_cap: downgrade if classifier gives A but B-Matrix caps lower
             b_matrix = bundle.get("b_matrix",{})
             role_cap = b_matrix.get("role_cap")

@@ -10,9 +10,11 @@ def build_paper_action_from_brd(*, replay_date, ticker, brd_result, price_snapsh
     hard_gate_passed = bool(brd_result.get("hard_gate_passed",False))
     entry_price = float(price_snapshot.get("close",0) or 0)
     paper_action = _ROLE_ACTION_MAP.get(role,"WATCH_ONLY")
-    if not hard_gate_passed: paper_action = "NO_ACTION"
+    # Trust classifier's role decision; only override for D_REJECT or missing price
     if role == "D_REJECT": paper_action = "NO_ACTION"
     if entry_price <= 0: paper_action = "DATA_GAP"
+    # Trust the classifier's decision. It already evaluated hard_gate_passed.
+    # Only override for D_REJECT or missing entry_price.
     seed = f"{replay_date}|{ticker}|{role}|{paper_action}"
     paper_id = hashlib.sha256(seed.encode()).hexdigest()[:32]
     h = 60 if role=="A_LONG_CORE" else (20 if role=="B_MID_ROTATION" else 5)

@@ -465,7 +465,7 @@ def market_truth(ticker):
     bs = _bs_raw_kline(ticker, 10)
     if bs.get("error"): errs.append(f"bs:{bs['error']}")
     elif bs.get("prices"):
-        lt_close = kdata["close"][-1] if kdata.get("close") else bs["prices"][-1]
+        lt_close = bs["close"][-1] if bs.get("close") else bs["prices"][-1]
         lt_date = bs["dates"][-1] if bs.get("dates") else ""
         dt["baostock_close"] = lt_close; dt["baostock_date"] = lt_date
         if "price" in dt:

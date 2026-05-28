@@ -4,4 +4,4 @@ DEFAULT_REGIME_ATTRIBUTION_SAFETY = {"real_trade_allowed": False,"broker_order_a
 MARKET_REGIMES = ["BULL_TREND","RANGE_BOUND","BEAR_TREND","LIQUIDITY_EXPANSION","LIQUIDITY_CONTRACTION","HIGH_VOLATILITY","LOW_VOLATILITY","UNKNOWN_MARKET_REGIME"]
 SECTOR_PHASES = ["SECTOR_ADVANCE","SECTOR_RANGE","SECTOR_RETREAT","SECTOR_CLIMAX","SECTOR_CRASH","UNKNOWN_SECTOR_PHASE"]
 REGIME_SEPARABILITY_STATUSES = ["REGIME_SEPARABLE","WEAKLY_REGIME_SEPARABLE","NOT_REGIME_SEPARABLE","DATA_INSUFFICIENT"]
-DEFAULT_REGIME_THRESHOLDS = {"min_feature_ready_rate":0.70,"min_group_sample":1000,"regime_separable_score":0.65,"weakly_regime_separable_score":0.55,"min_win_rate_delta":0.03,"min_median_delta":0.30,"max_top_1pct_contribution":0.50}
+DEFAULT_REGIME_THRESHOLDS = {"min_feature_ready_rate":0.70,"min_group_sample":1000,"regime_separable_score":0.65,"weakly_regime_separable_score":0.55,"bull_bear_min_sample":5000,"bull_bear_win_rate_spread":0.10,"bull_bear_median_spread":2.0,"bull_bear_invalidation_spread":0.15,"min_win_rate_delta":0.03,"min_median_delta":0.30,"max_top_1pct_contribution":0.50}

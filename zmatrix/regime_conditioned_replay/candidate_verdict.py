@@ -16,11 +16,11 @@ def judge_replay_candidate(*, result: dict, hurdles: dict | None = None) -> dict
     if d.get("trimmed_mean_delta") is not None and d["trimmed_mean_delta"] < h["min_trimmed_mean_delta_vs_raw"]: reasons.append("TRIMMED_MEAN_DELTA_TOO_SMALL")
     if m.get("top_1pct_contribution") is not None and m["top_1pct_contribution"] > h["max_top_1pct_contribution"]: reasons.append("STILL_OUTLIER_DOMINATED")
     if result.get("opportunity_loss_rate") is not None and result["opportunity_loss_rate"] > h["max_opportunity_loss_rate"]: reasons.append("OPPORTUNITY_LOSS_TOO_HIGH")
-    status = "POLICY_READY_FOR_OBSERVATION" if not reasons else "POLICY_REJECTED_NO_IMPROVEMENT"
-    return {"status":status,"reasons":reasons,"production_ready":False,"real_trade_allowed":False,"broker_order_allowed":False}
+    status = "POLICY_FULL_SAMPLE_PASS_STABILITY_PENDING" if not reasons else "POLICY_REJECTED_NO_IMPROVEMENT"
+    return {"status":status,"reasons":reasons,"production_ready":False,"requires_anti_overfit_validation":True,"real_trade_allowed":False,"broker_order_allowed":False}
 
 def judge_all_replay_candidates(*, replay: dict) -> dict:
     verdicts = {}
     for name, r in replay.get("policy_results",{}).items(): verdicts[name] = judge_replay_candidate(result=r)
-    ready = [n for n,v in verdicts.items() if v.get("status")=="POLICY_READY_FOR_OBSERVATION"]
+    ready = [n for n,v in verdicts.items() if v.get("status")=="POLICY_FULL_SAMPLE_PASS_STABILITY_PENDING"]
     return {"verdict_report_version":"V357_CANDIDATE_VERDICT_V10","ready_policies":ready,"verdicts":verdicts,"real_trade_allowed":False,"broker_order_allowed":False}

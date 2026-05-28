@@ -1,0 +1,5 @@
+from __future__ import annotations
+ANTI_OVERFIT_VERSION = "V357_ANTI_OVERFIT_VALIDATION_V10"
+DEFAULT_ANTI_OVERFIT_SAFETY = {"real_trade_allowed":False,"broker_order_allowed":False,"auto_buy_allowed":False,"auto_sell_allowed":False,"auto_position_close_allowed":False,"real_z9_write_allowed":False,"hermes_memory_write_allowed":False,"auto_calibration_allowed":False,"prompt_auto_injection_allowed":False,"system_prompt_write_allowed":False,"runtime_injection_allowed":False,"runtime_enabled":False,"external_api_default_on":False,"paper_validation_only":True}
+ANTI_OVERFIT_HURDLES = {"min_temporal_windows":3,"min_passing_temporal_windows":3,"min_temporal_win_rate_delta":0.02,"min_temporal_median_delta":0.50,"min_invalidation_rate_delta":0.05,"min_kept_rate_hard":0.20,"min_kept_rate_preferred":0.60,"min_sector_groups":3,"min_passing_sector_groups":3,"max_top1_increase":0.0,"must_not_worsen_stress_windows":True}
+ANTI_OVERFIT_STATUSES = ["STABILITY_VALIDATED_OBSERVATION_READY","STABILITY_WEAK_OBSERVATION_ONLY","OVERFIT_RISK_BLOCKED","LOW_KEPT_RATE_BLOCKED","TEMPORAL_INSTABILITY_BLOCKED","SECTOR_DATA_INSUFFICIENT","STRESS_WINDOW_BLOCKED"]

@@ -1,0 +1,5 @@
+from __future__ import annotations
+ROLE_RECONSTRUCTION_VERSION = "V3513_ROLE_RECONSTRUCTION_V10"
+DEFAULT_ROLE_RECONSTRUCTION_SAFETY = {"real_trade_allowed":False,"broker_order_allowed":False,"auto_buy_allowed":False,"auto_sell_allowed":False,"auto_position_close_allowed":False,"real_z9_write_allowed":False,"hermes_memory_write_allowed":False,"auto_calibration_allowed":False,"prompt_auto_injection_allowed":False,"system_prompt_write_allowed":False,"runtime_injection_allowed":False,"runtime_enabled":False,"external_api_default_on":False,"production_yaml_write_allowed":False,"production_parameter_write_allowed":False,"role_definition_write_allowed":False,"classifier_production_write_allowed":False,"paper_reconstruction_only":True}
+B_MID_SUBTYPES = ["B_TRUE_ROTATION","B_REGIME_DEPENDENT","B_R_SIGNAL_DOMINATED","B_D_SIGNAL_DOMINATED","B_STALE_OR_WEAK_B_EVIDENCE","B_HIGH_VOLATILITY_NOISE","B_RANGE_TRAP","B_UNEXPLAINED"]
+ROLE_RECONSTRUCTION_THRESHOLDS = {"min_trace_coverage":0.70,"min_subtype_count":1000,"min_subtype_spread_median":1.0,"min_subtype_spread_win_rate":0.08,"max_unknown_subtype_rate":0.35}

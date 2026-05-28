@@ -171,7 +171,10 @@ def main():
         latest = reports[-1]
         v = valuation.get(tk, {})
         ip = percentiles.get(tk, {})
-        b_facts = {"gross_margin":latest.get("gross_margin"),"roe":latest.get("roe"),"revenue_yoy":latest.get("revenue_yoy"),"net_profit_yoy":latest.get("netprofit_yoy"),"debt_ratio":latest.get("debt_ratio"),"pe_ttm":v.get("pe_ttm"),"pb":v.get("pb"),"ps":v.get("ps"),"dividend_yield":v.get("dv_ratio"),"industry_percentile_roe":ip.get("industry_percentile_roe"),"industry_percentile_growth":ip.get("industry_percentile_growth")}
+        b_facts = {"gross_margin":latest.get("gross_margin"),"roe":latest.get("roe"),"revenue_yoy":latest.get("revenue_yoy"),"net_profit_yoy":latest.get("netprofit_yoy"),"debt_ratio":latest.get("debt_ratio"),"pe_ttm":v.get("pe_ttm"),"pb":v.get("pb"),"ps":v.get("ps"),"dividend_yield":v.get("dv_ratio"),"industry_percentile_roe":ip.get("industry_percentile_roe"),"industry_percentile_growth":ip.get("industry_percentile_growth"),
+            # Real cash flow from fundamentals!
+            "ocf":_f(latest.get("ocfps")),"ocf_to_np":_f(latest.get("ocfps"))/_f(latest.get("eps")) if _f(latest.get("ocfps")) and _f(latest.get("eps")) else None,"fcf_proxy":_f(latest.get("fcff")),
+            "net_margin":None,"roic":None,"deduct_np_yoy":None,"current_ratio":None,"goodwill_ratio":None,"bottleneck_score":None,"chain_position":None,"st_flag":None,"audit_opinion":None,"ocf_trend":None}
         result = score_b_matrix(financial_facts=b_facts, valuation_facts=b_facts, industry_facts=b_facts)
         b_samples += 1
         if result["base_role_eligible"]: b_eligible += 1

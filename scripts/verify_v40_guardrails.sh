@@ -4,6 +4,7 @@ echo "═══ V4.0 Guardrails Verification ═══"
 
 # Check no production flags (with documented legacy exceptions)
 forbidden_patterns=(
+    'real_trade_allowed.*=.*True'
     'broker_order_allowed.*=.*True'
     'runtime_enabled.*=.*True'
     'auto_buy_allowed.*=.*True'
@@ -12,9 +13,6 @@ forbidden_patterns=(
     'limit_up_auto_buy.*=.*True'
     'real_option_order.*=.*True'
 )
-# Note: scoring/dispatcher.py:306 has real_trade_allowed=True in 
-# a legacy role scoring context. This is a KNOWN LIMITATION, not a new violation.
-# Documented in V40_BASELINE_AUDIT.md: Legacy scoring dispatcher exception.
 for pattern in "${forbidden_patterns[@]}"; do
     if grep -r "$pattern" zmatrix/ --include="*.py" 2>/dev/null; then
         echo "❌ Found forbidden pattern: $pattern"; exit 1

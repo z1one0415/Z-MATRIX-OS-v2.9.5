@@ -303,7 +303,7 @@ class RoleDispatcher:
                 matrix_name="B-Matrix",
                 execution_mode="human_confirm",
                 allowed_action="HUMAN_CONFIRM",
-                real_trade_allowed=True,
+                real_trade_allowed=False,  # v4.0: paper candidate only, human review required
             ))
 
         # R-Matrix 候选

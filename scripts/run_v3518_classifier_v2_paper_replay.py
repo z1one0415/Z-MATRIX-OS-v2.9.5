@@ -85,7 +85,7 @@ def main():
 
     # Delta
     rd_rate=len(mismatches)/src_total if src_total else 0; sm_rate=len(src_mismatch)/src_total if src_total else 0
-    tc=1.0
+    tc = trace_ready / len(rows) if len(rows) else 0
     warnings=[]
     if rd_rate>0.03: warnings.append("ROLE_DELTA_RATE_HIGH")
     if sm_rate>0.01: warnings.append("SOURCE_MISMATCH_RATE_HIGH")

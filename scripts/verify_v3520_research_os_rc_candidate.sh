@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-echo "═══ Z-MATRIX-OS v3.5.20 Research OS RC Closeout Verification ═══"
+echo "═══ Z-MATRIX-OS v3.5.20 Research OS RC Final Closeout Verification ═══"
 
 PYTHONPATH=. python3 -m compileall zmatrix tests scripts pipelines 2>&1 | tail -1
 
@@ -28,10 +28,11 @@ assert len(v)>0, 'should detect safety violations'
 print('  ✅ policy violation detection')
 "
 
-# v3.6 grep — strong assertion (not || true)
+# P0-1 FIX: v3.6 grep — no anti-filter
 echo "  Checking v3.6 references..."
-if grep -R "v3\\.6" zmatrix scripts tests --exclude-dir=__pycache__ --exclude="*.pyc" 2>/dev/null | grep -v "v3\\.5\|v3\\.6" | head -5; then
-    echo "❌ v3.6 reference detected. Version ceiling is v3.5.20."; exit 2
+if grep -r "v3\.6" zmatrix tests --exclude-dir=__pycache__ 2>/dev/null; then
+    echo "❌ v3.6 reference detected. Version ceiling is v3.5.20."
+    exit 2
 fi
 echo "  ✅ Zero v3.6 references"
 
@@ -39,4 +40,4 @@ git diff --check
 if git ls-files runtime_reports | grep .; then echo "❌ runtime_reports must not be tracked"; exit 1; fi
 echo "  ✅ runtime_reports not tracked"
 
-echo "═══ v3.5.20 Research OS RC Closeout PASS ═══"
+echo "═══ v3.5.20 Research OS RC Final Closeout PASS ═══"

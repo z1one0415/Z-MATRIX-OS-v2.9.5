@@ -7,7 +7,7 @@ from collections import Counter
 
 LEGACY = ["A_LONG_CORE","B_MID_ROTATION","C_SHORT_EVENT","D_REJECT","WATCH_ONLY"]
 CANONICAL = ["ROLE_CORE","ROLE_ROT","ROLE_HUNT","ROLE_WATCH","ROLE_BLOCK"]
-ALLOW_KEYWORDS = ["account_constitution.py","pre_trade_checklist.py","z8_position_control.py","investment_role_workflow.py","brd_result_audit","legacy_migration_plan","adapter_first_integration","classifier_v2_replay","role_replay","role_taxonomy_closeout","legacy_namespace_deprecation","tests","run_v35","run_v351","scripts","discover_brd","zmatrix/"]
+ALLOW_KEYWORDS = ["account_constitution.py","pre_trade_checklist.py","z8_position_control.py","investment_role_workflow.py","brd_result_audit","legacy_migration_plan","adapter_first_integration","classifier_v2_replay","role_replay","role_taxonomy_closeout","legacy_namespace_deprecation","tests","run_v35","run_v351","discover_brd"]
 BLOCK_KEYWORDS = ["classifier_v2_replay","adapter_first_integration","role_taxonomy_closeout","legacy_namespace_deprecation"]
 EXCLUDE = {".git","__pycache__","runtime_reports",".venv","venv"}
 

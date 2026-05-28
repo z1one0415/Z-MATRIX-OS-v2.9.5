@@ -1,0 +1,11 @@
+# PARAMETER TRUST POLICY
+trust_levels:
+  T0: ENGINEERING_DEFAULT
+  T1: HISTORICAL_SAMPLE
+  T2: TEMPORAL_SPLIT_VALIDATED
+  T3: SECTOR_SPLIT_VALIDATED
+  T4: OUT_OF_SAMPLE_VALIDATED
+  T5: PAPER_LIVE_SHADOW
+production_requires: T4 or higher
+current_max: T2
+no_parameter_production_ready: true

@@ -1,0 +1,1 @@
+{"baseline_version":"v3.5.20","baseline_status":"FROZEN","r_matrix_historical_replay":"RESEARCH_READY","b_matrix_current_snapshot":"RESEARCH_READY","b_matrix_historical_pit":"BLOCKED","d_matrix":"BLOCKED","production":"BLOCKED","real_trade":"BLOCKED","broker_runtime":"BLOCKED","classifier_production_chain":"FROZEN","frozen_at":"2026-05-29T02:49:00+08:00","python_floor":"3.12"}

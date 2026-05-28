@@ -30,7 +30,7 @@ print('  ✅ policy violation detection')
 
 # P0-1 FIX: v3.6 grep — no anti-filter
 echo "  Checking v3.6 references..."
-if grep -r "v3\.6" zmatrix tests --exclude-dir=__pycache__ 2>/dev/null; then
+if grep -r "v3\.6" zmatrix scripts tests --exclude-dir=__pycache__ 2>/dev/null | grep -v "verify_v3520"; then
     echo "❌ v3.6 reference detected. Version ceiling is v3.5.20."
     exit 2
 fi

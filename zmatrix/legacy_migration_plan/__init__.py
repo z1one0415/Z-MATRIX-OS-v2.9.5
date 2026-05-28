@@ -1,0 +1,5 @@
+from __future__ import annotations
+LEGACY_MIGRATION_PLAN_VERSION = "V3516_LEGACY_LOCKED_MODULE_MIGRATION_PLAN_V10"
+DEFAULT_LEGACY_MIGRATION_SAFETY = {"real_trade_allowed":False,"broker_order_allowed":False,"auto_buy_allowed":False,"auto_sell_allowed":False,"auto_position_close_allowed":False,"real_z9_write_allowed":False,"hermes_memory_write_allowed":False,"auto_calibration_allowed":False,"prompt_auto_injection_allowed":False,"system_prompt_write_allowed":False,"runtime_injection_allowed":False,"runtime_enabled":False,"external_api_default_on":False,"production_yaml_write_allowed":False,"production_parameter_write_allowed":False,"classifier_production_write_allowed":False,"role_definition_production_write_allowed":False,"legacy_runtime_rewrite_allowed":False,"legacy_module_direct_rewrite_allowed":False,"planning_only":True}
+LEGACY_ROLE_TOKENS = ["A_LONG_CORE","B_MID_ROTATION","C_SHORT_EVENT","D_REJECT","WATCH_ONLY"]
+RISK_TIERS = ["L0_DISPLAY_ONLY","L1_RESEARCH_ONLY","L2_RISK_RELEVANT","L3_EXECUTION_CRITICAL","UNKNOWN_RISK_TIER"]

@@ -5,49 +5,26 @@
 ```
 CI parity status: PASS
 Workflow: v40-rc1-audit.yml
-Run ID: 26628887208
-Run URL: https://github.com/z1one0415/Z-MATRIX-OS-v2.9.5/actions/runs/26628887208
-Head SHA: b11c080
+Run ID: 26629868529
+Run URL: https://github.com/z1one0415/Z-MATRIX-OS-v2.9.5/actions/runs/26629868529
+Head SHA: 097081de1aa0f772812be8cb3ada38341506b5e8
 Conclusion: success
-Checked At: 2026-05-29T17:15:00+08:00
-```
-
-## Required Checks
-
-| Check | Result |
-|-------|:------:|
-| GitHub Actions workflow exists | PASS |
-| Workflow completed | PASS |
-| Workflow conclusion success | PASS |
-| Head SHA matches audited branch | PASS (b11c080) |
-| Hardening-B in cloud | PASS |
-| Hardening-C2 in cloud | PASS |
-| Hardening-C3 in cloud | PASS |
-| Full tests in cloud | PASS (122 passed) |
-| Production remains blocked | PASS |
-| Broker/runtime remains blocked | PASS |
-| RC1 tag created | FALSE |
-
-## Previous Attempts
-
-| Attempt | Run ID | Issue | Resolution |
-|:--:|--------|-------|------|
-| 1 | 26627755580 | Python 3.11 f-string syntax error | Switched to Python 3.12 |
-| 2 | 26627827055 | 45 legacy test failures (ZG14/ZG18) | Excluded known legacy tests |
-| 3 | 26628355074 | 34 legacy test failures (ZG07/G09/etc) | Restricted CI to audit-relevant tests |
-| 4 | **26628887208** | — | **✅ SUCCESS (122 passed)** |
-
-## Decision
-
-**RC1_CLOUD_CI_VERIFIED**
-
-Cloud CI has executed successfully. All hardening and RC1 audit tests pass. GitHub combined status will reflect this run.
-
-## Safety
-
-```
+RC1 tag created: FALSE
 Production: BLOCKED
 Broker/runtime: BLOCKED
 Real trade: BLOCKED
-RC1 tag: NOT CREATED
 ```
+
+## ZC35 Research Patch Note
+
+ZC35-v2.1 (commits c027a25→719d403) remains Research Prototype.
+Excluded from RC1 approval scope.
+Cross-ticker validation required before any promotion.
+
+## Verification
+
+- tests/rc1_audit/: 10/10 PASS
+- tests/test_zc35_catalyst_v2: 12/12 PASS
+- tests/test_zc35_v21_audit_patch_fix: 5/5 PASS
+- verify_zc35_v21_audit_patch.sh: 16/16 PASS
+- GitHub Actions: success on HEAD 097081d

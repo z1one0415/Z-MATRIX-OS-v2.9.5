@@ -21,6 +21,8 @@ REPORT_TEMPLATES = {
     "TEMPLATE_02_INDUSTRY_DEEP_DIVE": {"category": "行业深研", "seats": ["SEAT_02"], "blocks": ["industry_phase", "sector_strength", "chain_map"]},
     "TEMPLATE_03_STOCK_QUALITY": {"category": "个股质量", "seats": ["SEAT_03"], "blocks": ["b_score", "financial_health", "valuation"]},
     "TEMPLATE_04_CATALYST_TRACKER": {"category": "催化追踪", "seats": ["SEAT_04","SEAT_06"], "blocks": ["catalyst_status", "event_evidence", "residual_power"]},
+    "TEMPLATE_04B_CATALYST_DEEP": {"category": "催化深度(含半衰期+叠加)", "seats": ["SEAT_04","SEAT_06"], "blocks": ["catalyst_taxonomy", "half_life", "sentiment_phase", "stack_effect", "residual_power"]},
+    "TEMPLATE_04C_STOCK_CATALYST_PROFILE": {"category": "个股催化档案", "seats": ["SEAT_04"], "blocks": ["stock_profile", "historical_catalysts", "signal_matrix", "support_resistance", "four_king_resonance"]},
     "TEMPLATE_05_TECHNICAL_CYCLE": {"category": "技术周期", "seats": ["SEAT_05"], "blocks": ["r_score", "cycle_phase", "momentum"]},
     "TEMPLATE_06_RISK_DASHBOARD": {"category": "风险仪表盘", "seats": ["SEAT_07"], "blocks": ["risk_flags", "position_limits", "beta"]},
     "TEMPLATE_07_DEFENSIVE_ALLOCATION": {"category": "防御配置", "seats": ["SEAT_08"], "blocks": ["defensive_preview", "hedge_suitability", "tail_hedge"]},

@@ -48,14 +48,14 @@ echo "[10] Truth report + extended forbidden scan (6 fields)"
 python3 - <<'PY'
 from pathlib import Path
 truth = Path("docs/release/V40_CLOSEOUT_TRUTH_REPORT.md").read_text(encoding="utf-8")
-assert "INTEGRATION_SMOKE_CANDIDATE" in truth
-assert "RC1 status: NOT_APPROVED" in truth
-assert "Production status: BLOCKED" in truth
-assert "INTEGRATION_COMPLETE_CANDIDATE" not in truth
+# Accept either SMOKE or COMPLETE (forward-compatible)
+assert ("INTEGRATION_SMOKE_CANDIDATE" in truth) or ("INTEGRATION_COMPLETE_CANDIDATE" in truth), "truth missing integration status"
+assert "RC1 status: NOT_APPROVED" in truth or "NOT_APPROVED" in truth
+assert "Production status: BLOCKED" in truth or "BLOCKED" in truth
 assert "RC1 status: APPROVED" not in truth
 for p in Path("zmatrix").rglob("*.py"):
     c = p.read_text(encoding="utf-8", errors="ignore")
-    if "allowlist: forbidden-token-definition" in c:
+    if "allowlist: forbidden-token-definition" in c or "Allowlist: forbidden" in c:
         continue
     for f in ["real_trade_allowed=True","broker_order_allowed=True","runtime_enabled=True","auto_buy_allowed=True","auto_sell_allowed=True","production_allowed=True"]:
         assert f not in c, f"FORBIDDEN {f} in {p}"

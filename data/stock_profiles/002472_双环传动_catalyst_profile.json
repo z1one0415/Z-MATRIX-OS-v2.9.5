@@ -1,0 +1,197 @@
+{
+  "_meta": {
+    "version": "v1.0",
+    "pipeline_signature": "Z2-CATALYST-EMPIRICAL-DB",
+    "source": "基于双环传动(002472) 10个月6轮完整催化周期的实证数据",
+    "methodology": "R-Matrix v1.1 × ZC35 CatalystLifecycle v2.0 × 情绪周期映射",
+    "data_range": "2025-08 ~ 2026-05-29",
+    "last_updated": "2026-05-29T15:30:00+08:00",
+    "verified_cycles": 6,
+    "verified_signals": 7,
+    "verified_false_signals": 3
+  },
+  "ticker": "002472",
+  "name": "双环传动",
+  "sector": "机器人/汽车零部件",
+  "r_matrix_cycles": {
+    "optimal_T2_window": {
+      "min_days": 5,
+      "max_days": 8,
+      "avg_return_pct": 12.1,
+      "win_rate": 0.72,
+      "description": "与S级催化D+0~D+8窗口完美共振"
+    },
+    "optimal_T3_window": {
+      "min_days": 13,
+      "max_days": 21,
+      "avg_return_pct": 16.6,
+      "win_rate": 0.65,
+      "description": "匹配完整催化生命周期"
+    },
+    "volatility_regime": {
+      "compression_max_pct": 2.0,
+      "acceleration_range": "2.0-3.5",
+      "expansion_range": "3.5-5.0",
+      "exhaustion_min_pct": 5.0,
+      "exhaustion_to_compression_days": 3
+    },
+    "cycle_phases": {
+      "ACCUMULATION": {"typical_days": 4, "min_days": 3, "signal": "缩量横盘+支撑确认"},
+      "ACCELERATION": {"typical_days": 6, "min_days": 3, "signal": "放量突破+连续阳线"},
+      "CLIMAX": {"typical_days": 3, "min_days": 1, "signal": "天量+长上影/十字星"},
+      "CORRECTION": {"typical_days": 5, "min_days": 2, "signal": "获利回吐+寻找支撑"}
+    }
+  },
+  "historical_catalysts": [
+    {
+      "id": "CAT-002472-001",
+      "name": "宇树GD01载人机甲发布",
+      "level": "S",
+      "announce_date": "2026-05-12",
+      "pre_announce_price": 42.33,
+      "peak_price": 46.12,
+      "peak_date": "2026-05-22",
+      "peak_days_after": 8,
+      "total_return_pct": 12.0,
+      "half_life_observed_days": 8,
+      "full_decay_observed_days": 15,
+      "pre_run_days_observed": 5,
+      "pre_run_gain_pct": 6.6,
+      "key_pattern": "D-5抢跑+4.5%(5/8) → D+0兑现-0.3%(5/12) → D+2洗盘-3.8%(5/14) → D+3收回+4.3%(5/15) → D+8峰值+12%(5/22) → D+14天量顶(5/26)",
+      "verified_entry_signals": [
+        {"signal": "D-5_PRERUN_BREAKOUT", "date": "2026-05-08", "trigger": "催化前5天放量+4.5%", "reliability": 0.78},
+        {"signal": "D+2_SHAKEOUT_RECLAIM", "date": "2026-05-15", "trigger": "洗盘-3.8%后次日+4.3%收回", "reliability": 0.85}
+      ],
+      "verified_exit_signals": [
+        {"signal": "D+14_EXHAUSTION_VOLUME", "date": "2026-05-26", "trigger": "天量+长上影十字星", "reliability": 0.90}
+      ],
+      "false_signals": [
+        {"signal": "D+0_EVENT_DAY_BUY", "reason": "发布日本身不涨(-0.3%), 买传闻卖新闻"}
+      ]
+    },
+    {
+      "id": "CAT-002472-002",
+      "name": "发改委具身智能政策",
+      "level": "A",
+      "announce_date": "2026-05-22",
+      "pre_announce_price": 44.46,
+      "peak_price": 46.12,
+      "peak_date": "2026-05-22",
+      "peak_days_after": 0,
+      "total_return_pct": 3.7,
+      "half_life_observed_days": 2,
+      "full_decay_observed_days": 5,
+      "overlap_with": "CAT-002472-001",
+      "overlap_effect": "与S级催化D+10共振 → 加速冲顶 → 也加速了顶部形成",
+      "stack_penalty_observed": true
+    },
+    {
+      "id": "CAT-002472-003",
+      "name": "Google I/O Robotics Day",
+      "level": "C",
+      "announce_date": "2026-05-19",
+      "pre_announce_price": 44.11,
+      "peak_price": 44.11,
+      "peak_date": "2026-05-18",
+      "peak_days_after": -1,
+      "total_return_pct": 0.0,
+      "half_life_observed_days": 1,
+      "full_decay_observed_days": 3,
+      "key_pattern": "会前3天抢跑(5/15-18) → 开幕日=卖出日(5/19-20下跌)"
+    },
+    {
+      "id": "CAT-002472-004",
+      "name": "英伟达Q1 FY2027财报(跨资产溢出)",
+      "level": "C",
+      "announce_date": "2026-05-20",
+      "reaction_date": "2026-05-21",
+      "pre_reaction_price": 43.08,
+      "peak_reaction_price": 44.46,
+      "total_return_pct": 3.2,
+      "half_life_observed_days": 1,
+      "full_decay_observed_days": 1,
+      "key_pattern": "跨资产催化仅有1天有效期"
+    },
+    {
+      "id": "CAT-002472-005",
+      "name": "环动科技IPO预期",
+      "level": "B",
+      "announce_date": "2025-07-01",
+      "latest_update": "2026-05-27",
+      "status": "SUSPENDED_IN_INQUIRY",
+      "days_since_submission": 330,
+      "expected_next_event": "科创板上市委过会",
+      "risk": "LONG_SUSPENSION_DISCOUNT",
+      "risk_description": "超过10个月仍未过会→预期衰减→可能已完全定价, 过会反而可能'利好出尽'"
+    },
+    {
+      "id": "CAT-002472-006",
+      "name": "智博会(世界智能产业博览会)",
+      "level": "D",
+      "announce_date": "2026-05-28",
+      "pre_announce_price": 44.72,
+      "reaction_pct": -7.4,
+      "key_pattern": "D级催化=负信号: 计划内会议无超预期→暴跌",
+      "verified_as_negative": true
+    }
+  ],
+  "signal_matrix": {
+    "true_positive": [
+      {"id": "TP1", "signal": "周末预热放量突破", "trigger_condition": "重大催化前周末→周一放量+0.5%以上", "win_rate": 0.78, "avg_return": 9.5, "max_hold_days": 8},
+      {"id": "TP2", "signal": "洗盘后收回(熊陷阱)", "trigger_condition": "单日-3%洗盘→次日+2%收回+量能确认", "win_rate": 0.85, "avg_return": 12.0, "max_hold_days": 6},
+      {"id": "TP3", "signal": "突破箱体上沿", "trigger_condition": "收盘价突破前3日最高+量能>20日均量1.5x", "win_rate": 0.72, "avg_return": 9.0, "max_hold_days": 5},
+      {"id": "TP4", "signal": "D-3催化抢跑", "trigger_condition": "重大催化前3天开始放量上涨", "win_rate": 0.70, "avg_return": 10.0, "max_hold_days": 5},
+      {"id": "TP5", "signal": "二次探底后反转", "trigger_condition": "回到前低+次日吞没阳线", "win_rate": 0.68, "avg_return": 13.0, "max_hold_days": 10}
+    ],
+    "false_positive": [
+      {"id": "FP1", "signal": "D+14催化晚期天量阳线", "why": "耗尽信号! D+14天量=顶部确认", "consequence": "5/26→5/28 -7.4%暴跌", "rule": "D+12后任何放量上涨都是卖出信号"},
+      {"id": "FP2", "signal": "计划内会议/博览会开幕日", "why": "无超预期信息=利空", "consequence": "智博会开幕日-7.4%", "rule": "任何'开幕式'都不是催化剂, 是清仓信号"},
+      {"id": "FP3", "signal": "市场级利好(τ定律等)跟涨", "why": "板块普涨≠个股利好, 可能是最后一棒", "consequence": "τ定律后+2.5%→2天后崩盘", "rule": "D+12后的市场级利好=接盘侠入场信号"}
+    ]
+  },
+  "support_resistance_live": {
+    "date": "2026-05-29",
+    "current_price": 39.23,
+    "cost_basis": 41.71,
+    "cost_broken": true,
+    "support_levels": [
+      {"id": "S4", "price": 34.91, "strength": "ULTIMATE", "description": "2026年年度最低, 终极支撑"},
+      {"id": "S3", "price": 36.23, "strength": "STRONG", "description": "4月双底确认, 最佳入场区"},
+      {"id": "S2", "price": 37.04, "strength": "MEDIUM", "description": "4月箱体中轴"},
+      {"id": "S1", "price": 39.19, "strength": "WEAK", "description": "4月箱体上沿, 当前正在测试"}
+    ],
+    "resistance_levels": [
+      {"id": "R1", "price": 41.71, "strength": "MEDIUM", "description": "成本线心理关口"},
+      {"id": "R2", "price": 42.50, "strength": "MEDIUM", "description": "5月突破箱体顶"},
+      {"id": "R3", "price": 46.12, "strength": "STRONG", "description": "2026年5月高点"},
+      {"id": "R4", "price": 53.50, "strength": "ULTIMATE", "description": "2025年历史高点"}
+    ]
+  },
+  "four_king_resonance_current": {
+    "date": "2026-05-29",
+    "rotation_monthly": {"type": "TREND_UP", "position": 0.35, "from": 34.91, "to": 46.12},
+    "rhythm_weekly": {"type": "BOX", "position": 0.24, "description": "冲高回落整理中"},
+    "oscillation_daily": {"type": "HORIZONTAL", "position": 0.35, "zone": "LOW_MID_ZONE"},
+    "impulse": {"type": "NEUTRAL", "score": 50, "action": "WATCH_ENTRY"},
+    "resonance_status": "CYCLE_RESONANCE_ENTRY",
+    "resonance_score": 7.0,
+    "entry_action_cap": "WATCH_ENTRY",
+    "exit_alert": "NONE",
+    "sentiment_temperature_c": 10.0,
+    "sentiment_zone": "FROZEN"
+  },
+  "catalyst_stack_current": {
+    "date": "2026-05-29",
+    "active_catalysts": [],
+    "recently_expired": [
+      {"id": "CAT-002472-001", "name": "宇树GD01", "days_since": 17, "residual": 0.0, "lifecycle": "EXHAUSTED"},
+      {"id": "CAT-002472-002", "name": "发改委政策", "days_since": 7, "residual": 0.0, "lifecycle": "EXHAUSTED"}
+    ],
+    "pending_catalysts": [
+      {"id": "CAT-002472-005", "name": "环动科技IPO过会", "expected": "未知", "level": "B", "impact_if_pass": "+15%+"},
+      {"id": "CAT-002472-007", "name": "COMPUTEX 2026", "expected": "2026-06-02", "level": "C", "impact": "非直接, 板块情绪溢出"}
+    ],
+    "status": "VACUUM",
+    "warning": "催化全面真空, 等待环动IPO或新催化"
+  }
+}

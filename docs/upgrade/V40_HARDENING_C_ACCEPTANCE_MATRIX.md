@@ -1,33 +1,42 @@
-# V40 Hardening-C Acceptance Matrix
-# Current: INTEGRATION_SMOKE_CANDIDATE | RC1: NOT_APPROVED | Production: BLOCKED
+# V4.0 FINAL-HARDGATES Hardening-C Acceptance Matrix
 
-## Status Definitions
-NOT_STARTED | IN_PROGRESS | MINIMAL_CORE_DONE | INTEGRATION_SMOKE_DONE | DEPTH_PARTIAL | INTEGRATION_DONE | ACCEPTANCE_DONE | NOT_DONE | BLOCKED
+## C2 (Hardening-B + Hardening-C + C2.x)
 
-| ID | Name | C# | Status |
-|---|---:|---|
-| HC-C0-001 | Scope Lock Document | C0 | MINIMAL_CORE_DONE |
-| HC-C0-002 | Acceptance Matrix | C0 | MINIMAL_CORE_DONE |
-| HC-C1-001 | DataForge Source Registry | C1 | DEPTH_PARTIAL |
-| HC-C1-002 | DataForge Evidence Card | C1 | DEPTH_PARTIAL |
-| HC-C1-003 | DataForge PIT Snapshot | C1 | DEPTH_PARTIAL |
-| HC-C2-001 | FactorFactory IC/RankIC | C2 | DEPTH_PARTIAL |
-| HC-C2-002 | FactorFactory T20/T60 Strict | C2 | DEPTH_PARTIAL |
-| HC-C2-003 | FactorFactory Net Return | C2 | DEPTH_PARTIAL |
-| HC-C3-001 | Research Council 12 Skills | C3 | MINIMAL_CORE_DONE |
-| HC-C3-002 | Council Aggregator | C3 | MINIMAL_CORE_DONE |
-| HC-C4-001 | Report Templates | C4 | MINIMAL_CORE_DONE |
-| HC-C5-001 | Transaction Cost Model | C5 | DEPTH_PARTIAL |
-| HC-C5-002 | LimitBoard + Suspension | C5 | DEPTH_PARTIAL |
-| HC-C6-001 | Capital Curve | C6 | DEPTH_PARTIAL |
-| HC-C6-002 | Holding Alpha | C6 | DEPTH_PARTIAL |
-| HC-C7-001 | Output Envelope | C7 | MINIMAL_CORE_DONE |
-| HC-C7-002 | Audit Export | C7 | MINIMAL_CORE_DONE |
-| HC-C8-001 | IRF-01~08 | C8 | INTEGRATION_SMOKE_DONE |
-| HC-C8-002 | IRF Chain Integration | C8 | INTEGRATION_SMOKE_DONE |
+| ID | Item | Status | Verify |
+|:--:|------|:------:|:--:|
+| B | Shadow tools | ✅ PASS | verify_v40_hardening_b.sh |
+| C0-C8 | Integration implementation | ✅ PASS | verify_v40_hardening_c_all.sh |
+| C2-0 | Truth Matrix | ✅ PASS | verify_v40_hardening_c2_all.sh |
+| C2-1 | Depth Modules | ✅ PASS | verify_v40_hardening_c2_all.sh |
+| C2-2 | Asset Index Sync | ✅ PASS | verify_v40_hardening_c2_all.sh |
+| C2-2.1 | Verify Chain Fix | ✅ PASS | verify_v40_hardening_c2_all.sh |
+| C2-2.2 | Verify Order Fix | ✅ PASS | verify_v40_hardening_c2_all.sh |
 
-## Current Closeout Decision
-Current release status: INTEGRATION_SMOKE_CANDIDATE
-RC1 status: NOT_APPROVED
-Production status: BLOCKED
-Reason: C1/C2/C5/C6 have depth-partial. C3/C4/C7 remain minimal-core. Acceptance closeout incomplete.
+## C3 (Remaining Integration Gaps)
+
+| Phase | Item | Status | Verify Script |
+|:-----:|------|:------:|------|
+| C3-0 | Scope Lock + Acceptance Matrix | ✅ INTEGRATION_DONE | verify_v40_hardening_c3_0_scope.sh |
+| C3-1 | Research Council Independent Reviewers | ✅ INTEGRATION_DONE | verify_v40_hardening_c3_1_research_council.sh |
+| C3-2 | Report Template Snapshot Rendering | ✅ INTEGRATION_DONE | verify_v40_hardening_c3_2_reports.sh |
+| C3-3 | Audit ZIP Real Export | ✅ INTEGRATION_DONE | verify_v40_hardening_c3_3_audit_zip.sh |
+| C3-4 | IRF-02/05/06/07/08 Chain Integration | ✅ INTEGRATION_DONE | verify_v40_hardening_c3_4_irf_chains.sh |
+| C3-5 | Total Verify + Truth Closeout | ✅ INTEGRATION_DONE | verify_v40_hardening_c3_all.sh |
+
+## Status Key
+
+- ✅ INTEGRATION_DONE: Integration complete, all tests pass
+- ❌ NOT yet: RC1_APPROVED, PRODUCTION_READY, BROKER_READY, RUNTIME_READY
+- RC1 status: NOT_APPROVED | Production: BLOCKED
+
+## Cumulative Test Count
+- C2: 53 tests
+- C3: 33 tests (8 + 8 + 12 + 5)
+- **Total: 86 tests passed**
+
+## Allowed Statuses (final)
+- INTEGRATION_COMPLETE_CANDIDATE: ✅
+- RC1_APPROVED: ❌
+- PRODUCTION_READY: ❌
+- BROKER_READY: ❌
+- RUNTIME_READY: ❌

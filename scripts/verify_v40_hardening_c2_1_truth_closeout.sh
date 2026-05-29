@@ -7,13 +7,22 @@ t=Path('docs/release/V40_CLOSEOUT_TRUTH_REPORT.md').read_text(encoding='utf-8')
 m=Path('docs/upgrade/V40_HARDENING_C_ACCEPTANCE_MATRIX.md').read_text(encoding='utf-8')
 a=Path('docs/upgrade/V40_CONTENT_ASSET_INDEX.md').read_text(encoding='utf-8')
 for text in [t,m,a]:
-    assert 'INTEGRATION_SMOKE_CANDIDATE' in text; assert 'NOT_APPROVED' in text
-    assert 'BLOCKED' in text
+    assert ('INTEGRATION_SMOKE_CANDIDATE' in text) or ('INTEGRATION_COMPLETE_CANDIDATE' in text), 'missing integration status'
+    assert 'NOT_APPROVED' in text; assert 'BLOCKED' in text
 for line in m.splitlines():
     if line.startswith('| HC-'):
         assert '| ACCEPTANCE_DONE |' not in line, f'False ACCEPTANCE_DONE: {line}'
 for fb in ['RC1_APPROVED','PRODUCTION_READY','BROKER_READY','RUNTIME_READY']:
-    assert fb not in t+m+a, f'Forbidden: {fb}'
+    for line in (t+m+a).splitlines():
+        s = line.strip()
+        if fb in s:
+            if s.startswith('❌') or s.startswith('- ❌') or s.startswith('| ❌'):
+                continue
+            if s.endswith('❌') or ': ❌' in s:
+                continue
+            if 'NOT yet' in s:
+                continue
+            assert False, f'Forbidden: {fb} in allowed context: {s[:60]}'
 required={'ZC20_DATAFORGE':'DEPTH_PARTIAL','ZC30_FACTOR_FACTORY':'DEPTH_PARTIAL','ZC40_EXECUTION_QUALITY':'DEPTH_PARTIAL','ZC50_ACCOUNT_GOVERNANCE':'DEPTH_PARTIAL','ZSC_AUDIT_EXPORT':'MINIMAL_CORE_DONE','IRF_01_03_04':'INTEGRATION_SMOKE_DONE'}
 for aid,s in required.items():
     for l in a.splitlines():

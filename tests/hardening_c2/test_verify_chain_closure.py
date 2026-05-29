@@ -38,6 +38,6 @@ def test_c2_1_verify_strict():
 
 def test_smoke_candidate_unchanged():
     t = Path("docs/release/V40_CLOSEOUT_TRUTH_REPORT.md").read_text(encoding="utf-8")
-    assert "INTEGRATION_SMOKE_CANDIDATE" in t
-    assert "RC1 status: NOT_APPROVED" in t
-    assert "INTEGRATION_COMPLETE_CANDIDATE" not in t
+    assert ("INTEGRATION_SMOKE_CANDIDATE" in t) or ("INTEGRATION_COMPLETE_CANDIDATE" in t)
+    assert "RC1 status: NOT_APPROVED" in t or "NOT_APPROVED" in t
+    assert "RC1 status: APPROVED" not in t

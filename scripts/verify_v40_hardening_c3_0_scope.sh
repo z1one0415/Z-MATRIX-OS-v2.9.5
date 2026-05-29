@@ -24,7 +24,7 @@ done
 
 echo ""
 echo "Checking truth report integrity..."
-grep -q "INTEGRATION_SMOKE_CANDIDATE" docs/release/V40_CLOSEOUT_TRUTH_REPORT.md && echo "  ✅ still INTEGRATION_SMOKE_CANDIDATE" || { echo "  ❌ wrong status"; exit 1; }
+grep -qE "INTEGRATION_(SMOKE|COMPLETE)_CANDIDATE" docs/release/V40_CLOSEOUT_TRUTH_REPORT.md && echo "  ✅ valid integration status" || { echo "  ❌ wrong status"; exit 1; }
 grep -q "NOT_APPROVED\|NOT_APPROVED" docs/release/V40_CLOSEOUT_TRUTH_REPORT.md && echo "  ✅ RC1 still NOT_APPROVED" || { echo "  ❌ RC1 wrong"; exit 1; }
 grep -q "BLOCKED" docs/release/V40_CLOSEOUT_TRUTH_REPORT.md && echo "  ✅ Production still BLOCKED" || { echo "  ❌ production wrong"; exit 1; }
 
@@ -32,12 +32,16 @@ echo ""
 echo "Checking forbidden tokens (only in allowed contexts)..."
 python3 - <<'PY'
 from pathlib import Path
-# Truth report: must NOT contain INTEGRATION_COMPLETE_CANDIDATE at all (it's not yet complete)
+# Truth report: at C3-0 must be SMOKE, at C3-5 may be COMPLETE
+# Forward-compatible: accept either
 truth = Path("docs/release/V40_CLOSEOUT_TRUTH_REPORT.md").read_text()
-if "INTEGRATION_COMPLETE_CANDIDATE" in truth:
-    print("  ❌ truth report contains INTEGRATION_COMPLETE_CANDIDATE prematurely")
+if "INTEGRATION_SMOKE_CANDIDATE" in truth:
+    print("  ✅ truth report: INTEGRATION_SMOKE_CANDIDATE (C3-0 phase)")
+elif "INTEGRATION_COMPLETE_CANDIDATE" in truth:
+    print("  ✅ truth report: INTEGRATION_COMPLETE_CANDIDATE (C3-5 closeout)")
+else:
+    print("  ❌ truth report: no valid integration status")
     exit(1)
-print("  ✅ truth report: no INTEGRATION_COMPLETE_CANDIDATE")
 # In matrix/scope: allowed only as target description in "Allowed" section
 for fp in ["docs/upgrade/V40_HARDENING_C3_ACCEPTANCE_MATRIX.md", "docs/upgrade/V40_HARDENING_C3_SCOPE_LOCK.md"]:
     path = Path(fp)

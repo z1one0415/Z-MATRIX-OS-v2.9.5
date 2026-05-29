@@ -1,0 +1,191 @@
+[
+  {
+    "module_name": "DataForge",
+    "expected_files": [
+      "zmatrix/dataforge/forge.py",
+      "zmatrix/dataforge/forge_depth.py"
+    ],
+    "actual_files": [
+      "zmatrix/dataforge/forge.py",
+      "zmatrix/dataforge/forge_depth.py"
+    ],
+    "missing_files": [],
+    "required_tests": [
+      "test_hardening_c_integration.py"
+    ],
+    "test_count": 1,
+    "verify_script": null,
+    "verify_script_exists": false,
+    "status": "CONDITIONAL",
+    "known_limitations": "DEPTH_PARTIAL",
+    "rc1_blocker": false
+  },
+  {
+    "module_name": "FactorFactory",
+    "expected_files": [
+      "zmatrix/factor_factory/factory.py",
+      "zmatrix/factor_factory/factory_depth.py"
+    ],
+    "actual_files": [
+      "zmatrix/factor_factory/factory.py",
+      "zmatrix/factor_factory/factory_depth.py"
+    ],
+    "missing_files": [],
+    "required_tests": [
+      "test_hardening_c_integration.py"
+    ],
+    "test_count": 1,
+    "verify_script": null,
+    "verify_script_exists": false,
+    "status": "CONDITIONAL",
+    "known_limitations": "DEPTH_PARTIAL",
+    "rc1_blocker": false
+  },
+  {
+    "module_name": "Research Council",
+    "expected_files": [
+      "zmatrix/research_council/reviewers/base_reviewer.py",
+      "zmatrix/research_council/reviewers/reviewer_registry.py",
+      "zmatrix/research_council/reviewers/council_aggregator.py",
+      "zmatrix/research_council/reviewers/scoring_config.py",
+      "zmatrix/research_council/reviewers.py"
+    ],
+    "actual_files": [
+      "zmatrix/research_council/reviewers/base_reviewer.py",
+      "zmatrix/research_council/reviewers/reviewer_registry.py",
+      "zmatrix/research_council/reviewers/council_aggregator.py",
+      "zmatrix/research_council/reviewers/scoring_config.py",
+      "zmatrix/research_council/reviewers.py"
+    ],
+    "missing_files": [],
+    "required_tests": [
+      "test_hardening_c3_reviewers.py"
+    ],
+    "test_count": 1,
+    "verify_script": "verify_v40_hardening_c3_1_research_council.sh",
+    "verify_script_exists": true,
+    "status": "PASS",
+    "known_limitations": "NONE",
+    "rc1_blocker": false
+  },
+  {
+    "module_name": "Report Templates",
+    "expected_files": [
+      "zmatrix/report_templates/single_stock_research.md",
+      "zmatrix/reports/renderer.py"
+    ],
+    "actual_files": [
+      "zmatrix/report_templates/single_stock_research.md",
+      "zmatrix/reports/renderer.py"
+    ],
+    "missing_files": [],
+    "required_tests": [
+      "test_hardening_c3_templates_audit.py"
+    ],
+    "test_count": 1,
+    "verify_script": "verify_v40_hardening_c3_2_reports.sh",
+    "verify_script_exists": true,
+    "status": "PASS",
+    "known_limitations": "NONE",
+    "rc1_blocker": false
+  },
+  {
+    "module_name": "ExecutionQuality",
+    "expected_files": [
+      "zmatrix/execution_quality/execution.py"
+    ],
+    "actual_files": [
+      "zmatrix/execution_quality/execution.py"
+    ],
+    "missing_files": [],
+    "required_tests": [
+      "test_hardening_c_integration.py"
+    ],
+    "test_count": 1,
+    "verify_script": null,
+    "verify_script_exists": false,
+    "status": "CONDITIONAL",
+    "known_limitations": "DEPTH_PARTIAL",
+    "rc1_blocker": false
+  },
+  {
+    "module_name": "AccountGovernance",
+    "expected_files": [
+      "zmatrix/account_governance/governance.py"
+    ],
+    "actual_files": [
+      "zmatrix/account_governance/governance.py"
+    ],
+    "missing_files": [],
+    "required_tests": [
+      "test_hardening_c_integration.py"
+    ],
+    "test_count": 1,
+    "verify_script": null,
+    "verify_script_exists": false,
+    "status": "CONDITIONAL",
+    "known_limitations": "DEPTH_PARTIAL",
+    "rc1_blocker": false
+  },
+  {
+    "module_name": "Audit ZIP",
+    "expected_files": [
+      "zmatrix/audit/cockpit_audit.py"
+    ],
+    "actual_files": [
+      "zmatrix/audit/cockpit_audit.py"
+    ],
+    "missing_files": [],
+    "required_tests": [
+      "test_hardening_c3_templates_audit.py"
+    ],
+    "test_count": 1,
+    "verify_script": "verify_v40_hardening_c3_3_audit_zip.sh",
+    "verify_script_exists": true,
+    "status": "PASS",
+    "known_limitations": "NONE",
+    "rc1_blocker": false
+  },
+  {
+    "module_name": "IRF-01~08",
+    "expected_files": [
+      "zmatrix/irf/irf_chain.py",
+      "zmatrix/irf/pipelines.py"
+    ],
+    "actual_files": [
+      "zmatrix/irf/irf_chain.py",
+      "zmatrix/irf/pipelines.py"
+    ],
+    "missing_files": [],
+    "required_tests": [
+      "test_hardening_c3_irf_chains.py"
+    ],
+    "test_count": 1,
+    "verify_script": "verify_v40_hardening_c3_4_irf_chains.sh",
+    "verify_script_exists": true,
+    "status": "PASS",
+    "known_limitations": "NONE",
+    "rc1_blocker": false
+  },
+  {
+    "module_name": "Safety Gates",
+    "expected_files": [
+      "scripts/verify_rc1_safety_deep_scan.py",
+      "zmatrix/audit/cockpit_audit.py"
+    ],
+    "actual_files": [
+      "scripts/verify_rc1_safety_deep_scan.py",
+      "zmatrix/audit/cockpit_audit.py"
+    ],
+    "missing_files": [],
+    "required_tests": [
+      "test_safety_deep_scan.py"
+    ],
+    "test_count": 1,
+    "verify_script": "verify_rc1_safety_deep_scan.sh",
+    "verify_script_exists": true,
+    "status": "PASS",
+    "known_limitations": "NONE",
+    "rc1_blocker": false
+  }
+]

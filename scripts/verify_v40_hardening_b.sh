@@ -2,8 +2,9 @@
 set -euo pipefail
 echo "═══ V4.0 FINAL-HARDGATES Hardening-B Verification ═══"
 PYTHONPATH=. python3 -m compileall zmatrix tests scripts 2>&1 | tail -1
-PYTHONPATH=. python3 tests/v40_hardening/test_hardening_b.py
-echo "  ✅ 9 hardening tests PASS"
+echo "[2/6] Run hardening pytest suite"
+PYTHONPATH=. python3 -m pytest -q tests/v40_hardening/
+echo "  ✅ hardening pytest suite PASS"
 
 # Dispatcher expression scan
 python3 -c "

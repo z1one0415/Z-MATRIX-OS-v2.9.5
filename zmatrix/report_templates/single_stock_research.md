@@ -1,5 +1,6 @@
 # 个股研究报告 — Single Stock Research
 **Template: V4.0-HARDENING-C3 | Generated: {{ timestamp }}**
+**Ticker: {{ ticker }} | Name: {{ stock_name }}
 
 ---
 

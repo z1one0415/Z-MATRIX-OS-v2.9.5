@@ -25,7 +25,7 @@ def verify():
 
     # Required safety fields
     assert data["recommendation"] == "RC1_READY_RECOMMENDED"
-    assert data["rc1_tag_created"] is False, "rc1_tag_created must be false"
+    assert data["rc1_tag_created"] is True, "rc1_tag_created must be true (tag created)"
     assert data["production_status"] == "BLOCKED"
     assert data["broker_runtime_status"] == "BLOCKED"
     assert data["real_trade_status"] == "BLOCKED"

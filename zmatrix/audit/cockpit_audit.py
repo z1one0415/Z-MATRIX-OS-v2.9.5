@@ -26,6 +26,7 @@ class AuditExportPack:
         return {"manifest":manifest,"format":"ZIP_READY","size_estimate":len(json.dumps(manifest))}
 
 class ForbiddenOutputScan:
+    # allowlist: forbidden-token-definition
     FORBIDDEN = ["real_trade_allowed=True","broker_order_allowed=True","BUY","SELL","AUTO_EXECUTE"]
     @staticmethod
     def scan(text): hits = [f for f in ForbiddenOutputScan.FORBIDDEN if f in (text or "")]; return {"passed":len(hits)==0,"hits":hits}

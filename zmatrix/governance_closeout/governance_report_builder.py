@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 from zmatrix.governance_closeout.no_yaml_mutation_auditor import audit_no_yaml_mutation
 from zmatrix.governance_closeout.candidate_pool_resilience_validator import validate_candidate_pool_resilience

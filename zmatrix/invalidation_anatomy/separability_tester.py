@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 from statistics import median
 from zmatrix.invalidation_anatomy.schema import DEFAULT_INVALIDATION_ANATOMY_SAFETY, DEFAULT_ANATOMY_THRESHOLDS

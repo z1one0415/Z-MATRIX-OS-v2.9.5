@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Prompt Middleware schemas — types, statuses, safety defaults"""
 from __future__ import annotations
 

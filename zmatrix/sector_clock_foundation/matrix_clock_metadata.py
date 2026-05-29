@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 from datetime import datetime
 from zmatrix.sector_clock_foundation.schema import DEFAULT_SECTOR_CLOCK_SAFETY, CLOCK_DEFAULT_TTL

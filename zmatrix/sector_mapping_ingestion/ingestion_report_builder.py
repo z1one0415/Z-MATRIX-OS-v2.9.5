@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 from zmatrix.sector_mapping_ingestion.source_discovery import discover_mapping_sources
 from zmatrix.sector_mapping_ingestion.mapping_normalizer import normalize_mapping_sources

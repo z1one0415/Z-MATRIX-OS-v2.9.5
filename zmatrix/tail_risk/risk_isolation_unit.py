@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """BMO Risk Isolation Unit — preview isolation of a ticker under tail risk"""
 from __future__ import annotations
 import hashlib

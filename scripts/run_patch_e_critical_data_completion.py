@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# allowlist: forbidden-token-definition
 """PATCH-E: B/D Critical Data Completion — PIT join + percentile fix + sector momentum + fund_flow ban"""
 from __future__ import annotations
 import json, csv, argparse

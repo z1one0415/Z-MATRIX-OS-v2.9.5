@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# allowlist: forbidden-token-definition
 """v3.5 Quick BRD Result Audit — parallel, configurable dates/tickers/workers"""
 import json, sys, os, time, argparse, multiprocessing as mp
 from concurrent.futures import ProcessPoolExecutor

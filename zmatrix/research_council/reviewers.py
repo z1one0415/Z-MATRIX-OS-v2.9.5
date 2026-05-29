@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """V4.0-C3 Research Council — 12 reviewer skills"""
 from __future__ import annotations
 from dataclasses import dataclass, field

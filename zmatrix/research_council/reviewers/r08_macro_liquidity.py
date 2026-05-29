@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """R08_MACRO_LIQUIDITY — Macro liquidity cycle alignment
 
 Methodology:

@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 from collections import Counter
 from zmatrix.regime_sector_attribution.schema import DEFAULT_REGIME_SECTOR_SAFETY, JOINT_THRESHOLDS

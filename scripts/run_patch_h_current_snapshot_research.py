@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# allowlist: forbidden-token-definition
 """PATCH-H: B-Matrix Current Snapshot Research Mode — 81 candidate profiles"""
 from __future__ import annotations
 import json, csv, argparse

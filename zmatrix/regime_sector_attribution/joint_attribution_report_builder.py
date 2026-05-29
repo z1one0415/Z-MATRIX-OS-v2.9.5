@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 from zmatrix.regime_sector_attribution.regime_sector_joiner import build_regime_sector_joined_rows
 from zmatrix.regime_sector_attribution.joint_segment_profiler import profile_joint_segments

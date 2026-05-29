@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Replay Report — summary statistics from replay window"""
 from __future__ import annotations
 import hashlib

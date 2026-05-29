@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Replay Universe — build historical date stock pool with PIT cutoff"""
 from __future__ import annotations
 import csv

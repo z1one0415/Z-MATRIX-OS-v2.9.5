@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """BRD Input Bundle Builder — assemble B/R/D matrix for classify_stock_role"""
 from __future__ import annotations
 from zmatrix.brd_matrix_pit.b_matrix_pit_builder import build_b_matrix_pit

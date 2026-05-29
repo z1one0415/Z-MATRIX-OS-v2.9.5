@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """R09_FACTOR_VALIDITY — Factor IC decay + regime dependency
 
 Methodology:

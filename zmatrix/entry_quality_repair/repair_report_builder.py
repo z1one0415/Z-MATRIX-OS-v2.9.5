@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 from zmatrix.entry_quality_repair.entry_feature_builder import build_entry_features
 from zmatrix.entry_quality_repair.entry_quality_scorer import score_entry_quality

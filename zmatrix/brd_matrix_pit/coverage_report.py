@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Fundamental Coverage Report — system-level data quality gate"""
 from __future__ import annotations
 from pathlib import Path

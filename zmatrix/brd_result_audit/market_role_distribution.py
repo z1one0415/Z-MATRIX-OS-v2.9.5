@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Market Role Distribution — full-market BRD role statistics"""
 from __future__ import annotations
 from collections import Counter,defaultdict

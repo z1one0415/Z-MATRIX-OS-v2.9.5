@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Role Stats — per-role A/B/C/D performance"""
 from __future__ import annotations
 from zmatrix.brd_replay.metrics import build_strategy_metrics

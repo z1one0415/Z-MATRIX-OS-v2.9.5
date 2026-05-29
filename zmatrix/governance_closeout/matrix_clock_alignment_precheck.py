@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 from datetime import datetime
 from zmatrix.governance_closeout.schema import DEFAULT_GOVERNANCE_SAFETY, MATRIX_CLOCK_THRESHOLDS

@@ -1,3 +1,4 @@
+<!-- allowlist: forbidden-token-definition -->
 # 错失机会复盘 — Missed Opportunity Postmortem
 **Template: V4.0-HARDENING-C3 | Generated: {{ timestamp }}**
 

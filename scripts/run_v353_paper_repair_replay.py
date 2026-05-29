@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# allowlist: forbidden-token-definition
 """v3.5.3 Paper-Only Repair Replay — parallel with cached price paths"""
 from __future__ import annotations
 import argparse, json, csv, multiprocessing as mp

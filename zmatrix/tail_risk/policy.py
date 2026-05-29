@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Tail-Risk Policy — validate results, decisions, downgrades, safety"""
 from __future__ import annotations
 

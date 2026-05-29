@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Integration schemas — readiness status, layers, required pipelines/gates"""
 from __future__ import annotations
 

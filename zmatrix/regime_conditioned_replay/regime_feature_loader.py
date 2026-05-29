@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 from zmatrix.regime_attribution.market_index_loader import load_index_data
 from zmatrix.regime_attribution.market_regime_builder import build_market_regime

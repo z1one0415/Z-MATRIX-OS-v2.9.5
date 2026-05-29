@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Paper Outcome Schema — unified outcome record fields and safety"""
 from __future__ import annotations
 

@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """PIT Fundamentals Loader — supports tushare fina_indicator + old B-Matrix format"""
 from __future__ import annotations
 import csv

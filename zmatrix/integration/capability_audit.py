@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Forbidden Capability Audit — check all 4 registries for safety boundaries"""
 from __future__ import annotations
 

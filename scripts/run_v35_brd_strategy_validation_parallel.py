@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# allowlist: forbidden-token-definition
 """
 v3.5 Parallel BRD Strategy Validation — 独立并行模块
 Reuses _process_one_ticker + fork architecture from quick audit.

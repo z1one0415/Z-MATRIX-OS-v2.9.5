@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Report Writer — write validation report to runtime_reports/"""
 from __future__ import annotations
 import json

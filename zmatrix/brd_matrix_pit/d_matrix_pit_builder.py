@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """D-Matrix PIT Builder — short event eligibility (conservative, event-data required)"""
 from __future__ import annotations
 from zmatrix.brd_matrix_pit.schema import DEFAULT_BRD_MATRIX_PIT_SAFETY

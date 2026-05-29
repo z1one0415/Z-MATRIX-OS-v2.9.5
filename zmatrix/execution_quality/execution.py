@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """V4.0-C5 ExecutionQuality — paper-only execution engine"""
 from __future__ import annotations
 

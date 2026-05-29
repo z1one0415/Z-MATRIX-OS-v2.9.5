@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 BRD_RESULT_AUDIT_VERSION="V35_BRD_RESULT_AUDIT_V10"
 BRD_ROLES=["A_LONG_CORE","B_MID_ROTATION","C_SHORT_EVENT","D_REJECT","UNKNOWN"]

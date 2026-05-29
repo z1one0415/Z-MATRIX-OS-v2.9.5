@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Paper Action Builder v3.2 — B/R/D result → paper action (no real trade)"""
 from __future__ import annotations
 import hashlib

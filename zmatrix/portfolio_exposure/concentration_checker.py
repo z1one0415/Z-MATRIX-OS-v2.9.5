@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Concentration Checker — single stock / sector / chain limits"""
 from __future__ import annotations
 

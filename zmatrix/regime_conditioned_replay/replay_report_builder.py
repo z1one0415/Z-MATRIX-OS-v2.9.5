@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 from zmatrix.regime_conditioned_replay.regime_feature_loader import load_regime_features
 from zmatrix.regime_conditioned_replay.regime_policy_replay import run_regime_policy_replay

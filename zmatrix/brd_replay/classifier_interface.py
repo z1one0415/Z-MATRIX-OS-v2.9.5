@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Classifier Interface — normalize B/R/D classifier output for v3.2 replay"""
 from __future__ import annotations
 from typing import Any

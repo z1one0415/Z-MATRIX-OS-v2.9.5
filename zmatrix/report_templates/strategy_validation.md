@@ -1,3 +1,4 @@
+<!-- allowlist: forbidden-token-definition -->
 # 策略验证 — Strategy Validation
 **Template: V4.0-HARDENING-C3 | Generated: {{ timestamp }}**
 

@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Tail-Risk Controller — aggregate all gates and produce final policy preview"""
 from __future__ import annotations
 import hashlib

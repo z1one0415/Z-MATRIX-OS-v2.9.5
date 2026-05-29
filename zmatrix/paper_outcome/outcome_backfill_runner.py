@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Outcome Backfill Runner — full outcome with benchmark + invalidation"""
 from __future__ import annotations
 import hashlib

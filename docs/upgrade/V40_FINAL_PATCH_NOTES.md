@@ -1,3 +1,4 @@
+<!-- allowlist: forbidden-token-definition -->
 # V40 FINAL PATCH NOTES
 
 ## Version

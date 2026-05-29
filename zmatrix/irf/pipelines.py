@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """V4.0-C8 IRF pipelines — integration smoke stubs"""
 from __future__ import annotations
 from zmatrix.audit.cockpit_audit import OutputEnvelope, AuditEvent

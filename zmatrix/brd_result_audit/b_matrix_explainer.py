@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """B-Matrix Explainer — human-readable explanation of B-Matrix results"""
 from __future__ import annotations
 from zmatrix.brd_result_audit.schema import DEFAULT_AUDIT_SAFETY

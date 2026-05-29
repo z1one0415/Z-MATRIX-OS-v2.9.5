@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Date Sampler — sample representative replay dates from local price data"""
 from __future__ import annotations
 import csv

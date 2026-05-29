@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Cross-Layer Safety Matrix — check all layers block key capabilities"""
 from __future__ import annotations
 

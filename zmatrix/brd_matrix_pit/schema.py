@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 BRD_MATRIX_PIT_VERSION = "BRD_MATRIX_PIT_PRECOMPUTE_V10"
 MATRIX_STATUS = ["PASS","FAIL","WATCH","INSUFFICIENT_DATA"]

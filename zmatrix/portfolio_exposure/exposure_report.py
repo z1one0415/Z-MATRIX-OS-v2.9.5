@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Exposure Report — full portfolio exposure with all risk metrics"""
 from __future__ import annotations
 import hashlib

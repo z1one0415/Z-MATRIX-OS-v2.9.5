@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Validation Policy — 13 blocked fields + status validation"""
 from __future__ import annotations
 _BLOCKED = ["real_trade_allowed","broker_order_allowed","auto_buy_allowed","auto_sell_allowed",

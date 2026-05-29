@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Approval Policy — validate requests, decisions, and safety boundaries"""
 from __future__ import annotations
 

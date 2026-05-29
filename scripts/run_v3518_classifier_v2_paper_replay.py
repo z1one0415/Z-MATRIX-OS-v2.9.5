@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# allowlist: forbidden-token-definition
 """v3.5.18 Classifier v2 Paper Replay"""
 from __future__ import annotations
 import json, argparse

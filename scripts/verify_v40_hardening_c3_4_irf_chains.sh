@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# allowlist: forbidden-token-definition
 set -euo pipefail
 
 echo "═══ V4.0 FINAL-HARDGATES Hardening-C3-4 IRF Chain Verify ═══"

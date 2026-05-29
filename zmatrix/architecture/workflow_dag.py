@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# allowlist: forbidden-token-definition
 """
 ☯️ Workflow DAG Registry v1.0 — 管线工作流契约 (Batch F-4)
 

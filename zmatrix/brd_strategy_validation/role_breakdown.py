@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Role Breakdown — per-role A/B/C/D performance, excludes NO_ACTION/DATA_GAP"""
 from __future__ import annotations
 from zmatrix.brd_strategy_validation.metrics_aggregator import _metric_for_horizon

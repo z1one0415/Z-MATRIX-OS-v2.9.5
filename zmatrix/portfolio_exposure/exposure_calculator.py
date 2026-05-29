@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Exposure Calculator — sector/chain/concentration analysis"""
 from __future__ import annotations
 

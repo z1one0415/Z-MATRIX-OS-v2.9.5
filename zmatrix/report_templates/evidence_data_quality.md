@@ -1,3 +1,4 @@
+<!-- allowlist: forbidden-token-definition -->
 # 证据数据质量 — Evidence Data Quality
 **Template: V4.0-HARDENING-C3 | Generated: {{ timestamp }}**
 

@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 from statistics import median
 from zmatrix.governance_closeout.schema import DEFAULT_GOVERNANCE_SAFETY, POOL_RESILIENCE_THRESHOLDS

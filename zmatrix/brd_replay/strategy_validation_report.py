@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Strategy Validation Report — aggregate all v3.2 replay results (v3.3 update)"""
 from __future__ import annotations
 from zmatrix.brd_replay.metrics import build_strategy_metrics

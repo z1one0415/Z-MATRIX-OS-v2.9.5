@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """V4.0 MultiStrategySleeve — standalone module"""
 from __future__ import annotations
 class MultiStrategySleeve:

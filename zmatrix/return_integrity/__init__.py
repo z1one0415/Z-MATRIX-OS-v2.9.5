@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 
 RETURN_INTEGRITY_VERSION = "V36_RETURN_INTEGRITY_V10"

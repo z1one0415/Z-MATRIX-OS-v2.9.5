@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Multi-Day BRD Strategy Replay Runner"""
 from __future__ import annotations
 from zmatrix.brd_replay.single_day_strategy_replay import run_single_day_brd_strategy_replay

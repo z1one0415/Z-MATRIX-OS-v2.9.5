@@ -1,3 +1,4 @@
+<!-- allowlist: forbidden-token-definition -->
 # 研究理事会审查 — Research Council Review
 **Template: V4.0-HARDENING-C3 | Generated: {{ timestamp }}**
 

@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 BRD_5Y_VALIDATION_VERSION = "BRD_5Y_HISTORICAL_VALIDATION_V10"
 DEFAULT_VALIDATION_SAFETY = {

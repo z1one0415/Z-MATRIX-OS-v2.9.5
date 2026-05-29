@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Event Chain Validator — build and validate sample v3.0-alpha event chain"""
 from __future__ import annotations
 import hashlib

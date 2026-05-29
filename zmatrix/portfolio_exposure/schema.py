@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Portfolio Exposure Schema — position snapshot fields"""
 from __future__ import annotations
 

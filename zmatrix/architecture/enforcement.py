@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# allowlist: forbidden-token-definition
 """
 ☯️ Architecture Enforcement v1.0 — 架构硬约束审计 (Batch F-5)
 

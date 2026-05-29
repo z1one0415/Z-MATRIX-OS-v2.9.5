@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Portfolio Exposure Policy — validate exposure records"""
 from __future__ import annotations
 

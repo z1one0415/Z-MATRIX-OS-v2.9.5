@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Rehearsal Report — aggregate dry-run rehearsal + validation into final report"""
 from __future__ import annotations
 

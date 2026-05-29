@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Tail-Risk schemas — states, gate types, decisions, safety defaults"""
 from __future__ import annotations
 

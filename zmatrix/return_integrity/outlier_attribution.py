@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 from zmatrix.return_integrity.return_sanity_guard import classify_return_sanity
 

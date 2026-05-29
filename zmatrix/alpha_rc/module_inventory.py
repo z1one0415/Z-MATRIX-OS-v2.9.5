@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Module Inventory — list frozen preview/read-only/runtime-disabled modules"""
 from __future__ import annotations
 

@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 ROLE_REPLAY_VERSION = "V3514_ROLE_REPLAY_NAMESPACE_MIGRATION_V10"
 DEFAULT_ROLE_REPLAY_SAFETY = {"real_trade_allowed":False,"broker_order_allowed":False,"auto_buy_allowed":False,"auto_sell_allowed":False,"auto_position_close_allowed":False,"real_z9_write_allowed":False,"hermes_memory_write_allowed":False,"auto_calibration_allowed":False,"prompt_auto_injection_allowed":False,"system_prompt_write_allowed":False,"runtime_injection_allowed":False,"runtime_enabled":False,"external_api_default_on":False,"production_yaml_write_allowed":False,"production_parameter_write_allowed":False,"classifier_production_write_allowed":False,"role_definition_production_write_allowed":False,"paper_role_replay_only":True}

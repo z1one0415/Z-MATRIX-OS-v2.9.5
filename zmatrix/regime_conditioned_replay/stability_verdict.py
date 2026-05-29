@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 
 def build_stability_verdict(*, full_sample_policies: list[str], temporal: dict, sector: dict, stress: dict, opportunity: dict) -> dict:

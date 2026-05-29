@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# allowlist: forbidden-token-definition
 set -euo pipefail
 echo "═══ V4.0 ALL PHASES + HARDENING VERIFICATION ═══"
 

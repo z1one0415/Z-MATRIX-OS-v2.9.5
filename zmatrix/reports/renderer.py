@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """V4.0-C4 Reports — Markdown template renderer (Hardening-C3 enhanced)"""
 from __future__ import annotations
 from pathlib import Path

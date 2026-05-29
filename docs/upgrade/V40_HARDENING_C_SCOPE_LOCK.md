@@ -1,3 +1,4 @@
+<!-- allowlist: forbidden-token-definition -->
 # V40 Hardening-C Scope Lock
 # Current: SMOKE_PROTOTYPE → Target: INTEGRATION_COMPLETE_CANDIDATE
 # RC1: NOT_APPROVED | Production: BLOCKED

@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """V4.0-C7 Cockpit + Audit — output envelope and audit export (Hardening-C3 enhanced)"""
 from __future__ import annotations
 from dataclasses import dataclass, field

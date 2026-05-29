@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# allowlist: forbidden-token-definition
 """
 ☯️ Gate Registry v1.0 — Z-MATRIX-OS 三层架构第三层组件 (Batch F-3)
 

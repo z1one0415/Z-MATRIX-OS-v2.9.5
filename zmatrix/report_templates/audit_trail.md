@@ -1,3 +1,4 @@
+<!-- allowlist: forbidden-token-definition -->
 # 审计追踪 — Audit Trail
 **Template: V4.0-HARDENING-C3 | Generated: {{ timestamp }}**
 

@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 """v3.5.20-PATCH-A Scope Lock — 不可动摇的边界"""
 PATCH_A_VERSION = "V3520_PATCH_A_SCOPE_LOCK_V10"

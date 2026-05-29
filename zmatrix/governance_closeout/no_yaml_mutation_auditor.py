@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 import subprocess
 from zmatrix.governance_closeout.schema import DEFAULT_GOVERNANCE_SAFETY

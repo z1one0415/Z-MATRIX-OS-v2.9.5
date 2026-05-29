@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Validation Runner — multi-day B/R/D strategy validation"""
 from __future__ import annotations
 from datetime import datetime, timezone

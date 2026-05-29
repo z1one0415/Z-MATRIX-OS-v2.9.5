@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Batch Runner — batch outcome backfill with skip-existing"""
 from __future__ import annotations
 from datetime import datetime, timezone

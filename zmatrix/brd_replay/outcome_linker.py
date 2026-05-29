@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Outcome Linker v3.2 — connect paper action to P2 outcome backfill"""
 from __future__ import annotations
 from zmatrix.brd_replay.forward_price_loader import load_forward_price_path

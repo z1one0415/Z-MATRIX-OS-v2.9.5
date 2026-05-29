@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 from statistics import median
 from zmatrix.strategy_repair.schema import DEFAULT_REPAIR_SAFETY

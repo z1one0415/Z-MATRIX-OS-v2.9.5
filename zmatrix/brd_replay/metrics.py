@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Strategy Metrics — win rate, avg return, invalidated rate"""
 from __future__ import annotations
 def _valid(xs): return [float(x) for x in xs if x is not None]

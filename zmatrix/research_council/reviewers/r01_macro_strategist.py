@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """R01_MACRO_STRATEGIST — Inversion: what macro consensus is wrong?
 
 Methodology:

@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Metrics Aggregator — compute T5/T20/T60 stats from all outcomes"""
 from __future__ import annotations
 

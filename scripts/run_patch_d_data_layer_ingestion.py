@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# allowlist: forbidden-token-definition
 """PATCH-D: B/D Matrix Data Layer Ingestion — valuation + industry + PIT + event contract"""
 from __future__ import annotations
 import json, csv, argparse

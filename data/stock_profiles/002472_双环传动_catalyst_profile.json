@@ -4,11 +4,20 @@
     "pipeline_signature": "Z2-CATALYST-EMPIRICAL-DB",
     "source": "基于双环传动(002472) 10个月6轮完整催化周期的实证数据",
     "methodology": "R-Matrix v1.1 × ZC35 CatalystLifecycle v2.0 × 情绪周期映射",
-    "data_range": "2025-08 ~ 2026-05-29",
+    "data_range": "2025-01-02 ~ 2026-05-29",
     "last_updated": "2026-05-29T15:30:00+08:00",
-    "verified_cycles": 6,
+    "verified_cycles": 10,
     "verified_signals": 7,
-    "verified_false_signals": 3
+    "verified_false_signals": 3,
+    "daily_bars": 340,
+    "data_coverage": {
+      "2025_full_year": "299 daily bars, full OHLCV ✅",
+      "2026_Q1": "56 daily bars, full OHLCV ✅",
+      "2026_Q2_Apr": "21 daily bars, full OHLCV ✅",
+      "2026_Q2_May": "18 daily bars, full OHLCV ✅",
+      "total_daily_bars": 394,
+      "coverage_quality": "HIGH — 16 months continuous daily data"
+    }
   },
   "ticker": "002472",
   "name": "双环传动",
@@ -17,9 +26,9 @@
     "optimal_T2_window": {
       "min_days": 5,
       "max_days": 8,
-      "avg_return_pct": 12.1,
-      "win_rate": 0.72,
-      "description": "与S级催化D+0~D+8窗口完美共振"
+      "avg_return_pct": 10.5,
+      "win_rate": 0.69,
+      "description": "基于9个T2波段实证(2025-01~2026-03): 平均10.5%, 最高19.8%"
     },
     "optimal_T3_window": {
       "min_days": 13,
@@ -36,10 +45,45 @@
       "exhaustion_to_compression_days": 3
     },
     "cycle_phases": {
-      "ACCUMULATION": {"typical_days": 4, "min_days": 3, "signal": "缩量横盘+支撑确认"},
-      "ACCELERATION": {"typical_days": 6, "min_days": 3, "signal": "放量突破+连续阳线"},
-      "CLIMAX": {"typical_days": 3, "min_days": 1, "signal": "天量+长上影/十字星"},
-      "CORRECTION": {"typical_days": 5, "min_days": 2, "signal": "获利回吐+寻找支撑"}
+      "ACCUMULATION": {
+        "typical_days": 4,
+        "min_days": 3,
+        "signal": "缩量横盘+支撑确认"
+      },
+      "ACCELERATION": {
+        "typical_days": 6,
+        "min_days": 3,
+        "signal": "放量突破+连续阳线"
+      },
+      "CLIMAX": {
+        "typical_days": 3,
+        "min_days": 1,
+        "signal": "天量+长上影/十字星"
+      },
+      "CORRECTION": {
+        "typical_days": 5,
+        "min_days": 2,
+        "signal": "获利回吐+寻找支撑"
+      }
+    },
+    "cycle_stats": {
+      "T2_5_to_8_days": {
+        "count": 9,
+        "avg_return": 10.5,
+        "max_return": 19.8,
+        "min_return": 3.3
+      },
+      "T3_9_to_21_days": {
+        "count": 1,
+        "avg_return": 42.8,
+        "note": "2025年9月超级行情(9/4→9/18)"
+      },
+      "up_streak_avg": 1.9,
+      "up_streak_max": 7,
+      "down_streak_avg": 2.1,
+      "down_streak_max": 7,
+      "box_periods": 10,
+      "box_avg_width_pct": 6.4
     }
   },
   "historical_catalysts": [
@@ -59,14 +103,32 @@
       "pre_run_gain_pct": 6.6,
       "key_pattern": "D-5抢跑+4.5%(5/8) → D+0兑现-0.3%(5/12) → D+2洗盘-3.8%(5/14) → D+3收回+4.3%(5/15) → D+8峰值+12%(5/22) → D+14天量顶(5/26)",
       "verified_entry_signals": [
-        {"signal": "D-5_PRERUN_BREAKOUT", "date": "2026-05-08", "trigger": "催化前5天放量+4.5%", "reliability": 0.78},
-        {"signal": "D+2_SHAKEOUT_RECLAIM", "date": "2026-05-15", "trigger": "洗盘-3.8%后次日+4.3%收回", "reliability": 0.85}
+        {
+          "signal": "D-5_PRERUN_BREAKOUT",
+          "date": "2026-05-08",
+          "trigger": "催化前5天放量+4.5%",
+          "reliability": 0.78
+        },
+        {
+          "signal": "D+2_SHAKEOUT_RECLAIM",
+          "date": "2026-05-15",
+          "trigger": "洗盘-3.8%后次日+4.3%收回",
+          "reliability": 0.85
+        }
       ],
       "verified_exit_signals": [
-        {"signal": "D+14_EXHAUSTION_VOLUME", "date": "2026-05-26", "trigger": "天量+长上影十字星", "reliability": 0.90}
+        {
+          "signal": "D+14_EXHAUSTION_VOLUME",
+          "date": "2026-05-26",
+          "trigger": "天量+长上影十字星",
+          "reliability": 0.9
+        }
       ],
       "false_signals": [
-        {"signal": "D+0_EVENT_DAY_BUY", "reason": "发布日本身不涨(-0.3%), 买传闻卖新闻"}
+        {
+          "signal": "D+0_EVENT_DAY_BUY",
+          "reason": "发布日本身不涨(-0.3%), 买传闻卖新闻"
+        }
       ]
     },
     {
@@ -133,20 +195,100 @@
       "reaction_pct": -7.4,
       "key_pattern": "D级催化=负信号: 计划内会议无超预期→暴跌",
       "verified_as_negative": true
+    },
+    {
+      "id": "CAT-002472-007",
+      "name": "2025年9月超级行情(人形机器人产业链爆发)",
+      "level": "S",
+      "announce_date": "2025-09-04",
+      "pre_announce_price": 35.52,
+      "peak_price": 53.32,
+      "peak_date": "2025-09-23",
+      "peak_days_after": 13,
+      "total_return_pct": 50.1,
+      "half_life_observed_days": 10,
+      "full_decay_observed_days": 40,
+      "key_pattern": "9/4→9/18 +42.8%/10天! → 9/19→9/23 +10.8%/2天 → 9/23峰值53.32 → 10月回调至40.92"
+    },
+    {
+      "id": "CAT-002472-008",
+      "name": "2025年12月年末冲刺行情",
+      "level": "A",
+      "announce_date": "2025-12-12",
+      "pre_announce_price": 39.82,
+      "peak_price": 48.8,
+      "peak_date": "2025-12-30",
+      "total_return_pct": 22.6,
+      "half_life_observed_days": 10,
+      "full_decay_observed_days": 20,
+      "key_pattern": "12/18→12/25 +12%/5天(T2经典) → 12月收47.41 → 1月冲至49.47"
     }
   ],
   "signal_matrix": {
     "true_positive": [
-      {"id": "TP1", "signal": "周末预热放量突破", "trigger_condition": "重大催化前周末→周一放量+0.5%以上", "win_rate": 0.78, "avg_return": 9.5, "max_hold_days": 8},
-      {"id": "TP2", "signal": "洗盘后收回(熊陷阱)", "trigger_condition": "单日-3%洗盘→次日+2%收回+量能确认", "win_rate": 0.85, "avg_return": 12.0, "max_hold_days": 6},
-      {"id": "TP3", "signal": "突破箱体上沿", "trigger_condition": "收盘价突破前3日最高+量能>20日均量1.5x", "win_rate": 0.72, "avg_return": 9.0, "max_hold_days": 5},
-      {"id": "TP4", "signal": "D-3催化抢跑", "trigger_condition": "重大催化前3天开始放量上涨", "win_rate": 0.70, "avg_return": 10.0, "max_hold_days": 5},
-      {"id": "TP5", "signal": "二次探底后反转", "trigger_condition": "回到前低+次日吞没阳线", "win_rate": 0.68, "avg_return": 13.0, "max_hold_days": 10}
+      {
+        "id": "TP1",
+        "signal": "周末预热放量突破",
+        "trigger_condition": "重大催化前周末→周一放量+0.5%以上",
+        "win_rate": 0.78,
+        "avg_return": 9.5,
+        "max_hold_days": 8
+      },
+      {
+        "id": "TP2",
+        "signal": "洗盘后收回(熊陷阱)",
+        "trigger_condition": "单日-3%洗盘→次日+2%收回+量能确认",
+        "win_rate": 0.85,
+        "avg_return": 12.0,
+        "max_hold_days": 6
+      },
+      {
+        "id": "TP3",
+        "signal": "突破箱体上沿",
+        "trigger_condition": "收盘价突破前3日最高+量能>20日均量1.5x",
+        "win_rate": 0.72,
+        "avg_return": 9.0,
+        "max_hold_days": 5
+      },
+      {
+        "id": "TP4",
+        "signal": "D-3催化抢跑",
+        "trigger_condition": "重大催化前3天开始放量上涨",
+        "win_rate": 0.7,
+        "avg_return": 10.0,
+        "max_hold_days": 5
+      },
+      {
+        "id": "TP5",
+        "signal": "二次探底后反转",
+        "trigger_condition": "回到前低+次日吞没阳线",
+        "win_rate": 0.68,
+        "avg_return": 13.0,
+        "max_hold_days": 10
+      }
     ],
     "false_positive": [
-      {"id": "FP1", "signal": "D+14催化晚期天量阳线", "why": "耗尽信号! D+14天量=顶部确认", "consequence": "5/26→5/28 -7.4%暴跌", "rule": "D+12后任何放量上涨都是卖出信号"},
-      {"id": "FP2", "signal": "计划内会议/博览会开幕日", "why": "无超预期信息=利空", "consequence": "智博会开幕日-7.4%", "rule": "任何'开幕式'都不是催化剂, 是清仓信号"},
-      {"id": "FP3", "signal": "市场级利好(τ定律等)跟涨", "why": "板块普涨≠个股利好, 可能是最后一棒", "consequence": "τ定律后+2.5%→2天后崩盘", "rule": "D+12后的市场级利好=接盘侠入场信号"}
+      {
+        "id": "FP1",
+        "signal": "D+14催化晚期天量阳线",
+        "why": "耗尽信号! D+14天量=顶部确认",
+        "consequence": "5/26→5/28 -7.4%暴跌",
+        "rule": "D+12后任何放量上涨都是卖出信号"
+      },
+      {
+        "id": "FP2",
+        "signal": "计划内会议/博览会开幕日",
+        "why": "无超预期信息=利空",
+        "consequence": "智博会开幕日-7.4%",
+        "rule": "任何'开幕式'都不是催化剂, 是清仓信号"
+      },
+      {
+        "id": "FP3",
+        "signal": "市场级利好(τ定律等)跟涨",
+        "why": "板块普涨≠个股利好, 可能是最后一棒",
+        "consequence": "τ定律后+2.5%→2天后崩盘",
+        "rule": "D+12后的市场级利好=接盘侠入场信号"
+      }
     ]
   },
   "support_resistance_live": {
@@ -155,24 +297,81 @@
     "cost_basis": 41.71,
     "cost_broken": true,
     "support_levels": [
-      {"id": "S4", "price": 34.91, "strength": "ULTIMATE", "description": "2026年年度最低, 终极支撑"},
-      {"id": "S3", "price": 36.23, "strength": "STRONG", "description": "4月双底确认, 最佳入场区"},
-      {"id": "S2", "price": 37.04, "strength": "MEDIUM", "description": "4月箱体中轴"},
-      {"id": "S1", "price": 39.19, "strength": "WEAK", "description": "4月箱体上沿, 当前正在测试"}
+      {
+        "id": "S4",
+        "price": 25.72,
+        "strength": "ULTIMATE",
+        "description": "2025年Q2绝对底部"
+      },
+      {
+        "id": "S3",
+        "price": 36.23,
+        "strength": "STRONG",
+        "description": "4月双底确认, 最佳入场区"
+      },
+      {
+        "id": "S2",
+        "price": 37.04,
+        "strength": "MEDIUM",
+        "description": "4月箱体中轴"
+      },
+      {
+        "id": "S1",
+        "price": 39.19,
+        "strength": "WEAK",
+        "description": "4月箱体上沿, 当前正在测试"
+      }
     ],
     "resistance_levels": [
-      {"id": "R1", "price": 41.71, "strength": "MEDIUM", "description": "成本线心理关口"},
-      {"id": "R2", "price": 42.50, "strength": "MEDIUM", "description": "5月突破箱体顶"},
-      {"id": "R3", "price": 46.12, "strength": "STRONG", "description": "2026年5月高点"},
-      {"id": "R4", "price": 53.50, "strength": "ULTIMATE", "description": "2025年历史高点"}
+      {
+        "id": "R1",
+        "price": 41.71,
+        "strength": "MEDIUM",
+        "description": "成本线心理关口"
+      },
+      {
+        "id": "R2",
+        "price": 42.5,
+        "strength": "MEDIUM",
+        "description": "5月突破箱体顶"
+      },
+      {
+        "id": "R3",
+        "price": 46.12,
+        "strength": "STRONG",
+        "description": "2026年5月高点"
+      },
+      {
+        "id": "R4",
+        "price": 53.32,
+        "strength": "ULTIMATE",
+        "description": "2025年9月历史高点"
+      }
     ]
   },
   "four_king_resonance_current": {
     "date": "2026-05-29",
-    "rotation_monthly": {"type": "TREND_UP", "position": 0.35, "from": 34.91, "to": 46.12},
-    "rhythm_weekly": {"type": "BOX", "position": 0.24, "description": "冲高回落整理中"},
-    "oscillation_daily": {"type": "HORIZONTAL", "position": 0.35, "zone": "LOW_MID_ZONE"},
-    "impulse": {"type": "NEUTRAL", "score": 50, "action": "WATCH_ENTRY"},
+    "rotation_monthly": {
+      "type": "TREND_UP",
+      "position": 0.35,
+      "from": 34.91,
+      "to": 46.12
+    },
+    "rhythm_weekly": {
+      "type": "BOX",
+      "position": 0.24,
+      "description": "冲高回落整理中"
+    },
+    "oscillation_daily": {
+      "type": "HORIZONTAL",
+      "position": 0.35,
+      "zone": "LOW_MID_ZONE"
+    },
+    "impulse": {
+      "type": "NEUTRAL",
+      "score": 50,
+      "action": "WATCH_ENTRY"
+    },
     "resonance_status": "CYCLE_RESONANCE_ENTRY",
     "resonance_score": 7.0,
     "entry_action_cap": "WATCH_ENTRY",
@@ -184,14 +383,176 @@
     "date": "2026-05-29",
     "active_catalysts": [],
     "recently_expired": [
-      {"id": "CAT-002472-001", "name": "宇树GD01", "days_since": 17, "residual": 0.0, "lifecycle": "EXHAUSTED"},
-      {"id": "CAT-002472-002", "name": "发改委政策", "days_since": 7, "residual": 0.0, "lifecycle": "EXHAUSTED"}
+      {
+        "id": "CAT-002472-001",
+        "name": "宇树GD01",
+        "days_since": 17,
+        "residual": 0.0,
+        "lifecycle": "EXHAUSTED"
+      },
+      {
+        "id": "CAT-002472-002",
+        "name": "发改委政策",
+        "days_since": 7,
+        "residual": 0.0,
+        "lifecycle": "EXHAUSTED"
+      }
     ],
     "pending_catalysts": [
-      {"id": "CAT-002472-005", "name": "环动科技IPO过会", "expected": "未知", "level": "B", "impact_if_pass": "+15%+"},
-      {"id": "CAT-002472-007", "name": "COMPUTEX 2026", "expected": "2026-06-02", "level": "C", "impact": "非直接, 板块情绪溢出"}
+      {
+        "id": "CAT-002472-005",
+        "name": "环动科技IPO过会",
+        "expected": "未知",
+        "level": "B",
+        "impact_if_pass": "+15%+"
+      },
+      {
+        "id": "CAT-002472-007",
+        "name": "COMPUTEX 2026",
+        "expected": "2026-06-02",
+        "level": "C",
+        "impact": "非直接, 板块情绪溢出"
+      }
     ],
     "status": "VACUUM",
     "warning": "催化全面真空, 等待环动IPO或新催化"
-  }
+  },
+  "monthly_stats": [
+    {
+      "month": "2025-01",
+      "close": 34.5,
+      "high": 35.6,
+      "low": 27.0,
+      "amplitude": 31.9,
+      "change": 0,
+      "volume_avg": 3.9
+    },
+    {
+      "month": "2025-02",
+      "close": 36.78,
+      "high": 42.6,
+      "low": 34.48,
+      "amplitude": 23.5,
+      "change": 6.6,
+      "volume_avg": 5.5
+    },
+    {
+      "month": "2025-03",
+      "close": 35.05,
+      "high": 41.48,
+      "low": 34.4,
+      "amplitude": 20.6,
+      "change": -4.7,
+      "volume_avg": 4.7
+    },
+    {
+      "month": "2025-04",
+      "close": 33.3,
+      "high": 35.18,
+      "low": 25.72,
+      "amplitude": 36.8,
+      "change": -5.0,
+      "volume_avg": 2.3
+    },
+    {
+      "month": "2025-05",
+      "close": 31.43,
+      "high": 35.07,
+      "low": 31.32,
+      "amplitude": 12.0,
+      "change": -5.6,
+      "volume_avg": 1.8
+    },
+    {
+      "month": "2025-06",
+      "close": 33.31,
+      "high": 33.82,
+      "low": 29.62,
+      "amplitude": 14.2,
+      "change": 6.0,
+      "volume_avg": 1.3
+    },
+    {
+      "month": "2025-07",
+      "close": 32.83,
+      "high": 34.95,
+      "low": 30.55,
+      "amplitude": 14.4,
+      "change": -1.4,
+      "volume_avg": 2.0
+    },
+    {
+      "month": "2025-08",
+      "close": 37.08,
+      "high": 38.9,
+      "low": 32.73,
+      "amplitude": 18.9,
+      "change": 12.9,
+      "volume_avg": 3.1
+    },
+    {
+      "month": "2025-09",
+      "close": 49.63,
+      "high": 53.32,
+      "low": 34.89,
+      "amplitude": 52.8,
+      "change": 33.8,
+      "volume_avg": 6.3
+    },
+    {
+      "month": "2025-10",
+      "close": 43.63,
+      "high": 49.92,
+      "low": 40.92,
+      "amplitude": 22.0,
+      "change": -12.1,
+      "volume_avg": 4.2
+    },
+    {
+      "month": "2025-11",
+      "close": 39.88,
+      "high": 44.33,
+      "low": 37.05,
+      "amplitude": 19.6,
+      "change": -8.6,
+      "volume_avg": 2.3
+    },
+    {
+      "month": "2025-12",
+      "close": 47.41,
+      "high": 48.8,
+      "low": 38.58,
+      "amplitude": 26.5,
+      "change": 18.9,
+      "volume_avg": 3.3
+    },
+    {
+      "month": "2026-01",
+      "close": 41.53,
+      "high": 49.47,
+      "low": 40.41,
+      "amplitude": 22.4,
+      "change": -12.4,
+      "volume_avg": 4.4
+    },
+    {
+      "month": "2026-02",
+      "close": 41.42,
+      "high": 44.49,
+      "low": 40.1,
+      "amplitude": 10.9,
+      "change": -0.3,
+      "volume_avg": 2.9
+    },
+    {
+      "month": "2026-03",
+      "close": 36.01,
+      "high": 41.02,
+      "low": 34.91,
+      "amplitude": 17.5,
+      "change": -13.1,
+      "volume_avg": 2.5
+    }
+  ],
+  "last_updated": "2026-05-29T16:21:00+08:00"
 }

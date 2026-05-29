@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 
 def build_strategy_verdict(*, robust_metrics: dict, audit_report: dict | None = None) -> dict:

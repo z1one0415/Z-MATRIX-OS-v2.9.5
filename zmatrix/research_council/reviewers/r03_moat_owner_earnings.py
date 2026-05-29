@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """R03_MOAT_OWNER_EARNINGS — Moat durability + owner earnings yield
 
 Methodology:

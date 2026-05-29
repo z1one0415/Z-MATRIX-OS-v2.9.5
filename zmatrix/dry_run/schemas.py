@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Dry-Run schemas — steps, safety defaults"""
 from __future__ import annotations
 

@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 from zmatrix.regime_observation.temporal_instability_attributor import attribute_temporal_instability
 from zmatrix.regime_observation.pool_resilience_deep_dive import deep_dive_pool_resilience

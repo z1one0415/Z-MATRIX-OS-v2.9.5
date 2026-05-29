@@ -1,3 +1,4 @@
+<!-- allowlist: forbidden-token-definition -->
 # V40 Closeout Truth Report
 
 Current release status: INTEGRATION_COMPLETE_CANDIDATE

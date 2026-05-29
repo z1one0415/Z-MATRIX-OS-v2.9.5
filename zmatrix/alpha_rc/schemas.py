@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Alpha RC schemas — version, components, frozen range, safety"""
 from __future__ import annotations
 

@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """V4.0-C3 Research Council — CouncilAggregator
 
 Aggregates outputs from multiple independent reviewers into a single

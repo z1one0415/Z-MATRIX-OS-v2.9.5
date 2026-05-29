@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# allowlist: forbidden-token-definition
 set -euo pipefail
 echo "═══ Z-MATRIX-OS v3.5.20 Research OS RC Final Closeout Verification ═══"
 

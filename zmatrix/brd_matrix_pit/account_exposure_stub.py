@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Account/Exposure Stubs — safe empty shells, no real account"""
 from __future__ import annotations
 from zmatrix.brd_matrix_pit.schema import DEFAULT_BRD_MATRIX_PIT_SAFETY

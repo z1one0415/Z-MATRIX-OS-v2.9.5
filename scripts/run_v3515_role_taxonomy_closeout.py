@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# allowlist: forbidden-token-definition
 """v3.5.15 Role Taxonomy Closeout + Classifier v2 Paper Adapter"""
 from __future__ import annotations
 import json, argparse

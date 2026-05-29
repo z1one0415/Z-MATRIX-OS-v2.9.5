@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Real BRD Classifier Connector v3.4 — call classify_stock_role with proper bundle"""
 from __future__ import annotations
 

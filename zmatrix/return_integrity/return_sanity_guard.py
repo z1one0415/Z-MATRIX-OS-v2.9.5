@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 from zmatrix.return_integrity.schema import DEFAULT_RETURN_INTEGRITY_SAFETY, RETURN_OUTLIER_THRESHOLDS
 

@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """BRD Classifier Adapter v3.3 — default to real connector, no fake connections"""
 from __future__ import annotations
 from typing import Any

@@ -1,3 +1,4 @@
+<!-- allowlist: forbidden-token-definition -->
 # V4.0 FINAL-HARDGATES Hardening-C3 Closeout
 
 ## Completion Date

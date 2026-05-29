@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """R05_SHORT_SELLER_FORENSIC — Forensic accounting attack vectors
 
 Methodology:

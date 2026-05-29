@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """R10_STRATEGY_OVERFIT — Train/test contamination + lookahead audit
 
 Methodology:

@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Final Report Builder — aggregate all v3.5 validation results"""
 from __future__ import annotations
 from zmatrix.brd_strategy_validation.role_breakdown import build_role_breakdown

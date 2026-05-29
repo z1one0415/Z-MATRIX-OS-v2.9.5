@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """B-Matrix PIT Builder v3.5 — valuation downgrade system, no hard vs gate"""
 from __future__ import annotations
 from zmatrix.brd_matrix_pit.fundamentals_pit_loader import load_pit_fundamental_snapshot

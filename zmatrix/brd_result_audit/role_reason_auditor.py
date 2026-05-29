@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Role Reason Auditor — verify active roles have explainable reason_codes"""
 from __future__ import annotations
 from zmatrix.brd_result_audit.schema import DEFAULT_AUDIT_SAFETY

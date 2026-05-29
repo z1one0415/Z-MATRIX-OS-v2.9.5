@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Tag Readiness Validator — aggregate RC gate + artifact consistency for final tag review"""
 from __future__ import annotations
 

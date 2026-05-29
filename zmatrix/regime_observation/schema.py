@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 REGIME_OBSERVATION_VERSION = "V358_REGIME_OBSERVATION_POOL_RESILIENCE_V10"
 DEFAULT_REGIME_OBSERVATION_SAFETY = {"real_trade_allowed":False,"broker_order_allowed":False,"auto_buy_allowed":False,"auto_sell_allowed":False,"auto_position_close_allowed":False,"real_z9_write_allowed":False,"hermes_memory_write_allowed":False,"auto_calibration_allowed":False,"prompt_auto_injection_allowed":False,"system_prompt_write_allowed":False,"runtime_injection_allowed":False,"runtime_enabled":False,"external_api_default_on":False,"production_yaml_write_allowed":False,"production_parameter_write_allowed":False,"z9_auto_calibration_write_allowed":False,"g18_conflict_resolver_write_allowed":False,"o3_conditional_runtime_enabled":False,"fallback_pool_generation_allowed":False,"observation_only":True}

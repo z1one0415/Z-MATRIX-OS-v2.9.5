@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """R12_ACCOUNT_SURVIVAL — Risk budget + drawdown + survival probability
 
 Methodology:

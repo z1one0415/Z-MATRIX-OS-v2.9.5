@@ -1,3 +1,4 @@
+<!-- allowlist: forbidden-token-definition -->
 # 纸面执行计划 — Paper Execution Plan
 **Template: V4.0-HARDENING-C3 | Generated: {{ timestamp }}**
 

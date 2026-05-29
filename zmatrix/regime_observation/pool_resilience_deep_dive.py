@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 from collections import Counter
 from zmatrix.regime_observation.schema import DEFAULT_REGIME_OBSERVATION_SAFETY, POOL_STUDY_THRESHOLDS

@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 from zmatrix.sector_mapping_ingestion.schema import DEFAULT_SECTOR_MAPPING_SAFETY, MIN_READY_TICKERS, MIN_READY_COVERAGE, MIN_PARTIAL_COVERAGE
 

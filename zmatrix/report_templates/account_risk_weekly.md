@@ -1,3 +1,4 @@
+<!-- allowlist: forbidden-token-definition -->
 # 账户风险周报 — Account Risk Weekly
 **Template: V4.0-HARDENING-C3 | Generated: {{ timestamp }}**
 

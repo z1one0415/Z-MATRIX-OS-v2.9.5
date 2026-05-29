@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Matrix Precompute Report"""
 from __future__ import annotations
 

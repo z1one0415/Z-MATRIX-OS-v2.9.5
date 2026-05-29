@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Rehearsal Validator — validate v3.0-alpha dry-run rehearsal for safety"""
 from __future__ import annotations
 

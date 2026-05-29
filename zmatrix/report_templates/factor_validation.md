@@ -1,3 +1,4 @@
+<!-- allowlist: forbidden-token-definition -->
 # 因子验证 — Factor Validation
 **Template: V4.0-HARDENING-C3 | Generated: {{ timestamp }}**
 

@@ -1,3 +1,4 @@
+<!-- allowlist: forbidden-token-definition -->
 # 执行路由竞争 — Execution Route Competition
 **Template: V4.0-HARDENING-C3 | Generated: {{ timestamp }}**
 

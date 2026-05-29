@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Rehearsal Runner — build v3.0-alpha dry-run rehearsal by calling real builders"""
 from __future__ import annotations
 import hashlib

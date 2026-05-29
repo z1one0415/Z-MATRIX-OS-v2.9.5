@@ -1,3 +1,4 @@
+<!-- allowlist: forbidden-token-definition -->
 # 组合 Alpha 日报 — Portfolio Alpha Daily
 **Template: V4.0-HARDENING-C3 | Generated: {{ timestamp }}**
 

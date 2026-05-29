@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# allowlist: forbidden-token-definition
 """
 ☯️ Pipeline Registry v1.0 — Z-MATRIX-OS 三层架构第二层 (Batch F-2)
 

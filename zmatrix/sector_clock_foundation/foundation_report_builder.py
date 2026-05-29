@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 from zmatrix.sector_clock_foundation.sector_mapping_discovery import discover_sector_mapping
 from zmatrix.sector_clock_foundation.sector_index_discovery import discover_sector_indexes

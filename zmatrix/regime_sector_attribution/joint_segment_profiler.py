@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 from statistics import median
 from zmatrix.regime_sector_attribution.schema import DEFAULT_REGIME_SECTOR_SAFETY

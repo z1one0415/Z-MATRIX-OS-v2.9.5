@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Historical Replay v1.0 — B/R/D Replay Adapter (v3.1-data-spine)"""
 from __future__ import annotations
 

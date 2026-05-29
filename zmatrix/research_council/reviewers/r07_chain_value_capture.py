@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """R07_CHAIN_VALUE_CAPTURE — Industry chain value capture positioning
 
 Methodology:

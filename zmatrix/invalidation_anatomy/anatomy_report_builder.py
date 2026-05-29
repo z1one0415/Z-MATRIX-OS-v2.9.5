@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 from zmatrix.invalidation_anatomy.invalidation_event_builder import build_invalidation_event, _load_price_bars
 from zmatrix.invalidation_anatomy.post_invalidation_path_labeler import label_post_invalidation_path

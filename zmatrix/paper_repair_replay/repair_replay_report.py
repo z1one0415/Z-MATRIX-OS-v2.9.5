@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 from zmatrix.paper_repair_replay.repaired_return_calculator import build_repaired_outcomes
 from zmatrix.paper_repair_replay.baseline_repair_comparator import compare_baseline_vs_repaired

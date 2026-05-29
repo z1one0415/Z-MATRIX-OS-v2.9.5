@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """BRD Historical Replay v3.2 — PIT Feature Builder (point-in-time, no future leak)"""
 from __future__ import annotations
 import csv

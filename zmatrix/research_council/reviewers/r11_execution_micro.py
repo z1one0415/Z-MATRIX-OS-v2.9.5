@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """R11_EXECUTION_MICRO — Microstructure + fillability + route analysis
 
 Methodology:

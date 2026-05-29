@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Approval Loop schemas — types, statuses, safety"""
 from __future__ import annotations
 

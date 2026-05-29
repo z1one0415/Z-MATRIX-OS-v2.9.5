@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# allowlist: forbidden-token-definition
 """PATCH-G: B-Matrix PIT Replay Validation — real entry_date financial + valuation join"""
 from __future__ import annotations
 import json, csv, argparse

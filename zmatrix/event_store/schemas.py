@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """EventStore schemas — base event fields, event types, safety fields"""
 from __future__ import annotations
 

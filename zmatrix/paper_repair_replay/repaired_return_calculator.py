@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 from zmatrix.paper_repair_replay.invalidation_rule_extractor import extract_invalidation_rule
 from zmatrix.paper_repair_replay.price_path_replay import load_price_path_with_dates

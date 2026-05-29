@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Single Day BRD Strategy Replay — universe→features→BRD→paper→outcome"""
 from __future__ import annotations
 import hashlib

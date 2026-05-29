@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """R-Matrix PIT Builder — cycle/momentum from PIT features"""
 from __future__ import annotations
 from zmatrix.brd_matrix_pit.schema import DEFAULT_BRD_MATRIX_PIT_SAFETY

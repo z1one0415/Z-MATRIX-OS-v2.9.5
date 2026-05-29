@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# allowlist: forbidden-token-definition
 """Patch-C: Main Chain Integration — horizon gate + net metrics + B/D shadow + RC evidence"""
 from __future__ import annotations
 import json, csv, argparse

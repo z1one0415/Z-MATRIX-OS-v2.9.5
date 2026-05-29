@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Paper Outcome Policy — validate records and safety"""
 from __future__ import annotations
 

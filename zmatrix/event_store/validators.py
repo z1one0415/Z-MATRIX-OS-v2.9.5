@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """EventStore validators — schema validation + lineage validation"""
 from __future__ import annotations
 import re

@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 from zmatrix.strategy_repair.schema import DEFAULT_REPAIR_HURDLES
 

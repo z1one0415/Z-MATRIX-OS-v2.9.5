@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """V4.0 ZC45 ProxyHedgeStressTest — standalone module"""
 from __future__ import annotations
 STATUSES = ["PROXY_HEDGE_EFFECTIVE","DEFENSIVE_ONLY","CORRELATION_BREAKDOWN","LIQUIDITY_CRASH_RISK","NOT_A_HEDGE","DATA_INSUFFICIENT"]

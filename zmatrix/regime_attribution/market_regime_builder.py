@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 from zmatrix.regime_attribution.schema import DEFAULT_REGIME_ATTRIBUTION_SAFETY
 

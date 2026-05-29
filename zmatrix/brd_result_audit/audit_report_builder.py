@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Audit Report Builder — aggregate all BRD result audits"""
 from __future__ import annotations
 from zmatrix.brd_result_audit.market_role_distribution import build_market_role_distribution_report

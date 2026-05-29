@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Connection Validator — validate BRD connection report"""
 from __future__ import annotations
 

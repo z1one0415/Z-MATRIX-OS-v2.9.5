@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Outcome Summary Report — aggregate stats"""
 from __future__ import annotations
 import hashlib

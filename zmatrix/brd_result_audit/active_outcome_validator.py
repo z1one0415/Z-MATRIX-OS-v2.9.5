@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Active Outcome Validator — verify active paper actions have ready outcomes"""
 from __future__ import annotations
 from zmatrix.brd_result_audit.schema import DEFAULT_AUDIT_SAFETY

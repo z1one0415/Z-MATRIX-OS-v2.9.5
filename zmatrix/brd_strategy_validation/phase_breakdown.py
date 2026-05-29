@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Phase Breakdown — per-sector-phase performance"""
 from __future__ import annotations
 from zmatrix.brd_strategy_validation.metrics_aggregator import _metric_for_horizon

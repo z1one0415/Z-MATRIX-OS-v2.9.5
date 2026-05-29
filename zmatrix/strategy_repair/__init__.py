@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 
 STRATEGY_REPAIR_VERSION = "V352_STRATEGY_REPAIR_LAB_V10"

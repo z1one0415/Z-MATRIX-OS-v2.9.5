@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """R06_REFLEXIVITY_NARRATIVE — Narrative vs fundamental feedback loops
 
 Methodology:

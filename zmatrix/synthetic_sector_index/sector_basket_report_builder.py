@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 from zmatrix.synthetic_sector_index.sector_mapping_loader import load_sector_mapping
 from zmatrix.synthetic_sector_index.sector_return_builder import build_sector_daily_returns

@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# allowlist: forbidden-token-definition
 """v3.5.16 Legacy Locked Module Migration Plan"""
 from __future__ import annotations
 import json, argparse

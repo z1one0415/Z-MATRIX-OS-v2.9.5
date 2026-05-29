@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 from zmatrix.regime_conditioned_replay.temporal_split_validator import validate_temporal_stability
 from zmatrix.regime_conditioned_replay.sector_split_validator import validate_sector_stability

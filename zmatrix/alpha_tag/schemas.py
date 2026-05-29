@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Alpha Tag Gate schemas — version, tag target, required artifacts"""
 from __future__ import annotations
 

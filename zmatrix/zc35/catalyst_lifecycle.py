@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """V4.0 ZC35 CatalystLifecycleEngine v2.0 — 完整催化生命周期引擎
 
 升级内容 (基于双环传动002472 10个月6轮催化周期实证):

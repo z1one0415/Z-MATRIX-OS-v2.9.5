@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """V4.0 ZC40 LimitBoardFillabilityGate — standalone module"""
 from __future__ import annotations
 STATUSES = ["NOT_FILLABLE","WAIT_OPEN_BOARD","OPEN_BOARD_CONFIRMATION_REQUIRED","CHASE_RISK","LIQUIDITY_TRAP","PAPER_ONLY_OBSERVE","DATA_INSUFFICIENT"]

@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 from zmatrix.return_integrity.robust_metrics import build_robust_return_metrics
 

@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 from zmatrix.strategy_repair.filter_candidate_rules import REPAIR_CANDIDATE_RULES, apply_candidate_rule
 from zmatrix.strategy_repair.repair_metrics import build_repair_metrics

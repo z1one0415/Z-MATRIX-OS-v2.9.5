@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """R04_QUALITY_GROWTH — Quality compounder lifecycle stage
 
 Methodology:

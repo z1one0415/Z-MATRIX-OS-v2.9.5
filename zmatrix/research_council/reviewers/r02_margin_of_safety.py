@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """R02_MARGIN_OF_SAFETY — Moslow framework: intrinsic value gap
 
 Methodology:

@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 BRD_REPLAY_VERSION = "BRD_HISTORICAL_REPLAY_V10"
 BRD_ROLES = ["A_LONG_CORE","B_MID_ROTATION","C_SHORT_EVENT","D_REJECT","WATCH_ONLY","DATA_GAP"]

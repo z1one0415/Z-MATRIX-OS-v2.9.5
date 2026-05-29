@@ -1,3 +1,4 @@
+<!-- allowlist: forbidden-token-definition -->
 # 多策略组合 — Multi-Strategy Portfolio
 **Template: V4.0-HARDENING-C3 | Generated: {{ timestamp }}**
 

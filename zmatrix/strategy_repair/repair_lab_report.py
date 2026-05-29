@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 from zmatrix.strategy_repair.pathology_classifier import classify_dataset_pathology
 from zmatrix.strategy_repair.segment_attributor import build_segment_attribution

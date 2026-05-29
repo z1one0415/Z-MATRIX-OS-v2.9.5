@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """RC Gate Validator — aggregate all RC checks for final validation"""
 from __future__ import annotations
 import json

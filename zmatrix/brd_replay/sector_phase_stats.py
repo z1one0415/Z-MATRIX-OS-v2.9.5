@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Sector Phase Stats — per-phase performance"""
 from __future__ import annotations
 from zmatrix.brd_replay.metrics import build_strategy_metrics

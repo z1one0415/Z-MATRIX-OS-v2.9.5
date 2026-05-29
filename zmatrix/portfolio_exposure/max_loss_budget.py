@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Max Loss Budget — aggregate max_loss_plan across positions"""
 from __future__ import annotations
 

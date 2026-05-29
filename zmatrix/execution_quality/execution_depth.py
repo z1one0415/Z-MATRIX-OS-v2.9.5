@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """V4.0-C2.1 ExecutionQuality depth — limit-down, suspension, one-price, route"""
 from __future__ import annotations
 from dataclasses import dataclass

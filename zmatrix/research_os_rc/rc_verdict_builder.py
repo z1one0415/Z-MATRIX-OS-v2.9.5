@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 from zmatrix.research_os_rc.schema import DEFAULT_RESEARCH_OS_RC_SAFETY
 

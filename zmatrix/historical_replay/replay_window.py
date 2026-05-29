@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Replay Window — multi-date rolling replay with WEEKLY default"""
 from __future__ import annotations
 import hashlib

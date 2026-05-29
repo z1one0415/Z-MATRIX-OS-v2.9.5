@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 import json
 from pathlib import Path

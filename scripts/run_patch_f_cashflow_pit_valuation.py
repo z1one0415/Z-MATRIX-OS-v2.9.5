@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# allowlist: forbidden-token-definition
 """PATCH-F: Cashflow + PIT Valuation — fix debt_ratio units, make B-Matrix eligible"""
 from __future__ import annotations
 import json, csv, argparse

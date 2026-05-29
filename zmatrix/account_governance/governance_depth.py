@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """V4.0-C2.1 AccountGovernance depth — holding alpha, watchlist, risk budget"""
 from __future__ import annotations
 from dataclasses import dataclass

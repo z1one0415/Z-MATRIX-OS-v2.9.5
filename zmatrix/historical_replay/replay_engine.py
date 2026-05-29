@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Replay Engine — single-day full replay with real price data from CSV"""
 from __future__ import annotations
 import csv

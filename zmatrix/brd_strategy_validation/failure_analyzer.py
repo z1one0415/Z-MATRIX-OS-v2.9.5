@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """Failure Analyzer — count fallback/data_gap/no_action/insufficient"""
 from __future__ import annotations
 

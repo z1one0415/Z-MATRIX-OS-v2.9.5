@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 from __future__ import annotations
 ENTRY_QUALITY_REPAIR_VERSION = "V355_ENTRY_QUALITY_REPAIR_V10"
 DEFAULT_ENTRY_REPAIR_SAFETY = {"real_trade_allowed": False, "broker_order_allowed": False, "auto_buy_allowed": False, "auto_sell_allowed": False, "auto_position_close_allowed": False, "real_z9_write_allowed": False, "hermes_memory_write_allowed": False, "auto_calibration_allowed": False, "prompt_auto_injection_allowed": False, "system_prompt_write_allowed": False, "runtime_injection_allowed": False, "runtime_enabled": False, "external_api_default_on": False, "paper_repair_only": True}

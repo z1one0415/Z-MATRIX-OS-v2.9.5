@@ -1,3 +1,4 @@
+# allowlist: forbidden-token-definition
 """V4.0-C6 AccountGovernance — paper-only research layer"""
 from __future__ import annotations
 

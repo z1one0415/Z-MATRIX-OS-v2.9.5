@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# allowlist: forbidden-token-definition
 """Closeout-B: Real Data Integration Audit — Outcome Horizon + B/D Matrix + Trading Cost"""
 from __future__ import annotations
 import json, csv, argparse

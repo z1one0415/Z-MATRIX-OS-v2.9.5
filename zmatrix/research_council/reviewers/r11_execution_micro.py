@@ -19,6 +19,21 @@ REVIEWER_CONFIG = {
     "required_evidence": ["source", "avg_daily_volume", "bid_ask_spread_bps", "fill_probability"],
 }
 
+SCORING_CONFIG = {
+    "score_min": 0,
+    "score_max": 100,
+    "weights": {
+        "fillability": 0.4,
+        "slippage": 0.3,
+        "spread_cost": 0.3
+    },
+    "thresholds": {
+        "liquid": 85,
+        "moderate": 50,
+        "illiquid": 20
+    }
+}
+
 def review(facts: dict | None = None) -> ReviewerOutput:
     """Deterministic execution microstructure review."""
     facts = facts or {}

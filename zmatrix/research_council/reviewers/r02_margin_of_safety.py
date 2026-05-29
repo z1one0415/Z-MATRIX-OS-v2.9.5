@@ -21,6 +21,21 @@ REVIEWER_CONFIG = {
     "required_evidence": ["source", "intrinsic_value_est", "market_price", "mos_pct"],
 }
 
+SCORING_CONFIG = {
+    "score_min": 0,
+    "score_max": 100,
+    "weights": {
+        "valuation_gap": 0.5,
+        "downside_buffer": 0.3,
+        "balance_sheet": 0.2
+    },
+    "thresholds": {
+        "deep_value": 80,
+        "fair_value": 50,
+        "overvalued": 20
+    }
+}
+
 def review(facts: dict | None = None) -> ReviewerOutput:
     """Deterministic margin of safety review."""
     facts = facts or {}

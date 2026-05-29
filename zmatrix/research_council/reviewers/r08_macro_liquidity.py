@@ -22,6 +22,21 @@ REVIEWER_CONFIG = {
 
 PHASE_SCORES = {"expansion": 70, "neutral": 50, "contraction": 20}
 
+SCORING_CONFIG = {
+    "score_min": 0,
+    "score_max": 100,
+    "weights": {
+        "credit_cycle": 0.35,
+        "market_liquidity": 0.35,
+        "risk_appetite": 0.3
+    },
+    "thresholds": {
+        "expansion": 80,
+        "neutral": 50,
+        "contraction": 20
+    }
+}
+
 def review(facts: dict | None = None) -> ReviewerOutput:
     """Deterministic macro liquidity review."""
     facts = facts or {}

@@ -20,6 +20,22 @@ REVIEWER_CONFIG = {
     "required_evidence": ["source", "factor_ic_recent", "factor_ic_decay_rate", "regime_alignment"],
 }
 
+SCORING_CONFIG = {
+    "score_min": 0,
+    "score_max": 100,
+    "weights": {
+        "ic": 0.35,
+        "rankic": 0.25,
+        "decile_spread": 0.2,
+        "sample_size": 0.2
+    },
+    "thresholds": {
+        "robust": 75,
+        "decaying": 45,
+        "broken": 15
+    }
+}
+
 def review(facts: dict | None = None) -> ReviewerOutput:
     """Deterministic factor validity review."""
     facts = facts or {}

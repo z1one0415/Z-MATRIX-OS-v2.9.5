@@ -18,6 +18,21 @@ REVIEWER_CONFIG = {
     "required_evidence": ["source", "macro_cycle_phase", "consensus_view"],
 }
 
+SCORING_CONFIG = {
+    "score_min": 0,
+    "score_max": 100,
+    "weights": {
+        "macro_cycle": 0.4,
+        "consensus_inversion": 0.35,
+        "evidence_depth": 0.25
+    },
+    "thresholds": {
+        "strong_signal": 70,
+        "weak_signal": 40,
+        "noise": 20
+    }
+}
+
 def review(facts: dict | None = None) -> ReviewerOutput:
     """Deterministic macro consensus inversion review."""
     facts = facts or {}
@@ -32,7 +47,7 @@ def review(facts: dict | None = None) -> ReviewerOutput:
             real_trade_allowed=False,
             broker_order_allowed=False,
         )
-    score = min(100, len(facts) * 10)
+    score = float(min(100, len(facts) * 10))
     trace = {
         "reviewer": REVIEWER_CONFIG["reviewer_id"],
         "method": REVIEWER_CONFIG["methodology"],
@@ -42,7 +57,7 @@ def review(facts: dict | None = None) -> ReviewerOutput:
     return ReviewerOutput(
         reviewer_id=REVIEWER_CONFIG["reviewer_id"],
         facts=facts,
-        deterministic_score=score,
+        deterministic_score=float(score),
         score_trace=trace,
         review_status="RESEARCH_SUPPORT",
         real_trade_allowed=False,

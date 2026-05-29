@@ -19,6 +19,21 @@ REVIEWER_CONFIG = {
     "required_evidence": ["source", "moat_type", "moat_durability_years", "owner_earnings_yield"],
 }
 
+SCORING_CONFIG = {
+    "score_min": 0,
+    "score_max": 100,
+    "weights": {
+        "moat_durability": 0.45,
+        "owner_earnings": 0.35,
+        "pricing_power": 0.2
+    },
+    "thresholds": {
+        "wide_moat": 80,
+        "narrow_moat": 50,
+        "no_moat": 20
+    }
+}
+
 def review(facts: dict | None = None) -> ReviewerOutput:
     """Deterministic moat + owner earnings review."""
     facts = facts or {}

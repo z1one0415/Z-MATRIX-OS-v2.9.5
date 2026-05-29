@@ -19,6 +19,21 @@ REVIEWER_CONFIG = {
     "required_evidence": ["source", "receivables_quality", "cashflow_match", "related_party_check"],
 }
 
+SCORING_CONFIG = {
+    "score_min": 0,
+    "score_max": 100,
+    "weights": {
+        "receivable_risk": 0.35,
+        "cashflow_mismatch": 0.35,
+        "related_party": 0.3
+    },
+    "thresholds": {
+        "clean": 90,
+        "minor_flags": 50,
+        "major_red_flags": 20
+    }
+}
+
 def review(facts: dict | None = None) -> ReviewerOutput:
     """Deterministic forensic accounting review."""
     facts = facts or {}

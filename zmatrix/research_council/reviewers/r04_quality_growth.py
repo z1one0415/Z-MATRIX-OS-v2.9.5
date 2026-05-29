@@ -21,6 +21,21 @@ REVIEWER_CONFIG = {
 
 LIFECYCLE_SCORES = {"early": 40, "growth": 60, "mature": 30, "decline": 10}
 
+SCORING_CONFIG = {
+    "score_min": 0,
+    "score_max": 100,
+    "weights": {
+        "revenue_growth": 0.3,
+        "margin_stability": 0.3,
+        "reinvestment_efficiency": 0.4
+    },
+    "thresholds": {
+        "compounders": 75,
+        "growth_at_price": 45,
+        "value_trap": 15
+    }
+}
+
 def review(facts: dict | None = None) -> ReviewerOutput:
     """Deterministic quality growth lifecycle review."""
     facts = facts or {}

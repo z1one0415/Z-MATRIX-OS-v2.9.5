@@ -30,6 +30,21 @@ REVIEWER_CONFIG = {
 POSITION_SCORES = {"core_tech": 60, "key_supplier": 45, "integrator": 30, "commodity": 15}
 PRICING_BONUS = {"high": 20, "medium": 10, "low": 0}
 
+SCORING_CONFIG = {
+    "score_min": 0,
+    "score_max": 100,
+    "weights": {
+        "chain_position": 0.4,
+        "value_capture": 0.35,
+        "bargaining_power": 0.25
+    },
+    "thresholds": {
+        "core_tech": 85,
+        "key_supplier": 55,
+        "commodity": 25
+    }
+}
+
 def review(facts: dict | None = None) -> ReviewerOutput:
     """Deterministic chain value capture review."""
     facts = facts or {}

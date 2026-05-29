@@ -20,6 +20,22 @@ REVIEWER_CONFIG = {
     "required_evidence": ["source", "narrative_strength", "fundamental_trend", "sentiment_divergence"],
 }
 
+SCORING_CONFIG = {
+    "score_min": 0,
+    "score_max": 100,
+    "weights": {
+        "narrative_strength": 0.3,
+        "crowding": 0.25,
+        "catalyst_decay": 0.25,
+        "sentiment_divergence": 0.2
+    },
+    "thresholds": {
+        "aligned": 80,
+        "mild_divergence": 50,
+        "strong_divergence": 20
+    }
+}
+
 def review(facts: dict | None = None) -> ReviewerOutput:
     """Deterministic reflexivity/narrative review."""
     facts = facts or {}

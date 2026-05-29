@@ -19,6 +19,22 @@ REVIEWER_CONFIG = {
     "required_evidence": ["source", "train_test_split_ratio", "contamination_score", "lookahead_bias_check"],
 }
 
+SCORING_CONFIG = {
+    "score_min": 0,
+    "score_max": 100,
+    "weights": {
+        "walkforward": 0.3,
+        "sector_holdout": 0.25,
+        "parameter_stability": 0.25,
+        "contamination": 0.2
+    },
+    "thresholds": {
+        "clean": 90,
+        "minor_leak": 50,
+        "overfitted": 10
+    }
+}
+
 def review(facts: dict | None = None) -> ReviewerOutput:
     """Deterministic overfit audit review."""
     facts = facts or {}

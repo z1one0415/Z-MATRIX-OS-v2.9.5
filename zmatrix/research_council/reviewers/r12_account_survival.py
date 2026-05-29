@@ -20,6 +20,21 @@ REVIEWER_CONFIG = {
     "required_evidence": ["source", "risk_budget_remaining_pct", "max_drawdown_pct", "survival_probability"],
 }
 
+SCORING_CONFIG = {
+    "score_min": 0,
+    "score_max": 100,
+    "weights": {
+        "drawdown_risk": 0.35,
+        "risk_budget": 0.35,
+        "position_concentration": 0.3
+    },
+    "thresholds": {
+        "safe": 80,
+        "caution": 45,
+        "danger": 15
+    }
+}
+
 def review(facts: dict | None = None) -> ReviewerOutput:
     """Deterministic account survival review."""
     facts = facts or {}

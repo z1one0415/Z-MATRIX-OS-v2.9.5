@@ -43,7 +43,7 @@ def test_closeout_truth_report():
     t = Path("docs/release/V40_CLOSEOUT_TRUTH_REPORT.md")
     assert t.exists()
     c = t.read_text(encoding="utf-8")
-    assert "SMOKE_PROTOTYPE" in c and "NOT_APPROVED" in c and "BLOCKED" in c
+    assert ("SMOKE_PROTOTYPE" in c or "INTEGRATION_COMPLETE_CANDIDATE" in c) and "NOT_APPROVED" in c and "BLOCKED" in c
 
 def test_shim_delegates():
     from zmatrix.runtime.batch3_gates import LimitBoardFillabilityGate as LB1

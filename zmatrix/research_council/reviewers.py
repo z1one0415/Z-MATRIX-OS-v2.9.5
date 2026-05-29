@@ -36,3 +36,23 @@ for i, (rid, method) in enumerate([
 ], start=1):
     r = BaseReviewer(f"{rid}", method); r.fact_fields = ["source","evidence_level"]; r.required_evidence = ["source"]
     REVIEWERS[rid] = r
+
+
+def load_independent_reviewers() -> dict:
+    """Dynamically load all independent reviewer modules from reviewers/ directory.
+
+    Returns a dict mapping reviewer_id (uppercase) to the module's review function.
+    Each function signature is: review(facts: dict | None = None) -> ReviewerOutput.
+    """
+    import importlib
+    import pkgutil
+    import zmatrix.research_council.reviewers as pkg
+
+    result = {}
+    for _, module_name, _ in pkgutil.iter_modules(pkg.__path__):
+        if module_name.startswith("r") and len(module_name) >= 5:
+            mod = importlib.import_module(f"zmatrix.research_council.reviewers.{module_name}")
+            if hasattr(mod, "REVIEWER_CONFIG") and hasattr(mod, "review"):
+                rid = mod.REVIEWER_CONFIG.get("reviewer_id", module_name.upper())
+                result[rid] = mod.review
+    return result

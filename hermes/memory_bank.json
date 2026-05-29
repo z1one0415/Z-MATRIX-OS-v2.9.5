@@ -215,10 +215,10 @@
       "priority_scene": "A"
     },
     {
-      "id": "5ae0ed4b",
-      "timestamp": "2026-05-25 08:12:00",
+      "id": "3a31d4df",
+      "timestamp": "2026-05-25 23:08:12",
       "stock": "002472",
-      "situation": "2026-05-25 | MACRO:3逆风1顺风 | Universe:PRESET_DEV",
+      "situation": "2026-05-25 | MACRO:3逆风1顺风 | Universe:WATCHLIST",
       "your_view": "用户尚未操作(等待确认)",
       "my_advice": "Z-G18: 75% PAPER_TRACK T1:70% T5:75% T20:70%",
       "actual_action": "PENDING",
@@ -270,6 +270,237 @@
       ],
       "emotion": "中性",
       "priority_scene": "A"
+    },
+    {
+      "id": "38ded8f0",
+      "timestamp": "2026-05-26 08:08:26",
+      "stock": "002472",
+      "situation": "2026-05-26 | MACRO:3逆风1顺风 | Universe:PRESET_DEV",
+      "your_view": "用户尚未操作(等待确认)",
+      "my_advice": "Z-G18: 75% PAPER_TRACK T1:70% T5:75% T20:70%",
+      "actual_action": "PENDING",
+      "outcome": null,
+      "cost": null,
+      "lesson": null,
+      "tags": [
+        "天机引擎",
+        "auto",
+        "PAPER_TRACK"
+      ],
+      "emotion": "中性",
+      "priority_scene": "A"
+    },
+    {
+      "id": "2575e5dc",
+      "timestamp": "2026-05-26 08:08:26",
+      "stock": "600519",
+      "situation": "2026-05-26 | MACRO:3逆风1顺风 | Universe:PRESET_DEV",
+      "your_view": "用户尚未操作(等待确认)",
+      "my_advice": "Z-G18: 75% PAPER_TRACK T1:70% T5:75% T20:70%",
+      "actual_action": "PENDING",
+      "outcome": null,
+      "cost": null,
+      "lesson": null,
+      "tags": [
+        "天机引擎",
+        "auto",
+        "PAPER_TRACK"
+      ],
+      "emotion": "中性",
+      "priority_scene": "A"
+    },
+    {
+      "id": "6406c7b6",
+      "timestamp": "2026-05-26 08:08:26",
+      "stock": "601898",
+      "situation": "2026-05-26 | MACRO:3逆风1顺风 | Universe:PRESET_DEV",
+      "your_view": "用户尚未操作(等待确认)",
+      "my_advice": "Z-G18: 75% PAPER_TRACK T1:70% T5:75% T20:70%",
+      "actual_action": "PENDING",
+      "outcome": null,
+      "cost": null,
+      "lesson": null,
+      "tags": [
+        "天机引擎",
+        "auto",
+        "PAPER_TRACK"
+      ],
+      "emotion": "中性",
+      "priority_scene": "A"
+    },
+    {
+      "id": "sync_20260526",
+      "timestamp": "2026-05-26 15:30:00",
+      "type": "sync_record",
+      "stock": "__SYSTEM__",
+      "tags": [
+        "盘后同步",
+        "M-FLOW",
+        "日卡",
+        "持仓快照",
+        "Z-G18天机引擎"
+      ],
+      "situation": "Z0盘后同步: 日卡2026-05-22(最新实盘) + 5/25(天机引擎噪音) + 5/26(今日盘中未收盘)入库M-FLOW知识图谱。",
+      "your_view": "自动化同步，无人工决策。",
+      "my_advice": "M-FLOW 5条数据包已写入(save_interaction×5 → memorize)。memory_bank.json已更新sync记录。",
+      "actual_action": "M-FLOW写入: 日卡摘要(5/22 V型反弹日)+持仓快照(双环+6102/紫金-3184/科创+20)+催化剂追踪(发改委具身智能🔴🔴等7项)+市场信号(上证4112.9 B+场景)+Z-G18引擎状态(5标的PAPER_TRACK/WAIT)。索引已触发。",
+      "outcome": "M-FLOW: 5/5存入成功(ACCEPTED), memorize已触发。组合5/22快照: +2,938, B+场景。5/25仅天机引擎自动决策卡(无实盘)。今日(5/26)15:30盘中, 待收盘。",
+      "cost": 0,
+      "lesson": "mcp_mflow_ingest/memory工具不可用→fallback curl直接推M-FLOW endpoint+本地JSON落盘。5/25日卡为42张天机引擎噪声卡, 应过滤避免污染知识图谱。",
+      "emotion": "系统",
+      "priority_scene": "SYS"
+    },
+    {
+      "id": "bcc79ff9",
+      "timestamp": "2026-05-27 08:13:10",
+      "stock": "002472",
+      "situation": "2026-05-27 | MACRO:3逆风1顺风 | Universe:PRESET_DEV",
+      "your_view": "用户尚未操作(等待确认)",
+      "my_advice": "Z-G18: 75% PAPER_TRACK T1:70% T5:75% T20:70%",
+      "actual_action": "PENDING",
+      "outcome": null,
+      "cost": null,
+      "lesson": null,
+      "tags": [
+        "天机引擎",
+        "auto",
+        "PAPER_TRACK"
+      ],
+      "emotion": "中性",
+      "priority_scene": "A"
+    },
+    {
+      "id": "92e09e66",
+      "timestamp": "2026-05-27 08:13:10",
+      "stock": "601899",
+      "situation": "2026-05-27 | MACRO:3逆风1顺风 | Universe:PRESET_DEV",
+      "your_view": "用户尚未操作(等待确认)",
+      "my_advice": "Z-G18: 75% PAPER_TRACK T1:70% T5:75% T20:70%",
+      "actual_action": "PENDING",
+      "outcome": null,
+      "cost": null,
+      "lesson": null,
+      "tags": [
+        "天机引擎",
+        "auto",
+        "PAPER_TRACK"
+      ],
+      "emotion": "中性",
+      "priority_scene": "A"
+    },
+    {
+      "id": "ac7b06b2",
+      "timestamp": "2026-05-27 08:13:10",
+      "stock": "601898",
+      "situation": "2026-05-27 | MACRO:3逆风1顺风 | Universe:PRESET_DEV",
+      "your_view": "用户尚未操作(等待确认)",
+      "my_advice": "Z-G18: 75% PAPER_TRACK T1:70% T5:75% T20:70%",
+      "actual_action": "PENDING",
+      "outcome": null,
+      "cost": null,
+      "lesson": null,
+      "tags": [
+        "天机引擎",
+        "auto",
+        "PAPER_TRACK"
+      ],
+      "emotion": "中性",
+      "priority_scene": "A"
+    },
+    {
+      "id": "8496488b",
+      "timestamp": "2026-05-27 08:13:10",
+      "stock": "000977",
+      "situation": "2026-05-27 | MACRO:3逆风1顺风 | Universe:PRESET_DEV",
+      "your_view": "用户尚未操作(等待确认)",
+      "my_advice": "Z-G18: 69% WAIT T1:64% T5:69% T20:64%",
+      "actual_action": "PENDING",
+      "outcome": null,
+      "cost": null,
+      "lesson": null,
+      "tags": [
+        "天机引擎",
+        "auto",
+        "WAIT"
+      ],
+      "emotion": "中性",
+      "priority_scene": "C"
+    },
+    {
+      "id": "sync_20260527",
+      "timestamp": "2026-05-27 15:30:00",
+      "type": "盘后同步",
+      "synced_date": "2026-05-26",
+      "data_packets": 2,
+      "packets": [
+        "日卡: 科技分化日 — 上证4130(-0.17%), 紫金+3.25%突破32, 双环-3.3%回调, 组合+1605",
+        "持仓快照: 双环浮盈+3456 | 紫金浮亏-1688 | 科创50浮亏-163 | 场景B+"
+      ],
+      "mflow_status": "2/2 Accepted, 索引已触发",
+      "skipped": "2026-05-27: 4条天机引擎噪声(002472×1 PAPER_TRACK, 601899×1 PAPER_TRACK, 601898×1 PAPER_TRACK, 000977×1 WAIT) — cost=null, lesson=\"\"",
+      "tags": [
+        "盘后同步",
+        "M-FLOW",
+        "日卡",
+        "持仓快照"
+      ]
+    },
+    {
+      "id": "c95e6114",
+      "timestamp": "2026-05-29 08:15:26",
+      "stock": "002472",
+      "situation": "2026-05-29 | MACRO:3逆风1顺风 | Universe:PRESET_DEV",
+      "your_view": "用户尚未操作(等待确认)",
+      "my_advice": "Z-G18: 75% PAPER_TRACK T1:70% T5:75% T20:70%",
+      "actual_action": "PENDING",
+      "outcome": null,
+      "cost": null,
+      "lesson": null,
+      "tags": [
+        "天机引擎",
+        "auto",
+        "PAPER_TRACK"
+      ],
+      "emotion": "中性",
+      "priority_scene": "A"
+    },
+    {
+      "id": "dcaa450f",
+      "timestamp": "2026-05-29 08:15:26",
+      "stock": "601899",
+      "situation": "2026-05-29 | MACRO:3逆风1顺风 | Universe:PRESET_DEV",
+      "your_view": "用户尚未操作(等待确认)",
+      "my_advice": "Z-G18: 75% PAPER_TRACK T1:70% T5:75% T20:70%",
+      "actual_action": "PENDING",
+      "outcome": null,
+      "cost": null,
+      "lesson": null,
+      "tags": [
+        "天机引擎",
+        "auto",
+        "PAPER_TRACK"
+      ],
+      "emotion": "中性",
+      "priority_scene": "A"
+    },
+    {
+      "id": "834046b7",
+      "timestamp": "2026-05-29 08:15:26",
+      "stock": "601898",
+      "situation": "2026-05-29 | MACRO:3逆风1顺风 | Universe:PRESET_DEV",
+      "your_view": "用户尚未操作(等待确认)",
+      "my_advice": "Z-G18: 75% PAPER_TRACK T1:70% T5:75% T20:70%",
+      "actual_action": "PENDING",
+      "outcome": null,
+      "cost": null,
+      "lesson": null,
+      "tags": [
+        "天机引擎",
+        "auto",
+        "PAPER_TRACK"
+      ],
+      "emotion": "中性",
+      "priority_scene": "A"
     }
   ],
   "patterns": {
@@ -287,18 +518,23 @@
       "detected_at": "2026-05-22",
       "occurrences": 3,
       "suggestion": "该模式已出现3次, 建议总结规律。"
+    },
+    "WAIT": {
+      "detected_at": "2026-05-25",
+      "occurrences": 3,
+      "suggestion": "该模式已出现3次, 建议总结规律。"
     }
   },
   "stats": {
-    "total": 14,
+    "total": 26,
     "by_stock": {
-      "002472": 40,
-      "601899": 3,
-      "000977": 2,
+      "002472": 14,
+      "601899": 6,
+      "000977": 4,
       "518880": 1,
       "002979": 1,
-      "601898": 2,
-      "600519": 1
+      "601898": 6,
+      "600519": 2
     },
     "by_type": {
       "D1洗盘": 1,
@@ -315,10 +551,16 @@
       "框架缺陷": 1,
       "BOM偏差": 1,
       "遗漏": 1,
-      "天机引擎": 45,
-      "auto": 45,
-      "PAPER_TRACK": 44,
-      "WAIT": 1
+      "天机引擎": 29,
+      "auto": 29,
+      "PAPER_TRACK": 22,
+      "WAIT": 7,
+      "盘后同步": 3,
+      "M-FLOW": 3,
+      "日卡": 3,
+      "持仓快照": 3,
+      "催化剂": 1,
+      "Z-G18天机引擎": 1
     }
   }
 }

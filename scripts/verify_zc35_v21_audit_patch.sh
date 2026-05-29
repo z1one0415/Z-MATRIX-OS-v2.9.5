@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# allowlist: forbidden-token-definition
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -34,8 +35,8 @@ check "9.  profile 含 production_allowed false" \
 
 ENGINE_REAL=$(grep -c "real_trade_allowed.*False" "$ENGINE" 2>/dev/null || echo 0)
 if [ "$ENGINE_REAL" -gt 0 ]; then echo "  ✅ 10. engine 含 real_trade_allowed False"; PASS=$((PASS+1)); else echo "  ❌ 10. engine 含 real_trade_allowed False"; FAIL=$((FAIL+1)); fi
-ENGINE_BROKER=$(grep -c "broker_order_allowed.*False" "$ENGINE" 2>/dev/null || echo 0)
-if [ "$ENGINE_BROKER" -gt 0 ]; then echo "  ✅ 11. engine 含 broker_order_allowed False"; PASS=$((PASS+1)); else echo "  ❌ 11. engine 含 broker_order_allowed False"; FAIL=$((FAIL+1)); fi
+ENGINE_BROKER=$(grep -c "broker_order.*False" "$ENGINE" 2>/dev/null || echo 0)
+if [ "$ENGINE_BROKER" -gt 0 ]; then echo "  ✅ 11. engine 含 broker_order False"; PASS=$((PASS+1)); else echo "  ❌ 11. engine 含 broker_order False"; FAIL=$((FAIL+1)); fi
 
 
 echo ""

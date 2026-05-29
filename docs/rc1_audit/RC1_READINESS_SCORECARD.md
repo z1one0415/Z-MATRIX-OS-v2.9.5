@@ -32,3 +32,10 @@ Recommendation: **RC1_READY_RECOMMENDED**
 
 ZC35-v2.1 remains Research Prototype and is excluded from RC1 approval scope.
 The RC1 readiness score reflects the audited integration-complete baseline, not the experimental ZC35 research patch.
+
+## CI Cloud Run Evidence
+
+- Workflow: v40-rc1-audit.yml
+- Branch: v4.0-batch-0-final-hardgates-scope-lock
+- Status: CI parity verified on latest head
+- Note: ZC35-v2.1 research patch commits (c027a25→719d403) excluded from RC1 scope

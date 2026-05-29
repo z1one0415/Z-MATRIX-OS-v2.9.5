@@ -22,6 +22,8 @@ __pycache__/
 *.pyo
 .DS_Store
 *.bak
+.pytest_cache/
+*.zip
 .venv/
 
 # 本地数据仓库（不提交到云仓）

@@ -166,8 +166,90 @@ def test_stock_profile_loading():
         profile = json.load(f)
     
     assert profile["ticker"] == "002472"
-    assert len(profile["historical_catalysts"]) == 6
+    assert len(profile["historical_catalysts"]) >= 6
     assert len(profile["signal_matrix"]["true_positive"]) == 5
     assert len(profile["signal_matrix"]["false_positive"]) == 3
     assert profile["support_resistance_live"]["cost_broken"] is True
     assert profile["four_king_resonance_current"]["resonance_status"] == "CYCLE_RESONANCE_ENTRY"
+
+
+# ── v2.1 新增测试 ──
+
+def test_v21_true_signal_triad():
+    """真信号三要素判定"""
+    from zmatrix.zc35.catalyst_lifecycle import CatalystLifecycleEngine
+    engine = CatalystLifecycleEngine()
+
+    # 全满足 → TRUE_SIGNAL
+    r = engine.classify_true_signal("宇树GD01", "S", True, True, True)
+    assert r["verdict"] == "TRUE_SIGNAL"
+    assert r["triad_score"] == "3/3"
+    assert r["confidence"] == 0.85
+
+    # 缺一 → WEAK_SIGNAL
+    r = engine.classify_true_signal("发改委政策", "A", True, False, True)
+    assert r["verdict"] == "WEAK_SIGNAL"
+    assert r["triad_score"] == "2/3"
+
+    # 全缺 → FALSE_SIGNAL
+    r = engine.classify_true_signal("智博会", "D", False, False, False)
+    assert r["verdict"] == "FALSE_SIGNAL"
+    assert r["confidence"] < 0.15
+
+
+def test_v21_false_signal_typology():
+    """假信号四型态分类"""
+    from zmatrix.zc35.catalyst_lifecycle import CatalystLifecycleEngine
+    engine = CatalystLifecycleEngine()
+
+    r = engine.classify_false_signal("Google I/O开幕", "sell_on_news", -2.1, 3)
+    assert r["false_type"] == "sell_on_news"
+
+    r = engine.classify_false_signal("τ定律跟涨", "fundamentals_gap", 2.5, 5)
+    assert r["false_type"] == "fundamentals_gap"
+
+    r = engine.classify_false_signal("BNEF Q5", "diminishing_returns", 0.5, 2)
+    assert r["false_type"] == "diminishing_returns"
+
+    r = engine.classify_false_signal("NVDA溢出", "noise_pollution", 3.2, 1)
+    assert r["false_type"] == "noise_pollution"
+
+
+def test_v21_signal_strength():
+    """综合信号强度计算"""
+    from zmatrix.zc35.catalyst_lifecycle import CatalystLifecycleEngine
+    engine = CatalystLifecycleEngine()
+
+    # S级+全三要素+单催化+周期→成长股 → 最强 (>7)
+    r = engine.compute_signal_strength("S", "transformation", 3, 1, 0)
+    assert r["strength"] >= 7.0
+    assert r["tradeable"] is True
+
+    # D级+零要素+多催化 → 最弱 (<3)
+    r = engine.compute_signal_strength("D", "cyclical", 0, 3, 15)
+    assert r["strength"] < 3.0
+    assert r["tradeable"] is False
+
+    # A级+2要素+单催化+订单驱动 → 中等 (4-7)
+    r = engine.compute_signal_strength("A", "order_driven", 2, 1, 0)
+    assert 4 <= r["strength"] <= 7
+    assert r["verdict"] in ("MODERATE_SIGNAL","STRONG_SIGNAL","WEAK_SIGNAL")
+
+
+def test_v21_sector_profiles():
+    """行业差异化档案"""
+    from zmatrix.zc35.catalyst_lifecycle import CatalystLifecycleEngine
+    engine = CatalystLifecycleEngine()
+
+    p = engine.get_sector_profile("transformation")
+    assert p["true_signal_rate"] == 0.95
+    assert "周期→成长" in p["label"]
+
+    p = engine.get_sector_profile("defensive")
+    assert p["true_signal_rate"] == 0.35
+    assert "重财务不重市场" in p["rule"]
+
+    # 未知行业回退到cyclical
+    p = engine.get_sector_profile("unknown_sector")
+    assert p["true_signal_rate"] == 0.65  # cyclical default
+

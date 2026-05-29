@@ -343,3 +343,198 @@ class CatalystLifecycleEngine:
         if n >= 3:
             return f"{n}重催化叠加 — 窗口缩短至{stack['effective_window_days']}天, 主导情绪{dominant}, ⚠️加速催熟风险"
         return f"{n}重催化 — 有效窗口{stack['effective_window_days']}天, 主导{dominant}"
+
+    # ── v2.1 信号分类方法 (基于Top 50大数据实证) ──
+
+    TRUE_SIGNAL_TRIAD = [
+        "business_relevance",  # 要素1: 与核心业务直接关联
+        "financial_verification",  # 要素2: 有可量化财务/运营验证
+        "cycle_resonance",  # 要素3: 行业/宏观周期同向共振
+    ]
+
+    FALSE_SIGNAL_TYPES = {
+        "sell_on_news": "利好出尽型 — 催化已充分预期, 发布即卖",
+        "fundamentals_gap": "基本面脱节型 — 题材热但公司无法承接",
+        "diminishing_returns": "边际递减型 — 同质催化重复, 信息增量→0",
+        "noise_pollution": "噪音污染型 — 规模太小/非A股驱动, 市场忽略",
+    }
+
+    SECTOR_PROFILES = {
+        "cyclical": {
+            "label": "周期股(钢铁/有色/化工)",
+            "rule": "重市场不重财务",
+            "best_catalyst": "S/A级: 商品价格突破",
+            "true_signal_rate": 0.65,
+            "avg_window_days": 15,
+        },
+        "order_driven": {
+            "label": "订单驱动型(特高压/军工)",
+            "rule": "中标放量是唯一真信号",
+            "best_catalyst": "A级: 大额中标(>10亿)",
+            "true_signal_rate": 0.57,
+            "avg_window_days": 13,
+        },
+        "certification": {
+            "label": "认证/技术型(储能/电池/芯片)",
+            "rule": "认证边际递减, 需业绩验证接力",
+            "best_catalyst": "A级: 首次国际认证 / 技术突破",
+            "true_signal_rate": 0.65,
+            "avg_window_days": 10,
+        },
+        "defensive": {
+            "label": "消费/防御型(食品/粮食)",
+            "rule": "重财务不重市场",
+            "best_catalyst": "B级: 财报改善 / 分红公告",
+            "true_signal_rate": 0.35,
+            "avg_window_days": 6,
+        },
+        "transformation": {
+            "label": "周期→成长切换型",
+            "rule": "行业拐点+结构扩张=最强催化",
+            "best_catalyst": "S级: 行业周期拐点+海外扩张+财政共振",
+            "true_signal_rate": 0.95,
+            "avg_window_days": 20,
+        },
+    }
+
+    def classify_true_signal(self, event_name: str, event_level: str,
+                             business_relevance: bool = False,
+                             financial_verification: bool = False,
+                             cycle_resonance: bool = False) -> dict:
+        """真信号三要素判定
+        
+        基于Top 50大数据实证: 三要素全满足=真信号, 缺一存疑, 缺二必假
+        
+        Args:
+            business_relevance: 催化与公司核心业务直接关联?
+            financial_verification: 有可量化的财务/运营数据验证?
+            cycle_resonance: 与行业/宏观周期同向共振?
+        """
+        elements = {
+            "business_relevance": business_relevance,
+            "financial_verification": financial_verification,
+            "cycle_resonance": cycle_resonance,
+        }
+        score = sum(1 for v in elements.values() if v)
+
+        if score == 3:
+            verdict = "TRUE_SIGNAL"
+            confidence = 0.85
+            action = "可操作, 按催化级别执行T2/T3周期"
+        elif score == 2:
+            verdict = "WEAK_SIGNAL"
+            confidence = 0.50
+            missing = [k for k, v in elements.items() if not v]
+            action = f"信号存疑, 缺少: {missing}"
+        elif score == 1:
+            verdict = "LIKELY_FALSE"
+            confidence = 0.25
+            action = "大概率假信号, 不建议操作"
+        else:
+            verdict = "FALSE_SIGNAL"
+            confidence = 0.10
+            action = "假信号, 远离"
+
+        return {
+            "event": event_name,
+            "level": event_level,
+            "verdict": verdict,
+            "confidence": confidence,
+            "triad_score": f"{score}/3",
+            "elements": elements,
+            "action": action,
+        }
+
+    def classify_false_signal(self, event_name: str, reason: str,
+                              price_change_pct: float = 0,
+                              window_days: int = 0) -> dict:
+        """假信号四型态分类
+        
+        Args:
+            reason: 'sell_on_news' | 'fundamentals_gap' | 'diminishing_returns' | 'noise_pollution'
+        """
+        if reason not in self.FALSE_SIGNAL_TYPES:
+            # 自动推断
+            if window_days <= 2 and abs(price_change_pct) < 3:
+                reason = "noise_pollution"
+            elif window_days <= 3 and price_change_pct > 0:
+                reason = "sell_on_news"
+            elif window_days >= 5 and price_change_pct < 5:
+                reason = "fundamentals_gap"
+            else:
+                reason = "diminishing_returns"
+
+        return {
+            "event": event_name,
+            "false_type": reason,
+            "description": self.FALSE_SIGNAL_TYPES.get(reason, str(reason)),
+            "price_change_pct": price_change_pct,
+            "window_days": window_days,
+            "action": "AVOID — 不以此催化为操作依据",
+        }
+
+    def compute_signal_strength(self, level: str, sector: str = "cyclical",
+                                triad_score: int = 3,
+                                stack_count: int = 1,
+                                days_since_event: int = 0) -> dict:
+        """综合信号强度计算
+        
+        整合: 催化级别 + 行业规律 + 三要素 + 叠加惩罚 + 时间衰减
+        
+        Returns:
+            {"strength": 0-10, "verdict": str, "window_days": int, "tradeable": bool}
+        """
+        taxonomy = CATALYST_TAXONOMY.get(level, CATALYST_TAXONOMY["D"])
+        sector_p = self.SECTOR_PROFILES.get(sector, self.SECTOR_PROFILES["cyclical"])
+
+        # 基础强度: 催化级别
+        base_strength = {"S": 8, "A": 6, "B": 4, "C": 2, "D": 0}.get(level, 0)
+
+        # 三要素修正: 每缺一要素 -2
+        triad_penalty = (3 - triad_score) * 2
+
+        # 叠加惩罚: 每多一层 -1
+        stack_penalty = max(0, stack_count - 1) * 1
+
+        # 时间衰减: D+7后开始衰减
+        time_decay = max(0, (days_since_event - 7) * 0.3) if days_since_event > 7 else 0
+
+        # 行业基准修正
+        sector_bonus = (sector_p["true_signal_rate"] - 0.55) * 3  # vs大盘55%基准
+
+        strength = max(0, min(10, base_strength - triad_penalty - stack_penalty - time_decay + sector_bonus))
+
+        if strength >= 7:
+            verdict = "STRONG_SIGNAL"
+            tradeable = True
+        elif strength >= 5:
+            verdict = "MODERATE_SIGNAL"
+            tradeable = True
+        elif strength >= 3:
+            verdict = "WEAK_SIGNAL"
+            tradeable = False
+        else:
+            verdict = "NO_SIGNAL"
+            tradeable = False
+
+        # 有效窗口 = 基准窗口 × (strength/10) / 叠加系数
+        raw_window = taxonomy["full_decay_days"]
+        effective_window = int(raw_window * (strength / 10) / max(1, 1 + (stack_count - 1) * 0.25))
+
+        return {
+            "strength": round(strength, 1),
+            "verdict": verdict,
+            "tradeable": tradeable,
+            "effective_window_days": effective_window,
+            "components": {
+                "base_from_level": base_strength,
+                "triad_penalty": -triad_penalty,
+                "stack_penalty": -stack_penalty,
+                "time_decay": round(-time_decay, 1),
+                "sector_adjustment": round(sector_bonus, 1),
+            },
+        }
+
+    def get_sector_profile(self, sector: str = "cyclical") -> dict:
+        """获取行业催化规律档案"""
+        return dict(self.SECTOR_PROFILES.get(sector, self.SECTOR_PROFILES["cyclical"]))

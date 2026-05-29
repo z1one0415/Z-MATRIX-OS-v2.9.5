@@ -331,7 +331,7 @@ class RoleDispatcher:
                 matrix_name="R-Matrix",
                 execution_mode=r_mode,
                 allowed_action=r_action,
-                real_trade_allowed=r_mode == "human_confirm",
+                real_trade_allowed=False,  # v4.0 hardening: human_confirm ≠ real trade
             ))
 
         # D-Matrix 候选 — 默认 paper/shadow 模式
@@ -353,7 +353,7 @@ class RoleDispatcher:
                 matrix_name="D-Matrix",
                 execution_mode=d_mode,
                 allowed_action=d_action,
-                real_trade_allowed=d_mode == "human_confirm",
+                real_trade_allowed=False,  # v4.0 hardening: human_confirm ≠ real trade
             ))
 
         # D-Matrix v2.1 candidate — preheat only. It may enter Alpha validation,

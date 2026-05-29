@@ -36,7 +36,11 @@ total += s; details.append(f"3. Repo Hygiene: {r} ({s}/10)")
 # 4. Safety deep scan (15 pts)
 safety = subprocess.run(["python3", "scripts/verify_rc1_safety_deep_scan.py"], capture_output=True, text=True, cwd=str(WORKSPACE))
 try:
-    safety_json = json.loads(safety.stdout.strip() or "{}")
+    # Extract first JSON object from output (may have trailing text)
+    out = safety.stdout.strip()
+    brace_end = out.rfind("}")
+    json_str = out[:brace_end+1] if brace_end > 0 else "{}"
+    safety_json = json.loads(json_str)
     safety_pass = safety_json.get("scan_status") == "PASS"
 except:
     safety_pass = False

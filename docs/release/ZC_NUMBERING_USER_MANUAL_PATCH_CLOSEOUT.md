@@ -38,3 +38,19 @@
 | Broker/runtime | BLOCKED |
 | Real trade | BLOCKED |
 | Paper-only | TRUE |
+
+## Patch v1.1.1 — Markdown Table Format Fix
+
+Status: PASS
+Scope: Documentation format only
+File fixed: docs/upgrade/V40_CONTENT_ASSET_INDEX.md
+Issue: Asset Index Markdown table header had 4 columns but separator had 3 columns.
+Fix: Updated separator to `|---|---|---|---|`.
+
+No business logic changed.
+No strategy logic changed.
+No tag moved.
+No retag performed.
+Production remains BLOCKED.
+Broker/runtime remains BLOCKED.
+Real trade remains BLOCKED.

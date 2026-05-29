@@ -95,3 +95,17 @@ This release candidate meets all integration, safety, and completeness criteria.
 3. Publishing RC1 release notes
 
 The RC1 tag has NOT been created. Production remains BLOCKED. Broker/runtime remain BLOCKED.
+
+---
+
+## RC1 Tagging Result
+
+| Field | Value |
+|-------|-------|
+| RC1 tag | **v4.0-rc1** |
+| Tag target | f8796f714740b5e8c76ab53d768888a8de87dfdd |
+| Tag created | **TRUE** (2026-05-29T21:07:48+08:00) |
+| Tag pushed to origin | TRUE |
+| Production enabled | FALSE |
+| Broker/runtime enabled | FALSE |
+| Real trade enabled | FALSE |

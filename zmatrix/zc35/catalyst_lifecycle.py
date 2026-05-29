@@ -27,7 +27,7 @@ CATALYST_TAXONOMY = {
         "price_amplification": 1.0,
         "sentiment_boost_c": 40,
         "sell_on_news_risk": "MEDIUM",
-        "tradeable": True,
+        "paper_trackable": True,
     },
     "A": {
         "label": "国家级政策/标准",
@@ -39,7 +39,7 @@ CATALYST_TAXONOMY = {
         "price_amplification": 0.55,
         "sentiment_boost_c": 20,
         "sell_on_news_risk": "HIGH",
-        "tradeable": True,
+        "paper_trackable": True,
     },
     "B": {
         "label": "公司级事件/预期",
@@ -51,7 +51,7 @@ CATALYST_TAXONOMY = {
         "price_amplification": 0.35,
         "sentiment_boost_c": 12,
         "sell_on_news_risk": "MEDIUM",
-        "tradeable": True,
+        "paper_trackable": True,
     },
     "C": {
         "label": "行业会议/外部财报",
@@ -63,7 +63,7 @@ CATALYST_TAXONOMY = {
         "price_amplification": 0.15,
         "sentiment_boost_c": 6,
         "sell_on_news_risk": "HIGH",
-        "tradeable": False,  # 仅会前可做, 开幕即卖
+        "paper_trackable": False,  # 仅会前可做, 开幕即卖
     },
     "D": {
         "label": "无效催化 ⚠️ NEGATIVE",
@@ -75,7 +75,7 @@ CATALYST_TAXONOMY = {
         "price_amplification": -0.10,  # 负信号!
         "sentiment_boost_c": -10,
         "sell_on_news_risk": "CERTAIN",
-        "tradeable": False,
+        "paper_trackable": False,
     },
 }
 
@@ -161,8 +161,13 @@ class CatalystLifecycleEngine:
             return amp  # 负信号
         if days_since_event >= full:
             return 0.0
+        pre_run = profile["pre_run_days"]
+        if days_since_event < -pre_run:
+            return 0.0  # 远期未发生事件, 不应定价
         if days_since_event <= 0:
-            return amp * 0.8  # 未发生时已有80%定价
+            # pre-run ramp: D-(pre_run)→0%  →  D+0→80%
+            ramp = 1.0 - abs(days_since_event) / max(1, pre_run)
+            return amp * 0.8 * max(0.0, ramp)
         if days_since_event <= half:
             # 前半段: 1.0 → 0.5
             return amp * (1.0 - 0.5 * days_since_event / half)
@@ -207,7 +212,8 @@ class CatalystLifecycleEngine:
             days = cat.get("days_since_event", 999)
             residual = self.compute_residual_power(level, days)
             taxonomy = CATALYST_TAXONOMY.get(level, CATALYST_TAXONOMY["D"])
-            if taxonomy["full_decay_days"] > 0 and days < taxonomy["full_decay_days"]:
+            pre_run = taxonomy.get("pre_run_days", 0)
+            if taxonomy["full_decay_days"] > 0 and -pre_run <= days < taxonomy["full_decay_days"]:
                 active.append({
                     "name": cat.get("name", "?"),
                     "level": level,
@@ -266,7 +272,7 @@ class CatalystLifecycleEngine:
             lifecycle = "PRE_EVENT"
 
         # 交易信号判断
-        if taxonomy["tradeable"] and lifecycle == "EVENT_ACTIVE" and residual > 0.3:
+        if taxonomy["paper_trackable"] and lifecycle == "EVENT_ACTIVE" and residual > 0.3:
             signal = "PAPER_TRACK"  # 可纸面追踪
         elif lifecycle == "PRE_RUN":
             signal = "WATCH_PRE_RUN"
@@ -290,7 +296,7 @@ class CatalystLifecycleEngine:
             "peak_phase": taxonomy["peak_phase"],
             "sell_on_news_risk": taxonomy["sell_on_news_risk"],
             "sentiment_boost_c": taxonomy["sentiment_boost_c"],
-            "tradeable": taxonomy["tradeable"],
+            "paper_trackable": taxonomy["paper_trackable"],
             "action": signal,
             "direct_trade_allowed": False,
             "real_trade_allowed": False,
@@ -482,7 +488,7 @@ class CatalystLifecycleEngine:
         整合: 催化级别 + 行业规律 + 三要素 + 叠加惩罚 + 时间衰减
         
         Returns:
-            {"strength": 0-10, "verdict": str, "window_days": int, "tradeable": bool}
+            {"strength": 0-10, "verdict": str, "window_days": int, "paper_trackable": bool}
         """
         taxonomy = CATALYST_TAXONOMY.get(level, CATALYST_TAXONOMY["D"])
         sector_p = self.SECTOR_PROFILES.get(sector, self.SECTOR_PROFILES["cyclical"])
@@ -506,16 +512,16 @@ class CatalystLifecycleEngine:
 
         if strength >= 7:
             verdict = "STRONG_SIGNAL"
-            tradeable = True
+            paper_trackable = True
         elif strength >= 5:
             verdict = "MODERATE_SIGNAL"
-            tradeable = True
+            paper_trackable = True
         elif strength >= 3:
             verdict = "WEAK_SIGNAL"
-            tradeable = False
+            paper_trackable = False
         else:
             verdict = "NO_SIGNAL"
-            tradeable = False
+            paper_trackable = False
 
         # 有效窗口 = 基准窗口 × (strength/10) / 叠加系数
         raw_window = taxonomy["full_decay_days"]
@@ -524,7 +530,7 @@ class CatalystLifecycleEngine:
         return {
             "strength": round(strength, 1),
             "verdict": verdict,
-            "tradeable": tradeable,
+            "paper_trackable": paper_trackable,
             "effective_window_days": effective_window,
             "components": {
                 "base_from_level": base_strength,

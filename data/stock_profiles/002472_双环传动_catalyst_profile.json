@@ -17,7 +17,12 @@
       "2026_Q2_May": "18 daily bars, full OHLCV ✅",
       "total_daily_bars": 394,
       "coverage_quality": "HIGH — 16 months continuous daily data"
-    }
+    },
+    "data_status": "LIVE_CASE_STUDY",
+    "backtest_validated": false,
+    "cross_ticker_validated": false,
+    "production_allowed": false,
+    "audit_note": "单标的+事后复盘→不可直接晋级生产/RC1→需跨标的验证"
   },
   "ticker": "002472",
   "name": "双环传动",

@@ -49,11 +49,11 @@ def test_v2_taxonomy():
     s = CATALYST_TAXONOMY["S"]
     assert s["half_life_days"] == 7
     assert s["full_decay_days"] == 15
-    assert s["tradeable"] is True
+    assert s["paper_trackable"] is True
 
     d = CATALYST_TAXONOMY["D"]
     assert d["price_amplification"] < 0  # 负信号!
-    assert d["tradeable"] is False
+    assert d["paper_trackable"] is False
 
 
 def test_v2_residual_power():
@@ -136,7 +136,7 @@ def test_v2_full_analysis():
     assert result["lifecycle"] == "POST_EVENT_DECAY"
     assert result["sentiment_phase"] == "CONTINUATION"
     assert 0.3 < result["residual_power"] < 0.6
-    assert result["tradeable"] is True
+    assert result["paper_trackable"] is True
 
 
 def test_v2_batch_analyze():
@@ -155,10 +155,8 @@ def test_v2_batch_analyze():
 
 def test_stock_profile_loading():
     """股票档案JSON加载"""
-    profile_path = Path(__file__).parent.parent.parent / "data" / "stock_profiles" / "002472_双环传动_catalyst_profile.json"
-    if not profile_path.exists():
-        # 尝试从workspace路径
-        profile_path = Path.home() / "Documents" / "Z-MATRIX-OS v2.9.5" / "data" / "stock_profiles" / "002472_双环传动_catalyst_profile.json"
+    # Fix: resolve from repo root, no local ~/Documents fallback
+    profile_path = Path(__file__).resolve().parents[1] / "data" / "stock_profiles" / "002472_双环传动_catalyst_profile.json"
     
     assert profile_path.exists(), f"股票档案不存在: {profile_path}"
     
@@ -223,12 +221,12 @@ def test_v21_signal_strength():
     # S级+全三要素+单催化+周期→成长股 → 最强 (>7)
     r = engine.compute_signal_strength("S", "transformation", 3, 1, 0)
     assert r["strength"] >= 7.0
-    assert r["tradeable"] is True
+    assert r["paper_trackable"] is True
 
     # D级+零要素+多催化 → 最弱 (<3)
     r = engine.compute_signal_strength("D", "cyclical", 0, 3, 15)
     assert r["strength"] < 3.0
-    assert r["tradeable"] is False
+    assert r["paper_trackable"] is False
 
     # A级+2要素+单催化+订单驱动 → 中等 (4-7)
     r = engine.compute_signal_strength("A", "order_driven", 2, 1, 0)

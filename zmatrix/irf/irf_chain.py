@@ -107,7 +107,7 @@ def irf05_account_review_chain():
 
 def irf06_portfolio_alpha_chain():
     """IRF-06: Portfolio Alpha Review — 组合Alpha审查"""
-    from zmatrix.factor_factory.factory_depth import OutcomeHorizonIntegrity, NetReturnCalculator
+    from zmatrix.factor_factory.factory import OutcomeHorizonIntegrity, NetReturnCalculator
 
     # Step 1: OutcomeHorizonIntegrity.check()
     forward_bars = [f"2026-06-{i:02d}" for i in range(1, 22)]
@@ -190,8 +190,7 @@ def irf07_multi_strategy_chain():
 def irf08_factor_data_chain():
     """IRF-08: Factor & Proprietary Data Factory — 因子与专有数据工厂"""
     from zmatrix.dataforge.forge import DataQualityScore
-    from zmatrix.factor_factory.factory_depth import OutcomeHorizonIntegrity
-    from zmatrix.factor_factory.factory import FactorPromotionGate
+    from zmatrix.factor_factory.factory import OutcomeHorizonIntegrity, FactorPromotionGate
 
     # Step 1: EvidenceCard + DataQualityScore.compute()
     card = EvidenceCard("ev8", "DATA_FACTORY", "2026-05-29", "DS_R_PRICE", "close", 10.5, "2026-05-29")

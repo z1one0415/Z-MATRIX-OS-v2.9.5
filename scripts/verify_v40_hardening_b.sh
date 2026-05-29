@@ -17,7 +17,7 @@ print('  ✅ Dispatcher real_trade_allowed expressions cleared')
 # Acceptance matrix truth
 python3 -c "
 t=open('docs/upgrade/V40_FULL_SCOPE_ACCEPTANCE_MATRIX.md',encoding='utf-8').read()
-assert 'SMOKE_PROTOTYPE' in t; assert 'NOT_APPROVED' in t; assert 'BLOCKED' in t
+            assert ("INTEGRATION_SMOKE_CANDIDATE" in t or "SMOKE_PROTOTYPE" in t); assert "NOT_APPROVED" in t; assert "BLOCKED" in t
 assert 'SMOKE_DONE' in t; assert 'NOT_DONE' in t
 print('  ✅ Acceptance matrix truthful')
 "
@@ -32,7 +32,7 @@ print('  ✅ Content asset index truthful')
 # Closeout truth report
 python3 -c "
 t=open('docs/release/V40_CLOSEOUT_TRUTH_REPORT.md',encoding='utf-8').read()
-assert 'SMOKE_PROTOTYPE' in t; assert 'NOT_APPROVED' in t; assert 'BLOCKED' in t
+assert ("SMOKE_PROTOTYPE" in t or "INTEGRATION_SMOKE_CANDIDATE" in t); assert "NOT_APPROVED" in t; assert "BLOCKED" in t
 print('  ✅ Closeout truth report present')
 "
 

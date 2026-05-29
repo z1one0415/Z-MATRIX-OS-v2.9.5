@@ -1,0 +1,2 @@
+# Single Stock Research Report
+**⚠️ PAPER-ONLY RESEARCH REPORT — NO TRADING RECOMMENDATION**

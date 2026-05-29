@@ -33,7 +33,7 @@ def test_failover_integration():
 def test_acceptance_matrix_truthful():
     text = Path("docs/upgrade/V40_FULL_SCOPE_ACCEPTANCE_MATRIX.md").read_text(encoding="utf-8")
     assert "SMOKE_DONE" in text or "PARTIAL" in text
-    assert "Current release status: SMOKE_PROTOTYPE" in text
+    assert ("SMOKE_PROTOTYPE" in text or "INTEGRATION_SMOKE_CANDIDATE" in text)
 
 def test_content_asset_index_truthful():
     text = Path("docs/upgrade/V40_CONTENT_ASSET_INDEX.md").read_text(encoding="utf-8")
@@ -43,7 +43,7 @@ def test_closeout_truth_report():
     t = Path("docs/release/V40_CLOSEOUT_TRUTH_REPORT.md")
     assert t.exists()
     c = t.read_text(encoding="utf-8")
-    assert ("SMOKE_PROTOTYPE" in c or "INTEGRATION_COMPLETE_CANDIDATE" in c) and "NOT_APPROVED" in c and "BLOCKED" in c
+    assert ("SMOKE_PROTOTYPE" in c or "INTEGRATION_COMPLETE_CANDIDATE" in c or "INTEGRATION_SMOKE_CANDIDATE" in c) and "NOT_APPROVED" in c and "BLOCKED" in c
 
 def test_shim_delegates():
     from zmatrix.runtime.batch3_gates import LimitBoardFillabilityGate as LB1

@@ -1,24 +1,27 @@
 # V40 Closeout Truth Report
 
 ## Current Status
-Current release status: INTEGRATION_COMPLETE_CANDIDATE
+Current release status: INTEGRATION_SMOKE_CANDIDATE
 RC1 status: NOT_APPROVED
 Production status: BLOCKED
 Broker/runtime status: BLOCKED
 Real trade status: BLOCKED
 
-## What Is Done
-- C1 DataForge: source registry, evidence card, quality scoring ✅
-- C2 FactorFactory: outcome horizon, net return, promotion gate ✅
-- C3 Research Council: 12 reviewer skills, deterministic scoring ✅
-- C4 Reports: 12 templates, markdown renderer, missing field policy ✅
-- C5 ExecutionQuality: cost model, limit board, paper preview ✅
-- C6 AccountGovernance: capital curve, permission gate ✅
-- C7 Cockpit/Audit: output envelope, audit event, export pack, forbidden scan ✅
-- C8 IRF: 8 integration pipelines with OutputEnvelope + AuditEvent ✅
+This release is not RC1. This release is not production-ready. This release is paper-only / research-only.
 
-## Hardening-C Complete
-C0 scope lock → C8 IRF pipelines all implemented with tests and verify scripts.
+## What Is Done
+- C0: Scope lock + acceptance matrix
+- C1 DataForge: MINIMAL_CORE_DONE
+- C2 FactorFactory: MINIMAL_CORE_DONE
+- C3 Research Council: MINIMAL_CORE_DONE
+- C4 Reports: MINIMAL_CORE_DONE
+- C5 ExecutionQuality: MINIMAL_CORE_DONE
+- C6 AccountGovernance: MINIMAL_CORE_DONE
+- C7 Audit/Cockpit: MINIMAL_CORE_DONE
+- C8 IRF: INTEGRATION_SMOKE_DONE
+
+## Hardening-C2 Target
+Upgrade all C1-C8 from MINIMAL_CORE_DONE to INTEGRATION_DONE.
 
 ## Safety
 real_trade_allowed=False | broker_order_allowed=False | runtime_enabled=False

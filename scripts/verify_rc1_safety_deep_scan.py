@@ -49,6 +49,13 @@ SCAN_ROOTS = ["zmatrix", "scripts", "docs"]
 ALLOWLIST_TOKEN = "allowlist: forbidden-token-definition"
 SKIP_DIR = "docs/rc1_audit"
 SKIP_FILES = {".gitignore"}
+# Post-RC1 audit scripts contain forbidden token definitions for scanning purposes
+SKIP_PREFIXES = (
+    "scripts/verify_post_rc1_",
+    "scripts/verify_v40_rc1_tag_",
+    "docs/release_integrity/",
+    "docs/release/V4_0_RC1_RELEASE_NOTE_DRAFT.md",
+)
 
 EXTENSIONS = {".py", ".sh", ".md"}
 
@@ -62,6 +69,10 @@ def _is_skippable(file_path: Path) -> bool:
     rel = str(file_path.relative_to(WORKSPACE))
     if rel.startswith(SKIP_DIR + os.sep) or rel == SKIP_DIR:
         return True
+    # Skip post-RC1 audit scripts (contain forbidden token definitions for scanning)
+    for prefix in SKIP_PREFIXES:
+        if rel.startswith(prefix):
+            return True
     return False
 
 

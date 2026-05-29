@@ -1,0 +1,18 @@
+{
+  "audit_name": "V4.0 FINAL-HARDGATES RC1 Readiness Audit",
+  "baseline_commit": "0ccf235",
+  "baseline_branch": "v4.0-batch-0-final-hardgates-scope-lock",
+  "release_status": "INTEGRATION_COMPLETE_CANDIDATE",
+  "rc1_status": "NOT_APPROVED",
+  "production_status": "BLOCKED",
+  "broker_runtime_status": "BLOCKED",
+  "real_trade_status": "BLOCKED",
+  "audit_mode": "READ_ONLY",
+  "rc1_tag_allowed": false,
+  "cumulative_tests": 86,
+  "github_combined_status": "EMPTY",
+  "ci_workflows_exist": false,
+  "hardening_c2_verified": true,
+  "hardening_c3_verified": true,
+  "audit_timestamp": "2026-05-29T16:30:00+08:00"
+}

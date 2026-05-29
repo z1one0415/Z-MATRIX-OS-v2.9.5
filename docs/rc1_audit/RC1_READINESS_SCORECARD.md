@@ -25,3 +25,10 @@ Recommendation: **RC1_READY_RECOMMENDED**
 > ⚠️ This is a READ-ONLY audit recommendation.
 > RC1 tag NOT created. Production NOT enabled.
 > Human approval REQUIRED before any RC1 action.
+## CI Cloud Run Evidence
+- ✅ GitHub Actions CI: v40-rc1-audit.yml
+- Run ID: 26628887208
+- Run URL: https://github.com/z1one0415/Z-MATRIX-OS-v2.9.5/actions/runs/26628887208
+- Head SHA: b11c080
+- Conclusion: success
+- Tests: 122 passed, 0 failed

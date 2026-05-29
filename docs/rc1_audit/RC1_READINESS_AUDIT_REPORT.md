@@ -1,12 +1,13 @@
 # V4.0 FINAL-HARDGATES RC1 Readiness Audit Closeout Report
 
-## Audit Metadata
-
+## Final Status
 | Field | Value |
 |-------|-------|
 | Audit Name | V4.0 FINAL-HARDGATES RC1 Readiness Audit |
 | Baseline Commit | 0ccf235 |
-| Final Audit Commit | (TBD) |
+| Final Audit Commit | b11c080 |
+| CI Run ID | 26628887208 |
+| CI Conclusion | success |
 | Branch | v4.0-batch-0-final-hardgates-scope-lock |
 | Audit Mode | READ_ONLY |
 | RC1 Tag Created | FALSE |
@@ -73,7 +74,12 @@
 
 ## Known Items
 
-1. **GitHub Combined Status**: EMPTY — CI workflow exists but has not yet run. Combined status will populate after first CI run on push.
+1. **GitHub Actions CI**: PASS ✅
+   - Workflow: v40-rc1-audit.yml
+   - Run ID: 26628887208
+   - Run URL: https://github.com/z1one0415/Z-MATRIX-OS-v2.9.5/actions/runs/26628887208
+   - Head SHA: b11c080
+   - Conclusion: success
 2. **CONDITIONAL Modules**: 4 modules at DEPTH_PARTIAL — documented, intentional, not blocking RC1.
 3. **runtime_reports/rc1_audit/**: Contains full verify logs (not tracked by git).
 

@@ -7,12 +7,12 @@
 | P2-B.1 | Schema & Guardrail Alignment | ✅ DONE |
 | P2-C | Industry/Sector/Chain Mapping | ✅ DONE |
 | P2-D | Snapshot/Integrity/Coverage/Report | ✅ DONE |
-| P2-E | Verify + CI + Local Closeout | IN_PROGRESS |
-| P2-F | Cloud Acceptance | NOT_STARTED |
+| P2-E | Verify + CI + Local Closeout | ✅ DONE |
+| P2-F | Cloud Acceptance | ✅ DONE |
 
 ## Safety
 
 - Production: BLOCKED
 - Broker/runtime: BLOCKED
 - Real trade: BLOCKED
-- Phase3 allowed: FALSE
+- Phase3 allowed: TRUE

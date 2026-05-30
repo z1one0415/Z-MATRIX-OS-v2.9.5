@@ -1,41 +1,48 @@
 # ResearchDB Phase 2 Closeout Report
 
-## Status: PHASE2_LOCAL_VERIFICATION_PENDING
+## Status: PHASE2_CLOUD_ACCEPTED
 
 | Field | Value |
 |-------|-------|
 | Phase | ResearchDB Phase 2: Master Data & Industry/Chain Mapping |
-| Status | PHASE2_LOCAL_VERIFICATION_PENDING |
-| Cloud status | NOT_STARTED |
-| Phase3 allowed | FALSE |
+| Status | PHASE2_CLOUD_ACCEPTED |
+| Cloud workflow run | 26676117619 |
+| Cloud conclusion | success |
+| Phase3 allowed | TRUE |
 | Real vendor data imported | FALSE |
 | Production | BLOCKED |
 | Broker/runtime | BLOCKED |
 | Real trade | BLOCKED |
 
-## Scope
+## Full Phase 2 Sub-phases
 
-Phase 2 established the complete master data layer with 144 tests across 6 sub-phases.
+| Phase | Item | Status |
+|:-----:|------|:------:|
+| P2-A | Schema + Guardrail + Fixtures | ✅ DONE |
+| P2-B | Security Master + Ticker Resolver | ✅ DONE |
+| P2-B.1 | Schema & Guardrail Alignment | ✅ DONE |
+| P2-C | Industry/Sector/Chain Mapping | ✅ DONE |
+| P2-D | Snapshot/Integrity/Coverage/Report | ✅ DONE |
+| P2-E | Verify + CI + Local Closeout | ✅ DONE |
+| P2-F | Cloud Acceptance Closeout | ✅ DONE |
 
-## Deliverables
+## Deliverables Summary
 
-| Sub-phase | Modules | Tests |
-|------|:--:|:--:|
-| P2-A | 1 schema file + 6 templates + 6 fixtures | 25 |
-| P2-B | 4 resolver/registry modules | 53 |
-| P2-B.1 | master_schema.py alignment | 15 |
-| P2-C | 4 mapping modules | 37 |
-| P2-D | 5 integrity/report modules | 14 |
-| P2-E | verify + CI + depth gate | pending |
-| **Total** | **15 modules** | **144** |
+| Category | Count |
+|------|:--:|
+| Code modules | 15 |
+| CSV templates | 6 |
+| Synthetic fixtures | 6 |
+| Tests | 167 |
+| CI workflows | 2 |
+| Verify scripts | 3 |
 
 ## Known Limitations
 
 - Mapping coverage depends on fixture population
-- Integrity checker uses simple string heuristics
 - Chain taxonomy hierarchy limited to 1 level
-- P2-F cloud acceptance pending
+- Real vendor data import pending (local private only)
 
-## Next Phase Allowed
+## Next Phase
 
-P2-E → P2-F after local verification passes.
+**Phase 3: 行情/基准/Outcome验证库**

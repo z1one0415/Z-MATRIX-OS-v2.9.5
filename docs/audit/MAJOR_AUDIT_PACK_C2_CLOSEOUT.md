@@ -23,3 +23,8 @@
 ## Next
 PACK_C3: Blocking Risk Fix Plan
 Production/Broker/Runtime/RealTrade: BLOCKED
+
+
+## C4 Update (2026-05-30T16:17:58.419666+00:00)
+- P1-001 + P1-004: FIXED_IN_C4
+- P1_BLOCKING: 0

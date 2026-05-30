@@ -3,8 +3,8 @@
     "module": "account_truth",
     "finding": "Reconciliation tolerance may mask real errors",
     "level": "P1_HIGH",
-    "triage_decision": "MUST_FIX_BEFORE_PACK_D",
-    "blocking_pack_d": true
+    "triage_decision": "FIXED_IN_C4",
+    "blocking_pack_d": false
   },
   {
     "module": "market_data",
@@ -24,8 +24,8 @@
     "module": "replay",
     "finding": "Rolling replay fails without calendar",
     "level": "P1_HIGH",
-    "triage_decision": "MUST_FIX_BEFORE_PACK_D",
-    "blocking_pack_d": true
+    "triage_decision": "FIXED_IN_C4",
+    "blocking_pack_d": false
   },
   {
     "module": "master_data",

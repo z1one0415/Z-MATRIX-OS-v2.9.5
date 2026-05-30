@@ -32,5 +32,9 @@ class ReplayRunner:
         return self.run_replay(experiment_id, [s])
 
     def run_rolling_replay(self, experiment_id: str, start: str, end: str, window: int = 20, step: int = 5) -> ReplayResult:
+        if self.dataset.cal is None:
+            result = ReplayResult(experiment_id=experiment_id, status="FAILED")
+            result.details = {"error_type": "CALENDAR_MISSING", "message": "Rolling replay requires a trading calendar"}
+            return result
         ds = RollingDataset(tickers=self.dataset.tickers, bars=self.dataset.bars, cal=self.dataset.cal)
         return self.run_replay(experiment_id, ds.generate_rolling_slices(start, end, window, step))

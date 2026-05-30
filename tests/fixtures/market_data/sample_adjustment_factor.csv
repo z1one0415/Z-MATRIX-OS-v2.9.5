@@ -1,0 +1,4 @@
+ticker,trade_date,adj_factor,adj_type,source_file
+000001,2024-01-02,1.0,FORWARD,
+000001,2024-01-05,1.0,FORWARD,
+600519,2024-01-02,1.0,FORWARD,

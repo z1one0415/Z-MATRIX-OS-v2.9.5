@@ -77,3 +77,20 @@ data/research_db/master_data/**/*akshare*
 !data/research_db/master_data/raw/.gitkeep
 !data/research_db/master_data/staging/.gitkeep
 !data/research_db/master_data/vendor/.gitkeep
+
+# ResearchDB Phase 3 market data — NEVER commit raw/vendor market data
+data/research_db/market_data/raw/*
+data/research_db/market_data/staging/*
+data/research_db/market_data/vendor/*
+data/research_db/market_data/**/*.xlsx
+data/research_db/market_data/**/*.xls
+data/research_db/market_data/**/*.vendor.csv
+data/research_db/market_data/**/*.raw.csv
+data/research_db/market_data/**/*wind*
+data/research_db/market_data/**/*choice*
+data/research_db/market_data/**/*tushare*
+data/research_db/market_data/**/*akshare*
+
+!data/research_db/market_data/raw/.gitkeep
+!data/research_db/market_data/staging/.gitkeep
+!data/research_db/market_data/vendor/.gitkeep

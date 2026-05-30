@@ -2,7 +2,8 @@
 
 | Field | Value |
 |-------|-------|
-| freeze_commit | 3374fb2 |
+| freeze_subject_commit | 3374fb2 |
+| evidence_lock_policy | no self-referential commit hash |
 | base_delivery_commit | afdd12f |
 | c5_1_commit | 496330f |
 | architecture_freeze | MAINTAINED |

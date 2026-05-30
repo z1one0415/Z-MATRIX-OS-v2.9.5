@@ -1,8 +1,9 @@
 {
   "status": "RESEARCH_OS_V3_MAJOR_AUDIT_PHASE_FROZEN",
-  "freeze_commit": "3374fb2",
-  "base_delivery_commit": "afdd12f",
+  "freeze_subject_commit": "3374fb2",
+  "evidence_lock_commit_policy": "recorded_by_git_history_not_self_referenced",
   "c5_1_commit": "496330f",
+  "base_delivery_commit": "afdd12f",
   "architecture_freeze": "MAINTAINED",
   "module_count": 160,
   "package_count": 23,
@@ -17,5 +18,5 @@
   "production": "BLOCKED",
   "broker_runtime": "BLOCKED",
   "real_trade": "BLOCKED",
-  "frozen_at": "2026-05-30T17:17:12.519881+00:00"
+  "frozen_at": "2026-05-30T17:20:07.999702+00:00"
 }

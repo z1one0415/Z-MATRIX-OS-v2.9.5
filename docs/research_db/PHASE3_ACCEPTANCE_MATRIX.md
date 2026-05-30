@@ -14,3 +14,5 @@
 - Broker/runtime: BLOCKED
 - Real trade: BLOCKED
 - Outcome calculation: NOT_STARTED
+
+| P3-B | Outcome Horizon Engine | DONE |

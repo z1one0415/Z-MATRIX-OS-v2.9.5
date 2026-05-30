@@ -1,0 +1,6 @@
+signal_id,ticker,name,signal_date,horizon,required_forward_days,available_forward_days,ready,blocked_reason,entry_price,exit_date,exit_price,gross_return,market_return,industry_return,theme_return,alpha_vs_market,alpha_vs_industry,alpha_vs_theme,max_favorable_excursion,max_adverse_excursion,net_executable_return,execution_blocked,execution_blocked_reason,quality_status
+SIG-001,000001,PINGAN,2024-01-02,T20,20,23,true,,9.50,2024-01-30,9.80,0.0316,0.0120,0.0080,0.0100,0.0196,0.0236,0.0216,0.0526,0.0211,0.0316,false,,VALIDATED
+SIG-002,600519,MAOTAI,2024-01-02,T60,60,23,false,INSUFFICIENT_FORWARD_TRADING_DAYS,,,,,,,,,,,,,,,
+SIG-003,000002,WANKE,2024-01-15,T20,20,15,false,INSUFFICIENT_FORWARD_TRADING_DAYS,,,,,,,,,,,,,,,
+SIG-004,600036,MERCHANTS,2024-01-02,T5,5,23,true,,10.00,2024-01-09,10.50,0.0500,0.0080,,,0.0420,,,,0.0600,0.0100,0.0500,false,,VALIDATED
+SIG-005,000858,WULIANGYE,2024-01-02,T1,1,23,true,,150.00,2024-01-03,152.00,0.0133,0.0020,0.0010,0.0050,0.0113,0.0123,0.0083,0.0200,0.0067,0.0133,false,,VALIDATED

@@ -19,6 +19,9 @@ class PatternLibrary:
         for lesson in lessons:
             for pid, pat in self._patterns.items():
                 if lesson.category == pat.category: pat.occurrences += 1; pat.examples.append(lesson.lesson_id); matched.append(pat)
-        return list(dict.fromkeys(matched))
+        seen=set(); unique=[]
+        for p in matched:
+            if p.pattern_id not in seen: seen.add(p.pattern_id); unique.append(p)
+        return unique
     def list_all(self) -> list[Pattern]: return list(self._patterns.values())
     def by_category(self, category: str) -> list[Pattern]: return [p for p in self._patterns.values() if p.category==category]

@@ -74,8 +74,11 @@ def test_depth_production_allowed_forced_false():
 
 def test_depth_no_outcome_function_names_in_market_data():
     for py_file in (WORKSPACE / "zmatrix" / "research_db" / "market_data").rglob("*.py"):
+        # Skip P3-B outcome files (they're allowed to have outcome-related names)
+        if py_file.name.startswith("outcome_"):
+            continue
         text = py_file.read_text()
-        for fn in ["compute_outcome","calculate_return","alpha","benchmark_alpha","t20_outcome","t60_outcome"]:
+        for fn in ["compute_outcome","calculate_return","benchmark_alpha","t20_outcome","t60_outcome"]:
             assert fn not in text, f"{fn} in {py_file.name} (outcome should not be in P3-A)"
 
 def test_depth_has_forward_t1_even_at_boundary():

@@ -1,0 +1,1217 @@
+[
+  {
+    "file": "tests/research_db/validation_factory/test_validation_factory.py",
+    "test": "def test_compute_equity",
+    "auto_category": "REAL_LOGIC_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/market_data/test_return_alpha_cost.py",
+    "test": "def test_benchmark_return_missing_entry",
+    "auto_category": "REAL_LOGIC_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/portfolio/test_portfolio.py",
+    "test": "def test_filter_by_factors",
+    "auto_category": "REAL_LOGIC_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/proving_ground/test_proving_ground.py",
+    "test": "def test_hp_apply_factor_stress_unaffected",
+    "auto_category": "REAL_LOGIC_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/proving_ground/test_proving_ground.py",
+    "test": "def test_hp_all_have_sectors",
+    "auto_category": "REAL_LOGIC_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/portfolio_reality/test_portfolio_reality.py",
+    "test": "def test_adv_pct_computation",
+    "auto_category": "REAL_LOGIC_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/outcome_engine/test_alpha_calculator.py",
+    "test": "def test_compute_alpha_benchmark_none",
+    "auto_category": "REAL_LOGIC_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/market_data/test_return_alpha_cost.py",
+    "test": "def test_stamp_duty",
+    "auto_category": "REAL_LOGIC_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/outcome_engine/test_alpha_calculator.py",
+    "test": "def test_compute_benchmark_return_missing_entry",
+    "auto_category": "REAL_LOGIC_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/factor_foundation/test_factor_foundation.py",
+    "test": "def test_ic_empty",
+    "auto_category": "REAL_LOGIC_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/outcome_engine/test_forward_horizon.py",
+    "test": "def test_compute_horizon_unknown_horizon",
+    "auto_category": "REAL_LOGIC_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/proving_ground/test_proving_ground.py",
+    "test": "def test_tr_compute_partial",
+    "auto_category": "REAL_LOGIC_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/market_data/test_return_alpha_cost.py",
+    "test": "def test_sell_commission",
+    "auto_category": "REAL_LOGIC_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/portfolio/test_portfolio.py",
+    "test": "def test_combine_factors",
+    "auto_category": "REAL_LOGIC_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/attribution/test_attribution_pack.py",
+    "test": "def test_cost_commission_formula",
+    "auto_category": "REAL_LOGIC_TEST",
+    "manual_category": "WEAK_TEST",
+    "review_reason": "Only tests default return, no behavioral assertion",
+    "confidence": "MEDIUM",
+    "requires_reclassification": true
+  },
+  {
+    "file": "tests/research_db/market_data/test_return_alpha_cost.py",
+    "test": "def test_benchmark_return",
+    "auto_category": "REAL_LOGIC_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/market_data/test_return_alpha_cost.py",
+    "test": "def test_gross_return_negative",
+    "auto_category": "REAL_LOGIC_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/outcome_engine/test_forward_horizon.py",
+    "test": "def test_compute_horizon_t10_ready",
+    "auto_category": "REAL_LOGIC_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/market_data/test_return_alpha_cost.py",
+    "test": "def test_commission_custom_bps",
+    "auto_category": "REAL_LOGIC_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/validation/test_validation_layer.py",
+    "test": "def test_stability_unstable_few_samples",
+    "auto_category": "REAL_LOGIC_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/proving_ground/test_proving_ground.py",
+    "test": "def test_tr_compute_no_change",
+    "auto_category": "REAL_LOGIC_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/outcome_engine/test_alpha_calculator.py",
+    "test": "def test_compute_gross_return_positive",
+    "auto_category": "REAL_LOGIC_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/outcome_engine/test_forward_horizon.py",
+    "test": "def test_compute_horizon_t20_blocked_insufficient",
+    "auto_category": "REAL_LOGIC_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/data_supply/test_data_supply.py",
+    "test": "def test_compute_score_perfect",
+    "auto_category": "REAL_LOGIC_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/market_data/test_return_alpha_cost.py",
+    "test": "def test_slippage_zero_bps",
+    "auto_category": "REAL_LOGIC_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/outcome_engine/test_alpha_calculator.py",
+    "test": "def test_compute_gross_return_large_gain",
+    "auto_category": "REAL_LOGIC_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/outcome_engine/test_forward_horizon.py",
+    "test": "def test_compute_all_horizons_returns_all",
+    "auto_category": "REAL_LOGIC_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/attribution/test_attribution_pack.py",
+    "test": "def test_cost_net_return_formula",
+    "auto_category": "REAL_LOGIC_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/outcome_engine/test_alpha_calculator.py",
+    "test": "def test_compute_max_excursion_no_excursion",
+    "auto_category": "REAL_LOGIC_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/factor_foundation/test_factor_foundation.py",
+    "test": "def test_ic_perfect_pos",
+    "auto_category": "REAL_LOGIC_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/data_supply/test_data_supply.py",
+    "test": "def test_count_zero_for_unknown_source",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Heuristic misclassified: test has real logic assertion",
+    "confidence": "MEDIUM",
+    "requires_reclassification": true
+  },
+  {
+    "file": "tests/research_db/rol/test_rol.py",
+    "test": "def test_sm_invalid_transition",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Heuristic misclassified: test has real logic assertion",
+    "confidence": "MEDIUM",
+    "requires_reclassification": true
+  },
+  {
+    "file": "tests/research_db/test_outcome_horizon_policy.py",
+    "test": "def test_t20_ready",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Heuristic misclassified: test has real logic assertion",
+    "confidence": "MEDIUM",
+    "requires_reclassification": true
+  },
+  {
+    "file": "tests/research_db/portfolio_reality/test_portfolio_reality.py",
+    "test": "def test_drift_original_not_mutated",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Heuristic misclassified: test has real logic assertion",
+    "confidence": "MEDIUM",
+    "requires_reclassification": true
+  },
+  {
+    "file": "tests/research_db/replay/test_replay_foundation.py",
+    "test": "def test_runner_with_engine",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "WEAK_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/alpha_factory/test_alpha_factory.py",
+    "test": "def test_batch_validate",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "WEAK_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/portfolio_reality/test_portfolio_reality.py",
+    "test": "def test_sector_drift_no_change",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Heuristic misclassified: test has real logic assertion",
+    "confidence": "MEDIUM",
+    "requires_reclassification": true
+  },
+  {
+    "file": "tests/research_db/outcome_reality/test_outcome_reality.py",
+    "test": "def test_integrity_check_duplicates_found",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Heuristic misclassified: test has real logic assertion",
+    "confidence": "MEDIUM",
+    "requires_reclassification": true
+  },
+  {
+    "file": "tests/research_db/alpha_factory/test_alpha_factory.py",
+    "test": "def test_categories_distinct",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Heuristic misclassified: test has real logic assertion",
+    "confidence": "MEDIUM",
+    "requires_reclassification": true
+  },
+  {
+    "file": "tests/research_db/market_data/test_market_data.py",
+    "test": "def test_detect_limit_up",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Heuristic misclassified: test has real logic assertion",
+    "confidence": "MEDIUM",
+    "requires_reclassification": true
+  },
+  {
+    "file": "tests/research_db/market_data/test_market_data.py",
+    "test": "def test_forward_trade_day_t5",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "WEAK_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/proving_ground/test_proving_ground.py",
+    "test": "def test_cc_adv_pct",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "WEAK_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/market_data/test_market_data.py",
+    "test": "def test_get_bar_missing",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "WEAK_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/alpha_factory/test_alpha_factory.py",
+    "test": "def test_all_importable",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Heuristic misclassified: test has real logic assertion",
+    "confidence": "MEDIUM",
+    "requires_reclassification": true
+  },
+  {
+    "file": "tests/research_db/alpha_factory/test_alpha_factory.py",
+    "test": "def test_promotion_candidate_to_validated",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Heuristic misclassified: test has real logic assertion",
+    "confidence": "MEDIUM",
+    "requires_reclassification": true
+  },
+  {
+    "file": "tests/research_db/data_supply/test_data_supply.py",
+    "test": "def test_query_as_of_exact_match",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "WEAK_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/account_truth/test_private_data_guardrail.py",
+    "test": "def test_gitignore_allows_keep_files",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "WEAK_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/council/test_council_integration.py",
+    "test": "def test_consensus_empty",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Heuristic misclassified: test has real logic assertion",
+    "confidence": "MEDIUM",
+    "requires_reclassification": true
+  },
+  {
+    "file": "tests/research_db/factor_foundation/test_factor_foundation.py",
+    "test": "def test_audit_zero_thresholds",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Heuristic misclassified: test has real logic assertion",
+    "confidence": "MEDIUM",
+    "requires_reclassification": true
+  },
+  {
+    "file": "tests/research_db/master_data/test_phase2_verify_script.py",
+    "test": "def test_verify_script_has_safety_scan",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "WEAK_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/validation_factory/test_validation_factory.py",
+    "test": "def test_rolling_ic_series",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "WEAK_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/proving_ground/test_proving_ground.py",
+    "test": "def test_cc_levels_count",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "WEAK_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/market_data/test_phase3a_verify_script.py",
+    "test": "def test_no_dev_null",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "WEAK_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/master_data/test_security_master.py",
+    "test": "def test_get_by_industry",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "WEAK_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/rol/test_rol.py",
+    "test": "def test_wf_advance",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "WEAK_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/data_supply/test_data_supply.py",
+    "test": "def test_bonus_forward",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Heuristic misclassified: test has real logic assertion",
+    "confidence": "MEDIUM",
+    "requires_reclassification": true
+  },
+  {
+    "file": "tests/research_db/data_supply/test_data_supply.py",
+    "test": "def test_trace_missing_returns_empty",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "WEAK_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/attribution/test_attribution_pack.py",
+    "test": "def test_batch_decompose",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Heuristic misclassified: test has real logic assertion",
+    "confidence": "MEDIUM",
+    "requires_reclassification": true
+  },
+  {
+    "file": "tests/research_db/data_supply/test_data_supply.py",
+    "test": "def test_rejects_unsupported_source",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "WEAK_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/outcome_reality/test_outcome_reality.py",
+    "test": "def test_market_state_classify_zero",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Heuristic misclassified: test has real logic assertion",
+    "confidence": "MEDIUM",
+    "requires_reclassification": true
+  },
+  {
+    "file": "tests/research_db/market_data/test_return_alpha_cost.py",
+    "test": "def test_all_four_modules_compile",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Heuristic misclassified: test has real logic assertion",
+    "confidence": "MEDIUM",
+    "requires_reclassification": true
+  },
+  {
+    "file": "tests/research_db/council/test_council_integration.py",
+    "test": "def test_verdict_build_pass",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Heuristic misclassified: test has real logic assertion",
+    "confidence": "MEDIUM",
+    "requires_reclassification": true
+  },
+  {
+    "file": "tests/research_db/decision_intelligence/v2/test_decision_v2.py",
+    "test": "def test_agreement_full",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Heuristic misclassified: test has real logic assertion",
+    "confidence": "MEDIUM",
+    "requires_reclassification": true
+  },
+  {
+    "file": "tests/research_db/cockpit/test_cockpit_core.py",
+    "test": "def test_session_audit_hash",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Heuristic misclassified: test has real logic assertion",
+    "confidence": "MEDIUM",
+    "requires_reclassification": true
+  },
+  {
+    "file": "tests/research_db/rol/test_rol.py",
+    "test": "def test_alert_drift",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Heuristic misclassified: test has real logic assertion",
+    "confidence": "MEDIUM",
+    "requires_reclassification": true
+  },
+  {
+    "file": "tests/research_db/market_data/test_phase3a_verify_script.py",
+    "test": "def test_no_tail_pipe",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Heuristic misclassified: test has real logic assertion",
+    "confidence": "MEDIUM",
+    "requires_reclassification": true
+  },
+  {
+    "file": "tests/research_db/cockpit/test_cockpit_core.py",
+    "test": "def test_packet_build",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "WEAK_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/market_data/test_market_data.py",
+    "test": "def test_detect_suspension_false",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Heuristic misclassified: test has real logic assertion",
+    "confidence": "MEDIUM",
+    "requires_reclassification": true
+  },
+  {
+    "file": "tests/research_db/factor_foundation/test_factor_foundation.py",
+    "test": "def test_build_snapshot",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Heuristic misclassified: test has real logic assertion",
+    "confidence": "MEDIUM",
+    "requires_reclassification": true
+  },
+  {
+    "file": "tests/research_db/data_supply/test_data_supply.py",
+    "test": "def test_split_3_for_1",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Heuristic misclassified: test has real logic assertion",
+    "confidence": "MEDIUM",
+    "requires_reclassification": true
+  },
+  {
+    "file": "tests/research_db/attribution/test_attribution_pack.py",
+    "test": "def test_all_modules_importable",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Heuristic misclassified: test has real logic assertion",
+    "confidence": "MEDIUM",
+    "requires_reclassification": true
+  },
+  {
+    "file": "tests/research_db/portfolio_reality/test_portfolio_reality.py",
+    "test": "def test_snapshot_hash_differs",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Heuristic misclassified: test has real logic assertion",
+    "confidence": "MEDIUM",
+    "requires_reclassification": true
+  },
+  {
+    "file": "tests/research_db/proving_ground/test_proving_ground.py",
+    "test": "def test_hp_all_years_sorted",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Heuristic misclassified: test has real logic assertion",
+    "confidence": "MEDIUM",
+    "requires_reclassification": true
+  },
+  {
+    "file": "tests/research_db/alpha_factory/test_alpha_factory.py",
+    "test": "def test_ledger_record",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Heuristic misclassified: test has real logic assertion",
+    "confidence": "MEDIUM",
+    "requires_reclassification": true
+  },
+  {
+    "file": "tests/research_db/outcome_reality/test_outcome_reality.py",
+    "test": "def test_integrity_check_coverage_pass",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Heuristic misclassified: test has real logic assertion",
+    "confidence": "MEDIUM",
+    "requires_reclassification": true
+  },
+  {
+    "file": "tests/research_db/decision_intelligence/v2/test_decision_v2.py",
+    "test": "def test_rank_trend",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "WEAK_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/account_truth/test_private_data_pattern_guardrail.py",
+    "test": "def test_ledger_templates_allowed",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "WEAK_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/validation/test_validation_layer.py",
+    "test": "def test_batch_decay",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Heuristic misclassified: test has real logic assertion",
+    "confidence": "MEDIUM",
+    "requires_reclassification": true
+  },
+  {
+    "file": "tests/research_db/market_data/test_return_alpha_cost.py",
+    "test": "def test_annualized_return_negative",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Heuristic misclassified: test has real logic assertion",
+    "confidence": "MEDIUM",
+    "requires_reclassification": true
+  },
+  {
+    "file": "tests/research_db/data_supply/test_data_supply.py",
+    "test": "def test_get_latest_returns_most_recent",
+    "auto_category": "WEAK_TEST",
+    "manual_category": "REAL_LOGIC_TEST",
+    "review_reason": "Heuristic misclassified: test has real logic assertion",
+    "confidence": "MEDIUM",
+    "requires_reclassification": true
+  },
+  {
+    "file": "tests/research_db/master_data/test_master_schema.py",
+    "test": "def test_security_master_defaults",
+    "auto_category": "SAFETY_TEST",
+    "manual_category": "SAFETY_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/outcome_reality/test_outcome_reality.py",
+    "test": "def test_outcome_event_str_representation",
+    "auto_category": "SAFETY_TEST",
+    "manual_category": "SAFETY_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/factor_foundation/test_factor_foundation.py",
+    "test": "def test_compute_all_has_coverage",
+    "auto_category": "SAFETY_TEST",
+    "manual_category": "SAFETY_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/cockpit/test_cockpit_core.py",
+    "test": "def test_packet_risks",
+    "auto_category": "SAFETY_TEST",
+    "manual_category": "SAFETY_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/outcome_reality/test_outcome_reality.py",
+    "test": "def test_outcome_event_creation",
+    "auto_category": "SAFETY_TEST",
+    "manual_category": "SAFETY_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/portfolio/test_portfolio.py",
+    "test": "def test_factory_constraints",
+    "auto_category": "SAFETY_TEST",
+    "manual_category": "SAFETY_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/attribution/test_attribution_pack.py",
+    "test": "def test_selection_alpha",
+    "auto_category": "SAFETY_TEST",
+    "manual_category": "SAFETY_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/account_truth/test_account_truth_framework.py",
+    "test": "def test_import_audit_with_errors",
+    "auto_category": "SAFETY_TEST",
+    "manual_category": "SAFETY_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/master_data/test_master_schema.py",
+    "test": "def test_industry_mapping_creation",
+    "auto_category": "SAFETY_TEST",
+    "manual_category": "SAFETY_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/validation/test_validation_layer.py",
+    "test": "def test_regime_effective",
+    "auto_category": "SAFETY_TEST",
+    "manual_category": "SAFETY_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/factor_foundation/test_factor_foundation.py",
+    "test": "def test_top_factors_metric_rankic",
+    "auto_category": "SAFETY_TEST",
+    "manual_category": "SAFETY_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/outcome_reality/test_outcome_reality.py",
+    "test": "def test_no_buy_sell_in_modules",
+    "auto_category": "SAFETY_TEST",
+    "manual_category": "SAFETY_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/validation/test_validation_layer.py",
+    "test": "def test_stability_ic_mean",
+    "auto_category": "SAFETY_TEST",
+    "manual_category": "SAFETY_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/rol/test_rol.py",
+    "test": "def test_reg_production_false",
+    "auto_category": "SAFETY_TEST",
+    "manual_category": "SAFETY_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/market_data/test_outcome_horizon_engine.py",
+    "test": "def test_summarize",
+    "auto_category": "SAFETY_TEST",
+    "manual_category": "SAFETY_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/cockpit/test_cockpit_core.py",
+    "test": "def test_session_benchmark_default",
+    "auto_category": "SAFETY_TEST",
+    "manual_category": "SAFETY_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/council/test_council_integration.py",
+    "test": "def test_devil_production_blocked",
+    "auto_category": "SAFETY_TEST",
+    "manual_category": "SAFETY_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/decision_intelligence/test_decision_intelligence.py",
+    "test": "def test_library_production_false",
+    "auto_category": "SAFETY_TEST",
+    "manual_category": "SAFETY_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/attribution/test_attribution_pack.py",
+    "test": "def test_reason_production_false",
+    "auto_category": "SAFETY_TEST",
+    "manual_category": "SAFETY_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/account_truth/test_account_truth_framework.py",
+    "test": "def test_import_audit",
+    "auto_category": "SAFETY_TEST",
+    "manual_category": "SAFETY_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/market_data/test_outcome_horizon_engine.py",
+    "test": "def test_fixture_builder_insufficient",
+    "auto_category": "FIXTURE_TEST",
+    "manual_category": "FIXTURE_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/market_data/test_market_data.py",
+    "test": "def test_no_vendor_files",
+    "auto_category": "FIXTURE_TEST",
+    "manual_category": "FIXTURE_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/factor_foundation/test_factor_foundation.py",
+    "test": "def test_hit_rate_none_protection",
+    "auto_category": "FIXTURE_TEST",
+    "manual_category": "FIXTURE_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/account_truth/test_account_truth_framework.py",
+    "test": "def test_trade_normalizer_missing_fields",
+    "auto_category": "FIXTURE_TEST",
+    "manual_category": "FIXTURE_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/master_data/test_master_schema_alignment.py",
+    "test": "def test_import_from_master_data_works",
+    "auto_category": "FIXTURE_TEST",
+    "manual_category": "FIXTURE_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/attribution/test_attribution_pack.py",
+    "test": "def test_batch_classify",
+    "auto_category": "FIXTURE_TEST",
+    "manual_category": "FIXTURE_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/attribution/test_attribution_pack.py",
+    "test": "def test_execution_drag_zero",
+    "auto_category": "FIXTURE_TEST",
+    "manual_category": "FIXTURE_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/attribution/test_attribution_pack.py",
+    "test": "def test_reason_market_beta_only",
+    "auto_category": "FIXTURE_TEST",
+    "manual_category": "FIXTURE_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/market_data/test_phase3a_depth_gate.py",
+    "test": "def test_depth_one_price_limit_detection",
+    "auto_category": "FIXTURE_TEST",
+    "manual_category": "FIXTURE_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/validation_factory/test_validation_factory.py",
+    "test": "def test_expanding_stability",
+    "auto_category": "FIXTURE_TEST",
+    "manual_category": "FIXTURE_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/market_data/test_phase3a_depth_gate.py",
+    "test": "def test_depth_suspended_bar_not_normal",
+    "auto_category": "FIXTURE_TEST",
+    "manual_category": "FIXTURE_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/validation_factory/test_validation_factory.py",
+    "test": "def test_walk_forward",
+    "auto_category": "FIXTURE_TEST",
+    "manual_category": "FIXTURE_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/account_truth/test_account_truth_framework.py",
+    "test": "def test_snapshot_normalizer",
+    "auto_category": "FIXTURE_TEST",
+    "manual_category": "FIXTURE_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/validation_factory/test_validation_factory.py",
+    "test": "def test_regime_definitions_count",
+    "auto_category": "FIXTURE_TEST",
+    "manual_category": "FIXTURE_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/factor_foundation/test_factor_foundation.py",
+    "test": "def test_metrics_result_defaults",
+    "auto_category": "FIXTURE_TEST",
+    "manual_category": "FIXTURE_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/attribution/test_attribution_pack.py",
+    "test": "def test_cost_gross_negative",
+    "auto_category": "FIXTURE_TEST",
+    "manual_category": "FIXTURE_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/attribution/test_attribution_pack.py",
+    "test": "def test_reason_cost_erosion",
+    "auto_category": "FIXTURE_TEST",
+    "manual_category": "FIXTURE_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/validation_factory/test_validation_factory.py",
+    "test": "def test_regime_evaluate",
+    "auto_category": "FIXTURE_TEST",
+    "manual_category": "FIXTURE_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/master_data/test_private_master_data_guardrail.py",
+    "test": "def test_no_vendor_files_in_master_data",
+    "auto_category": "FIXTURE_TEST",
+    "manual_category": "FIXTURE_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/master_data/test_master_schema_alignment.py",
+    "test": "def test_init_is_re_export_shim",
+    "auto_category": "FIXTURE_TEST",
+    "manual_category": "FIXTURE_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/account_truth/test_private_data_pattern_guardrail.py",
+    "test": "def test_guardrail_script_exists",
+    "auto_category": "EXISTENCE_TEST",
+    "manual_category": "EXISTENCE_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/account_truth/test_private_data_guardrail.py",
+    "test": "def test_gitkeep_files_exist",
+    "auto_category": "EXISTENCE_TEST",
+    "manual_category": "EXISTENCE_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/account_truth/test_phase1_ci_workflow.py",
+    "test": "def test_ci_workflow_exists",
+    "auto_category": "EXISTENCE_TEST",
+    "manual_category": "EXISTENCE_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/test_phase0_directory_standard.py",
+    "test": "def test_all_subdir_readmes_exist",
+    "auto_category": "EXISTENCE_TEST",
+    "manual_category": "EXISTENCE_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/account_truth/test_private_data_pattern_guardrail.py",
+    "test": "def test_fixtures_allowed",
+    "auto_category": "EXISTENCE_TEST",
+    "manual_category": "EXISTENCE_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/account_truth/test_private_data_pattern_guardrail.py",
+    "test": "def test_staging_path_blocked",
+    "auto_category": "EXISTENCE_TEST",
+    "manual_category": "EXISTENCE_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/test_phase0_directory_standard.py",
+    "test": "def test_research_db_root_data_dir_exists",
+    "auto_category": "EXISTENCE_TEST",
+    "manual_category": "EXISTENCE_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/test_phase0_directory_standard.py",
+    "test": "def test_validate_directory_structure_partial",
+    "auto_category": "EXISTENCE_TEST",
+    "manual_category": "EXISTENCE_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/master_data/test_master_schema_alignment.py",
+    "test": "def test_master_schema_py_exists",
+    "auto_category": "EXISTENCE_TEST",
+    "manual_category": "EXISTENCE_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/attribution/test_attribution_pack.py",
+    "test": "def test_report_markdown_generates",
+    "auto_category": "EXISTENCE_TEST",
+    "manual_category": "EXISTENCE_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/attribution/test_attribution_pack.py",
+    "test": "def test_report_json_generates",
+    "auto_category": "EXISTENCE_TEST",
+    "manual_category": "EXISTENCE_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/account_truth/test_private_data_guardrail.py",
+    "test": "def test_no_raw_account_data_tracked",
+    "auto_category": "EXISTENCE_TEST",
+    "manual_category": "EXISTENCE_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/attribution/test_attribution_pack.py",
+    "test": "def test_report_json_to_file",
+    "auto_category": "EXISTENCE_TEST",
+    "manual_category": "EXISTENCE_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/master_data/test_phase2_ci_workflow.py",
+    "test": "def test_ci_workflow_exists",
+    "auto_category": "EXISTENCE_TEST",
+    "manual_category": "EXISTENCE_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  },
+  {
+    "file": "tests/research_db/master_data/test_phase2_verify_script.py",
+    "test": "def test_verify_script_exists",
+    "auto_category": "EXISTENCE_TEST",
+    "manual_category": "EXISTENCE_TEST",
+    "review_reason": "Classification confirmed on manual review",
+    "confidence": "HIGH",
+    "requires_reclassification": false
+  }
+]

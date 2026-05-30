@@ -1,0 +1,54 @@
+[
+  {
+    "risk_id": "P1-001",
+    "module": "account_truth",
+    "finding": "Reconciliation tolerance may mask real errors",
+    "current_level": "P1_HIGH",
+    "triage_decision": "MUST_FIX_BEFORE_PACK_D",
+    "triage_reason": "Account truth is the system foundation. Tolerance-based false PASS undermines all downstream research.",
+    "required_action": "Add strict reconciliation tests with known error inputs; verify ERROR status propagation.",
+    "owner": "Z2-Audit",
+    "deadline_stage": "Pack C.3",
+    "downgrade_allowed": false,
+    "blocking_pack_d": true
+  },
+  {
+    "risk_id": "P1-002",
+    "module": "market_data",
+    "finding": "Price-specific PIT tests missing",
+    "current_level": "P1_HIGH",
+    "triage_decision": "TEST_GAP_ONLY",
+    "triage_reason": "Generic PIT future-blocking EXISTS in data_supply/pit_store. Gap is price-data-specific test coverage, not missing functionality.",
+    "required_action": "Add 5+ price-specific PIT tests verifying as_of_date blocking for DailyPriceBar.",
+    "owner": "Z2-Audit",
+    "deadline_stage": "Pack C.3",
+    "downgrade_allowed": true,
+    "blocking_pack_d": false
+  },
+  {
+    "risk_id": "P1-003",
+    "module": "outcome_engine",
+    "finding": "Return/alpha/cost not in P3-B scope by design",
+    "current_level": "P1_HIGH",
+    "triage_decision": "ACCEPTED_DESIGN_BOUNDARY",
+    "triage_reason": "P3-B was scoped as horizon readiness only. Return/alpha/cost were correctly deferred to P3-C. This is architectural intent, not a defect.",
+    "required_action": "Document in architecture notes that P3-B is horizon-only. No code change needed.",
+    "owner": "Z2-Doc",
+    "deadline_stage": "Pack C.2",
+    "downgrade_allowed": true,
+    "blocking_pack_d": false
+  },
+  {
+    "risk_id": "P1-004",
+    "module": "replay",
+    "finding": "Rolling replay fails without calendar",
+    "current_level": "P1_HIGH",
+    "triage_decision": "MUST_FIX_BEFORE_PACK_D",
+    "triage_reason": "Rolling replay silently returns 0 slices without calendar. Should raise or return explicit error.",
+    "required_action": "Add calendar=None guard in RollingDataset with explicit error return; add test for calendar-less rolling replay.",
+    "owner": "Z2-Audit",
+    "deadline_stage": "Pack C.3",
+    "downgrade_allowed": false,
+    "blocking_pack_d": true
+  }
+]

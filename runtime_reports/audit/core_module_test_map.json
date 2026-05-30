@@ -1,0 +1,79 @@
+[
+  {
+    "module": "account_truth",
+    "source_files": 13,
+    "test_files": 1,
+    "test_count": 28,
+    "real_logic": 0,
+    "safety": 5,
+    "existence": 0,
+    "weak": 23,
+    "verdict": "WATCH"
+  },
+  {
+    "module": "master_data",
+    "source_files": 14,
+    "test_files": 12,
+    "test_count": 156,
+    "real_logic": 1,
+    "safety": 36,
+    "existence": 1,
+    "weak": 118,
+    "verdict": "WATCH"
+  },
+  {
+    "module": "market_data",
+    "source_files": 14,
+    "test_files": 5,
+    "test_count": 128,
+    "real_logic": 25,
+    "safety": 23,
+    "existence": 0,
+    "weak": 80,
+    "verdict": "PASS"
+  },
+  {
+    "module": "outcome_engine",
+    "source_files": 3,
+    "test_files": 3,
+    "test_count": 31,
+    "real_logic": 22,
+    "safety": 3,
+    "existence": 0,
+    "weak": 6,
+    "verdict": "PASS"
+  },
+  {
+    "module": "attribution",
+    "source_files": 5,
+    "test_files": 2,
+    "test_count": 82,
+    "real_logic": 8,
+    "safety": 33,
+    "existence": 1,
+    "weak": 40,
+    "verdict": "PASS"
+  },
+  {
+    "module": "replay",
+    "source_files": 6,
+    "test_files": 3,
+    "test_count": 120,
+    "real_logic": 1,
+    "safety": 41,
+    "existence": 0,
+    "weak": 78,
+    "verdict": "WATCH"
+  },
+  {
+    "module": "council",
+    "source_files": 7,
+    "test_files": 2,
+    "test_count": 72,
+    "real_logic": 0,
+    "safety": 27,
+    "existence": 0,
+    "weak": 45,
+    "verdict": "WATCH"
+  }
+]

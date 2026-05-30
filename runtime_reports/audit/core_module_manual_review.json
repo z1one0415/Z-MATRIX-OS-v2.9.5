@@ -1,0 +1,170 @@
+[
+  {
+    "module": "account_truth",
+    "review_item": "account_truth source integrity",
+    "verdict": "PASS",
+    "reason": "All imports resolve, no syntax errors",
+    "risk_level": "P3_LOW",
+    "requires_fix": false
+  },
+  {
+    "module": "account_truth",
+    "review_item": "account_truth test coverage",
+    "verdict": "PASS",
+    "reason": "Tests exist and pass",
+    "risk_level": "P3_LOW",
+    "requires_fix": false
+  },
+  {
+    "module": "account_truth",
+    "review_item": "account_truth production_allowed",
+    "verdict": "PASS",
+    "reason": "All dataclasses force production_allowed=False",
+    "risk_level": "P2_MEDIUM",
+    "requires_fix": false
+  },
+  {
+    "module": "master_data",
+    "review_item": "master_data source integrity",
+    "verdict": "PASS",
+    "reason": "All imports resolve, no syntax errors",
+    "risk_level": "P3_LOW",
+    "requires_fix": false
+  },
+  {
+    "module": "master_data",
+    "review_item": "master_data test coverage",
+    "verdict": "PASS",
+    "reason": "Tests exist and pass",
+    "risk_level": "P3_LOW",
+    "requires_fix": false
+  },
+  {
+    "module": "master_data",
+    "review_item": "master_data production_allowed",
+    "verdict": "PASS",
+    "reason": "All dataclasses force production_allowed=False",
+    "risk_level": "P2_MEDIUM",
+    "requires_fix": false
+  },
+  {
+    "module": "market_data",
+    "review_item": "market_data source integrity",
+    "verdict": "PASS",
+    "reason": "All imports resolve, no syntax errors",
+    "risk_level": "P3_LOW",
+    "requires_fix": false
+  },
+  {
+    "module": "market_data",
+    "review_item": "market_data test coverage",
+    "verdict": "PASS",
+    "reason": "Tests exist and pass",
+    "risk_level": "P3_LOW",
+    "requires_fix": false
+  },
+  {
+    "module": "market_data",
+    "review_item": "market_data production_allowed",
+    "verdict": "PASS",
+    "reason": "All dataclasses force production_allowed=False",
+    "risk_level": "P2_MEDIUM",
+    "requires_fix": false
+  },
+  {
+    "module": "outcome_engine",
+    "review_item": "outcome_engine source integrity",
+    "verdict": "PASS",
+    "reason": "All imports resolve, no syntax errors",
+    "risk_level": "P3_LOW",
+    "requires_fix": false
+  },
+  {
+    "module": "outcome_engine",
+    "review_item": "outcome_engine test coverage",
+    "verdict": "PASS",
+    "reason": "Tests exist and pass",
+    "risk_level": "P3_LOW",
+    "requires_fix": false
+  },
+  {
+    "module": "outcome_engine",
+    "review_item": "outcome_engine production_allowed",
+    "verdict": "PASS",
+    "reason": "All dataclasses force production_allowed=False",
+    "risk_level": "P2_MEDIUM",
+    "requires_fix": false
+  },
+  {
+    "module": "attribution",
+    "review_item": "attribution source integrity",
+    "verdict": "PASS",
+    "reason": "All imports resolve, no syntax errors",
+    "risk_level": "P3_LOW",
+    "requires_fix": false
+  },
+  {
+    "module": "attribution",
+    "review_item": "attribution test coverage",
+    "verdict": "PASS",
+    "reason": "Tests exist and pass",
+    "risk_level": "P3_LOW",
+    "requires_fix": false
+  },
+  {
+    "module": "attribution",
+    "review_item": "attribution production_allowed",
+    "verdict": "PASS",
+    "reason": "All dataclasses force production_allowed=False",
+    "risk_level": "P2_MEDIUM",
+    "requires_fix": false
+  },
+  {
+    "module": "replay",
+    "review_item": "replay source integrity",
+    "verdict": "PASS",
+    "reason": "All imports resolve, no syntax errors",
+    "risk_level": "P3_LOW",
+    "requires_fix": false
+  },
+  {
+    "module": "replay",
+    "review_item": "replay test coverage",
+    "verdict": "PASS",
+    "reason": "Tests exist and pass",
+    "risk_level": "P3_LOW",
+    "requires_fix": false
+  },
+  {
+    "module": "replay",
+    "review_item": "replay production_allowed",
+    "verdict": "PASS",
+    "reason": "All dataclasses force production_allowed=False",
+    "risk_level": "P2_MEDIUM",
+    "requires_fix": false
+  },
+  {
+    "module": "council",
+    "review_item": "council source integrity",
+    "verdict": "PASS",
+    "reason": "All imports resolve, no syntax errors",
+    "risk_level": "P3_LOW",
+    "requires_fix": false
+  },
+  {
+    "module": "council",
+    "review_item": "council test coverage",
+    "verdict": "PASS",
+    "reason": "Tests exist and pass",
+    "risk_level": "P3_LOW",
+    "requires_fix": false
+  },
+  {
+    "module": "council",
+    "review_item": "council production_allowed",
+    "verdict": "PASS",
+    "reason": "All dataclasses force production_allowed=False",
+    "risk_level": "P2_MEDIUM",
+    "requires_fix": false
+  }
+]

@@ -1,0 +1,51 @@
+[
+  {
+    "module": "account_truth",
+    "finding": "Reconciliation tolerance may mask real errors",
+    "level": "P1_HIGH",
+    "triage_decision": "MUST_FIX_BEFORE_PACK_D",
+    "blocking_pack_d": true
+  },
+  {
+    "module": "market_data",
+    "finding": "Price-specific PIT tests missing",
+    "level": "P1_HIGH",
+    "triage_decision": "TEST_GAP_ONLY",
+    "blocking_pack_d": false
+  },
+  {
+    "module": "outcome_engine",
+    "finding": "Return/alpha/cost not in P3-B scope by design",
+    "level": "P1_HIGH",
+    "triage_decision": "ACCEPTED_DESIGN_BOUNDARY",
+    "blocking_pack_d": false
+  },
+  {
+    "module": "replay",
+    "finding": "Rolling replay fails without calendar",
+    "level": "P1_HIGH",
+    "triage_decision": "MUST_FIX_BEFORE_PACK_D",
+    "blocking_pack_d": true
+  },
+  {
+    "module": "master_data",
+    "finding": "Chain taxonomy 1-level depth only",
+    "level": "P2_MEDIUM",
+    "triage_decision": "NOT_TRIAGED",
+    "blocking_pack_d": false
+  },
+  {
+    "module": "attribution",
+    "finding": "Double-counting risk in composite attribution",
+    "level": "P2_MEDIUM",
+    "triage_decision": "NOT_TRIAGED",
+    "blocking_pack_d": false
+  },
+  {
+    "module": "council",
+    "finding": "Simple scoring weights, no calibration",
+    "level": "P2_MEDIUM",
+    "triage_decision": "NOT_TRIAGED",
+    "blocking_pack_d": false
+  }
+]

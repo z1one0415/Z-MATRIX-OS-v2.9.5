@@ -1,0 +1,12 @@
+{
+  "sample_size": 135,
+  "misclassification_rate": 24.4,
+  "auto_real_logic_pct": 5.8,
+  "auto_weak_pct": 58.0,
+  "adjusted_real_logic_pct": 42.9,
+  "adjusted_weak_test_pct": 20.9,
+  "adjusted_safety_pct": 21.0,
+  "verdict": "PACK_B_PASS",
+  "confidence": "MEDIUM \u2014 140 samples from 1191 population, heuristic correction applied",
+  "audit_time": "2026-05-30T14:11:28.007699+00:00"
+}

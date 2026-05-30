@@ -1,0 +1,79 @@
+[
+  {
+    "module": "account_truth",
+    "purpose": "Reconstruct 5-year trading truth",
+    "input": "Trade CSV/Position CSV",
+    "output": "Capital curve, PnL ledger",
+    "key_logic": "FIFO cost basis, reconciliation",
+    "boundary_test": "\u2705 has entry validation",
+    "fail_closed": "\u2705 ERROR quality blocks analysis",
+    "hash": "\u2705 via import_audit",
+    "risk": "P1: reconciliation false pass on tolerance"
+  },
+  {
+    "module": "master_data",
+    "purpose": "Security master + industry/chain mapping",
+    "input": "CSV fixtures",
+    "output": "SecurityMaster, mapping lookup",
+    "key_logic": "Ticker identity resolution, chain mapping",
+    "boundary_test": "\u2705 duplicate/confidence checks",
+    "fail_closed": "\u2705 missing mapping returns None",
+    "hash": "\u2705 integrity checker",
+    "risk": "P2: chain taxonomy limited to 1 level"
+  },
+  {
+    "module": "market_data",
+    "purpose": "Price bars, trading calendar, benchmarks",
+    "input": "Price CSV, calendar CSV",
+    "output": "DailyPriceBar, TradingCalendar",
+    "key_logic": "T20/T60 strict forward days",
+    "boundary_test": "\u2705 insufficient days blocked",
+    "fail_closed": "\u2705 fallback_last_price_allowed=False",
+    "hash": "\u2014",
+    "risk": "P0: PIT future leakage in price data"
+  },
+  {
+    "module": "outcome_engine",
+    "purpose": "Signal outcome horizon readiness",
+    "input": "Signal date + calendar",
+    "output": "T20/T60 readiness result",
+    "key_logic": "Strict forward trading day counting",
+    "boundary_test": "\u2705 suspension/missing bar blocked",
+    "fail_closed": "\u2705 INSUFFICIENT_FORWARD_DAYS",
+    "hash": "\u2014",
+    "risk": "P1: no alpha/return in P3-B scope"
+  },
+  {
+    "module": "attribution",
+    "purpose": "Return decomposition",
+    "input": "Gross return + benchmark returns",
+    "output": "Market/Industry/Selection alpha",
+    "key_logic": "Brinson-style attribution",
+    "boundary_test": "\u2705 total_attributed sum check",
+    "fail_closed": "\u2014",
+    "hash": "\u2705 attribution_packet",
+    "risk": "P2: double-counting risk in composite"
+  },
+  {
+    "module": "replay",
+    "purpose": "Experiment reproducibility",
+    "input": "Dataset slices",
+    "output": "ReplayResult + hash",
+    "key_logic": "Deterministic hash chain",
+    "boundary_test": "\u2705 same input \u2192 same hash",
+    "fail_closed": "\u2705 chain_verify fails on mismatch",
+    "hash": "\u2705 replay_hash",
+    "risk": "P1: rolling replay without calendar"
+  },
+  {
+    "module": "council",
+    "purpose": "12-seat multi-reviewer consensus",
+    "input": "ReviewContext",
+    "output": "CouncilDecision + minority report",
+    "key_logic": "Independent review aggregation",
+    "boundary_test": "\u2705 devil advocate mandatory",
+    "fail_closed": "\u2705 empty results \u2192 INSUFFICIENT_EVIDENCE",
+    "hash": "\u2705 council_packet",
+    "risk": "P2: simple scoring weights, no calibration"
+  }
+]

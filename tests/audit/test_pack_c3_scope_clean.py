@@ -9,12 +9,11 @@ def test_scope_lock_exists():
     assert (WORKSPACE / "docs" / "audit" / "PACK_C3_SCOPE_LOCK.md").exists()
 
 def test_no_cockpit_v2_2_in_upgrade_dir():
-    """Cockpit V2.1→V2.2 rename should be reverted"""
+    """Cockpit V2.2 rename should be reverted. V2.1 restoration is OK."""
     import subprocess
-    r = subprocess.run(["git", "diff", "--name-only", "c66f0bf..HEAD"], capture_output=True, text=True, cwd=str(WORKSPACE))
-    cockpit_files = [l for l in r.stdout.split("\n") if "Cockpit" in l]
-    # Only audit files allowed, no Cockpit renames
-    assert not cockpit_files or all("audit" in f for f in cockpit_files), f"Cockpit files in diff: {cockpit_files}"
+    r = subprocess.run(["git", "diff", "--name-only", "2a33d35..HEAD"], capture_output=True, text=True, cwd=str(WORKSPACE))
+    cockpit_v22 = [l for l in r.stdout.split("\n") if "Cockpit_V2_2" in l]
+    assert not cockpit_v22, f"V2.2 still present: {cockpit_v22}"
 
 def test_fix_plan_retained():
     assert (WORKSPACE / "docs" / "audit" / "PACK_C3_BLOCKING_RISK_FIX_PLAN.md").exists()

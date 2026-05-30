@@ -3,12 +3,12 @@
 | Field | Value |
 |-------|-------|
 | Phase | ResearchDB Phase 1: Account Truth Framework |
-| Commit | 4cb72a1ec5bd021f12afd7a1e6f1bfc0ba30d6d9 |
-| Cloud status | PENDING |
+| Commit | e8cd9378d3b0e6faaa47819698ef5ea079e2f860 |
+| Cloud status | **PASS** |
 | Workflow | researchdb-phase1.yml |
-| Workflow run id | (pending) |
-| Conclusion | (pending) |
-| Phase2 allowed | FALSE |
+| Workflow run id | **26671492701** |
+| Conclusion | **success** |
+| Phase2 allowed | **TRUE** |
 
 ## Privacy
 
@@ -31,4 +31,4 @@
 
 ## Decision
 
-Cloud acceptance pending CI run. Phase2 requires cloud PASS before launch.
+**PHASE1_CLOUD_ACCEPTED** — Cloud CI verified, Phase 2 approved for launch.

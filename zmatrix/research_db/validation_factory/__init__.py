@@ -10,4 +10,4 @@ from .expanding_window_engine import ExpandingWindowEngine
 from .regime_validation import RegimeValidator, RegimeDefinition, REGIME_DEFINITIONS
 from .capacity_engine import CapacityEngine, CapacityResult
 from .turnover_lab import TurnoverLab, TurnoverResult
-from .stress_lab import StressLab, StressScenario, STRESS_SCENARIOS
+from .stress_lab import StressLab, StressResult, STRESS_SCENARIOS

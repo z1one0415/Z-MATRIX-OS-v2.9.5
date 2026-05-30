@@ -28,19 +28,21 @@ def reconcile_with_tolerance(expected: float, actual: float, tolerance_abs: floa
             "strict_mode": strict_mode, "reconciliation_status": "WARNING",
             "reconciliation_message": f"Diff {diff_abs:.4f} ({diff_pct:.2%}) within tolerance but strict_mode=False"}
 
-def reconcile_trade_amount(record: TradeRecord) -> dict:
-    """Verify trade amount = price * quantity."""
+def reconcile_trade_amount(record: TradeRecord, strict_mode: bool = True) -> dict:
+    """Verify trade amount = price * quantity. Uses reconcile_with_tolerance."""
     expected = record.price * record.quantity
-    ok = abs(record.amount - expected) < 0.01
-    return {"status": "PASS" if ok else "FAILED", "expected": expected, "actual": record.amount, "trade_id": record.trade_id}
+    result = reconcile_with_tolerance(expected, record.amount, strict_mode=strict_mode)
+    result["trade_id"] = record.trade_id
+    return result
 
 
-def reconcile_equity(snapshot: AccountSnapshot) -> dict:
-    """Verify total_equity ≈ cash + market_value."""
+def reconcile_equity(snapshot: AccountSnapshot, strict_mode: bool = True) -> dict:
+    """Verify total_equity ≈ cash + market_value. Uses reconcile_with_tolerance."""
     expected = snapshot.cash + snapshot.market_value
-    diff = abs(snapshot.total_equity - expected)
-    ok = diff < max(snapshot.total_equity * 0.01, 1.0)
-    return {"status": "PASS" if ok else "FAILED", "expected": expected, "actual": snapshot.total_equity, "diff": diff, "date": snapshot.date}
+    tolerance_abs = max(snapshot.total_equity * 0.01, 1.0)
+    result = reconcile_with_tolerance(expected, snapshot.total_equity, tolerance_abs=tolerance_abs, tolerance_pct=0.01, strict_mode=strict_mode)
+    result["date"] = snapshot.date
+    return result
 
 
 def reconcile_capital_curve(snapshots: list[AccountSnapshot], cashflows: list[CashflowRecord]) -> dict:

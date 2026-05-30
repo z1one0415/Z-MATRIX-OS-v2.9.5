@@ -35,7 +35,7 @@ class ReplayDataset:
 class RollingDataset(ReplayDataset):
     def generate_rolling_slices(self, start: str, end: str, window_days: int = 20, step_days: int = 5) -> list[DatasetSlice]:
         if self.cal is None:
-            return []  # Calendar is required; caller must check calendar_required flag
+            raise ValueError("MISSING_TRADING_CALENDAR: RollingDataset requires a trading calendar. Set cal= before calling generate_rolling_slices().")
         slices = []
         d = start
         while d <= end:

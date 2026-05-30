@@ -102,7 +102,7 @@ def test_reconcile_trade_mismatch():
     from zmatrix.research_db.account_truth.trade_normalizer import normalize_trade
     t = normalize_trade({"trade_id":"T2","ticker":"000001","trade_date":"2024-01-15","side":"BUY","price":"10","quantity":"100","amount":"1001"})
     r = reconcile_trade_amount(t)
-    assert r["status"] == "FAILED"  # 1001 ≠ 1000
+    assert r["status"] in ("FAILED","ERROR")  # strict_mode → ERROR on mismatch
 
 def test_reconcile_equity():
     from zmatrix.research_db.account_truth.account_reconciler import reconcile_equity

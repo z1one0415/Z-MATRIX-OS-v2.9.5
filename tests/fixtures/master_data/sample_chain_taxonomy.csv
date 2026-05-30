@@ -1,0 +1,6 @@
+chain_id,chain_name,chain_type,parent_chain_id
+CHN001,人形机器人链,MANUFACTURING,
+CHN002,AI算力链,TECHNOLOGY,
+CHN003,新能源电池链,ENERGY,
+CHN004,减速器子链,MANUFACTURING,CHN001
+CHN005,锂电池子链,ENERGY,CHN003

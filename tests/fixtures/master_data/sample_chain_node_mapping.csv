@@ -1,0 +1,7 @@
+ticker,chain_id,chain_layer,chain_position,value_capture_grade,evidence_grade
+002472,CHN001,HARDWARE_BOTTLENECK,precision_reducer,B,A
+002472,CHN004,CORE_COMPONENT,harmonic_reducer,B,A
+300750,CHN003,CORE_COMPONENT,battery_cell,A,A
+300750,CHN005,CORE_COMPONENT,lithium_cell,A,A
+688981,CHN002,HARDWARE_BOTTLENECK,wafer_fab,A,A
+600519,,DEFENSIVE_ANCHOR,brand_monopoly,A,A

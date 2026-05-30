@@ -12,13 +12,15 @@ class TurnoverResult:
 
 class TurnoverLab:
     @staticmethod
-    def compute_turnover(positions: list[dict]) -> float:
+    def compute_turnover(positions) -> float:
         if len(positions) < 2: return 0.0
-        changes = 0; prev = set(p["ticker"] for p in positions[0].get("tickers",[]))
+        def _tickers(p):
+            if isinstance(p, list): return set(p)
+            if isinstance(p, dict): return set(p.get("tickers", []))
+            return set()
+        changes = 0; prev = _tickers(positions[0])
         for p in positions[1:]:
-            cur = set(p.get("tickers",[]))
-            changes += len(prev - cur) + len(cur - prev)
-            prev = cur
+            cur = _tickers(p); changes += len(prev - cur) + len(cur - prev); prev = cur
         return changes / (len(positions) - 1) if len(positions) > 1 else 0.0
 
     @staticmethod
@@ -26,7 +28,7 @@ class TurnoverLab:
         return turnover * slippage_bps * 250 / 10000
 
     @staticmethod
-    def analyze(factor_id: str, positions: list[dict], slippage_bps: float = 10.0, capacity_aum: float = 0.0) -> TurnoverResult:
+    def analyze(factor_id: str, positions, slippage_bps: float = 10.0, capacity_aum: float = 0.0) -> TurnoverResult:
         r = TurnoverResult(factor_id=factor_id)
         r.daily_turnover = TurnoverLab.compute_turnover(positions)
         r.annual_turnover = r.daily_turnover * 250

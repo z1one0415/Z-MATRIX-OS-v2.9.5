@@ -1,5 +1,6 @@
 """F1-C: Paper Fill Simulator — simulated order execution."""
 from __future__ import annotations
+from .paper_account import PaperPosition
 from dataclasses import dataclass, field
 
 @dataclass

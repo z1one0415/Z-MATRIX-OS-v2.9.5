@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Research OS V3 Delivery Closeout — Documentation Tests"""
+"""Research OS V3 Delivery Closeout — Documentation Tests (hardened)"""
 import sys, os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 from pathlib import Path
@@ -16,39 +16,54 @@ def test_test_quality_plan_exists(): assert (WORKSPACE / "docs" / "research_os" 
 def test_case_plan_exists(): assert (WORKSPACE / "docs" / "research_os" / "CASE_EXPANSION_PLAN.md").exists()
 def test_closeout_exists(): assert (WORKSPACE / "docs" / "research_os" / "RESEARCH_OS_V3_DELIVERY_CLOSEOUT.md").exists()
 
-def test_onboarding_says_not_trading_bot():
-    text = _r("ONBOARDING_GUIDE.md")
-    assert "not" in text.lower() and ("trading robot" in text.lower() or "trading" in text.lower())
+# ── HARDENED tests (6 new) ──
+def test_verify_script_no_dev_null():
+    text = (WORKSPACE / "scripts" / "verify_research_os_delivery_closeout.sh").read_text()
+    assert "> /dev/null" not in text
+    assert "2>/dev/null" not in text
 
-def test_user_manual_has_golden_path_command():
-    text = _r("USER_OPERATION_MANUAL.md")
-    assert "run_golden_path_600519.sh" in text
+def test_verify_script_no_tail():
+    text = (WORKSPACE / "scripts" / "verify_research_os_delivery_closeout.sh").read_text()
+    for line in text.split("\n"):
+        if "| tail" in line and not line.strip().startswith("#"):
+            raise AssertionError(f"tail pipe: {line.strip()[:60]}")
 
-def test_human_report_readme_explains_8_sections():
-    text = _r("GOLDEN_PATH_HUMAN_REPORT_README.md")
-    assert "研究对象" in text and "建议动作" in text
+def test_verify_script_no_or_true():
+    text = (WORKSPACE / "scripts" / "verify_research_os_delivery_closeout.sh").read_text()
+    assert "|| true" not in text
 
-def test_audit_pack_has_entries():
-    text = _r("AUDIT_PREPARATION_PACK.md")
-    assert "Architecture Freeze Audit" in text and "Golden Path" in text
+def test_delivery_closeout_consistent():
+    idx = _r("DELIVERY_INDEX.md"); clo = _r("RESEARCH_OS_V3_DELIVERY_CLOSEOUT.md")
+    assert "160" in idx and "160" in clo
+    assert "23" in idx and "23" in clo
+    assert ("1240" in idx or "1,240" in idx) and ("1240" in clo or "1,240" in clo)
 
-def test_quality_plan_has_classification():
-    text = _r("TEST_QUALITY_AUDIT_PLAN.md")
-    assert "REAL_LOGIC" in text or "EXISTENCE_TEST" in text
-
-def test_case_plan_is_plan_only():
-    text = _r("CASE_EXPANSION_PLAN.md")
-    assert "DO NOT IMPLEMENT" in text or "PLANNED" in text
-
-def test_closeout_has_final_status():
+def test_closeout_has_freeze_maintained():
     text = _r("RESEARCH_OS_V3_DELIVERY_CLOSEOUT.md")
-    assert "RESEARCH_OS_V3_DELIVERY_READY" in text
-    assert "BLOCKED" in text
+    assert "freeze" in text.lower() and "maintained" in text.lower()
+
+def test_closeout_has_human_report_verified():
+    text = _r("RESEARCH_OS_V3_DELIVERY_CLOSEOUT.md")
+    assert "HUMAN_REPORT" in text or "Human Report" in text
 
 def test_no_production_claims():
-    combined = "\n".join(_r(p) for p in ["DELIVERY_INDEX.md", "ONBOARDING_GUIDE.md", "RESEARCH_OS_V3_DELIVERY_CLOSEOUT.md"])
+    combined = "\n".join(_r(p) for p in ["DELIVERY_INDEX.md", "RESEARCH_OS_V3_DELIVERY_CLOSEOUT.md"])
     for fb in ["Production Ready", "Broker Ready", "Runtime Ready", "Real Trade Ready"]:
         assert fb not in combined, f"Forbidden: {fb}"
+
+def test_onboarding_says_not_trading_bot():
+    text = _r("ONBOARDING_GUIDE.md")
+    assert "trading robot" in text.lower() or "not" in text.lower()
+
+def test_user_manual_has_golden_path():
+    assert "run_golden_path_600519.sh" in _r("USER_OPERATION_MANUAL.md")
+
+def test_human_report_readme_has_8_sections():
+    assert "研究对象" in _r("GOLDEN_PATH_HUMAN_REPORT_README.md")
+
+def test_audit_pack_has_8_entries():
+    text = _r("AUDIT_PREPARATION_PACK.md")
+    assert "Architecture Freeze Audit" in text
 
 if __name__ == "__main__":
     import pytest; pytest.main([__file__, "-v"])

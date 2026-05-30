@@ -8,7 +8,7 @@
   "version": "RESEARCH_OS_V3_COMPLETE",
   "modules_count": 160,
   "packages_count": 23,
-  "tests_count": 1190,
+  "tests_count": 1240,
   "coverage_pct": 97,
   "core_packages": 7,
   "optional_packages": 10,

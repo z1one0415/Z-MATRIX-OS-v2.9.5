@@ -5,14 +5,14 @@
 ## Current State
 - Modules: 160 (unchanged since freeze)
 - Packages: 23
-- Tests: 1,224 (all passing)
+- Tests: 1,240 (all passing)
 - Production: BLOCKED | Broker/Runtime: BLOCKED | RealTrade: BLOCKED
 
 ## Core Documents
 | Document | Purpose |
 |----------|---------|
 | [ARCHITECTURE_FREEZE_ACCEPTANCE.md](ARCHITECTURE_FREEZE_ACCEPTANCE.md) | Freeze gate + allowed/forbidden work |
-| [RESEARCH_OS_V3_FREEZE_MANIFEST.md](RESEARCH_OS_V3_FREEZE_MANIFEST.md) | Frozen baseline manifest (160/23/1224) |
+| [RESEARCH_OS_V3_FREEZE_MANIFEST.md](RESEARCH_OS_V3_FREEZE_MANIFEST.md) | Frozen baseline manifest (160/23/1240) |
 | [../research_db/CAPABILITY_MAP.md](../research_db/RESEARCH_OS_CAPABILITY_MAP.md) | 6-layer architecture + dependency matrix |
 | [../research_db/GOLDEN_PATH_CASE_001.md](../research_db/GOLDEN_PATH_CASE_001.md) | 600519 贵州茅台 9-stage documentation |
 | [../research_db/WHITEPAPER.md](../research_db/RESEARCH_OS_V3_WHITEPAPER.md) | System goals, theory, boundaries |

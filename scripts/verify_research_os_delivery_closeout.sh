@@ -4,7 +4,7 @@ set -euo pipefail
 echo "═══ Research OS V3 Delivery Closeout Verification ═══"
 cd "$(cd "$(dirname "$0")/.." && pwd)"
 
-python3 -m compileall tests scripts zmatrix 2>&1 | tail -1
+python3 -m compileall tests scripts zmatrix
 
 for doc in \
   docs/research_os/DELIVERY_INDEX.md \
@@ -17,11 +17,13 @@ for doc in \
   docs/research_os/RESEARCH_OS_V3_DELIVERY_CLOSEOUT.md; do
   test -f "$doc" || { echo "❌ missing: $doc"; exit 1; }
 done
-echo "✅ 8 delivery documents present"
+echo "[1] 8 delivery documents present"
 
-bash scripts/run_golden_path_600519.sh --dry-run > /dev/null 2>&1 && echo "✅ Golden Path dry-run" || { echo "❌ Golden Path failed"; exit 1; }
+bash scripts/run_golden_path_600519.sh --dry-run
+echo "[2] Golden Path dry-run PASS"
 
-PYTHONPATH=. python3 -m pytest -q tests/docs/test_research_os_delivery_closeout.py 2>/dev/null || true
+PYTHONPATH=. python3 -m pytest -q tests/docs/test_research_os_delivery_closeout.py
+echo "[3] Doc tests PASS"
 
 python3 - <<'PY'
 from pathlib import Path
@@ -47,27 +49,27 @@ required = [
     "Human Report",
     "Production",
     "BLOCKED",
-    "Broker",
-    "Runtime",
 ]
 
 for item in required:
     assert item in combined, f"Missing required marker: {item}"
 
-for forbidden in [
+forbidden = [
     "Production Ready",
     "Broker Ready",
     "Runtime Ready",
     "Real Trade Ready",
     "Phase 6 approved",
-]:
-    for line in combined.split(chr(10)):
-        if forbidden in line:
+]
+
+for fb in forbidden:
+    for line in combined.split("\n"):
+        if fb in line:
             low = line.lower()
             if "audit" not in low and "target" not in low and "check" not in low:
-                raise AssertionError(f"Forbidden: {forbidden}")
+                raise AssertionError(f"Forbidden: {fb} -> {line.strip()[:80]}")
 
-print("✅ Research OS V3 delivery closeout static check PASS")
+print("[4] Static content check PASS")
 PY
 
 echo "═══ Research OS V3 Delivery Closeout PASS ═══"

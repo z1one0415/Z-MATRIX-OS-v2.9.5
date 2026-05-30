@@ -8,7 +8,7 @@
 | Status | **ARCHITECTURE_FREEZE** |
 | Modules | **160** |
 | Packages | **23** |
-| Tests | **1,190** |
+| Tests | **1,240** |
 | Coverage | 97% |
 | Golden Path Case | 600519 (贵州茅台) |
 

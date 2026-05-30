@@ -22,8 +22,9 @@ class CouncilAggregator:
             if r.verdict == "PASS": decision.pass_count += 1
             elif r.verdict == "CONDITIONAL_PASS": decision.conditional_count += 1
             else: decision.fail_count += 1; decision.minority_opinions.append({"reviewer": r.reviewer_name, "concerns": r.concerns})
-        decision.avg_score = sum(scores) / len(scores) if scores else 0
-        decision.status = "PASS" if (decision.pass_count + decision.conditional_count) / len(results) >= pass_threshold else "FAIL"
+        decision.avg_score = sum(scores) / len(scores) if scores else 0.0
+        if not results: decision.status = "INSUFFICIENT_EVIDENCE"
+        else: decision.status = "PASS" if (decision.pass_count + decision.conditional_count) / len(results) >= pass_threshold else "FAIL"
         return decision
 
     @staticmethod

@@ -17,7 +17,7 @@ class ReviewContext:
 
 @dataclass
 class ReviewResult:
-    reviewer_id: str; reviewer_name: str; verdict: str = "INSUFFICIENT_EVIDENCE"
+    reviewer_id: str; reviewer_name: str = ""; verdict: str = "INSUFFICIENT_EVIDENCE"
     score: float = 0.0; evidence: list = field(default_factory=list)
     concerns: list = field(default_factory=list); minority_note: str = ""
     production_allowed: bool = field(default=False, repr=False)

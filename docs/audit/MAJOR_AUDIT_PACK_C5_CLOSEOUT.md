@@ -1,14 +1,19 @@
-# Major Audit Pack C.5 — Core Module Re-Audit Closeout
+# Major Audit Pack C.5.1 — Re-Audit Closeout (Watch Closed)
 
-Audit: 2026-05-30T16:28:19.291849+00:00
-## Verdict: **PACK_C5_PASS**
+Audit: 2026-05-30T17:08:32.163523+00:00
+## Verdict: **PACK_C5_1_PASS**
 
-## Re-Audit Summary
+## Watch Item Closed
+- replay malformed calendar: ✅ CLOSED
+  - Dataset validates cal has next_trade_day method
+  - next_trade_day exceptions → ValueError → Runner catches → FAILED
+  - next_trade_day returns None/empty/same date → ValueError → FAILED
+  - Runner catches all ValueError from generate_rolling_slices()
+
+## Risk State
 - P0: 0 | P1_BLOCKING: 0 | P1_FIXED: 2 | P1_NON_BLOCKING: 2 | P2: 3
-- All 7 CORE modules re-audited
-- C.4.1 fixes verified: account_truth (tolerance wired), replay (calendar fail-closed)
-- Watch: replay malformed calendar — runner catches ValueError, non-blocking
 
-## Next
-Major Audit Phase Closeout Freeze
+## Status
+WATCH_ITEMS_CLOSED
+READY_FOR_MAJOR_AUDIT_PHASE_CLOSEOUT_FREEZE
 Production/Broker/Runtime/RealTrade: BLOCKED

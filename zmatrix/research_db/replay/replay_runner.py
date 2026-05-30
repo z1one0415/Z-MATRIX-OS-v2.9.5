@@ -36,10 +36,13 @@ class ReplayRunner:
             result = ReplayResult(experiment_id=experiment_id, status="FAILED")
             result.details = {"error_type": "CALENDAR_MISSING", "message": "Rolling replay requires a trading calendar"}
             return result
+        ds = RollingDataset(tickers=self.dataset.tickers, bars=self.dataset.bars, cal=self.dataset.cal)
         try:
-            ds = RollingDataset(tickers=self.dataset.tickers, bars=self.dataset.bars, cal=self.dataset.cal)
+            slices = ds.generate_rolling_slices(start, end, window, step)
         except ValueError as e:
+            error_msg = str(e)
+            error_type = "MALFORMED_TRADING_CALENDAR" if "MALFORMED" in error_msg else "CALENDAR_ERROR"
             result = ReplayResult(experiment_id=experiment_id, status="FAILED")
-            result.details = {"error_type": "MALFORMED_TRADING_CALENDAR", "message": str(e)}
+            result.details = {"error_type": error_type, "message": error_msg}
             return result
-        return self.run_replay(experiment_id, ds.generate_rolling_slices(start, end, window, step))
+        return self.run_replay(experiment_id, slices)

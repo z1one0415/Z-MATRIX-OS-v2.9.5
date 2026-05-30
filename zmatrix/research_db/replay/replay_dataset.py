@@ -35,14 +35,21 @@ class ReplayDataset:
 class RollingDataset(ReplayDataset):
     def generate_rolling_slices(self, start: str, end: str, window_days: int = 20, step_days: int = 5) -> list[DatasetSlice]:
         if self.cal is None:
-            raise ValueError("MISSING_TRADING_CALENDAR: RollingDataset requires a trading calendar. Set cal= before calling generate_rolling_slices().")
+            raise ValueError("MISSING_TRADING_CALENDAR")
+        if not hasattr(self.cal, "next_trade_day"):
+            raise ValueError("MALFORMED_TRADING_CALENDAR: missing next_trade_day method")
         slices = []
         d = start
         while d <= end:
             slices.append(self.slice_by_date(d, end if slices else end, self.tickers))
-            if self.cal:
-                for _ in range(step_days): d = self.cal.next_trade_day(d) or d
-            else: break
+            for _ in range(step_days):
+                try:
+                    next_day = self.cal.next_trade_day(d)
+                except Exception as exc:
+                    raise ValueError(f"MALFORMED_TRADING_CALENDAR: next_trade_day error on {d}: {exc}") from exc
+                if not isinstance(next_day, str) or not next_day or next_day == d:
+                    raise ValueError(f"MALFORMED_TRADING_CALENDAR: next_trade_day({d}) returned invalid: {next_day}")
+                d = next_day
         return slices
 
 class CrossSectionDataset(ReplayDataset):

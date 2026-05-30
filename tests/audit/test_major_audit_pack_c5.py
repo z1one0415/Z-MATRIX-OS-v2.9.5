@@ -31,7 +31,32 @@ def test_account_truth_verdict_pass():
 
 def test_c5_closeout_status():
     text = (WORKSPACE / "docs" / "audit" / "MAJOR_AUDIT_PACK_C5_CLOSEOUT.md").read_text()
-    assert "PACK_C5_PASS" in text or "PACK_C5_REPAIR_REQUIRED" in text
+    assert "PACK_C5_1_PASS" in text or "PACK_C5_REPAIR_REQUIRED" in text
 
 if __name__ == "__main__":
     import pytest; pytest.main([__file__, "-v"])
+
+def test_malformed_calendar_no_next_trade_day():
+    from zmatrix.research_db.replay.replay_dataset import RollingDataset
+    import pytest
+    class BadCal: pass
+    ds = RollingDataset(tickers=["A"], cal=BadCal())
+    with pytest.raises(ValueError, match="MALFORMED"):
+        ds.generate_rolling_slices("D1", "D2")
+
+def test_malformed_calendar_next_trade_day_returns_none():
+    from zmatrix.research_db.replay.replay_dataset import RollingDataset
+    import pytest
+    class NoneCal:
+        def next_trade_day(self, d): return None
+    ds = RollingDataset(tickers=["A"], cal=NoneCal())
+    with pytest.raises(ValueError, match="MALFORMED"):
+        ds.generate_rolling_slices("D1", "D2")
+
+def test_c5_watch_closed():
+    text = (WORKSPACE / "docs" / "audit" / "MAJOR_AUDIT_PACK_C5_CLOSEOUT.md").read_text()
+    assert "WATCH_ITEMS_CLOSED" in text or "Watch Item Closed" in text
+
+def test_c5_status_ready_for_freeze():
+    text = (WORKSPACE / "docs" / "audit" / "MAJOR_AUDIT_PACK_C5_CLOSEOUT.md").read_text()
+    assert "FREEZE" in text

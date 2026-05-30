@@ -17,17 +17,17 @@ def _sample_costs(): return [CostAttribution.attribute_costs("000001","2024-01-0
 def _sample_reasons(): return [OutcomeReasonEngine.classify("000001","2024-01-02",0.08,0.05,0.06,sample_size=5)]
 
 # ── Attribution Engine (18 tests) ──
-def test_market_attribution(): assert AttributionEngine.compute_market_attribution(0.10,0.05) == 0.05
-def test_market_attribution_beta_15(): assert AttributionEngine.compute_market_attribution(0.10,0.05,1.5) == 0.075
-def test_industry_attribution(): assert AttributionEngine.compute_industry_attribution(0.08,0.05) == 0.03
+def test_market_attribution(): assert AttributionEngine.compute_market_attribution(0.10,0.05) == pytest.approx(0.05)
+def test_market_attribution_beta_15(): assert AttributionEngine.compute_market_attribution(0.10,0.05,1.5) == pytest.approx(0.075)
+def test_industry_attribution(): assert AttributionEngine.compute_industry_attribution(0.08,0.05) == pytest.approx(0.03)
 def test_sector_attribution(): assert AttributionEngine.compute_sector_attribution(0.02,0.08) == -0.06
-def test_selection_alpha(): assert AttributionEngine.compute_selection_alpha(0.10,0.08) == 0.02
-def test_residual(): assert AttributionEngine.compute_residual(0.10,0.05,0.03) == 0.02
+def test_selection_alpha(): assert AttributionEngine.compute_selection_alpha(0.10,0.08) == pytest.approx(0.02)
+def test_residual(): assert AttributionEngine.compute_residual(0.10,0.05,0.03) == pytest.approx(0.02)
 def test_decompose_basic():
     r = AttributionEngine.decompose("000001","D1","D2",0.10,0.05,0.08)
     assert r.ticker == "000001"; assert r.gross_return == 0.10
     assert r.production_allowed is False
-def test_decompose_total(): r = AttributionEngine.decompose("X","D1","D2",0.10,0.05,0.08); assert abs(r.total_attributed - 0.10) < 0.01
+def test_decompose_total(): r = AttributionEngine.decompose("X","D1","D2",0.10,0.05,0.08); assert r.total_attributed == pytest.approx(0.10, abs=0.01)
 def test_batch_decompose():
     results = AttributionEngine.batch_decompose([{"ticker":"A","signal_date":"D1","exit_date":"D2","gross_return":0.10,"market_return":0.05,"industry_return":0.08}])
     assert len(results) == 1

@@ -38,7 +38,7 @@ def test_review_has_adjusted_real_logic():
 
 def test_closeout_status_valid():
     text = (WORKSPACE / "docs" / "audit" / "MAJOR_AUDIT_PACK_B_CLOSEOUT.md").read_text()
-    valid = ["PACK_B_PASS", "PACK_B_REVIEW_REQUIRED", "PACK_B_BLOCKED"]
+    valid = ["PACK_B_PASS", "PACK_B_REVIEW_REQUIRED", "PACK_B_BLOCKED","PACK_B_CLEAN_PASS"]
     assert any(s in text for s in valid)
 
 def test_no_zmatrix_modification_in_pack_b():

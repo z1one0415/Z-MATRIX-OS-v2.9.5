@@ -137,4 +137,40 @@
 - `zmatrixctl graph run-daily --enable-frontnight` 已验证
 - TruthGate + 16 Node → EventStore 全通
 
+## 🆕 Code Agent 自动路由规则 (2026-05-30)
+
+> 规则: OpenCode v1.15.11 部署于 `/opt/homebrew/bin/opencode`
+> 模型: deepseek-v4-pro
+> 配置: ~/.config/opencode/opencode.jsonc
+
+### 自动启用条件 (满足任一即自动启用)
+
+1. **新建代码模块** — 创建新 .py 文件且规格已写死在 A+ 加固文档中
+2. **Batch级实施** — 用户发出 `Phase X` 或 `Batch X` 指令且规范完整
+3. **批量测试生成** — 需要为已完成的 N 个模块生成全面测试
+
+### 自动跳过条件 (满足任一即跳过)
+
+1. **文档/报告/verify脚本** — 纯文本产出，不涉及 Python 业务逻辑
+2. **修改现有文件** — 对已有文件的局部编辑
+3. **配置/CI/guardrail** — 非代码逻辑的基础设施
+4. **修复测试** — 调试已存在的测试失败
+
+### 调用方式
+
+```bash
+opencode run "<精确任务描述>" --model deepseek/deepseek-v4-pro
+```
+
+### 使用记录
+
+| 日期 | Phase | 任务 | 结果 |
+|------|------|------|:--:|
+| 2026-05-30 | 测试 | 读取宪法输出10原则 | ✅ |
+| 2026-05-30 | 测试 | Phase 2 代码生成 (ChainLayer+SecurityMaster) | ✅ |
+| 2026-05-30 | Phase 1 | 测试生成 | ❌ 配置错误已修复 |
+
+### 注意事项
+- OpenCode 配置不含 `reasoning`/`thinking` 字段 (已修复)
+- 手写优先级仍高于 OpenCode 当效率损失>30%时
 

@@ -185,3 +185,16 @@ A(信号执行)>B(宏观逆风)>C(分歧观望)>D(等待)>E(止损)
 - 002472/601899 CSV需重新拉取(数据到2025-04,缺失2026年)
 - 全市场审计(60×5523)尚未执行
 - Z-G01 gate_data.py 的 get_kline 仍引用 bs → kdata 修复但可能有残留
+
+
+## 🤖 Code Agent 自动路由 (2026-05-30)
+
+| 条件 | 动作 |
+|------|------|
+| 新建代码模块 + A+规格完整 | → `opencode run` 自动启用 |
+| Batch/Phase级实施指令 | → `opencode run` 自动启用 |
+| 文档/verify/配置/修复 | → 手写模式 |
+| OpenCode连续失败2次 | → 回退手写，不阻塞进度 |
+
+工具: OpenCode v1.15.11 (`/opt/homebrew/bin/opencode`)
+配置: `~/.config/opencode/opencode.jsonc` (仅含 model 字段)

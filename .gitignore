@@ -44,3 +44,19 @@ runtime_reports/
 data/**/*.log
 data/universe/
 v35_brd_strategy_replay_result.json
+
+# ResearchDB private account data — NEVER commit real broker/account data
+data/research_db/account/raw/*
+data/research_db/account/staging/*
+data/research_db/account/reports/private/
+data/research_db/account/**/*.xlsx
+data/research_db/account/**/*.xls
+data/research_db/account/**/*.csv.raw
+data/research_db/account/**/*broker*
+data/research_db/account/**/*statement*
+data/research_db/account/**/*screenshot*
+
+# Allow structural placeholders
+!data/research_db/account/raw/.gitkeep
+!data/research_db/account/staging/.gitkeep
+!data/research_db/account/reports/.gitkeep

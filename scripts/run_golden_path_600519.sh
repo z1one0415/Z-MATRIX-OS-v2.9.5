@@ -17,7 +17,7 @@ PYTHONPATH=. python3 zmatrix/research_os/golden_path_runner.py ${1:-}
 if [ "$MODE" != "dry-run" ]; then
     echo ""
     echo "═══ Output ═══"
-    for f in runtime_reports/golden_path/golden_path_600519.json runtime_reports/golden_path/golden_path_600519.md; do
+    for f in runtime_reports/golden_path/golden_path_600519.json runtime_reports/golden_path/golden_path_600519.md golden_path_human_report.md; do
         if [ -f "$f" ]; then
             echo "✅ $f ($(wc -c < "$f") bytes)"
         fi

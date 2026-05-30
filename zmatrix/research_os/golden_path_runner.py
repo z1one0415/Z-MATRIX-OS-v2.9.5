@@ -105,6 +105,10 @@ def run_golden_path(dry_run: bool = False) -> dict:
         md = generate_markdown(stages)
         (OUTPUT_DIR / "golden_path_600519.md").write_text(md)
 
+    # Stage 10: Human Report
+    from zmatrix.research_os.golden_path_human_report import save_human_report
+    human_path = save_human_report(stages)
+    stages['human_report'] = human_path
     return stages
 
 

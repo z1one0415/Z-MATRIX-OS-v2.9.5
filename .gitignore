@@ -60,3 +60,20 @@ data/research_db/account/**/*screenshot*
 !data/research_db/account/raw/.gitkeep
 !data/research_db/account/staging/.gitkeep
 !data/research_db/account/reports/.gitkeep
+
+# ResearchDB Phase 2 master data — NEVER commit raw/vendor master data
+data/research_db/master_data/raw/*
+data/research_db/master_data/staging/*
+data/research_db/master_data/vendor/*
+data/research_db/master_data/**/*.xlsx
+data/research_db/master_data/**/*.xls
+data/research_db/master_data/**/*.vendor.csv
+data/research_db/master_data/**/*.raw.csv
+data/research_db/master_data/**/*wind*
+data/research_db/master_data/**/*choice*
+data/research_db/master_data/**/*tushare*
+data/research_db/master_data/**/*akshare*
+
+!data/research_db/master_data/raw/.gitkeep
+!data/research_db/master_data/staging/.gitkeep
+!data/research_db/master_data/vendor/.gitkeep

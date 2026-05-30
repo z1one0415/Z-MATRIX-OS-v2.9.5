@@ -53,7 +53,10 @@ WE = WorkflowEngine(); WA = WorkflowAudit()
 
 def test_wf_init(): WE.init("W1"); assert WE.current_stage("W1")=="IDEA"
 def test_wf_advance(): WE.init("W2"); WE.advance("W2"); assert WE.current_stage("W2")=="RESEARCH"
-def test_wf_full_cycle(): WE.init("W3"); for _ in range(6): WE.advance("W3"); assert WE.current_stage("W3")=="RETIRED"
+def test_wf_full_cycle():
+    WE.init("W3")
+    for _ in range(6): WE.advance("W3")
+    assert WE.current_stage("W3")=="RETIRED"
 def test_template_validate(): assert WorkflowTemplate.validate_stage_order(["RESEARCH","VALIDATION","COUNCIL"]) is True
 def test_template_default(): assert DEFAULT_TEMPLATE["name"]=="Standard Research Workflow"
 def test_audit_log(): a=WA.log("A1","W1","RESEARCH","STARTED"); assert len(a.audit_hash)==16

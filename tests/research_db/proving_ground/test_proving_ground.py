@@ -16,7 +16,7 @@ def test_hp_all_years_sorted(): years = sorted(e.year for e in HISTORICAL_EVENTS
 def test_hp_all_have_sectors(): assert all(len(e.affected_sectors) > 0 for e in HISTORICAL_EVENTS.values())
 def test_hp_all_have_factors(): assert all(len(e.affected_factors) > 0 for e in HISTORICAL_EVENTS.values())
 def test_hp_apply_factor_stress_affected(): ic = HP.apply_factor_stress(0.10, HISTORICAL_EVENTS["2008_GFC"], "momentum"); assert ic < 0.10
-def test_hp_apply_factor_stress_unaffected(): ic = HP.apply_factor_stress(0.10, HISTORICAL_EVENTS["2008_GFC"], "quality"); assert ic == 0.07
+def test_hp_apply_factor_stress_unaffected(): ic = HP.apply_factor_stress(0.10, HISTORICAL_EVENTS["2008_GFC"], "quality"); assert ic == pytest.approx(0.07)
 def test_hp_apply_portfolio_stress(): eq = HP.apply_portfolio_stress(1e6, HISTORICAL_EVENTS["2008_GFC"], {"Finance":0.3}); assert eq < 1e6
 def test_hp_apply_portfolio_no_loss_floor(): eq = HP.apply_portfolio_stress(1e6, HISTORICAL_EVENTS["2008_GFC"], {"Finance":1.0}); assert eq >= 0.5e6
 def test_hp_event_summary(): s = HP.event_summary(HISTORICAL_EVENTS["2015_CRASH"]); assert s["drop"] == -0.45; assert s["production_allowed"] is False

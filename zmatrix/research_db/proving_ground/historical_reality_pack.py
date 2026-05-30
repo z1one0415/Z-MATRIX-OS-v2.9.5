@@ -41,7 +41,7 @@ class HistoricalRealityPack:
     @staticmethod
     def apply_factor_stress(factor_ic: float, event: RealityEvent, factor_type: str) -> float:
         if factor_type in event.affected_factors: return factor_ic * 0.3  # IC drops 70%
-        return factor_ic * 0.7
+        return factor_ic * 0.7  # 30% reduction for unaffected
 
     @staticmethod
     def apply_portfolio_stress(equity: float, event: RealityEvent, sector_exposure: dict) -> float:

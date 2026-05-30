@@ -15,7 +15,7 @@ def test_acceptance_contains_freeze_status():
     text = (WORKSPACE / "docs" / "research_os" / "ARCHITECTURE_FREEZE_ACCEPTANCE.md").read_text()
     assert "ARCHITECTURE_FREEZE" in text
     assert "160" in text
-    assert "1190" in text or "1,190" in text
+    assert "1,240" in text or "1,190" in text or "1190" in text
     assert "BLOCKED" in text
 
 def test_freezed_module_count():

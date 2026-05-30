@@ -93,8 +93,10 @@ def run_golden_path(dry_run: bool = False) -> dict:
     lesson = LessonExtractor.extract("GP-600519-001", "WINNER", {"ic": 0.045})
     stages["memory"] = {"stored": mb.count(), "lesson_category": lesson.category}
 
-    # ── Audit Hash ──
-    h = hashlib.sha256(json.dumps(stages, sort_keys=True, default=str).encode()).hexdigest()[:16]
+    # ── Audit Hash (stable: excludes ledger timestamps) ──
+    hash_keys = ["factor", "outcome", "attribution", "replay", "council"]
+    stable_data = {k: stages[k] for k in hash_keys if k in stages}
+    h = hashlib.sha256(json.dumps(stable_data, sort_keys=True, default=str).encode()).hexdigest()[:16]
     stages["_audit_hash"] = h
     stages["_run_at"] = now
 

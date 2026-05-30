@@ -1,0 +1,4 @@
+trade_id,account_id,ticker,name,trade_date,side,price,quantity,amount,fee,stamp_duty,transfer_fee,slippage,source,data_status,source_file,signal_id,thesis_id,human_action_id,quality_status
+T001,A1,000001,平安银行,2024-01-15,BUY,11.50,1000,11500.00,5.00,0,0,0,BROKER,BROKER_EXPORT,export_2024.csv,,,,
+T002,A1,000001,平安银行,2024-03-20,SELL,12.80,1000,12800.00,5.00,0,0,0,BROKER,BROKER_EXPORT,export_2024.csv,,,,
+T003,A1,002472,双环传动,2024-02-01,BUY,38.50,500,19250.00,5.00,0,0,0,BROKER,BROKER_EXPORT,export_2024.csv,,,,

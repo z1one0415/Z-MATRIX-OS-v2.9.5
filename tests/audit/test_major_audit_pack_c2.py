@@ -46,3 +46,33 @@ def test_closeout_must_fix_matches_json():
 
 if __name__ == "__main__":
     import pytest; pytest.main([__file__, "-v"])
+
+def test_behavior_json_no_p0_when_register_p0_zero():
+    import json
+    behavior = json.loads((WORKSPACE / "runtime_reports" / "audit" / "core_module_behavior_audit.json").read_text())
+    for item in behavior:
+        risk_text = item.get("risk", "")
+        assert "P0:" not in risk_text, f"P0 in behavior JSON: {item['module']} → {risk_text}"
+
+def test_behavior_json_market_data_matches_triage():
+    import json
+    behavior = json.loads((WORKSPACE / "runtime_reports" / "audit" / "core_module_behavior_audit.json").read_text())
+    triage = json.loads((WORKSPACE / "runtime_reports" / "audit" / "p1_risk_triage.json").read_text())
+    md_behavior = next((b for b in behavior if b["module"] == "market_data"), None)
+    md_triage = next((t for t in triage if t["module"] == "market_data"), None)
+    assert md_behavior is not None and md_triage is not None
+    assert "P1" in md_behavior.get("risk", ""), f"market_data behavior risk not P1: {md_behavior.get('risk')}"
+    assert md_triage["triage_decision"] == "TEST_GAP_ONLY"
+
+def test_no_old_p0_market_data_text_anywhere():
+    import json
+    from pathlib import Path
+    for p in (WORKSPACE / "runtime_reports" / "audit").glob("*.json"):
+        text = p.read_text()
+        assert "P0: PIT future leakage in price data" not in text, f"Old P0 text in {p.name}"
+    for p in (WORKSPACE / "docs" / "audit").glob("*.md"):
+        text = p.read_text()
+        if "market_data" in text.lower():
+            for line in text.split("\n"):
+                if "market_data" in line.lower() and "P0" in line and "PIT" in line:
+                    assert False, f"Old P0 in {p.name}: {line.strip()[:80]}"

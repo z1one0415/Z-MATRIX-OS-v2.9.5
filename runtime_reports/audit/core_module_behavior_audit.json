@@ -30,7 +30,7 @@
     "boundary_test": "\u2705 insufficient days blocked",
     "fail_closed": "\u2705 fallback_last_price_allowed=False",
     "hash": "\u2014",
-    "risk": "P0: PIT future leakage in price data"
+    "risk": "P1: price-specific PIT tests missing; generic PIT blocking exists"
   },
   {
     "module": "outcome_engine",

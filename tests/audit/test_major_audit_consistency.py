@@ -33,3 +33,15 @@ def test_hash_fix_registered_in_closeout():
 
 if __name__ == "__main__":
     import pytest; pytest.main([__file__, "-v"])
+
+def test_architecture_package_math_consistent():
+    text = (WORKSPACE / "docs" / "audit" / "ARCHITECTURE_FREEZE_AUDIT_REPORT.md").read_text()
+    # CORE + OPTIONAL + SPECIALIZED must equal classified total
+    import re
+    core = int(re.search(r'CORE:\s*(\d+)', text).group(1))
+    opt = int(re.search(r'OPTIONAL:\s*(\d+)', text).group(1))
+    spec = int(re.search(r'SPECIALIZED:\s*(\d+)', text).group(1))
+    classified = int(re.search(r'Classified capability packages:\s*\*?\*?(\d+)', text).group(1))
+    assert core + opt + spec == classified, f"{core}+{opt}+{spec}={core+opt+spec} != {classified}"
+    # Must not contain contradictory arithmetic
+    assert "20 (7 CORE + 10 OPTIONAL + 4 SPECIALIZED)" not in text, "Arithmetic contradiction found"

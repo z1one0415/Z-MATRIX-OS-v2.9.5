@@ -8,7 +8,7 @@ Audit: 2026-05-30T13:57:23.841298+00:00
 ## Package Count (Methodology)
 - Freeze manifest declared: **23** (22 Python packages + root modules counted as package 23)
 - Importable Python subdirectories: **21**
-- Classified capability packages: **20** (7 CORE + 10 OPTIONAL + 4 SPECIALIZED)
+- Classified capability packages: **20** (7 CORE + 10 OPTIONAL + 3 SPECIALIZED)
 - Difference (<23 vs 21>): root modules (constitution/policies) counted as a 'package' in freeze
 
 ## Verdict

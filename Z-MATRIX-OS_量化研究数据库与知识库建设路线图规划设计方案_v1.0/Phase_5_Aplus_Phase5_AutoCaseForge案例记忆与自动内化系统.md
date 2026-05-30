@@ -1,3 +1,166 @@
+# Phase 5：AutoCaseForge 案例记忆与自动内化系统｜A+加固执行版
+
+> **版本**：A+ Hardened Execution Spec
+> **用途**：交给 OpenClaw 天师 / deepseek-v4-pro 执行，要求无漂移、无歧义、可测试、可审计、可长期维护。
+> **重要说明**：本文档在原 Phase 设计基础上加入防漂移执行层。若原文与加固层冲突，以加固层为准。
+
+
+---
+
+# A/A+ 加固执行层｜DeepSeek-v4-Pro / OpenClaw 防漂移军规
+
+> 本节为强制执行层。下方原始设计内容不得被摘要化、不得被自由解释、不得被“等价实现”替代。OpenClaw / deepseek-v4-pro 必须按本文档的目录、文件、函数、测试、verify、closeout 顺序落地。
+
+## A0. 执行等级
+
+```text
+目标执行等级：A / A+
+允许产出：research-only / paper-only 工程代码、schema、fixture、测试、报告、verify
+禁止产出：真实交易、broker 接口、runtime daemon、production 开关、自动买卖、RC 状态变更
+```
+
+## A1. 全局硬门
+
+所有新增代码、报告、JSON、YAML、Ledger、测试输出必须保持：
+
+```json
+{
+  "real_trade_allowed": false,
+  "broker_order_allowed": false,
+  "runtime_enabled": false,
+  "auto_buy_allowed": false,
+  "auto_sell_allowed": false,
+  "production_allowed": false,
+  "paper_only": true,
+  "human_review_required": true
+}
+```
+
+禁止在业务输出中出现：
+
+```text
+BUY
+SELL
+STRONG_BUY
+AUTO_BUY
+AUTO_SELL
+BROKER_ORDER
+PLACE_ORDER
+SEND_ORDER
+EXECUTE_TRADE
+PRODUCTION_READY
+REAL_TRADE_READY
+```
+
+如果作为“禁止词清单”出现在文档或测试里，必须加 `allowlist: forbidden-token-definition` 注释，不得被业务模块输出。
+
+## A2. 执行方式
+
+```text
+1. 每个 Batch 独立 commit。
+2. 每个 Batch 完成后必须运行对应测试。
+3. Closeout 前必须运行本 Phase verify。
+4. Phase verify 失败，不得提交 Closeout。
+5. 不得自动进入下一 Phase。
+6. 不得顺手修其他 Phase。
+7. 不得修改 RC1 / production / broker / runtime 状态。
+```
+
+## A3. 文件实现优先级
+
+OpenClaw 必须按顺序实现：
+
+```text
+1. docs / data 目录与 README
+2. schema / enum / constants
+3. pure function modules
+4. fixture
+5. unit tests
+6. report generator
+7. verify script
+8. acceptance matrix
+9. closeout report
+```
+
+禁止先写报告再补代码，禁止只创建空文件通过验收。
+
+## A4. 测试与验收硬规则
+
+每个 Phase 必须至少具备：
+
+```text
+1. Schema validation tests
+2. Enum validation tests
+3. Missing data tests
+4. Safety boundary tests
+5. Verify script test
+6. Report generation smoke test
+7. No-production scan
+8. Closeout consistency test
+```
+
+测试不得只检查“文件存在”。每个核心函数必须至少有：
+
+```text
+正常样本
+缺失字段样本
+非法枚举样本
+边界样本
+安全阻断样本
+```
+
+## A5. Closeout 输出格式
+
+每个 Phase 完成后必须输出：
+
+```text
+commit:
+branch:
+phase:
+status:
+files_created:
+files_modified:
+tests_run:
+verify_run:
+known_limitations:
+blocked_items:
+safety_state:
+next_phase_allowed:
+```
+
+`safety_state` 必须逐项列出：
+
+```text
+real_trade_allowed=False
+broker_order_allowed=False
+runtime_enabled=False
+auto_buy_allowed=False
+auto_sell_allowed=False
+production_allowed=False
+paper_only=True
+human_review_required=True
+```
+
+## A6. 失败即停规则
+
+出现以下任一情况必须停止，不得继续：
+
+```text
+1. 任何测试失败。
+2. verify 脚本失败。
+3. 发现 production/broker/runtime/real_trade flag。
+4. 原始私有数据被 git track。
+5. T20/T60 不足却被标为 ready。
+6. CURRENT_SNAPSHOT_ONLY 被用于历史回测。
+7. 单案例被晋级为规则。
+8. LLM 输出连续主观评分。
+9. 报告给出 BUY/SELL/AUTO_EXECUTE。
+```
+
+---
+
+# 原始 AutoCaseForge v1.0 工程说明书完整吸收区
+
 # AutoCaseForge v1.0｜工程落地执行说明书
 
 > **版本**：v1.0  
@@ -1480,4 +1643,139 @@ AutoCaseForge v1.0 的本质是：
 ```text
 自动发现值得复盘的事实，自动落盘成案例草稿，自动形成记忆候选；
 但最终确认、规则晋级、系统记忆写入，必须由人工裁决。
+```
+
+
+---
+
+# Phase 5 与 ResearchDB Phase 0–4 的强接口
+
+本 Phase 必须消费以下上游输入，不能自行发明字段：
+
+```text
+Phase 1：trade_ledger / position_ledger / account_daily_snapshot / watchlist_ledger
+Phase 2：security_master / industry_classification / chain_mapping / benchmark_mapping
+Phase 3：signal_outcome / trade_outcome / watchlist_outcome / executable_return_outcome
+Phase 4：factor_registry / factor_validation / factor_promotion_ledger
+```
+
+如果上游文件不存在，AutoCaseForge 必须输出：
+
+```json
+{
+  "status": "BLOCKED",
+  "blocked_reason": "UPSTREAM_DATA_MISSING",
+  "missing_inputs": []
+}
+```
+
+不得自行造数。
+
+# Phase 5 与 Phase 6–10 的输出接口
+
+AutoCaseForge 输出必须被下游消费：
+
+```text
+Phase 6：event_ledger / catalyst cases / sell-on-news cases
+Phase 7：B-Matrix false positive / financial mismatch cases
+Phase 8：false_signal_library / chain cases
+Phase 9：weakness_map / forbidden_trade_patterns
+Phase 10：monthly_memory_report / cockpit review queue
+```
+
+# Phase 5 A+ 执行补强
+
+原始《AutoCaseForge v1.0｜工程落地执行说明书》为本 Phase 主体，不得再压缩。OpenClaw 必须完整实现其中所有章节，尤其是：
+
+```text
+1. 输入文件规范
+2. 5.1 枚举常量
+3. 12 张卡完整字段
+4. LedgerWriter append-only 硬规则
+5. EventCollector / EventNormalizer
+6. TriggerResult
+7. Case Quality Gate
+8. ForwardTradingDayGuard
+9. ReviewQueue 固定格式
+10. RuleCandidate 结构
+11. CrossCaseValidator
+12. MemoryIntegrator 内化军规
+13. 002472 双环传动首个 AUTO_DRAFT case
+14. 18 章测试要求
+15. 19 章分批执行计划
+```
+
+如果任一项未完成，Phase 5 不得 Closeout。
+
+
+---
+
+# A/A+ 统一防漂移验收清单
+
+OpenClaw 完成本文档后，必须逐项自检：
+
+```text
+[ ] 是否严格按本文档目录创建文件？
+[ ] 是否所有 schema 都有 enum 与 required fields？
+[ ] 是否所有核心函数都有明确返回结构？
+[ ] 是否所有 fixture 都是虚构或非私有样本？
+[ ] 是否所有真实私有 raw 数据已被 .gitignore 阻断？
+[ ] 是否所有 tests 都运行通过？
+[ ] 是否 verify 脚本运行通过？
+[ ] 是否 Acceptance Matrix 与真实完成状态一致？
+[ ] 是否 Closeout Report 没有夸大完成度？
+[ ] 是否 production/broker/runtime/real_trade 全部 BLOCKED？
+[ ] 是否没有自动进入下一 Phase？
+```
+
+最终状态只能是：
+
+```text
+PASS：全部完成，允许人工裁决进入下一 Phase
+PARTIAL：有非阻断缺口，不能进入下一 Phase
+BLOCKED：存在硬门失败，必须修复
+```
+
+---
+
+# 交付给用户的完成报告模板
+
+```text
+## <Phase Name> 完成报告
+
+commit:
+branch:
+
+### Scope
+- phase:
+- mode: Research Only / Paper Only
+- production:
+- broker/runtime:
+- real trade:
+
+### Implementation
+- docs:
+- data directories:
+- code modules:
+- fixtures:
+- reports:
+
+### Tests
+- pytest:
+- verify script:
+- safety scan:
+
+### Acceptance Matrix
+- DONE:
+- PARTIAL:
+- BLOCKED:
+
+### Known Limitations
+- ...
+
+### Final Decision
+PASS / PARTIAL / BLOCKED
+
+### Next Step
+等待人工批准是否进入下一 Phase。
 ```

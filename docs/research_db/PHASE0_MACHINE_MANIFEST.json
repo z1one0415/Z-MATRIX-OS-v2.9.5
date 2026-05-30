@@ -1,0 +1,38 @@
+{
+  "phase": "ResearchDB Phase 0",
+  "status": "PHASE0_READY_FOR_ACCOUNT_TRUTH_IMPORT",
+  "docs_required": [
+    "RESEARCH_DB_CONSTITUTION.md",
+    "DATA_TRUST_LEVEL_POLICY.md",
+    "PIT_SAFETY_POLICY.md",
+    "OUTCOME_HORIZON_POLICY.md",
+    "DATA_SOURCE_CAPABILITY_POLICY.md",
+    "RESEARCH_DB_PROMOTION_POLICY.md",
+    "NO_PRODUCTION_BOUNDARY.md",
+    "RESEARCH_DB_DIRECTORY_STANDARD.md"
+  ],
+  "dirs_required": [
+    "data/research_db/account", "data/research_db/universe", "data/research_db/market",
+    "data/research_db/finance", "data/research_db/signal", "data/research_db/outcome",
+    "data/research_db/factor", "data/research_db/event", "data/research_db/caseforge",
+    "data/research_db/knowledge"
+  ],
+  "modules_required": [
+    "trust_level", "pit_policy", "outcome_horizon_policy",
+    "data_source_capability", "promotion_policy", "no_production_boundary",
+    "directory_registry", "research_db_status"
+  ],
+  "tests_required": [
+    "test_phase0_directory_standard",
+    "test_data_trust_level_policy",
+    "test_pit_safety_policy",
+    "test_outcome_horizon_policy",
+    "test_data_source_capability_policy",
+    "test_promotion_policy",
+    "test_no_production_boundary"
+  ],
+  "verify_script": "scripts/verify_research_db_phase0.sh",
+  "production_allowed": false,
+  "next_phase_allowed_by_machine": false,
+  "human_approval_required": true
+}

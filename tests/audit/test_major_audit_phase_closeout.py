@@ -33,3 +33,23 @@ def test_no_production_claims():
 
 if __name__ == "__main__":
     import pytest; pytest.main([__file__, "-v"])
+
+def test_verdict_json_exists(): assert (WORKSPACE / "runtime_reports" / "audit" / "major_audit_final_verdict.json").exists()
+
+def test_verdict_freeze_commit_matches_head():
+    import subprocess, json
+    head = subprocess.run(["git","rev-parse","--short","HEAD"], capture_output=True, text=True, cwd=str(WORKSPACE)).stdout.strip()
+    v = json.loads((WORKSPACE / "runtime_reports" / "audit" / "major_audit_final_verdict.json").read_text())
+    assert v["freeze_commit"] == head, f"JSON freeze_commit {v['freeze_commit']} != HEAD {head}"
+
+def test_verdict_c5_1_commit(): 
+    import json
+    v = json.loads((WORKSPACE / "runtime_reports" / "audit" / "major_audit_final_verdict.json").read_text())
+    assert v["c5_1_commit"] == "496330f"
+
+def test_manifest_freeze_commit_matches_json():
+    import json
+    manifest = (WORKSPACE / "docs" / "audit" / "RESEARCH_OS_V3_AUDIT_FREEZE_MANIFEST.md").read_text()
+    v = json.loads((WORKSPACE / "runtime_reports" / "audit" / "major_audit_final_verdict.json").read_text())
+    fc = v["freeze_commit"]
+    assert fc in manifest, f"Manifest missing freeze_commit {fc}"

@@ -2,7 +2,7 @@
 
 | Field | Value |
 |-------|-------|
-| freeze_commit | 496330f |
+| freeze_commit | 3374fb2 |
 | base_delivery_commit | afdd12f |
 | c5_1_commit | 496330f |
 | architecture_freeze | MAINTAINED |

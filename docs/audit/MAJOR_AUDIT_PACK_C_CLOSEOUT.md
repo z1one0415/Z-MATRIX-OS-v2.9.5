@@ -11,4 +11,4 @@ Audit: 2026-05-30
 | Every CORE has safety tests | ✅ |
 
 ## Risks: P0:0 | P1:4 | P2:3
-## Next: PACK_C_COMPLETE | Production/Broker/Runtime/RealTrade: BLOCKED
+## Next: PACK_C1_RISK_TRIAGE | Production/Broker/Runtime/RealTrade: BLOCKED

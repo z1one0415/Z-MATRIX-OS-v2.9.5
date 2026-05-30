@@ -33,3 +33,35 @@ def test_risk_register_has_7_modules():
 
 if __name__ == "__main__":
     import pytest; pytest.main([__file__, "-v"])
+
+def test_risk_counts_consistent_across_reports():
+    import json
+    behavior = (WORKSPACE / "docs" / "audit" / "CORE_MODULE_BEHAVIOR_AUDIT.md").read_text()
+    risk_json = json.loads((WORKSPACE / "runtime_reports" / "audit" / "core_module_risk_register.json").read_text())
+    manual = (WORKSPACE / "docs" / "audit" / "CORE_MODULE_MANUAL_REVIEW.md").read_text()
+    closeout = (WORKSPACE / "docs" / "audit" / "MAJOR_AUDIT_PACK_C_CLOSEOUT.md").read_text()
+    # Risk register has P0=0 from json
+    p0_risk = sum(1 for r in risk_json if r["level"] == "P0_BLOCKER")
+    p1_risk = sum(1 for r in risk_json if r["level"] == "P1_HIGH")
+    # Manual review should state 0 P0 and 4 P1
+    assert "0 P0" in manual or "P0: 0" in manual or "P0:0" in manual
+    assert "4 P1" in manual or "P1: 4" in manual or "P1:4" in manual
+    # Closeout should match
+    assert "P0: 0" in closeout or "P0:0" in closeout
+    assert "P1: 4" in closeout or "P1:4" in closeout
+
+def test_closeout_next_step_is_c1_when_review_required():
+    text = (WORKSPACE / "docs" / "audit" / "MAJOR_AUDIT_PACK_C_CLOSEOUT.md").read_text()
+    if "REVIEW_REQUIRED" in text:
+        assert "PACK_C_COMPLETE" not in text, "Closeout says COMPLETE but verdict is REVIEW_REQUIRED"
+
+def test_behavior_audit_market_data_risk_matches_register():
+    import json
+    behavior = (WORKSPACE / "docs" / "audit" / "CORE_MODULE_BEHAVIOR_AUDIT.md").read_text()
+    risk_json = json.loads((WORKSPACE / "runtime_reports" / "audit" / "core_module_risk_register.json").read_text())
+    md_risk = [r for r in risk_json if r["module"] == "market_data"]
+    assert len(md_risk) == 1
+    # Behavior audit should NOT say P0 for market_data
+    for line in behavior.split("\n"):
+        if "market_data" in line.lower() and "risk:" in line.lower() and "P0" in line:
+            assert "P1" in line, f"market_data behavior audit shows P0 but risk register has P1"

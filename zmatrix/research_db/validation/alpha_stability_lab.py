@@ -24,6 +24,7 @@ class AlphaStabilityLab:
         rankic_vals = [m.get("rankic",0) for m in historical_metrics if m.get("rankic") is not None]
         wr_vals = [m.get("win_rate",0) for m in historical_metrics if m.get("win_rate") is not None]
         r.periods_analyzed = len(ic_vals)
+        if r.periods_analyzed > 0: r.ic_mean = statistics.mean(ic_vals); r.rankic_mean = statistics.mean(rankic_vals) if rankic_vals else 0.0
         if r.periods_analyzed < 3: r.status = StabilityStatus.UNSTABLE.value; return r
         r.ic_mean = statistics.mean(ic_vals)
         r.ic_std = statistics.stdev(ic_vals) if len(ic_vals) > 1 else 0.0

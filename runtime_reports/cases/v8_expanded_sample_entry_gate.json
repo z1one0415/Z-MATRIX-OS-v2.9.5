@@ -1,0 +1,9 @@
+{
+  "status": "V8_BLOCKED_INSUFFICIENT_DATA",
+  "ready_for_v8_expanded_sample": false,
+  "ready_for_alpha_claim": false,
+  "reason": "V7 exploratory completed; formal requires expanded universe + longer history.",
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

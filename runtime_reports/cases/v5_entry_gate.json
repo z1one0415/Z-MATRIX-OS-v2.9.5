@@ -1,13 +1,19 @@
 {
-  "status": "V5_ENTRY_ALLOWED",
-  "daily_price_real_read_only": 12,
-  "adjustment_factor_ready": 12,
-  "benchmark_real_read_only": true,
-  "calendar_real_read_only": true,
-  "ready_for_real_return": 12,
+  "status": "V5_ENTRY_BLOCKED_WAITING_USER_MARKET_DATA",
+  "daily_price_real_read_only": 0,
+  "adjustment_factor_ready": 0,
+  "benchmark_real_read_only": false,
+  "calendar_real_read_only": false,
+  "ready_for_real_return": 0,
   "ready_for_alpha_claim": 0,
-  "v5_entry_allowed": true,
-  "blocking_reasons": [],
+  "v5_entry_allowed": false,
+  "blocking_reasons": [
+    "DAILY_PRICE_NOT_12",
+    "ADJUSTMENT_FACTOR_NOT_READY",
+    "BENCHMARK_NOT_REAL",
+    "CALENDAR_NOT_REAL",
+    "REAL_RETURN_NOT_READY"
+  ],
   "production": "BLOCKED",
   "broker_runtime": "BLOCKED",
   "real_trade": "BLOCKED"

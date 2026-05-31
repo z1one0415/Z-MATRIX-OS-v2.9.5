@@ -1,0 +1,2 @@
+exchange,trade_date,is_open,source_name,source_type,source_file,source_hash,as_of_date
+SSE,2024-01-02,true,manual,LOCAL_USER_PROVIDED,data/processed/trading_calendar.csv,<sha256>,2026-05-31

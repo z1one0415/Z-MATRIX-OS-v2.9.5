@@ -1,0 +1,85 @@
+{
+  "schema_version": "v4.0",
+  "title": "Case Expansion V4 \u2014 Read-only Market Data Contract",
+  "source_status_enum": {
+    "REAL_READ_ONLY": "Real market data from verified source with source_hash/as_of_date",
+    "PUBLIC_READ_ONLY": "Publicly available market data",
+    "LOCAL_USER_PROVIDED": "User-provided CSV in processed/ directory",
+    "FIXTURE": "Test fixture data \u2014 plumbing validation only",
+    "SYNTHETIC": "Generated/synthetic \u2014 cannot support investment judgment",
+    "MISSING": "Required but not available",
+    "BLOCKED": "Access blocked or data unavailable"
+  },
+  "hard_rules": [
+    "REAL_READ_ONLY must have source_hash",
+    "REAL_READ_ONLY must have as_of_date",
+    "Missing fields must not be default-filled with 0",
+    "Missing prices must not be forward-filled",
+    "Missing adjustment_factor must not default to 1.0 unless EXPLICITLY_NOT_REQUIRED",
+    "raw/staging/vendor directories must not contain committed real data",
+    "source_type must not be SYNTHETIC for market data"
+  ],
+  "required_fields": {
+    "daily_price_bar": [
+      "ticker",
+      "trade_date",
+      "open",
+      "high",
+      "low",
+      "close",
+      "volume",
+      "amount",
+      "source_name",
+      "source_type",
+      "source_file",
+      "source_hash",
+      "as_of_date",
+      "adjusted"
+    ],
+    "adjustment_factor": [
+      "ticker",
+      "trade_date",
+      "adjust_factor",
+      "factor_type",
+      "source_name",
+      "source_type",
+      "source_file",
+      "source_hash",
+      "as_of_date"
+    ],
+    "benchmark_price": [
+      "benchmark_id",
+      "trade_date",
+      "open",
+      "high",
+      "low",
+      "close",
+      "volume",
+      "amount",
+      "source_name",
+      "source_type",
+      "source_file",
+      "source_hash",
+      "as_of_date"
+    ],
+    "trading_calendar": [
+      "exchange",
+      "trade_date",
+      "is_open",
+      "source_name",
+      "source_type",
+      "source_file",
+      "source_hash",
+      "as_of_date"
+    ]
+  },
+  "validation_rules": {
+    "date_format": "YYYY-MM-DD",
+    "price_positive": "open/high/low/close must be > 0",
+    "high_ge_max": "high >= max(open, close, low)",
+    "low_le_min": "low <= min(open, close, high)",
+    "volume_ge_zero": "volume >= 0",
+    "amount_ge_zero": "amount >= 0",
+    "ticker_in_core12": "ticker must belong to Core 12"
+  }
+}

@@ -1,0 +1,2 @@
+ticker,trade_date,adjust_factor,factor_type,source_name,source_type,source_file,source_hash,as_of_date
+600519,2024-06-28,1.0,EXPLICITLY_NOT_REQUIRED,manual,LOCAL_USER_PROVIDED,data/processed/600519_adj.csv,<sha256>,2026-05-31

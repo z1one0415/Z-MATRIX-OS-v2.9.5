@@ -1,0 +1,19 @@
+{
+  "status": "CASE_EXPANSION_V4_INFRASTRUCTURE_READY_BLOCKED_MISSING_MARKET_DATA",
+  "core_12_cases": 12,
+  "daily_price_real_read_only": 0,
+  "daily_price_fixture": 1,
+  "daily_price_missing": 11,
+  "benchmark_real_read_only": false,
+  "calendar_real_read_only": false,
+  "ready_for_real_return": 1,
+  "ready_for_alpha_claim": 0,
+  "factor_real": 0,
+  "attribution_real": 0,
+  "council_investment_verdict": "BLOCKED_UNTIL_FACTOR_REAL",
+  "buy_sell_instruction_count": 0,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "note": "V4 infrastructure built. Real market data NOT provided. Place CSV files in data/research_db/market_data/processed/ to advance."
+}

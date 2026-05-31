@@ -1,0 +1,2 @@
+ticker,trade_date,open,high,low,close,volume,amount,source_name,source_type,source_file,source_hash,as_of_date,adjusted
+600519,2024-01-02,1690.00,1715.00,1685.00,1700.50,2345678,3987654321,manual,LOCAL_USER_PROVIDED,data/processed/600519_daily.csv,<sha256>,2026-05-31,true

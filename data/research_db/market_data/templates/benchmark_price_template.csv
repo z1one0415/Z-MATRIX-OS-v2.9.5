@@ -1,0 +1,2 @@
+benchmark_id,trade_date,open,high,low,close,volume,amount,source_name,source_type,source_file,source_hash,as_of_date
+CSI300,2024-01-02,3430.00,3450.00,3410.00,3425.50,0,0,manual,LOCAL_USER_PROVIDED,data/processed/CSI300_daily.csv,<sha256>,2026-05-31

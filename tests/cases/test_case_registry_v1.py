@@ -10,7 +10,7 @@ JSON_PATH = WORKSPACE / "data" / "research_db" / "cases" / "case_registry_v1.jso
 
 def _rows(): return open(CSV_PATH).readlines()
 def _csv(): return list(csv.DictReader(open(CSV_PATH)))
-def _json(): return json.loads(open(JSON_PATH).read_text())
+def _json(): return json.loads(JSON_PATH.read_text())
 
 def test_csv_row_width():
     h = len(_rows()[0].strip().split(","))
@@ -48,7 +48,7 @@ def test_gen_fail_closed():
     import subprocess
     bad = WORKSPACE / "data" / "research_db" / "cases" / "_bad.csv"
     bad.write_text("a,b,c\n1,2\n")
-    r = subprocess.run(["python3","-c","import csv; r=list(csv.DictReader(open('data/research_db/cases/_bad.csv'))); assert None not in r[0]"], capture_output=True, text=True, cwd=str(WORKSPACE))
+    r = subprocess.run(["python3","-c","import csv; r=list(csv.DictReader(open('data/research_db/cases/_bad.csv'))); assert None not in r[0].values()"], capture_output=True, text=True, cwd=str(WORKSPACE))
     assert r.returncode != 0, "should fail on width mismatch"
     bad.unlink(missing_ok=True)
 def test_runner_nominal():

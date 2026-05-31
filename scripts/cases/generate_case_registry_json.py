@@ -11,7 +11,7 @@ with CSV.open("r", encoding="utf-8", newline="") as f:
     header = reader.fieldnames or []
     output = []
     for idx, row in enumerate(reader, start=2):
-        if None in row:
+        if None in row.values():
             raise ValueError(f"CSV row {idx}: None key — columns misaligned")
         item = {}
         for k, v in row.items():

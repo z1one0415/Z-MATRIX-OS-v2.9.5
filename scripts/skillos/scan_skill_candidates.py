@@ -11,6 +11,10 @@ def infer_risk(n):
  for kw,r in [("write","R3"),("commit","R3"),("apply","R3"),("draft","R2"),("proposal","R2"),("render","R2"),("build","R2"),("annotate","R1"),("score","R1"),("calculate","R1"),("validate","R1"),("check","R1")]:
   if kw in n.lower(): return r+"_WRITE_RESEARCH_DB" if r=="R3" else r+"_DRAFT" if r=="R2" else r+"_ANNOTATE"
  return "R0_READ"
+def scan_sh(path):
+    domain=infer_domain(path)
+    return {"candidate_id":f"CANDIDATE.{domain}.{path.stem.upper()}","module_path":str(path),"symbol_name":path.name,"candidate_type":"script","domain":domain,"suggested_skill_id":f"{domain}.{path.stem.upper()}","suggested_skill_layer":"L1_WORKFLOW","suggested_risk_level":"R1_ANNOTATE","read_layers":[],"write_layers":[],"requires_human_review":False,"production_allowed":False,"status":"CANDIDATE_ONLY","reason":"script discovered"}
+
 def scan_py(path):
  out=[]; domain=infer_domain(path)
  try: tree=ast.parse(path.read_text("utf-8",errors="ignore"))

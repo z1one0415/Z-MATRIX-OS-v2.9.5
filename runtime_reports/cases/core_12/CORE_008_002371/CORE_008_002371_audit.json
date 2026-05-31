@@ -1,0 +1,12 @@
+{
+  "case_id": "CORE_008",
+  "ticker": "002371",
+  "name": "北方华创",
+  "status": "COMPLETED",
+  "audit_hash": "964e65eaff991122",
+  "human_report": "/Users/z1/Documents/Z-MATRIX-OS v2.9.5/runtime_reports/cases/core_12/CORE_008_002371/CORE_008_002371_human_report.md",
+  "ticker_specific": true,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

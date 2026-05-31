@@ -1,0 +1,12 @@
+{
+  "case_id": "CORE_010",
+  "ticker": "600276",
+  "name": "恒瑞医药",
+  "status": "COMPLETED",
+  "audit_hash": "01ea0915fa976f4a",
+  "human_report": "/Users/z1/Documents/Z-MATRIX-OS v2.9.5/runtime_reports/cases/core_12/CORE_010_600276/CORE_010_600276_human_report.md",
+  "ticker_specific": true,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

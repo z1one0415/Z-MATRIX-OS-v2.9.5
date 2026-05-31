@@ -1,0 +1,12 @@
+{
+  "case_id": "CORE_001",
+  "ticker": "600519",
+  "name": "贵州茅台",
+  "status": "COMPLETED",
+  "audit_hash": "419d924cc13d739e",
+  "human_report": "/Users/z1/Documents/Z-MATRIX-OS v2.9.5/runtime_reports/cases/core_12/CORE_001_600519/CORE_001_600519_human_report.md",
+  "ticker_specific": true,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

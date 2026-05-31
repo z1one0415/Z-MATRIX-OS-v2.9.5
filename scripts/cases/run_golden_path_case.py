@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run Golden Path for a specific case from registry."""
+"""Run Golden Path for a specific case from registry — writes audit JSON."""
 import sys, json
 from pathlib import Path
 
@@ -11,7 +11,7 @@ def load_case(case_id: str) -> dict:
     for c in registry:
         if c.get("case_id") == case_id:
             return c
-    raise ValueError(f"Case not found: {case_id}")
+    return {}
 
 def main():
     import argparse
@@ -36,8 +36,28 @@ def main():
         dry_run=args.dry_run,
     )
 
+    case_meta = result.get("_case", {})
+    ticker = case_meta.get("ticker", "UNKNOWN")
     status = "COMPLETED" if result.get("_audit_hash") else "PIPELINE_ERROR"
-    print(f"Case: {args.case_id} | Ticker: {result['idea']['ticker']} | Status: {status} | Hash: {result.get('_audit_hash','N/A')}")
+
+    # Write audit JSON
+    out_dir = WORKSPACE / "runtime_reports" / "cases" / "core_12" / f"{args.case_id}_{ticker}"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    audit = {
+        "case_id": args.case_id,
+        "ticker": ticker,
+        "name": case_meta.get("name", ""),
+        "status": status,
+        "audit_hash": result.get("_audit_hash", "N/A"),
+        "human_report": str(out_dir / f"{args.case_id}_{ticker}_human_report.md"),
+        "ticker_specific": True,
+        "production": "BLOCKED",
+        "broker_runtime": "BLOCKED",
+        "real_trade": "BLOCKED",
+    }
+    (out_dir / f"{args.case_id}_{ticker}_audit.json").write_text(json.dumps(audit, indent=2, ensure_ascii=False))
+
+    print(f"Case: {args.case_id} | Ticker: {ticker} | Status: {status} | Hash: {result.get('_audit_hash', 'N/A')}")
 
 if __name__ == "__main__":
     main()

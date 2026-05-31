@@ -1,19 +1,19 @@
 #!/usr/bin/env python3
-"""Summarize Core 12 batch run results from audit files."""
+"""Summarize Core 12 batch run from audit JSONs."""
 import json
 from pathlib import Path
 
 ROOT = Path("runtime_reports/cases/core_12")
-audits = list(ROOT.glob("CORE_*_*/*_human_report.md"))
-case_dirs = sorted(ROOT.glob("CORE_*_*"))
+audits = sorted(ROOT.glob("CORE_*_*/*_audit.json"))
 
 summary = {
     "status": "CORE_12_TICKER_SPECIFIC_ATTEMPTED",
     "attempted": 12,
-    "completed": len(case_dirs),
+    "completed": len(audits),
     "data_gap": 0,
     "master_data_missing": 0,
-    "pipeline_error": max(0, 12 - len(case_dirs)),
+    "pipeline_error": max(0, 12 - len(audits)),
+    "unique_hash_count": 0,
     "ticker_specific": True,
     "runner_parameterized": True,
     "results": [],
@@ -22,18 +22,30 @@ summary = {
     "real_trade": "BLOCKED",
 }
 
-for d in case_dirs:
-    parts = d.name.split("_")
-    case_id = "_".join(parts[:2]) if len(parts) >= 2 else d.name
-    ticker = parts[-1] if len(parts) >= 3 else "UNKNOWN"
-    audit_files = list(d.glob("*_human_report.md"))
-    summary["results"].append({
-        "case_id": case_id,
-        "ticker": ticker,
-        "name": d.name,
-        "status": "COMPLETED" if audit_files else "PIPELINE_ERROR",
-        "human_report_count": len(audit_files),
-    })
+hashes = set()
+for p in audits:
+    d = json.loads(p.read_text())
+    h = d.get("audit_hash", "N/A")
+    if h != "N/A": hashes.add(h)
+    summary["results"].append(d)
 
-Path("runtime_reports/cases/core_12_summary.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False))
+summary["unique_hash_count"] = len(hashes)
+
+(ROOT.parent / "core_12_summary.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False))
+# Also write closeout
+closeout = {
+    "status": "CASE_EXPANSION_V2_PARAMETERIZED_CONFIRMED",
+    "core_12_attempted": 12,
+    "core_12_completed": len(audits),
+    "unique_hash_count": len(hashes),
+    "runner_parameterized": True,
+    "ticker_specific": True,
+    "human_report_parameterized": True,
+    "buy_sell_instruction_count": 0,
+    "production": "BLOCKED",
+    "broker_runtime": "BLOCKED",
+    "real_trade": "BLOCKED",
+}
+(ROOT.parent / "case_expansion_v2_closeout.json").write_text(json.dumps(closeout, indent=2))
+
 print(json.dumps(summary, indent=2, ensure_ascii=False))

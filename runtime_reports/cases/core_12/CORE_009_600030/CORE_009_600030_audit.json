@@ -1,0 +1,12 @@
+{
+  "case_id": "CORE_009",
+  "ticker": "600030",
+  "name": "中信证券",
+  "status": "COMPLETED",
+  "audit_hash": "bf8b78dadd9d9107",
+  "human_report": "/Users/z1/Documents/Z-MATRIX-OS v2.9.5/runtime_reports/cases/core_12/CORE_009_600030/CORE_009_600030_human_report.md",
+  "ticker_specific": true,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

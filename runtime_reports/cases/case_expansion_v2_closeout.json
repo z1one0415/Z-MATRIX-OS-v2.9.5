@@ -1,0 +1,17 @@
+{
+  "status": "CASE_EXPANSION_V2_PARAMETERIZED_CONFIRMED",
+  "ce2_a_golden_path_parameterized": true,
+  "ce2_b_human_report_parameterized": true,
+  "ce2_c_core_12_attempted": true,
+  "core_12_attempted": 12,
+  "core_12_completed": 12,
+  "unique_hash_count": 12,
+  "runner_parameterized": true,
+  "ticker_specific": true,
+  "human_report_parameterized": true,
+  "independent_outputs": true,
+  "buy_sell_instruction_count": 0,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

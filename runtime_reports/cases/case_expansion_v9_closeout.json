@@ -1,0 +1,15 @@
+{
+  "status": "CASE_EXPANSION_V9_FORMAL_FACTOR_STABILITY_VALIDATED",
+  "factor_count": 16,
+  "horizon_count": 5,
+  "promoted_factor_count": 16,
+  "watch_factor_count": 13,
+  "rejected_factor_count": 51,
+  "ready_for_council_research_review": true,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "buy_sell_instruction_count": 0,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

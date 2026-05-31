@@ -1,0 +1,457 @@
+{
+  "status": "V9_FACTOR_SELECTION_GATE_BUILT",
+  "promoted": [
+    {
+      "factor_id": "MOM_60D",
+      "horizon": "T20",
+      "mean_rankic": -0.03983,
+      "positive_ratio": 0.4364,
+      "grade": "PROMOTE_TO_COUNCIL_REVIEW"
+    },
+    {
+      "factor_id": "MOM_60D",
+      "horizon": "T60",
+      "mean_rankic": -0.065552,
+      "positive_ratio": 0.3816,
+      "grade": "PROMOTE_TO_COUNCIL_REVIEW"
+    },
+    {
+      "factor_id": "VOLATILITY_20D",
+      "horizon": "T20",
+      "mean_rankic": -0.032232,
+      "positive_ratio": 0.4488,
+      "grade": "PROMOTE_TO_COUNCIL_REVIEW"
+    },
+    {
+      "factor_id": "VOLATILITY_20D",
+      "horizon": "T60",
+      "mean_rankic": -0.109808,
+      "positive_ratio": 0.3345,
+      "grade": "PROMOTE_TO_COUNCIL_REVIEW"
+    },
+    {
+      "factor_id": "VOLATILITY_60D",
+      "horizon": "T10",
+      "mean_rankic": -0.035562,
+      "positive_ratio": 0.4483,
+      "grade": "PROMOTE_TO_COUNCIL_REVIEW"
+    },
+    {
+      "factor_id": "VOLATILITY_60D",
+      "horizon": "T20",
+      "mean_rankic": -0.054457,
+      "positive_ratio": 0.4499,
+      "grade": "PROMOTE_TO_COUNCIL_REVIEW"
+    },
+    {
+      "factor_id": "VOLATILITY_60D",
+      "horizon": "T60",
+      "mean_rankic": -0.123289,
+      "positive_ratio": 0.3145,
+      "grade": "PROMOTE_TO_COUNCIL_REVIEW"
+    },
+    {
+      "factor_id": "MAX_DRAWDOWN_60D",
+      "horizon": "T60",
+      "mean_rankic": 0.035113,
+      "positive_ratio": 0.5901,
+      "grade": "PROMOTE_TO_COUNCIL_REVIEW"
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_60D",
+      "horizon": "T20",
+      "mean_rankic": -0.03983,
+      "positive_ratio": 0.4364,
+      "grade": "PROMOTE_TO_COUNCIL_REVIEW"
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_60D",
+      "horizon": "T60",
+      "mean_rankic": -0.065552,
+      "positive_ratio": 0.3816,
+      "grade": "PROMOTE_TO_COUNCIL_REVIEW"
+    },
+    {
+      "factor_id": "AMOUNT_20D_AVG",
+      "horizon": "T10",
+      "mean_rankic": -0.04693,
+      "positive_ratio": 0.3993,
+      "grade": "PROMOTE_TO_COUNCIL_REVIEW"
+    },
+    {
+      "factor_id": "AMOUNT_20D_AVG",
+      "horizon": "T20",
+      "mean_rankic": -0.082406,
+      "positive_ratio": 0.3093,
+      "grade": "PROMOTE_TO_COUNCIL_REVIEW"
+    },
+    {
+      "factor_id": "AMOUNT_20D_AVG",
+      "horizon": "T60",
+      "mean_rankic": -0.146818,
+      "positive_ratio": 0.2214,
+      "grade": "PROMOTE_TO_COUNCIL_REVIEW"
+    },
+    {
+      "factor_id": "AMOUNT_60D_AVG",
+      "horizon": "T10",
+      "mean_rankic": -0.04274,
+      "positive_ratio": 0.4093,
+      "grade": "PROMOTE_TO_COUNCIL_REVIEW"
+    },
+    {
+      "factor_id": "AMOUNT_60D_AVG",
+      "horizon": "T20",
+      "mean_rankic": -0.072574,
+      "positive_ratio": 0.3262,
+      "grade": "PROMOTE_TO_COUNCIL_REVIEW"
+    },
+    {
+      "factor_id": "AMOUNT_60D_AVG",
+      "horizon": "T60",
+      "mean_rankic": -0.135216,
+      "positive_ratio": 0.2238,
+      "grade": "PROMOTE_TO_COUNCIL_REVIEW"
+    }
+  ],
+  "watch": [
+    {
+      "factor_id": "MOM_20D",
+      "horizon": "T20",
+      "mean_rankic": -0.029194,
+      "grade": "WATCH"
+    },
+    {
+      "factor_id": "MOM_20D",
+      "horizon": "T60",
+      "mean_rankic": -0.028923,
+      "grade": "WATCH"
+    },
+    {
+      "factor_id": "MOM_60D",
+      "horizon": "T5",
+      "mean_rankic": -0.022991,
+      "grade": "WATCH"
+    },
+    {
+      "factor_id": "MOM_60D",
+      "horizon": "T10",
+      "mean_rankic": -0.02899,
+      "grade": "WATCH"
+    },
+    {
+      "factor_id": "VOLATILITY_20D",
+      "horizon": "T1",
+      "mean_rankic": -0.022349,
+      "grade": "WATCH"
+    },
+    {
+      "factor_id": "VOLATILITY_60D",
+      "horizon": "T1",
+      "mean_rankic": -0.033197,
+      "grade": "WATCH"
+    },
+    {
+      "factor_id": "VOLATILITY_60D",
+      "horizon": "T5",
+      "mean_rankic": -0.033975,
+      "grade": "WATCH"
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_20D",
+      "horizon": "T20",
+      "mean_rankic": -0.029194,
+      "grade": "WATCH"
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_20D",
+      "horizon": "T60",
+      "mean_rankic": -0.028923,
+      "grade": "WATCH"
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_60D",
+      "horizon": "T5",
+      "mean_rankic": -0.022991,
+      "grade": "WATCH"
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_60D",
+      "horizon": "T10",
+      "mean_rankic": -0.02899,
+      "grade": "WATCH"
+    },
+    {
+      "factor_id": "AMOUNT_20D_AVG",
+      "horizon": "T5",
+      "mean_rankic": -0.026917,
+      "grade": "WATCH"
+    },
+    {
+      "factor_id": "AMOUNT_60D_AVG",
+      "horizon": "T5",
+      "mean_rankic": -0.024019,
+      "grade": "WATCH"
+    }
+  ],
+  "rejected": [
+    {
+      "factor_id": "MOM_1D",
+      "horizon": "T1",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "MOM_1D",
+      "horizon": "T5",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "MOM_1D",
+      "horizon": "T10",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "MOM_1D",
+      "horizon": "T20",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "MOM_1D",
+      "horizon": "T60",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "MOM_5D",
+      "horizon": "T1",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "MOM_5D",
+      "horizon": "T5",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "MOM_5D",
+      "horizon": "T10",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "MOM_5D",
+      "horizon": "T20",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "MOM_5D",
+      "horizon": "T60",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "MOM_10D",
+      "horizon": "T1",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "MOM_10D",
+      "horizon": "T5",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "MOM_10D",
+      "horizon": "T10",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "MOM_10D",
+      "horizon": "T20",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "MOM_10D",
+      "horizon": "T60",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "MOM_20D",
+      "horizon": "T1",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "MOM_20D",
+      "horizon": "T5",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "MOM_20D",
+      "horizon": "T10",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "MOM_60D",
+      "horizon": "T1",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "REV_1D",
+      "horizon": "T1",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "REV_1D",
+      "horizon": "T5",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "REV_1D",
+      "horizon": "T10",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "REV_1D",
+      "horizon": "T20",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "REV_1D",
+      "horizon": "T60",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "REV_5D",
+      "horizon": "T1",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "REV_5D",
+      "horizon": "T5",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "REV_5D",
+      "horizon": "T10",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "REV_5D",
+      "horizon": "T20",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "REV_5D",
+      "horizon": "T60",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "VOLATILITY_20D",
+      "horizon": "T5",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "VOLATILITY_20D",
+      "horizon": "T10",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "MAX_DRAWDOWN_60D",
+      "horizon": "T1",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "MAX_DRAWDOWN_60D",
+      "horizon": "T5",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "MAX_DRAWDOWN_60D",
+      "horizon": "T10",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "MAX_DRAWDOWN_60D",
+      "horizon": "T20",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_20D",
+      "horizon": "T1",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_20D",
+      "horizon": "T5",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_20D",
+      "horizon": "T10",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_60D",
+      "horizon": "T1",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "VOLUME_20D_AVG",
+      "horizon": "T1",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "VOLUME_20D_AVG",
+      "horizon": "T5",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "VOLUME_20D_AVG",
+      "horizon": "T10",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "VOLUME_20D_AVG",
+      "horizon": "T20",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "VOLUME_20D_AVG",
+      "horizon": "T60",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "VOLUME_60D_AVG",
+      "horizon": "T1",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "VOLUME_60D_AVG",
+      "horizon": "T5",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "VOLUME_60D_AVG",
+      "horizon": "T10",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "VOLUME_60D_AVG",
+      "horizon": "T20",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "VOLUME_60D_AVG",
+      "horizon": "T60",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "AMOUNT_20D_AVG",
+      "horizon": "T1",
+      "reason": "NO_SIGNAL"
+    },
+    {
+      "factor_id": "AMOUNT_60D_AVG",
+      "horizon": "T1",
+      "reason": "NO_SIGNAL"
+    }
+  ],
+  "promoted_count": 16,
+  "alpha_validated": false,
+  "ready_for_alpha_claim": false
+}

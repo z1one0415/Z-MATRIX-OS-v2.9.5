@@ -17,7 +17,7 @@ All skills: input_schema_ref + output_schema_ref present
 
 ## Tests
 agent: 145 | event_physical: 6 | hypothesis: 7 | annotation: 2 | analysis_zone: 5
-Total: 165 passed
+Total: 171 passed
 
 ## Verify
 verify_z_agent_kernel.sh: PASS

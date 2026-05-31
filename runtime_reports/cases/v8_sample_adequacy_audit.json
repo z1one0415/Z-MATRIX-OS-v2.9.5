@@ -1,5 +1,5 @@
 {
-  "status": "PASS",
+  "status": "V8_SAMPLE_ADEQUACY_AUDIT_PASS",
   "horizon_status": {
     "T1": "EXPLORATORY_USABLE",
     "T5": "EXPLORATORY_USABLE",

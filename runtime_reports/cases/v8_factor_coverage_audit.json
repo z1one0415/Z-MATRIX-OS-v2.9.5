@@ -1,6 +1,7 @@
 {
-  "status": "PASS",
+  "status": "V8_FACTOR_COVERAGE_AUDIT_PASS",
   "expected_records": 1032624,
   "valid_records": 1028596,
-  "coverage": 0.9961
+  "coverage": 0.9961,
+  "missing_policy": "MISSING_NOT_ZERO_FILLED"
 }

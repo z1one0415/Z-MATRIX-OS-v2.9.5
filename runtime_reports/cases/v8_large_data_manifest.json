@@ -1,0 +1,25 @@
+{
+  "status": "V8_LARGE_DATA_MANIFEST_BUILT",
+  "large_data_dir": "v8_large_data/",
+  "files": [
+    {
+      "logical_name": "v8_expanded_factor_values",
+      "path": "v8_large_data/v8_expanded_factor_values.json",
+      "size_mb": 265.2,
+      "sha256": "cf9751f21f55f6195930850f95a2a64933e05a418737ceb071728828e00ea19f",
+      "row_count": 64539,
+      "factor_value_count": 1028596,
+      "committed_to_git": false
+    },
+    {
+      "logical_name": "v8_forward_return_labels",
+      "path": "v8_large_data/v8_forward_return_labels.json",
+      "size_mb": 100.3,
+      "sha256": "36055fe79e42fbc5e2da28f6fe0a9ea24a1c979f0d4b3416cd8bdb0beea132a9",
+      "label_count": 314446,
+      "committed_to_git": false
+    }
+  ],
+  "ready_for_audit": true,
+  "ready_for_alpha_claim": false
+}

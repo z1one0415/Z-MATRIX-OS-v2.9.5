@@ -1,6 +1,11 @@
 {
   "status": "V8_EXPANDED_DATA_READY",
   "universe_id": "CORE12_PLUS_EXPANSION60",
+  "universe_target_count": 72,
+  "data_ready_count": 71,
+  "missing_tickers": [],
+  "missing_ticker_count": 0,
+  "readiness_policy": "ALLOW_IF_DATA_READY_COUNT_GTE_60_AND_COVERAGE_GTE_0_95",
   "stock_count": 71,
   "history_start": "20210104",
   "history_end": "20241231",

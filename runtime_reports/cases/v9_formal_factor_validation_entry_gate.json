@@ -2,7 +2,7 @@
   "status": "V9_FORMAL_FACTOR_VALIDATION_ENTRY_ALLOWED",
   "ready_for_v9_formal_validation": true,
   "ready_for_alpha_claim": false,
-  "reason": "Expanded universe and longer history ready for formal factor validation.",
+  "reason": "All V8 audits pass; expanded sample ready for V9 formal validation.",
   "production": "BLOCKED",
   "broker_runtime": "BLOCKED",
   "real_trade": "BLOCKED"

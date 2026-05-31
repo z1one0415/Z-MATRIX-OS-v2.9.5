@@ -1,6 +1,10 @@
 {
   "status": "CASE_EXPANSION_V8_EXPANDED_SAMPLE_READY_CONFIRMED",
   "universe_id": "CORE12_PLUS_EXPANSION60",
+  "universe_target_count": 72,
+  "data_ready_count": 71,
+  "missing_ticker_count": 0,
+  "missing_tickers": [],
   "stock_count": 71,
   "history_years": 4,
   "expanded_data_ready": true,

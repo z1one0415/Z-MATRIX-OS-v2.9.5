@@ -1,5 +1,5 @@
 {
-  "status": "PASS",
+  "status": "V8_LABEL_COVERAGE_AUDIT_PASS",
   "coverage_by_horizon": {
     "T1": {
       "valid_dates": 908,

@@ -1,0 +1,9 @@
+{
+  "status": "SUMMARY_ONLY",
+  "factor_records": 64539,
+  "factor_values": 1028596,
+  "coverage": 0.9961,
+  "large_file_hash": "cf9751f21f55f619",
+  "large_file_size_mb": 265.2,
+  "committed_to_git": false
+}

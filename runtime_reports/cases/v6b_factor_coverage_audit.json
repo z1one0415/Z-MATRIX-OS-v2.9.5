@@ -1,0 +1,39 @@
+{
+  "status": "V6B_FACTOR_COVERAGE_AUDIT_PASS",
+  "expected_records": 10944,
+  "valid_records": 10944,
+  "coverage": 1.0,
+  "coverage_by_factor": {
+    "MOM_1D": 1.0,
+    "MOM_5D": 1.0,
+    "MOM_10D": 1.0,
+    "MOM_20D": 1.0,
+    "MOM_60D": 1.0,
+    "REV_1D": 1.0,
+    "REV_5D": 1.0,
+    "VOLATILITY_20D": 1.0,
+    "VOLATILITY_60D": 1.0,
+    "MAX_DRAWDOWN_60D": 1.0,
+    "TRAILING_BENCHMARK_RELATIVE_20D": 1.0,
+    "TRAILING_BENCHMARK_RELATIVE_60D": 1.0,
+    "VOLUME_20D_AVG": 1.0,
+    "VOLUME_60D_AVG": 1.0,
+    "AMOUNT_20D_AVG": 1.0,
+    "AMOUNT_60D_AVG": 1.0
+  },
+  "coverage_by_ticker": {
+    "600519": 1.0,
+    "300750": 1.0,
+    "688981": 1.0,
+    "601899": 1.0,
+    "300124": 1.0,
+    "002594": 1.0,
+    "300274": 1.0,
+    "002371": 1.0,
+    "600030": 1.0,
+    "600276": 1.0,
+    "002050": 1.0,
+    "300763": 1.0
+  },
+  "missing_policy": "MISSING_NOT_ZERO_FILLED"
+}

@@ -1,5 +1,5 @@
 {
-  "status": "CASE_EXPANSION_V1_PARTIAL",
+  "status": "CASE_EXPANSION_V1_PARTIAL_CONFIRMED",
   "total_cases": 112,
   "core_cases": 12,
   "expansion_cases": 60,
@@ -10,5 +10,7 @@
   "evidence_status": "PARTIAL",
   "production": "BLOCKED",
   "broker_runtime": "BLOCKED",
-  "real_trade": "BLOCKED"
+  "real_trade": "BLOCKED",
+  "test_gate": "HARDENED",
+  "audit_time": "2026-05-31T04:01:57.615592+00:00"
 }

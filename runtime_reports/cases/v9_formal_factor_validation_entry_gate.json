@@ -2,7 +2,8 @@
   "status": "V9_FORMAL_FACTOR_VALIDATION_ENTRY_ALLOWED",
   "ready_for_v9_formal_validation": true,
   "ready_for_alpha_claim": false,
-  "reason": "All V8 audits pass; expanded sample ready for V9 formal validation.",
+  "manifest_consistent": true,
+  "reason": "All V8 audits pass; manifest consistent.",
   "production": "BLOCKED",
   "broker_runtime": "BLOCKED",
   "real_trade": "BLOCKED"

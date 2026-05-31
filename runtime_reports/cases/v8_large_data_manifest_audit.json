@@ -1,0 +1,9 @@
+{
+  "status": "V8_LARGE_DATA_MANIFEST_AUDIT_PASS",
+  "factor_manifest_summary_hash_match": true,
+  "label_manifest_summary_hash_match": true,
+  "hashes_manifest_match": true,
+  "large_files_committed_to_git": false,
+  "manifest_consistent": true,
+  "ready_for_v9_gate": true
+}

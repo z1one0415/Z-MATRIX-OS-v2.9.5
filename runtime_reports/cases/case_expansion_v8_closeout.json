@@ -21,5 +21,10 @@
   "broker_runtime": "BLOCKED",
   "real_trade": "BLOCKED",
   "universe_gap_count": 1,
-  "universe_gap_explanation": "One target ticker not pulled; not in tickers_found set."
+  "universe_gap_explanation": "One target ticker not pulled; not in tickers_found set.",
+  "large_data_manifest_audit_pass": true,
+  "manifest_consistent": true,
+  "factor_manifest_summary_hash_match": true,
+  "label_manifest_summary_hash_match": true,
+  "large_files_committed_to_git": false
 }

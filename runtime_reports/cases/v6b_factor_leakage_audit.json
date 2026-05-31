@@ -1,7 +1,8 @@
 {
   "status": "V6B_FACTOR_LEAKAGE_AUDIT_PASS",
-  "factor_records_checked": 684,
+  "factor_records_checked": 10944,
   "future_data_violations": 0,
+  "input_date_violations": 0,
   "forward_return_as_factor_violations": 0,
   "alpha_claim_violations": 0,
   "leakage_safe": true

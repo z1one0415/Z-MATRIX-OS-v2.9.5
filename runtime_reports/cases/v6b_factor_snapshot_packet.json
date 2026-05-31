@@ -1,0 +1,9 @@
+{
+  "status": "V6B_FACTOR_SNAPSHOT_PACKET_BUILT",
+  "factor_count": 16,
+  "core_12_cases": 12,
+  "as_of_date_count": 57,
+  "factor_records": 10944,
+  "source": "v6b_price_only_factor_values.json",
+  "ready_for_alpha_claim": false
+}

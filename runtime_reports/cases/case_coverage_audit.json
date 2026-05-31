@@ -1,10 +1,11 @@
 {
-  "total": 112,
-  "industries": 12,
-  "sectors": 12,
+  "total_cases": 112,
+  "core_cases": 12,
+  "expansion_cases": 60,
+  "failure_cases": 40,
   "ticker_cases": 72,
-  "failure_slots": 40,
-  "run_success": 0,
-  "run_not_parameterized": 12,
+  "case_run_success": 0,
+  "case_run_failed": 0,
+  "case_run_not_parameterized": 12,
   "real_trade": 0
 }

@@ -1,11 +1,14 @@
 {
   "status": "CASE_EXPANSION_V1_PARTIAL",
-  "core": 12,
-  "expansion": 60,
-  "failure": 40,
-  "real_trade": 0,
-  "runner_parameterized": false,
+  "total_cases": 112,
+  "core_cases": 12,
+  "expansion_cases": 60,
+  "failure_cases": 40,
+  "allowed_in_real_trade_count": 0,
+  "registry_complete": true,
+  "runner_ticker_parameterized": false,
+  "evidence_status": "PARTIAL",
   "production": "BLOCKED",
   "broker_runtime": "BLOCKED",
-  "audit_time": "2026-05-31T02:11:57.544117+00:00"
+  "real_trade": "BLOCKED"
 }

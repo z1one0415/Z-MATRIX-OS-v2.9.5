@@ -20,7 +20,7 @@ Action Queue | Payload Sanitizer | Secret Blocker | HMAC/Digest
 
 ## Test Coverage
 
-135 tests, all passing across 18 test files.
+145 tests, all passing across 18 test files.
 Covered: registry, permission, envelope, skill, invocation, expert domain,
 query, token, proposal, approval, execution, verify, audit, workspace,
 tamper, sanitizer, action queue, no-direct-mutation.

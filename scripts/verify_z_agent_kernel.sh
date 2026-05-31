@@ -11,26 +11,15 @@ python3 <<'PY_EOF'
 from pathlib import Path
 
 strict_forbidden = [
- "real_trade_allowed=True",
- "broker_order_allowed=True",
- "runtime_enabled=True",
- "auto_buy_allowed=True",
- "auto_sell_allowed=True",
- "production_allowed=True",
- "production_strategy_modified=True",
- "allowed_scopes=['*']",
- 'allowed_scopes=["*"]',
+ "real_trade_allowed=True", "broker_order_allowed=True", "runtime_enabled=True",
+ "auto_buy_allowed=True", "auto_sell_allowed=True", "production_allowed=True",
+ "production_strategy_modified=True", "allowed_scopes=['*']", 'allowed_scopes=["*"]',
 ]
 
 broad_forbidden = [
- "real_trade_allowed=True",
- "broker_order_allowed=True",
- "runtime_enabled=True",
- "auto_buy_allowed=True",
- "auto_sell_allowed=True",
- "production_allowed=True",
- "production_strategy_modified=True",
- "zmatrix-agent-hmac-secret",
+ "real_trade_allowed=True", "broker_order_allowed=True", "runtime_enabled=True",
+ "auto_buy_allowed=True", "auto_sell_allowed=True", "production_allowed=True",
+ "production_strategy_modified=True", "zmatrix-agent-hmac-secret",
 ]
 
 code_roots = ["zmatrix/agent", "data/research_db/agent"]

@@ -123,7 +123,16 @@ def invoke_skill(command_envelope: dict, context_slice: dict) -> dict:
     ctx_tokens = context_slice.get("token_estimate", 0)
     budget_result = enforce_token_budget({"token_estimate": ctx_tokens}, 4000)
     if ctx_tokens > 4000:
-        return _blocked_result(skill_id, "token budget exceeded (max 4000)")
+        return {
+            "skill_id": skill_id,
+            "status": "BLOCKED",
+            "output_ref": "",
+            "evidence_refs": [],
+            "quality_status": "NEED_NARROWER_QUERY",
+            "blocked_reason": "token budget exceeded (max 4000)",
+            "human_review_required": True,
+            "production_allowed": False,
+        }
 
     write_layers = skill.get("write_layers", [])
     if write_layers:

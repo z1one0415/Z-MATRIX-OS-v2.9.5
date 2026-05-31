@@ -1,6 +1,7 @@
 {
   "status": "CASE_EXPANSION_V6D_PRICE_ONLY_FACTOR_CALCULATION_CONFIRMED",
   "v6b_factor_values_calculated": true,
+  "snapshot_packet_built": true,
   "factor_count": 16,
   "core_12_cases": 12,
   "as_of_date_count": 57,
@@ -8,6 +9,7 @@
   "leakage_audit_pass": true,
   "coverage_audit_pass": true,
   "future_data_violations": 0,
+  "input_date_violations": 0,
   "alpha_claim_count": 0,
   "ready_for_factor_validation": false,
   "ready_for_v7_validation_entry": true,

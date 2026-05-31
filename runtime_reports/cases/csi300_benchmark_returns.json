@@ -1,42 +1,64 @@
 {
   "benchmark_id": "CSI300",
-  "entry_date": "20240102",
+  "entry_date": "2024-01-02",
   "entry_close": 3386.3522,
+  "horizons": [
+    "T1",
+    "T5",
+    "T10",
+    "T20",
+    "T60"
+  ],
   "returns": {
     "T1": {
-      "exit_date": "20240103",
-      "return": -0.0023786952816071683,
+      "entry_date": "2024-01-02",
+      "exit_date": "2024-01-03",
       "entry_close": 3386.3522,
       "exit_close": 3378.2971,
-      "truth_status": "REAL_READ_ONLY"
+      "return": -0.0023786953,
+      "calculation_formula": "exit_close / entry_close - 1",
+      "truth_status": "REAL_READ_ONLY",
+      "blocked_reason": null
     },
     "T5": {
-      "exit_date": "20240109",
-      "return": -0.02771501440399482,
+      "entry_date": "2024-01-02",
+      "exit_date": "2024-01-09",
       "entry_close": 3386.3522,
       "exit_close": 3292.4994,
-      "truth_status": "REAL_READ_ONLY"
+      "return": -0.0277150144,
+      "calculation_formula": "exit_close / entry_close - 1",
+      "truth_status": "REAL_READ_ONLY",
+      "blocked_reason": null
     },
     "T10": {
-      "exit_date": "20240116",
-      "return": -0.02524132014384084,
+      "entry_date": "2024-01-02",
+      "exit_date": "2024-01-16",
       "entry_close": 3386.3522,
       "exit_close": 3300.8762,
-      "truth_status": "REAL_READ_ONLY"
+      "return": -0.0252413201,
+      "calculation_formula": "exit_close / entry_close - 1",
+      "truth_status": "REAL_READ_ONLY",
+      "blocked_reason": null
     },
     "T20": {
-      "exit_date": "20240130",
-      "return": -0.04173030200461714,
+      "entry_date": "2024-01-02",
+      "exit_date": "2024-01-30",
       "entry_close": 3386.3522,
       "exit_close": 3245.0387,
-      "truth_status": "REAL_READ_ONLY"
+      "return": -0.041730302,
+      "calculation_formula": "exit_close / entry_close - 1",
+      "truth_status": "REAL_READ_ONLY",
+      "blocked_reason": null
     },
     "T60": {
-      "exit_date": "20240403",
-      "return": 0.053582997066873306,
+      "entry_date": "2024-01-02",
+      "exit_date": "2024-04-03",
       "entry_close": 3386.3522,
       "exit_close": 3567.8031,
-      "truth_status": "REAL_READ_ONLY"
+      "return": 0.0535829971,
+      "calculation_formula": "exit_close / entry_close - 1",
+      "truth_status": "REAL_READ_ONLY",
+      "blocked_reason": null
     }
   }
 }

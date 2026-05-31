@@ -1,0 +1,11 @@
+{
+  "status": "CASE_EXPANSION_V1_PARTIAL",
+  "core": 12,
+  "expansion": 60,
+  "failure": 40,
+  "real_trade": 0,
+  "runner_parameterized": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "audit_time": "2026-05-31T02:11:57.544117+00:00"
+}

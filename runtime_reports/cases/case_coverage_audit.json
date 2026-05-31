@@ -1,0 +1,10 @@
+{
+  "total": 112,
+  "industries": 12,
+  "sectors": 12,
+  "ticker_cases": 72,
+  "failure_slots": 40,
+  "run_success": 0,
+  "run_not_parameterized": 12,
+  "real_trade": 0
+}

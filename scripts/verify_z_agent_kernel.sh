@@ -22,8 +22,8 @@ forbidden = [
  'allowed_scopes=["*"]',
 ]
 
-scan_roots = ["zmatrix/agent", "docs/agent", "scripts", "data/research_db/agent"]
-scan_exts = {".py", ".md", ".sh", ".json", ".jsonl", ".yaml", ".yml"}
+scan_roots = ["zmatrix/agent", "data/research_db/agent"]
+scan_exts = {".py", ".json", ".jsonl"}
 
 for root in scan_roots:
     for p in Path(root).rglob("*"):

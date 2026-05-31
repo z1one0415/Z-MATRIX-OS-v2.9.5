@@ -48,3 +48,24 @@ def test_multiple_patterns_redacted():
     assert result.get("OPENAI_API_KEY") == REDACTED
     assert result.get("GITHUB_TOKEN") == REDACTED
     assert result.get("normal_field") == "keep_me"
+
+class TestCommandHMAC:
+    def test_hmac_requires_secret(self):
+        import pytest as pt
+        from zmatrix.agent.security.command_hmac import compute_hmac
+        with pt.raises(ValueError, match="secret"):
+            compute_hmac({"cmd": "test"})
+
+    def test_hmac_with_explicit_secret(self):
+        from zmatrix.agent.security.command_hmac import compute_hmac, verify_hmac
+        env = {"cmd": "test"}
+        h = compute_hmac(env, secret_key="test-secret")
+        assert len(h) == 64
+        assert verify_hmac(env, h, secret_key="test-secret") is True
+
+    def test_hmac_verify_rejects_wrong_key(self):
+        from zmatrix.agent.security.command_hmac import compute_hmac, verify_hmac
+        env = {"cmd": "test"}
+        h = compute_hmac(env, secret_key="key-a")
+        assert verify_hmac(env, h, secret_key="key-b") is False
+

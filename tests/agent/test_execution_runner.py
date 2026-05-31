@@ -99,3 +99,12 @@ def test_execute_writes_to_ledger():
     from zmatrix.agent.proposal_ledger import get_proposal as gp
     final = gp(p["proposal_id"])
     assert final["status"] == "EXECUTED"
+
+    def test_executed_proposal_requires_verify(self):
+        p = _create_approved_proposal("R2_DRAFT")
+        p["proposed_changes"] = {"action": "test"}
+        r = execute_approved_proposal(p["proposal_id"], dry_run=False)
+        assert r["verify_required"] is True
+        assert r["closed"] is False
+        assert r["status"] == "EXECUTED"
+

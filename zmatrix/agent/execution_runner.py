@@ -117,4 +117,6 @@ def execute_approved_proposal(proposal_id: str, dry_run: bool = True) -> dict:
         "output": proposal.get("proposed_changes", {}),
         "dry_run": False,
         "errors": [],
+        "verify_required": True,
+        "closed": False,
     }

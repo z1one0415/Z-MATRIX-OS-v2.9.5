@@ -70,8 +70,8 @@ def evaluate_approval_requirement(proposal: dict) -> dict:
     if risk_num == 3:
         return {
             "requires_approval": True,
-            "requires_human_approval": False,
-            "reason": f"R3: requires approval (policy-based) for {risk_level}",
+            "requires_human_approval": True,
+            "reason": "R3: requires human approval for ResearchDB writes",
         }
 
     if risk_num in (4, 5):

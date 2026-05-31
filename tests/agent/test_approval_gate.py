@@ -70,7 +70,7 @@ def test_evaluate_approval_r3_requires_approval():
     }
     result = evaluate_approval_requirement(proposal)
     assert result["requires_approval"] is True
-    assert result["requires_human_approval"] is False
+    assert result["requires_human_approval"] is True
 
 
 def test_evaluate_approval_r4_requires_human():
@@ -164,3 +164,10 @@ def test_cannot_approve_already_rejected():
 
     with pytest.raises(ValueError, match="invalid transition"):
         approve_proposal(p["proposal_id"], "approver-1", "try again")
+
+    def test_r3_requires_human_approval(self):
+        p = {"proposal_id": "p1", "risk_level": "R3_WRITE_RESEARCH_DB", "status": "SUBMITTED"}
+        r = evaluate_approval_requirement(p)
+        assert r["requires_approval"] is True
+        assert r["requires_human_approval"] is True
+

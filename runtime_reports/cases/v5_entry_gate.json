@@ -7,6 +7,13 @@
   "ready_for_real_return": 0,
   "ready_for_alpha_claim": 0,
   "v5_entry_allowed": false,
+  "blocking_reasons": [
+    "DAILY_PRICE_NOT_12",
+    "ADJUSTMENT_FACTOR_NOT_READY",
+    "BENCHMARK_NOT_REAL",
+    "CALENDAR_NOT_REAL",
+    "REAL_RETURN_NOT_READY"
+  ],
   "production": "BLOCKED",
   "broker_runtime": "BLOCKED",
   "real_trade": "BLOCKED"

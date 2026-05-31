@@ -1,0 +1,34 @@
+[
+  {
+    "reviewer_id": "REVIEWER.DATA_QUALITY",
+    "domain": "DATA_QUALITY",
+    "version": "1.0",
+    "allowed_callers": ["z-orchestrator"],
+    "enabled": true,
+    "production_allowed": false
+  },
+  {
+    "reviewer_id": "REVIEWER.RISK_CONTROL",
+    "domain": "RISK_CONTROL",
+    "version": "1.0",
+    "allowed_callers": ["z-orchestrator"],
+    "enabled": true,
+    "production_allowed": false
+  },
+  {
+    "reviewer_id": "REVIEWER.CATALYST_TIMING",
+    "domain": "CATALYST_TIMING",
+    "version": "1.0",
+    "allowed_callers": ["z-orchestrator"],
+    "enabled": true,
+    "production_allowed": false
+  },
+  {
+    "reviewer_id": "REVIEWER.EXECUTION_QUALITY",
+    "domain": "EXECUTION_QUALITY",
+    "version": "1.0",
+    "allowed_callers": ["z-orchestrator"],
+    "enabled": true,
+    "production_allowed": false
+  }
+]

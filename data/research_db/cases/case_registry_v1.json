@@ -4,12 +4,6 @@
     "ticker": "600519",
     "name": "\u8d35\u5dde\u8305\u53f0",
     "case_layer": "CORE",
-    "category": "\u767d\u9a6c\u84dd\u7b79",
-    "industry": "\u98df\u54c1\u996e\u6599",
-    "sector": "\u6d88\u8d39",
-    "chain": "\u767d\u9152",
-    "style": "quality",
-    "risk": "low",
     "allowed_in_real_trade": false
   },
   {
@@ -17,12 +11,6 @@
     "ticker": "300750",
     "name": "\u5b81\u5fb7\u65f6\u4ee3",
     "case_layer": "CORE",
-    "category": "\u6210\u957f\u5236\u9020",
-    "industry": "\u7535\u529b\u8bbe\u5907",
-    "sector": "\u65b0\u80fd\u6e90",
-    "chain": "\u7535\u6c60",
-    "style": "growth",
-    "risk": "high",
     "allowed_in_real_trade": false
   },
   {
@@ -30,12 +18,6 @@
     "ticker": "688981",
     "name": "\u4e2d\u82af\u56fd\u9645",
     "case_layer": "CORE",
-    "category": "\u79d1\u6280\u786c\u6838",
-    "industry": "\u7535\u5b50",
-    "sector": "\u534a\u5bfc\u4f53",
-    "chain": "\u4ee3\u5de5",
-    "style": "tech",
-    "risk": "high",
     "allowed_in_real_trade": false
   },
   {
@@ -43,12 +25,6 @@
     "ticker": "601899",
     "name": "\u7d2b\u91d1\u77ff\u4e1a",
     "case_layer": "CORE",
-    "category": "\u5468\u671f\u8d44\u6e90",
-    "industry": "\u6709\u8272\u91d1\u5c5e",
-    "sector": "\u77ff\u4e1a",
-    "chain": "\u91d1\u94dc",
-    "style": "cyclical",
-    "risk": "high",
     "allowed_in_real_trade": false
   },
   {
@@ -56,12 +32,6 @@
     "ticker": "300124",
     "name": "\u6c47\u5ddd\u6280\u672f",
     "case_layer": "CORE",
-    "category": "\u667a\u80fd\u5236\u9020",
-    "industry": "\u673a\u68b0\u8bbe\u5907",
-    "sector": "\u81ea\u52a8\u5316",
-    "chain": "\u5de5\u63a7",
-    "style": "growth",
-    "risk": "medium",
     "allowed_in_real_trade": false
   },
   {
@@ -69,12 +39,6 @@
     "ticker": "002594",
     "name": "\u6bd4\u4e9a\u8fea",
     "case_layer": "CORE",
-    "category": "\u6210\u957f\u5236\u9020",
-    "industry": "\u6c7d\u8f66",
-    "sector": "\u65b0\u80fd\u6e90\u8f66",
-    "chain": "\u6574\u8f66\u7535\u6c60",
-    "style": "growth",
-    "risk": "high",
     "allowed_in_real_trade": false
   },
   {
@@ -82,12 +46,6 @@
     "ticker": "300274",
     "name": "\u9633\u5149\u7535\u6e90",
     "case_layer": "CORE",
-    "category": "\u65b0\u80fd\u6e90\u94fe\u6761",
-    "industry": "\u7535\u529b\u8bbe\u5907",
-    "sector": "\u50a8\u80fd",
-    "chain": "\u9006\u53d8\u5668",
-    "style": "growth",
-    "risk": "high",
     "allowed_in_real_trade": false
   },
   {
@@ -95,12 +53,6 @@
     "ticker": "002371",
     "name": "\u5317\u65b9\u534e\u521b",
     "case_layer": "CORE",
-    "category": "\u79d1\u6280\u786c\u6838",
-    "industry": "\u7535\u5b50",
-    "sector": "\u534a\u5bfc\u4f53\u8bbe\u5907",
-    "chain": "\u8bbe\u5907",
-    "style": "tech",
-    "risk": "high",
     "allowed_in_real_trade": false
   },
   {
@@ -108,12 +60,6 @@
     "ticker": "600030",
     "name": "\u4e2d\u4fe1\u8bc1\u5238",
     "case_layer": "CORE",
-    "category": "\u91d1\u878dBeta",
-    "industry": "\u975e\u94f6\u91d1\u878d",
-    "sector": "\u8bc1\u5238",
-    "chain": "\u5238\u5546",
-    "style": "beta",
-    "risk": "high",
     "allowed_in_real_trade": false
   },
   {
@@ -121,12 +67,6 @@
     "ticker": "600276",
     "name": "\u6052\u745e\u533b\u836f",
     "case_layer": "CORE",
-    "category": "\u767d\u9a6c\u84dd\u7b79",
-    "industry": "\u533b\u836f\u751f\u7269",
-    "sector": "\u521b\u65b0\u836f",
-    "chain": "\u7814\u53d1",
-    "style": "quality",
-    "risk": "medium",
     "allowed_in_real_trade": false
   },
   {
@@ -134,12 +74,6 @@
     "ticker": "002050",
     "name": "\u4e09\u82b1\u667a\u63a7",
     "case_layer": "CORE",
-    "category": "\u667a\u80fd\u5236\u9020",
-    "industry": "\u5bb6\u7528\u7535\u5668",
-    "sector": "\u70ed\u7ba1\u7406",
-    "chain": "\u673a\u5668\u4eba",
-    "style": "growth",
-    "risk": "high",
     "allowed_in_real_trade": false
   },
   {
@@ -147,12 +81,6 @@
     "ticker": "300763",
     "name": "\u9526\u6d6a\u79d1\u6280",
     "case_layer": "CORE",
-    "category": "\u65b0\u80fd\u6e90\u94fe\u6761",
-    "industry": "\u7535\u529b\u8bbe\u5907",
-    "sector": "\u9006\u53d8\u5668",
-    "chain": "\u5206\u5e03\u5f0f",
-    "style": "growth",
-    "risk": "high",
     "allowed_in_real_trade": false
   },
   {
@@ -569,290 +497,290 @@
     "allowed_in_real_trade": false
   },
   {
+    "case_id": "FAIL_001",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_002",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_003",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_004",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_005",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_006",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_007",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_008",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_009",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_010",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_011",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_012",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_013",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_014",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_015",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_016",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_017",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_018",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_019",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_020",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_021",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_022",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_023",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_024",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_025",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_026",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_027",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_028",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_029",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_030",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_031",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_032",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_033",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_034",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_035",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_036",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_037",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_038",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_039",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
+    "case_id": "FAIL_040",
+    "ticker": "",
+    "name": "",
+    "case_layer": "FAILURE",
+    "allowed_in_real_trade": false
+  },
+  {
     "case_id": "EXP_060",
-    "ticker": "002594",
-    "name": "\u6bd4\u4e9a\u8fea",
+    "ticker": "600585",
+    "name": "\u6d77\u87ba\u6c34\u6ce5",
     "case_layer": "EXPANSION",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_VALUATION_001",
-    "failure_type": "\u9ad8\u4f30\u503c\u6740\u8dcc",
-    "description": "\u9ad8\u4f30\u503c\u6210\u957f\u80a1\u906d\u9047\u4f30\u503c\u574d\u7f29",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_VALUATION_002",
-    "failure_type": "\u6234\u7ef4\u65af\u53cc\u6740",
-    "description": "\u76c8\u5229\u4e0b\u6ed1+\u4f30\u503c\u4e0b\u4fee\u540c\u65f6\u53d1\u751f",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_VALUATION_003",
-    "failure_type": "\u6210\u957f\u80a1\u4f30\u503c\u574d\u7f29",
-    "description": "\u9ad8\u589e\u957f\u9884\u671f\u6d88\u5931\u540e\u4f30\u503c\u5feb\u901f\u56de\u843d",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_CYCLE_001",
-    "failure_type": "\u5468\u671f\u9876\u90e8\u4e70\u5165",
-    "description": "\u5728\u5546\u54c1/\u884c\u4e1a\u666f\u6c14\u9876\u70b9\u5165\u573a",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_CYCLE_002",
-    "failure_type": "\u5546\u54c1\u4ef7\u683c\u53cd\u8f6c",
-    "description": "\u5546\u54c1\u4ef7\u683c\u7a81\u7136\u53cd\u8f6c\u5bfc\u81f4\u5229\u6da6\u5d29\u584c",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_CYCLE_003",
-    "failure_type": "\u4ea7\u80fd\u6269\u5f20\u5229\u6da6\u4e0b\u6ed1",
-    "description": "\u884c\u4e1a\u4ea7\u80fd\u8fc7\u5269\u5bfc\u81f4\u4ef7\u683c\u6218",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_POLICY_001",
-    "failure_type": "\u653f\u7b56\u538b\u5236",
-    "description": "\u884c\u4e1a\u653f\u7b56\u7a81\u7136\u6536\u7d27",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_POLICY_002",
-    "failure_type": "\u96c6\u91c7\u9650\u4ef7",
-    "description": "\u533b\u836f\u96c6\u91c7\u5bfc\u81f4\u4ef7\u683c\u5927\u5e45\u4e0b\u964d",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_POLICY_003",
-    "failure_type": "\u51fa\u53e3\u7ba1\u5236",
-    "description": "\u88ab\u5217\u5165\u5b9e\u4f53\u6e05\u5355\u5bfc\u81f4\u4e1a\u52a1\u4e2d\u65ad",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_FINANCE_001",
-    "failure_type": "\u5546\u8a89\u51cf\u503c",
-    "description": "\u5e76\u8d2d\u5546\u8a89\u5927\u5e45\u51cf\u503c",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_FINANCE_002",
-    "failure_type": "\u5e94\u6536\u8d26\u6b3e\u6076\u5316",
-    "description": "\u5e94\u6536/\u8425\u6536\u6bd4\u6301\u7eed\u4e0a\u5347",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_FINANCE_003",
-    "failure_type": "\u73b0\u91d1\u6d41\u80cc\u79bb\u5229\u6da6",
-    "description": "\u7ecf\u8425\u73b0\u91d1\u6d41\u8fdc\u4f4e\u4e8e\u51c0\u5229\u6da6",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_THEME_001",
-    "failure_type": "\u6982\u5ff5\u5f3a\u4e1a\u7ee9\u5f31",
-    "description": "\u70ed\u95e8\u6982\u5ff5\u4f46\u8d22\u52a1\u6570\u636e\u65e0\u6cd5\u9a8c\u8bc1",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_THEME_002",
-    "failure_type": "\u9898\u6750\u8f6e\u52a8\u9000\u6f6e",
-    "description": "\u677f\u5757\u8f6e\u52a8\u7ed3\u675f\u540e\u8d44\u91d1\u6d41\u51fa",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_THEME_003",
-    "failure_type": "\u8ba2\u5355\u4f20\u95fb\u672a\u5151\u73b0",
-    "description": "\u4f20\u95fb\u5927\u8ba2\u5355\u4f46\u59cb\u7ec8\u672a\u516c\u544a\u8bc1\u5b9e",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_LIQUIDITY_001",
-    "failure_type": "\u6d41\u52a8\u6027\u584c\u9677",
-    "description": "\u6210\u4ea4\u91cf\u6025\u5267\u840e\u7f29",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_LIQUIDITY_002",
-    "failure_type": "\u8fde\u7eed\u8dcc\u505c",
-    "description": "\u8fde\u7eed\u8dcc\u505c\u65e0\u6cd5\u5356\u51fa",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_LIQUIDITY_003",
-    "failure_type": "\u5c0f\u7968\u51b2\u9ad8\u56de\u843d",
-    "description": "\u5c0f\u5e02\u503c\u5feb\u901f\u62c9\u5347\u540e\u5927\u5e45\u56de\u843d",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_EARNINGS_001",
-    "failure_type": "\u4e00\u5b63\u62a5\u4e0d\u53ca\u9884\u671f",
-    "description": "Q1\u4e1a\u7ee9\u5927\u5e45\u4f4e\u4e8e\u9884\u671f",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_EARNINGS_002",
-    "failure_type": "\u4e2d\u62a5\u8bc1\u4f2a",
-    "description": "\u534a\u5e74\u62a5\u8bc1\u4f2a\u4e4b\u524d\u7684\u589e\u957f\u53d9\u4e8b",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_EARNINGS_003",
-    "failure_type": "\u5e74\u62a5\u66b4\u96f7",
-    "description": "\u5e74\u62a5\u51fa\u73b0\u91cd\u5927\u8d22\u52a1\u5f02\u5e38",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_ALPHA_001",
-    "failure_type": "\u6837\u672c\u5185\u6709\u6548\u6837\u672c\u5916\u5931\u6548",
-    "description": "IC\u5728\u8bad\u7ec3\u96c6\u663e\u8457\u6d4b\u8bd5\u96c6\u6d88\u5931",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_ALPHA_002",
-    "failure_type": "\u9ad8IC\u4f46\u4e0d\u53ef\u4ea4\u6613",
-    "description": "IC\u5f88\u9ad8\u4f46\u5b9e\u9645\u65e0\u6cd5\u6210\u4ea4",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_ALPHA_003",
-    "failure_type": "\u6536\u76ca\u6765\u81ea\u884c\u4e1aBeta",
-    "description": "\u770b\u4f3cAlpha\u5176\u5b9e\u662f\u884c\u4e1aBeta",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_EXECUTION_001",
-    "failure_type": "\u4e70\u70b9\u8fc7\u65e9",
-    "description": "\u4e0b\u8dcc\u8d8b\u52bf\u4e2d\u8fc7\u65e9\u8fdb\u573a",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_EXECUTION_002",
-    "failure_type": "\u6b62\u635f\u8fc7\u665a",
-    "description": "\u6b62\u635f\u8bbe\u7f6e\u8fc7\u5bbd\u8d85\u51fa\u98ce\u9669\u9884\u7b97",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_EXECUTION_003",
-    "failure_type": "\u76c8\u5229\u672a\u5151\u73b0",
-    "description": "\u8d26\u9762\u6d6e\u76c8\u672a\u6b62\u76c8\u6700\u7ec8\u5f52\u96f6",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_PORTFOLIO_001",
-    "failure_type": "\u5355\u4e00\u884c\u4e1a\u66b4\u9732\u8fc7\u9ad8",
-    "description": "\u5355\u4e00\u884c\u4e1a\u6743\u91cd\u8d8550%",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_PORTFOLIO_002",
-    "failure_type": "\u4ed3\u4f4d\u8fc7\u5ea6\u96c6\u4e2d",
-    "description": "\u524d3\u5927\u6301\u4ed3\u8d8560%",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_PORTFOLIO_003",
-    "failure_type": "\u56de\u64a4\u4e0d\u53ef\u627f\u53d7",
-    "description": "\u6700\u5927\u56de\u64a4\u8d85\u8fc7\u8d26\u6237\u98ce\u9669\u627f\u53d7",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_BEHAVIOR_001",
-    "failure_type": "\u8ffd\u9ad8",
-    "description": "\u80a1\u4ef7\u5927\u5e45\u4e0a\u6da8\u540e\u8ffd\u5165",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_BEHAVIOR_002",
-    "failure_type": "\u6050\u614c\u5356\u51fa",
-    "description": "\u5e02\u573a\u6050\u614c\u65f6\u5e95\u90e8\u5356\u51fa",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_BEHAVIOR_003",
-    "failure_type": "\u9519\u628a\u53cd\u5f39\u5f53\u53cd\u8f6c",
-    "description": "\u8d85\u8dcc\u53cd\u5f39\u88ab\u8bef\u5224\u4e3a\u8d8b\u52bf\u53cd\u8f6c",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_DATA_001",
-    "failure_type": "\u6570\u636e\u7f3a\u5931",
-    "description": "\u5173\u952e\u6570\u636e\u5b57\u6bb5\u7f3a\u5931",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_DATA_002",
-    "failure_type": "\u6570\u636e\u6e90\u51b2\u7a81",
-    "description": "\u591a\u6e90\u5bf9\u540c\u4e00\u5b57\u6bb5\u7ed9\u4e0d\u540c\u503c",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_DATA_003",
-    "failure_type": "\u590d\u6743\u9519\u8bef",
-    "description": "\u590d\u6743\u56e0\u5b50\u9519\u8bef\u5bfc\u81f4\u4ef7\u683c\u5931\u771f",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_DATA_004",
-    "failure_type": "\u8d22\u52a1\u53e3\u5f84\u9519\u8bef",
-    "description": "\u65b0\u65e7\u4f1a\u8ba1\u51c6\u5219/\u5883\u5185\u5916\u62a5\u8868\u53e3\u5f84\u4e0d\u4e00\u81f4",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_REPLAY_001",
-    "failure_type": "\u56de\u653e\u672a\u6765\u51fd\u6570\u98ce\u9669",
-    "description": "\u56de\u653e\u5f15\u64ce\u4f7f\u7528\u672a\u6765\u65e5\u671f\u6570\u636e",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_REPLAY_002",
-    "failure_type": "\u7f3a\u4ea4\u6613\u65e5\u5386",
-    "description": "\u56de\u653e\u65f6\u7f3a\u5c11\u4ea4\u6613\u65e5\u5386",
-    "case_layer": "FAILURE",
-    "allowed_in_real_trade": false
-  },
-  {
-    "case_id": "FAIL_REPLAY_003",
-    "failure_type": "\u505c\u724c\u6da8\u8dcc\u505c\u672a\u5904\u7406",
-    "description": "\u505c\u724c/\u6da8\u8dcc\u505c\u671f\u95f4\u6570\u636e\u672a\u6807\u8bb0",
-    "case_layer": "FAILURE",
     "allowed_in_real_trade": false
   }
 ]

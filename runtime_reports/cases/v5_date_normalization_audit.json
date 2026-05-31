@@ -1,0 +1,11 @@
+{
+  "status": "V5_DATE_NORMALIZATION_CONFIRMED",
+  "input_formats_detected": [
+    "YYYYMMDD"
+  ],
+  "normalized_format": "YYYY-MM-DD",
+  "daily_price_dates_normalized": true,
+  "benchmark_dates_normalized": true,
+  "calendar_dates_normalized": true,
+  "invalid_date_count": 0
+}

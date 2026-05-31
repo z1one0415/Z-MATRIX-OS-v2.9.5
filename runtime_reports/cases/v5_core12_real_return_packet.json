@@ -1,0 +1,20 @@
+{
+  "status": "V5_CORE12_REAL_RETURN_PACKET_CONFIRMED",
+  "core_12_cases": 12,
+  "real_return_cases": 12,
+  "benchmark_return_ready": true,
+  "benchmark_relative_return_cases": 12,
+  "horizons": [
+    "T1",
+    "T5",
+    "T10",
+    "T20",
+    "T60"
+  ],
+  "predictive_alpha_claim_count": 0,
+  "buy_sell_instruction_count": 0,
+  "council_investment_verdict": "BLOCKED_UNTIL_FACTOR_REAL",
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,505 @@
+{
+  "cases": [
+    {
+      "case_id": "CORE_001",
+      "ticker": "600519",
+      "name": "贵州茅台",
+      "entry_date": "20240102",
+      "entry_close": 1685.01,
+      "returns": {
+        "T1": {
+          "exit_date": "20240103",
+          "exit_close": 1694.0,
+          "return": 0.005335279909318036,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T5": {
+          "exit_date": "20240109",
+          "exit_close": 1641.0,
+          "return": -0.026118539355849513,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T10": {
+          "exit_date": "20240116",
+          "exit_close": 1639.43,
+          "return": -0.027050284568044036,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T20": {
+          "exit_date": "20240130",
+          "exit_close": 1613.0,
+          "return": -0.042735651420466314,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T60": {
+          "exit_date": "20240403",
+          "exit_close": 1715.11,
+          "return": 0.01786339546946314,
+          "truth_status": "REAL_READ_ONLY"
+        }
+      },
+      "ready_for_real_return": true,
+      "ready_for_alpha_claim": false
+    },
+    {
+      "case_id": "CORE_002",
+      "ticker": "300750",
+      "name": "宁德时代",
+      "entry_date": "20240102",
+      "entry_close": 156.83,
+      "returns": {
+        "T1": {
+          "exit_date": "20240103",
+          "exit_close": 155.8,
+          "return": -0.006567620990881817,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T5": {
+          "exit_date": "20240109",
+          "exit_close": 148.7,
+          "return": -0.05183957151055296,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T10": {
+          "exit_date": "20240116",
+          "exit_close": 156.95,
+          "return": 0.0007651597270927901,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T20": {
+          "exit_date": "20240130",
+          "exit_close": 140.75,
+          "return": -0.10253140343046618,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T60": {
+          "exit_date": "20240403",
+          "exit_close": 197.65,
+          "return": 0.26028183383281256,
+          "truth_status": "REAL_READ_ONLY"
+        }
+      },
+      "ready_for_real_return": true,
+      "ready_for_alpha_claim": false
+    },
+    {
+      "case_id": "CORE_003",
+      "ticker": "688981",
+      "name": "中芯国际",
+      "entry_date": "20240102",
+      "entry_close": 52.96,
+      "returns": {
+        "T1": {
+          "exit_date": "20240103",
+          "exit_close": 52.48,
+          "return": -0.009063444108761365,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T5": {
+          "exit_date": "20240109",
+          "exit_close": 48.45,
+          "return": -0.0851586102719033,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T10": {
+          "exit_date": "20240116",
+          "exit_close": 45.99,
+          "return": -0.1316087613293051,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T20": {
+          "exit_date": "20240130",
+          "exit_close": 43.08,
+          "return": -0.18655589123867078,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T60": {
+          "exit_date": "20240403",
+          "exit_close": 44.24,
+          "return": -0.16465256797583083,
+          "truth_status": "REAL_READ_ONLY"
+        }
+      },
+      "ready_for_real_return": true,
+      "ready_for_alpha_claim": false
+    },
+    {
+      "case_id": "CORE_004",
+      "ticker": "601899",
+      "name": "紫金矿业",
+      "entry_date": "20240102",
+      "entry_close": 12.49,
+      "returns": {
+        "T1": {
+          "exit_date": "20240103",
+          "exit_close": 12.53,
+          "return": 0.0032025620496396456,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T5": {
+          "exit_date": "20240109",
+          "exit_close": 12.43,
+          "return": -0.0048038430744595795,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T10": {
+          "exit_date": "20240116",
+          "exit_close": 12.19,
+          "return": -0.024019215372297897,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T20": {
+          "exit_date": "20240130",
+          "exit_close": 12.18,
+          "return": -0.02481985588470781,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T60": {
+          "exit_date": "20240403",
+          "exit_close": 17.51,
+          "return": 0.40192153722978397,
+          "truth_status": "REAL_READ_ONLY"
+        }
+      },
+      "ready_for_real_return": true,
+      "ready_for_alpha_claim": false
+    },
+    {
+      "case_id": "CORE_005",
+      "ticker": "300124",
+      "name": "汇川技术",
+      "entry_date": "20240102",
+      "entry_close": 62.25,
+      "returns": {
+        "T1": {
+          "exit_date": "20240103",
+          "exit_close": 61.05,
+          "return": -0.01927710843373498,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T5": {
+          "exit_date": "20240109",
+          "exit_close": 59.79,
+          "return": -0.0395180722891566,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T10": {
+          "exit_date": "20240116",
+          "exit_close": 54.74,
+          "return": -0.12064257028112446,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T20": {
+          "exit_date": "20240130",
+          "exit_close": 54.44,
+          "return": -0.12546184738955823,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T60": {
+          "exit_date": "20240403",
+          "exit_close": 61.48,
+          "return": -0.012369477911646665,
+          "truth_status": "REAL_READ_ONLY"
+        }
+      },
+      "ready_for_real_return": true,
+      "ready_for_alpha_claim": false
+    },
+    {
+      "case_id": "CORE_006",
+      "ticker": "002594",
+      "name": "比亚迪",
+      "entry_date": "20240102",
+      "entry_close": 192.6,
+      "returns": {
+        "T1": {
+          "exit_date": "20240103",
+          "exit_close": 193.17,
+          "return": 0.0029595015576324712,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T5": {
+          "exit_date": "20240109",
+          "exit_close": 192.86,
+          "return": 0.0013499480789200824,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T10": {
+          "exit_date": "20240116",
+          "exit_close": 195.3,
+          "return": 0.014018691588785215,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T20": {
+          "exit_date": "20240130",
+          "exit_close": 171.97,
+          "return": -0.10711318795430946,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T60": {
+          "exit_date": "20240403",
+          "exit_close": 208.16,
+          "return": 0.08078920041536874,
+          "truth_status": "REAL_READ_ONLY"
+        }
+      },
+      "ready_for_real_return": true,
+      "ready_for_alpha_claim": false
+    },
+    {
+      "case_id": "CORE_007",
+      "ticker": "300274",
+      "name": "阳光电源",
+      "entry_date": "20240102",
+      "entry_close": 85.4,
+      "returns": {
+        "T1": {
+          "exit_date": "20240103",
+          "exit_close": 85.17,
+          "return": -0.002693208430913363,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T5": {
+          "exit_date": "20240109",
+          "exit_close": 82.01,
+          "return": -0.03969555035128802,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T10": {
+          "exit_date": "20240116",
+          "exit_close": 88.88,
+          "return": 0.0407494145199061,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T20": {
+          "exit_date": "20240130",
+          "exit_close": 79.99,
+          "return": -0.06334894613583153,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T60": {
+          "exit_date": "20240403",
+          "exit_close": 104.88,
+          "return": 0.22810304449648688,
+          "truth_status": "REAL_READ_ONLY"
+        }
+      },
+      "ready_for_real_return": true,
+      "ready_for_alpha_claim": false
+    },
+    {
+      "case_id": "CORE_008",
+      "ticker": "002371",
+      "name": "北方华创",
+      "entry_date": "20240102",
+      "entry_close": 240.3,
+      "returns": {
+        "T1": {
+          "exit_date": "20240103",
+          "exit_close": 240.48,
+          "return": 0.0007490636704119424,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T5": {
+          "exit_date": "20240109",
+          "exit_close": 228.08,
+          "return": -0.05085310029130252,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T10": {
+          "exit_date": "20240116",
+          "exit_close": 244.01,
+          "return": 0.015439034540158048,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T20": {
+          "exit_date": "20240130",
+          "exit_close": 229.35,
+          "return": -0.04556803995006253,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T60": {
+          "exit_date": "20240403",
+          "exit_close": 297.68,
+          "return": 0.23878485226799828,
+          "truth_status": "REAL_READ_ONLY"
+        }
+      },
+      "ready_for_real_return": true,
+      "ready_for_alpha_claim": false
+    },
+    {
+      "case_id": "CORE_009",
+      "ticker": "600030",
+      "name": "中信证券",
+      "entry_date": "20240102",
+      "entry_close": 20.07,
+      "returns": {
+        "T1": {
+          "exit_date": "20240103",
+          "exit_close": 20.18,
+          "return": 0.00548081714001003,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T5": {
+          "exit_date": "20240109",
+          "exit_close": 19.46,
+          "return": -0.03039362232187337,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T10": {
+          "exit_date": "20240116",
+          "exit_close": 19.58,
+          "return": -0.024414549078226266,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T20": {
+          "exit_date": "20240130",
+          "exit_close": 20.44,
+          "return": 0.01843547583457905,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T60": {
+          "exit_date": "20240403",
+          "exit_close": 19.16,
+          "return": -0.045341305430991574,
+          "truth_status": "REAL_READ_ONLY"
+        }
+      },
+      "ready_for_real_return": true,
+      "ready_for_alpha_claim": false
+    },
+    {
+      "case_id": "CORE_010",
+      "ticker": "600276",
+      "name": "恒瑞医药",
+      "entry_date": "20240102",
+      "entry_close": 44.47,
+      "returns": {
+        "T1": {
+          "exit_date": "20240103",
+          "exit_close": 44.23,
+          "return": -0.00539689678434907,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T5": {
+          "exit_date": "20240109",
+          "exit_close": 41.2,
+          "return": -0.07353271868675504,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T10": {
+          "exit_date": "20240116",
+          "exit_close": 41.41,
+          "return": -0.06881043400044984,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T20": {
+          "exit_date": "20240130",
+          "exit_close": 38.69,
+          "return": -0.12997526422307182,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T60": {
+          "exit_date": "20240403",
+          "exit_close": 44.76,
+          "return": 0.006521250281088298,
+          "truth_status": "REAL_READ_ONLY"
+        }
+      },
+      "ready_for_real_return": true,
+      "ready_for_alpha_claim": false
+    },
+    {
+      "case_id": "CORE_011",
+      "ticker": "002050",
+      "name": "三花智控",
+      "entry_date": "20240102",
+      "entry_close": 28.36,
+      "returns": {
+        "T1": {
+          "exit_date": "20240103",
+          "exit_close": 26.62,
+          "return": -0.0613540197461212,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T5": {
+          "exit_date": "20240109",
+          "exit_close": 26.28,
+          "return": -0.07334273624823684,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T10": {
+          "exit_date": "20240116",
+          "exit_close": 25.47,
+          "return": -0.10190409026798308,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T20": {
+          "exit_date": "20240130",
+          "exit_close": 20.61,
+          "return": -0.27327221438645977,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T60": {
+          "exit_date": "20240403",
+          "exit_close": 22.31,
+          "return": -0.21332863187588158,
+          "truth_status": "REAL_READ_ONLY"
+        }
+      },
+      "ready_for_real_return": true,
+      "ready_for_alpha_claim": false
+    },
+    {
+      "case_id": "CORE_012",
+      "ticker": "300763",
+      "name": "锦浪科技",
+      "entry_date": "20240102",
+      "entry_close": 68.42,
+      "returns": {
+        "T1": {
+          "exit_date": "20240103",
+          "exit_close": 68.15,
+          "return": -0.003946214557146943,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T5": {
+          "exit_date": "20240109",
+          "exit_close": 72.27,
+          "return": 0.0562700964630225,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T10": {
+          "exit_date": "20240116",
+          "exit_close": 75.24,
+          "return": 0.09967845659163976,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T20": {
+          "exit_date": "20240130",
+          "exit_close": 60.49,
+          "return": -0.1159017831043554,
+          "truth_status": "REAL_READ_ONLY"
+        },
+        "T60": {
+          "exit_date": "20240403",
+          "exit_close": 62.07,
+          "return": -0.09280912014030984,
+          "truth_status": "REAL_READ_ONLY"
+        }
+      },
+      "ready_for_real_return": true,
+      "ready_for_alpha_claim": false
+    }
+  ],
+  "horizons": [
+    "T1",
+    "T5",
+    "T10",
+    "T20",
+    "T60"
+  ],
+  "entry_date": "20240102",
+  "total_cases": 12
+}

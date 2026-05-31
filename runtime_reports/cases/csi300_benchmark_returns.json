@@ -1,0 +1,42 @@
+{
+  "benchmark_id": "CSI300",
+  "entry_date": "20240102",
+  "entry_close": 3386.3522,
+  "returns": {
+    "T1": {
+      "exit_date": "20240103",
+      "return": -0.0023786952816071683,
+      "entry_close": 3386.3522,
+      "exit_close": 3378.2971,
+      "truth_status": "REAL_READ_ONLY"
+    },
+    "T5": {
+      "exit_date": "20240109",
+      "return": -0.02771501440399482,
+      "entry_close": 3386.3522,
+      "exit_close": 3292.4994,
+      "truth_status": "REAL_READ_ONLY"
+    },
+    "T10": {
+      "exit_date": "20240116",
+      "return": -0.02524132014384084,
+      "entry_close": 3386.3522,
+      "exit_close": 3300.8762,
+      "truth_status": "REAL_READ_ONLY"
+    },
+    "T20": {
+      "exit_date": "20240130",
+      "return": -0.04173030200461714,
+      "entry_close": 3386.3522,
+      "exit_close": 3245.0387,
+      "truth_status": "REAL_READ_ONLY"
+    },
+    "T60": {
+      "exit_date": "20240403",
+      "return": 0.053582997066873306,
+      "entry_close": 3386.3522,
+      "exit_close": 3567.8031,
+      "truth_status": "REAL_READ_ONLY"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "status": "CASE_EXPANSION_V8_EXPANDED_SAMPLE_READY_CONFIRMED",
+  "universe_id": "CORE12_PLUS_EXPANSION60",
+  "stock_count": 71,
+  "history_years": 4,
+  "expanded_data_ready": true,
+  "factor_values_rebuilt": true,
+  "forward_labels_rebuilt": true,
+  "sample_adequacy_pass": true,
+  "t60_adequacy": "EXPLORATORY_USABLE",
+  "ready_for_v9_formal_validation": true,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "buy_sell_instruction_count": 0,
+  "council_investment_verdict": "BLOCKED_UNTIL_FORMAL_FACTOR_VALIDATION",
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,14 @@
+{
+  "status": "V8_EXPANDED_UNIVERSE_BUILT",
+  "universe_id": "CORE12_PLUS_EXPANSION60",
+  "stock_count": 72,
+  "included_layers": [
+    "CORE",
+    "EXPANSION"
+  ],
+  "excluded_layers": [
+    "FAILURE"
+  ],
+  "ready_for_data_pull": true,
+  "ready_for_alpha_claim": false
+}

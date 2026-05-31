@@ -1,0 +1,13 @@
+{
+  "status": "V8_EXPANDED_DATA_READY",
+  "universe_id": "CORE12_PLUS_EXPANSION60",
+  "stock_count": 71,
+  "history_start": "20210104",
+  "history_end": "20241231",
+  "trading_days": 969,
+  "price_coverage": 0.9861,
+  "benchmark_ready": true,
+  "calendar_ready": true,
+  "ready_for_factor_rebuild": true,
+  "ready_for_alpha_claim": false
+}

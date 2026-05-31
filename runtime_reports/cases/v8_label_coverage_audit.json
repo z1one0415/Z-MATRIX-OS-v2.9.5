@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "coverage_by_horizon": {
+    "T1": {
+      "valid_dates": 908,
+      "valid_labels": 64206
+    },
+    "T5": {
+      "valid_dates": 904,
+      "valid_labels": 63902
+    },
+    "T10": {
+      "valid_dates": 899,
+      "valid_labels": 63536
+    },
+    "T20": {
+      "valid_dates": 889,
+      "valid_labels": 62818
+    },
+    "T60": {
+      "valid_dates": 849,
+      "valid_labels": 59984
+    }
+  },
+  "missing_policy": "INSUFFICIENT_NOT_ZERO_FILLED"
+}

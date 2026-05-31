@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "horizon_status": {
+    "T1": "EXPLORATORY_USABLE",
+    "T5": "EXPLORATORY_USABLE",
+    "T10": "EXPLORATORY_USABLE",
+    "T20": "EXPLORATORY_USABLE",
+    "T60": "EXPLORATORY_USABLE"
+  },
+  "label_records_per_horizon": {
+    "T1": 64206,
+    "T5": 63902,
+    "T10": 63536,
+    "T20": 62818,
+    "T60": 59984
+  },
+  "total_label_records": 314446,
+  "formal_validation_allowed": false,
+  "alpha_claim_allowed": false
+}

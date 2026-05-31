@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "factor_records_checked": 1028596,
+  "future_data_violations": 0,
+  "input_date_violations": 0,
+  "leakage_safe": true
+}

@@ -1,0 +1,10 @@
+{
+  "status": "V7_FACTOR_VALIDATION_ENTRY_ALLOWED",
+  "ready_for_v7_factor_validation": true,
+  "ready_for_alpha_claim": false,
+  "blocking_reasons": [],
+  "warning": "V7 validation remains small-sample exploratory",
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

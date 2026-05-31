@@ -27,7 +27,7 @@ class ActionType(str, Enum):
 ACTION_QUEUE_PATH = os.environ.get(
     "Z_ACTION_QUEUE_PATH",
     str(Path(__file__).resolve().parent.parent.parent
-        / "data" / "research_db" / "agent" / "action_queue.jsonl"),
+        / "data" / "research_db" / "agent" / "ledgers" / "action_queue.jsonl"),
 )
 
 

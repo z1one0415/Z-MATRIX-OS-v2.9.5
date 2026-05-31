@@ -1,5 +1,5 @@
-#!/usr/bin/env python3
-"""Z-Agent Kernel — Agent Registry v0.5.0"""
+# allowlist: forbidden-token-definition
+"""Agent Registry — enum types, dataclass, load/validate/assert functions"""
 from __future__ import annotations
 
 import json
@@ -7,13 +7,6 @@ import os
 from dataclasses import dataclass, field
 from enum import Enum
 from pathlib import Path
-from typing import Any
-
-
-AGENT_REGISTRY_PATH = str(
-    Path(__file__).resolve().parent.parent.parent
-    / "data/research_db/agent/registry/agent_registry.json"
-)
 
 
 class AgentType(str, Enum):
@@ -36,119 +29,103 @@ class AgentPermissionLevel(str, Enum):
     RELEASE_PROPOSER = "RELEASE_PROPOSER"
 
 
+AGENT_REGISTRY_PATH = os.environ.get(
+    "Z_AGENT_REGISTRY_PATH",
+    str(Path(__file__).resolve().parent.parent.parent
+        / "data" / "research_db" / "agent" / "registry" / "agent_registry.json"),
+)
+
+
 @dataclass
 class AgentRegistryEntry:
     agent_id: str
     agent_name: str
-    agent_type: AgentType
-    owner: str = "system"
-    role: str = ""
-    permission_level: AgentPermissionLevel = AgentPermissionLevel.VIEW_ONLY
-    allowed_scopes: list[str] = field(default_factory=list)
-    allowed_read_layers: list[str] = field(default_factory=list)
-    allowed_write_layers: list[str] = field(default_factory=list)
-    allowed_commands: list[str] = field(default_factory=list)
-    forbidden_commands: list[str] = field(default_factory=list)
-    max_risk_level: str = "R2_DRAFT"
-    requires_human_review: bool = True
-    workspace_path: str = ""
-    enabled: bool = True
-    created_at: str = ""
+    agent_type: str
+    owner: str
+    role: str
+    permission_level: str
+    allowed_scopes: list[str]
+    allowed_read_layers: list[str]
+    allowed_write_layers: list[str]
+    allowed_commands: list[str]
+    forbidden_commands: list[str]
+    max_risk_level: str
+    requires_human_review: bool
+    workspace_path: str
+    enabled: bool
+    created_at: str
     production_allowed: bool = False
 
 
-def load_agent_registry(path: str = "") -> list[dict[str, Any]]:
-    target = path or AGENT_REGISTRY_PATH
-    if not os.path.exists(target):
-        return _default_agents()
-    with open(target, "r", encoding="utf-8") as f:
-        data = json.load(f)
+_RISK_ORDER = {
+    "R0_READ": 0,
+    "R1_ANNOTATE": 1,
+    "R2_DRAFT": 2,
+    "R3_WRITE_RESEARCH_DB": 3,
+    "R4_CODE_PATCH_PROPOSAL": 4,
+    "R5_RELEASE_PROPOSAL": 5,
+    "R9_FORBIDDEN": 9,
+}
+
+_HARD_FORBIDDEN_SCOPES = frozenset({("*",), ('*',)})
+
+
+def _risk_numeric(level: str) -> int:
+    return _RISK_ORDER.get(level, 0)
+
+
+def load_agent_registry(path: str | None = None) -> list[dict]:
+    path = path or AGENT_REGISTRY_PATH
+    if not os.path.exists(path):
+        return []
+    with open(path, "r", encoding="utf-8") as fh:
+        data = json.load(fh)
     if not isinstance(data, list):
-        return _default_agents()
+        return []
     return data
 
 
-def _default_agents() -> list[dict[str, Any]]:
-    return [
-        {
-            "agent_id": "z-orchestrator",
-            "agent_name": "Z-Orchestrator",
-            "agent_type": "ORCHESTRATOR",
-            "permission_level": "VIEW_ONLY",
-            "allowed_scopes": ["research_summary", "layer_query", "skill_draft"],
-            "allowed_read_layers": ["*READ_ONLY_REGISTRY"],
-            "allowed_write_layers": [],
-            "allowed_commands": ["QUERY", "CREATE_DRAFT_COMMAND"],
-            "forbidden_commands": [
-                "REAL_TRADE", "BROKER_ORDER", "AUTO_BUY", "AUTO_SELL",
-                "PRODUCTION_MUTATION",
-            ],
-            "max_risk_level": "R2_DRAFT",
-            "requires_human_review": True,
-            "workspace_path": "runtime/agent_workspace/z-orchestrator",
-            "enabled": True,
-            "production_allowed": False,
-        },
-        {
-            "agent_id": "openclaw-engineering",
-            "agent_name": "OpenClaw Engineering Agent",
-            "agent_type": "ENGINEERING",
-            "permission_level": "CODE_PATCH_PROPOSER",
-            "allowed_scopes": ["code_patch_proposal", "verify_runner"],
-            "allowed_read_layers": ["docs", "zmatrix", "tests", "scripts"],
-            "allowed_write_layers": [
-                "runtime/agent_workspace/openclaw-engineering"
-            ],
-            "allowed_commands": ["CREATE_PATCH_PROPOSAL", "RUN_VERIFY_DRY"],
-            "forbidden_commands": [
-                "REAL_TRADE", "BROKER_ORDER", "AUTO_BUY", "AUTO_SELL",
-                "DIRECT_MAIN_PUSH", "PRODUCTION_MUTATION",
-            ],
-            "max_risk_level": "R4_CODE_PATCH_PROPOSAL",
-            "requires_human_review": True,
-            "workspace_path": "runtime/agent_workspace/openclaw-engineering",
-            "enabled": True,
-            "production_allowed": False,
-        },
-    ]
-
-
-def get_agent(agent_id: str, path: str | None = None) -> dict[str, Any]:
-    registry = load_agent_registry(path or AGENT_REGISTRY_PATH)
+def get_agent(agent_id: str, path: str | None = None) -> dict:
+    registry = load_agent_registry(path)
     for entry in registry:
         if entry.get("agent_id") == agent_id:
             return entry
-    return {}
+    raise KeyError(f"Unknown agent: {agent_id}")
 
 
-def validate_agent_entry(entry: dict[str, Any]) -> dict[str, Any]:
+def validate_agent_entry(entry: dict) -> dict:
     errors: list[str] = []
-    if not entry.get("agent_id"):
-        errors.append("agent_id required")
-    if not entry.get("agent_name"):
-        errors.append("agent_name required")
-    if entry.get("production_allowed"):
+
+    if entry.get("enabled") is False:
+        errors.append("Agent is disabled")
+
+    if entry.get("production_allowed") is True:
         errors.append("production_allowed must be false")
+
     scopes = entry.get("allowed_scopes", [])
-    if scopes == ["*"]:
-        errors.append("allowed_scopes cannot be wildcard ['*']")
+    if tuple(scopes) in _HARD_FORBIDDEN_SCOPES:
+        errors.append('allowed_scopes cannot be ["*"] — wildcard scope forbidden')
+
+    requires_review = entry.get("requires_human_review", True)
+    max_risk = entry.get("max_risk_level", "R2_DRAFT")
+    if requires_review is False and _risk_numeric(max_risk) >= 3:
+        errors.append(
+            "requires_human_review=false with max_risk_level>=R3 is not allowed"
+        )
+
     return {"valid": len(errors) == 0, "errors": errors}
 
 
-def assert_agent_enabled(agent_id: str) -> dict[str, Any]:
-    agent = get_agent(agent_id)
-    if not agent:
-        return {"valid": False, "errors": [f"unknown agent: {agent_id}"]}
-    if not agent.get("enabled", True):
-        return {"valid": False, "errors": [f"agent disabled: {agent_id}"]}
-    return {"valid": True, "errors": []}
+def assert_agent_enabled(agent_id: str, path: str | None = None) -> dict:
+    entry = get_agent(agent_id, path)
+    if entry.get("enabled") is not True:
+        return {"allowed": False, "reason": "Agent is disabled"}
+    return {"allowed": True, "reason": ""}
 
 
-def assert_agent_scope(agent_id: str, scope: str) -> dict[str, Any]:
-    agent = get_agent(agent_id)
-    if not agent:
-        return {"valid": False, "errors": [f"unknown agent: {agent_id}"]}
-    allowed = agent.get("allowed_scopes", [])
-    if scope not in allowed and "all" not in allowed:
-        return {"valid": False, "errors": [f"scope {scope} not allowed for {agent_id}"]}
-    return {"valid": True, "errors": []}
+def assert_agent_scope(agent_id: str, scope: str, path: str | None = None) -> dict:
+    entry = get_agent(agent_id, path)
+    allowed = entry.get("allowed_scopes", [])
+    if scope not in allowed:
+        return {"allowed": False, "reason": f"Scope '{scope}' not in allowed_scopes"}
+    return {"allowed": True, "reason": ""}

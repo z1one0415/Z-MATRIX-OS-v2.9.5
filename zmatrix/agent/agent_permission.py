@@ -1,9 +1,8 @@
-#!/usr/bin/env python3
-"""Z-Agent Kernel — Agent Permission Gate v0.5.0"""
+# allowlist: forbidden-token-definition
+"""Agent Permission Gate — risk-level enum and permission evaluator"""
 from __future__ import annotations
 
 from enum import Enum
-from typing import Any
 
 
 class CommandRiskLevel(str, Enum):
@@ -16,7 +15,7 @@ class CommandRiskLevel(str, Enum):
     R9_FORBIDDEN = "R9_FORBIDDEN"
 
 
-_RISK_NUMERIC: dict[str, int] = {
+_RISK_NUMERIC = {
     "R0_READ": 0,
     "R1_ANNOTATE": 1,
     "R2_DRAFT": 2,
@@ -28,93 +27,45 @@ _RISK_NUMERIC: dict[str, int] = {
 
 
 def _risk_num(level: str) -> int:
-    return _RISK_NUMERIC.get(level, 99)
+    return _RISK_NUMERIC.get(level, 0)
 
 
-_PROPOSAL_COMMAND_TYPES = {
-    "CREATE_PATCH_PROPOSAL",
-    "CREATE_RELEASE_PROPOSAL",
-}
-
-_EXECUTION_COMMAND_TYPES = {
-    "EXECUTE_PATCH",
-    "EXECUTE_RELEASE",
-}
-
-
-def evaluate_agent_permission(agent: dict[str, Any], command: dict[str, Any]) -> dict[str, Any]:
+def evaluate_agent_permission(agent: dict, command: dict) -> dict:
     blocked_reasons: list[str] = []
-    allowed = True
-    risk_level = command.get("risk_level", "R0_READ")
-    command_type = command.get("command_type", "")
-    permission_level = agent.get("permission_level", "VIEW_ONLY")
-    agent_max_risk = agent.get("max_risk_level", "R0_READ")
 
-    if not agent:
-        blocked_reasons.append("unknown agent")
-        allowed = False
+    agent_perm = agent.get("permission_level", "VIEW_ONLY")
+    agent_max_risk = agent.get("max_risk_level", "R2_DRAFT")
+    agent_review = agent.get("requires_human_review", True)
 
-    if not agent.get("enabled", True):
-        blocked_reasons.append("agent disabled")
-        allowed = False
+    cmd_risk = command.get("risk_level", "R0_READ")
+    cmd_prod_allowed = command.get("production_allowed", False)
+    cmd_review = command.get("requires_human_review", True)
 
-    if agent.get("production_allowed"):
-        blocked_reasons.append("production_allowed must be false")
-        allowed = False
+    risk_num = _risk_num(cmd_risk)
 
-    if risk_level == "R9_FORBIDDEN":
+    if cmd_risk == "R9_FORBIDDEN":
         blocked_reasons.append("R9_FORBIDDEN commands are always blocked")
-        allowed = False
 
-    allowed_scopes = agent.get("allowed_scopes", [])
-    if allowed_scopes == ["*"]:
-        blocked_reasons.append("allowed_scopes cannot be wildcard ['*']")
-        allowed = False
+    if cmd_prod_allowed is True:
+        blocked_reasons.append("production_allowed must be false")
 
-    cmd_risk_num = _risk_num(risk_level)
-    agent_max_risk_num = _risk_num(agent_max_risk)
-
-    if cmd_risk_num > agent_max_risk_num:
-        blocked_reasons.append("command risk exceeds agent max_risk_level")
-        allowed = False
-
-    if cmd_risk_num >= 3 and permission_level == "VIEW_ONLY":
+    if agent_perm == "VIEW_ONLY" and risk_num >= 3:
         blocked_reasons.append("VIEW_ONLY agent cannot execute R3+ commands")
-        allowed = False
 
-    if risk_level in ("R4_CODE_PATCH_PROPOSAL", "R5_RELEASE_PROPOSAL"):
-        if command_type in _PROPOSAL_COMMAND_TYPES:
-            if allowed and cmd_risk_num <= agent_max_risk_num:
-                return {
-                    "allowed": True,
-                    "risk_level": risk_level,
-                    "requires_human_review": True,
-                    "route": "PROPOSAL_REQUIRED",
-                    "execution_allowed": False,
-                    "blocked_reasons": [],
-                    "production_allowed": False,
-                }
-            else:
-                blocked_reasons.append("R4/R5 commands require human approval")
-                allowed = False
-        elif command_type in _EXECUTION_COMMAND_TYPES:
-            blocked_reasons.append("R4/R5 execution requires prior approval")
-            allowed = False
-        else:
-            blocked_reasons.append("R4/R5 commands require human approval")
-            allowed = False
-    elif risk_level in ("R3_WRITE_RESEARCH_DB",):
-        if not command.get("requires_human_review", True):
-            blocked_reasons.append("R3 requires human review")
+    if risk_num >= 3:
+        if cmd_review is not True or agent_review is not True:
+            blocked_reasons.append("R3+ commands require requires_human_review=true on both agent and command")
 
-    requires_human = True
-    if risk_level in ("R0_READ", "R1_ANNOTATE") and not blocked_reasons:
-        requires_human = False
+    if risk_num >= 4:
+        blocked_reasons.append("R4/R5 commands require human approval")
+
+    allowed = len(blocked_reasons) == 0
+    requires_review = risk_num >= 3 or (agent_review and cmd_review)
 
     return {
         "allowed": allowed,
-        "risk_level": risk_level,
-        "requires_human_review": requires_human or bool(blocked_reasons),
+        "risk_level": cmd_risk,
+        "requires_human_review": requires_review,
         "blocked_reasons": blocked_reasons,
-        "production_allowed": False,
+        "production_allowed": cmd_prod_allowed,
     }

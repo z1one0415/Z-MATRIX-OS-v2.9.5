@@ -4,7 +4,7 @@
   "name": "中芯国际",
   "status": "COMPLETED",
   "audit_hash": "59a1c20f55a14f20",
-  "human_report": "/Users/z1/Documents/Z-MATRIX-OS v2.9.5/runtime_reports/cases/core_12/CORE_003_688981/CORE_003_688981_human_report.md",
+  "human_report": "runtime_reports/cases/core_12/CORE_003_688981/CORE_003_688981_human_report.md",
   "ticker_specific": true,
   "production": "BLOCKED",
   "broker_runtime": "BLOCKED",

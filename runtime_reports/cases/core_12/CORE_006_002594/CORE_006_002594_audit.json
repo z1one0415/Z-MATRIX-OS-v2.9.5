@@ -4,7 +4,7 @@
   "name": "比亚迪",
   "status": "COMPLETED",
   "audit_hash": "4542481b99df31de",
-  "human_report": "/Users/z1/Documents/Z-MATRIX-OS v2.9.5/runtime_reports/cases/core_12/CORE_006_002594/CORE_006_002594_human_report.md",
+  "human_report": "runtime_reports/cases/core_12/CORE_006_002594/CORE_006_002594_human_report.md",
   "ticker_specific": true,
   "production": "BLOCKED",
   "broker_runtime": "BLOCKED",

@@ -43,13 +43,14 @@ def main():
     # Write audit JSON
     out_dir = WORKSPACE / "runtime_reports" / "cases" / "core_12" / f"{args.case_id}_{ticker}"
     out_dir.mkdir(parents=True, exist_ok=True)
+    report_rel = f"runtime_reports/cases/core_12/{args.case_id}_{ticker}/{args.case_id}_{ticker}_human_report.md"
     audit = {
         "case_id": args.case_id,
         "ticker": ticker,
         "name": case_meta.get("name", ""),
         "status": status,
         "audit_hash": result.get("_audit_hash", "N/A"),
-        "human_report": str(out_dir / f"{args.case_id}_{ticker}_human_report.md"),
+        "human_report": report_rel,
         "ticker_specific": True,
         "production": "BLOCKED",
         "broker_runtime": "BLOCKED",

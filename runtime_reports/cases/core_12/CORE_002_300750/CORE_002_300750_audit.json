@@ -4,7 +4,7 @@
   "name": "宁德时代",
   "status": "COMPLETED",
   "audit_hash": "39eb996050cd9399",
-  "human_report": "/Users/z1/Documents/Z-MATRIX-OS v2.9.5/runtime_reports/cases/core_12/CORE_002_300750/CORE_002_300750_human_report.md",
+  "human_report": "runtime_reports/cases/core_12/CORE_002_300750/CORE_002_300750_human_report.md",
   "ticker_specific": true,
   "production": "BLOCKED",
   "broker_runtime": "BLOCKED",

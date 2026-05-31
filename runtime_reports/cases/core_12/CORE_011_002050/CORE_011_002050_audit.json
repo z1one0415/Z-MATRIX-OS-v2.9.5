@@ -4,7 +4,7 @@
   "name": "三花智控",
   "status": "COMPLETED",
   "audit_hash": "fbc10f64c5be1c08",
-  "human_report": "/Users/z1/Documents/Z-MATRIX-OS v2.9.5/runtime_reports/cases/core_12/CORE_011_002050/CORE_011_002050_human_report.md",
+  "human_report": "runtime_reports/cases/core_12/CORE_011_002050/CORE_011_002050_human_report.md",
   "ticker_specific": true,
   "production": "BLOCKED",
   "broker_runtime": "BLOCKED",

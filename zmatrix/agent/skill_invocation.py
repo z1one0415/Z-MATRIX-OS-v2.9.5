@@ -134,6 +134,7 @@ def invoke_skill(command_envelope: dict, context_slice: dict) -> dict:
         "blocked_reason": "",
         "human_review_required": human_review_required,
         "production_allowed": False,
+        "action_intent": command_envelope.get("action_intent", "QUERY"),
     }
 
     if _contains_forbidden_token(result):

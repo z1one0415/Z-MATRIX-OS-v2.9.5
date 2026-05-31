@@ -109,3 +109,35 @@ class TestCalculateCommandDigest:
         d2 = calculate_command_digest(envelope)
         assert d1 == d2
         assert len(d1) == 64
+
+class TestClassifyActionIntent:
+    def test_classify_proposal(self):
+        from zmatrix.agent.command_envelope import classify_action_intent
+        assert classify_action_intent("CREATE_PATCH_PROPOSAL") == "PROPOSAL"
+        assert classify_action_intent("proposal_for_fix") == "PROPOSAL"
+
+    def test_classify_execute(self):
+        from zmatrix.agent.command_envelope import classify_action_intent
+        assert classify_action_intent("EXECUTE_patch") == "EXECUTE"
+        assert classify_action_intent("RUN_verify") == "EXECUTE"
+
+    def test_classify_query(self):
+        from zmatrix.agent.command_envelope import classify_action_intent
+        assert classify_action_intent("QUERY_case") == "QUERY"
+
+    def test_execute_takes_priority_over_patch(self):
+        from zmatrix.agent.command_envelope import classify_action_intent
+        assert classify_action_intent("EXECUTE_PATCH_for_bug") == "EXECUTE"
+
+
+class TestActionIntentValidation:
+    def test_action_intent_mismatch(self):
+        from zmatrix.agent.command_envelope import validate_command_envelope
+        env = {
+            "command_id": "c1", "agent_id": "a1", "requested_skill": "s1",
+            "requested_action": "EXECUTE_patch", "action_intent": "PROPOSAL",
+            "production_allowed": False, "risk_level": "R0_READ",
+        }
+        result = validate_command_envelope(env)
+        assert result["valid"] is False
+        assert any("mismatch" in e for e in result["errors"])

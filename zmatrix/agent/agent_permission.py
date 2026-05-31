@@ -63,11 +63,18 @@ def evaluate_agent_permission(agent: dict, command: dict) -> dict:
     route = ""
     execution_allowed = True
     if risk_num >= 4:
-        requested_action = command.get("requested_action", "")
-        if "PROPOSAL" in requested_action or "CREATE_PATCH" in requested_action:
+        action_intent = command.get("action_intent", "")
+        if not action_intent:
+            # fallback: classify from requested_action string (EXECUTE takes priority over PATCH)
+            requested_action = command.get("requested_action", "").upper()
+            if any(kw in requested_action for kw in ("EXECUTE", "RUN", "APPLY")):
+                action_intent = "EXECUTE"
+            elif any(kw in requested_action for kw in ("PROPOSAL", "CREATE_PATCH")):
+                action_intent = "PROPOSAL"
+        if action_intent == "PROPOSAL":
             route = "PROPOSAL_REQUIRED"
             execution_allowed = False
-        elif "EXECUTE" in requested_action:
+        elif action_intent == "EXECUTE":
             blocked_reasons.append("R4/R5 execution requires prior approval")
         else:
             blocked_reasons.append("R4/R5 commands require human approval")

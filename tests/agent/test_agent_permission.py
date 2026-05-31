@@ -96,3 +96,34 @@ class TestEvaluateAgentPermission:
         result = evaluate_agent_permission(CODE_PATCH_AGENT, cmd)
         assert result["allowed"] is False
         assert any("execution requires prior approval" in r for r in result["blocked_reasons"])
+
+class TestActionIntentRouting:
+    def test_r4_proposal_with_action_intent(self):
+        cmd = _cmd(
+            risk_level="R4_CODE_PATCH_PROPOSAL",
+            requested_action="CREATE_PATCH_for_bugfix",
+            action_intent="PROPOSAL",
+        )
+        result = evaluate_agent_permission(CODE_PATCH_AGENT, cmd)
+        assert result["allowed"] is True
+        assert result.get("route") == "PROPOSAL_REQUIRED"
+        assert result.get("execution_allowed") is False
+
+    def test_r4_execute_with_action_intent(self):
+        cmd = _cmd(
+            risk_level="R4_CODE_PATCH_PROPOSAL",
+            requested_action="EXECUTE_fix",
+            action_intent="EXECUTE",
+        )
+        result = evaluate_agent_permission(CODE_PATCH_AGENT, cmd)
+        assert result["allowed"] is False
+        assert any("execution requires prior approval" in r for r in result["blocked_reasons"])
+
+    def test_r4_unclassified_action_blocked(self):
+        cmd = _cmd(
+            risk_level="R4_CODE_PATCH_PROPOSAL",
+            requested_action="SOME_WEIRD_ACTION",
+        )
+        result = evaluate_agent_permission(CODE_PATCH_AGENT, cmd)
+        assert result["allowed"] is False
+        assert any("R4/R5 commands require human approval" in r for r in result["blocked_reasons"])

@@ -1,0 +1,58 @@
+[
+  {
+    "skill_id": "SYSTEM.GET_RESEARCH_SUMMARY",
+    "skill_name": "Get Research Summary",
+    "domain": "SYSTEM_VERIFY",
+    "version": "1.0",
+    "input_schema_ref": "query_contract.get_research_summary",
+    "output_schema_ref": "research_summary_schema",
+    "allowed_callers": [
+      "z-orchestrator",
+      "openclaw-engineering"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "read_layers": [
+      "research_summary"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "SYSTEM.GET_LAYER_VERSIONS",
+    "skill_name": "Get Layer Versions",
+    "domain": "SYSTEM_VERIFY",
+    "version": "1.0",
+    "input_schema_ref": "query_contract.get_layer_versions",
+    "output_schema_ref": "layer_versions_schema",
+    "allowed_callers": [
+      "z-orchestrator",
+      "openclaw-engineering"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "read_layers": [
+      "layer_versions"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  }
+]

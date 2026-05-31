@@ -1,0 +1,501 @@
+[
+  {
+    "skill_id": "CASEFORGE.CREATE_CASE_DRAFT",
+    "skill_name": "Create Case Draft",
+    "domain": "AUTOCASEFORGE",
+    "version": "1.0",
+    "input_schema_ref": "case_draft_schema",
+    "output_schema_ref": "case_draft_result_schema",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R2_DRAFT",
+    "requires_human_review": true,
+    "read_layers": [
+      "case_data"
+    ],
+    "write_layers": [
+      "case_drafts"
+    ],
+    "verify_script": "scripts/verify_case_draft.sh",
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": true,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "VERIFY.RUN_DRY",
+    "skill_name": "Run Verify Dry",
+    "domain": "SYSTEM_VERIFY",
+    "version": "1.0",
+    "input_schema_ref": "verify_dry_schema",
+    "output_schema_ref": "verify_result_schema",
+    "allowed_callers": [
+      "openclaw-engineering"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": false,
+    "read_layers": [
+      "tests"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "REPORT.RENDER_DRAFT",
+    "skill_name": "Render Report Draft",
+    "domain": "REPORTING",
+    "version": "1.0",
+    "input_schema_ref": "report_draft_schema",
+    "output_schema_ref": "report_schema",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R2_DRAFT",
+    "requires_human_review": false,
+    "read_layers": [
+      "research_data"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "SYSTEM.GET_RESEARCH_SUMMARY",
+    "skill_name": "Get Research Summary",
+    "domain": "SYSTEM_VERIFY",
+    "version": "1.0",
+    "input_schema_ref": "query_contract.get_research_summary",
+    "output_schema_ref": "research_summary_schema",
+    "allowed_callers": [
+      "z-orchestrator",
+      "openclaw-engineering"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "read_layers": [
+      "research_summary"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "SYSTEM.GET_LAYER_VERSIONS",
+    "skill_name": "Get Layer Versions",
+    "domain": "SYSTEM_VERIFY",
+    "version": "1.0",
+    "input_schema_ref": "query_contract.get_layer_versions",
+    "output_schema_ref": "layer_versions_schema",
+    "allowed_callers": [
+      "z-orchestrator",
+      "openclaw-engineering"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "read_layers": [
+      "layer_versions"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "ZG16.GET_SOURCE_REGISTRY",
+    "skill_name": "Get Source Registry",
+    "input_schema_ref": "source_registry_schema",
+    "output_schema_ref": "source_list",
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "read_layers": [
+      "source_registry"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "domain": "Z_G16_PHYSICAL",
+    "version": "1.2",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "ZG16.GET_EVENT_LAYER_VERSIONS",
+    "skill_name": "Get Event Layer Versions",
+    "input_schema_ref": "event_layer_version_schema",
+    "output_schema_ref": "layer_versions",
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "read_layers": [
+      "event_layers"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "domain": "Z_G16_PHYSICAL",
+    "version": "1.2",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "ZG16.GET_PHYSICAL_SIGNAL_SCHEMA",
+    "skill_name": "Get Physical Signal Schema",
+    "input_schema_ref": "physical_signal_schema",
+    "output_schema_ref": "signal_schema",
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "read_layers": [
+      "physical_signals"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "domain": "Z_G16_PHYSICAL",
+    "version": "1.2",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "ZG16.GET_NARRATIVE_EVENT_SCHEMA",
+    "skill_name": "Get Narrative Event Schema",
+    "input_schema_ref": "narrative_event_schema",
+    "output_schema_ref": "event_schema",
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "read_layers": [
+      "narrative_events"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "domain": "Z_G16_PHYSICAL",
+    "version": "1.2",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "ZG16.GET_REALITY_CHECK_SCHEMA",
+    "skill_name": "Get Reality Check Schema",
+    "input_schema_ref": "reality_check_schema",
+    "output_schema_ref": "check_schema",
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "read_layers": [
+      "reality_checks"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "domain": "Z_G16_PHYSICAL",
+    "version": "1.2",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "ZG16.GET_NPA_SCHEMA",
+    "skill_name": "Get NPA Schema",
+    "input_schema_ref": "npa_schema",
+    "output_schema_ref": "npa_schema",
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "read_layers": [
+      "npa"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "domain": "Z_G16_PHYSICAL",
+    "version": "1.2",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "ZG16.GET_HYPOTHESIS_SCHEMA",
+    "skill_name": "Get Hypothesis Schema",
+    "input_schema_ref": "hypothesis_schema",
+    "output_schema_ref": "hypothesis_schema",
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "read_layers": [
+      "hypotheses"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "domain": "Z_G16_PHYSICAL",
+    "version": "1.2",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "ZG16.LOAD_PHYSICAL_SIGNAL_FIXTURE",
+    "skill_name": "Load Physical Signal Fixture",
+    "input_schema_ref": "fixture_schema",
+    "output_schema_ref": "signal_list",
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": true,
+    "read_layers": [
+      "fixtures"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "domain": "Z_G16_PHYSICAL",
+    "version": "1.2",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "ZG16.CALCULATE_NPA_SCORE",
+    "skill_name": "Calculate NPA Score",
+    "input_schema_ref": "npa_input",
+    "output_schema_ref": "npa_result",
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": true,
+    "read_layers": [
+      "npa"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "domain": "Z_G16_PHYSICAL",
+    "version": "1.2",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "ZG16.CREATE_HYPOTHESIS_DRAFT",
+    "skill_name": "Create Hypothesis Draft",
+    "input_schema_ref": "hypothesis_input",
+    "output_schema_ref": "hypothesis",
+    "risk_level": "R2_DRAFT",
+    "requires_human_review": true,
+    "read_layers": [
+      "events",
+      "signals"
+    ],
+    "write_layers": [
+      "drafts"
+    ],
+    "verify_script": null,
+    "domain": "Z_G16_PHYSICAL",
+    "version": "1.2",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": true,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "ZG16.CREATE_RESEARCH_ANNOTATION_DRAFT",
+    "skill_name": "Create Research Annotation Draft",
+    "input_schema_ref": "annotation_input",
+    "output_schema_ref": "annotation",
+    "risk_level": "R2_DRAFT",
+    "requires_human_review": true,
+    "read_layers": [
+      "events"
+    ],
+    "write_layers": [
+      "drafts"
+    ],
+    "verify_script": null,
+    "domain": "Z_G16_PHYSICAL",
+    "version": "1.2",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": true,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "ZG16.CREATE_ANALYSIS_ZONE_DRAFT",
+    "skill_name": "Create Analysis Zone Draft",
+    "input_schema_ref": "analysis_input",
+    "output_schema_ref": "analysis_zone",
+    "risk_level": "R2_DRAFT",
+    "requires_human_review": true,
+    "read_layers": [
+      "events"
+    ],
+    "write_layers": [
+      "drafts"
+    ],
+    "verify_script": null,
+    "domain": "Z_G16_PHYSICAL",
+    "version": "1.2",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": true,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "ZG16.CREATE_CASEFORGE_DRAFT_PROPOSAL",
+    "skill_name": "Create CaseForge Draft Proposal",
+    "input_schema_ref": "caseforge_input",
+    "output_schema_ref": "caseforge_proposal",
+    "risk_level": "R2_DRAFT",
+    "requires_human_review": true,
+    "read_layers": [
+      "cases"
+    ],
+    "write_layers": [
+      "drafts"
+    ],
+    "verify_script": null,
+    "domain": "Z_G16_PHYSICAL",
+    "version": "1.2",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": true,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  }
+]

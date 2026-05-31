@@ -1,0 +1,29 @@
+[
+  {
+    "skill_id": "REPORT.RENDER_DRAFT",
+    "skill_name": "Render Report Draft",
+    "domain": "REPORTING",
+    "version": "1.0",
+    "input_schema_ref": "report_draft_schema",
+    "output_schema_ref": "report_schema",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R2_DRAFT",
+    "requires_human_review": false,
+    "read_layers": [
+      "research_data"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  }
+]

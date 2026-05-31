@@ -1,0 +1,29 @@
+[
+  {
+    "skill_id": "VERIFY.RUN_DRY",
+    "skill_name": "Run Verify Dry",
+    "domain": "SYSTEM_VERIFY",
+    "version": "1.0",
+    "input_schema_ref": "verify_dry_schema",
+    "output_schema_ref": "verify_result_schema",
+    "allowed_callers": [
+      "openclaw-engineering"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": false,
+    "read_layers": [
+      "tests"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  }
+]

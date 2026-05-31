@@ -1,0 +1,31 @@
+[
+  {
+    "skill_id": "CASEFORGE.CREATE_CASE_DRAFT",
+    "skill_name": "Create Case Draft",
+    "domain": "AUTOCASEFORGE",
+    "version": "1.0",
+    "input_schema_ref": "case_draft_schema",
+    "output_schema_ref": "case_draft_result_schema",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R2_DRAFT",
+    "requires_human_review": true,
+    "read_layers": [
+      "case_data"
+    ],
+    "write_layers": [
+      "case_drafts"
+    ],
+    "verify_script": "scripts/verify_case_draft.sh",
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": true,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  }
+]

@@ -22,9 +22,12 @@ forbidden = [
  'allowed_scopes=["*"]',
 ]
 
-for root in ["zmatrix/agent"]:
-    for p in Path(root).rglob("*.py"):
-        if p.is_file():
+scan_roots = ["zmatrix/agent", "docs/agent", "scripts", "data/research_db/agent"]
+scan_exts = {".py", ".md", ".sh", ".json", ".jsonl", ".yaml", ".yml"}
+
+for root in scan_roots:
+    for p in Path(root).rglob("*"):
+        if p.is_file() and p.suffix in scan_exts:
             text = p.read_text(encoding="utf-8", errors="ignore")
             for token in forbidden:
                 assert token not in text, f"Forbidden token {token} in {p}"

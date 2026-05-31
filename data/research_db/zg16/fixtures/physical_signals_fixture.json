@@ -1,0 +1,1 @@
+[{"signal_id":"PS-001","ticker":"600519","signal_type":"supply_chain_disruption","detected_at":"2026-01-15T00:00:00Z","source_id":"fixture","evidence_hash":"abc123","quality_status":"STUB","human_review_required":true,"production_allowed":false,"trade_allowed":false,"external_api_used":false,"shadowbroker_deployed":false}]

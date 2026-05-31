@@ -12,5 +12,9 @@
   "broker_runtime": "BLOCKED",
   "real_trade": "BLOCKED",
   "test_gate": "HARDENED",
+<<<<<<< HEAD
+  "audit_time": "2026-05-31T04:01:36.603748+00:00"
+=======
   "audit_time": "2026-05-31T04:01:57.615592+00:00"
+>>>>>>> v4.0-batch-0-final-hardgates-scope-lock
 }

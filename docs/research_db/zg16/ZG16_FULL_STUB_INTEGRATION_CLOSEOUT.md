@@ -22,4 +22,5 @@ Broker/runtime: BLOCKED | Real trade: BLOCKED
 Trade: FALSE | Verdict: FALSE
 Runtime ledgers: EMPTY | Governance ledgers: EMPTY
 
-## Next: Merge Readiness Audit → Merge to v4.0 when ready
+## Merge: PENDING_CASES | Verify: FIXED | Ledger: REAL
+Conflicts: 4 cases → KEEP_PARENT

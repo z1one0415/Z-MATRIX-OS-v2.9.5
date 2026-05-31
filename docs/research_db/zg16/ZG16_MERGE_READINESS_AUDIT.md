@@ -1,21 +1,11 @@
 # Z-G16 Merge Readiness Audit
+Merge: researchdb-phase-0-5-agent-kernel → v4.0-batch-0
 
-## Merge Target
-From: researchdb-phase-0-5-agent-kernel | To: v4.0-batch-0-final-hardgates-scope-lock
+## Conflicts (4 cases files → KEEP_PARENT)
+1. data/research_db/cases/case_registry_v1.csv → KEEP_PARENT
+2. runtime_reports/cases/case_coverage_audit.json → KEEP_PARENT
+3. runtime_reports/cases/case_expansion_v1_closeout.json → KEEP_PARENT
+4. scripts/cases/run_core_12_cases.sh → KEEP_PARENT
 
-## Gate Checks
-- [x] All tests pass (175+)
-- [x] Runtime ledgers empty
-- [x] No external API
-- [x] No ShadowBroker deploy
-- [x] No production flags
-- [x] No trade/verdict
-- [x] No broker/runtime
-- [x] No main ResearchDB write
-- [x] Verify chain complete (no || true)
-- [x] Agent Kernel integrated
-- [ ] Parent branch cases conflicts resolved (4 files — human decision required)
-
-## Recommendation
-MERGE_READY_RECOMMENDED_PENDING_CASES_RESOLUTION
-DO NOT merge without human decision on 4 cases file conflicts.
+Recommendation: MERGE_READY_RECOMMENDED_PENDING_CASES_RESOLUTION
+DO NOT auto-merge. Human decision required.

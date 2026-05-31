@@ -1,6 +1,17 @@
 """ZG16 System Integration Cockpit v9 — unified system status snapshot"""
 from __future__ import annotations
 
+def _check_runtime_ledgers_empty() -> bool:
+    import os
+    for d in ["data/research_db/agent/ledgers","data/research_db/governance"]:
+        if os.path.exists(d):
+            for f in os.listdir(d):
+                fp = os.path.join(d,f)
+                if os.path.isfile(fp) and f != "data_source_attribution_ledger.csv" and os.path.getsize(fp) > 0:
+                    return False
+    return True
+
+
 def build_zg16_system_status(ticker: str = "600519") -> dict:
     from .zg16_e2e_stub_chain import run_zg16_e2e_stub_chain
     from .zg16_cockpit_read_model import build_zg16_cockpit_read_model
@@ -26,7 +37,7 @@ def build_zg16_system_status(ticker: str = "600519") -> dict:
         "available_agent_skills": list(_ROUTE_MAP.keys()),
         "available_review_contracts": ["review_card","autocaseforge_intake","memory_candidate"],
 
-        "runtime_ledgers_empty": True,
+        "runtime_ledgers_empty": _check_runtime_ledgers_empty(),
         "external_api_used": False,
         "shadowbroker_deployed": False,
         "production_allowed": False,

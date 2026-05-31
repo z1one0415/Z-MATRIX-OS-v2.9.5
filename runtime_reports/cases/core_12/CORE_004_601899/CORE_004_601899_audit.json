@@ -4,7 +4,7 @@
   "name": "紫金矿业",
   "status": "COMPLETED",
   "audit_hash": "f03b9866a68a38eb",
-  "human_report": "/Users/z1/Documents/Z-MATRIX-OS v2.9.5/runtime_reports/cases/core_12/CORE_004_601899/CORE_004_601899_human_report.md",
+  "human_report": "runtime_reports/cases/core_12/CORE_004_601899/CORE_004_601899_human_report.md",
   "ticker_specific": true,
   "production": "BLOCKED",
   "broker_runtime": "BLOCKED",

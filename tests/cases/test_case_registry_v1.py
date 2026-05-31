@@ -102,7 +102,7 @@ def test_gen_fail_closed():
         if BAD_CSV.exists(): BAD_CSV.unlink()
 
 def test_runner_nominal_only():
-    """Runner must reference run_golden_path_case.py (ticker-specific)."""
+    """Runner must reference run_core_12_batch.py (ticker-specific)."""
     text = (WORKSPACE / "scripts" / "cases" / "run_core_12_cases.sh").read_text()
-    assert "run_golden_path_case.py" in text
+    assert "run_core_12_batch.py" in text
     assert "CORE_12_NOMINAL_ONLY" not in text

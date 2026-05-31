@@ -1,0 +1,1 @@
+[{"check_id":"RC-001","narrative_event_id":"NE-001","physical_signal_id":"PS-001","verdict":"INCONCLUSIVE","confidence":0.3,"evidence_hash":"ghi789","quality_status":"STUB","human_review_required":true,"production_allowed":false,"trade_allowed":false,"external_api_used":false,"shadowbroker_deployed":false}]

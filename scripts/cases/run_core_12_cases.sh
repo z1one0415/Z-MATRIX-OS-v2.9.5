@@ -1,14 +1,26 @@
 #!/usr/bin/env bash
-set -euo pipefail; cd "$(cd "$(dirname "$0")/../.." && pwd)"
-echo "═══ Core 12 Dry-Run ═══"
-for t in 600519 300750 688981 601899 300124 002594 300274 002371 600030 600276 002050 300763; do
-  PYTHONPATH=. python3 -c "
-from zmatrix.research_os.golden_path_runner import run_golden_path
-try:
-    r=run_golden_path(dry_run=True)
-    print(f'  ✅ {r["_audit_hash"]}')
-except Exception as e:
-    print(f'  ⚠️  {e}')
-" 2>/dev/null || echo "  ⚠️  skipped"
-done
-echo "═══ Core 12 Complete ═══"
+set -euo pipefail
+cd "$(cd "$(dirname "$0")/../.." && pwd)"
+
+echo "═══ Core 12 Nominal Dry-Run Only ═══"
+echo "Ticker-specific Golden Path is NOT parameterized yet."
+echo "Runner currently does not accept ticker argument."
+echo ""
+
+mkdir -p runtime_reports/cases/core_12
+
+cat > runtime_reports/cases/core_12_summary.json << 'JSONEOF'
+{
+ "status": "CORE_12_NOMINAL_ONLY",
+ "attempted": 12,
+ "ticker_specific_completed": 0,
+ "nominal_completed": 0,
+ "runner_parameterized": false,
+ "reason": "run_golden_path does not accept ticker parameter yet",
+ "production": "BLOCKED",
+ "broker_runtime": "BLOCKED",
+ "real_trade": "BLOCKED"
+}
+JSONEOF
+
+echo "CORE_12_NOMINAL_ONLY"

@@ -45,11 +45,16 @@ class TestLayerSlice:
         assert result["error"] is True
         assert result["code"] == "NEED_NARROWER_QUERY"
 
-    def test_get_layer_slice_with_limit_over_1000_returns_error(self):
-        result = get_layer_slice(["research_summary"], limit=1001)
+    def test_get_layer_slice_with_limit_over_100_returns_error(self):
+        result = get_layer_slice(["research_summary"], limit=101)
         assert "error" in result
         assert result["error"] is True
         assert result["code"] == "NEED_NARROWER_QUERY"
+
+    def test_get_layer_slice_with_limit_100_allowed(self):
+        result = get_layer_slice(["research_summary"], limit=100)
+        assert "error" not in result
+        assert "layers" in result
 
 
 class TestResultContainsTokenEstimate:

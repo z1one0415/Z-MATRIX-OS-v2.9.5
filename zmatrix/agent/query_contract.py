@@ -22,7 +22,7 @@ def _reject_full_scan(limit: int) -> dict:
     return {
         "error": True,
         "code": "NEED_NARROWER_QUERY",
-        "message": f"Full scan rejected: limit={limit}. Must be 1-1000.",
+        "message": f"Full scan rejected: limit={limit}. Must be 1-100.",
         "token_estimate": 0,
     }
 
@@ -76,7 +76,7 @@ def get_changed_layers(since_versions: dict) -> dict:
 
 
 def get_layer_slice(layer_ids: list[str], limit: int = 100) -> dict:
-    if limit <= 0 or limit > 1000:
+    if limit <= 0 or limit > 100:
         return _reject_full_scan(limit)
 
     layers: dict[str, dict] = {}

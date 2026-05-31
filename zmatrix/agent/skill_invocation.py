@@ -4,9 +4,26 @@ from __future__ import annotations
 
 import uuid
 
-from .skill_registry import get_skill
+from .command_envelope import validate_command_envelope
+from .agent_registry import get_agent
+from .agent_permission import evaluate_agent_permission
+from .skill_registry import get_skill, assert_skill_callable
+
 
 _FORBIDDEN_OUTPUT_TOKENS = frozenset({"BUY", "SELL", "AUTO_EXECUTE", "READY_FOR_PRODUCTION"})
+
+
+def _blocked_result(skill_id: str, reason: str) -> dict:
+    return {
+        "skill_id": skill_id,
+        "status": "BLOCKED",
+        "output_ref": "",
+        "evidence_refs": [],
+        "quality_status": "REJECTED",
+        "blocked_reason": reason,
+        "human_review_required": True,
+        "production_allowed": False,
+    }
 
 
 def _contains_forbidden_token(data: dict, tokens: frozenset[str] | None = None) -> bool:
@@ -33,6 +50,32 @@ def _contains_forbidden_token(data: dict, tokens: frozenset[str] | None = None) 
 
 def invoke_skill(command_envelope: dict, context_slice: dict) -> dict:
     skill_id = command_envelope.get("requested_skill", "")
+
+    env_validation = validate_command_envelope(command_envelope)
+    if not env_validation["valid"]:
+        return _blocked_result(
+            skill_id,
+            "Invalid command envelope: " + "; ".join(env_validation["errors"]),
+        )
+
+    try:
+        agent = get_agent(command_envelope.get("agent_id", ""))
+    except KeyError as e:
+        return _blocked_result(skill_id, str(e))
+
+    perm_result = evaluate_agent_permission(agent, command_envelope)
+    if not perm_result["allowed"]:
+        return _blocked_result(
+            skill_id,
+            "Permission denied: " + "; ".join(perm_result["blocked_reasons"]),
+        )
+
+    try:
+        callable_result = assert_skill_callable(command_envelope.get("agent_id", ""), skill_id)
+    except KeyError as e:
+        return _blocked_result(skill_id, str(e))
+    if not callable_result["allowed"]:
+        return _blocked_result(skill_id, callable_result["reason"])
 
     blocked = False
     blocked_reason = ""

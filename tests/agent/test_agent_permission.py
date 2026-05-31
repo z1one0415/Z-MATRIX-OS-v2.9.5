@@ -66,3 +66,33 @@ class TestEvaluateAgentPermission:
         result = evaluate_agent_permission(CODE_PATCH_AGENT, cmd)
         assert result["allowed"] is False
         assert any("requires_human_review" in r for r in result["blocked_reasons"])
+
+    def test_agent_max_risk_r2_command_r3_rejects(self):
+        agent = {
+            "agent_id": "research-bot",
+            "permission_level": "RESEARCH_DB_PROPOSER",
+            "max_risk_level": "R2_DRAFT",
+            "requires_human_review": True,
+        }
+        result = evaluate_agent_permission(agent, _cmd(risk_level="R3_WRITE_RESEARCH_DB"))
+        assert result["allowed"] is False
+        assert any("exceeds agent max_risk_level" in r for r in result["blocked_reasons"])
+
+    def test_r4_proposal_command_allowed_with_route(self):
+        cmd = _cmd(
+            risk_level="R4_CODE_PATCH_PROPOSAL",
+            requested_action="CREATE_PATCH_for_bugfix",
+        )
+        result = evaluate_agent_permission(CODE_PATCH_AGENT, cmd)
+        assert result["allowed"] is True
+        assert result.get("route") == "PROPOSAL_REQUIRED"
+        assert result.get("execution_allowed") is False
+
+    def test_r4_execute_command_blocked(self):
+        cmd = _cmd(
+            risk_level="R4_CODE_PATCH_PROPOSAL",
+            requested_action="EXECUTE_patch",
+        )
+        result = evaluate_agent_permission(CODE_PATCH_AGENT, cmd)
+        assert result["allowed"] is False
+        assert any("execution requires prior approval" in r for r in result["blocked_reasons"])

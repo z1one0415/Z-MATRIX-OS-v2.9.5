@@ -42,12 +42,16 @@ def evaluate_agent_permission(agent: dict, command: dict) -> dict:
     cmd_review = command.get("requires_human_review", True)
 
     risk_num = _risk_num(cmd_risk)
+    agent_max_risk_num = _risk_num(agent_max_risk)
 
     if cmd_risk == "R9_FORBIDDEN":
         blocked_reasons.append("R9_FORBIDDEN commands are always blocked")
 
     if cmd_prod_allowed is True:
         blocked_reasons.append("production_allowed must be false")
+
+    if risk_num > agent_max_risk_num:
+        blocked_reasons.append("command risk exceeds agent max_risk_level")
 
     if agent_perm == "VIEW_ONLY" and risk_num >= 3:
         blocked_reasons.append("VIEW_ONLY agent cannot execute R3+ commands")
@@ -56,16 +60,29 @@ def evaluate_agent_permission(agent: dict, command: dict) -> dict:
         if cmd_review is not True or agent_review is not True:
             blocked_reasons.append("R3+ commands require requires_human_review=true on both agent and command")
 
+    route = ""
+    execution_allowed = True
     if risk_num >= 4:
-        blocked_reasons.append("R4/R5 commands require human approval")
+        requested_action = command.get("requested_action", "")
+        if "PROPOSAL" in requested_action or "CREATE_PATCH" in requested_action:
+            route = "PROPOSAL_REQUIRED"
+            execution_allowed = False
+        elif "EXECUTE" in requested_action:
+            blocked_reasons.append("R4/R5 execution requires prior approval")
+        else:
+            blocked_reasons.append("R4/R5 commands require human approval")
 
     allowed = len(blocked_reasons) == 0
     requires_review = risk_num >= 3 or (agent_review and cmd_review)
 
-    return {
+    result = {
         "allowed": allowed,
         "risk_level": cmd_risk,
         "requires_human_review": requires_review,
         "blocked_reasons": blocked_reasons,
         "production_allowed": cmd_prod_allowed,
     }
+    if route:
+        result["route"] = route
+        result["execution_allowed"] = execution_allowed
+    return result

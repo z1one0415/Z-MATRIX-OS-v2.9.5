@@ -179,3 +179,137 @@ class TestInvokeSkill:
                 os.environ["Z_SKILL_REGISTRY_PATH"] = original_env
             else:
                 os.environ.pop("Z_SKILL_REGISTRY_PATH", None)
+
+    def test_invalid_command_envelope_blocked(self):
+        path = _write_registry([dict(VALID_SKILL)])
+        try:
+            original_env = os.environ.get("Z_SKILL_REGISTRY_PATH")
+            os.environ["Z_SKILL_REGISTRY_PATH"] = path
+
+            command = {
+                "command_id": "",
+                "agent_id": "",
+                "requested_skill": "",
+            }
+            result = invoke_skill(command, {})
+            assert result["status"] == "BLOCKED"
+            assert result["quality_status"] == "REJECTED"
+        finally:
+            os.unlink(path)
+            if original_env is not None:
+                os.environ["Z_SKILL_REGISTRY_PATH"] = original_env
+            else:
+                os.environ.pop("Z_SKILL_REGISTRY_PATH", None)
+
+    def test_agent_not_in_allowed_callers_blocked(self):
+        skill_registry_path = _write_registry([dict(VALID_SKILL)])
+        agent_registry_data = [{
+            "agent_id": "z-orchestrator",
+            "agent_name": "Orchestrator",
+            "agent_type": "ORCHESTRATOR",
+            "owner": "system",
+            "role": "orchestrator",
+            "permission_level": "VIEW_ONLY",
+            "allowed_scopes": ["*"],
+            "allowed_read_layers": [],
+            "allowed_write_layers": [],
+            "allowed_commands": [],
+            "forbidden_commands": [],
+            "max_risk_level": "R2_DRAFT",
+            "requires_human_review": True,
+            "workspace_path": "/",
+            "enabled": True,
+            "production_allowed": False,
+            "created_at": "2026-01-01",
+        }]
+        agent_path = _write_registry(agent_registry_data)
+        try:
+            original_skill_env = os.environ.get("Z_SKILL_REGISTRY_PATH")
+            original_agent_env = os.environ.get("Z_AGENT_REGISTRY_PATH")
+            os.environ["Z_SKILL_REGISTRY_PATH"] = skill_registry_path
+            os.environ["Z_AGENT_REGISTRY_PATH"] = agent_path
+
+            command = {
+                "command_id": "cmd-1",
+                "agent_id": "z-orchestrator",
+                "requested_skill": "TEST.SKILL_READ",
+            }
+            result = invoke_skill(command, {})
+            assert result["status"] in ("DRAFT_CREATED", "BLOCKED")
+        finally:
+            os.unlink(skill_registry_path)
+            os.unlink(agent_path)
+            if original_skill_env is not None:
+                os.environ["Z_SKILL_REGISTRY_PATH"] = original_skill_env
+            else:
+                os.environ.pop("Z_SKILL_REGISTRY_PATH", None)
+            if original_agent_env is not None:
+                os.environ["Z_AGENT_REGISTRY_PATH"] = original_agent_env
+            else:
+                os.environ.pop("Z_AGENT_REGISTRY_PATH", None)
+
+    def test_r9_forbidden_command_blocked_via_permission_gate(self):
+        skill_registry_path = _write_registry([{
+            "skill_id": "TEST.R9_SKILL",
+            "skill_name": "R9 Skill",
+            "domain": "SYSTEM_VERIFY",
+            "version": "1.0",
+            "input_schema_ref": "s",
+            "output_schema_ref": "s",
+            "allowed_callers": ["z-orchestrator"],
+            "risk_level": "R9_FORBIDDEN",
+            "requires_human_review": True,
+            "read_layers": [],
+            "write_layers": [],
+            "verify_script": None,
+            "enabled": True,
+            "production_allowed": False,
+        }])
+        agent_registry_data = [{
+            "agent_id": "z-orchestrator",
+            "agent_name": "Orchestrator",
+            "agent_type": "ORCHESTRATOR",
+            "owner": "system",
+            "role": "orchestrator",
+            "permission_level": "VIEW_ONLY",
+            "allowed_scopes": ["*"],
+            "allowed_read_layers": [],
+            "allowed_write_layers": [],
+            "allowed_commands": [],
+            "forbidden_commands": [],
+            "max_risk_level": "R9_FORBIDDEN",
+            "requires_human_review": True,
+            "workspace_path": "/",
+            "enabled": True,
+            "production_allowed": False,
+            "created_at": "2026-01-01",
+        }]
+        agent_path = _write_registry(agent_registry_data)
+        try:
+            original_skill_env = os.environ.get("Z_SKILL_REGISTRY_PATH")
+            original_agent_env = os.environ.get("Z_AGENT_REGISTRY_PATH")
+            os.environ["Z_SKILL_REGISTRY_PATH"] = skill_registry_path
+            os.environ["Z_AGENT_REGISTRY_PATH"] = agent_path
+
+            command = {
+                "command_id": "cmd-1",
+                "agent_id": "z-orchestrator",
+                "requested_skill": "TEST.R9_SKILL",
+                "risk_level": "R9_FORBIDDEN",
+                "production_allowed": False,
+                "requires_human_review": True,
+            }
+            result = invoke_skill(command, {})
+            assert result["status"] == "BLOCKED"
+            assert result["quality_status"] == "REJECTED"
+        finally:
+            os.unlink(skill_registry_path)
+            os.unlink(agent_path)
+            if original_skill_env is not None:
+                os.environ["Z_SKILL_REGISTRY_PATH"] = original_skill_env
+            else:
+                os.environ.pop("Z_SKILL_REGISTRY_PATH", None)
+            if original_agent_env is not None:
+                os.environ["Z_AGENT_REGISTRY_PATH"] = original_agent_env
+            else:
+                os.environ.pop("Z_AGENT_REGISTRY_PATH", None)

@@ -7,9 +7,9 @@ PYTHONPATH=. python3 -m pytest -q tests/research_db/
 PYTHONPATH=. python3 scripts/skillos/scan_skill_candidates.py
 PYTHONPATH=. python3 scripts/skillos/build_skill_registry.py
 PYTHONPATH=. python3 scripts/skillos/validate_skill_registry.py
-echo "--- G16 Full Chain (mandatory) ---"
+echo "--- G16 Full Chain ---"
 bash scripts/verify_zg16_full_stub_integration.sh
-echo "--- Agent Kernel (mandatory) ---"
+echo "--- Agent Kernel ---"
 bash scripts/verify_z_agent_kernel.sh
 echo "═══ Ledger Empty Check ═══"
 for f in data/research_db/agent/ledgers/*.jsonl data/research_db/governance/*.jsonl; do

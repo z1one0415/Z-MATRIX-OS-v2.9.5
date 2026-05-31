@@ -31,6 +31,7 @@ def main():
   for f in p.rglob("*"):
    if any(e in f.parts for e in EXCLUDE): continue
    if f.suffix==".py": cands.extend(scan_py(f))
+   elif f.suffix==".sh": cands.append(scan_sh(f))
  seen=set(); dedup=[]
  for c in cands:
   k=(c["module_path"],c["symbol_name"])

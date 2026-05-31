@@ -10,6 +10,8 @@
   "coverage_audit_pass": true,
   "future_data_violations": 0,
   "input_date_violations": 0,
+  "input_start_missing_violations": 0,
+  "input_window_alignment_violations": 0,
   "alpha_claim_count": 0,
   "ready_for_factor_validation": false,
   "ready_for_v7_validation_entry": true,

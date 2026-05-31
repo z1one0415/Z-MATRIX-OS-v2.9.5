@@ -47,7 +47,14 @@ def main():
             for fid,n in FACTORS.items():
                 st=i-n+1
                 if st<0: continue
-                wd=td[st:i+1]; istart=td[st]; iend=ad
+                wd=td[st:i+1]; iend=ad
+                # Provenance: MOM/REV/BENCHMARK_RELATIVE use close(t-N) which is td[i-n]
+                if fid.startswith("MOM_") or fid.startswith("TRAILING_BENCHMARK_RELATIVE_"):
+                    istart=td[i-n]
+                elif fid in ("REV_1D","REV_5D"):
+                    istart=td[i-n] if i-n>=0 else td[0]
+                else:
+                    istart=td[st]
                 if fid.startswith("MOM_"):
                     pc=ps.get(td[st-1]); cc=ps.get(ad)
                     val=(cc/pc-1) if pc and cc and pc>0 else None

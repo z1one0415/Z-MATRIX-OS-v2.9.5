@@ -12,7 +12,9 @@ snap_ok=pkt["status"]=="V6B_FACTOR_SNAPSHOT_PACKET_BUILT"
 leak_ok=leak["leakage_safe"]
 cov_ok=cov["coverage"]>=0.95
 inp_ok=leak.get("input_date_violations",-1)==0
-all_ok=snap_ok and leak_ok and cov_ok and inp_ok
+ism_ok=leak.get("input_start_missing_violations",-1)==0
+iwa_ok=leak.get("input_window_alignment_violations",-1)==0
+all_ok=snap_ok and leak_ok and cov_ok and inp_ok and ism_ok and iwa_ok
 co={"status":"CASE_EXPANSION_V6D_PRICE_ONLY_FACTOR_CALCULATION_CONFIRMED" if all_ok else "CASE_EXPANSION_V6D_BLOCKED_AUDIT_FAILURE",
     "v6b_factor_values_calculated":True,"snapshot_packet_built":snap_ok,
     "factor_count":val["factor_count"],"core_12_cases":val["core_12_cases"],
@@ -20,6 +22,8 @@ co={"status":"CASE_EXPANSION_V6D_PRICE_ONLY_FACTOR_CALCULATION_CONFIRMED" if all
     "leakage_audit_pass":leak_ok,"coverage_audit_pass":cov_ok,
     "future_data_violations":leak["future_data_violations"],
     "input_date_violations":leak.get("input_date_violations",0),
+    "input_start_missing_violations":leak.get("input_start_missing_violations",0),
+    "input_window_alignment_violations":leak.get("input_window_alignment_violations",0),
     "alpha_claim_count":leak.get("alpha_claim_violations",0),
     "ready_for_factor_validation":False,"ready_for_v7_validation_entry":all_ok,
     "buy_sell_instruction_count":0,"council_investment_verdict":"BLOCKED_UNTIL_FACTOR_VALIDATION",

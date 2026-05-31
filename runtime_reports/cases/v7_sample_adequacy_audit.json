@@ -8,10 +8,10 @@
     "T60": "INSUFFICIENT"
   },
   "label_records_per_horizon": {
-    "T1": 56,
-    "T5": 52,
-    "T10": 47,
-    "T20": 37,
+    "T1": 672,
+    "T5": 624,
+    "T10": 564,
+    "T20": 444,
     "T60": 0
   },
   "total_label_records": 2304,

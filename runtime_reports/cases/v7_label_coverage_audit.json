@@ -1,0 +1,26 @@
+{
+  "status": "V7_LABEL_COVERAGE_AUDIT_PASS",
+  "coverage_by_horizon": {
+    "T1": {
+      "valid_dates": 56,
+      "valid_labels": 672
+    },
+    "T5": {
+      "valid_dates": 52,
+      "valid_labels": 624
+    },
+    "T10": {
+      "valid_dates": 47,
+      "valid_labels": 564
+    },
+    "T20": {
+      "valid_dates": 37,
+      "valid_labels": 444
+    },
+    "T60": {
+      "valid_dates": 0,
+      "valid_labels": 0
+    }
+  },
+  "missing_policy": "INSUFFICIENT_NOT_ZERO_FILLED"
+}

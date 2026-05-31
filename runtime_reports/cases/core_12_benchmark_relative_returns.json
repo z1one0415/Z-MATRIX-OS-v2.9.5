@@ -1,0 +1,551 @@
+{
+  "cases": [
+    {
+      "case_id": "CORE_001",
+      "ticker": "600519",
+      "name": "贵州茅台",
+      "benchmark_id": "CSI300",
+      "relative_returns": {
+        "T1": {
+          "stock_return": 0.005335279909318036,
+          "benchmark_return": -0.0023786952816071683,
+          "benchmark_relative_return": 0.007713975190925204,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T5": {
+          "stock_return": -0.026118539355849513,
+          "benchmark_return": -0.02771501440399482,
+          "benchmark_relative_return": 0.0015964750481453072,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T10": {
+          "stock_return": -0.027050284568044036,
+          "benchmark_return": -0.02524132014384084,
+          "benchmark_relative_return": -0.0018089644242031966,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T20": {
+          "stock_return": -0.042735651420466314,
+          "benchmark_return": -0.04173030200461714,
+          "benchmark_relative_return": -0.0010053494158491771,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T60": {
+          "stock_return": 0.01786339546946314,
+          "benchmark_return": 0.053582997066873306,
+          "benchmark_relative_return": -0.03571960159741017,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        }
+      },
+      "ready_for_return_analysis": true,
+      "ready_for_alpha_claim": false
+    },
+    {
+      "case_id": "CORE_002",
+      "ticker": "300750",
+      "name": "宁德时代",
+      "benchmark_id": "CSI300",
+      "relative_returns": {
+        "T1": {
+          "stock_return": -0.006567620990881817,
+          "benchmark_return": -0.0023786952816071683,
+          "benchmark_relative_return": -0.004188925709274649,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T5": {
+          "stock_return": -0.05183957151055296,
+          "benchmark_return": -0.02771501440399482,
+          "benchmark_relative_return": -0.024124557106558142,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T10": {
+          "stock_return": 0.0007651597270927901,
+          "benchmark_return": -0.02524132014384084,
+          "benchmark_relative_return": 0.02600647987093363,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T20": {
+          "stock_return": -0.10253140343046618,
+          "benchmark_return": -0.04173030200461714,
+          "benchmark_relative_return": -0.06080110142584905,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T60": {
+          "stock_return": 0.26028183383281256,
+          "benchmark_return": 0.053582997066873306,
+          "benchmark_relative_return": 0.20669883676593925,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        }
+      },
+      "ready_for_return_analysis": true,
+      "ready_for_alpha_claim": false
+    },
+    {
+      "case_id": "CORE_003",
+      "ticker": "688981",
+      "name": "中芯国际",
+      "benchmark_id": "CSI300",
+      "relative_returns": {
+        "T1": {
+          "stock_return": -0.009063444108761365,
+          "benchmark_return": -0.0023786952816071683,
+          "benchmark_relative_return": -0.006684748827154197,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T5": {
+          "stock_return": -0.0851586102719033,
+          "benchmark_return": -0.02771501440399482,
+          "benchmark_relative_return": -0.05744359586790848,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T10": {
+          "stock_return": -0.1316087613293051,
+          "benchmark_return": -0.02524132014384084,
+          "benchmark_relative_return": -0.10636744118546426,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T20": {
+          "stock_return": -0.18655589123867078,
+          "benchmark_return": -0.04173030200461714,
+          "benchmark_relative_return": -0.14482558923405364,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T60": {
+          "stock_return": -0.16465256797583083,
+          "benchmark_return": 0.053582997066873306,
+          "benchmark_relative_return": -0.21823556504270414,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        }
+      },
+      "ready_for_return_analysis": true,
+      "ready_for_alpha_claim": false
+    },
+    {
+      "case_id": "CORE_004",
+      "ticker": "601899",
+      "name": "紫金矿业",
+      "benchmark_id": "CSI300",
+      "relative_returns": {
+        "T1": {
+          "stock_return": 0.0032025620496396456,
+          "benchmark_return": -0.0023786952816071683,
+          "benchmark_relative_return": 0.005581257331246814,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T5": {
+          "stock_return": -0.0048038430744595795,
+          "benchmark_return": -0.02771501440399482,
+          "benchmark_relative_return": 0.02291117132953524,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T10": {
+          "stock_return": -0.024019215372297897,
+          "benchmark_return": -0.02524132014384084,
+          "benchmark_relative_return": 0.0012221047715429423,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T20": {
+          "stock_return": -0.02481985588470781,
+          "benchmark_return": -0.04173030200461714,
+          "benchmark_relative_return": 0.016910446119909328,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T60": {
+          "stock_return": 0.40192153722978397,
+          "benchmark_return": 0.053582997066873306,
+          "benchmark_relative_return": 0.34833854016291066,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        }
+      },
+      "ready_for_return_analysis": true,
+      "ready_for_alpha_claim": false
+    },
+    {
+      "case_id": "CORE_005",
+      "ticker": "300124",
+      "name": "汇川技术",
+      "benchmark_id": "CSI300",
+      "relative_returns": {
+        "T1": {
+          "stock_return": -0.01927710843373498,
+          "benchmark_return": -0.0023786952816071683,
+          "benchmark_relative_return": -0.01689841315212781,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T5": {
+          "stock_return": -0.0395180722891566,
+          "benchmark_return": -0.02771501440399482,
+          "benchmark_relative_return": -0.011803057885161783,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T10": {
+          "stock_return": -0.12064257028112446,
+          "benchmark_return": -0.02524132014384084,
+          "benchmark_relative_return": -0.09540125013728362,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T20": {
+          "stock_return": -0.12546184738955823,
+          "benchmark_return": -0.04173030200461714,
+          "benchmark_relative_return": -0.0837315453849411,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T60": {
+          "stock_return": -0.012369477911646665,
+          "benchmark_return": 0.053582997066873306,
+          "benchmark_relative_return": -0.06595247497851997,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        }
+      },
+      "ready_for_return_analysis": true,
+      "ready_for_alpha_claim": false
+    },
+    {
+      "case_id": "CORE_006",
+      "ticker": "002594",
+      "name": "比亚迪",
+      "benchmark_id": "CSI300",
+      "relative_returns": {
+        "T1": {
+          "stock_return": 0.0029595015576324712,
+          "benchmark_return": -0.0023786952816071683,
+          "benchmark_relative_return": 0.0053381968392396395,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T5": {
+          "stock_return": 0.0013499480789200824,
+          "benchmark_return": -0.02771501440399482,
+          "benchmark_relative_return": 0.029064962482914902,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T10": {
+          "stock_return": 0.014018691588785215,
+          "benchmark_return": -0.02524132014384084,
+          "benchmark_relative_return": 0.039260011732626054,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T20": {
+          "stock_return": -0.10711318795430946,
+          "benchmark_return": -0.04173030200461714,
+          "benchmark_relative_return": -0.06538288594969233,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T60": {
+          "stock_return": 0.08078920041536874,
+          "benchmark_return": 0.053582997066873306,
+          "benchmark_relative_return": 0.02720620334849544,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        }
+      },
+      "ready_for_return_analysis": true,
+      "ready_for_alpha_claim": false
+    },
+    {
+      "case_id": "CORE_007",
+      "ticker": "300274",
+      "name": "阳光电源",
+      "benchmark_id": "CSI300",
+      "relative_returns": {
+        "T1": {
+          "stock_return": -0.002693208430913363,
+          "benchmark_return": -0.0023786952816071683,
+          "benchmark_relative_return": -0.0003145131493061948,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T5": {
+          "stock_return": -0.03969555035128802,
+          "benchmark_return": -0.02771501440399482,
+          "benchmark_relative_return": -0.011980535947293203,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T10": {
+          "stock_return": 0.0407494145199061,
+          "benchmark_return": -0.02524132014384084,
+          "benchmark_relative_return": 0.06599073466374694,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T20": {
+          "stock_return": -0.06334894613583153,
+          "benchmark_return": -0.04173030200461714,
+          "benchmark_relative_return": -0.021618644131214393,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T60": {
+          "stock_return": 0.22810304449648688,
+          "benchmark_return": 0.053582997066873306,
+          "benchmark_relative_return": 0.17452004742961358,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        }
+      },
+      "ready_for_return_analysis": true,
+      "ready_for_alpha_claim": false
+    },
+    {
+      "case_id": "CORE_008",
+      "ticker": "002371",
+      "name": "北方华创",
+      "benchmark_id": "CSI300",
+      "relative_returns": {
+        "T1": {
+          "stock_return": 0.0007490636704119424,
+          "benchmark_return": -0.0023786952816071683,
+          "benchmark_relative_return": 0.0031277589520191107,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T5": {
+          "stock_return": -0.05085310029130252,
+          "benchmark_return": -0.02771501440399482,
+          "benchmark_relative_return": -0.023138085887307702,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T10": {
+          "stock_return": 0.015439034540158048,
+          "benchmark_return": -0.02524132014384084,
+          "benchmark_relative_return": 0.04068035468399889,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T20": {
+          "stock_return": -0.04556803995006253,
+          "benchmark_return": -0.04173030200461714,
+          "benchmark_relative_return": -0.0038377379454453964,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T60": {
+          "stock_return": 0.23878485226799828,
+          "benchmark_return": 0.053582997066873306,
+          "benchmark_relative_return": 0.18520185520112498,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        }
+      },
+      "ready_for_return_analysis": true,
+      "ready_for_alpha_claim": false
+    },
+    {
+      "case_id": "CORE_009",
+      "ticker": "600030",
+      "name": "中信证券",
+      "benchmark_id": "CSI300",
+      "relative_returns": {
+        "T1": {
+          "stock_return": 0.00548081714001003,
+          "benchmark_return": -0.0023786952816071683,
+          "benchmark_relative_return": 0.007859512421617199,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T5": {
+          "stock_return": -0.03039362232187337,
+          "benchmark_return": -0.02771501440399482,
+          "benchmark_relative_return": -0.0026786079178785505,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T10": {
+          "stock_return": -0.024414549078226266,
+          "benchmark_return": -0.02524132014384084,
+          "benchmark_relative_return": 0.0008267710656145733,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T20": {
+          "stock_return": 0.01843547583457905,
+          "benchmark_return": -0.04173030200461714,
+          "benchmark_relative_return": 0.06016577783919619,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T60": {
+          "stock_return": -0.045341305430991574,
+          "benchmark_return": 0.053582997066873306,
+          "benchmark_relative_return": -0.09892430249786488,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        }
+      },
+      "ready_for_return_analysis": true,
+      "ready_for_alpha_claim": false
+    },
+    {
+      "case_id": "CORE_010",
+      "ticker": "600276",
+      "name": "恒瑞医药",
+      "benchmark_id": "CSI300",
+      "relative_returns": {
+        "T1": {
+          "stock_return": -0.00539689678434907,
+          "benchmark_return": -0.0023786952816071683,
+          "benchmark_relative_return": -0.003018201502741902,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T5": {
+          "stock_return": -0.07353271868675504,
+          "benchmark_return": -0.02771501440399482,
+          "benchmark_relative_return": -0.04581770428276022,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T10": {
+          "stock_return": -0.06881043400044984,
+          "benchmark_return": -0.02524132014384084,
+          "benchmark_relative_return": -0.043569113856609,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T20": {
+          "stock_return": -0.12997526422307182,
+          "benchmark_return": -0.04173030200461714,
+          "benchmark_relative_return": -0.08824496221845468,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T60": {
+          "stock_return": 0.006521250281088298,
+          "benchmark_return": 0.053582997066873306,
+          "benchmark_relative_return": -0.04706174678578501,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        }
+      },
+      "ready_for_return_analysis": true,
+      "ready_for_alpha_claim": false
+    },
+    {
+      "case_id": "CORE_011",
+      "ticker": "002050",
+      "name": "三花智控",
+      "benchmark_id": "CSI300",
+      "relative_returns": {
+        "T1": {
+          "stock_return": -0.0613540197461212,
+          "benchmark_return": -0.0023786952816071683,
+          "benchmark_relative_return": -0.058975324464514034,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T5": {
+          "stock_return": -0.07334273624823684,
+          "benchmark_return": -0.02771501440399482,
+          "benchmark_relative_return": -0.04562772184424202,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T10": {
+          "stock_return": -0.10190409026798308,
+          "benchmark_return": -0.02524132014384084,
+          "benchmark_relative_return": -0.07666277012414224,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T20": {
+          "stock_return": -0.27327221438645977,
+          "benchmark_return": -0.04173030200461714,
+          "benchmark_relative_return": -0.23154191238184263,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T60": {
+          "stock_return": -0.21332863187588158,
+          "benchmark_return": 0.053582997066873306,
+          "benchmark_relative_return": -0.2669116289427549,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        }
+      },
+      "ready_for_return_analysis": true,
+      "ready_for_alpha_claim": false
+    },
+    {
+      "case_id": "CORE_012",
+      "ticker": "300763",
+      "name": "锦浪科技",
+      "benchmark_id": "CSI300",
+      "relative_returns": {
+        "T1": {
+          "stock_return": -0.003946214557146943,
+          "benchmark_return": -0.0023786952816071683,
+          "benchmark_relative_return": -0.0015675192755397749,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T5": {
+          "stock_return": 0.0562700964630225,
+          "benchmark_return": -0.02771501440399482,
+          "benchmark_relative_return": 0.08398511086701732,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T10": {
+          "stock_return": 0.09967845659163976,
+          "benchmark_return": -0.02524132014384084,
+          "benchmark_relative_return": 0.1249197767354806,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T20": {
+          "stock_return": -0.1159017831043554,
+          "benchmark_return": -0.04173030200461714,
+          "benchmark_relative_return": -0.07417148109973826,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        },
+        "T60": {
+          "stock_return": -0.09280912014030984,
+          "benchmark_return": 0.053582997066873306,
+          "benchmark_relative_return": -0.14639211720718315,
+          "truth_status": "REAL_READ_ONLY",
+          "can_interpret_as_predictive_alpha": false
+        }
+      },
+      "ready_for_return_analysis": true,
+      "ready_for_alpha_claim": false
+    }
+  ],
+  "horizons": [
+    "T1",
+    "T5",
+    "T10",
+    "T20",
+    "T60"
+  ]
+}

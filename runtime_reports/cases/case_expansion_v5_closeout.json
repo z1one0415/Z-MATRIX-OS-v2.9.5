@@ -1,0 +1,22 @@
+{
+  "status": "CASE_EXPANSION_V5_REAL_RETURN_BENCHMARK_RETURN_CONFIRMED",
+  "v5_entry_allowed": true,
+  "date_normalization_confirmed": true,
+  "core_12_real_return_calculated": 12,
+  "benchmark_return_calculated": true,
+  "benchmark_relative_return_calculated": 12,
+  "horizons": [
+    "T1",
+    "T5",
+    "T10",
+    "T20",
+    "T60"
+  ],
+  "predictive_alpha_claim_count": 0,
+  "factor_alpha_ready": false,
+  "council_investment_verdict": "BLOCKED_UNTIL_FACTOR_REAL",
+  "buy_sell_instruction_count": 0,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

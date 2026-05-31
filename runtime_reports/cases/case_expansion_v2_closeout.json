@@ -1,0 +1,16 @@
+{
+  "status": "CASE_EXPANSION_V2_PARAMETERIZED_CONFIRMED",
+  "core_12_attempted": 12,
+  "core_12_completed": 0,
+  "core_12_data_gap": 0,
+  "core_12_pipeline_error": 12,
+  "runner_parameterized": true,
+  "ticker_specific": true,
+  "human_report_parameterized": true,
+  "independent_outputs": true,
+  "buy_sell_instruction_count": 0,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "audit_time": "2026-05-31T05:10:53.143817+00:00"
+}

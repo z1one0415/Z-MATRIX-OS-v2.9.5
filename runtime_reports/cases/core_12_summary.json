@@ -1,0 +1,13 @@
+{
+ "status": "CORE_12_TICKER_SPECIFIC_ATTEMPTED",
+ "attempted": 12,
+ "completed": 0,
+ "data_gap": 0,
+ "pipeline_error": 12,
+ "ticker_specific": true,
+ "runner_parameterized": true,
+ "results": [{"case_id":"CORE_001","ticker":"UNKNOWN","status":"PIPELINE_ERROR","hash":"N/A"},{"case_id":"CORE_002","ticker":"UNKNOWN","status":"PIPELINE_ERROR","hash":"N/A"},{"case_id":"CORE_003","ticker":"UNKNOWN","status":"PIPELINE_ERROR","hash":"N/A"},{"case_id":"CORE_004","ticker":"UNKNOWN","status":"PIPELINE_ERROR","hash":"N/A"},{"case_id":"CORE_005","ticker":"UNKNOWN","status":"PIPELINE_ERROR","hash":"N/A"},{"case_id":"CORE_006","ticker":"UNKNOWN","status":"PIPELINE_ERROR","hash":"N/A"},{"case_id":"CORE_007","ticker":"UNKNOWN","status":"PIPELINE_ERROR","hash":"N/A"},{"case_id":"CORE_008","ticker":"UNKNOWN","status":"PIPELINE_ERROR","hash":"N/A"},{"case_id":"CORE_009","ticker":"UNKNOWN","status":"PIPELINE_ERROR","hash":"N/A"},{"case_id":"CORE_010","ticker":"UNKNOWN","status":"PIPELINE_ERROR","hash":"N/A"},{"case_id":"CORE_011","ticker":"UNKNOWN","status":"PIPELINE_ERROR","hash":"N/A"},{"case_id":"CORE_012","ticker":"UNKNOWN","status":"PIPELINE_ERROR","hash":"N/A"}],
+ "production": "BLOCKED",
+ "broker_runtime": "BLOCKED",
+ "real_trade": "BLOCKED"
+}

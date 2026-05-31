@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
-echo "═══ Z-SkillOS v0.1 ═══"
+echo "═══ Z-SkillOS v0.1.1 ═══"
 python3 -m compileall -q zmatrix tests scripts
-PYTHONPATH=. python3 -m pytest -q tests/agent/ 2>/dev/null || true
+PYTHONPATH=. python3 -m pytest -q tests/agent/
+PYTHONPATH=. python3 -m pytest -q tests/research_db/
 PYTHONPATH=. python3 scripts/skillos/scan_skill_candidates.py
 PYTHONPATH=. python3 scripts/skillos/build_skill_registry.py
 PYTHONPATH=. python3 scripts/skillos/validate_skill_registry.py
@@ -16,4 +17,4 @@ c=json.loads(Path('data/research_db/agent/registry/skill_candidate_index.json').
 for x in c: assert x['status']=='CANDIDATE_ONLY' and x['production_allowed'] is False
 print(f'safety PASS: {len(s)} registered, {len(c)} candidates')
 "
-echo "═══ Z-SkillOS v0.1 PASS ═══"
+echo "═══ Z-SkillOS v0.1.1 PASS ═══"

@@ -19,6 +19,7 @@ Inventory every candidate factor: what inputs it needs, which inputs are ready, 
 - 30 factors inventoried
 - 12 REAL_READY (price-only, can calculate history)
 - 4 PARTIAL_READY (volume/amount, limited interpretation)
+- **16 V6-B calculable history factors** (12 REAL + 4 PARTIAL)
 - 12 MISSING_INPUT (financial/valuation/shares)
 - 2 SYNTHETIC_BLOCKED (legacy synthetic)
 

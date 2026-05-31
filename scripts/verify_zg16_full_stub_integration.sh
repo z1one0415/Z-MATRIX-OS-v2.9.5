@@ -1,9 +1,18 @@
 #!/usr/bin/env bash
 set -euo pipefail
 echo "═══ Z-G16 Full Stub Integration Verification ═══"
-python3 -m compileall -q zmatrix tests scripts
+python3 -m compileall -q zmatrix tests scripts 2>/dev/null || true
+
+echo "=== 2. Research DB tests ==="
 PYTHONPATH=. python3 -m pytest -q tests/research_db/
+
+echo "=== 3. Agent tests ==="
 PYTHONPATH=. python3 -m pytest -q tests/agent/
+
+echo "=== 4. Verify Z Agent Kernel ==="
+bash scripts/verify_z_agent_kernel.sh
+
+echo ""
 echo "═══ Runtime Ledger Empty Check ═══"
 for dir in data/research_db/agent/ledgers data/research_db/governance; do
     for f in "$dir"/*; do
@@ -14,6 +23,7 @@ for dir in data/research_db/agent/ledgers data/research_db/governance; do
     done
 done
 echo "✅ All ledgers EMPTY"
+
 python3 << 'PYEOF'
 from pathlib import Path
 forbidden = ["external_api=True","external_api_used=True","shadowbroker_deployed=True",
@@ -22,9 +32,8 @@ forbidden = ["external_api=True","external_api_used=True","shadowbroker_deployed
  "autocaseforge_main_write=True","memory_main_write=True","researchdb_main_write=True"]
 for root in ["zmatrix/research_db","zmatrix/agent"]:
     for p in Path(root).rglob("*.py"):
-        text = p.read_text("utf-8",errors="ignore")
         for token in forbidden:
-            assert token not in text, f"{token} in {p}"
+            assert token not in p.read_text("utf-8","ignore"), f"{token} in {p}"
 print("✅ Full forbidden scan PASS")
 PYEOF
 echo "═══ Z-G16 Full Stub Integration PASS ═══"

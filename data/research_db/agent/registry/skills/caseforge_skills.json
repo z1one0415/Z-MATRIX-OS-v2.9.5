@@ -1,0 +1,147 @@
+[
+  {
+    "skill_id": "CASEFORGE.CREATE_CASE_DRAFT",
+    "skill_name": "Create Case Draft",
+    "domain": "AUTOCASEFORGE",
+    "version": "1.0",
+    "input_schema_ref": "case_draft_schema",
+    "output_schema_ref": "case_draft_result_schema",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R2_DRAFT",
+    "requires_human_review": true,
+    "read_layers": [
+      "case_data"
+    ],
+    "write_layers": [
+      "case_drafts"
+    ],
+    "verify_script": "scripts/verify_case_draft.sh",
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": true,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "CASEFORGE.GET_CASE_DRAFT_SCHEMA",
+    "skill_name": "Get Case Draft Schema",
+    "domain": "CASEFORGE",
+    "version": "0.2",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "caseforge.get_case_draft_schema.in",
+    "output_schema_ref": "caseforge.get_case_draft_schema.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "case_schema"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "CASEFORGE.VALIDATE_CASE_DRAFT",
+    "skill_name": "Validate Case Draft",
+    "domain": "CASEFORGE",
+    "version": "0.2",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "caseforge.validate_case_draft.in",
+    "output_schema_ref": "caseforge.validate_case_draft.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "case_drafts"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "CASEFORGE.BUILD_INTAKE_DRAFT",
+    "skill_name": "Build Intake Draft",
+    "domain": "CASEFORGE",
+    "version": "0.2",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L1_WORKFLOW",
+    "input_schema_ref": "caseforge.build_intake_draft.in",
+    "output_schema_ref": "caseforge.build_intake_draft.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R2_DRAFT",
+    "requires_human_review": true,
+    "proposal_required": true,
+    "read_layers": [
+      "case_drafts"
+    ],
+    "write_layers": [
+      "drafts"
+    ],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "CASEFORGE.BUILD_CASE_REVIEW_SUMMARY_DRAFT",
+    "skill_name": "Build Case Review Summary Draft",
+    "domain": "CASEFORGE",
+    "version": "0.2",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L1_WORKFLOW",
+    "input_schema_ref": "caseforge.build_case_review_summary_draft.in",
+    "output_schema_ref": "caseforge.build_case_review_summary_draft.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R2_DRAFT",
+    "requires_human_review": true,
+    "proposal_required": true,
+    "read_layers": [
+      "case_drafts"
+    ],
+    "write_layers": [
+      "drafts"
+    ],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  }
+]

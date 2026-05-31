@@ -1,16 +1,18 @@
 #!/usr/bin/env bash
 set -euo pipefail
 echo "═══ Z-G16 Full Stub Integration Verification ═══"
-python3 -m compileall -q zmatrix tests scripts 2>/dev/null || true
-
+echo "=== 1. Compileall ==="
+python3 -m compileall -q zmatrix tests scripts
 echo "=== 2. Research DB tests ==="
 PYTHONPATH=. python3 -m pytest -q tests/research_db/
-
 echo "=== 3. Agent tests ==="
 PYTHONPATH=. python3 -m pytest -q tests/agent/
 
-echo "=== 4. Verify Z Agent Kernel ==="
-bash scripts/verify_z_agent_kernel.sh
+echo "=== 4. Explicit Stage Verify Chain ==="
+for vs in verify_zg16_v8_autocase_memory verify_zg16_v6_cockpit_read_model verify_zg16_v5_e2e_stub verify_zg16_v4_skill_invocation verify_zg16_v3_query_bridge verify_zg16_v2_data_governance verify_zg16_v12_stub verify_z_agent_kernel; do
+    echo "--- $vs ---"
+    bash "scripts/${vs}.sh" || { echo "FAIL: $vs"; exit 1; }
+done
 
 echo ""
 echo "═══ Runtime Ledger Empty Check ═══"

@@ -19,5 +19,7 @@
   "council_investment_verdict": "BLOCKED_UNTIL_FORMAL_FACTOR_VALIDATION",
   "production": "BLOCKED",
   "broker_runtime": "BLOCKED",
-  "real_trade": "BLOCKED"
+  "real_trade": "BLOCKED",
+  "universe_gap_count": 1,
+  "universe_gap_explanation": "One target ticker not pulled; not in tickers_found set."
 }

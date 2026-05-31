@@ -1,0 +1,40 @@
+[
+  {
+    "agent_id": "z-orchestrator",
+    "agent_name": "Z-Orchestrator",
+    "agent_type": "ORCHESTRATOR",
+    "permission_level": "VIEW_ONLY",
+    "allowed_scopes": ["research_summary", "layer_query", "skill_draft"],
+    "allowed_read_layers": ["*READ_ONLY_REGISTRY"],
+    "allowed_write_layers": [],
+    "allowed_commands": ["QUERY", "CREATE_DRAFT_COMMAND"],
+    "forbidden_commands": ["REAL_TRADE", "BROKER_ORDER", "AUTO_BUY", "AUTO_SELL", "PRODUCTION_MUTATION"],
+    "max_risk_level": "R2_DRAFT",
+    "requires_human_review": true,
+    "workspace_path": "runtime/agent_workspace/z-orchestrator",
+    "enabled": true,
+    "production_allowed": false,
+    "owner": "system",
+    "role": "Orchestrator",
+    "created_at": "2026-05-31T00:00:00Z"
+  },
+  {
+    "agent_id": "openclaw-engineering",
+    "agent_name": "OpenClaw Engineering Agent",
+    "agent_type": "ENGINEERING",
+    "permission_level": "CODE_PATCH_PROPOSER",
+    "allowed_scopes": ["code_patch_proposal", "verify_runner"],
+    "allowed_read_layers": ["docs", "zmatrix", "tests", "scripts"],
+    "allowed_write_layers": ["runtime/agent_workspace/openclaw-engineering"],
+    "allowed_commands": ["CREATE_PATCH_PROPOSAL", "RUN_VERIFY_DRY"],
+    "forbidden_commands": ["REAL_TRADE", "BROKER_ORDER", "AUTO_BUY", "AUTO_SELL", "DIRECT_MAIN_PUSH", "PRODUCTION_MUTATION"],
+    "max_risk_level": "R4_CODE_PATCH_PROPOSAL",
+    "requires_human_review": true,
+    "workspace_path": "runtime/agent_workspace/openclaw-engineering",
+    "enabled": true,
+    "production_allowed": false,
+    "owner": "system",
+    "role": "Engineering Agent",
+    "created_at": "2026-05-31T00:00:00Z"
+  }
+]

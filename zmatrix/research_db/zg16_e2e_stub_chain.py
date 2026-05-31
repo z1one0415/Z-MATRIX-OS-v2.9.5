@@ -1,7 +1,7 @@
 """ZG16 E2E Stub Draft Chain v5 — Agent Kernel invoke_skill pipeline"""
 from __future__ import annotations
 import uuid
-from zmatrix.agent.skill_invocation import invoke_skill
+import zmatrix.agent.skill_invocation as _si
 
 def _invoke(skill_id, agent_id, cmd_extra, ctx):
     cmd = {
@@ -15,7 +15,7 @@ def _invoke(skill_id, agent_id, cmd_extra, ctx):
         **cmd_extra,
     }
     ctx["token_estimate"] = ctx.get("token_estimate", 800)
-    return invoke_skill(cmd, ctx)
+    return _si.invoke_skill(cmd, ctx)
 
 
 def run_zg16_e2e_stub_chain(ticker: str, hypothesis_type: str = "PHYSICAL_PRE_SIGNAL", agent_id: str = "z-orchestrator") -> dict:

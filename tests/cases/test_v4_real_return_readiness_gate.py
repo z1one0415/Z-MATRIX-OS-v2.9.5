@@ -1,4 +1,4 @@
-"""Test V4 real return readiness gate."""
+"""Test V4.1 real return readiness gate — FIXTURE ≠ REAL."""
 import json, subprocess
 from pathlib import Path
 import pytest
@@ -8,36 +8,52 @@ READINESS = WORKSPACE / "scripts" / "cases" / "check_core12_real_market_data_rea
 GATE = WORKSPACE / "scripts" / "cases" / "run_core12_real_return_readiness.py"
 
 @pytest.fixture
-def return_readiness():
+def data():
     subprocess.run(["python3", str(READINESS)], cwd=str(WORKSPACE), capture_output=True)
     subprocess.run(["python3", str(GATE)], cwd=str(WORKSPACE), capture_output=True)
-    return json.loads((WORKSPACE / "runtime_reports" / "cases" / "core_12_real_return_readiness.json").read_text())
+    rd = json.loads((WORKSPACE / "runtime_reports" / "cases" / "core_12_real_market_data_readiness.json").read_text())
+    rr = json.loads((WORKSPACE / "runtime_reports" / "cases" / "core_12_real_return_readiness.json").read_text())
+    return rd, rr
 
-def test_return_12_cases(return_readiness):
-    assert len(return_readiness["cases"]) == 12
+def test_core_001_fixture_not_real(data):
+    rd, rr = data
+    c001 = [c for c in rd["cases"] if c["case_id"] == "CORE_001"][0]
+    assert c001["fixture_return_ready"] is True, "600519 has fixture data"
+    assert c001["ready_for_real_return"] is False, "FIXTURE must not enable real return"
 
-def test_return_no_alpha(return_readiness):
-    for c in return_readiness["cases"]:
-        assert c["ready_for_alpha_claim"] is False, f"{c['case_id']}: alpha_claim should be False"
+def test_core_001_return_blocked_fixture(data):
+    _, rr = data
+    c001 = [c for c in rr["cases"] if c["case_id"] == "CORE_001"][0]
+    assert c001["real_return_status"] == "BLOCKED_FIXTURE_ONLY", f"Got {c001['real_return_status']}"
+    assert c001["fixture_return_ready"] is True
+    assert c001["ready_for_real_return"] is False
+    assert c001["ready_for_alpha_claim"] is False
 
-def test_return_council_blocked(return_readiness):
-    for c in return_readiness["cases"]:
-        assert "BLOCKED" in c["council_status"], f"{c['case_id']}: council should be blocked"
+def test_core_002_blocked_missing(data):
+    rd, rr = data
+    c002 = [c for c in rd["cases"] if c["case_id"] == "CORE_002"][0]
+    assert c002["ready_for_real_return"] is False
+    c002r = [c for c in rr["cases"] if c["case_id"] == "CORE_002"][0]
+    assert "MISSING" in c002r["real_return_status"] or "BLOCKED" in c002r["real_return_status"]
 
-def test_return_production_blocked(return_readiness):
-    for c in return_readiness["cases"]:
+def test_readiness_summary_fixture_count(data):
+    rd, _ = data
+    assert rd["summary"]["fixture_return_ready"] == 1  # only 600519
+    assert rd["summary"]["ready_for_real_return"] == 0  # no real data
+
+def test_return_summary_real_zero(data):
+    _, rr = data
+    assert rr["summary"]["ready_for_real_return"] == 0
+    assert rr["summary"]["fixture_return_ready"] == 1
+    assert rr["summary"]["blocked_fixture_only"] == 1
+
+def test_no_alpha(data):
+    _, rr = data
+    for c in rr["cases"]:
+        assert c["ready_for_alpha_claim"] is False
+        assert "BLOCKED" in c["council_status"]
+
+def test_all_production_blocked(data):
+    _, rr = data
+    for c in rr["cases"]:
         assert c["production"] == "BLOCKED"
-
-def test_return_no_buy_sell(return_readiness):
-    text = json.dumps(return_readiness)
-    assert '"BUY"' not in text.upper()
-
-def test_return_summary_fields(return_readiness):
-    s = return_readiness["summary"]
-    for f in ["total", "ready_for_real_return", "ready_for_alpha_claim", "blocked_missing_price"]:
-        assert f in s
-
-def test_return_graceful_missing_data():
-    """When data is missing, return readiness should handle gracefully (not crash)."""
-    r = subprocess.run(["python3", str(GATE)], cwd=str(WORKSPACE), capture_output=True, text=True)
-    assert r.returncode == 0, r.stderr

@@ -46,7 +46,8 @@ def main():
             "adjustment_factor_status": "MISSING",
             "benchmark_status": "FIXTURE" if (FIXTURES / "sample_benchmark_registry.csv").exists() else "MISSING",
             "calendar_status": "FIXTURE" if has_calendar else "MISSING",
-            "ready_for_real_return": has_any and has_calendar,
+            "fixture_return_ready": status == "FIXTURE" and has_calendar,
+            "ready_for_real_return": (status.startswith("REAL") or status.startswith("LOCAL")) and has_calendar,
             "ready_for_alpha_claim": False,
             "production": "BLOCKED", "broker_runtime": "BLOCKED", "real_trade": "BLOCKED",
         }
@@ -60,6 +61,7 @@ def main():
                "daily_price_missing": sum(1 for r in results if r["daily_price_status"] == "MISSING"),
                "benchmark_fixture": sum(1 for r in results if r["benchmark_status"] == "FIXTURE"),
                "calendar_fixture": sum(1 for r in results if r["calendar_status"] == "FIXTURE"),
+               "fixture_return_ready": sum(1 for r in results if r.get("fixture_return_ready", False)),
                "ready_for_real_return": sum(1 for r in results if r["ready_for_real_return"]),
                "ready_for_alpha_claim": 0,
            }}

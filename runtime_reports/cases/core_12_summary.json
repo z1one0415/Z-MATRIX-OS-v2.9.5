@@ -1,0 +1,11 @@
+{
+ "status": "CORE_12_NOMINAL_ONLY",
+ "attempted": 12,
+ "ticker_specific_completed": 0,
+ "nominal_completed": 0,
+ "runner_parameterized": false,
+ "reason": "run_golden_path does not accept ticker parameter yet",
+ "production": "BLOCKED",
+ "broker_runtime": "BLOCKED",
+ "real_trade": "BLOCKED"
+}

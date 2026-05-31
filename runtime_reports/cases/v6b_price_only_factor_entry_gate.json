@@ -1,0 +1,15 @@
+{
+  "status": "V6B_PRICE_ONLY_FACTOR_ENTRY_ALLOWED",
+  "core_12_price_inputs_ready": 12,
+  "price_only_factor_ready_count": 16,
+  "financial_factor_ready_count": 0,
+  "valuation_factor_ready_count": 0,
+  "synthetic_factor_allowed_count": 0,
+  "ready_for_v6b_price_only_calculation": true,
+  "ready_for_factor_validation": false,
+  "ready_for_alpha_claim": false,
+  "blocking_reasons": [],
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

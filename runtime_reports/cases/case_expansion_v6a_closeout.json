@@ -1,0 +1,18 @@
+{
+  "status": "CASE_EXPANSION_V6A_FACTOR_INPUT_INVENTORY_CONFIRMED",
+  "factor_inventory_built": true,
+  "core_12_factor_requirement_matrix_built": true,
+  "v6b_price_only_entry_gate_built": true,
+  "price_only_factors_ready": 12,
+  "financial_factors_ready": 0,
+  "valuation_factors_ready": 0,
+  "synthetic_factors_blocked": true,
+  "ready_for_v6b_price_only_calculation": true,
+  "ready_for_factor_validation": false,
+  "ready_for_alpha_claim": false,
+  "buy_sell_instruction_count": 0,
+  "council_investment_verdict": "BLOCKED_UNTIL_FACTOR_VALIDATION",
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,580 @@
+{
+  "status": "V6A_FACTOR_INPUT_INVENTORY_BUILT",
+  "factor_count": 30,
+  "real_ready_count": 12,
+  "partial_ready_count": 4,
+  "missing_input_count": 12,
+  "synthetic_blocked_count": 2,
+  "can_validate_factor_count": 0,
+  "can_calculate_history_only_count": 16,
+  "factors": [
+    {
+      "factor_id": "MOM_1D",
+      "factor_name": "1日动量",
+      "factor_category": "PRICE_ONLY",
+      "required_inputs": [
+        "daily_price.close",
+        "trading_calendar"
+      ],
+      "available_inputs": [
+        "daily_price.close",
+        "trading_calendar"
+      ],
+      "missing_inputs": [],
+      "truth_status": "REAL_READY",
+      "interpretation_permission": "CAN_CALCULATE_HISTORY_ONLY",
+      "ready_for_v6b_calculation": true,
+      "ready_for_alpha_claim": false,
+      "blocked_reason": null
+    },
+    {
+      "factor_id": "MOM_5D",
+      "factor_name": "5日动量",
+      "factor_category": "PRICE_ONLY",
+      "required_inputs": [
+        "daily_price.close",
+        "trading_calendar"
+      ],
+      "available_inputs": [
+        "daily_price.close",
+        "trading_calendar"
+      ],
+      "missing_inputs": [],
+      "truth_status": "REAL_READY",
+      "interpretation_permission": "CAN_CALCULATE_HISTORY_ONLY",
+      "ready_for_v6b_calculation": true,
+      "ready_for_alpha_claim": false,
+      "blocked_reason": null
+    },
+    {
+      "factor_id": "MOM_10D",
+      "factor_name": "10日动量",
+      "factor_category": "PRICE_ONLY",
+      "required_inputs": [
+        "daily_price.close",
+        "trading_calendar"
+      ],
+      "available_inputs": [
+        "daily_price.close",
+        "trading_calendar"
+      ],
+      "missing_inputs": [],
+      "truth_status": "REAL_READY",
+      "interpretation_permission": "CAN_CALCULATE_HISTORY_ONLY",
+      "ready_for_v6b_calculation": true,
+      "ready_for_alpha_claim": false,
+      "blocked_reason": null
+    },
+    {
+      "factor_id": "MOM_20D",
+      "factor_name": "20日动量",
+      "factor_category": "PRICE_ONLY",
+      "required_inputs": [
+        "daily_price.close",
+        "trading_calendar"
+      ],
+      "available_inputs": [
+        "daily_price.close",
+        "trading_calendar"
+      ],
+      "missing_inputs": [],
+      "truth_status": "REAL_READY",
+      "interpretation_permission": "CAN_CALCULATE_HISTORY_ONLY",
+      "ready_for_v6b_calculation": true,
+      "ready_for_alpha_claim": false,
+      "blocked_reason": null
+    },
+    {
+      "factor_id": "MOM_60D",
+      "factor_name": "60日动量",
+      "factor_category": "PRICE_ONLY",
+      "required_inputs": [
+        "daily_price.close",
+        "trading_calendar"
+      ],
+      "available_inputs": [
+        "daily_price.close",
+        "trading_calendar"
+      ],
+      "missing_inputs": [],
+      "truth_status": "REAL_READY",
+      "interpretation_permission": "CAN_CALCULATE_HISTORY_ONLY",
+      "ready_for_v6b_calculation": true,
+      "ready_for_alpha_claim": false,
+      "blocked_reason": null
+    },
+    {
+      "factor_id": "REV_1D",
+      "factor_name": "1日反转",
+      "factor_category": "PRICE_ONLY",
+      "required_inputs": [
+        "daily_price.close",
+        "trading_calendar"
+      ],
+      "available_inputs": [
+        "daily_price.close",
+        "trading_calendar"
+      ],
+      "missing_inputs": [],
+      "truth_status": "REAL_READY",
+      "interpretation_permission": "CAN_CALCULATE_HISTORY_ONLY",
+      "ready_for_v6b_calculation": true,
+      "ready_for_alpha_claim": false,
+      "blocked_reason": null
+    },
+    {
+      "factor_id": "REV_5D",
+      "factor_name": "5日反转",
+      "factor_category": "PRICE_ONLY",
+      "required_inputs": [
+        "daily_price.close",
+        "trading_calendar"
+      ],
+      "available_inputs": [
+        "daily_price.close",
+        "trading_calendar"
+      ],
+      "missing_inputs": [],
+      "truth_status": "REAL_READY",
+      "interpretation_permission": "CAN_CALCULATE_HISTORY_ONLY",
+      "ready_for_v6b_calculation": true,
+      "ready_for_alpha_claim": false,
+      "blocked_reason": null
+    },
+    {
+      "factor_id": "VOLATILITY_20D",
+      "factor_name": "20日波动率",
+      "factor_category": "PRICE_ONLY",
+      "required_inputs": [
+        "daily_price.close",
+        "trading_calendar"
+      ],
+      "available_inputs": [
+        "daily_price.close",
+        "trading_calendar"
+      ],
+      "missing_inputs": [],
+      "truth_status": "REAL_READY",
+      "interpretation_permission": "CAN_CALCULATE_HISTORY_ONLY",
+      "ready_for_v6b_calculation": true,
+      "ready_for_alpha_claim": false,
+      "blocked_reason": null
+    },
+    {
+      "factor_id": "VOLATILITY_60D",
+      "factor_name": "60日波动率",
+      "factor_category": "PRICE_ONLY",
+      "required_inputs": [
+        "daily_price.close",
+        "trading_calendar"
+      ],
+      "available_inputs": [
+        "daily_price.close",
+        "trading_calendar"
+      ],
+      "missing_inputs": [],
+      "truth_status": "REAL_READY",
+      "interpretation_permission": "CAN_CALCULATE_HISTORY_ONLY",
+      "ready_for_v6b_calculation": true,
+      "ready_for_alpha_claim": false,
+      "blocked_reason": null
+    },
+    {
+      "factor_id": "MAX_DRAWDOWN_60D",
+      "factor_name": "60日最大回撤",
+      "factor_category": "PRICE_ONLY",
+      "required_inputs": [
+        "daily_price.close",
+        "trading_calendar"
+      ],
+      "available_inputs": [
+        "daily_price.close",
+        "trading_calendar"
+      ],
+      "missing_inputs": [],
+      "truth_status": "REAL_READY",
+      "interpretation_permission": "CAN_CALCULATE_HISTORY_ONLY",
+      "ready_for_v6b_calculation": true,
+      "ready_for_alpha_claim": false,
+      "blocked_reason": null
+    },
+    {
+      "factor_id": "BENCHMARK_RELATIVE_T20",
+      "factor_name": "20日超额收益",
+      "factor_category": "BENCHMARK_RELATIVE",
+      "required_inputs": [
+        "daily_price.close",
+        "benchmark.close",
+        "trading_calendar"
+      ],
+      "available_inputs": [
+        "daily_price.close",
+        "benchmark.close",
+        "trading_calendar"
+      ],
+      "missing_inputs": [],
+      "truth_status": "REAL_READY",
+      "interpretation_permission": "CAN_CALCULATE_HISTORY_ONLY",
+      "ready_for_v6b_calculation": true,
+      "ready_for_alpha_claim": false,
+      "blocked_reason": null
+    },
+    {
+      "factor_id": "BENCHMARK_RELATIVE_T60",
+      "factor_name": "60日超额收益",
+      "factor_category": "BENCHMARK_RELATIVE",
+      "required_inputs": [
+        "daily_price.close",
+        "benchmark.close",
+        "trading_calendar"
+      ],
+      "available_inputs": [
+        "daily_price.close",
+        "benchmark.close",
+        "trading_calendar"
+      ],
+      "missing_inputs": [],
+      "truth_status": "REAL_READY",
+      "interpretation_permission": "CAN_CALCULATE_HISTORY_ONLY",
+      "ready_for_v6b_calculation": true,
+      "ready_for_alpha_claim": false,
+      "blocked_reason": null
+    },
+    {
+      "factor_id": "VOLUME_20D_AVG",
+      "factor_name": "20日均量",
+      "factor_category": "PRICE_VOLUME",
+      "required_inputs": [
+        "daily_price.volume",
+        "trading_calendar"
+      ],
+      "available_inputs": [
+        "daily_price.volume",
+        "trading_calendar"
+      ],
+      "missing_inputs": [],
+      "truth_status": "PARTIAL_READY",
+      "interpretation_permission": "CAN_CALCULATE_HISTORY_ONLY",
+      "ready_for_v6b_calculation": true,
+      "ready_for_alpha_claim": false,
+      "blocked_reason": null
+    },
+    {
+      "factor_id": "AMOUNT_20D_AVG",
+      "factor_name": "20日均额",
+      "factor_category": "PRICE_VOLUME",
+      "required_inputs": [
+        "daily_price.amount",
+        "trading_calendar"
+      ],
+      "available_inputs": [
+        "daily_price.amount",
+        "trading_calendar"
+      ],
+      "missing_inputs": [],
+      "truth_status": "PARTIAL_READY",
+      "interpretation_permission": "CAN_CALCULATE_HISTORY_ONLY",
+      "ready_for_v6b_calculation": true,
+      "ready_for_alpha_claim": false,
+      "blocked_reason": null
+    },
+    {
+      "factor_id": "VOLUME_60D_AVG",
+      "factor_name": "60日均量",
+      "factor_category": "PRICE_VOLUME",
+      "required_inputs": [
+        "daily_price.volume",
+        "trading_calendar"
+      ],
+      "available_inputs": [
+        "daily_price.volume",
+        "trading_calendar"
+      ],
+      "missing_inputs": [],
+      "truth_status": "PARTIAL_READY",
+      "interpretation_permission": "CAN_CALCULATE_HISTORY_ONLY",
+      "ready_for_v6b_calculation": true,
+      "ready_for_alpha_claim": false,
+      "blocked_reason": null
+    },
+    {
+      "factor_id": "AMOUNT_60D_AVG",
+      "factor_name": "60日均额",
+      "factor_category": "PRICE_VOLUME",
+      "required_inputs": [
+        "daily_price.amount",
+        "trading_calendar"
+      ],
+      "available_inputs": [
+        "daily_price.amount",
+        "trading_calendar"
+      ],
+      "missing_inputs": [],
+      "truth_status": "PARTIAL_READY",
+      "interpretation_permission": "CAN_CALCULATE_HISTORY_ONLY",
+      "ready_for_v6b_calculation": true,
+      "ready_for_alpha_claim": false,
+      "blocked_reason": null
+    },
+    {
+      "factor_id": "PE_TTM",
+      "factor_name": "市盈率TTM",
+      "factor_category": "VALUATION",
+      "required_inputs": [
+        "market_cap",
+        "net_profit_ttm"
+      ],
+      "available_inputs": [],
+      "missing_inputs": [
+        "market_cap",
+        "net_profit_ttm"
+      ],
+      "truth_status": "MISSING_INPUT",
+      "interpretation_permission": "BLOCKED_NO_INPUT",
+      "ready_for_v6b_calculation": false,
+      "ready_for_alpha_claim": false,
+      "blocked_reason": "MISSING_VALUATION_AND_FINANCIAL_DATA"
+    },
+    {
+      "factor_id": "PB",
+      "factor_name": "市净率",
+      "factor_category": "VALUATION",
+      "required_inputs": [
+        "market_cap",
+        "book_value"
+      ],
+      "available_inputs": [],
+      "missing_inputs": [
+        "market_cap",
+        "book_value"
+      ],
+      "truth_status": "MISSING_INPUT",
+      "interpretation_permission": "BLOCKED_NO_INPUT",
+      "ready_for_v6b_calculation": false,
+      "ready_for_alpha_claim": false,
+      "blocked_reason": "MISSING_VALUATION_AND_FINANCIAL_DATA"
+    },
+    {
+      "factor_id": "PS",
+      "factor_name": "市销率",
+      "factor_category": "VALUATION",
+      "required_inputs": [
+        "market_cap",
+        "revenue"
+      ],
+      "available_inputs": [],
+      "missing_inputs": [
+        "market_cap",
+        "revenue"
+      ],
+      "truth_status": "MISSING_INPUT",
+      "interpretation_permission": "BLOCKED_NO_INPUT",
+      "ready_for_v6b_calculation": false,
+      "ready_for_alpha_claim": false,
+      "blocked_reason": "MISSING_VALUATION_AND_FINANCIAL_DATA"
+    },
+    {
+      "factor_id": "ROE",
+      "factor_name": "净资产收益率",
+      "factor_category": "QUALITY",
+      "required_inputs": [
+        "net_profit",
+        "book_value"
+      ],
+      "available_inputs": [],
+      "missing_inputs": [
+        "net_profit",
+        "book_value"
+      ],
+      "truth_status": "MISSING_INPUT",
+      "interpretation_permission": "BLOCKED_NO_INPUT",
+      "ready_for_v6b_calculation": false,
+      "ready_for_alpha_claim": false,
+      "blocked_reason": "MISSING_FINANCIAL_DATA"
+    },
+    {
+      "factor_id": "ROA",
+      "factor_name": "总资产收益率",
+      "factor_category": "QUALITY",
+      "required_inputs": [
+        "net_profit",
+        "total_assets"
+      ],
+      "available_inputs": [],
+      "missing_inputs": [
+        "net_profit",
+        "total_assets"
+      ],
+      "truth_status": "MISSING_INPUT",
+      "interpretation_permission": "BLOCKED_NO_INPUT",
+      "ready_for_v6b_calculation": false,
+      "ready_for_alpha_claim": false,
+      "blocked_reason": "MISSING_FINANCIAL_DATA"
+    },
+    {
+      "factor_id": "GROSS_MARGIN",
+      "factor_name": "毛利率",
+      "factor_category": "QUALITY",
+      "required_inputs": [
+        "gross_profit",
+        "revenue"
+      ],
+      "available_inputs": [],
+      "missing_inputs": [
+        "gross_profit",
+        "revenue"
+      ],
+      "truth_status": "MISSING_INPUT",
+      "interpretation_permission": "BLOCKED_NO_INPUT",
+      "ready_for_v6b_calculation": false,
+      "ready_for_alpha_claim": false,
+      "blocked_reason": "MISSING_FINANCIAL_DATA"
+    },
+    {
+      "factor_id": "NET_MARGIN",
+      "factor_name": "净利率",
+      "factor_category": "QUALITY",
+      "required_inputs": [
+        "net_profit",
+        "revenue"
+      ],
+      "available_inputs": [],
+      "missing_inputs": [
+        "net_profit",
+        "revenue"
+      ],
+      "truth_status": "MISSING_INPUT",
+      "interpretation_permission": "BLOCKED_NO_INPUT",
+      "ready_for_v6b_calculation": false,
+      "ready_for_alpha_claim": false,
+      "blocked_reason": "MISSING_FINANCIAL_DATA"
+    },
+    {
+      "factor_id": "DEBT_RATIO",
+      "factor_name": "资产负债率",
+      "factor_category": "QUALITY",
+      "required_inputs": [
+        "total_liabilities",
+        "total_assets"
+      ],
+      "available_inputs": [],
+      "missing_inputs": [
+        "total_liabilities",
+        "total_assets"
+      ],
+      "truth_status": "MISSING_INPUT",
+      "interpretation_permission": "BLOCKED_NO_INPUT",
+      "ready_for_v6b_calculation": false,
+      "ready_for_alpha_claim": false,
+      "blocked_reason": "MISSING_FINANCIAL_DATA"
+    },
+    {
+      "factor_id": "REVENUE_GROWTH",
+      "factor_name": "营收增速",
+      "factor_category": "GROWTH",
+      "required_inputs": [
+        "revenue_yoy"
+      ],
+      "available_inputs": [],
+      "missing_inputs": [
+        "revenue_yoy"
+      ],
+      "truth_status": "MISSING_INPUT",
+      "interpretation_permission": "BLOCKED_NO_INPUT",
+      "ready_for_v6b_calculation": false,
+      "ready_for_alpha_claim": false,
+      "blocked_reason": "MISSING_FINANCIAL_DATA"
+    },
+    {
+      "factor_id": "NET_PROFIT_GROWTH",
+      "factor_name": "净利增速",
+      "factor_category": "GROWTH",
+      "required_inputs": [
+        "net_profit_yoy"
+      ],
+      "available_inputs": [],
+      "missing_inputs": [
+        "net_profit_yoy"
+      ],
+      "truth_status": "MISSING_INPUT",
+      "interpretation_permission": "BLOCKED_NO_INPUT",
+      "ready_for_v6b_calculation": false,
+      "ready_for_alpha_claim": false,
+      "blocked_reason": "MISSING_FINANCIAL_DATA"
+    },
+    {
+      "factor_id": "MARKET_CAP",
+      "factor_name": "总市值",
+      "factor_category": "LIQUIDITY",
+      "required_inputs": [
+        "shares_outstanding",
+        "daily_price.close"
+      ],
+      "available_inputs": [
+        "daily_price.close"
+      ],
+      "missing_inputs": [
+        "shares_outstanding"
+      ],
+      "truth_status": "MISSING_INPUT",
+      "interpretation_permission": "BLOCKED_NO_INPUT",
+      "ready_for_v6b_calculation": false,
+      "ready_for_alpha_claim": false,
+      "blocked_reason": "MISSING_SHARES_DATA"
+    },
+    {
+      "factor_id": "TURNOVER_RATE",
+      "factor_name": "换手率",
+      "factor_category": "LIQUIDITY",
+      "required_inputs": [
+        "float_shares",
+        "daily_price.volume"
+      ],
+      "available_inputs": [
+        "daily_price.volume"
+      ],
+      "missing_inputs": [
+        "float_shares"
+      ],
+      "truth_status": "MISSING_INPUT",
+      "interpretation_permission": "BLOCKED_NO_INPUT",
+      "ready_for_v6b_calculation": false,
+      "ready_for_alpha_claim": false,
+      "blocked_reason": "MISSING_SHARES_DATA"
+    },
+    {
+      "factor_id": "LEGACY_SYNTHETIC_IC",
+      "factor_name": "旧版合成IC",
+      "factor_category": "SYNTHETIC_LEGACY",
+      "required_inputs": [
+        "synthetic_fixture"
+      ],
+      "available_inputs": [
+        "synthetic_fixture"
+      ],
+      "missing_inputs": [],
+      "truth_status": "SYNTHETIC_BLOCKED",
+      "interpretation_permission": "BLOCKED_SYNTHETIC",
+      "ready_for_v6b_calculation": false,
+      "ready_for_alpha_claim": false,
+      "blocked_reason": "SYNTHETIC_FACTOR_FORBIDDEN_AFTER_V3"
+    },
+    {
+      "factor_id": "LEGACY_SYNTHETIC_ATTRIBUTION",
+      "factor_name": "旧版合成归因Alpha",
+      "factor_category": "SYNTHETIC_LEGACY",
+      "required_inputs": [
+        "synthetic_attribution"
+      ],
+      "available_inputs": [
+        "synthetic_attribution"
+      ],
+      "missing_inputs": [],
+      "truth_status": "SYNTHETIC_BLOCKED",
+      "interpretation_permission": "BLOCKED_SYNTHETIC",
+      "ready_for_v6b_calculation": false,
+      "ready_for_alpha_claim": false,
+      "blocked_reason": "SYNTHETIC_FACTOR_FORBIDDEN_AFTER_V3"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+from __future__ import annotations
+R={"SYSTEM":"zmatrix.agent.system_skill_router","RESEARCHDB":"","DATAFORGE":"","FACTOR":"","COUNCIL":"","REPORT":"zmatrix.research_db.report_skill_router","CASEFORGE":"zmatrix.research_db.caseforge_skill_router","AUTOCASE":"","ZG16":"zmatrix.research_db.zg16_skill_router","ZC35":"","BMATRIX":"","DMATRIX":"","PORTFOLIO":"","GOVERNANCE":"","COCKPIT":"zmatrix.research_db.cockpit_skill_router","MEMORY":"","WORKFLOW":""}
+def get_skill_domain(sid): return sid.split(".",1)[0].upper() if "." in sid else "UNKNOWN"
+def is_domain_registered(sid): return get_skill_domain(sid) in R
+def get_domain_router_path(sid): return R.get(get_skill_domain(sid),"")
+def has_domain_router(sid): return bool(get_domain_router_path(sid))
+def list_domain_router_status(): return {d:{"registered":True,"router_implemented":bool(p)} for d,p in R.items()}

@@ -1,0 +1,18 @@
+{
+  "status": "CASE_EXPANSION_V7_EXPLORATORY_FACTOR_VALIDATION_CONFIRMED",
+  "alpha_validated": false,
+  "ready_for_alpha_claim": false,
+  "exploratory_rankic_calculated": true,
+  "sample_adequacy_audited": true,
+  "horizon_status": {
+    "T1": "EXPLORATORY_USABLE",
+    "T5": "EXPLORATORY_USABLE",
+    "T10": "EXPLORATORY_USABLE",
+    "T20": "LOW_CONFIDENCE",
+    "T60": "INSUFFICIENT"
+  },
+  "warning": "V7 is exploratory only; no investment verdict allowed.",
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

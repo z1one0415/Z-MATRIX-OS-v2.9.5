@@ -8,6 +8,7 @@ from .command_envelope import validate_command_envelope
 from .agent_registry import get_agent
 from .agent_permission import evaluate_agent_permission
 from .skill_registry import get_skill, assert_skill_callable
+from .token_budget import enforce_token_budget
 
 
 _FORBIDDEN_OUTPUT_TOKENS = frozenset({"BUY", "SELL", "AUTO_EXECUTE", "READY_FOR_PRODUCTION"})
@@ -118,6 +119,11 @@ def invoke_skill(command_envelope: dict, context_slice: dict) -> dict:
             "human_review_required": True,
             "production_allowed": False,
         }
+
+    ctx_tokens = context_slice.get("token_estimate", 0)
+    budget_result = enforce_token_budget({"token_estimate": ctx_tokens}, 4000)
+    if ctx_tokens > 4000:
+        return _blocked_result(skill_id, "token budget exceeded (max 4000)")
 
     write_layers = skill.get("write_layers", [])
     if write_layers:

@@ -24,8 +24,9 @@
 | A19 | Verify Script | DONE |
 | A20 | No direct agent mutation | DONE |
 
-Final Status: Z_AGENT_KERNEL_READY_STUB_ONLY
+Final Status: Z_AGENT_KERNEL_READY_FOR_ZG16_STUB_INTEGRATION
 Production: BLOCKED
 Broker/runtime: BLOCKED
 Real trade: BLOCKED
 Agent direct mutation: BLOCKED
+Autonomous runtime: BLOCKED

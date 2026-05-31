@@ -8,6 +8,7 @@ Production: BLOCKED
 Broker/runtime: BLOCKED
 Real trade: BLOCKED
 Agent direct mutation: BLOCKED
+Autonomous runtime: BLOCKED
 
 ## Completed Modules (20)
 

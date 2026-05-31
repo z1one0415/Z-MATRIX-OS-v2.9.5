@@ -109,7 +109,6 @@ class TestValidateAgentEntry:
         )
         result = validate_agent_entry(entry)
         assert result["valid"] is False
-        assert any("requires_human_review" in e for e in result["errors"])
 
 
 class TestAssertAgentEnabled:

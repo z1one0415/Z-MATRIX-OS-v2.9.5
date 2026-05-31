@@ -81,7 +81,7 @@ def validate_skill_entry(skill: dict) -> dict:
     requires_review = skill.get("requires_human_review", False)
     if write_layers and not requires_review:
         errors.append(
-            "write_layers non-empty but requires_human_review=false"
+            "human review required when skill has write_layers"
         )
 
     risk_level = skill.get("risk_level", "R0_READ")

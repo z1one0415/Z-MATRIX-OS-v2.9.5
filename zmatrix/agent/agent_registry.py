@@ -110,7 +110,7 @@ def validate_agent_entry(entry: dict) -> dict:
     max_risk = entry.get("max_risk_level", "R2_DRAFT")
     if requires_review is False and _risk_numeric(max_risk) >= 3:
         errors.append(
-            "requires_human_review=false with max_risk_level>=R3 is not allowed"
+            "human review must be true when risk level is R3 or above"
         )
 
     return {"valid": len(errors) == 0, "errors": errors}

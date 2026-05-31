@@ -9,9 +9,19 @@ FIXTURES = WORKSPACE / "tests" / "fixtures" / "market_data"
 REGISTRY = json.loads((WORKSPACE / "data" / "research_db" / "cases" / "case_registry_v1.json").read_text())
 
 def check_real_data(ticker):
-    """Check if real market data exists for a ticker."""
+    """Check if real market data exists for a ticker — in single-file or per-ticker format."""
+    import csv, io
+    # Check combined file first
+    combined = PROCESSED / "core12_daily_price_bar.csv"
+    if combined.exists():
+        reader = csv.DictReader(io.StringIO(combined.read_text()))
+        for row in reader:
+            if row.get("ticker") == ticker:
+                return {"status": "LOCAL_USER_PROVIDED", "file": str(combined.relative_to(WORKSPACE))}
+    # Check per-ticker files
     for f in PROCESSED.glob(f"*{ticker}*"):
-        if f.suffix == ".csv": return {"status": "LOCAL_USER_PROVIDED", "file": str(f.relative_to(WORKSPACE))}
+        if f.suffix == ".csv":
+            return {"status": "LOCAL_USER_PROVIDED", "file": str(f.relative_to(WORKSPACE))}
     return {"status": "MISSING", "file": None}
 
 def check_fixture_data(ticker):
@@ -34,7 +44,7 @@ def main():
         status = real["status"] if real["status"] != "MISSING" else fixture["status"]
 
         # Check processed for benchmark and calendar
-        has_benchmark = any("CSI300" in f.name for f in PROCESSED.glob("*CSI300*"))
+        has_benchmark = (PROCESSED / "benchmark_csi300_price.csv").exists() or any("CSI300" in f.name for f in PROCESSED.glob("*CSI300*"))
         has_calendar = any("calendar" in f.name.lower() for f in PROCESSED.glob("*calendar*"))
         has_calendar = has_calendar or (FIXTURES / "sample_trading_calendar.csv").exists()
 
@@ -44,8 +54,8 @@ def main():
             "daily_price_start": None, "daily_price_end": None, "trading_days": None,
             "t20_ready": False, "t60_ready": False,
             "adjustment_factor_status": "MISSING",
-            "benchmark_status": "FIXTURE" if (FIXTURES / "sample_benchmark_registry.csv").exists() else "MISSING",
-            "calendar_status": "FIXTURE" if has_calendar else "MISSING",
+            "benchmark_status": "LOCAL_USER_PROVIDED" if has_benchmark else ("FIXTURE" if (FIXTURES / "sample_benchmark_registry.csv").exists() else "MISSING"),
+            "calendar_status": "LOCAL_USER_PROVIDED" if (PROCESSED / "trading_calendar.csv").exists() else ("FIXTURE" if has_calendar else "MISSING"),
             "fixture_return_ready": status == "FIXTURE" and has_calendar,
             "ready_for_real_return": (status.startswith("REAL") or status.startswith("LOCAL")) and has_calendar,
             "ready_for_alpha_claim": False,

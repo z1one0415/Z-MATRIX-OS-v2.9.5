@@ -1,0 +1,13 @@
+{
+  "status": "CASE_EXPANSION_V4_2_USER_MARKET_DATA_IMPORT_PACK_READY",
+  "user_csv_required": true,
+  "real_data_committed": false,
+  "templates_ready": true,
+  "hash_tool_ready": true,
+  "validator_ready": true,
+  "v5_entry_gate_ready": true,
+  "v5_entry_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

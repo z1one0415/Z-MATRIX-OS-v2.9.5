@@ -1,0 +1,13 @@
+{
+  "status": "V5_ENTRY_BLOCKED_WAITING_USER_MARKET_DATA",
+  "daily_price_real_read_only": 0,
+  "adjustment_factor_ready": 0,
+  "benchmark_real_read_only": false,
+  "calendar_real_read_only": false,
+  "ready_for_real_return": 0,
+  "ready_for_alpha_claim": 0,
+  "v5_entry_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

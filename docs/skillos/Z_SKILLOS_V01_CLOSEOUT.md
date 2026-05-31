@@ -1,6 +1,10 @@
 # Z-SkillOS v0.1.2 Closeout
 Final Status: Z_SKILLOS_V01_ARCHITECTURE_READY_AFTER_HARDENING
 
+## v0.1.3 Fixes
+SH Scan: ACTIVE | Market data side effects: REMOVED | Verify G16/ZK: MANDATORY (no if-exists skip)
+Scope Hygiene: PASS
+
 ## Census
 Candidates: 1433+ | Scanner: AST-based (.py) + filename-based (.sh)
 Shards: caseforge,governance,report,system,zg16 (5 domains)

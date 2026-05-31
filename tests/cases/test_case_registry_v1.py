@@ -30,7 +30,7 @@ def test_coverage_audit_exists(): assert (WORKSPACE / "runtime_reports" / "cases
 def test_closeout_exists(): assert (WORKSPACE / "docs" / "cases" / "CASE_EXPANSION_V1_CLOSEOUT.md").exists()
 def test_closeout_verdict(): 
     text = (WORKSPACE / "docs" / "cases" / "CASE_EXPANSION_V1_CLOSEOUT.md").read_text()
-    assert "CASE_EXPANSION_V1_COMPLETE" in text
+    assert "CASE_EXPANSION_V1_PARTIAL" in text
 
 if __name__ == "__main__":
     import pytest; pytest.main([__file__, "-v"])

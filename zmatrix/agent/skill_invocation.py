@@ -13,6 +13,7 @@ from .token_budget import enforce_token_budget
 
 
 _FORBIDDEN_OUTPUT_TOKENS = frozenset({"BUY", "SELL", "AUTO_EXECUTE", "READY_FOR_PRODUCTION"})
+_FORBIDDEN_ALLOWLIST = frozenset({"SELL_ON_NEWS_TRAP"})
 
 
 def _blocked_result(skill_id: str, reason: str) -> dict:
@@ -34,6 +35,8 @@ def _contains_forbidden_token(data: dict, tokens: frozenset[str] | None = None) 
     def _recurse(obj):
         if isinstance(obj, str):
             upper = obj.upper()
+            if upper in _FORBIDDEN_ALLOWLIST:
+                return False
             for tok in tokens:
                 if tok.upper() in upper:
                     return True

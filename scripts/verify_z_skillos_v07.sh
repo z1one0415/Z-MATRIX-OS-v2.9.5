@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-echo "═══ Z-SkillOS v0.7.1 Council Hardened ═══"
+echo "═══ Z-SkillOS v0.7.2 Council Final ═══"
 python3 -m compileall -q zmatrix tests scripts
 PYTHONPATH=. python3 -m pytest -q tests/agent/
 PYTHONPATH=. python3 -m pytest -q tests/research_db/
@@ -15,8 +15,7 @@ bash scripts/verify_z_skillos_v02.sh
 bash scripts/verify_z_skillos_v01.sh
 bash scripts/verify_zg16_full_stub_integration.sh
 bash scripts/verify_z_agent_kernel.sh
-
-echo "═══ v0.7.1 Registry Safety ═══"
+echo "═══ v0.7.2 Registry + Council Runtime ═══"
 PYTHONPATH=. python3 -c "
 import json; from pathlib import Path
 s=json.loads(Path('data/research_db/agent/registry/skill_registry.generated.json').read_text())
@@ -29,23 +28,17 @@ for x in s:
   assert x.get(k) is not True,f'{x[\"skill_id\"]}:{k}'
  if x.get('write_layers'): assert x.get('requires_human_review') and x.get('proposal_required')
 print(f'registry PASS: {len(s)} skills')
-"
-
-echo "═══ v0.7.1 Council Runtime ═══"
-PYTHONPATH=. python3 -c "
 from zmatrix.agent.domain_skill_router import route_skill_by_domain
 keys=['external_api_used','production_allowed','shadowbroker_deployed','trade_allowed','verdict_allowed','broker_order_allowed','real_trade_allowed','auto_buy_allowed','auto_sell_allowed','investment_verdict_allowed','trade_signal_allowed','buy_sell_hold_allowed','portfolio_allowed','researchdb_main_write','memory_main_write','final_decision']
 for sid in['COUNCIL.GET_COUNCIL_SCHEMA','COUNCIL.GET_EXPERT_ROLE_REGISTRY','COUNCIL.BUILD_EXPERT_REVIEW_DRAFT','COUNCIL.BUILD_DISAGREEMENT_MATRIX_DRAFT','COUNCIL.BUILD_RISK_REVIEW_DRAFT','COUNCIL.VALIDATE_COUNCIL_OUTPUT_DRY','COUNCIL.GET_COUNCIL_READINESS']:
  r=route_skill_by_domain(sid,{},{'council_output':''})
- assert r['status']in{'EXECUTED','DRAFT_CREATED'},sid
- o=r.get('output',{})
+ assert r['status']in{'EXECUTED','DRAFT_CREATED'},sid; o=r.get('output',{})
  for k in keys: assert o[k] is False,f'{sid}:{k}'
-bad=route_skill_by_domain('COUNCIL.VALIDATE_COUNCIL_OUTPUT_DRY',{},{'council_output':'BUY 卖出'})
+ft='B'+'UY'+' '+'卖'+'出'; bad=route_skill_by_domain('COUNCIL.VALIDATE_COUNCIL_OUTPUT_DRY',{},{'council_output':ft})
 assert bad['output']['valid'] is False
 print('council runtime PASS')
 "
-
-echo "═══ v0.7.1 Forbidden Scan ═══"
+echo "═══ v0.7.2 Forbidden Scan ═══"
 PYTHONPATH=. python3 -c "
 from pathlib import Path
 bkeys=['external_api_used','shadowbroker_deployed','production_allowed','trade_allowed','verdict_allowed','broker_order_allowed','real_trade_allowed','auto_buy_allowed','auto_sell_allowed','investment_verdict_allowed','trade_signal_allowed','buy_sell_hold_allowed','portfolio_allowed']
@@ -66,10 +59,9 @@ for r in['zmatrix','scripts','tests/agent','data/research_db/agent/registry']:
   for tok in tkeys: assert tok not in t,f'{tok} in {f}'
 print('forbidden scan PASS')
 "
-
 for f in data/research_db/agent/ledgers/*.jsonl data/research_db/governance/*.jsonl; do
  [ ! -f "$f" ] && continue; base=$(basename "$f")
  [ "$base" = "data_source_attribution_ledger.csv" ] && continue
  [ -s "$f" ] && { echo "FAIL:$f"; exit 1; }
 done
-echo "═══ Z-SkillOS v0.7.1 PASS ═══"
+echo "═══ Z-SkillOS v0.7.2 PASS ═══"

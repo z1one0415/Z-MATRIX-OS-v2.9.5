@@ -17,6 +17,6 @@ def route_skill(sid,env,ctx):
         o=_sb(); o.update({"draft_status":"DRAFT_ONLY","review_type":"ZC35_CATALYST_REVIEW"})
         return build_skill_draft(sid,o)
     if sid=="ZC35.GET_READINESS":
-        o=_sb(); o["human_review_required"]=False; o.update({"readiness":"READ_ONLY_READY","final_scoring":False,"backtest":False})
+        o=_sb(); o["human_review_required"]=False; o.update({"readiness":"READ_ONLY_READY","matrix_engine_enabled":False,"final_scoring_allowed":False,"backtest_allowed":False,"ranking_allowed":False,"trade_signal_allowed":False,"portfolio_allowed":False})
         return build_skill_success(sid,o)
     return build_skill_blocked(sid,"Unknown ZC35 skill")

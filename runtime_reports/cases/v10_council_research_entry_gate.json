@@ -2,7 +2,10 @@
   "status": "V10_COUNCIL_RESEARCH_ENTRY_ALLOWED",
   "ready_for_council_research_review": true,
   "promoted_factor_count": 16,
+  "watch_factor_count": 20,
   "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "blocking_reasons": [],
   "production": "BLOCKED",
   "broker_runtime": "BLOCKED",
   "real_trade": "BLOCKED"

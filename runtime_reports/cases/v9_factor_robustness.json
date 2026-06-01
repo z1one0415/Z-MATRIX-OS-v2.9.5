@@ -1,316 +1,9 @@
 {
   "status": "V9_FACTOR_ROBUSTNESS_BUILT",
-  "robustness": [
-    {
-      "factor_id": "MOM_1D",
-      "year_robustness": {
-        "2021": {
-          "mean_rankic": -0.0006,
-          "valid_dates": 183
-        },
-        "2022": {
-          "mean_rankic": -0.005,
-          "valid_dates": 242
-        },
-        "2023": {
-          "mean_rankic": 0.0075,
-          "valid_dates": 242
-        },
-        "2024": {
-          "mean_rankic": 0.0009,
-          "valid_dates": 222
-        }
-      },
-      "sign_consistent_across_years": false
-    },
-    {
-      "factor_id": "MOM_5D",
-      "year_robustness": {
-        "2021": {
-          "mean_rankic": 0.0063,
-          "valid_dates": 183
-        },
-        "2022": {
-          "mean_rankic": -0.0217,
-          "valid_dates": 242
-        },
-        "2023": {
-          "mean_rankic": 0.0136,
-          "valid_dates": 242
-        },
-        "2024": {
-          "mean_rankic": -0.0182,
-          "valid_dates": 222
-        }
-      },
-      "sign_consistent_across_years": false
-    },
-    {
-      "factor_id": "MOM_10D",
-      "year_robustness": {
-        "2021": {
-          "mean_rankic": 0.0166,
-          "valid_dates": 183
-        },
-        "2022": {
-          "mean_rankic": -0.0328,
-          "valid_dates": 242
-        },
-        "2023": {
-          "mean_rankic": 0.0013,
-          "valid_dates": 242
-        },
-        "2024": {
-          "mean_rankic": -0.0186,
-          "valid_dates": 222
-        }
-      },
-      "sign_consistent_across_years": false
-    },
-    {
-      "factor_id": "MOM_20D",
-      "year_robustness": {
-        "2021": {
-          "mean_rankic": -0.022,
-          "valid_dates": 183
-        },
-        "2022": {
-          "mean_rankic": -0.0868,
-          "valid_dates": 242
-        },
-        "2023": {
-          "mean_rankic": 0.0014,
-          "valid_dates": 242
-        },
-        "2024": {
-          "mean_rankic": -0.0056,
-          "valid_dates": 222
-        }
-      },
-      "sign_consistent_across_years": false
-    },
-    {
-      "factor_id": "MOM_60D",
-      "year_robustness": {
-        "2021": {
-          "mean_rankic": -0.061,
-          "valid_dates": 183
-        },
-        "2022": {
-          "mean_rankic": -0.117,
-          "valid_dates": 242
-        },
-        "2023": {
-          "mean_rankic": 0.0103,
-          "valid_dates": 242
-        },
-        "2024": {
-          "mean_rankic": 0.0071,
-          "valid_dates": 222
-        }
-      },
-      "sign_consistent_across_years": false
-    },
-    {
-      "factor_id": "REV_1D",
-      "year_robustness": {
-        "2021": {
-          "mean_rankic": 0.0006,
-          "valid_dates": 183
-        },
-        "2022": {
-          "mean_rankic": 0.005,
-          "valid_dates": 242
-        },
-        "2023": {
-          "mean_rankic": -0.0075,
-          "valid_dates": 242
-        },
-        "2024": {
-          "mean_rankic": -0.0009,
-          "valid_dates": 222
-        }
-      },
-      "sign_consistent_across_years": false
-    },
-    {
-      "factor_id": "REV_5D",
-      "year_robustness": {
-        "2021": {
-          "mean_rankic": -0.0063,
-          "valid_dates": 183
-        },
-        "2022": {
-          "mean_rankic": 0.0217,
-          "valid_dates": 242
-        },
-        "2023": {
-          "mean_rankic": -0.0136,
-          "valid_dates": 242
-        },
-        "2024": {
-          "mean_rankic": 0.0182,
-          "valid_dates": 222
-        }
-      },
-      "sign_consistent_across_years": false
-    },
-    {
-      "factor_id": "VOLATILITY_20D",
-      "year_robustness": {
-        "2021": {
-          "mean_rankic": 0.0179,
-          "valid_dates": 183
-        },
-        "2022": {
-          "mean_rankic": 0.0138,
-          "valid_dates": 242
-        },
-        "2023": {
-          "mean_rankic": -0.0843,
-          "valid_dates": 242
-        },
-        "2024": {
-          "mean_rankic": -0.067,
-          "valid_dates": 222
-        }
-      },
-      "sign_consistent_across_years": false
-    },
-    {
-      "factor_id": "VOLATILITY_60D",
-      "year_robustness": {
-        "2021": {
-          "mean_rankic": 0.0517,
-          "valid_dates": 183
-        },
-        "2022": {
-          "mean_rankic": -0.0388,
-          "valid_dates": 242
-        },
-        "2023": {
-          "mean_rankic": -0.1186,
-          "valid_dates": 242
-        },
-        "2024": {
-          "mean_rankic": -0.0891,
-          "valid_dates": 222
-        }
-      },
-      "sign_consistent_across_years": false
-    },
-    {
-      "factor_id": "MAX_DRAWDOWN_60D",
-      "year_robustness": {
-        "2021": {
-          "mean_rankic": -0.0823,
-          "valid_dates": 183
-        },
-        "2022": {
-          "mean_rankic": -0.0819,
-          "valid_dates": 242
-        },
-        "2023": {
-          "mean_rankic": 0.0719,
-          "valid_dates": 242
-        },
-        "2024": {
-          "mean_rankic": 0.0369,
-          "valid_dates": 222
-        }
-      },
-      "sign_consistent_across_years": false
-    },
-    {
-      "factor_id": "TRAILING_BENCHMARK_RELATIVE_20D",
-      "year_robustness": {
-        "2021": {
-          "mean_rankic": -0.022,
-          "valid_dates": 183
-        },
-        "2022": {
-          "mean_rankic": -0.0868,
-          "valid_dates": 242
-        },
-        "2023": {
-          "mean_rankic": 0.0014,
-          "valid_dates": 242
-        },
-        "2024": {
-          "mean_rankic": -0.0056,
-          "valid_dates": 222
-        }
-      },
-      "sign_consistent_across_years": false
-    },
-    {
-      "factor_id": "TRAILING_BENCHMARK_RELATIVE_60D",
-      "year_robustness": {
-        "2021": {
-          "mean_rankic": -0.061,
-          "valid_dates": 183
-        },
-        "2022": {
-          "mean_rankic": -0.117,
-          "valid_dates": 242
-        },
-        "2023": {
-          "mean_rankic": 0.0103,
-          "valid_dates": 242
-        },
-        "2024": {
-          "mean_rankic": 0.0071,
-          "valid_dates": 222
-        }
-      },
-      "sign_consistent_across_years": false
-    },
-    {
-      "factor_id": "VOLUME_20D_AVG",
-      "year_robustness": {
-        "2021": {
-          "mean_rankic": -0.049,
-          "valid_dates": 183
-        },
-        "2022": {
-          "mean_rankic": 0.0032,
-          "valid_dates": 242
-        },
-        "2023": {
-          "mean_rankic": 0.0443,
-          "valid_dates": 242
-        },
-        "2024": {
-          "mean_rankic": -0.0119,
-          "valid_dates": 222
-        }
-      },
-      "sign_consistent_across_years": false
-    },
-    {
-      "factor_id": "VOLUME_60D_AVG",
-      "year_robustness": {
-        "2021": {
-          "mean_rankic": -0.044,
-          "valid_dates": 183
-        },
-        "2022": {
-          "mean_rankic": 0.0042,
-          "valid_dates": 242
-        },
-        "2023": {
-          "mean_rankic": 0.0433,
-          "valid_dates": 242
-        },
-        "2024": {
-          "mean_rankic": -0.0046,
-          "valid_dates": 222
-        }
-      },
-      "sign_consistent_across_years": false
-    },
+  "robustness_results": [
     {
       "factor_id": "AMOUNT_20D_AVG",
+      "horizon": "T20",
       "year_robustness": {
         "2021": {
           "mean_rankic": -0.1118,
@@ -329,10 +22,40 @@
           "valid_dates": 222
         }
       },
-      "sign_consistent_across_years": true
+      "regime_robustness": {
+        "SIDEWAYS_HIGH_VOL": {
+          "mean_rankic": -0.1106,
+          "valid_dates": 168
+        },
+        "BEAR_HIGH_VOL": {
+          "mean_rankic": -0.0087,
+          "valid_dates": 153
+        },
+        "BULL_HIGH_VOL": {
+          "mean_rankic": -0.1455,
+          "valid_dates": 113
+        },
+        "SIDEWAYS_LOW_VOL": {
+          "mean_rankic": -0.0672,
+          "valid_dates": 239
+        },
+        "BEAR_LOW_VOL": {
+          "mean_rankic": -0.0833,
+          "valid_dates": 178
+        },
+        "BULL_LOW_VOL": {
+          "mean_rankic": -0.1585,
+          "valid_dates": 38
+        }
+      },
+      "industry_neutral_warning": true,
+      "robustness_grade": "ROBUST",
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
     },
     {
       "factor_id": "AMOUNT_60D_AVG",
+      "horizon": "T20",
       "year_robustness": {
         "2021": {
           "mean_rankic": -0.0903,
@@ -351,7 +74,764 @@
           "valid_dates": 222
         }
       },
-      "sign_consistent_across_years": true
+      "regime_robustness": {
+        "SIDEWAYS_HIGH_VOL": {
+          "mean_rankic": -0.0892,
+          "valid_dates": 168
+        },
+        "BEAR_HIGH_VOL": {
+          "mean_rankic": 0.0114,
+          "valid_dates": 153
+        },
+        "BULL_HIGH_VOL": {
+          "mean_rankic": -0.146,
+          "valid_dates": 113
+        },
+        "SIDEWAYS_LOW_VOL": {
+          "mean_rankic": -0.0643,
+          "valid_dates": 239
+        },
+        "BEAR_LOW_VOL": {
+          "mean_rankic": -0.0659,
+          "valid_dates": 178
+        },
+        "BULL_LOW_VOL": {
+          "mean_rankic": -0.2024,
+          "valid_dates": 38
+        }
+      },
+      "industry_neutral_warning": true,
+      "robustness_grade": "ROBUST",
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MAX_DRAWDOWN_60D",
+      "horizon": "T20",
+      "year_robustness": {
+        "2021": {
+          "mean_rankic": -0.0823,
+          "valid_dates": 183
+        },
+        "2022": {
+          "mean_rankic": -0.0819,
+          "valid_dates": 242
+        },
+        "2023": {
+          "mean_rankic": 0.0719,
+          "valid_dates": 242
+        },
+        "2024": {
+          "mean_rankic": 0.0369,
+          "valid_dates": 222
+        }
+      },
+      "regime_robustness": {
+        "SIDEWAYS_HIGH_VOL": {
+          "mean_rankic": -0.073,
+          "valid_dates": 168
+        },
+        "BEAR_HIGH_VOL": {
+          "mean_rankic": -0.1016,
+          "valid_dates": 153
+        },
+        "BULL_HIGH_VOL": {
+          "mean_rankic": 0.0354,
+          "valid_dates": 113
+        },
+        "SIDEWAYS_LOW_VOL": {
+          "mean_rankic": 0.0619,
+          "valid_dates": 239
+        },
+        "BEAR_LOW_VOL": {
+          "mean_rankic": -0.0493,
+          "valid_dates": 178
+        },
+        "BULL_LOW_VOL": {
+          "mean_rankic": 0.2233,
+          "valid_dates": 38
+        }
+      },
+      "industry_neutral_warning": true,
+      "robustness_grade": "REVIEW",
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_10D",
+      "horizon": "T20",
+      "year_robustness": {
+        "2021": {
+          "mean_rankic": 0.0166,
+          "valid_dates": 183
+        },
+        "2022": {
+          "mean_rankic": -0.0328,
+          "valid_dates": 242
+        },
+        "2023": {
+          "mean_rankic": 0.0013,
+          "valid_dates": 242
+        },
+        "2024": {
+          "mean_rankic": -0.0186,
+          "valid_dates": 222
+        }
+      },
+      "regime_robustness": {
+        "SIDEWAYS_HIGH_VOL": {
+          "mean_rankic": 0.0115,
+          "valid_dates": 168
+        },
+        "BEAR_HIGH_VOL": {
+          "mean_rankic": -0.0518,
+          "valid_dates": 153
+        },
+        "BULL_HIGH_VOL": {
+          "mean_rankic": 0.0091,
+          "valid_dates": 113
+        },
+        "SIDEWAYS_LOW_VOL": {
+          "mean_rankic": 0.0183,
+          "valid_dates": 239
+        },
+        "BEAR_LOW_VOL": {
+          "mean_rankic": -0.0622,
+          "valid_dates": 178
+        },
+        "BULL_LOW_VOL": {
+          "mean_rankic": 0.0778,
+          "valid_dates": 38
+        }
+      },
+      "industry_neutral_warning": true,
+      "robustness_grade": "REVIEW",
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_1D",
+      "horizon": "T20",
+      "year_robustness": {
+        "2021": {
+          "mean_rankic": -0.0006,
+          "valid_dates": 183
+        },
+        "2022": {
+          "mean_rankic": -0.005,
+          "valid_dates": 242
+        },
+        "2023": {
+          "mean_rankic": 0.0075,
+          "valid_dates": 242
+        },
+        "2024": {
+          "mean_rankic": 0.0009,
+          "valid_dates": 222
+        }
+      },
+      "regime_robustness": {
+        "SIDEWAYS_HIGH_VOL": {
+          "mean_rankic": 0.0082,
+          "valid_dates": 168
+        },
+        "BEAR_HIGH_VOL": {
+          "mean_rankic": 0.017,
+          "valid_dates": 153
+        },
+        "BULL_HIGH_VOL": {
+          "mean_rankic": -0.0213,
+          "valid_dates": 113
+        },
+        "SIDEWAYS_LOW_VOL": {
+          "mean_rankic": 0.0038,
+          "valid_dates": 239
+        },
+        "BEAR_LOW_VOL": {
+          "mean_rankic": -0.0219,
+          "valid_dates": 178
+        },
+        "BULL_LOW_VOL": {
+          "mean_rankic": 0.0554,
+          "valid_dates": 38
+        }
+      },
+      "industry_neutral_warning": true,
+      "robustness_grade": "REVIEW",
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_20D",
+      "horizon": "T20",
+      "year_robustness": {
+        "2021": {
+          "mean_rankic": -0.022,
+          "valid_dates": 183
+        },
+        "2022": {
+          "mean_rankic": -0.0868,
+          "valid_dates": 242
+        },
+        "2023": {
+          "mean_rankic": 0.0014,
+          "valid_dates": 242
+        },
+        "2024": {
+          "mean_rankic": -0.0056,
+          "valid_dates": 222
+        }
+      },
+      "regime_robustness": {
+        "SIDEWAYS_HIGH_VOL": {
+          "mean_rankic": -0.0292,
+          "valid_dates": 168
+        },
+        "BEAR_HIGH_VOL": {
+          "mean_rankic": -0.1221,
+          "valid_dates": 153
+        },
+        "BULL_HIGH_VOL": {
+          "mean_rankic": -0.0055,
+          "valid_dates": 113
+        },
+        "SIDEWAYS_LOW_VOL": {
+          "mean_rankic": 0.0186,
+          "valid_dates": 239
+        },
+        "BEAR_LOW_VOL": {
+          "mean_rankic": -0.0655,
+          "valid_dates": 178
+        },
+        "BULL_LOW_VOL": {
+          "mean_rankic": 0.144,
+          "valid_dates": 38
+        }
+      },
+      "industry_neutral_warning": true,
+      "robustness_grade": "REVIEW",
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_5D",
+      "horizon": "T20",
+      "year_robustness": {
+        "2021": {
+          "mean_rankic": 0.0063,
+          "valid_dates": 183
+        },
+        "2022": {
+          "mean_rankic": -0.0217,
+          "valid_dates": 242
+        },
+        "2023": {
+          "mean_rankic": 0.0136,
+          "valid_dates": 242
+        },
+        "2024": {
+          "mean_rankic": -0.0182,
+          "valid_dates": 222
+        }
+      },
+      "regime_robustness": {
+        "SIDEWAYS_HIGH_VOL": {
+          "mean_rankic": 0.0169,
+          "valid_dates": 168
+        },
+        "BEAR_HIGH_VOL": {
+          "mean_rankic": -0.0144,
+          "valid_dates": 153
+        },
+        "BULL_HIGH_VOL": {
+          "mean_rankic": -0.0244,
+          "valid_dates": 113
+        },
+        "SIDEWAYS_LOW_VOL": {
+          "mean_rankic": 0.0075,
+          "valid_dates": 239
+        },
+        "BEAR_LOW_VOL": {
+          "mean_rankic": -0.0421,
+          "valid_dates": 178
+        },
+        "BULL_LOW_VOL": {
+          "mean_rankic": 0.0787,
+          "valid_dates": 38
+        }
+      },
+      "industry_neutral_warning": true,
+      "robustness_grade": "REVIEW",
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_60D",
+      "horizon": "T20",
+      "year_robustness": {
+        "2021": {
+          "mean_rankic": -0.061,
+          "valid_dates": 183
+        },
+        "2022": {
+          "mean_rankic": -0.117,
+          "valid_dates": 242
+        },
+        "2023": {
+          "mean_rankic": 0.0103,
+          "valid_dates": 242
+        },
+        "2024": {
+          "mean_rankic": 0.0071,
+          "valid_dates": 222
+        }
+      },
+      "regime_robustness": {
+        "SIDEWAYS_HIGH_VOL": {
+          "mean_rankic": -0.0044,
+          "valid_dates": 168
+        },
+        "BEAR_HIGH_VOL": {
+          "mean_rankic": -0.1471,
+          "valid_dates": 153
+        },
+        "BULL_HIGH_VOL": {
+          "mean_rankic": 0.0139,
+          "valid_dates": 113
+        },
+        "SIDEWAYS_LOW_VOL": {
+          "mean_rankic": 0.0082,
+          "valid_dates": 239
+        },
+        "BEAR_LOW_VOL": {
+          "mean_rankic": -0.1007,
+          "valid_dates": 178
+        },
+        "BULL_LOW_VOL": {
+          "mean_rankic": 0.059,
+          "valid_dates": 38
+        }
+      },
+      "industry_neutral_warning": true,
+      "robustness_grade": "REVIEW",
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "REV_1D",
+      "horizon": "T20",
+      "year_robustness": {
+        "2021": {
+          "mean_rankic": 0.0006,
+          "valid_dates": 183
+        },
+        "2022": {
+          "mean_rankic": 0.005,
+          "valid_dates": 242
+        },
+        "2023": {
+          "mean_rankic": -0.0075,
+          "valid_dates": 242
+        },
+        "2024": {
+          "mean_rankic": -0.0009,
+          "valid_dates": 222
+        }
+      },
+      "regime_robustness": {
+        "SIDEWAYS_HIGH_VOL": {
+          "mean_rankic": -0.0082,
+          "valid_dates": 168
+        },
+        "BEAR_HIGH_VOL": {
+          "mean_rankic": -0.017,
+          "valid_dates": 153
+        },
+        "BULL_HIGH_VOL": {
+          "mean_rankic": 0.0213,
+          "valid_dates": 113
+        },
+        "SIDEWAYS_LOW_VOL": {
+          "mean_rankic": -0.0038,
+          "valid_dates": 239
+        },
+        "BEAR_LOW_VOL": {
+          "mean_rankic": 0.0219,
+          "valid_dates": 178
+        },
+        "BULL_LOW_VOL": {
+          "mean_rankic": -0.0554,
+          "valid_dates": 38
+        }
+      },
+      "industry_neutral_warning": true,
+      "robustness_grade": "REVIEW",
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "REV_5D",
+      "horizon": "T20",
+      "year_robustness": {
+        "2021": {
+          "mean_rankic": -0.0063,
+          "valid_dates": 183
+        },
+        "2022": {
+          "mean_rankic": 0.0217,
+          "valid_dates": 242
+        },
+        "2023": {
+          "mean_rankic": -0.0136,
+          "valid_dates": 242
+        },
+        "2024": {
+          "mean_rankic": 0.0182,
+          "valid_dates": 222
+        }
+      },
+      "regime_robustness": {
+        "SIDEWAYS_HIGH_VOL": {
+          "mean_rankic": -0.0169,
+          "valid_dates": 168
+        },
+        "BEAR_HIGH_VOL": {
+          "mean_rankic": 0.0144,
+          "valid_dates": 153
+        },
+        "BULL_HIGH_VOL": {
+          "mean_rankic": 0.0244,
+          "valid_dates": 113
+        },
+        "SIDEWAYS_LOW_VOL": {
+          "mean_rankic": -0.0075,
+          "valid_dates": 239
+        },
+        "BEAR_LOW_VOL": {
+          "mean_rankic": 0.0421,
+          "valid_dates": 178
+        },
+        "BULL_LOW_VOL": {
+          "mean_rankic": -0.0787,
+          "valid_dates": 38
+        }
+      },
+      "industry_neutral_warning": true,
+      "robustness_grade": "REVIEW",
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_20D",
+      "horizon": "T20",
+      "year_robustness": {
+        "2021": {
+          "mean_rankic": -0.022,
+          "valid_dates": 183
+        },
+        "2022": {
+          "mean_rankic": -0.0868,
+          "valid_dates": 242
+        },
+        "2023": {
+          "mean_rankic": 0.0014,
+          "valid_dates": 242
+        },
+        "2024": {
+          "mean_rankic": -0.0056,
+          "valid_dates": 222
+        }
+      },
+      "regime_robustness": {
+        "SIDEWAYS_HIGH_VOL": {
+          "mean_rankic": -0.0292,
+          "valid_dates": 168
+        },
+        "BEAR_HIGH_VOL": {
+          "mean_rankic": -0.1221,
+          "valid_dates": 153
+        },
+        "BULL_HIGH_VOL": {
+          "mean_rankic": -0.0055,
+          "valid_dates": 113
+        },
+        "SIDEWAYS_LOW_VOL": {
+          "mean_rankic": 0.0186,
+          "valid_dates": 239
+        },
+        "BEAR_LOW_VOL": {
+          "mean_rankic": -0.0655,
+          "valid_dates": 178
+        },
+        "BULL_LOW_VOL": {
+          "mean_rankic": 0.144,
+          "valid_dates": 38
+        }
+      },
+      "industry_neutral_warning": true,
+      "robustness_grade": "REVIEW",
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_60D",
+      "horizon": "T20",
+      "year_robustness": {
+        "2021": {
+          "mean_rankic": -0.061,
+          "valid_dates": 183
+        },
+        "2022": {
+          "mean_rankic": -0.117,
+          "valid_dates": 242
+        },
+        "2023": {
+          "mean_rankic": 0.0103,
+          "valid_dates": 242
+        },
+        "2024": {
+          "mean_rankic": 0.0071,
+          "valid_dates": 222
+        }
+      },
+      "regime_robustness": {
+        "SIDEWAYS_HIGH_VOL": {
+          "mean_rankic": -0.0044,
+          "valid_dates": 168
+        },
+        "BEAR_HIGH_VOL": {
+          "mean_rankic": -0.1471,
+          "valid_dates": 153
+        },
+        "BULL_HIGH_VOL": {
+          "mean_rankic": 0.0139,
+          "valid_dates": 113
+        },
+        "SIDEWAYS_LOW_VOL": {
+          "mean_rankic": 0.0082,
+          "valid_dates": 239
+        },
+        "BEAR_LOW_VOL": {
+          "mean_rankic": -0.1007,
+          "valid_dates": 178
+        },
+        "BULL_LOW_VOL": {
+          "mean_rankic": 0.059,
+          "valid_dates": 38
+        }
+      },
+      "industry_neutral_warning": true,
+      "robustness_grade": "REVIEW",
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLATILITY_20D",
+      "horizon": "T20",
+      "year_robustness": {
+        "2021": {
+          "mean_rankic": 0.0179,
+          "valid_dates": 183
+        },
+        "2022": {
+          "mean_rankic": 0.0138,
+          "valid_dates": 242
+        },
+        "2023": {
+          "mean_rankic": -0.0843,
+          "valid_dates": 242
+        },
+        "2024": {
+          "mean_rankic": -0.067,
+          "valid_dates": 222
+        }
+      },
+      "regime_robustness": {
+        "SIDEWAYS_HIGH_VOL": {
+          "mean_rankic": 0.0791,
+          "valid_dates": 168
+        },
+        "BEAR_HIGH_VOL": {
+          "mean_rankic": 0.0045,
+          "valid_dates": 153
+        },
+        "BULL_HIGH_VOL": {
+          "mean_rankic": -0.0392,
+          "valid_dates": 113
+        },
+        "SIDEWAYS_LOW_VOL": {
+          "mean_rankic": -0.1133,
+          "valid_dates": 239
+        },
+        "BEAR_LOW_VOL": {
+          "mean_rankic": -0.033,
+          "valid_dates": 178
+        },
+        "BULL_LOW_VOL": {
+          "mean_rankic": -0.1381,
+          "valid_dates": 38
+        }
+      },
+      "industry_neutral_warning": true,
+      "robustness_grade": "REVIEW",
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLATILITY_60D",
+      "horizon": "T20",
+      "year_robustness": {
+        "2021": {
+          "mean_rankic": 0.0517,
+          "valid_dates": 183
+        },
+        "2022": {
+          "mean_rankic": -0.0388,
+          "valid_dates": 242
+        },
+        "2023": {
+          "mean_rankic": -0.1186,
+          "valid_dates": 242
+        },
+        "2024": {
+          "mean_rankic": -0.0891,
+          "valid_dates": 222
+        }
+      },
+      "regime_robustness": {
+        "SIDEWAYS_HIGH_VOL": {
+          "mean_rankic": 0.0779,
+          "valid_dates": 168
+        },
+        "BEAR_HIGH_VOL": {
+          "mean_rankic": -0.0402,
+          "valid_dates": 153
+        },
+        "BULL_HIGH_VOL": {
+          "mean_rankic": -0.0796,
+          "valid_dates": 113
+        },
+        "SIDEWAYS_LOW_VOL": {
+          "mean_rankic": -0.123,
+          "valid_dates": 239
+        },
+        "BEAR_LOW_VOL": {
+          "mean_rankic": -0.0436,
+          "valid_dates": 178
+        },
+        "BULL_LOW_VOL": {
+          "mean_rankic": -0.2415,
+          "valid_dates": 38
+        }
+      },
+      "industry_neutral_warning": true,
+      "robustness_grade": "REVIEW",
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLUME_20D_AVG",
+      "horizon": "T20",
+      "year_robustness": {
+        "2021": {
+          "mean_rankic": -0.049,
+          "valid_dates": 183
+        },
+        "2022": {
+          "mean_rankic": 0.0032,
+          "valid_dates": 242
+        },
+        "2023": {
+          "mean_rankic": 0.0443,
+          "valid_dates": 242
+        },
+        "2024": {
+          "mean_rankic": -0.0119,
+          "valid_dates": 222
+        }
+      },
+      "regime_robustness": {
+        "SIDEWAYS_HIGH_VOL": {
+          "mean_rankic": -0.0898,
+          "valid_dates": 168
+        },
+        "BEAR_HIGH_VOL": {
+          "mean_rankic": 0.0068,
+          "valid_dates": 153
+        },
+        "BULL_HIGH_VOL": {
+          "mean_rankic": -0.0528,
+          "valid_dates": 113
+        },
+        "SIDEWAYS_LOW_VOL": {
+          "mean_rankic": 0.0642,
+          "valid_dates": 239
+        },
+        "BEAR_LOW_VOL": {
+          "mean_rankic": 0.0121,
+          "valid_dates": 178
+        },
+        "BULL_LOW_VOL": {
+          "mean_rankic": 0.063,
+          "valid_dates": 38
+        }
+      },
+      "industry_neutral_warning": true,
+      "robustness_grade": "REVIEW",
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLUME_60D_AVG",
+      "horizon": "T20",
+      "year_robustness": {
+        "2021": {
+          "mean_rankic": -0.044,
+          "valid_dates": 183
+        },
+        "2022": {
+          "mean_rankic": 0.0042,
+          "valid_dates": 242
+        },
+        "2023": {
+          "mean_rankic": 0.0433,
+          "valid_dates": 242
+        },
+        "2024": {
+          "mean_rankic": -0.0046,
+          "valid_dates": 222
+        }
+      },
+      "regime_robustness": {
+        "SIDEWAYS_HIGH_VOL": {
+          "mean_rankic": -0.0809,
+          "valid_dates": 168
+        },
+        "BEAR_HIGH_VOL": {
+          "mean_rankic": 0.0071,
+          "valid_dates": 153
+        },
+        "BULL_HIGH_VOL": {
+          "mean_rankic": -0.0538,
+          "valid_dates": 113
+        },
+        "SIDEWAYS_LOW_VOL": {
+          "mean_rankic": 0.0675,
+          "valid_dates": 239
+        },
+        "BEAR_LOW_VOL": {
+          "mean_rankic": 0.0212,
+          "valid_dates": 178
+        },
+        "BULL_LOW_VOL": {
+          "mean_rankic": 0.029,
+          "valid_dates": 38
+        }
+      },
+      "industry_neutral_warning": true,
+      "robustness_grade": "REVIEW",
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
     }
   ],
   "alpha_validated": false

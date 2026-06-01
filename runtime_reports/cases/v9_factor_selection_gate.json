@@ -1,457 +1,960 @@
 {
   "status": "V9_FACTOR_SELECTION_GATE_BUILT",
-  "promoted": [
+  "factor_count": 16,
+  "horizon_count": 5,
+  "promoted_factor_count": 16,
+  "watch_factor_count": 20,
+  "rejected_factor_count": 44,
+  "selection_results": [
     {
-      "factor_id": "MOM_60D",
-      "horizon": "T20",
-      "mean_rankic": -0.03983,
-      "positive_ratio": 0.4364,
-      "grade": "PROMOTE_TO_COUNCIL_REVIEW"
-    },
-    {
-      "factor_id": "MOM_60D",
-      "horizon": "T60",
-      "mean_rankic": -0.065552,
-      "positive_ratio": 0.3816,
-      "grade": "PROMOTE_TO_COUNCIL_REVIEW"
-    },
-    {
-      "factor_id": "VOLATILITY_20D",
-      "horizon": "T20",
-      "mean_rankic": -0.032232,
-      "positive_ratio": 0.4488,
-      "grade": "PROMOTE_TO_COUNCIL_REVIEW"
-    },
-    {
-      "factor_id": "VOLATILITY_20D",
-      "horizon": "T60",
-      "mean_rankic": -0.109808,
-      "positive_ratio": 0.3345,
-      "grade": "PROMOTE_TO_COUNCIL_REVIEW"
-    },
-    {
-      "factor_id": "VOLATILITY_60D",
+      "factor_id": "AMOUNT_20D_AVG",
       "horizon": "T10",
-      "mean_rankic": -0.035562,
-      "positive_ratio": 0.4483,
-      "grade": "PROMOTE_TO_COUNCIL_REVIEW"
+      "decision": "PROMOTE_TO_COUNCIL_REVIEW",
+      "evidence": {
+        "mean_rankic": -0.04693,
+        "positive_rankic_ratio": 0.3993,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "ROBUST"
+      },
+      "ready_for_council_research_review": true,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
     },
     {
-      "factor_id": "VOLATILITY_60D",
+      "factor_id": "AMOUNT_20D_AVG",
       "horizon": "T20",
-      "mean_rankic": -0.054457,
-      "positive_ratio": 0.4499,
-      "grade": "PROMOTE_TO_COUNCIL_REVIEW"
+      "decision": "PROMOTE_TO_COUNCIL_REVIEW",
+      "evidence": {
+        "mean_rankic": -0.082406,
+        "positive_rankic_ratio": 0.3093,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "ROBUST"
+      },
+      "ready_for_council_research_review": true,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
     },
     {
-      "factor_id": "VOLATILITY_60D",
+      "factor_id": "AMOUNT_20D_AVG",
       "horizon": "T60",
-      "mean_rankic": -0.123289,
-      "positive_ratio": 0.3145,
-      "grade": "PROMOTE_TO_COUNCIL_REVIEW"
+      "decision": "PROMOTE_TO_COUNCIL_REVIEW",
+      "evidence": {
+        "mean_rankic": -0.146818,
+        "positive_rankic_ratio": 0.2214,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "ROBUST"
+      },
+      "ready_for_council_research_review": true,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "AMOUNT_60D_AVG",
+      "horizon": "T10",
+      "decision": "PROMOTE_TO_COUNCIL_REVIEW",
+      "evidence": {
+        "mean_rankic": -0.04274,
+        "positive_rankic_ratio": 0.4093,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "ROBUST"
+      },
+      "ready_for_council_research_review": true,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "AMOUNT_60D_AVG",
+      "horizon": "T20",
+      "decision": "PROMOTE_TO_COUNCIL_REVIEW",
+      "evidence": {
+        "mean_rankic": -0.072574,
+        "positive_rankic_ratio": 0.3262,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "ROBUST"
+      },
+      "ready_for_council_research_review": true,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "AMOUNT_60D_AVG",
+      "horizon": "T60",
+      "decision": "PROMOTE_TO_COUNCIL_REVIEW",
+      "evidence": {
+        "mean_rankic": -0.135216,
+        "positive_rankic_ratio": 0.2238,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "ROBUST"
+      },
+      "ready_for_council_research_review": true,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
     },
     {
       "factor_id": "MAX_DRAWDOWN_60D",
       "horizon": "T60",
-      "mean_rankic": 0.035113,
-      "positive_ratio": 0.5901,
-      "grade": "PROMOTE_TO_COUNCIL_REVIEW"
+      "decision": "PROMOTE_TO_COUNCIL_REVIEW",
+      "evidence": {
+        "mean_rankic": 0.035113,
+        "positive_rankic_ratio": 0.5901,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_council_research_review": true,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_60D",
+      "horizon": "T20",
+      "decision": "PROMOTE_TO_COUNCIL_REVIEW",
+      "evidence": {
+        "mean_rankic": -0.03983,
+        "positive_rankic_ratio": 0.4364,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_council_research_review": true,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_60D",
+      "horizon": "T60",
+      "decision": "PROMOTE_TO_COUNCIL_REVIEW",
+      "evidence": {
+        "mean_rankic": -0.065552,
+        "positive_rankic_ratio": 0.3816,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_council_research_review": true,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
     },
     {
       "factor_id": "TRAILING_BENCHMARK_RELATIVE_60D",
       "horizon": "T20",
-      "mean_rankic": -0.03983,
-      "positive_ratio": 0.4364,
-      "grade": "PROMOTE_TO_COUNCIL_REVIEW"
+      "decision": "PROMOTE_TO_COUNCIL_REVIEW",
+      "evidence": {
+        "mean_rankic": -0.03983,
+        "positive_rankic_ratio": 0.4364,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_council_research_review": true,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
     },
     {
       "factor_id": "TRAILING_BENCHMARK_RELATIVE_60D",
       "horizon": "T60",
-      "mean_rankic": -0.065552,
-      "positive_ratio": 0.3816,
-      "grade": "PROMOTE_TO_COUNCIL_REVIEW"
+      "decision": "PROMOTE_TO_COUNCIL_REVIEW",
+      "evidence": {
+        "mean_rankic": -0.065552,
+        "positive_rankic_ratio": 0.3816,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_council_research_review": true,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
     },
     {
-      "factor_id": "AMOUNT_20D_AVG",
-      "horizon": "T10",
-      "mean_rankic": -0.04693,
-      "positive_ratio": 0.3993,
-      "grade": "PROMOTE_TO_COUNCIL_REVIEW"
-    },
-    {
-      "factor_id": "AMOUNT_20D_AVG",
+      "factor_id": "VOLATILITY_20D",
       "horizon": "T20",
-      "mean_rankic": -0.082406,
-      "positive_ratio": 0.3093,
-      "grade": "PROMOTE_TO_COUNCIL_REVIEW"
+      "decision": "PROMOTE_TO_COUNCIL_REVIEW",
+      "evidence": {
+        "mean_rankic": -0.032232,
+        "positive_rankic_ratio": 0.4488,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_council_research_review": true,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLATILITY_20D",
+      "horizon": "T60",
+      "decision": "PROMOTE_TO_COUNCIL_REVIEW",
+      "evidence": {
+        "mean_rankic": -0.109808,
+        "positive_rankic_ratio": 0.3345,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_council_research_review": true,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLATILITY_60D",
+      "horizon": "T10",
+      "decision": "PROMOTE_TO_COUNCIL_REVIEW",
+      "evidence": {
+        "mean_rankic": -0.035562,
+        "positive_rankic_ratio": 0.4483,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_council_research_review": true,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLATILITY_60D",
+      "horizon": "T20",
+      "decision": "PROMOTE_TO_COUNCIL_REVIEW",
+      "evidence": {
+        "mean_rankic": -0.054457,
+        "positive_rankic_ratio": 0.4499,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_council_research_review": true,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLATILITY_60D",
+      "horizon": "T60",
+      "decision": "PROMOTE_TO_COUNCIL_REVIEW",
+      "evidence": {
+        "mean_rankic": -0.123289,
+        "positive_rankic_ratio": 0.3145,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_council_research_review": true,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
     },
     {
       "factor_id": "AMOUNT_20D_AVG",
+      "horizon": "T5",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": -0.026917,
+        "positive_rankic_ratio": 0.4325
+      },
+      "ready_for_council_research_review": null,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "AMOUNT_60D_AVG",
+      "horizon": "T5",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": -0.024019,
+        "positive_rankic_ratio": 0.4392
+      },
+      "ready_for_council_research_review": null,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MAX_DRAWDOWN_60D",
+      "horizon": "T1",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": 0.017884,
+        "positive_rankic_ratio": 0.5286
+      },
+      "ready_for_council_research_review": null,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_10D",
       "horizon": "T60",
-      "mean_rankic": -0.146818,
-      "positive_ratio": 0.2214,
-      "grade": "PROMOTE_TO_COUNCIL_REVIEW"
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": -0.019593,
+        "positive_rankic_ratio": 0.4711
+      },
+      "ready_for_council_research_review": null,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
     },
     {
-      "factor_id": "AMOUNT_60D_AVG",
-      "horizon": "T10",
-      "mean_rankic": -0.04274,
-      "positive_ratio": 0.4093,
-      "grade": "PROMOTE_TO_COUNCIL_REVIEW"
+      "factor_id": "MOM_1D",
+      "horizon": "T1",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": -0.019841,
+        "positive_rankic_ratio": 0.4581
+      },
+      "ready_for_council_research_review": null,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
     },
     {
-      "factor_id": "AMOUNT_60D_AVG",
+      "factor_id": "MOM_20D",
       "horizon": "T20",
-      "mean_rankic": -0.072574,
-      "positive_ratio": 0.3262,
-      "grade": "PROMOTE_TO_COUNCIL_REVIEW"
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": -0.029194,
+        "positive_rankic_ratio": 0.4601
+      },
+      "ready_for_council_research_review": null,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_20D",
+      "horizon": "T60",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": -0.028923,
+        "positive_rankic_ratio": 0.4829
+      },
+      "ready_for_council_research_review": null,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_5D",
+      "horizon": "T60",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": -0.016374,
+        "positive_rankic_ratio": 0.4794
+      },
+      "ready_for_council_research_review": null,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_60D",
+      "horizon": "T5",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": -0.022991,
+        "positive_rankic_ratio": 0.4624
+      },
+      "ready_for_council_research_review": null,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_60D",
+      "horizon": "T10",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": -0.02899,
+        "positive_rankic_ratio": 0.4516
+      },
+      "ready_for_council_research_review": null,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "REV_1D",
+      "horizon": "T1",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": 0.019841,
+        "positive_rankic_ratio": 0.5419
+      },
+      "ready_for_council_research_review": null,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "REV_5D",
+      "horizon": "T60",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": 0.016374,
+        "positive_rankic_ratio": 0.5206
+      },
+      "ready_for_council_research_review": null,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_20D",
+      "horizon": "T20",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": -0.029194,
+        "positive_rankic_ratio": 0.4601
+      },
+      "ready_for_council_research_review": null,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_20D",
+      "horizon": "T60",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": -0.028923,
+        "positive_rankic_ratio": 0.4829
+      },
+      "ready_for_council_research_review": null,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_60D",
+      "horizon": "T5",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": -0.022991,
+        "positive_rankic_ratio": 0.4624
+      },
+      "ready_for_council_research_review": null,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_60D",
+      "horizon": "T10",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": -0.02899,
+        "positive_rankic_ratio": 0.4516
+      },
+      "ready_for_council_research_review": null,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLATILITY_20D",
+      "horizon": "T1",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": -0.022349,
+        "positive_rankic_ratio": 0.4736
+      },
+      "ready_for_council_research_review": null,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLATILITY_20D",
+      "horizon": "T5",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": -0.015182,
+        "positive_rankic_ratio": 0.469
+      },
+      "ready_for_council_research_review": null,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLATILITY_60D",
+      "horizon": "T1",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": -0.033197,
+        "positive_rankic_ratio": 0.4604
+      },
+      "ready_for_council_research_review": null,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLATILITY_60D",
+      "horizon": "T5",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": -0.033975,
+        "positive_rankic_ratio": 0.4569
+      },
+      "ready_for_council_research_review": null,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "AMOUNT_20D_AVG",
+      "horizon": "T1",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.009553,
+        "valid_date_count": 908
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
     },
     {
       "factor_id": "AMOUNT_60D_AVG",
+      "horizon": "T1",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.007566,
+        "valid_date_count": 908
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MAX_DRAWDOWN_60D",
+      "horizon": "T5",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.004822,
+        "valid_date_count": 904
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MAX_DRAWDOWN_60D",
+      "horizon": "T10",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.013634,
+        "valid_date_count": 899
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MAX_DRAWDOWN_60D",
+      "horizon": "T20",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.010452,
+        "valid_date_count": 889
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_10D",
+      "horizon": "T1",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.009939,
+        "valid_date_count": 908
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_10D",
+      "horizon": "T5",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.005562,
+        "valid_date_count": 904
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_10D",
+      "horizon": "T10",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.004299,
+        "valid_date_count": 899
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_10D",
+      "horizon": "T20",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.009799,
+        "valid_date_count": 889
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_1D",
+      "horizon": "T5",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.004791,
+        "valid_date_count": 904
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_1D",
+      "horizon": "T10",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.004949,
+        "valid_date_count": 899
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_1D",
+      "horizon": "T20",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.000787,
+        "valid_date_count": 889
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_1D",
       "horizon": "T60",
-      "mean_rankic": -0.135216,
-      "positive_ratio": 0.2238,
-      "grade": "PROMOTE_TO_COUNCIL_REVIEW"
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.006043,
+        "valid_date_count": 849
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_20D",
+      "horizon": "T1",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.004823,
+        "valid_date_count": 908
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_20D",
+      "horizon": "T5",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.009503,
+        "valid_date_count": 904
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_20D",
+      "horizon": "T10",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.012166,
+        "valid_date_count": 899
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_5D",
+      "horizon": "T1",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.013989,
+        "valid_date_count": 908
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_5D",
+      "horizon": "T5",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.007056,
+        "valid_date_count": 904
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_5D",
+      "horizon": "T10",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.003681,
+        "valid_date_count": 899
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_5D",
+      "horizon": "T20",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.005451,
+        "valid_date_count": 889
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_60D",
+      "horizon": "T1",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.002529,
+        "valid_date_count": 908
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "REV_1D",
+      "horizon": "T5",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.004791,
+        "valid_date_count": 904
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "REV_1D",
+      "horizon": "T10",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.004949,
+        "valid_date_count": 899
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "REV_1D",
+      "horizon": "T20",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.000787,
+        "valid_date_count": 889
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "REV_1D",
+      "horizon": "T60",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.006043,
+        "valid_date_count": 849
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "REV_5D",
+      "horizon": "T1",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.013989,
+        "valid_date_count": 908
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "REV_5D",
+      "horizon": "T5",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.007056,
+        "valid_date_count": 904
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "REV_5D",
+      "horizon": "T10",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.003681,
+        "valid_date_count": 899
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "REV_5D",
+      "horizon": "T20",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.005451,
+        "valid_date_count": 889
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_20D",
+      "horizon": "T1",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.004823,
+        "valid_date_count": 908
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_20D",
+      "horizon": "T5",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.009503,
+        "valid_date_count": 904
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_20D",
+      "horizon": "T10",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.012166,
+        "valid_date_count": 899
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_60D",
+      "horizon": "T1",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.002529,
+        "valid_date_count": 908
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLATILITY_20D",
+      "horizon": "T10",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.01409,
+        "valid_date_count": 899
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLUME_20D_AVG",
+      "horizon": "T1",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.013599,
+        "valid_date_count": 908
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLUME_20D_AVG",
+      "horizon": "T5",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.011033,
+        "valid_date_count": 904
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLUME_20D_AVG",
+      "horizon": "T10",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.008967,
+        "valid_date_count": 899
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLUME_20D_AVG",
+      "horizon": "T20",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.000125,
+        "valid_date_count": 889
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLUME_20D_AVG",
+      "horizon": "T60",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.000891,
+        "valid_date_count": 849
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLUME_60D_AVG",
+      "horizon": "T1",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.014865,
+        "valid_date_count": 908
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLUME_60D_AVG",
+      "horizon": "T5",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.011204,
+        "valid_date_count": 904
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLUME_60D_AVG",
+      "horizon": "T10",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.009364,
+        "valid_date_count": 899
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLUME_60D_AVG",
+      "horizon": "T20",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.002723,
+        "valid_date_count": 889
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLUME_60D_AVG",
+      "horizon": "T60",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.005655,
+        "valid_date_count": 849
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
     }
   ],
-  "watch": [
-    {
-      "factor_id": "MOM_20D",
-      "horizon": "T20",
-      "mean_rankic": -0.029194,
-      "grade": "WATCH"
-    },
-    {
-      "factor_id": "MOM_20D",
-      "horizon": "T60",
-      "mean_rankic": -0.028923,
-      "grade": "WATCH"
-    },
-    {
-      "factor_id": "MOM_60D",
-      "horizon": "T5",
-      "mean_rankic": -0.022991,
-      "grade": "WATCH"
-    },
-    {
-      "factor_id": "MOM_60D",
-      "horizon": "T10",
-      "mean_rankic": -0.02899,
-      "grade": "WATCH"
-    },
-    {
-      "factor_id": "VOLATILITY_20D",
-      "horizon": "T1",
-      "mean_rankic": -0.022349,
-      "grade": "WATCH"
-    },
-    {
-      "factor_id": "VOLATILITY_60D",
-      "horizon": "T1",
-      "mean_rankic": -0.033197,
-      "grade": "WATCH"
-    },
-    {
-      "factor_id": "VOLATILITY_60D",
-      "horizon": "T5",
-      "mean_rankic": -0.033975,
-      "grade": "WATCH"
-    },
-    {
-      "factor_id": "TRAILING_BENCHMARK_RELATIVE_20D",
-      "horizon": "T20",
-      "mean_rankic": -0.029194,
-      "grade": "WATCH"
-    },
-    {
-      "factor_id": "TRAILING_BENCHMARK_RELATIVE_20D",
-      "horizon": "T60",
-      "mean_rankic": -0.028923,
-      "grade": "WATCH"
-    },
-    {
-      "factor_id": "TRAILING_BENCHMARK_RELATIVE_60D",
-      "horizon": "T5",
-      "mean_rankic": -0.022991,
-      "grade": "WATCH"
-    },
-    {
-      "factor_id": "TRAILING_BENCHMARK_RELATIVE_60D",
-      "horizon": "T10",
-      "mean_rankic": -0.02899,
-      "grade": "WATCH"
-    },
-    {
-      "factor_id": "AMOUNT_20D_AVG",
-      "horizon": "T5",
-      "mean_rankic": -0.026917,
-      "grade": "WATCH"
-    },
-    {
-      "factor_id": "AMOUNT_60D_AVG",
-      "horizon": "T5",
-      "mean_rankic": -0.024019,
-      "grade": "WATCH"
-    }
-  ],
-  "rejected": [
-    {
-      "factor_id": "MOM_1D",
-      "horizon": "T1",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "MOM_1D",
-      "horizon": "T5",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "MOM_1D",
-      "horizon": "T10",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "MOM_1D",
-      "horizon": "T20",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "MOM_1D",
-      "horizon": "T60",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "MOM_5D",
-      "horizon": "T1",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "MOM_5D",
-      "horizon": "T5",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "MOM_5D",
-      "horizon": "T10",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "MOM_5D",
-      "horizon": "T20",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "MOM_5D",
-      "horizon": "T60",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "MOM_10D",
-      "horizon": "T1",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "MOM_10D",
-      "horizon": "T5",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "MOM_10D",
-      "horizon": "T10",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "MOM_10D",
-      "horizon": "T20",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "MOM_10D",
-      "horizon": "T60",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "MOM_20D",
-      "horizon": "T1",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "MOM_20D",
-      "horizon": "T5",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "MOM_20D",
-      "horizon": "T10",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "MOM_60D",
-      "horizon": "T1",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "REV_1D",
-      "horizon": "T1",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "REV_1D",
-      "horizon": "T5",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "REV_1D",
-      "horizon": "T10",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "REV_1D",
-      "horizon": "T20",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "REV_1D",
-      "horizon": "T60",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "REV_5D",
-      "horizon": "T1",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "REV_5D",
-      "horizon": "T5",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "REV_5D",
-      "horizon": "T10",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "REV_5D",
-      "horizon": "T20",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "REV_5D",
-      "horizon": "T60",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "VOLATILITY_20D",
-      "horizon": "T5",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "VOLATILITY_20D",
-      "horizon": "T10",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "MAX_DRAWDOWN_60D",
-      "horizon": "T1",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "MAX_DRAWDOWN_60D",
-      "horizon": "T5",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "MAX_DRAWDOWN_60D",
-      "horizon": "T10",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "MAX_DRAWDOWN_60D",
-      "horizon": "T20",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "TRAILING_BENCHMARK_RELATIVE_20D",
-      "horizon": "T1",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "TRAILING_BENCHMARK_RELATIVE_20D",
-      "horizon": "T5",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "TRAILING_BENCHMARK_RELATIVE_20D",
-      "horizon": "T10",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "TRAILING_BENCHMARK_RELATIVE_60D",
-      "horizon": "T1",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "VOLUME_20D_AVG",
-      "horizon": "T1",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "VOLUME_20D_AVG",
-      "horizon": "T5",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "VOLUME_20D_AVG",
-      "horizon": "T10",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "VOLUME_20D_AVG",
-      "horizon": "T20",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "VOLUME_20D_AVG",
-      "horizon": "T60",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "VOLUME_60D_AVG",
-      "horizon": "T1",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "VOLUME_60D_AVG",
-      "horizon": "T5",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "VOLUME_60D_AVG",
-      "horizon": "T10",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "VOLUME_60D_AVG",
-      "horizon": "T20",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "VOLUME_60D_AVG",
-      "horizon": "T60",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "AMOUNT_20D_AVG",
-      "horizon": "T1",
-      "reason": "NO_SIGNAL"
-    },
-    {
-      "factor_id": "AMOUNT_60D_AVG",
-      "horizon": "T1",
-      "reason": "NO_SIGNAL"
-    }
-  ],
-  "promoted_count": 16,
   "alpha_validated": false,
   "ready_for_alpha_claim": false
 }

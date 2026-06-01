@@ -1,0 +1,18 @@
+{
+  "status": "V10_FULL_REPRODUCIBLE_CHAIN_PASS",
+  "steps": [
+    "build_v10_council_input_pack.py",
+    "run_v10_research_council_review.py",
+    "run_v10_devil_advocate_review.py",
+    "build_v10_candidate_factor_thesis_pack.py",
+    "audit_v10_upstream_safety_alpha_fields.py",
+    "check_v11_paper_watchlist_entry_gate.py",
+    "build_v10_closeout.py"
+  ],
+  "steps_returncode_pass": true,
+  "final_closeout_status": "CASE_EXPANSION_V10_COUNCIL_RESEARCH_REVIEW_CONFIRMED",
+  "final_closeout_confirmed": true,
+  "upstream_safety_alpha_audit_pass": true,
+  "ready_for_paper_watchlist": true,
+  "blocking_reasons": []
+}

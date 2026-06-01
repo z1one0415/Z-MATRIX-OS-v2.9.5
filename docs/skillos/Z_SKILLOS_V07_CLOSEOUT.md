@@ -52,6 +52,22 @@ key=True, key=True with space, "key":true, "key":True, 'key':True, subprocess.ru
 ## Ledger Status
 agent ledgers: empty, governance ledgers: empty
 
+
+
+## Branch Topology
+The v0.7 branch lineage:
+```
+v4.0-batch-0-final-hardgates-scope-lock @ d42dc83
+ ├─ skillos-v0.6-factor-readonly-domain (v0.1→v0.6 complete)
+ └─ skillos-v0.7-council-draft-domain (v0.7A→v0.7.5)
+      └─ v0.7B: infrastructure restored from v0.6 branch
+```
+
+Note: v0.7 was created from parent branch d42dc83, not from v0.6 HEAD.
+Infrastructure files (registry shards, scan/build scripts, domain routers v0.1-v0.6)
+were restored via git checkout from skillos-v0.6-factor-readonly-domain.
+This means git log does not show v0.1-v0.6 as linear ancestors of v0.7,
+but all v0.1-v0.6 skill capabilities are present in v0.7.
 ## Safety Gates
 external_api=false, shadowbroker=false, production=blocked, broker_runtime=blocked, real_trade=blocked, trade_allowed=false, verdict_allowed=false, investment_verdict_allowed=false, trade_signal_allowed=false, buy_sell_hold_allowed=false, portfolio_allowed=false, researchdb_main_write=false, memory_main_write=false
 

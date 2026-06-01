@@ -3,6 +3,7 @@ import json; from pathlib import Path
 from zmatrix.agent.skill_result_envelope import build_skill_success, build_skill_draft, build_skill_blocked
 VS=["scripts/verify_z_skillos_v05.sh","scripts/verify_z_skillos_v04.sh","scripts/verify_z_skillos_v03.sh","scripts/verify_z_skillos_v02.sh","scripts/verify_z_skillos_v01.sh","scripts/verify_zg16_full_stub_integration.sh","scripts/verify_z_agent_kernel.sh"]
 REG=Path("data/research_db/agent/registry/skill_registry.generated.json")
+FT=["external_api_used=True","shadowbroker_deployed=True","production_allowed=True","trade_allowed=True","verdict_allowed=True","broker_order_allowed=True","real_trade_allowed=True","auto_buy_allowed=True","auto_sell_allowed=True","subprocess.run(","os.system("]
 def _lr():
     if not REG.exists(): return []
     return json.loads(REG.read_text())
@@ -23,16 +24,29 @@ def _rs():
         for k in ["external_api_used","shadowbroker_deployed","production_allowed","trade_allowed","verdict_allowed","broker_order_allowed","real_trade_allowed","auto_buy_allowed","auto_sell_allowed"]:
             if x.get(k) is True: sv.append(f"{sid}:{k}")
     return {"count":len(s),"duplicate":dup,"write_violations":wv,"safety_violations":sv,"ok":not dup and not wv and not sv}
+def _fs():
+    roots=["zmatrix","scripts","tests/agent","data/research_db/agent/registry"]; hits=[]
+    for r in roots:
+        rp=Path(r)
+        if not rp.exists(): continue
+        for p in rp.rglob("*"):
+            if p.suffix not in {".py",".sh",".json"}: continue
+            text=p.read_text("utf-8",errors="ignore")
+            for t in FT:
+                if t in text:
+                    hits.append({"path":str(p),"token":t})
+                    break
+    return {"dry_run":True,"scanned_roots":roots,"hit_count":len(hits),"hits":hits[:50],"ok":len(hits)==0,"subprocess_execution":False}
 def route_skill(sid,env,ctx):
-    if sid=="GOVERNANCE.GET_VERIFY_SCRIPT_REGISTRY": return build_skill_success(sid,{"scripts":[{"path":p,"exists":Path(p).exists()} for p in VS],"subprocess":False})
+    if sid=="GOVERNANCE.GET_VERIFY_SCRIPT_REGISTRY": return build_skill_success(sid,{"scripts":[{"path":p,"exists":Path(p).exists()} for p in VS],"subprocess_execution":False})
     if sid=="GOVERNANCE.GET_LEDGER_STATUS": return build_skill_success(sid,_ls())
-    if sid=="GOVERNANCE.GET_FORBIDDEN_SCAN_STATUS": return build_skill_success(sid,{"dry":True,"scanned_roots":["zmatrix","scripts","tests/agent"]})
+    if sid=="GOVERNANCE.GET_FORBIDDEN_SCAN_STATUS": return build_skill_success(sid,_fs())
     if sid=="GOVERNANCE.GET_SKILLOS_RELEASE_READINESS":
-        l=_ls(); r=_rs(); ready=l["all_empty"] and r["ok"]
-        return build_skill_success(sid,{"ready":ready,"ledger_ok":l["all_empty"],"registry_ok":r["ok"]})
-    if sid=="GOVERNANCE.VALIDATE_SKILL_REGISTRY_DRY": return build_skill_success(sid,{"dry":True,"registry":_rs(),"main_write":False})
-    if sid=="GOVERNANCE.RUN_SKILLOS_VERIFY_DRY": return build_skill_success(sid,{"dry":True,"subprocess":False,"plan":VS,"note":"Plan only, no shell execution"})
-    if sid=="GOVERNANCE.BUILD_VERIFY_REPORT_DRAFT": return build_skill_draft(sid,{"report":"DRAFT_ONLY","ledger":_ls(),"registry":_rs()})
-    if sid=="GOVERNANCE.BUILD_RELEASE_AUDIT_DRAFT": return build_skill_draft(sid,{"audit":"DRAFT_ONLY","release":"HUMAN_REVIEW"})
-    if sid=="GOVERNANCE.GET_GOVERNANCE_READINESS": return build_skill_success(sid,{"ready":"GOVERNANCE_ROUTER_READY","subprocess":False,"external_api":False})
+        l=_ls(); r=_rs(); f=_fs(); ready=l["all_empty"] and r["ok"] and f["ok"]
+        return build_skill_success(sid,{"ready":ready,"ledger_ok":l["all_empty"],"registry_ok":r["ok"],"forbidden_ok":f["ok"],"subprocess_execution":False})
+    if sid=="GOVERNANCE.VALIDATE_SKILL_REGISTRY_DRY": return build_skill_success(sid,{"dry":True,"registry":_rs(),"researchdb_main_write":False,"subprocess_execution":False})
+    if sid=="GOVERNANCE.RUN_SKILLOS_VERIFY_DRY": return build_skill_success(sid,{"dry":True,"subprocess_execution":False,"plan":VS,"note":"Plan only. No shell execution."})
+    if sid=="GOVERNANCE.BUILD_VERIFY_REPORT_DRAFT": return build_skill_draft(sid,{"report":"DRAFT_ONLY","ledger":_ls(),"registry":_rs(),"researchdb_main_write":False,"subprocess_execution":False})
+    if sid=="GOVERNANCE.BUILD_RELEASE_AUDIT_DRAFT": return build_skill_draft(sid,{"audit":"DRAFT_ONLY","release":"HUMAN_REVIEW","researchdb_main_write":False,"subprocess_execution":False})
+    if sid=="GOVERNANCE.GET_GOVERNANCE_READINESS": return build_skill_success(sid,{"ready":"GOVERNANCE_ROUTER_READY","subprocess_execution":False,"external_api_used":False})
     return build_skill_blocked(sid,"Unknown GOVERNANCE skill")

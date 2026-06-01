@@ -1,0 +1,2329 @@
+[
+  {
+    "skill_id": "AUTOCASE.GET_INTAKE_SCHEMA",
+    "skill_name": "Get Intake Schema",
+    "domain": "AUTOCASE",
+    "version": "0.4",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "autocase.get_intake_schema.in",
+    "output_schema_ref": "autocase.get_intake_schema.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "autocase"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "AUTOCASE.VALIDATE_INTAKE_DRAFT",
+    "skill_name": "Validate Intake Draft",
+    "domain": "AUTOCASE",
+    "version": "0.4",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "autocase.validate_intake_draft.in",
+    "output_schema_ref": "autocase.validate_intake_draft.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "autocase"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "AUTOCASE.BUILD_CASE_CANDIDATE_DRAFT",
+    "skill_name": "Build Case Candidate Draft",
+    "domain": "AUTOCASE",
+    "version": "0.4",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L1_WORKFLOW",
+    "input_schema_ref": "autocase.build_case_candidate_draft.in",
+    "output_schema_ref": "autocase.build_case_candidate_draft.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R2_DRAFT",
+    "requires_human_review": true,
+    "proposal_required": true,
+    "read_layers": [
+      "autocase"
+    ],
+    "write_layers": [
+      "drafts"
+    ],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "AUTOCASE.GET_AUTOCASE_READINESS",
+    "skill_name": "Get AutoCase Readiness",
+    "domain": "AUTOCASE",
+    "version": "0.4",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "autocase.get_autocase_readiness.in",
+    "output_schema_ref": "autocase.get_autocase_readiness.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "autocase"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "CASEFORGE.CREATE_CASE_DRAFT",
+    "skill_name": "Create Case Draft",
+    "domain": "AUTOCASEFORGE",
+    "version": "1.0",
+    "input_schema_ref": "case_draft_schema",
+    "output_schema_ref": "case_draft_result_schema",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R2_DRAFT",
+    "requires_human_review": true,
+    "read_layers": [
+      "case_data"
+    ],
+    "write_layers": [
+      "case_drafts"
+    ],
+    "verify_script": "scripts/verify_case_draft.sh",
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": true,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "CASEFORGE.GET_CASE_DRAFT_SCHEMA",
+    "skill_name": "Get Case Draft Schema",
+    "domain": "CASEFORGE",
+    "version": "0.2",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "caseforge.get_case_draft_schema.in",
+    "output_schema_ref": "caseforge.get_case_draft_schema.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "case_schema"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "CASEFORGE.VALIDATE_CASE_DRAFT",
+    "skill_name": "Validate Case Draft",
+    "domain": "CASEFORGE",
+    "version": "0.2",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "caseforge.validate_case_draft.in",
+    "output_schema_ref": "caseforge.validate_case_draft.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "case_drafts"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "CASEFORGE.BUILD_INTAKE_DRAFT",
+    "skill_name": "Build Intake Draft",
+    "domain": "CASEFORGE",
+    "version": "0.2",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L1_WORKFLOW",
+    "input_schema_ref": "caseforge.build_intake_draft.in",
+    "output_schema_ref": "caseforge.build_intake_draft.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R2_DRAFT",
+    "requires_human_review": true,
+    "proposal_required": true,
+    "read_layers": [
+      "case_drafts"
+    ],
+    "write_layers": [
+      "drafts"
+    ],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "CASEFORGE.BUILD_CASE_REVIEW_SUMMARY_DRAFT",
+    "skill_name": "Build Case Review Summary Draft",
+    "domain": "CASEFORGE",
+    "version": "0.2",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L1_WORKFLOW",
+    "input_schema_ref": "caseforge.build_case_review_summary_draft.in",
+    "output_schema_ref": "caseforge.build_case_review_summary_draft.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R2_DRAFT",
+    "requires_human_review": true,
+    "proposal_required": true,
+    "read_layers": [
+      "case_drafts"
+    ],
+    "write_layers": [
+      "drafts"
+    ],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "COCKPIT.BUILD_SKILLOS_OVERVIEW",
+    "skill_name": "Build SkillOS Overview",
+    "domain": "COCKPIT",
+    "version": "0.2",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "cockpit.build_skillos_overview.in",
+    "output_schema_ref": "cockpit.build_skillos_overview.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "skill_registry"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "COCKPIT.BUILD_ZG16_STATUS_PANEL",
+    "skill_name": "Build ZG16 Status Panel",
+    "domain": "COCKPIT",
+    "version": "0.2",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "cockpit.build_zg16_status_panel.in",
+    "output_schema_ref": "cockpit.build_zg16_status_panel.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "zg16_status"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "COCKPIT.BUILD_SKILL_DOMAIN_PANEL",
+    "skill_name": "Build Skill Domain Panel",
+    "domain": "COCKPIT",
+    "version": "0.2",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "cockpit.build_skill_domain_panel.in",
+    "output_schema_ref": "cockpit.build_skill_domain_panel.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "domain_router"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "COCKPIT.GET_NEXT_HUMAN_ACTIONS",
+    "skill_name": "Get Next Human Actions",
+    "domain": "COCKPIT",
+    "version": "0.2",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "cockpit.get_next_human_actions.in",
+    "output_schema_ref": "cockpit.get_next_human_actions.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "skill_registry"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "COUNCIL.GET_COUNCIL_SCHEMA",
+    "skill_name": "Get Council Schema",
+    "domain": "COUNCIL",
+    "version": "0.7",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "council.get_council_schema.in",
+    "output_schema_ref": "council.get_council_schema.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "factor_registry",
+      "researchdb_readonly",
+      "case_drafts"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "zmatrix.research_db.council_skill_router",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false,
+    "broker_order_allowed": false,
+    "real_trade_allowed": false,
+    "auto_buy_allowed": false,
+    "auto_sell_allowed": false,
+    "investment_verdict_allowed": false,
+    "trade_signal_allowed": false,
+    "buy_sell_hold_allowed": false,
+    "portfolio_allowed": false
+  },
+  {
+    "skill_id": "COUNCIL.GET_EXPERT_ROLE_REGISTRY",
+    "skill_name": "Get Expert Role Registry",
+    "domain": "COUNCIL",
+    "version": "0.7",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "council.get_expert_role_registry.in",
+    "output_schema_ref": "council.get_expert_role_registry.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "factor_registry",
+      "researchdb_readonly",
+      "case_drafts"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "zmatrix.research_db.council_skill_router",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false,
+    "broker_order_allowed": false,
+    "real_trade_allowed": false,
+    "auto_buy_allowed": false,
+    "auto_sell_allowed": false,
+    "investment_verdict_allowed": false,
+    "trade_signal_allowed": false,
+    "buy_sell_hold_allowed": false,
+    "portfolio_allowed": false
+  },
+  {
+    "skill_id": "COUNCIL.BUILD_EXPERT_REVIEW_DRAFT",
+    "skill_name": "Build Expert Review Draft",
+    "domain": "COUNCIL",
+    "version": "0.7",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L1_WORKFLOW",
+    "input_schema_ref": "council.build_expert_review_draft.in",
+    "output_schema_ref": "council.build_expert_review_draft.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R2_DRAFT",
+    "requires_human_review": true,
+    "proposal_required": true,
+    "read_layers": [
+      "factor_registry",
+      "researchdb_readonly",
+      "case_drafts"
+    ],
+    "write_layers": [
+      "drafts"
+    ],
+    "verify_script": null,
+    "router_ref": "zmatrix.research_db.council_skill_router",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false,
+    "broker_order_allowed": false,
+    "real_trade_allowed": false,
+    "auto_buy_allowed": false,
+    "auto_sell_allowed": false,
+    "investment_verdict_allowed": false,
+    "trade_signal_allowed": false,
+    "buy_sell_hold_allowed": false,
+    "portfolio_allowed": false
+  },
+  {
+    "skill_id": "COUNCIL.BUILD_DISAGREEMENT_MATRIX_DRAFT",
+    "skill_name": "Build Disagreement Matrix Draft",
+    "domain": "COUNCIL",
+    "version": "0.7",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L1_WORKFLOW",
+    "input_schema_ref": "council.build_disagreement_matrix_draft.in",
+    "output_schema_ref": "council.build_disagreement_matrix_draft.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R2_DRAFT",
+    "requires_human_review": true,
+    "proposal_required": true,
+    "read_layers": [
+      "factor_registry",
+      "researchdb_readonly",
+      "case_drafts"
+    ],
+    "write_layers": [
+      "drafts"
+    ],
+    "verify_script": null,
+    "router_ref": "zmatrix.research_db.council_skill_router",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false,
+    "broker_order_allowed": false,
+    "real_trade_allowed": false,
+    "auto_buy_allowed": false,
+    "auto_sell_allowed": false,
+    "investment_verdict_allowed": false,
+    "trade_signal_allowed": false,
+    "buy_sell_hold_allowed": false,
+    "portfolio_allowed": false
+  },
+  {
+    "skill_id": "COUNCIL.BUILD_RISK_REVIEW_DRAFT",
+    "skill_name": "Build Risk Review Draft",
+    "domain": "COUNCIL",
+    "version": "0.7",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L1_WORKFLOW",
+    "input_schema_ref": "council.build_risk_review_draft.in",
+    "output_schema_ref": "council.build_risk_review_draft.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R2_DRAFT",
+    "requires_human_review": true,
+    "proposal_required": true,
+    "read_layers": [
+      "factor_registry",
+      "researchdb_readonly",
+      "case_drafts"
+    ],
+    "write_layers": [
+      "drafts"
+    ],
+    "verify_script": null,
+    "router_ref": "zmatrix.research_db.council_skill_router",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false,
+    "broker_order_allowed": false,
+    "real_trade_allowed": false,
+    "auto_buy_allowed": false,
+    "auto_sell_allowed": false,
+    "investment_verdict_allowed": false,
+    "trade_signal_allowed": false,
+    "buy_sell_hold_allowed": false,
+    "portfolio_allowed": false
+  },
+  {
+    "skill_id": "COUNCIL.VALIDATE_COUNCIL_OUTPUT_DRY",
+    "skill_name": "Validate Council Output Dry",
+    "domain": "COUNCIL",
+    "version": "0.7",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "council.validate_council_output_dry.in",
+    "output_schema_ref": "council.validate_council_output_dry.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "factor_registry",
+      "researchdb_readonly",
+      "case_drafts"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "zmatrix.research_db.council_skill_router",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false,
+    "broker_order_allowed": false,
+    "real_trade_allowed": false,
+    "auto_buy_allowed": false,
+    "auto_sell_allowed": false,
+    "investment_verdict_allowed": false,
+    "trade_signal_allowed": false,
+    "buy_sell_hold_allowed": false,
+    "portfolio_allowed": false
+  },
+  {
+    "skill_id": "COUNCIL.GET_COUNCIL_READINESS",
+    "skill_name": "Get Council Readiness",
+    "domain": "COUNCIL",
+    "version": "0.7",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "council.get_council_readiness.in",
+    "output_schema_ref": "council.get_council_readiness.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "factor_registry",
+      "researchdb_readonly",
+      "case_drafts"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "zmatrix.research_db.council_skill_router",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false,
+    "broker_order_allowed": false,
+    "real_trade_allowed": false,
+    "auto_buy_allowed": false,
+    "auto_sell_allowed": false,
+    "investment_verdict_allowed": false,
+    "trade_signal_allowed": false,
+    "buy_sell_hold_allowed": false,
+    "portfolio_allowed": false
+  },
+  {
+    "skill_id": "DATAFORGE.GET_SNAPSHOT_SCHEMA",
+    "skill_name": "Get Snapshot Schema",
+    "domain": "DATAFORGE",
+    "version": "0.3",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "dataforge.get_snapshot_schema.in",
+    "output_schema_ref": "dataforge.get_snapshot_schema.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "snapshot_schema"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "DATAFORGE.VALIDATE_SNAPSHOT_DRY",
+    "skill_name": "Validate Snapshot Dry",
+    "domain": "DATAFORGE",
+    "version": "0.3",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "dataforge.validate_snapshot_dry.in",
+    "output_schema_ref": "dataforge.validate_snapshot_dry.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": true,
+    "proposal_required": false,
+    "read_layers": [
+      "snapshot_dry"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "DATAFORGE.GET_DATA_QUALITY_SUMMARY",
+    "skill_name": "Get Data Quality Summary",
+    "domain": "DATAFORGE",
+    "version": "0.3",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "dataforge.get_data_quality_summary.in",
+    "output_schema_ref": "dataforge.get_data_quality_summary.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": true,
+    "proposal_required": false,
+    "read_layers": [
+      "data_quality"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "DATAFORGE.GET_ATTRIBUTION_SUMMARY",
+    "skill_name": "Get Attribution Summary",
+    "domain": "DATAFORGE",
+    "version": "0.3",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "dataforge.get_attribution_summary.in",
+    "output_schema_ref": "dataforge.get_attribution_summary.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": true,
+    "proposal_required": false,
+    "read_layers": [
+      "data_attribution"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "DATAFORGE.GET_REFRESH_TIER_STATUS",
+    "skill_name": "Get Refresh Tier Status",
+    "domain": "DATAFORGE",
+    "version": "0.3",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "dataforge.get_refresh_tier_status.in",
+    "output_schema_ref": "dataforge.get_refresh_tier_status.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "refresh_tiers"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "DATAFORGE.GET_DATAFORGE_READINESS",
+    "skill_name": "Get DataForge Readiness",
+    "domain": "DATAFORGE",
+    "version": "0.3",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "dataforge.get_dataforge_readiness.in",
+    "output_schema_ref": "dataforge.get_dataforge_readiness.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": true,
+    "proposal_required": false,
+    "read_layers": [
+      "dataforge_status"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "FACTOR.GET_FACTOR_REGISTRY",
+    "skill_name": "Get Factor Registry",
+    "domain": "FACTOR",
+    "version": "0.6",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "factor.get_factor_registry.in",
+    "output_schema_ref": "factor.get_factor_registry.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "factor_registry",
+      "factor_metadata"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "zmatrix.research_db.factor_skill_router",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false,
+    "broker_order_allowed": false,
+    "real_trade_allowed": false,
+    "auto_buy_allowed": false,
+    "auto_sell_allowed": false,
+    "factor_calculation_allowed": false,
+    "backtest_allowed": false,
+    "ranking_allowed": false,
+    "trading_signal_allowed": false
+  },
+  {
+    "skill_id": "FACTOR.GET_FACTOR_SCHEMA",
+    "skill_name": "Get Factor Schema",
+    "domain": "FACTOR",
+    "version": "0.6",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "factor.get_factor_schema.in",
+    "output_schema_ref": "factor.get_factor_schema.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "factor_registry",
+      "factor_metadata"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "zmatrix.research_db.factor_skill_router",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false,
+    "broker_order_allowed": false,
+    "real_trade_allowed": false,
+    "auto_buy_allowed": false,
+    "auto_sell_allowed": false,
+    "factor_calculation_allowed": false,
+    "backtest_allowed": false,
+    "ranking_allowed": false,
+    "trading_signal_allowed": false
+  },
+  {
+    "skill_id": "FACTOR.GET_FACTOR_METADATA_SUMMARY",
+    "skill_name": "Get Factor Metadata Summary",
+    "domain": "FACTOR",
+    "version": "0.6",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "factor.get_factor_metadata_summary.in",
+    "output_schema_ref": "factor.get_factor_metadata_summary.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "factor_registry",
+      "factor_metadata"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "zmatrix.research_db.factor_skill_router",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false,
+    "broker_order_allowed": false,
+    "real_trade_allowed": false,
+    "auto_buy_allowed": false,
+    "auto_sell_allowed": false,
+    "factor_calculation_allowed": false,
+    "backtest_allowed": false,
+    "ranking_allowed": false,
+    "trading_signal_allowed": false
+  },
+  {
+    "skill_id": "FACTOR.VALIDATE_FACTOR_INPUT_DRY",
+    "skill_name": "Validate Factor Input Dry",
+    "domain": "FACTOR",
+    "version": "0.6",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "factor.validate_factor_input_dry.in",
+    "output_schema_ref": "factor.validate_factor_input_dry.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "factor_registry",
+      "factor_metadata"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "zmatrix.research_db.factor_skill_router",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false,
+    "broker_order_allowed": false,
+    "real_trade_allowed": false,
+    "auto_buy_allowed": false,
+    "auto_sell_allowed": false,
+    "factor_calculation_allowed": false,
+    "backtest_allowed": false,
+    "ranking_allowed": false,
+    "trading_signal_allowed": false
+  },
+  {
+    "skill_id": "FACTOR.GET_FACTOR_READINESS",
+    "skill_name": "Get Factor Readiness",
+    "domain": "FACTOR",
+    "version": "0.6",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "factor.get_factor_readiness.in",
+    "output_schema_ref": "factor.get_factor_readiness.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "factor_registry",
+      "factor_metadata"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "zmatrix.research_db.factor_skill_router",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false,
+    "broker_order_allowed": false,
+    "real_trade_allowed": false,
+    "auto_buy_allowed": false,
+    "auto_sell_allowed": false,
+    "factor_calculation_allowed": false,
+    "backtest_allowed": false,
+    "ranking_allowed": false,
+    "trading_signal_allowed": false
+  },
+  {
+    "skill_id": "FACTOR.BUILD_FACTOR_REVIEW_DRAFT",
+    "skill_name": "Build Factor Review Draft",
+    "domain": "FACTOR",
+    "version": "0.6",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L1_WORKFLOW",
+    "input_schema_ref": "factor.build_factor_review_draft.in",
+    "output_schema_ref": "factor.build_factor_review_draft.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R2_DRAFT",
+    "requires_human_review": true,
+    "proposal_required": true,
+    "read_layers": [
+      "factor_registry",
+      "factor_metadata"
+    ],
+    "write_layers": [
+      "drafts"
+    ],
+    "verify_script": null,
+    "router_ref": "zmatrix.research_db.factor_skill_router",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false,
+    "broker_order_allowed": false,
+    "real_trade_allowed": false,
+    "auto_buy_allowed": false,
+    "auto_sell_allowed": false,
+    "factor_calculation_allowed": false,
+    "backtest_allowed": false,
+    "ranking_allowed": false,
+    "trading_signal_allowed": false
+  },
+  {
+    "skill_id": "VERIFY.RUN_DRY",
+    "skill_name": "Run Verify Dry",
+    "domain": "SYSTEM_VERIFY",
+    "version": "1.0",
+    "input_schema_ref": "verify_dry_schema",
+    "output_schema_ref": "verify_result_schema",
+    "allowed_callers": [
+      "openclaw-engineering"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": false,
+    "read_layers": [
+      "tests"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "GOVERNANCE.GET_VERIFY_SCRIPT_REGISTRY",
+    "skill_name": "Get Verify Script Registry",
+    "domain": "GOVERNANCE",
+    "version": "0.5",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "governance.get_verify_script_registry.in",
+    "output_schema_ref": "governance.get_verify_script_registry.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "governance",
+      "skill_registry",
+      "verify_chain"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "zmatrix.research_db.governance_skill_router",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false,
+    "broker_order_allowed": false,
+    "real_trade_allowed": false,
+    "auto_buy_allowed": false,
+    "auto_sell_allowed": false
+  },
+  {
+    "skill_id": "GOVERNANCE.GET_LEDGER_STATUS",
+    "skill_name": "Get Ledger Status",
+    "domain": "GOVERNANCE",
+    "version": "0.5",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "governance.get_ledger_status.in",
+    "output_schema_ref": "governance.get_ledger_status.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "governance",
+      "skill_registry",
+      "verify_chain"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "zmatrix.research_db.governance_skill_router",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false,
+    "broker_order_allowed": false,
+    "real_trade_allowed": false,
+    "auto_buy_allowed": false,
+    "auto_sell_allowed": false
+  },
+  {
+    "skill_id": "GOVERNANCE.GET_FORBIDDEN_SCAN_STATUS",
+    "skill_name": "Get Forbidden Scan Status",
+    "domain": "GOVERNANCE",
+    "version": "0.5",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "governance.get_forbidden_scan_status.in",
+    "output_schema_ref": "governance.get_forbidden_scan_status.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "governance",
+      "skill_registry",
+      "verify_chain"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "zmatrix.research_db.governance_skill_router",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false,
+    "broker_order_allowed": false,
+    "real_trade_allowed": false,
+    "auto_buy_allowed": false,
+    "auto_sell_allowed": false
+  },
+  {
+    "skill_id": "GOVERNANCE.GET_SKILLOS_RELEASE_READINESS",
+    "skill_name": "Get SkillOS Release Readiness",
+    "domain": "GOVERNANCE",
+    "version": "0.5",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "governance.get_skillos_release_readiness.in",
+    "output_schema_ref": "governance.get_skillos_release_readiness.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "governance",
+      "skill_registry",
+      "verify_chain"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "zmatrix.research_db.governance_skill_router",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false,
+    "broker_order_allowed": false,
+    "real_trade_allowed": false,
+    "auto_buy_allowed": false,
+    "auto_sell_allowed": false
+  },
+  {
+    "skill_id": "GOVERNANCE.VALIDATE_SKILL_REGISTRY_DRY",
+    "skill_name": "Validate Skill Registry Dry",
+    "domain": "GOVERNANCE",
+    "version": "0.5",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "governance.validate_skill_registry_dry.in",
+    "output_schema_ref": "governance.validate_skill_registry_dry.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "governance",
+      "skill_registry",
+      "verify_chain"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "zmatrix.research_db.governance_skill_router",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false,
+    "broker_order_allowed": false,
+    "real_trade_allowed": false,
+    "auto_buy_allowed": false,
+    "auto_sell_allowed": false
+  },
+  {
+    "skill_id": "GOVERNANCE.RUN_SKILLOS_VERIFY_DRY",
+    "skill_name": "Run SkillOS Verify Dry",
+    "domain": "GOVERNANCE",
+    "version": "0.5",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "governance.run_skillos_verify_dry.in",
+    "output_schema_ref": "governance.run_skillos_verify_dry.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "governance",
+      "skill_registry",
+      "verify_chain"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "zmatrix.research_db.governance_skill_router",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false,
+    "broker_order_allowed": false,
+    "real_trade_allowed": false,
+    "auto_buy_allowed": false,
+    "auto_sell_allowed": false
+  },
+  {
+    "skill_id": "GOVERNANCE.BUILD_VERIFY_REPORT_DRAFT",
+    "skill_name": "Build Verify Report Draft",
+    "domain": "GOVERNANCE",
+    "version": "0.5",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L1_WORKFLOW",
+    "input_schema_ref": "governance.build_verify_report_draft.in",
+    "output_schema_ref": "governance.build_verify_report_draft.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R2_DRAFT",
+    "requires_human_review": true,
+    "proposal_required": true,
+    "read_layers": [
+      "governance",
+      "skill_registry",
+      "verify_chain"
+    ],
+    "write_layers": [
+      "drafts"
+    ],
+    "verify_script": null,
+    "router_ref": "zmatrix.research_db.governance_skill_router",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false,
+    "broker_order_allowed": false,
+    "real_trade_allowed": false,
+    "auto_buy_allowed": false,
+    "auto_sell_allowed": false
+  },
+  {
+    "skill_id": "GOVERNANCE.BUILD_RELEASE_AUDIT_DRAFT",
+    "skill_name": "Build Release Audit Draft",
+    "domain": "GOVERNANCE",
+    "version": "0.5",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L1_WORKFLOW",
+    "input_schema_ref": "governance.build_release_audit_draft.in",
+    "output_schema_ref": "governance.build_release_audit_draft.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R2_DRAFT",
+    "requires_human_review": true,
+    "proposal_required": true,
+    "read_layers": [
+      "governance",
+      "skill_registry",
+      "verify_chain"
+    ],
+    "write_layers": [
+      "drafts"
+    ],
+    "verify_script": null,
+    "router_ref": "zmatrix.research_db.governance_skill_router",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false,
+    "broker_order_allowed": false,
+    "real_trade_allowed": false,
+    "auto_buy_allowed": false,
+    "auto_sell_allowed": false
+  },
+  {
+    "skill_id": "GOVERNANCE.GET_GOVERNANCE_READINESS",
+    "skill_name": "Get Governance Readiness",
+    "domain": "GOVERNANCE",
+    "version": "0.5",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "governance.get_governance_readiness.in",
+    "output_schema_ref": "governance.get_governance_readiness.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "governance",
+      "skill_registry",
+      "verify_chain"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "zmatrix.research_db.governance_skill_router",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false,
+    "broker_order_allowed": false,
+    "real_trade_allowed": false,
+    "auto_buy_allowed": false,
+    "auto_sell_allowed": false
+  },
+  {
+    "skill_id": "MEMORY.GET_MEMORY_CANDIDATE_SCHEMA",
+    "skill_name": "Get Memory Candidate Schema",
+    "domain": "MEMORY",
+    "version": "0.4",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "memory.get_memory_candidate_schema.in",
+    "output_schema_ref": "memory.get_memory_candidate_schema.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "memory"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "MEMORY.VALIDATE_MEMORY_CANDIDATE",
+    "skill_name": "Validate Memory Candidate",
+    "domain": "MEMORY",
+    "version": "0.4",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "memory.validate_memory_candidate.in",
+    "output_schema_ref": "memory.validate_memory_candidate.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "memory"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "MEMORY.BUILD_MONTHLY_MEMORY_CANDIDATE_DRAFT",
+    "skill_name": "Build Monthly Memory Candidate Draft",
+    "domain": "MEMORY",
+    "version": "0.4",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L1_WORKFLOW",
+    "input_schema_ref": "memory.build_monthly_memory_candidate_draft.in",
+    "output_schema_ref": "memory.build_monthly_memory_candidate_draft.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R2_DRAFT",
+    "requires_human_review": true,
+    "proposal_required": true,
+    "read_layers": [
+      "memory"
+    ],
+    "write_layers": [
+      "drafts"
+    ],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "MEMORY.GET_MEMORY_READINESS",
+    "skill_name": "Get Memory Readiness",
+    "domain": "MEMORY",
+    "version": "0.4",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "memory.get_memory_readiness.in",
+    "output_schema_ref": "memory.get_memory_readiness.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "memory"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "REPORT.RENDER_DRAFT",
+    "skill_name": "Render Report Draft",
+    "domain": "REPORTING",
+    "version": "1.0",
+    "input_schema_ref": "report_draft_schema",
+    "output_schema_ref": "report_schema",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R2_DRAFT",
+    "requires_human_review": false,
+    "read_layers": [
+      "research_data"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "REPORT.RENDER_SKILLOS_STATUS_DRAFT",
+    "skill_name": "Render SkillOS Status Draft",
+    "domain": "REPORT",
+    "version": "0.2",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L1_WORKFLOW",
+    "input_schema_ref": "report.render_skillos_status_draft.in",
+    "output_schema_ref": "report.render_skillos_status_draft.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R2_DRAFT",
+    "requires_human_review": true,
+    "proposal_required": true,
+    "read_layers": [
+      "skill_registry"
+    ],
+    "write_layers": [
+      "drafts"
+    ],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "REPORT.RENDER_ZG16_STUB_SUMMARY_DRAFT",
+    "skill_name": "Render ZG16 Stub Summary Draft",
+    "domain": "REPORT",
+    "version": "0.2",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L1_WORKFLOW",
+    "input_schema_ref": "report.render_zg16_stub_summary_draft.in",
+    "output_schema_ref": "report.render_zg16_stub_summary_draft.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R2_DRAFT",
+    "requires_human_review": true,
+    "proposal_required": true,
+    "read_layers": [
+      "zg16_status"
+    ],
+    "write_layers": [
+      "drafts"
+    ],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "REPORT.RENDER_CASEFORGE_REVIEW_DRAFT",
+    "skill_name": "Render CaseForge Review Draft",
+    "domain": "REPORT",
+    "version": "0.2",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L1_WORKFLOW",
+    "input_schema_ref": "report.render_caseforge_review_draft.in",
+    "output_schema_ref": "report.render_caseforge_review_draft.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R2_DRAFT",
+    "requires_human_review": true,
+    "proposal_required": true,
+    "read_layers": [
+      "caseforge_draft"
+    ],
+    "write_layers": [
+      "drafts"
+    ],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "RESEARCHDB.GET_LAYER_STATUS",
+    "skill_name": "Get Layer Status",
+    "domain": "RESEARCHDB",
+    "version": "0.3",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "researchdb.get_layer_status.in",
+    "output_schema_ref": "researchdb.get_layer_status.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "researchdb_layers"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "RESEARCHDB.GET_DATASET_REGISTRY",
+    "skill_name": "Get Dataset Registry",
+    "domain": "RESEARCHDB",
+    "version": "0.3",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "researchdb.get_dataset_registry.in",
+    "output_schema_ref": "researchdb.get_dataset_registry.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "dataset_registry"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "RESEARCHDB.GET_CASE_INDEX_SUMMARY",
+    "skill_name": "Get Case Index Summary",
+    "domain": "RESEARCHDB",
+    "version": "0.3",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "researchdb.get_case_index_summary.in",
+    "output_schema_ref": "researchdb.get_case_index_summary.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": true,
+    "proposal_required": false,
+    "read_layers": [
+      "case_index"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "RESEARCHDB.GET_SOURCE_HEALTH_SUMMARY",
+    "skill_name": "Get Source Health Summary",
+    "domain": "RESEARCHDB",
+    "version": "0.3",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "researchdb.get_source_health_summary.in",
+    "output_schema_ref": "researchdb.get_source_health_summary.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": true,
+    "proposal_required": false,
+    "read_layers": [
+      "source_health"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "RESEARCHDB.GET_SKILL_REGISTRY_VIEW",
+    "skill_name": "Get Skill Registry View",
+    "domain": "RESEARCHDB",
+    "version": "0.3",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "researchdb.get_skill_registry_view.in",
+    "output_schema_ref": "researchdb.get_skill_registry_view.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "skill_registry"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "RESEARCHDB.GET_RESEARCHDB_READINESS",
+    "skill_name": "Get ResearchDB Readiness",
+    "domain": "RESEARCHDB",
+    "version": "0.3",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "researchdb.get_researchdb_readiness.in",
+    "output_schema_ref": "researchdb.get_researchdb_readiness.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": true,
+    "proposal_required": false,
+    "read_layers": [
+      "researchdb_status"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "SYSTEM.GET_RESEARCH_SUMMARY",
+    "skill_name": "Get Research Summary",
+    "domain": "SYSTEM_VERIFY",
+    "version": "1.0",
+    "input_schema_ref": "query_contract.get_research_summary",
+    "output_schema_ref": "research_summary_schema",
+    "allowed_callers": [
+      "z-orchestrator",
+      "openclaw-engineering"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "read_layers": [
+      "research_summary"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "SYSTEM.GET_LAYER_VERSIONS",
+    "skill_name": "Get Layer Versions",
+    "domain": "SYSTEM_VERIFY",
+    "version": "1.0",
+    "input_schema_ref": "query_contract.get_layer_versions",
+    "output_schema_ref": "layer_versions_schema",
+    "allowed_callers": [
+      "z-orchestrator",
+      "openclaw-engineering"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "read_layers": [
+      "layer_versions"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "SYSTEM.GET_SKILLOS_STATUS",
+    "skill_name": "Get SkillOS Status",
+    "domain": "SYSTEM",
+    "version": "0.2",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "system.get_skillos_status.in",
+    "output_schema_ref": "system.get_skillos_status.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "skill_registry"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "SYSTEM.GET_SKILL_REGISTRY_SUMMARY",
+    "skill_name": "Get Skill Registry Summary",
+    "domain": "SYSTEM",
+    "version": "0.2",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "system.get_skill_registry_summary.in",
+    "output_schema_ref": "system.get_skill_registry_summary.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "skill_registry"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "SYSTEM.GET_SKILL_CANDIDATE_SUMMARY",
+    "skill_name": "Get Skill Candidate Summary",
+    "domain": "SYSTEM",
+    "version": "0.2",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "system.get_skill_candidate_summary.in",
+    "output_schema_ref": "system.get_skill_candidate_summary.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "skill_candidates"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "SYSTEM.GET_DOMAIN_ROUTER_STATUS",
+    "skill_name": "Get Domain Router Status",
+    "domain": "SYSTEM",
+    "version": "0.2",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "system.get_domain_router_status.in",
+    "output_schema_ref": "system.get_domain_router_status.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "domain_router"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "SYSTEM.GET_VERIFY_CHAIN_STATUS",
+    "skill_name": "Get Verify Chain Status",
+    "domain": "SYSTEM",
+    "version": "0.2",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "system.get_verify_chain_status.in",
+    "output_schema_ref": "system.get_verify_chain_status.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "verify_chain"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "ZG16.GET_SOURCE_REGISTRY",
+    "skill_name": "Get Source Registry",
+    "input_schema_ref": "source_registry_schema",
+    "output_schema_ref": "source_list",
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "read_layers": [
+      "source_registry"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "domain": "Z_G16_PHYSICAL",
+    "version": "1.2",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "ZG16.GET_EVENT_LAYER_VERSIONS",
+    "skill_name": "Get Event Layer Versions",
+    "input_schema_ref": "event_layer_version_schema",
+    "output_schema_ref": "layer_versions",
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "read_layers": [
+      "event_layers"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "domain": "Z_G16_PHYSICAL",
+    "version": "1.2",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "ZG16.GET_PHYSICAL_SIGNAL_SCHEMA",
+    "skill_name": "Get Physical Signal Schema",
+    "input_schema_ref": "physical_signal_schema",
+    "output_schema_ref": "signal_schema",
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "read_layers": [
+      "physical_signals"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "domain": "Z_G16_PHYSICAL",
+    "version": "1.2",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "ZG16.GET_NARRATIVE_EVENT_SCHEMA",
+    "skill_name": "Get Narrative Event Schema",
+    "input_schema_ref": "narrative_event_schema",
+    "output_schema_ref": "event_schema",
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "read_layers": [
+      "narrative_events"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "domain": "Z_G16_PHYSICAL",
+    "version": "1.2",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "ZG16.GET_REALITY_CHECK_SCHEMA",
+    "skill_name": "Get Reality Check Schema",
+    "input_schema_ref": "reality_check_schema",
+    "output_schema_ref": "check_schema",
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "read_layers": [
+      "reality_checks"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "domain": "Z_G16_PHYSICAL",
+    "version": "1.2",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "ZG16.GET_NPA_SCHEMA",
+    "skill_name": "Get NPA Schema",
+    "input_schema_ref": "npa_schema",
+    "output_schema_ref": "npa_schema",
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "read_layers": [
+      "npa"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "domain": "Z_G16_PHYSICAL",
+    "version": "1.2",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "ZG16.GET_HYPOTHESIS_SCHEMA",
+    "skill_name": "Get Hypothesis Schema",
+    "input_schema_ref": "hypothesis_schema",
+    "output_schema_ref": "hypothesis_schema",
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "read_layers": [
+      "hypotheses"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "domain": "Z_G16_PHYSICAL",
+    "version": "1.2",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "ZG16.LOAD_PHYSICAL_SIGNAL_FIXTURE",
+    "skill_name": "Load Physical Signal Fixture",
+    "input_schema_ref": "fixture_schema",
+    "output_schema_ref": "signal_list",
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": true,
+    "read_layers": [
+      "fixtures"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "domain": "Z_G16_PHYSICAL",
+    "version": "1.2",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "ZG16.CALCULATE_NPA_SCORE",
+    "skill_name": "Calculate NPA Score",
+    "input_schema_ref": "npa_input",
+    "output_schema_ref": "npa_result",
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": true,
+    "read_layers": [
+      "npa"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "domain": "Z_G16_PHYSICAL",
+    "version": "1.2",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "ZG16.CREATE_HYPOTHESIS_DRAFT",
+    "skill_name": "Create Hypothesis Draft",
+    "input_schema_ref": "hypothesis_input",
+    "output_schema_ref": "hypothesis",
+    "risk_level": "R2_DRAFT",
+    "requires_human_review": true,
+    "read_layers": [
+      "events",
+      "signals"
+    ],
+    "write_layers": [
+      "drafts"
+    ],
+    "verify_script": null,
+    "domain": "Z_G16_PHYSICAL",
+    "version": "1.2",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": true,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "ZG16.CREATE_RESEARCH_ANNOTATION_DRAFT",
+    "skill_name": "Create Research Annotation Draft",
+    "input_schema_ref": "annotation_input",
+    "output_schema_ref": "annotation",
+    "risk_level": "R2_DRAFT",
+    "requires_human_review": true,
+    "read_layers": [
+      "events"
+    ],
+    "write_layers": [
+      "drafts"
+    ],
+    "verify_script": null,
+    "domain": "Z_G16_PHYSICAL",
+    "version": "1.2",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": true,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "ZG16.CREATE_ANALYSIS_ZONE_DRAFT",
+    "skill_name": "Create Analysis Zone Draft",
+    "input_schema_ref": "analysis_input",
+    "output_schema_ref": "analysis_zone",
+    "risk_level": "R2_DRAFT",
+    "requires_human_review": true,
+    "read_layers": [
+      "events"
+    ],
+    "write_layers": [
+      "drafts"
+    ],
+    "verify_script": null,
+    "domain": "Z_G16_PHYSICAL",
+    "version": "1.2",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": true,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "ZG16.CREATE_CASEFORGE_DRAFT_PROPOSAL",
+    "skill_name": "Create CaseForge Draft Proposal",
+    "input_schema_ref": "caseforge_input",
+    "output_schema_ref": "caseforge_proposal",
+    "risk_level": "R2_DRAFT",
+    "requires_human_review": true,
+    "read_layers": [
+      "cases"
+    ],
+    "write_layers": [
+      "drafts"
+    ],
+    "verify_script": null,
+    "domain": "Z_G16_PHYSICAL",
+    "version": "1.2",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": true,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  }
+]

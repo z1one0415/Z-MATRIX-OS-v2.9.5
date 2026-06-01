@@ -1,0 +1,119 @@
+[
+  {
+    "skill_id": "REPORT.RENDER_DRAFT",
+    "skill_name": "Render Report Draft",
+    "domain": "REPORTING",
+    "version": "1.0",
+    "input_schema_ref": "report_draft_schema",
+    "output_schema_ref": "report_schema",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R2_DRAFT",
+    "requires_human_review": false,
+    "read_layers": [
+      "research_data"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "enabled": true,
+    "production_allowed": false,
+    "lifecycle_status": "VERIFIED",
+    "skill_layer": "L0_ATOMIC",
+    "proposal_required": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "REPORT.RENDER_SKILLOS_STATUS_DRAFT",
+    "skill_name": "Render SkillOS Status Draft",
+    "domain": "REPORT",
+    "version": "0.2",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L1_WORKFLOW",
+    "input_schema_ref": "report.render_skillos_status_draft.in",
+    "output_schema_ref": "report.render_skillos_status_draft.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R2_DRAFT",
+    "requires_human_review": true,
+    "proposal_required": true,
+    "read_layers": [
+      "skill_registry"
+    ],
+    "write_layers": [
+      "drafts"
+    ],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "REPORT.RENDER_ZG16_STUB_SUMMARY_DRAFT",
+    "skill_name": "Render ZG16 Stub Summary Draft",
+    "domain": "REPORT",
+    "version": "0.2",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L1_WORKFLOW",
+    "input_schema_ref": "report.render_zg16_stub_summary_draft.in",
+    "output_schema_ref": "report.render_zg16_stub_summary_draft.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R2_DRAFT",
+    "requires_human_review": true,
+    "proposal_required": true,
+    "read_layers": [
+      "zg16_status"
+    ],
+    "write_layers": [
+      "drafts"
+    ],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "REPORT.RENDER_CASEFORGE_REVIEW_DRAFT",
+    "skill_name": "Render CaseForge Review Draft",
+    "domain": "REPORT",
+    "version": "0.2",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L1_WORKFLOW",
+    "input_schema_ref": "report.render_caseforge_review_draft.in",
+    "output_schema_ref": "report.render_caseforge_review_draft.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R2_DRAFT",
+    "requires_human_review": true,
+    "proposal_required": true,
+    "read_layers": [
+      "caseforge_draft"
+    ],
+    "write_layers": [
+      "drafts"
+    ],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  }
+]

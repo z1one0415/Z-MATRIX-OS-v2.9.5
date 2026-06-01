@@ -8,7 +8,8 @@ from .command_envelope import validate_command_envelope
 from .agent_registry import get_agent
 from .agent_permission import evaluate_agent_permission
 from .skill_registry import get_skill, assert_skill_callable
-from zmatrix.research_db.zg16_skill_router import route_zg16_skill
+from .domain_skill_router import route_skill_by_domain
+from .skill_result_envelope import normalize_skill_result
 from .token_budget import enforce_token_budget
 
 
@@ -138,14 +139,15 @@ def invoke_skill(command_envelope: dict, context_slice: dict) -> dict:
             "production_allowed": False,
         }
 
-    # ZG16 skill routing
-    if skill_id.startswith("ZG16."):
-        zg16_result = route_zg16_skill(skill_id, command_envelope, context_slice)
-        zg16_result["evidence_refs"] = []
-        if _contains_forbidden_token(zg16_result):
-            zg16_result["status"] = "BLOCKED"
-            zg16_result["blocked_reason"] = "Output contains forbidden token"
-        return zg16_result
+    # Domain skill routing
+    if "." in skill_id:
+        routed_result = route_skill_by_domain(skill_id, command_envelope, context_slice)
+        routed_result = normalize_skill_result(skill_id, routed_result)
+        routed_result["evidence_refs"] = routed_result.get("evidence_refs", [])
+        if _contains_forbidden_token(routed_result):
+            routed_result["status"] = "BLOCKED"
+            routed_result["blocked_reason"] = "Output contains forbidden token"
+        return routed_result
 
     write_layers = skill.get("write_layers", [])
     if write_layers:

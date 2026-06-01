@@ -19,7 +19,10 @@
         "T60": -0.146818
       },
       "best_horizon": "T60",
-      "decay_pattern": "MONOTONIC_INCREASING",
+      "decay_pattern": "ABS_MONOTONIC_INCREASING",
+      "decay_pattern_basis": "absolute_rankic_magnitude",
+      "rankic_direction": "NEGATIVE",
+      "raw_rankic_trend": "RAW_MONOTONIC_DECREASING",
       "decay_consistent": true,
       "ready_for_alpha_claim": false,
       "alpha_validated": false
@@ -34,7 +37,10 @@
         "T60": -0.135216
       },
       "best_horizon": "T60",
-      "decay_pattern": "MONOTONIC_INCREASING",
+      "decay_pattern": "ABS_MONOTONIC_INCREASING",
+      "decay_pattern_basis": "absolute_rankic_magnitude",
+      "rankic_direction": "NEGATIVE",
+      "raw_rankic_trend": "RAW_MONOTONIC_DECREASING",
       "decay_consistent": true,
       "ready_for_alpha_claim": false,
       "alpha_validated": false
@@ -50,6 +56,9 @@
       },
       "best_horizon": "T60",
       "decay_pattern": "LONG_HORIZON_PEAK",
+      "decay_pattern_basis": "absolute_rankic_magnitude",
+      "rankic_direction": "MIXED",
+      "raw_rankic_trend": "RAW_NON_MONOTONIC",
       "decay_consistent": true,
       "ready_for_alpha_claim": false,
       "alpha_validated": false
@@ -65,6 +74,9 @@
       },
       "best_horizon": "T60",
       "decay_pattern": "LONG_HORIZON_PEAK",
+      "decay_pattern_basis": "absolute_rankic_magnitude",
+      "rankic_direction": "MIXED",
+      "raw_rankic_trend": "RAW_NON_MONOTONIC",
       "decay_consistent": true,
       "ready_for_alpha_claim": false,
       "alpha_validated": false
@@ -80,6 +92,9 @@
       },
       "best_horizon": "T1",
       "decay_pattern": "SHORT_HORIZON_PEAK",
+      "decay_pattern_basis": "absolute_rankic_magnitude",
+      "rankic_direction": "MIXED",
+      "raw_rankic_trend": "RAW_NON_MONOTONIC",
       "decay_consistent": true,
       "ready_for_alpha_claim": false,
       "alpha_validated": false
@@ -95,6 +110,9 @@
       },
       "best_horizon": "T20",
       "decay_pattern": "MEDIUM_HORIZON_PEAK",
+      "decay_pattern_basis": "absolute_rankic_magnitude",
+      "rankic_direction": "NEGATIVE",
+      "raw_rankic_trend": "RAW_NON_MONOTONIC",
       "decay_consistent": true,
       "ready_for_alpha_claim": false,
       "alpha_validated": false
@@ -110,6 +128,9 @@
       },
       "best_horizon": "T60",
       "decay_pattern": "LONG_HORIZON_PEAK",
+      "decay_pattern_basis": "absolute_rankic_magnitude",
+      "rankic_direction": "NEGATIVE",
+      "raw_rankic_trend": "RAW_NON_MONOTONIC",
       "decay_consistent": true,
       "ready_for_alpha_claim": false,
       "alpha_validated": false
@@ -124,7 +145,10 @@
         "T60": -0.065552
       },
       "best_horizon": "T60",
-      "decay_pattern": "MONOTONIC_INCREASING",
+      "decay_pattern": "ABS_MONOTONIC_INCREASING",
+      "decay_pattern_basis": "absolute_rankic_magnitude",
+      "rankic_direction": "NEGATIVE",
+      "raw_rankic_trend": "RAW_MONOTONIC_DECREASING",
       "decay_consistent": true,
       "ready_for_alpha_claim": false,
       "alpha_validated": false
@@ -140,6 +164,9 @@
       },
       "best_horizon": "T1",
       "decay_pattern": "SHORT_HORIZON_PEAK",
+      "decay_pattern_basis": "absolute_rankic_magnitude",
+      "rankic_direction": "MIXED",
+      "raw_rankic_trend": "RAW_NON_MONOTONIC",
       "decay_consistent": true,
       "ready_for_alpha_claim": false,
       "alpha_validated": false
@@ -155,6 +182,9 @@
       },
       "best_horizon": "T60",
       "decay_pattern": "LONG_HORIZON_PEAK",
+      "decay_pattern_basis": "absolute_rankic_magnitude",
+      "rankic_direction": "POSITIVE",
+      "raw_rankic_trend": "RAW_NON_MONOTONIC",
       "decay_consistent": true,
       "ready_for_alpha_claim": false,
       "alpha_validated": false
@@ -170,6 +200,9 @@
       },
       "best_horizon": "T20",
       "decay_pattern": "MEDIUM_HORIZON_PEAK",
+      "decay_pattern_basis": "absolute_rankic_magnitude",
+      "rankic_direction": "NEGATIVE",
+      "raw_rankic_trend": "RAW_NON_MONOTONIC",
       "decay_consistent": true,
       "ready_for_alpha_claim": false,
       "alpha_validated": false
@@ -184,7 +217,10 @@
         "T60": -0.065552
       },
       "best_horizon": "T60",
-      "decay_pattern": "MONOTONIC_INCREASING",
+      "decay_pattern": "ABS_MONOTONIC_INCREASING",
+      "decay_pattern_basis": "absolute_rankic_magnitude",
+      "rankic_direction": "NEGATIVE",
+      "raw_rankic_trend": "RAW_MONOTONIC_DECREASING",
       "decay_consistent": true,
       "ready_for_alpha_claim": false,
       "alpha_validated": false
@@ -200,6 +236,9 @@
       },
       "best_horizon": "T60",
       "decay_pattern": "LONG_HORIZON_PEAK",
+      "decay_pattern_basis": "absolute_rankic_magnitude",
+      "rankic_direction": "NEGATIVE",
+      "raw_rankic_trend": "RAW_NON_MONOTONIC",
       "decay_consistent": true,
       "ready_for_alpha_claim": false,
       "alpha_validated": false
@@ -214,7 +253,10 @@
         "T60": -0.123289
       },
       "best_horizon": "T60",
-      "decay_pattern": "MONOTONIC_INCREASING",
+      "decay_pattern": "ABS_MONOTONIC_INCREASING",
+      "decay_pattern_basis": "absolute_rankic_magnitude",
+      "rankic_direction": "NEGATIVE",
+      "raw_rankic_trend": "RAW_MONOTONIC_DECREASING",
       "decay_consistent": true,
       "ready_for_alpha_claim": false,
       "alpha_validated": false
@@ -230,6 +272,9 @@
       },
       "best_horizon": "T1",
       "decay_pattern": "SHORT_HORIZON_PEAK",
+      "decay_pattern_basis": "absolute_rankic_magnitude",
+      "rankic_direction": "MIXED",
+      "raw_rankic_trend": "RAW_NON_MONOTONIC",
       "decay_consistent": true,
       "ready_for_alpha_claim": false,
       "alpha_validated": false
@@ -245,6 +290,9 @@
       },
       "best_horizon": "T1",
       "decay_pattern": "SHORT_HORIZON_PEAK",
+      "decay_pattern_basis": "absolute_rankic_magnitude",
+      "rankic_direction": "POSITIVE",
+      "raw_rankic_trend": "RAW_NON_MONOTONIC",
       "decay_consistent": true,
       "ready_for_alpha_claim": false,
       "alpha_validated": false

@@ -39,9 +39,9 @@ def main():
         if all(abs(v) < 0.01 for v in vals):
             pattern = "NO_CLEAR_PATTERN"
         elif abs_vals == sorted(abs_vals):
-            pattern = "MONOTONIC_INCREASING"
+            pattern = "ABS_MONOTONIC_INCREASING"
         elif abs_vals == sorted(abs_vals, reverse=True):
-            pattern = "MONOTONIC_DECREASING"
+            pattern = "ABS_MONOTONIC_DECREASING"
         elif best_h in ("T1", "T5"):
             pattern = "SHORT_HORIZON_PEAK"
         elif best_h in ("T10", "T20"):

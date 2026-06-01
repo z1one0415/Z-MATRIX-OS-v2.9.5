@@ -9,5 +9,10 @@
     "check_v11_paper_watchlist_entry_gate.py",
     "build_v10_closeout.py"
   ],
-  "final_closeout_status": "CASE_EXPANSION_V10_COUNCIL_RESEARCH_REVIEW_CONFIRMED"
+  "steps_returncode_pass": true,
+  "final_closeout_status": "CASE_EXPANSION_V10_COUNCIL_RESEARCH_REVIEW_CONFIRMED",
+  "final_closeout_confirmed": true,
+  "upstream_safety_alpha_audit_pass": true,
+  "ready_for_paper_watchlist": true,
+  "blocking_reasons": []
 }

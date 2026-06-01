@@ -97,6 +97,8 @@ def main():
     cr = load("v10_research_council_review.json")
     da = load("v10_devil_advocate_review.json")
     tp = load("v10_candidate_factor_thesis_pack.json")
+    upstream_audit = load("v10_upstream_safety_alpha_audit.json")
+
 
     docs = {
         "v10_council_input_pack": inp,
@@ -124,6 +126,23 @@ def main():
         blocking.append("EVIDENCE_MISSING")
     if da.get("critical_blockers", 0) > 0:
         blocking.append("CRITICAL_BLOCKERS_PRESENT")
+
+
+    # Upstream audit — must pass before anything else
+    upstream_ok = (
+        upstream_audit.get("status") == "V10_UPSTREAM_SAFETY_ALPHA_AUDIT_PASS"
+        and upstream_audit.get("ready_for_v11_gate") is True
+        and upstream_audit.get("safety_missing_fields", ["X"]) == []
+        and upstream_audit.get("safety_unblocked_fields", ["X"]) == []
+        and upstream_audit.get("alpha_missing_fields", ["X"]) == []
+        and upstream_audit.get("alpha_true_fields", ["X"]) == []
+    )
+    if not upstream_ok:
+        blocking.append("UPSTREAM_SAFETY_ALPHA_AUDIT_NOT_PASS")
+    if upstream_audit.get("safety_missing_fields"):
+        blocking.append("UPSTREAM_SAFETY_FIELD_MISSING")
+    if upstream_audit.get("alpha_missing_fields"):
+        blocking.append("UPSTREAM_ALPHA_FIELD_MISSING")
 
     # Safety — explicit fields required
     safety_ok, safety_missing, safety_unblocked = check_explicit_fields(
@@ -193,6 +212,9 @@ def main():
         "ready_for_alpha_claim": False,
         "alpha_validated": False,
         "research_only_boundary": research_boundary,
+        "upstream_safety_alpha_audit_required": True,
+        "upstream_safety_alpha_audit_pass": upstream_ok,
+        "upstream_audit_status": upstream_audit.get("status", "MISSING"),
         "blocking_reasons": blocking,
         "production": "BLOCKED",
         "broker_runtime": "BLOCKED",

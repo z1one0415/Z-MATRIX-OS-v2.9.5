@@ -18,9 +18,9 @@
         "T20": -0.082406,
         "T60": -0.146818
       },
-      "decay_pattern": "MONOTONIC_DECREASING",
-      "decay_consistent": true,
       "best_horizon": "T60",
+      "decay_pattern": "MONOTONIC_INCREASING",
+      "decay_consistent": true,
       "ready_for_alpha_claim": false,
       "alpha_validated": false
     },
@@ -33,9 +33,9 @@
         "T20": -0.072574,
         "T60": -0.135216
       },
-      "decay_pattern": "MONOTONIC_DECREASING",
-      "decay_consistent": true,
       "best_horizon": "T60",
+      "decay_pattern": "MONOTONIC_INCREASING",
+      "decay_consistent": true,
       "ready_for_alpha_claim": false,
       "alpha_validated": false
     },
@@ -48,9 +48,9 @@
         "T20": -0.010452,
         "T60": 0.035113
       },
+      "best_horizon": "T60",
       "decay_pattern": "LONG_HORIZON_PEAK",
       "decay_consistent": true,
-      "best_horizon": "T60",
       "ready_for_alpha_claim": false,
       "alpha_validated": false
     },
@@ -63,9 +63,9 @@
         "T20": -0.009799,
         "T60": -0.019593
       },
+      "best_horizon": "T60",
       "decay_pattern": "LONG_HORIZON_PEAK",
       "decay_consistent": true,
-      "best_horizon": "T60",
       "ready_for_alpha_claim": false,
       "alpha_validated": false
     },
@@ -78,9 +78,9 @@
         "T20": 0.000787,
         "T60": -0.006043
       },
+      "best_horizon": "T1",
       "decay_pattern": "SHORT_HORIZON_PEAK",
       "decay_consistent": true,
-      "best_horizon": "T1",
       "ready_for_alpha_claim": false,
       "alpha_validated": false
     },
@@ -93,9 +93,9 @@
         "T20": -0.029194,
         "T60": -0.028923
       },
-      "decay_pattern": "LONG_HORIZON_PEAK",
-      "decay_consistent": true,
       "best_horizon": "T20",
+      "decay_pattern": "MEDIUM_HORIZON_PEAK",
+      "decay_consistent": true,
       "ready_for_alpha_claim": false,
       "alpha_validated": false
     },
@@ -108,9 +108,9 @@
         "T20": -0.005451,
         "T60": -0.016374
       },
+      "best_horizon": "T60",
       "decay_pattern": "LONG_HORIZON_PEAK",
       "decay_consistent": true,
-      "best_horizon": "T60",
       "ready_for_alpha_claim": false,
       "alpha_validated": false
     },
@@ -123,9 +123,9 @@
         "T20": -0.03983,
         "T60": -0.065552
       },
-      "decay_pattern": "MONOTONIC_DECREASING",
-      "decay_consistent": true,
       "best_horizon": "T60",
+      "decay_pattern": "MONOTONIC_INCREASING",
+      "decay_consistent": true,
       "ready_for_alpha_claim": false,
       "alpha_validated": false
     },
@@ -138,9 +138,9 @@
         "T20": -0.000787,
         "T60": 0.006043
       },
+      "best_horizon": "T1",
       "decay_pattern": "SHORT_HORIZON_PEAK",
       "decay_consistent": true,
-      "best_horizon": "T1",
       "ready_for_alpha_claim": false,
       "alpha_validated": false
     },
@@ -153,9 +153,9 @@
         "T20": 0.005451,
         "T60": 0.016374
       },
+      "best_horizon": "T60",
       "decay_pattern": "LONG_HORIZON_PEAK",
       "decay_consistent": true,
-      "best_horizon": "T60",
       "ready_for_alpha_claim": false,
       "alpha_validated": false
     },
@@ -168,9 +168,9 @@
         "T20": -0.029194,
         "T60": -0.028923
       },
-      "decay_pattern": "LONG_HORIZON_PEAK",
-      "decay_consistent": true,
       "best_horizon": "T20",
+      "decay_pattern": "MEDIUM_HORIZON_PEAK",
+      "decay_consistent": true,
       "ready_for_alpha_claim": false,
       "alpha_validated": false
     },
@@ -183,9 +183,9 @@
         "T20": -0.03983,
         "T60": -0.065552
       },
-      "decay_pattern": "MONOTONIC_DECREASING",
-      "decay_consistent": true,
       "best_horizon": "T60",
+      "decay_pattern": "MONOTONIC_INCREASING",
+      "decay_consistent": true,
       "ready_for_alpha_claim": false,
       "alpha_validated": false
     },
@@ -198,9 +198,9 @@
         "T20": -0.032232,
         "T60": -0.109808
       },
+      "best_horizon": "T60",
       "decay_pattern": "LONG_HORIZON_PEAK",
       "decay_consistent": true,
-      "best_horizon": "T60",
       "ready_for_alpha_claim": false,
       "alpha_validated": false
     },
@@ -213,9 +213,9 @@
         "T20": -0.054457,
         "T60": -0.123289
       },
-      "decay_pattern": "MONOTONIC_DECREASING",
-      "decay_consistent": true,
       "best_horizon": "T60",
+      "decay_pattern": "MONOTONIC_INCREASING",
+      "decay_consistent": true,
       "ready_for_alpha_claim": false,
       "alpha_validated": false
     },
@@ -228,9 +228,9 @@
         "T20": -0.000125,
         "T60": 0.000891
       },
+      "best_horizon": "T1",
       "decay_pattern": "SHORT_HORIZON_PEAK",
       "decay_consistent": true,
-      "best_horizon": "T1",
       "ready_for_alpha_claim": false,
       "alpha_validated": false
     },
@@ -243,9 +243,9 @@
         "T20": 0.002723,
         "T60": 0.005655
       },
+      "best_horizon": "T1",
       "decay_pattern": "SHORT_HORIZON_PEAK",
       "decay_consistent": true,
-      "best_horizon": "T1",
       "ready_for_alpha_claim": false,
       "alpha_validated": false
     }

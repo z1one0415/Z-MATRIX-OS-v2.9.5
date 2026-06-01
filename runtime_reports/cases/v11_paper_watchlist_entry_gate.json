@@ -1,0 +1,16 @@
+{
+  "status": "V11_PAPER_WATCHLIST_ENTRY_ALLOWED",
+  "ready_for_paper_watchlist": true,
+  "candidate_count": 16,
+  "evidence_missing_count": 0,
+  "critical_blockers": 0,
+  "investment_action_count": 0,
+  "buy_sell_instruction_count": 0,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "research_only_boundary": true,
+  "blocking_reasons": [],
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

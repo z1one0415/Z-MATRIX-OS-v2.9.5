@@ -1,0 +1,21 @@
+{
+  "status": "CASE_EXPANSION_V10_COUNCIL_RESEARCH_REVIEW_CONFIRMED",
+  "council_input_pack_built": true,
+  "research_council_review_built": true,
+  "devil_advocate_review_built": true,
+  "candidate_factor_thesis_pack_built": true,
+  "v11_paper_watchlist_entry_gate_built": true,
+  "reviewed_factor_count": 16,
+  "candidate_count": 16,
+  "evidence_missing_count": 0,
+  "critical_blockers": 0,
+  "ready_for_paper_watchlist": true,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "investment_action_count": 0,
+  "buy_sell_instruction_count": 0,
+  "council_investment_verdict": "BLOCKED_RESEARCH_REVIEW_ONLY",
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,1066 @@
+{
+  "status": "V9_FACTOR_SELECTION_GATE_BUILT",
+  "selection_results": [
+    {
+      "factor_id": "AMOUNT_20D_AVG",
+      "horizon": "T10",
+      "decision": "PROMOTE_TO_COUNCIL_REVIEW",
+      "evidence": {
+        "mean_rankic": -0.04693,
+        "positive_rankic_ratio": 0.3993,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "ROBUST"
+      },
+      "ready_for_council_research_review": true,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "AMOUNT_20D_AVG",
+      "horizon": "T20",
+      "decision": "PROMOTE_TO_COUNCIL_REVIEW",
+      "evidence": {
+        "mean_rankic": -0.082406,
+        "positive_rankic_ratio": 0.3093,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "ROBUST"
+      },
+      "ready_for_council_research_review": true,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "AMOUNT_20D_AVG",
+      "horizon": "T60",
+      "decision": "PROMOTE_TO_COUNCIL_REVIEW",
+      "evidence": {
+        "mean_rankic": -0.146818,
+        "positive_rankic_ratio": 0.2214,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "ROBUST"
+      },
+      "ready_for_council_research_review": true,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "AMOUNT_60D_AVG",
+      "horizon": "T10",
+      "decision": "PROMOTE_TO_COUNCIL_REVIEW",
+      "evidence": {
+        "mean_rankic": -0.04274,
+        "positive_rankic_ratio": 0.4093,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "ROBUST"
+      },
+      "ready_for_council_research_review": true,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "AMOUNT_60D_AVG",
+      "horizon": "T20",
+      "decision": "PROMOTE_TO_COUNCIL_REVIEW",
+      "evidence": {
+        "mean_rankic": -0.072574,
+        "positive_rankic_ratio": 0.3262,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "ROBUST"
+      },
+      "ready_for_council_research_review": true,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "AMOUNT_60D_AVG",
+      "horizon": "T60",
+      "decision": "PROMOTE_TO_COUNCIL_REVIEW",
+      "evidence": {
+        "mean_rankic": -0.135216,
+        "positive_rankic_ratio": 0.2238,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "ROBUST"
+      },
+      "ready_for_council_research_review": true,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MAX_DRAWDOWN_60D",
+      "horizon": "T60",
+      "decision": "PROMOTE_TO_COUNCIL_REVIEW",
+      "evidence": {
+        "mean_rankic": 0.035113,
+        "positive_rankic_ratio": 0.5901,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_council_research_review": true,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_60D",
+      "horizon": "T20",
+      "decision": "PROMOTE_TO_COUNCIL_REVIEW",
+      "evidence": {
+        "mean_rankic": -0.03983,
+        "positive_rankic_ratio": 0.4364,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_council_research_review": true,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_60D",
+      "horizon": "T60",
+      "decision": "PROMOTE_TO_COUNCIL_REVIEW",
+      "evidence": {
+        "mean_rankic": -0.065552,
+        "positive_rankic_ratio": 0.3816,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_council_research_review": true,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_60D",
+      "horizon": "T20",
+      "decision": "PROMOTE_TO_COUNCIL_REVIEW",
+      "evidence": {
+        "mean_rankic": -0.03983,
+        "positive_rankic_ratio": 0.4364,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_council_research_review": true,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_60D",
+      "horizon": "T60",
+      "decision": "PROMOTE_TO_COUNCIL_REVIEW",
+      "evidence": {
+        "mean_rankic": -0.065552,
+        "positive_rankic_ratio": 0.3816,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_council_research_review": true,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLATILITY_20D",
+      "horizon": "T20",
+      "decision": "PROMOTE_TO_COUNCIL_REVIEW",
+      "evidence": {
+        "mean_rankic": -0.032232,
+        "positive_rankic_ratio": 0.4488,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_council_research_review": true,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLATILITY_20D",
+      "horizon": "T60",
+      "decision": "PROMOTE_TO_COUNCIL_REVIEW",
+      "evidence": {
+        "mean_rankic": -0.109808,
+        "positive_rankic_ratio": 0.3345,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_council_research_review": true,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLATILITY_60D",
+      "horizon": "T10",
+      "decision": "PROMOTE_TO_COUNCIL_REVIEW",
+      "evidence": {
+        "mean_rankic": -0.035562,
+        "positive_rankic_ratio": 0.4483,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_council_research_review": true,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLATILITY_60D",
+      "horizon": "T20",
+      "decision": "PROMOTE_TO_COUNCIL_REVIEW",
+      "evidence": {
+        "mean_rankic": -0.054457,
+        "positive_rankic_ratio": 0.4499,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_council_research_review": true,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLATILITY_60D",
+      "horizon": "T60",
+      "decision": "PROMOTE_TO_COUNCIL_REVIEW",
+      "evidence": {
+        "mean_rankic": -0.123289,
+        "positive_rankic_ratio": 0.3145,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_council_research_review": true,
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "AMOUNT_20D_AVG",
+      "horizon": "T5",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": -0.026917,
+        "positive_rankic_ratio": 0.4325,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "ROBUST"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "AMOUNT_60D_AVG",
+      "horizon": "T5",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": -0.024019,
+        "positive_rankic_ratio": 0.4392,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "ROBUST"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MAX_DRAWDOWN_60D",
+      "horizon": "T1",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": 0.017884,
+        "positive_rankic_ratio": 0.5286,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_10D",
+      "horizon": "T60",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": -0.019593,
+        "positive_rankic_ratio": 0.4711,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_1D",
+      "horizon": "T1",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": -0.019841,
+        "positive_rankic_ratio": 0.4581,
+        "decay_pattern": "SHORT_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_20D",
+      "horizon": "T20",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": -0.029194,
+        "positive_rankic_ratio": 0.4601,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_20D",
+      "horizon": "T60",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": -0.028923,
+        "positive_rankic_ratio": 0.4829,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_5D",
+      "horizon": "T60",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": -0.016374,
+        "positive_rankic_ratio": 0.4794,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_60D",
+      "horizon": "T5",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": -0.022991,
+        "positive_rankic_ratio": 0.4624,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_60D",
+      "horizon": "T10",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": -0.02899,
+        "positive_rankic_ratio": 0.4516,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "REV_1D",
+      "horizon": "T1",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": 0.019841,
+        "positive_rankic_ratio": 0.5419,
+        "decay_pattern": "SHORT_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "REV_5D",
+      "horizon": "T60",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": 0.016374,
+        "positive_rankic_ratio": 0.5206,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_20D",
+      "horizon": "T20",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": -0.029194,
+        "positive_rankic_ratio": 0.4601,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_20D",
+      "horizon": "T60",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": -0.028923,
+        "positive_rankic_ratio": 0.4829,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_60D",
+      "horizon": "T5",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": -0.022991,
+        "positive_rankic_ratio": 0.4624,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_60D",
+      "horizon": "T10",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": -0.02899,
+        "positive_rankic_ratio": 0.4516,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLATILITY_20D",
+      "horizon": "T1",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": -0.022349,
+        "positive_rankic_ratio": 0.4736,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLATILITY_20D",
+      "horizon": "T5",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": -0.015182,
+        "positive_rankic_ratio": 0.469,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLATILITY_60D",
+      "horizon": "T1",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": -0.033197,
+        "positive_rankic_ratio": 0.4604,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLATILITY_60D",
+      "horizon": "T5",
+      "decision": "WATCH",
+      "evidence": {
+        "mean_rankic": -0.033975,
+        "positive_rankic_ratio": 0.4569,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "AMOUNT_20D_AVG",
+      "horizon": "T1",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.009553,
+        "positive_rankic_ratio": 0.4791,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "ROBUST"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "AMOUNT_60D_AVG",
+      "horizon": "T1",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.007566,
+        "positive_rankic_ratio": 0.4725,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "ROBUST"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MAX_DRAWDOWN_60D",
+      "horizon": "T5",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.004822,
+        "positive_rankic_ratio": 0.5011,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MAX_DRAWDOWN_60D",
+      "horizon": "T10",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.013634,
+        "positive_rankic_ratio": 0.4616,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MAX_DRAWDOWN_60D",
+      "horizon": "T20",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.010452,
+        "positive_rankic_ratio": 0.4724,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_10D",
+      "horizon": "T1",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.009939,
+        "positive_rankic_ratio": 0.4703,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_10D",
+      "horizon": "T5",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.005562,
+        "positive_rankic_ratio": 0.4856,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_10D",
+      "horizon": "T10",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.004299,
+        "positive_rankic_ratio": 0.5117,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_10D",
+      "horizon": "T20",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.009799,
+        "positive_rankic_ratio": 0.4994,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_1D",
+      "horizon": "T5",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.004791,
+        "positive_rankic_ratio": 0.4945,
+        "decay_pattern": "SHORT_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_1D",
+      "horizon": "T10",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.004949,
+        "positive_rankic_ratio": 0.5061,
+        "decay_pattern": "SHORT_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_1D",
+      "horizon": "T20",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.000787,
+        "positive_rankic_ratio": 0.4949,
+        "decay_pattern": "SHORT_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_1D",
+      "horizon": "T60",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.006043,
+        "positive_rankic_ratio": 0.4829,
+        "decay_pattern": "SHORT_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_20D",
+      "horizon": "T1",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.004823,
+        "positive_rankic_ratio": 0.478,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_20D",
+      "horizon": "T5",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.009503,
+        "positive_rankic_ratio": 0.5022,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_20D",
+      "horizon": "T10",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.012166,
+        "positive_rankic_ratio": 0.5028,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_5D",
+      "horizon": "T1",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.013989,
+        "positive_rankic_ratio": 0.4857,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_5D",
+      "horizon": "T5",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.007056,
+        "positive_rankic_ratio": 0.4967,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_5D",
+      "horizon": "T10",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.003681,
+        "positive_rankic_ratio": 0.5095,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_5D",
+      "horizon": "T20",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.005451,
+        "positive_rankic_ratio": 0.4848,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "MOM_60D",
+      "horizon": "T1",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.002529,
+        "positive_rankic_ratio": 0.5044,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "REV_1D",
+      "horizon": "T5",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.004791,
+        "positive_rankic_ratio": 0.5055,
+        "decay_pattern": "SHORT_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "REV_1D",
+      "horizon": "T10",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.004949,
+        "positive_rankic_ratio": 0.4939,
+        "decay_pattern": "SHORT_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "REV_1D",
+      "horizon": "T20",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.000787,
+        "positive_rankic_ratio": 0.5051,
+        "decay_pattern": "SHORT_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "REV_1D",
+      "horizon": "T60",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.006043,
+        "positive_rankic_ratio": 0.5171,
+        "decay_pattern": "SHORT_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "REV_5D",
+      "horizon": "T1",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.013989,
+        "positive_rankic_ratio": 0.5143,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "REV_5D",
+      "horizon": "T5",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.007056,
+        "positive_rankic_ratio": 0.5033,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "REV_5D",
+      "horizon": "T10",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.003681,
+        "positive_rankic_ratio": 0.4905,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "REV_5D",
+      "horizon": "T20",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.005451,
+        "positive_rankic_ratio": 0.5141,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_20D",
+      "horizon": "T1",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.004823,
+        "positive_rankic_ratio": 0.478,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_20D",
+      "horizon": "T5",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.009503,
+        "positive_rankic_ratio": 0.5022,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_20D",
+      "horizon": "T10",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.012166,
+        "positive_rankic_ratio": 0.5028,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_60D",
+      "horizon": "T1",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.002529,
+        "positive_rankic_ratio": 0.5044,
+        "decay_pattern": "MONOTONIC_DECREASING",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLATILITY_20D",
+      "horizon": "T10",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.01409,
+        "positive_rankic_ratio": 0.4716,
+        "decay_pattern": "LONG_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLUME_20D_AVG",
+      "horizon": "T1",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.013599,
+        "positive_rankic_ratio": 0.5341,
+        "decay_pattern": "SHORT_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLUME_20D_AVG",
+      "horizon": "T5",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.011033,
+        "positive_rankic_ratio": 0.5166,
+        "decay_pattern": "SHORT_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLUME_20D_AVG",
+      "horizon": "T10",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.008967,
+        "positive_rankic_ratio": 0.5117,
+        "decay_pattern": "SHORT_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLUME_20D_AVG",
+      "horizon": "T20",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": -0.000125,
+        "positive_rankic_ratio": 0.5152,
+        "decay_pattern": "SHORT_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLUME_20D_AVG",
+      "horizon": "T60",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.000891,
+        "positive_rankic_ratio": 0.5489,
+        "decay_pattern": "SHORT_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLUME_60D_AVG",
+      "horizon": "T1",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.014865,
+        "positive_rankic_ratio": 0.5297,
+        "decay_pattern": "SHORT_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLUME_60D_AVG",
+      "horizon": "T5",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.011204,
+        "positive_rankic_ratio": 0.5077,
+        "decay_pattern": "SHORT_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLUME_60D_AVG",
+      "horizon": "T10",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.009364,
+        "positive_rankic_ratio": 0.5028,
+        "decay_pattern": "SHORT_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLUME_60D_AVG",
+      "horizon": "T20",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.002723,
+        "positive_rankic_ratio": 0.5062,
+        "decay_pattern": "SHORT_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    },
+    {
+      "factor_id": "VOLUME_60D_AVG",
+      "horizon": "T60",
+      "decision": "REJECT_NO_SIGNAL",
+      "evidence": {
+        "mean_rankic": 0.005655,
+        "positive_rankic_ratio": 0.5548,
+        "decay_pattern": "SHORT_HORIZON_PEAK",
+        "robustness_grade": "REVIEW"
+      },
+      "ready_for_alpha_claim": false,
+      "alpha_validated": false
+    }
+  ],
+  "promoted_factor_count": 16,
+  "watch_factor_count": 20,
+  "rejected_factor_count": 44,
+  "alpha_validated": false,
+  "ready_for_alpha_claim": false
+}

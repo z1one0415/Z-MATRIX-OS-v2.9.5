@@ -3,7 +3,8 @@ import json; from pathlib import Path
 from zmatrix.agent.skill_result_envelope import build_skill_success, build_skill_draft, build_skill_blocked
 VS=["scripts/verify_z_skillos_v05.sh","scripts/verify_z_skillos_v04.sh","scripts/verify_z_skillos_v03.sh","scripts/verify_z_skillos_v02.sh","scripts/verify_z_skillos_v01.sh","scripts/verify_zg16_full_stub_integration.sh","scripts/verify_z_agent_kernel.sh"]
 REG=Path("data/research_db/agent/registry/skill_registry.generated.json")
-FT=["external_api_used=True","shadowbroker_deployed=True","production_allowed=True","trade_allowed=True","verdict_allowed=True","broker_order_allowed=True","real_trade_allowed=True","auto_buy_allowed=True","auto_sell_allowed=True","subprocess.run(","os.system("]
+FORBIDDEN_BOOL_KEYS=["external_api_used","shadowbroker_deployed","production_allowed","trade_allowed","verdict_allowed","broker_order_allowed","real_trade_allowed","auto_buy_allowed","auto_sell_allowed"]
+FORBIDDEN_RAW=["subprocess"+".run(","os"+".system("]
 def _lr():
     if not REG.exists(): return []
     return json.loads(REG.read_text())
@@ -32,10 +33,13 @@ def _fs():
         for p in rp.rglob("*"):
             if p.suffix not in {".py",".sh",".json"}: continue
             text=p.read_text("utf-8",errors="ignore")
-            for t in FT:
-                if t in text:
-                    hits.append({"path":str(p),"token":t})
-                    break
+            for key in FORBIDDEN_BOOL_KEYS:
+                for pat in [f"{key}=True",f"{key} = True",chr(34)+key+chr(34)+": true",chr(34)+key+chr(34)+": True"]:
+                    if pat in text: hits.append({"path":str(p),"token":pat}); break
+                else: continue
+                break
+            for tok in FORBIDDEN_RAW:
+                if tok in text: hits.append({"path":str(p),"token":tok}); break
     return {"dry_run":True,"scanned_roots":roots,"hit_count":len(hits),"hits":hits[:50],"ok":len(hits)==0,"subprocess_execution":False}
 def route_skill(sid,env,ctx):
     if sid=="GOVERNANCE.GET_VERIFY_SCRIPT_REGISTRY": return build_skill_success(sid,{"scripts":[{"path":p,"exists":Path(p).exists()} for p in VS],"subprocess_execution":False})

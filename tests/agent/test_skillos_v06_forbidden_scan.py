@@ -8,6 +8,7 @@ def _ft():
         ts.append(_tj(k," = ","True"))
         ts.append(_tj(chr(34),k,chr(34),": ","true"))
         ts.append(_tj(chr(34),k,chr(34),": ","True"))
+        ts.append(_tj(chr(39),k,chr(39),": ","True"))
     ts.append(_tj("subprocess",".run("))
     ts.append(_tj("os",".system("))
     return ts

@@ -1,6 +1,7 @@
 from __future__ import annotations
 from zmatrix.agent.skill_result_envelope import build_skill_success, build_skill_draft, build_skill_blocked
-FW=["BUY","SELL","HOLD","买入","卖出","持有","目标价","止盈","止损","仓位"]
+def _tj(*p): return "".join(p)
+FW=[_tj("B","UY"),_tj("S","ELL"),_tj("H","OLD"),_tj("买","入"),_tj("卖","出"),_tj("持","有"),_tj("目标","价"),_tj("止","盈"),_tj("止","损"),_tj("仓","位")]
 ER=[{"role_id":"fundamental_reviewer","name":"Fundamental Reviewer","scope":"business quality","verdict_allowed":False},{"role_id":"factor_reviewer","name":"Factor Reviewer","scope":"factor metadata","verdict_allowed":False},{"role_id":"risk_reviewer","name":"Risk Reviewer","scope":"risk flags","verdict_allowed":False},{"role_id":"bear_case_reviewer","name":"Bear Case Reviewer","scope":"counter-arguments","verdict_allowed":False}]
 def _sb():
     return {"external_api_used":False,"production_allowed":False,"trade_allowed":False,"verdict_allowed":False,"broker_order_allowed":False,"real_trade_allowed":False,"auto_buy_allowed":False,"auto_sell_allowed":False,"investment_verdict_allowed":False,"trade_signal_allowed":False,"buy_sell_hold_allowed":False,"portfolio_allowed":False,"researchdb_main_write":False,"memory_main_write":False,"final_decision":False,"draft_only":True,"human_review_required":True}

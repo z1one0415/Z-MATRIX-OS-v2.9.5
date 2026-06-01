@@ -238,7 +238,7 @@ def main():
             "devil_advocate_verdict": "WATCH_ONLY",
             "ready_for_paper_watchlist": not is_critical,
             "ready_for_alpha_claim": False,
-            "alpha_validated": False,
+            "alpha_validated": False,"ready_for_alpha_claim": False,"production": "BLOCKED","broker_runtime": "BLOCKED","real_trade": "BLOCKED",
         })
 
     da = {
@@ -248,7 +248,7 @@ def main():
         "high_risks": high_total,
         "medium_risks": med_total,
         "factor_failure_reviews": drs,
-        "alpha_validated": False,
+        "alpha_validated": False,"ready_for_alpha_claim": False,"production": "BLOCKED","broker_runtime": "BLOCKED","real_trade": "BLOCKED",
     }
     (C / "v10_devil_advocate_review.json").write_text(
         json.dumps(da, indent=2, ensure_ascii=False)

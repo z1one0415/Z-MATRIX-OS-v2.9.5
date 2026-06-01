@@ -1,0 +1,14 @@
+{
+  "status": "V10_UPSTREAM_SAFETY_ALPHA_AUDIT_PASS",
+  "checked_sources": [
+    "v10_council_input_pack",
+    "v10_research_council_review",
+    "v10_devil_advocate_review",
+    "v10_candidate_factor_thesis_pack"
+  ],
+  "safety_missing_fields": [],
+  "safety_unblocked_fields": [],
+  "alpha_missing_fields": [],
+  "alpha_true_fields": [],
+  "ready_for_v11_gate": true
+}

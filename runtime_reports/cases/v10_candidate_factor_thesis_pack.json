@@ -15,7 +15,7 @@
         "rankic_ir": 0.2501,
         "valid_date_count": 899,
         "positive_rankic_ratio": 0.3993,
-        "decay_pattern": "MONOTONIC_DECREASING",
+        "decay_pattern": "MONOTONIC_INCREASING",
         "robustness_grade": "ROBUST"
       },
       "counter_arguments": [
@@ -37,7 +37,7 @@
         "rankic_ir": 0.4604,
         "valid_date_count": 889,
         "positive_rankic_ratio": 0.3093,
-        "decay_pattern": "MONOTONIC_DECREASING",
+        "decay_pattern": "MONOTONIC_INCREASING",
         "robustness_grade": "ROBUST"
       },
       "counter_arguments": [
@@ -59,7 +59,7 @@
         "rankic_ir": 0.8584,
         "valid_date_count": 849,
         "positive_rankic_ratio": 0.2214,
-        "decay_pattern": "MONOTONIC_DECREASING",
+        "decay_pattern": "MONOTONIC_INCREASING",
         "robustness_grade": "ROBUST"
       },
       "counter_arguments": [
@@ -81,7 +81,7 @@
         "rankic_ir": 0.2236,
         "valid_date_count": 899,
         "positive_rankic_ratio": 0.4093,
-        "decay_pattern": "MONOTONIC_DECREASING",
+        "decay_pattern": "MONOTONIC_INCREASING",
         "robustness_grade": "ROBUST"
       },
       "counter_arguments": [
@@ -103,7 +103,7 @@
         "rankic_ir": 0.4019,
         "valid_date_count": 889,
         "positive_rankic_ratio": 0.3262,
-        "decay_pattern": "MONOTONIC_DECREASING",
+        "decay_pattern": "MONOTONIC_INCREASING",
         "robustness_grade": "ROBUST"
       },
       "counter_arguments": [
@@ -125,7 +125,7 @@
         "rankic_ir": 0.8413,
         "valid_date_count": 849,
         "positive_rankic_ratio": 0.2238,
-        "decay_pattern": "MONOTONIC_DECREASING",
+        "decay_pattern": "MONOTONIC_INCREASING",
         "robustness_grade": "ROBUST"
       },
       "counter_arguments": [
@@ -169,7 +169,7 @@
         "rankic_ir": 0.1628,
         "valid_date_count": 889,
         "positive_rankic_ratio": 0.4364,
-        "decay_pattern": "MONOTONIC_DECREASING",
+        "decay_pattern": "MONOTONIC_INCREASING",
         "robustness_grade": "REVIEW"
       },
       "counter_arguments": [
@@ -191,7 +191,7 @@
         "rankic_ir": 0.2982,
         "valid_date_count": 849,
         "positive_rankic_ratio": 0.3816,
-        "decay_pattern": "MONOTONIC_DECREASING",
+        "decay_pattern": "MONOTONIC_INCREASING",
         "robustness_grade": "REVIEW"
       },
       "counter_arguments": [
@@ -213,7 +213,7 @@
         "rankic_ir": 0.1628,
         "valid_date_count": 889,
         "positive_rankic_ratio": 0.4364,
-        "decay_pattern": "MONOTONIC_DECREASING",
+        "decay_pattern": "MONOTONIC_INCREASING",
         "robustness_grade": "REVIEW"
       },
       "counter_arguments": [
@@ -235,7 +235,7 @@
         "rankic_ir": 0.2982,
         "valid_date_count": 849,
         "positive_rankic_ratio": 0.3816,
-        "decay_pattern": "MONOTONIC_DECREASING",
+        "decay_pattern": "MONOTONIC_INCREASING",
         "robustness_grade": "REVIEW"
       },
       "counter_arguments": [
@@ -301,7 +301,7 @@
         "rankic_ir": 0.1151,
         "valid_date_count": 899,
         "positive_rankic_ratio": 0.4483,
-        "decay_pattern": "MONOTONIC_DECREASING",
+        "decay_pattern": "MONOTONIC_INCREASING",
         "robustness_grade": "REVIEW"
       },
       "counter_arguments": [
@@ -323,7 +323,7 @@
         "rankic_ir": 0.1764,
         "valid_date_count": 889,
         "positive_rankic_ratio": 0.4499,
-        "decay_pattern": "MONOTONIC_DECREASING",
+        "decay_pattern": "MONOTONIC_INCREASING",
         "robustness_grade": "REVIEW"
       },
       "counter_arguments": [
@@ -345,7 +345,7 @@
         "rankic_ir": 0.4892,
         "valid_date_count": 849,
         "positive_rankic_ratio": 0.3145,
-        "decay_pattern": "MONOTONIC_DECREASING",
+        "decay_pattern": "MONOTONIC_INCREASING",
         "robustness_grade": "REVIEW"
       },
       "counter_arguments": [
@@ -359,5 +359,8 @@
     }
   ],
   "ready_for_alpha_claim": false,
-  "alpha_validated": false
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
 }

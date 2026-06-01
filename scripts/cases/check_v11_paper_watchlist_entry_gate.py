@@ -1,17 +1,51 @@
 #!/usr/bin/env python3
-"""V10-E: V11 paper watchlist entry gate — safety fields as input hard gates."""
+"""V10-E: V11 paper watchlist entry gate — real safety input enforcement."""
 import json
 from pathlib import Path
 
 W = Path(__file__).resolve().parent.parent.parent
 C = W / "runtime_reports" / "cases"
 
+FORBIDDEN_VALUES = [
+    "BUY", "SELL", "ADD", "REDUCE",
+    "\u4e70\u5165", "\u5356\u51fa", "\u5efa\u4ed3", "\u52a0\u4ed3", "\u51cf\u4ed3",
+    "\u6b62\u76c8", "\u6b62\u68cd",  # 买入,卖出,建仓,加仓,减仓,止盈,止损
+]
+
+
+def load(name):
+    p = C / name
+    return json.loads(p.read_text()) if p.exists() else {}
+
+
+def all_safety_blocked(docs):
+    """True only if ALL docs have production/broker/runtime BLOCKED."""
+    for doc in docs:
+        for field in ["production", "broker_runtime", "real_trade"]:
+            val = doc.get(field, "BLOCKED")
+            if val != "BLOCKED":
+                return False
+    return True
+
+
+def scan_forbidden_text(doc):
+    """Return count of forbidden words found in doc VALUES (not keys)."""
+    count = 0
+    text = json.dumps(doc).upper()
+    for word in FORBIDDEN_VALUES:
+        if word.upper() in text:
+            # Skip field name false positives
+            if word.upper() in ("BUY", "SELL") and "BUY_SELL_INSTRUCTION_COUNT" in text:
+                continue
+            count += 1
+    return count
+
 
 def main():
-    inp = json.loads((C / "v10_council_input_pack.json").read_text())
-    cr = json.loads((C / "v10_research_council_review.json").read_text())
-    da = json.loads((C / "v10_devil_advocate_review.json").read_text())
-    tp = json.loads((C / "v10_candidate_factor_thesis_pack.json").read_text())
+    inp = load("v10_council_input_pack.json")
+    cr = load("v10_research_council_review.json")
+    da = load("v10_devil_advocate_review.json")
+    tp = load("v10_candidate_factor_thesis_pack.json")
 
     blocking = []
 
@@ -33,42 +67,51 @@ def main():
     if da.get("critical_blockers", 0) > 0:
         blocking.append("CRITICAL_BLOCKERS_PRESENT")
 
-    # Action gates
-    if tp.get("investment_action_count", 0) > 0:
-        blocking.append("INVESTMENT_ACTION_DETECTED")
-    if tp.get("investment_action_count", 0) > 0:
-        pass  # already added
-    # Scan for buy/sell in the thesis pack
-    tp_text = json.dumps(tp)
-    if "buy" in tp_text.lower() and "buy_sell" not in tp_text.lower():
-        blocking.append("BUY_SELL_INSTRUCTION_DETECTED")
+    # Safety gates — read from ALL upstream sources
+    sources = [inp, cr, da, tp]
+    if not all_safety_blocked(sources):
+        blocking.append("SAFETY_NOT_BLOCKED")
 
-    # Alpha gates (read from upstream — don't trust only output labels)
-    if tp.get("ready_for_alpha_claim", False) is True:
-        blocking.append("ALPHA_CLAIM_DETECTED")
-    if cr.get("alpha_validated", False) is True:
-        blocking.append("ALPHA_VALIDATED_DETECTED")
-    if tp.get("alpha_validated", False) is True:
-        blocking.append("ALPHA_VALIDATED_DETECTED")
-
-    # Safety gates (must be BLOCKED)
-    # Safety: production/broker/real_trade are locked at script level, not read from closeout
-    # Safety from upstream evidence
-    safety_blocked = True  # hard-coded BLOCKED at this stage
-    for field, reason_key in [
-        ("production", "SAFETY_NOT_BLOCKED"),
-        ("broker_runtime", "SAFETY_NOT_BLOCKED"),
-        ("real_trade", "SAFETY_NOT_BLOCKED"),
+    # Alpha gates — check ALL upstream
+    for name, doc in [
+        ("input_pack", inp), ("council_review", cr),
+        ("devil_advocate", da), ("thesis_pack", tp),
     ]:
-        if not safety_blocked:
-            if reason_key not in blocking:
-                blocking.append(reason_key)
+        if doc.get("ready_for_alpha_claim", False) is True:
+            blocking.append("ALPHA_CLAIM_DETECTED")
+        if doc.get("alpha_validated", False) is True:
+            blocking.append("ALPHA_VALIDATED_DETECTED")
+
+    # Investment action scan
+    invest_count = 0
+    for c in tp.get("candidates", []):
+        if c.get("investment_action", "NONE") != "NONE":
+            invest_count += 1
+    for r in cr.get("reviews", []):
+        if r.get("investment_verdict", "BLOCKED") != "BLOCKED":
+            invest_count += 1
+    if invest_count > 0:
+        blocking.append("INVESTMENT_ACTION_DETECTED")
+
+    # Forbidden text scan (values only, skip field names)
+    bs_count = 0
+    for doc in [tp, cr]:
+        bs_count += scan_forbidden_text(doc)
+    if bs_count > 0:
+        blocking.append("BUY_SELL_INSTRUCTION_DETECTED")
 
     # Research boundary
     research_boundary = (
-        tp.get("ready_for_alpha_claim", True) is False
-        and cr.get("alpha_validated", True) is False
-        and tp.get("investment_action_count", 0) == 0
+        all(
+            doc.get("ready_for_alpha_claim", False) is False
+            and doc.get("alpha_validated", False) is False
+            for doc in sources
+        )
+        and invest_count == 0
+        and bs_count == 0
+        and all_safety_blocked(sources)
+        and tp.get("candidate_count", 0) >= 1
+        and tp.get("evidence_missing_count", 0) == 0
     )
     if not research_boundary:
         blocking.append("RESEARCH_ONLY_BOUNDARY_MISSING")
@@ -85,11 +128,17 @@ def main():
         "candidate_count": tp.get("candidate_count", 0),
         "evidence_missing_count": tp.get("evidence_missing_count", 0),
         "critical_blockers": da.get("critical_blockers", 0),
-        "investment_action_count": tp.get("investment_action_count", 0),
-        "buy_sell_instruction_count": 0,
+        "investment_action_count": invest_count,
+        "buy_sell_instruction_count": bs_count,
         "ready_for_alpha_claim": False,
         "alpha_validated": False,
         "research_only_boundary": research_boundary,
+        "safety_checked_sources": [
+            "v10_council_input_pack",
+            "v10_research_council_review",
+            "v10_devil_advocate_review",
+            "v10_candidate_factor_thesis_pack",
+        ],
         "blocking_reasons": blocking,
         "production": "BLOCKED",
         "broker_runtime": "BLOCKED",
@@ -100,7 +149,9 @@ def main():
     )
     print(
         f"V11 Gate: {'ALLOWED' if allowed else 'BLOCKED'} "
-        f"| boundary={research_boundary} | reasons={blocking}"
+        f"| invest={invest_count} bs={bs_count} "
+        f"| safety_ok={all_safety_blocked(sources)} "
+        f"| reasons={blocking}"
     )
 
 

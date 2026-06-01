@@ -9,6 +9,12 @@
   "ready_for_alpha_claim": false,
   "alpha_validated": false,
   "research_only_boundary": true,
+  "safety_checked_sources": [
+    "v10_council_input_pack",
+    "v10_research_council_review",
+    "v10_devil_advocate_review",
+    "v10_candidate_factor_thesis_pack"
+  ],
   "blocking_reasons": [],
   "production": "BLOCKED",
   "broker_runtime": "BLOCKED",

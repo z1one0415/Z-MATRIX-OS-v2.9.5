@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-echo "═══ Z-SkillOS v0.7.2 Council Final ═══"
+echo "═══ Z-SkillOS v0.7.4 Council Final ═══"
 python3 -m compileall -q zmatrix tests scripts
 PYTHONPATH=. python3 -m pytest -q tests/agent/
 PYTHONPATH=. python3 -m pytest -q tests/research_db/
@@ -15,7 +15,7 @@ bash scripts/verify_z_skillos_v02.sh
 bash scripts/verify_z_skillos_v01.sh
 bash scripts/verify_zg16_full_stub_integration.sh
 bash scripts/verify_z_agent_kernel.sh
-echo "═══ v0.7.2 Registry + Council Runtime ═══"
+echo "═══ v0.7.4 Registry + Council Runtime ═══"
 PYTHONPATH=. python3 -c "
 import json; from pathlib import Path
 s=json.loads(Path('data/research_db/agent/registry/skill_registry.generated.json').read_text())
@@ -38,7 +38,7 @@ ft='B'+'UY'+' '+'卖'+'出'; bad=route_skill_by_domain('COUNCIL.VALIDATE_COUNCIL
 assert bad['output']['valid'] is False
 print('council runtime PASS')
 "
-echo "═══ v0.7.2 Forbidden Scan ═══"
+echo "═══ v0.7.4 Forbidden Scan ═══"
 PYTHONPATH=. python3 -c "
 from pathlib import Path
 bkeys=['external_api_used','shadowbroker_deployed','production_allowed','trade_allowed','verdict_allowed','broker_order_allowed','real_trade_allowed','auto_buy_allowed','auto_sell_allowed','investment_verdict_allowed','trade_signal_allowed','buy_sell_hold_allowed','portfolio_allowed']
@@ -64,4 +64,4 @@ for f in data/research_db/agent/ledgers/*.jsonl data/research_db/governance/*.js
  [ "$base" = "data_source_attribution_ledger.csv" ] && continue
  [ -s "$f" ] && { echo "FAIL:$f"; exit 1; }
 done
-echo "═══ Z-SkillOS v0.7.2 PASS ═══"
+echo "═══ Z-SkillOS v0.7.4 PASS ═══"

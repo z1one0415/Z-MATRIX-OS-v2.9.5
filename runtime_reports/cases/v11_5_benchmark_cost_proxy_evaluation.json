@@ -1,10 +1,16 @@
 {
-  "status": "V11_5_BENCHMARK_COST_PROXY_EVALUATION_BUILT",
+  "status": "V11_5_BENCHMARK_COST_PROXY_EVALUATION_BLOCKED",
+  "blocking_reasons": [
+    "NO_CALCULATED_PORTFOLIO_RESULTS",
+    "BLOCKED_RESULTS_PRESENT",
+    "NULL_RETURN_RESULTS_PRESENT",
+    "MISSING_FORWARD_LABELS"
+  ],
+  "gross_positive_count": null,
+  "net_positive_count": null,
   "cost_model_status": "PROXY_ONLY",
   "one_way_cost_bps": 15,
   "round_trip_cost_bps": 30,
-  "gross_positive_count": 0,
-  "net_positive_count": 0,
   "ready_for_alpha_claim": false,
   "alpha_validated": false,
   "production": "BLOCKED",

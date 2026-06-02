@@ -7,7 +7,7 @@
   "label_alignment_pass": false,
   "missing_label_count": 840,
   "cost_model_status": "PROXY_ONLY",
-  "risk_audit_pass": true,
+  "risk_audit_pass": false,
   "ready_for_v12": false,
   "v12_blocking_reasons": [
     "PAPER_TRACKING_PERIOD_NOT_COMPLETED",
@@ -18,7 +18,8 @@
     "MISSING_FORWARD_LABELS",
     "NO_CALCULATED_RESULTS",
     "BLOCKED_RESULTS_PRESENT",
-    "NULL_RETURNS"
+    "NULL_RETURNS",
+    "RISK_AUDIT_FAIL"
   ],
   "ready_for_alpha_claim": false,
   "alpha_validated": false,

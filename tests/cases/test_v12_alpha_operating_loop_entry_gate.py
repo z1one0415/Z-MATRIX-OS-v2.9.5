@@ -5,5 +5,5 @@ def test():
     g=json.loads((W/"runtime_reports/cases/v12_alpha_operating_loop_entry_gate.json").read_text())
     assert "BLOCKED" in g["status"]
     assert g["ready_for_alpha_operating_loop"] is False
-    assert g["ready_for_alpha_claim"] is False
-    assert g["production"]=="BLOCKED"
+    assert "V11_5_NOT_CONFIRMED" in g["blocking_reasons"]
+    assert "FORWARD_LABEL_ALIGNMENT_NOT_PASS" in g.get("blocking_reasons",[])

@@ -13,6 +13,11 @@
   "steps_returncode_pass": true,
   "label_alignment_pass": false,
   "calculated_result_count": 0,
-  "final_closeout_status": "CASE_EXPANSION_V11_5_PAPER_PORTFOLIO_SIMULATION_CONFIRMED",
-  "final_closeout_confirmed": true
+  "blocked_result_count": 30,
+  "null_return_count": 30,
+  "cost_evaluation_status": "V11_5_BENCHMARK_COST_PROXY_EVALUATION_BLOCKED",
+  "risk_audit_status": "V11_5_PAPER_PORTFOLIO_RISK_AUDIT_FAIL",
+  "final_closeout_status": "CASE_EXPANSION_V11_5_BLOCKED",
+  "final_closeout_confirmed": false,
+  "v12_gate_status": "V12_ALPHA_OPERATING_LOOP_ENTRY_BLOCKED"
 }

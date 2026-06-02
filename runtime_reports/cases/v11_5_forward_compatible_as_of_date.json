@@ -1,0 +1,10 @@
+{
+  "status": "V11_5_FORWARD_COMPATIBLE_AS_OF_DATE_SELECTED",
+  "selected_as_of_date": "20240708",
+  "required_horizons": [
+    "T20",
+    "T60"
+  ],
+  "total_compatible_dates": 849,
+  "ready_for_historical_snapshot": true
+}

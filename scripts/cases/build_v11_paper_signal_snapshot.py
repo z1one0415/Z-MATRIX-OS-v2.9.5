@@ -11,7 +11,9 @@ L = W / "runtime_reports" / "cases" / "v8_large_data"
 def main():
     fv_data = json.loads((L / "v8_expanded_factor_values.json").read_text())
     wl = json.loads((C / "v11_candidate_factor_watchlist.json").read_text())
-    latest_ad = max(r["as_of_date"] for r in fv_data["records"])
+    selector=json.loads((C/"v11_5_forward_compatible_as_of_date.json").read_text())
+    latest_ad = selector.get("selected_as_of_date") or max(r["as_of_date"] for r in fv_data["records"])
+    is_historical = selector.get("ready_for_historical_snapshot", False)
 
     snapshots = []
     for wi in wl["watch_items"]:
@@ -65,7 +67,7 @@ def main():
                 "factor_id": fid,
                 "horizon": wi["horizon"],
                 "rankic_direction": rd,
-                "as_of_date": latest_ad,
+                "as_of_date": latest_ad,"as_of_date_policy":"HISTORICAL_FORWARD_COMPATIBLE" if is_historical else "LATEST_AVAILABLE","forward_compatible":is_historical,
                 "universe_count": n,
                 "signal_interpretation": interp,
                 **s,
@@ -75,7 +77,7 @@ def main():
 
     snap = {
         "status": "V11_PAPER_SIGNAL_SNAPSHOT_BUILT",
-        "as_of_date": latest_ad,
+        "as_of_date": latest_ad,"as_of_date_policy":"HISTORICAL_FORWARD_COMPATIBLE" if is_historical else "LATEST_AVAILABLE","forward_compatible":is_historical,
         "candidate_factor_count": len(snapshots),
         "universe_count": len(set(r["ticker"] for r in fv_data["records"])),
         "snapshots": snapshots,

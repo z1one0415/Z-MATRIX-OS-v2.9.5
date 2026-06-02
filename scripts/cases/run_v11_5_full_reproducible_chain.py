@@ -3,7 +3,7 @@
 import subprocess,json
 from pathlib import Path
 W=Path(__file__).resolve().parent.parent.parent;C=W/"runtime_reports"/"cases"
-S=["build_v11_5_paper_portfolio_contract.py","build_v11_5_portfolio_rules.py",
+S=["build_v11_5_paper_portfolio_contract.py","build_v11_5_portfolio_rules.py","select_v11_5_forward_compatible_as_of_date.py",
    "audit_v11_5_forward_label_alignment.py","run_v11_5_paper_portfolio_simulation.py",
    "evaluate_v11_5_benchmark_and_cost_proxy.py","audit_v11_5_paper_portfolio_risk.py",
    "build_v11_5_closeout.py","check_v12_alpha_operating_loop_entry_gate.py"]

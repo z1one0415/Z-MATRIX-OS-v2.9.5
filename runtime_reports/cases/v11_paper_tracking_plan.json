@@ -1,0 +1,23 @@
+{
+  "status": "V11_PAPER_TRACKING_PLAN_BUILT",
+  "tracking_enabled": true,
+  "paper_trading_enabled": false,
+  "portfolio_simulation_enabled": false,
+  "tracking_horizons": [
+    "T5",
+    "T10",
+    "T20",
+    "T60"
+  ],
+  "metrics": [
+    "future_return",
+    "benchmark_return",
+    "relative_return",
+    "bucket_spread",
+    "hit_rate",
+    "signal_decay"
+  ],
+  "next_stage": "V11_5_PAPER_PORTFOLIO_SIMULATION",
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false
+}

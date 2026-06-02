@@ -1,0 +1,17 @@
+{
+  "status": "CASE_EXPANSION_V11_5_PAPER_PORTFOLIO_SIMULATION_CONFIRMED",
+  "portfolio_count": 15,
+  "cost_model_status": "PROXY_ONLY",
+  "risk_audit_pass": true,
+  "ready_for_v12": false,
+  "v12_blocking_reasons": [
+    "PAPER_TRACKING_PERIOD_NOT_COMPLETED",
+    "COST_MODEL_PROXY_ONLY",
+    "NO_OUT_OF_SAMPLE_LIVE_TRACKING"
+  ],
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

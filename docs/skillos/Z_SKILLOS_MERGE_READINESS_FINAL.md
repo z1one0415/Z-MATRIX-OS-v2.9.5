@@ -1,7 +1,29 @@
-# Z-SkillOS Merge Readiness Final Report vFS.2
-Status: MERGE_READY_RECOMMENDED_AFTER_CLOUD_AUDIT
-Source: skillos-v0.10-workflow-dryrun-domain → Target: v4.0-batch-0
-DO NOT auto-merge. Human decision required.
-Pre-flight: 17 concrete, 0 framework, 104+ skills, full verify, ledgers empty, all gates false
-Post-merge: rerun verify_z_skillos_full_system + verify_z_agent_kernel on target, confirm no pollution, tag only after verify
-Forbidden: auto merge, production, broker, real trade, external API, main write, bypass human review
+# Z-SkillOS Merge Readiness Final Report vFS.4
+
+## Status
+
+MERGE_READY_RECOMMENDED_AFTER_CLOUD_AUDIT
+
+## Source Branch
+
+skillos-v0.10-workflow-dryrun-domain
+
+## Target Branch
+
+v4.0-batch-0
+
+## Merge Decision
+
+Recommended after cloud audit. DO NOT auto-merge. Human decision required.
+
+## Required Pre-flight
+
+Full verify passes. 17/17 concrete. 0 framework. 104+ skills. Max R2_DRAFT. Write skills require review+proposal. Ledgers empty. All gates false. No unrelated pollution.
+
+## Required Post-merge
+
+Checkout target. Rerun full verify + ZK verify. Confirm no pollution. Tag only after verify passes.
+
+## Forbidden
+
+Auto merge. Production. Broker/runtime. External API. Real trade. Main write. Bypass review.

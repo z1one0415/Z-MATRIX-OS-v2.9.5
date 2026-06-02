@@ -58,4 +58,20 @@ for r in["zmatrix","scripts","tests/agent","data/research_db/agent/registry"]:
   for tok in tkeys:assert tok not in t,f"{tok} in {f}"
 print("forbidden PASS")
 PYEOF
-echo "═══ Z-SkillOS Full System vFS.1 PASS ═══"
+
+echo "═══ Full Documentation Section Gate ═══"
+python3 << '"'"'PYEOF'"'"'
+from pathlib import Path
+requirements = {
+    "docs/skillos/Z_SKILLOS_FULL_SYSTEM_CLOSEOUT.md": 18,
+    "docs/skillos/Z_SKILLOS_FULL_SYSTEM_INTEGRATION_AUDIT.md": 18,
+    "docs/skillos/Z_SKILLOS_MERGE_READINESS_FINAL.md": 7,
+}
+for path, minimum in requirements.items():
+    text = Path(path).read_text("utf-8")
+    count = sum(1 for line in text.splitlines() if line.startswith("## "))
+    assert count >= minimum, f"{path}: section count {count} < {minimum}"
+print("documentation section gate PASS")
+PYEOF
+
+echo "═══ Z-SkillOS Full System vFS.4 PASS ═══"

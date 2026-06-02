@@ -1,0 +1,14 @@
+{
+  "status": "V12_ALPHA_OPERATING_LOOP_ENTRY_BLOCKED",
+  "ready_for_alpha_operating_loop": false,
+  "blocking_reasons": [
+    "PAPER_TRACKING_PERIOD_NOT_COMPLETED",
+    "COST_MODEL_PROXY_ONLY",
+    "NO_OUT_OF_SAMPLE_LIVE_TRACKING"
+  ],
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

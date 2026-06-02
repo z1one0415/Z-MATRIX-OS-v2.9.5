@@ -1,0 +1,13 @@
+{
+  "status": "V11_5_BENCHMARK_COST_PROXY_EVALUATION_BUILT",
+  "cost_model_status": "PROXY_ONLY",
+  "one_way_cost_bps": 15,
+  "round_trip_cost_bps": 30,
+  "gross_positive_count": 0,
+  "net_positive_count": 0,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

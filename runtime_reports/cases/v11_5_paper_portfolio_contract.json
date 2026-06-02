@@ -1,0 +1,14 @@
+{
+  "status": "V11_5_PAPER_PORTFOLIO_CONTRACT_BUILT",
+  "scope": "PAPER_PORTFOLIO_SIMULATION_ONLY",
+  "paper_portfolio_enabled": true,
+  "paper_trading_enabled": false,
+  "real_trading_enabled": false,
+  "investment_action_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false
+}

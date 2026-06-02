@@ -27,7 +27,7 @@ wl=json.loads(Path('data/research_db/agent/registry/skill_selection_whitelist_v1
 sm={x['skill_id']:x for x in s}
 for sid in wl['selected_skills']: assert sid in sm
 ids=[x['skill_id'] for x in s]; assert len(ids)==len(set(ids))
-keys=['production_allowed','external_api_used','shadowbroker_deployed','trade_allowed','verdict_allowed','broker_runtime_allowed','broker_order_allowed','real_trade_allowed','auto_buy_allowed','auto_sell_allowed','investment_verdict_allowed','trade_signal_allowed','buy_sell_hold_allowed','portfolio_decision_allowed','position_sizing_allowed','order_generation_allowed','target_price_allowed','workflow_execution_allowed','multi_domain_execution_allowed']
+keys=['production_allowed','external_api_used','shadowbroker_deployed','trade_allowed','verdict_allowed','broker_runtime_allowed','broker_order_allowed','real_trade_allowed','auto_buy_allowed','auto_sell_allowed','investment_verdict_allowed','trade_signal_allowed','buy_sell_hold_allowed','portfolio_decision_allowed','position_sizing_allowed','order_generation_allowed','target_price_allowed','workflow_execution_allowed','multi_domain_execution_allowed','portfolio_allowed']
 for x in s:
  for k in keys: assert x.get(k) is not True,f'{x[\"skill_id\"]}:{k}'
  if x.get('write_layers'): assert x.get('requires_human_review') and x.get('proposal_required')
@@ -54,7 +54,7 @@ print('workflow runtime PASS')
 echo "═══ v0.10.1 Forbidden Scan ═══"
 PYTHONPATH=. python3 -c "
 from pathlib import Path
-bkeys=['external_api_used','shadowbroker_deployed','production_allowed','trade_allowed','verdict_allowed','broker_runtime_allowed','broker_order_allowed','real_trade_allowed','auto_buy_allowed','auto_sell_allowed','investment_verdict_allowed','trade_signal_allowed','buy_sell_hold_allowed','portfolio_decision_allowed','position_sizing_allowed','order_generation_allowed','target_price_allowed','workflow_execution_allowed','multi_domain_execution_allowed']
+bkeys=['external_api_used','shadowbroker_deployed','production_allowed','trade_allowed','verdict_allowed','broker_runtime_allowed','broker_order_allowed','real_trade_allowed','auto_buy_allowed','auto_sell_allowed','investment_verdict_allowed','trade_signal_allowed','buy_sell_hold_allowed','portfolio_decision_allowed','position_sizing_allowed','order_generation_allowed','target_price_allowed','workflow_execution_allowed','multi_domain_execution_allowed','portfolio_allowed']
 tkeys=['B'+'UY','S'+'ELL','H'+'OLD','买'+'入','卖'+'出','持'+'有','目标'+'价','仓'+'位','下'+'单','调'+'仓','执'+'行','自动'+'运行']
 rkeys=['subprocess'+'.run(','os'+'.system(']
 skip={'scripts/verify_z_skillos_v10.sh'}

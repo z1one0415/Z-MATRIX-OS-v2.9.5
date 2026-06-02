@@ -1,5 +1,5 @@
 from zmatrix.agent.domain_skill_router import route_skill_by_domain
-SK=["external_api_used","production_allowed","shadowbroker_deployed","trade_allowed","verdict_allowed","broker_runtime_allowed","broker_order_allowed","real_trade_allowed","auto_buy_allowed","auto_sell_allowed","investment_verdict_allowed","trade_signal_allowed","buy_sell_hold_allowed","portfolio_decision_allowed","position_sizing_allowed","order_generation_allowed","target_price_allowed","workflow_execution_allowed","multi_domain_execution_allowed","researchdb_main_write","memory_main_write"]
+SK=["external_api_used","production_allowed","shadowbroker_deployed","trade_allowed","verdict_allowed","broker_runtime_allowed","broker_order_allowed","real_trade_allowed","auto_buy_allowed","auto_sell_allowed","investment_verdict_allowed","trade_signal_allowed","buy_sell_hold_allowed","portfolio_decision_allowed","position_sizing_allowed","order_generation_allowed","target_price_allowed","workflow_execution_allowed","multi_domain_execution_allowed","portfolio_allowed","researchdb_main_write","memory_main_write"]
 def _s(o):
     for k in SK: assert o.get(k) is False,k
 def test_all():

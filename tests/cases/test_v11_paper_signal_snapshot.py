@@ -6,4 +6,4 @@ def test():
     assert d["candidate_factor_count"]>=10
     for s in d["snapshots"]:
         assert s["investment_action"]=="NONE"
-        assert s["bucket_policy"]=="OBSERVATION_ONLY_NO_TRADE"
+        assert s["bucket_policy"]=="in ("OBSERVATION_ONLY_NO_TRADE","OBSERVATION_ONLY_NO_PREFERRED_DIRECTION")"

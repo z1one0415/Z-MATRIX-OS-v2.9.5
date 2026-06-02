@@ -1,10 +1,12 @@
 {
   "status": "V11_WATCHLIST_SEMANTIC_AUDIT_PASS",
   "checked_watch_items": 16,
+  "checked_signal_snapshots": 16,
   "semantic_mismatch_count": 0,
   "semantic_missing_count": 0,
   "raw_monotonic_leaks": [],
   "bucket_direction_violations": [],
   "snapshot_direction_violations": [],
+  "mixed_bucket_violations": [],
   "ready_for_v11_closeout": true
 }

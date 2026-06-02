@@ -13,5 +13,9 @@
   "steps_returncode_pass": true,
   "semantic_audit_pass": true,
   "mixed_bucket_violations": 0,
-  "final_closeout_status": "CASE_EXPANSION_V11_PAPER_WATCHLIST_CONFIRMED"
+  "snapshot_direction_violations": 0,
+  "final_closeout_status": "CASE_EXPANSION_V11_PAPER_WATCHLIST_CONFIRMED",
+  "final_closeout_confirmed": true,
+  "v11_5_gate_status": "V11_5_PAPER_PORTFOLIO_SIMULATION_ENTRY_ALLOWED",
+  "v11_5_gate_allowed": true
 }

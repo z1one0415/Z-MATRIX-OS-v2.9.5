@@ -12,5 +12,5 @@ def test_dry():
     o=route_skill_by_domain("WORKFLOW.RUN_RESEARCH_DRY_CHAIN",{},{}); o=o["output"]; assert o["dry_run"] and o["plan_only"] and o["workflow_execution_allowed"] is False
 def test_readiness():
     o=route_skill_by_domain("WORKFLOW.GET_WORKFLOW_READINESS",{},{}); o=o["output"]
-    for k in["workflow_engine_enabled","workflow_execution_allowed","multi_domain_execution_allowed","external_api_used","production_allowed","broker_runtime_allowed","broker_order_allowed","real_trade_allowed","order_generation_allowed","portfolio_decision_allowed","trade_signal_allowed","buy_sell_hold_allowed","position_sizing_allowed","target_price_allowed","researchdb_main_write","memory_main_write"]:
+    for k in["workflow_engine_enabled","workflow_execution_allowed","multi_domain_execution_allowed","external_api_used","production_allowed","broker_runtime_allowed","broker_order_allowed","real_trade_allowed","order_generation_allowed","portfolio_decision_allowed","trade_signal_allowed","buy_sell_hold_allowed","portfolio_allowed","position_sizing_allowed","target_price_allowed","researchdb_main_write","memory_main_write"]:
         assert o[k] is False,k

@@ -23,6 +23,6 @@ def route_skill(sid,env,ctx):
         o=_sb(); o["human_review_required"]=False; o.update({"dry_run":True,"valid":not ms,"missing":ms})
         return build_skill_success(sid,o)
     if sid=="WORKFLOW.GET_WORKFLOW_READINESS":
-        o=_sb(); o["human_review_required"]=False; o.update({"readiness":"DRY_RUN_ONLY_READY","workflow_engine_enabled":False,"workflow_execution_allowed":False,"multi_domain_execution_allowed":False,"order_generation_allowed":False,"portfolio_decision_allowed":False})
+        o=_sb(); o["human_review_required"]=False; o.update({"readiness":"DRY_RUN_ONLY_READY","workflow_engine_enabled":False,"workflow_execution_allowed":False,"multi_domain_execution_allowed":False,"order_generation_allowed":False,"portfolio_decision_allowed":False,"portfolio_allowed":False})
         return build_skill_success(sid,o)
     return build_skill_blocked(sid,"Unknown WORKFLOW skill")

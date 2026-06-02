@@ -1,9 +1,12 @@
 {
   "status": "CASE_EXPANSION_V11_PAPER_WATCHLIST_CONFIRMED",
   "candidate_count": 16,
-  "watch_items": 16,
+  "watch_items_count": 16,
   "signal_snapshots": 16,
   "tracking_plan_built": true,
+  "semantic_audit_pass": true,
+  "semantic_mismatch_count": 0,
+  "semantic_missing_count": 0,
   "paper_trading_enabled": false,
   "portfolio_simulation_enabled": false,
   "ready_for_v11_5": true,

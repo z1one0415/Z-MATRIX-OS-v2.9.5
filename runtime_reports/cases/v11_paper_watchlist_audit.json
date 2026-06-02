@@ -2,9 +2,10 @@
   "status": "V11_PAPER_WATCHLIST_AUDIT_PASS",
   "watch_items_checked": 16,
   "signal_snapshots_checked": 16,
+  "semantic_audit_status": "V11_WATCHLIST_SEMANTIC_AUDIT_PASS",
+  "semantic_mismatch_count": 0,
+  "semantic_missing_count": 0,
   "investment_action_count": 0,
   "forbidden_action_violations": [],
-  "semantic_violations": [],
-  "safety_violations": [],
   "ready_for_v11_5": true
 }

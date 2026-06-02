@@ -1,6 +1,7 @@
 {
   "status": "V11_5_PAPER_PORTFOLIO_SIMULATION_ENTRY_ALLOWED",
   "ready_for_paper_portfolio_simulation": true,
+  "semantic_audit_pass": true,
   "ready_for_alpha_claim": false,
   "alpha_validated": false,
   "production": "BLOCKED",

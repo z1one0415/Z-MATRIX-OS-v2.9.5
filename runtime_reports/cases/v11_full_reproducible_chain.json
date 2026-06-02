@@ -4,12 +4,15 @@
     "build_v11_paper_watchlist_contract.py",
     "build_v11_candidate_factor_watchlist.py",
     "build_v11_paper_signal_snapshot.py",
+    "audit_v11_watchlist_semantics.py",
     "build_v11_paper_tracking_plan.py",
     "audit_v11_paper_watchlist.py",
     "build_v11_closeout.py",
     "check_v11_5_paper_portfolio_entry_gate.py"
   ],
   "steps_returncode_pass": true,
+  "semantic_audit_pass": true,
   "final_closeout_status": "CASE_EXPANSION_V11_PAPER_WATCHLIST_CONFIRMED",
-  "final_closeout_confirmed": true
+  "final_closeout_confirmed": true,
+  "v11_5_gate_allowed": true
 }

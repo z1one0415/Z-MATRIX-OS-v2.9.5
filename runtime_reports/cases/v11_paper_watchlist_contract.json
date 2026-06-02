@@ -1,0 +1,12 @@
+{
+  "status": "V11_PAPER_WATCHLIST_CONTRACT_BUILT",
+  "watchlist_scope": "FACTOR_CANDIDATE_OBSERVATION_ONLY",
+  "paper_trading_enabled": false,
+  "portfolio_simulation_enabled": false,
+  "investment_action_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false
+}

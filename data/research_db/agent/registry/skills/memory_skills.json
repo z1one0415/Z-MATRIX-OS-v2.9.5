@@ -1,0 +1,116 @@
+[
+  {
+    "skill_id": "MEMORY.GET_MEMORY_CANDIDATE_SCHEMA",
+    "skill_name": "Get Memory Candidate Schema",
+    "domain": "MEMORY",
+    "version": "0.4",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "memory.get_memory_candidate_schema.in",
+    "output_schema_ref": "memory.get_memory_candidate_schema.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "memory"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "MEMORY.VALIDATE_MEMORY_CANDIDATE",
+    "skill_name": "Validate Memory Candidate",
+    "domain": "MEMORY",
+    "version": "0.4",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "memory.validate_memory_candidate.in",
+    "output_schema_ref": "memory.validate_memory_candidate.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "memory"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "MEMORY.BUILD_MONTHLY_MEMORY_CANDIDATE_DRAFT",
+    "skill_name": "Build Monthly Memory Candidate Draft",
+    "domain": "MEMORY",
+    "version": "0.4",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L1_WORKFLOW",
+    "input_schema_ref": "memory.build_monthly_memory_candidate_draft.in",
+    "output_schema_ref": "memory.build_monthly_memory_candidate_draft.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R2_DRAFT",
+    "requires_human_review": true,
+    "proposal_required": true,
+    "read_layers": [
+      "memory"
+    ],
+    "write_layers": [
+      "drafts"
+    ],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "MEMORY.GET_MEMORY_READINESS",
+    "skill_name": "Get Memory Readiness",
+    "domain": "MEMORY",
+    "version": "0.4",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "memory.get_memory_readiness.in",
+    "output_schema_ref": "memory.get_memory_readiness.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "memory"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "status": "V11_5_FORWARD_LABEL_ALIGNMENT_BLOCKED",
+  "expected_label_count": 840,
+  "found_label_count": 0,
+  "missing_label_count": 840,
+  "coverage": 0.0,
+  "ready_for_portfolio_simulation": false
+}

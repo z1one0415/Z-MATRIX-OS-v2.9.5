@@ -1,8 +1,9 @@
 {
-  "status": "V11_5_FULL_REPRODUCIBLE_CHAIN_PASS",
+  "status": "V11_5_FULL_REPRODUCIBLE_CHAIN_BLOCKED",
   "steps": [
     "build_v11_5_paper_portfolio_contract.py",
     "build_v11_5_portfolio_rules.py",
+    "audit_v11_5_forward_label_alignment.py",
     "run_v11_5_paper_portfolio_simulation.py",
     "evaluate_v11_5_benchmark_and_cost_proxy.py",
     "audit_v11_5_paper_portfolio_risk.py",
@@ -10,8 +11,8 @@
     "check_v12_alpha_operating_loop_entry_gate.py"
   ],
   "steps_returncode_pass": true,
+  "label_alignment_pass": false,
+  "calculated_result_count": 0,
   "final_closeout_status": "CASE_EXPANSION_V11_5_PAPER_PORTFOLIO_SIMULATION_CONFIRMED",
-  "final_closeout_confirmed": true,
-  "v12_gate_status": "V12_ALPHA_OPERATING_LOOP_ENTRY_BLOCKED",
-  "v12_gate_blocked": true
+  "final_closeout_confirmed": true
 }

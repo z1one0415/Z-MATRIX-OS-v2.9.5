@@ -1,6 +1,11 @@
 {
-  "status": "CASE_EXPANSION_V11_5_PAPER_PORTFOLIO_SIMULATION_CONFIRMED",
+  "status": "CASE_EXPANSION_V11_5_BLOCKED",
   "portfolio_count": 15,
+  "calculated_result_count": 0,
+  "blocked_result_count": 30,
+  "null_return_count": 30,
+  "label_alignment_pass": false,
+  "missing_label_count": 840,
   "cost_model_status": "PROXY_ONLY",
   "risk_audit_pass": true,
   "ready_for_v12": false,
@@ -8,6 +13,12 @@
     "PAPER_TRACKING_PERIOD_NOT_COMPLETED",
     "COST_MODEL_PROXY_ONLY",
     "NO_OUT_OF_SAMPLE_LIVE_TRACKING"
+  ],
+  "blocking_reasons": [
+    "MISSING_FORWARD_LABELS",
+    "NO_CALCULATED_RESULTS",
+    "BLOCKED_RESULTS_PRESENT",
+    "NULL_RETURNS"
   ],
   "ready_for_alpha_claim": false,
   "alpha_validated": false,

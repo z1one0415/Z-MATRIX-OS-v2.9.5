@@ -1,15 +1,21 @@
 {
-  "status": "V11_FULL_REPRODUCIBLE_CHAIN_PASS",
+  "status": "V11_FULL_REPRODUCIBLE_CHAIN_FAIL",
   "steps": [
     "build_v11_paper_watchlist_contract.py",
     "build_v11_candidate_factor_watchlist.py",
     "build_v11_paper_signal_snapshot.py",
+    "audit_v11_watchlist_semantics.py",
     "build_v11_paper_tracking_plan.py",
     "audit_v11_paper_watchlist.py",
     "build_v11_closeout.py",
     "check_v11_5_paper_portfolio_entry_gate.py"
   ],
   "steps_returncode_pass": true,
+  "semantic_audit_pass": false,
+  "mixed_bucket_violations": 0,
+  "snapshot_direction_violations": 0,
   "final_closeout_status": "CASE_EXPANSION_V11_PAPER_WATCHLIST_CONFIRMED",
-  "final_closeout_confirmed": true
+  "final_closeout_confirmed": true,
+  "v11_5_gate_status": "V11_5_PAPER_PORTFOLIO_SIMULATION_ENTRY_ALLOWED",
+  "v11_5_gate_allowed": true
 }

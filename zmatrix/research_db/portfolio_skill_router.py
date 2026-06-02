@@ -1,7 +1,7 @@
 from __future__ import annotations
 from zmatrix.agent.skill_result_envelope import build_skill_success, build_skill_draft, build_skill_blocked
 def _sb():
-    return {"external_api_used":False,"production_allowed":False,"shadowbroker_deployed":False,"trade_allowed":False,"verdict_allowed":False,"broker_order_allowed":False,"real_trade_allowed":False,"auto_buy_allowed":False,"auto_sell_allowed":False,"investment_verdict_allowed":False,"trade_signal_allowed":False,"buy_sell_hold_allowed":False,"portfolio_decision_allowed":False,"position_sizing_allowed":False,"order_generation_allowed":False,"target_price_allowed":False,"final_scoring_allowed":False,"backtest_allowed":False,"researchdb_main_write":False,"memory_main_write":False}
+    return {"external_api_used":False,"production_allowed":False,"shadowbroker_deployed":False,"trade_allowed":False,"verdict_allowed":False,"broker_order_allowed":False,"real_trade_allowed":False,"auto_buy_allowed":False,"auto_sell_allowed":False,"investment_verdict_allowed":False,"trade_signal_allowed":False,"buy_sell_hold_allowed":False,"portfolio_decision_allowed":False,"position_sizing_allowed":False,"order_generation_allowed":False,"target_price_allowed":False,"final_scoring_allowed":False,"backtest_allowed":False,"portfolio_allowed":False,"researchdb_main_write":False,"memory_main_write":False}
 def route_skill(sid,env,ctx):
     if sid=="PORTFOLIO.GET_SCHEMA":
         o=_sb(); o["human_review_required"]=False; o.update({"schema":{"positions":"list","risk_budget":"object","exposure":"object"},"portfolio_decision_allowed":False,"order_generation_allowed":False})

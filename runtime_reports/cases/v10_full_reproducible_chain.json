@@ -1,6 +1,7 @@
 {
   "status": "V10_FULL_REPRODUCIBLE_CHAIN_PASS",
   "steps": [
+    "calculate_v9_factor_decay.py",
     "build_v10_council_input_pack.py",
     "run_v10_research_council_review.py",
     "run_v10_devil_advocate_review.py",

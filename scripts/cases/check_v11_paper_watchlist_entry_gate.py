@@ -98,6 +98,7 @@ def main():
     da = load("v10_devil_advocate_review.json")
     tp = load("v10_candidate_factor_thesis_pack.json")
     upstream_audit = load("v10_upstream_safety_alpha_audit.json")
+    semantic_audit = load("v10_decay_semantic_propagation_audit.json")
 
 
     docs = {
@@ -137,6 +138,11 @@ def main():
         and upstream_audit.get("alpha_missing_fields", ["X"]) == []
         and upstream_audit.get("alpha_true_fields", ["X"]) == []
     )
+    semantic_ok = semantic_audit.get("status") == "V10_DECAY_SEMANTIC_PROPAGATION_PASS" and semantic_audit.get("ready_for_v11_paper_watchlist") is True and semantic_audit.get("raw_monotonic_leaks", ["X"]) == []
+    if not semantic_ok:
+        blocking.append("DECAY_SEMANTIC_PROPAGATION_NOT_PASS")
+    if semantic_audit.get("raw_monotonic_leaks"):
+        blocking.append("RAW_MONOTONIC_LEAK_DETECTED")
     if not upstream_ok:
         blocking.append("UPSTREAM_SAFETY_ALPHA_AUDIT_NOT_PASS")
     if upstream_audit.get("safety_missing_fields"):

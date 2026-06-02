@@ -1,0 +1,16 @@
+{
+  "status": "V10_DECAY_SEMANTIC_PROPAGATION_PASS",
+  "checked_layers": [
+    "v9_decay",
+    "v10_input_pack",
+    "v10_council_review",
+    "v10_devil_advocate",
+    "v10_candidate_thesis"
+  ],
+  "missing_decay_pattern": [],
+  "missing_decay_pattern_basis": [],
+  "missing_rankic_direction": [],
+  "missing_raw_rankic_trend": [],
+  "raw_monotonic_leaks": [],
+  "ready_for_v11_paper_watchlist": true
+}

@@ -21,7 +21,7 @@ def main():
         if vd=="RESEARCH_APPROVED": a+=1
         elif vd=="WATCH_ONLY": w+=1
         else: x+=1
-        revs.append(dict(factor_id=fid,horizon=pf["horizon"],evidence=dict(mean_rankic=mr,rankic_ir=ir,valid_date_count=vdc,positive_rankic_ratio=pf.get("positive_rankic_ratio"),decay_pattern=dp,robustness_grade=rg),council_votes=votes,final_research_verdict=vd,reason="Signal exists",ready_for_paper_watchlist=vd!="REJECT_FOR_NOW",ready_for_alpha_claim=False,alpha_validated=False,investment_verdict="BLOCKED"))
+        revs.append(dict(factor_id=fid,horizon=pf["horizon"],evidence=dict(mean_rankic=mr,rankic_ir=ir,valid_date_count=vdc,positive_rankic_ratio=pf.get("positive_rankic_ratio"),decay_pattern=dp,decay_pattern_basis=pf.get('decay_pattern_basis'),rankic_direction=pf.get('rankic_direction'),raw_rankic_trend=pf.get('raw_rankic_trend'),robustness_grade=rg),council_votes=votes,final_research_verdict=vd,reason="Signal exists",ready_for_paper_watchlist=vd!="REJECT_FOR_NOW",ready_for_alpha_claim=False,alpha_validated=False,investment_verdict="BLOCKED"))
     cr=dict(status="V10_RESEARCH_COUNCIL_REVIEW_BUILT",council_seats=7,reviewed_factor_count=len(revs),council_verdict_distribution=dict(RESEARCH_APPROVED=a,WATCH_ONLY=w,REJECT_FOR_NOW=x),reviews=revs,alpha_validated=False,ready_for_alpha_claim=False,production="BLOCKED",broker_runtime="BLOCKED",real_trade="BLOCKED")
     json.dump(cr,open(C/"v10_research_council_review.json","w"),indent=2)
     print(f"Council: {a}R/{w}W/{x}X")

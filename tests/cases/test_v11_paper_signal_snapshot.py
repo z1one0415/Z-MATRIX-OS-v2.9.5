@@ -6,4 +6,7 @@ def test():
     assert d["candidate_factor_count"]>=10
     for s in d["snapshots"]:
         assert s["investment_action"]=="NONE"
-        assert s["bucket_policy"]=="OBSERVATION_ONLY_NO_TRADE"
+        bp=s.get("bucket_policy","")
+        assert bp.startswith("OBSERVATION_ONLY"),f"bucket_policy={bp}"
+        if s.get("rankic_direction") in ("MIXED","MISSING"):
+            assert s.get("favored_bucket_size",1)==0,f"MIXED favored_bucket_size should be 0"

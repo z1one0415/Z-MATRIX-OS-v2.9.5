@@ -27,7 +27,7 @@ skeys=["production_allowed","external_api_used","shadowbroker_deployed","trade_a
 for s in skills:
  sid=s["skill_id"]; d=s.get("domain"); assert d in expected,f"{sid}:unknown domain {d}"
  assert routers.get(d),f"{sid}:empty router for {d}"
- rvl=s.get("risk_level","R0"); assert ro.get(rvl[:2] if rvl.startswith("R") else rvl,99)<=2,f"{sid}:risk {rvl}"
+ rvl=s.get("risk_level","R0_READ"); assert ro.get(rvl,99)<=ro["R2_DRAFT"],f"{sid}:risk {rvl}"
  for k in skeys: assert s.get(k) is not True,f"{sid}:{k}=true"
  if s.get("write_layers"): assert s.get("requires_human_review"),f"{sid}:write no review"; assert s.get("proposal_required"),f"{sid}:write no proposal"
 print(f"registry PASS: skills={len(skills)} concrete={len(concrete)} framework={len(framework)}")

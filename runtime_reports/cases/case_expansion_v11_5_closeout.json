@@ -1,11 +1,11 @@
 {
   "status": "CASE_EXPANSION_V11_5_BLOCKED",
   "portfolio_count": 15,
-  "calculated_result_count": 0,
-  "blocked_result_count": 30,
-  "null_return_count": 30,
+  "calculated_result_count": 30,
+  "blocked_result_count": 0,
+  "null_return_count": 0,
   "label_alignment_pass": false,
-  "missing_label_count": 840,
+  "missing_label_count": 0,
   "cost_model_status": "PROXY_ONLY",
   "risk_audit_pass": false,
   "ready_for_v12": false,
@@ -16,9 +16,6 @@
   ],
   "blocking_reasons": [
     "MISSING_FORWARD_LABELS",
-    "NO_CALCULATED_RESULTS",
-    "BLOCKED_RESULTS_PRESENT",
-    "NULL_RETURNS",
     "RISK_AUDIT_FAIL"
   ],
   "ready_for_alpha_claim": false,

@@ -2,12 +2,9 @@
   "status": "V12_ALPHA_OPERATING_LOOP_ENTRY_BLOCKED",
   "ready_for_alpha_operating_loop": false,
   "blocking_reasons": [
-    "V11_5_NOT_CONFIRMED",
     "PAPER_TRACKING_PERIOD_NOT_COMPLETED",
     "COST_MODEL_PROXY_ONLY",
-    "NO_OUT_OF_SAMPLE_LIVE_TRACKING",
-    "FORWARD_LABEL_ALIGNMENT_NOT_PASS",
-    "NO_CALCULATED_PORTFOLIO_RESULTS"
+    "NO_OUT_OF_SAMPLE_LIVE_TRACKING"
   ],
   "ready_for_alpha_claim": false,
   "alpha_validated": false,

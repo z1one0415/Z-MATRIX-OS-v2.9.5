@@ -11,7 +11,9 @@ L = W / "runtime_reports" / "cases" / "v8_large_data"
 def main():
     fv_data = json.loads((L / "v8_expanded_factor_values.json").read_text())
     wl = json.loads((C / "v11_candidate_factor_watchlist.json").read_text())
-    latest_ad = max(r["as_of_date"] for r in fv_data["records"])
+    import json as _json
+    sel=_json.loads((C/"v11_5_forward_compatible_as_of_date.json").read_text())
+    latest_ad = sel.get("selected_as_of_date") or max(r["as_of_date"] for r in fv_data["records"])
 
     snapshots = []
     for wi in wl["watch_items"]:

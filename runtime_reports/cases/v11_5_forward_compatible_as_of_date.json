@@ -2,11 +2,15 @@
   "status": "V11_5_FORWARD_COMPATIBLE_AS_OF_DATE_SELECTED_FULL",
   "selected_as_of_date": "20240905",
   "coverage_mode": "FULL",
-  "expected_label_count": 72,
-  "found_label_count": 72,
+  "expected_label_count": 840,
+  "found_label_count": 840,
   "missing_label_count": 0,
   "coverage": 1.0,
+  "result_level_expected": 0,
+  "result_level_calculable": 0,
+  "result_level_blocked": 0,
   "latest_full_coverage_selected": true,
   "ready_for_full_portfolio_simulation": true,
-  "ready_for_partial_portfolio_report": true
+  "ready_for_partial_portfolio_report": true,
+  "selector_coverage_contract": "PORTFOLIO_LEVEL_WATCH_BUCKET_TICKER_HORIZON"
 }

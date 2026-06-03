@@ -23,7 +23,7 @@ final_ok=(align.get("ready_for_portfolio_simulation")and sim.get("calculated_res
     and co.get("status")=="CASE_EXPANSION_V11_5_PAPER_PORTFOLIO_SIMULATION_CONFIRMED"
     and "BLOCKED"in g.get("status",""))
 chain_ok=ok and final_ok
-r2={"status":"V11_5_FULL_REPRODUCIBLE_CHAIN_PASS"if chain_ok else"V11_5_FULL_REPRODUCIBLE_CHAIN_BLOCKED",
+r2={"status":"V11_5_FULL_REPRODUCIBLE_CHAIN_PASS"if chain_ok else("V11_5_FULL_REPRODUCIBLE_CHAIN_BLOCKED_PARTIAL"if co.get("status")=="CASE_EXPANSION_V11_5_BLOCKED_PARTIAL_RESULTS"else"V11_5_FULL_REPRODUCIBLE_CHAIN_BLOCKED"),
     "steps":S,"steps_returncode_pass":ok,"label_alignment_pass":align.get("ready_for_portfolio_simulation"),
     "calculated_result_count":sim.get("calculated_result_count",0),
     "blocked_result_count":sim.get("blocked_result_count",0),
@@ -31,7 +31,7 @@ r2={"status":"V11_5_FULL_REPRODUCIBLE_CHAIN_PASS"if chain_ok else"V11_5_FULL_REP
     "cost_evaluation_status":cost.get("status",""),
     "risk_audit_status":risk.get("status",""),
     "final_closeout_status":co.get("status",""),
-    "final_closeout_confirmed":co.get("status")=="CASE_EXPANSION_V11_5_PAPER_PORTFOLIO_SIMULATION_CONFIRMED",
+    "final_closeout_confirmed":co.get("status")=="CASE_EXPANSION_V11_5_PAPER_PORTFOLIO_SIMULATION_CONFIRMED","partial_results_available":co.get("partial_results_available",False),
     "v12_gate_status":g.get("status","")}
 json.dump(r2,open(C/"v11_5_full_reproducible_chain.json","w"),indent=2)
 print(f"Full chain: {r2["status"]} | label_ok={align.get("ready_for_portfolio_simulation")} calc={sim.get("calculated_result_count",0)}")

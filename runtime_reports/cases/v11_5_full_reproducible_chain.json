@@ -11,7 +11,7 @@
     "build_v11_5_closeout.py",
     "check_v12_alpha_operating_loop_entry_gate.py"
   ],
-  "steps_returncode_pass": true,
+  "steps_returncode_pass": false,
   "label_alignment_pass": false,
   "calculated_result_count": 27,
   "blocked_result_count": 3,
@@ -20,5 +20,6 @@
   "risk_audit_status": "V11_5_PAPER_PORTFOLIO_RISK_AUDIT_FAIL",
   "final_closeout_status": "CASE_EXPANSION_V11_5_BLOCKED",
   "final_closeout_confirmed": false,
+  "partial_results_available": false,
   "v12_gate_status": "V12_ALPHA_OPERATING_LOOP_ENTRY_BLOCKED"
 }

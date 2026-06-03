@@ -1,5 +1,5 @@
 {
-  "status": "V11_5_PAPER_PORTFOLIO_SIMULATION_BUILT",
+  "status": "V11_5_PAPER_PORTFOLIO_SIMULATION_PARTIAL",
   "simulation_mode": "PAPER_ONLY",
   "portfolio_count": 15,
   "results": [
@@ -428,6 +428,7 @@
   "blocked_result_count": 3,
   "calculated_result_count": 27,
   "missing_label_count": 3,
+  "simulation_completeness": "PARTIAL",
   "ready_for_alpha_claim": false,
   "alpha_validated": false,
   "production": "BLOCKED",

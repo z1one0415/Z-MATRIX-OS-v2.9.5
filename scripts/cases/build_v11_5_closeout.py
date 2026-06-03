@@ -19,8 +19,12 @@ def main():
     null_ok = sim.get("null_return_count", 999) == 0
     risk_ok = risk.get("status") == "V11_5_PAPER_PORTFOLIO_RISK_AUDIT_PASS"
     cost_ok = "BLOCKED" not in cost.get("status", "")
+    cost_eligible = cost.get("eligible_for_closeout_confirmed", True)
 
-    confirmed = label_ok and calc_ok and blocked_ok and null_ok and risk_ok and cost_ok
+    full_calc = calc_ok and blocked_ok and null_ok
+    partial_calc = sim.get("calculated_result_count",0) > 0
+    confirmed = full_calc and label_ok and risk_ok and cost_eligible
+    blocked_partial = partial_calc and not confirmed
 
     co = {
         "status": (

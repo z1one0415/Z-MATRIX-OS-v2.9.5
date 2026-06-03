@@ -3,7 +3,7 @@
   "portfolio_items_checked": 15,
   "risk_violations": [
     "FORWARD_LABEL_ALIGNMENT_NOT_PASS",
-    "BLOCKED_RESULTS_PRESENT",
+    "PARTIAL_PORTFOLIO_RESULTS",
     "NULL_RETURN_RESULTS_PRESENT"
   ],
   "investment_action_count": 0,

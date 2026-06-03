@@ -9,7 +9,7 @@ cost=json.loads((C/"v11_5_benchmark_cost_proxy_evaluation.json").read_text())
 rv=[]
 if not align.get("ready_for_portfolio_simulation"): rv.append("FORWARD_LABEL_ALIGNMENT_NOT_PASS")
 if sim.get("calculated_result_count",0)==0: rv.append("NO_CALCULATED_PORTFOLIO_RESULTS")
-if sim.get("blocked_result_count",0)>0: rv.append("BLOCKED_RESULTS_PRESENT")
+if sim.get("blocked_result_count",0)>0: rv.append("PARTIAL_PORTFOLIO_RESULTS")
 if sim.get("null_return_count",0)>0: rv.append("NULL_RETURN_RESULTS_PRESENT")
 if "BLOCKED"in cost.get("status",""): rv.append("COST_EVALUATION_BLOCKED")
 ro=len(rv)==0

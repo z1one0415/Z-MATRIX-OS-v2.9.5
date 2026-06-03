@@ -22,4 +22,4 @@ for s in eligible:
 ready=expected>0 and found==expected
 a={"status":"V11_5_FORWARD_LABEL_ALIGNMENT_PASS"if ready else"V11_5_FORWARD_LABEL_ALIGNMENT_BLOCKED","expected_label_count":expected,"found_label_count":found,"missing_label_count":len(missing),"coverage":round(found/expected,4)if expected else 0,"result_level_expected":result_exp,"result_level_calculable":result_exp-result_blk,"result_level_blocked":result_blk,"ready_for_portfolio_simulation":ready}
 json.dump(a,open(C/"v11_5_forward_label_alignment_audit.json","w"),indent=2)
-print(f"Alignment: {'PASS' if ready else 'BLOCKED'} | found={found}/{expected} blocked_rslt={result_blk}/{result_exp}")
+print(f"Alignment: {'PASS' if ready else 'BLOCKED'} | found={found}/{expected}")

@@ -2,12 +2,12 @@
   "status": "V11_5_PAPER_PORTFOLIO_RISK_AUDIT_PASS",
   "portfolio_items_checked": 15,
   "risk_violations": [],
+  "forbidden_action_violations": [],
   "investment_action_count": 0,
   "ready_for_v12": false,
   "v12_blocking_reasons": [
     "PAPER_TRACKING_PERIOD_NOT_COMPLETED",
     "COST_MODEL_PROXY_ONLY",
     "NO_OUT_OF_SAMPLE_LIVE_TRACKING"
-  ],
-  "forbidden_action_violations": []
+  ]
 }

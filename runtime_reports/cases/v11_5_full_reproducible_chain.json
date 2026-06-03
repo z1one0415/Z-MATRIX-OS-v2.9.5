@@ -13,12 +13,12 @@
     "check_v12_alpha_operating_loop_entry_gate.py"
   ],
   "steps_returncode_pass": true,
+  "full_chain_hardgate_pass": true,
+  "closeout_confirmed": true,
+  "v12_gate_blocked": true,
+  "v12_reasons_present": true,
+  "safety_blocked": true,
+  "alpha_blocked": true,
   "final_closeout_status": "CASE_EXPANSION_V11_5_PAPER_PORTFOLIO_SIMULATION_CONFIRMED",
-  "final_closeout_confirmed": true,
-  "partial_results_available": false,
-  "partial_results_usable_for_report": true,
-  "partial_results_eligible_for_v12": false,
-  "calculated_result_count": 30,
-  "blocked_result_count": 0,
-  "v12_gate_status": "V12_ALPHA_OPERATING_LOOP_ENTRY_BLOCKED"
+  "calculated_result_count": 30
 }

@@ -1,15 +1,17 @@
 {
   "status": "V11_5_BENCHMARK_COST_PROXY_EVALUATION_BUILT",
+  "gross_positive_count": 10,
+  "net_positive_count": 10,
+  "calculated_results_used": 30,
+  "blocked_results_skipped": 0,
   "cost_model_status": "PROXY_ONLY",
   "one_way_cost_bps": 15,
   "round_trip_cost_bps": 30,
-  "gross_positive_count": 10,
-  "net_positive_count": 10,
+  "eligible_for_closeout_confirmed": true,
+  "eligible_for_v12": false,
   "ready_for_alpha_claim": false,
   "alpha_validated": false,
   "production": "BLOCKED",
   "broker_runtime": "BLOCKED",
-  "real_trade": "BLOCKED",
-  "eligible_for_closeout_confirmed": true,
-  "eligible_for_v12": false
+  "real_trade": "BLOCKED"
 }

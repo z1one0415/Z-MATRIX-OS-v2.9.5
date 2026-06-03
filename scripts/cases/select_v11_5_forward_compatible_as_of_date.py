@@ -27,8 +27,9 @@ for ad in all_dates:
         elif rd=="POSITIVE":bt.update(t for t,v in vs[-max(1,n//5):])
     e=0;f=0
     for hn in["T20","T60"]:
-        for tk in bt:e+=1
-        if(ad,tk,hn)in lab_by:f+=1
+        for tk in bt:
+            e+=1
+            if(ad,tk,hn)in lab_by:f+=1
     cov=f/e if e>0 else 0
     if cov==1.0 and ad>str(best_date or""):best_date,best_e,best_f=ad,e,f
 mode="FULL" if best_date else "PARTIAL"

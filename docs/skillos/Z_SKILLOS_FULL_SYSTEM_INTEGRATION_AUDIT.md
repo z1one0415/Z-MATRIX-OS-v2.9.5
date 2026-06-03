@@ -56,6 +56,8 @@ Covers: dangerous true flags, raw shell tokens, trading terms, portfolio terms, 
 
 ## Verify Chain
 
+v01-v06 historical verify gates are superseded/absorbed by current full-system registry, domain, and audit checks.
+
 verify_z_skillos_full_system → v0.10 through v01 → G16 → ZK.
 
 ## Merge Preconditions

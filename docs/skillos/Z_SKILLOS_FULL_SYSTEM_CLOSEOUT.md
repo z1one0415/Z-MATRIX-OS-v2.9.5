@@ -104,6 +104,8 @@ Required false / blocked gates:
 
 ## Verify Chain
 
+v01-v06 historical verify gates are superseded/absorbed by current full-system registry, domain, and audit checks.
+
 Required verify chain:
 - compileall
 - tests/agent

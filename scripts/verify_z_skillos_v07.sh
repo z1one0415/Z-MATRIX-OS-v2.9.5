@@ -7,12 +7,6 @@ PYTHONPATH=. python3 -m pytest -q tests/research_db/
 PYTHONPATH=. python3 scripts/skillos/scan_skill_candidates.py
 PYTHONPATH=. python3 scripts/skillos/build_skill_registry.py
 PYTHONPATH=. python3 scripts/skillos/validate_skill_registry.py
-bash scripts/verify_z_skillos_v06.sh
-bash scripts/verify_z_skillos_v05.sh
-bash scripts/verify_z_skillos_v04.sh
-bash scripts/verify_z_skillos_v03.sh
-bash scripts/verify_z_skillos_v02.sh
-bash scripts/verify_z_skillos_v01.sh
 bash scripts/verify_zg16_full_stub_integration.sh
 bash scripts/verify_z_agent_kernel.sh
 echo "═══ v0.7.4 Registry + Council Runtime ═══"

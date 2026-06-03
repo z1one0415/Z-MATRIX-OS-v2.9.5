@@ -1,11 +1,7 @@
 {
-  "status": "V11_5_PAPER_PORTFOLIO_RISK_AUDIT_FAIL",
+  "status": "V11_5_PAPER_PORTFOLIO_RISK_AUDIT_PASS",
   "portfolio_items_checked": 15,
-  "risk_violations": [
-    "FORWARD_LABEL_ALIGNMENT_NOT_PASS",
-    "PARTIAL_PORTFOLIO_RESULTS",
-    "NULL_RETURN_RESULTS_PRESENT"
-  ],
+  "risk_violations": [],
   "investment_action_count": 0,
   "ready_for_v12": false,
   "v12_blocking_reasons": [

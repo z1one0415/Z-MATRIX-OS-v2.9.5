@@ -1,37 +1,12 @@
 {
-  "status": "V11_5_FORWARD_LABEL_ALIGNMENT_BLOCKED",
+  "status": "V11_5_FORWARD_LABEL_ALIGNMENT_PASS",
   "expected_label_count": 840,
-  "found_label_count": 837,
-  "missing_label_count": 3,
-  "coverage": 0.9964,
-  "missing_labels": [
-    {
-      "watch_id": "V11_WATCH_004",
-      "factor_id": "AMOUNT_60D_AVG",
-      "horizon": "T60",
-      "bucket": "favored_bucket",
-      "ticker": "600837",
-      "as_of_date": "20240708"
-    },
-    {
-      "watch_id": "V11_WATCH_005",
-      "factor_id": "AMOUNT_60D_AVG",
-      "horizon": "T60",
-      "bucket": "favored_bucket",
-      "ticker": "600837",
-      "as_of_date": "20240708"
-    },
-    {
-      "watch_id": "V11_WATCH_006",
-      "factor_id": "AMOUNT_60D_AVG",
-      "horizon": "T60",
-      "bucket": "favored_bucket",
-      "ticker": "600837",
-      "as_of_date": "20240708"
-    }
-  ],
+  "found_label_count": 840,
+  "missing_label_count": 0,
+  "coverage": 1.0,
+  "missing_labels": [],
   "result_level_expected": 30,
-  "result_level_calculable": 27,
-  "result_level_blocked": 3,
-  "ready_for_portfolio_simulation": false
+  "result_level_calculable": 30,
+  "result_level_blocked": 0,
+  "ready_for_portfolio_simulation": true
 }

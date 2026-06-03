@@ -1,9 +1,10 @@
 {
-  "status": "V11_5_FULL_REPRODUCIBLE_CHAIN_BLOCKED",
+  "status": "V11_5_FULL_REPRODUCIBLE_CHAIN_PASS",
   "steps": [
     "build_v11_5_paper_portfolio_contract.py",
     "build_v11_5_portfolio_rules.py",
     "select_v11_5_forward_compatible_as_of_date.py",
+    "build_v11_paper_signal_snapshot.py",
     "audit_v11_5_forward_label_alignment.py",
     "run_v11_5_paper_portfolio_simulation.py",
     "evaluate_v11_5_benchmark_and_cost_proxy.py",
@@ -11,15 +12,13 @@
     "build_v11_5_closeout.py",
     "check_v12_alpha_operating_loop_entry_gate.py"
   ],
-  "steps_returncode_pass": false,
-  "label_alignment_pass": false,
-  "calculated_result_count": 27,
-  "blocked_result_count": 3,
-  "null_return_count": 3,
-  "cost_evaluation_status": "V11_5_BENCHMARK_COST_PROXY_EVALUATION_PARTIAL",
-  "risk_audit_status": "V11_5_PAPER_PORTFOLIO_RISK_AUDIT_FAIL",
-  "final_closeout_status": "CASE_EXPANSION_V11_5_BLOCKED",
-  "final_closeout_confirmed": false,
+  "steps_returncode_pass": true,
+  "final_closeout_status": "CASE_EXPANSION_V11_5_PAPER_PORTFOLIO_SIMULATION_CONFIRMED",
+  "final_closeout_confirmed": true,
   "partial_results_available": false,
+  "partial_results_usable_for_report": true,
+  "partial_results_eligible_for_v12": false,
+  "calculated_result_count": 30,
+  "blocked_result_count": 0,
   "v12_gate_status": "V12_ALPHA_OPERATING_LOOP_ENTRY_BLOCKED"
 }

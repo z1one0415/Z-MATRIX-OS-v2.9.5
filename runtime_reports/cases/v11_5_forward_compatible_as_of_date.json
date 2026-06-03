@@ -1,10 +1,8 @@
 {
-  "status": "V11_5_FORWARD_COMPATIBLE_AS_OF_DATE_SELECTED",
-  "selected_as_of_date": "20240708",
-  "required_horizons": [
-    "T20",
-    "T60"
-  ],
-  "total_compatible_dates": 849,
-  "ready_for_historical_snapshot": true
+  "status": "V11_5_FORWARD_COMPATIBLE_AS_OF_DATE_SELECTED_FULL",
+  "selected_as_of_date": "20240308",
+  "coverage_mode": "FULL",
+  "coverage": 1.0,
+  "ready_for_full_portfolio_simulation": true,
+  "ready_for_partial_portfolio_report": true
 }

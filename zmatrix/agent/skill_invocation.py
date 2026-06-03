@@ -8,6 +8,7 @@ from .command_envelope import validate_command_envelope
 from .agent_registry import get_agent
 from .agent_permission import evaluate_agent_permission
 from .skill_registry import get_skill, assert_skill_callable
+from .skill_domain_registry import get_domain_router_path
 from .domain_skill_router import route_skill_by_domain
 from .skill_result_envelope import normalize_skill_result
 from .token_budget import enforce_token_budget
@@ -139,8 +140,9 @@ def invoke_skill(command_envelope: dict, context_slice: dict) -> dict:
             "production_allowed": False,
         }
 
-    # Domain skill routing
-    if "." in skill_id:
+    # Domain skill routing — only route if domain has concrete router
+    router_path = get_domain_router_path(skill_id)
+    if router_path:
         routed_result = route_skill_by_domain(skill_id, command_envelope, context_slice)
         routed_result = normalize_skill_result(skill_id, routed_result)
         routed_result["evidence_refs"] = routed_result.get("evidence_refs", [])
@@ -150,6 +152,7 @@ def invoke_skill(command_envelope: dict, context_slice: dict) -> dict:
         return routed_result
 
     write_layers = skill.get("write_layers", [])
+    human_review_required = bool(skill.get("requires_human_review", False) or write_layers)
     if write_layers:
         human_review_required = True
 

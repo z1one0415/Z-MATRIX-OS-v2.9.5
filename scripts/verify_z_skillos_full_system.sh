@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-echo "═══ Z-SkillOS Full System vFS.1 Verify ═══"
+echo "═══ Z-SkillOS Full System vFS.5 Verify ═══"
 python3 -m compileall -q zmatrix tests scripts
 PYTHONPATH=. python3 -m pytest -q tests/agent/
 PYTHONPATH=. python3 -m pytest -q tests/research_db/
@@ -60,7 +60,7 @@ print("forbidden PASS")
 PYEOF
 
 echo "═══ Full Documentation Section Gate ═══"
-python3 << '"'"'PYEOF'"'"'
+python3 << 'PYEOF'
 from pathlib import Path
 requirements = {
     "docs/skillos/Z_SKILLOS_FULL_SYSTEM_CLOSEOUT.md": 18,
@@ -74,4 +74,4 @@ for path, minimum in requirements.items():
 print("documentation section gate PASS")
 PYEOF
 
-echo "═══ Z-SkillOS Full System vFS.4 PASS ═══"
+echo "═══ Z-SkillOS Full System vFS.5 PASS ═══"

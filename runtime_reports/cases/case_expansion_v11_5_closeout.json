@@ -8,9 +8,6 @@
   "missing_label_count": 0,
   "cost_model_status": "PROXY_ONLY",
   "risk_audit_pass": true,
-  "partial_results_available": false,
-  "partial_results_usable_for_report": true,
-  "partial_results_eligible_for_v12": false,
   "ready_for_v12": false,
   "v12_blocking_reasons": [
     "PAPER_TRACKING_PERIOD_NOT_COMPLETED",

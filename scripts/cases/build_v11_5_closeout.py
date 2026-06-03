@@ -19,18 +19,14 @@ def main():
     null_ok = sim.get("null_return_count", 999) == 0
     risk_ok = risk.get("status") == "V11_5_PAPER_PORTFOLIO_RISK_AUDIT_PASS"
     cost_ok = "BLOCKED" not in cost.get("status", "")
-    cost_eligible = cost.get("eligible_for_closeout_confirmed", True)
 
-    full_calc = calc_ok and blocked_ok and null_ok
-    partial_calc = sim.get("calculated_result_count",0) > 0
-    confirmed = full_calc and label_ok and risk_ok and cost_eligible
-    blocked_partial = partial_calc and not confirmed
+    confirmed = label_ok and calc_ok and blocked_ok and null_ok and risk_ok and cost_ok
 
     co = {
         "status": (
             "CASE_EXPANSION_V11_5_PAPER_PORTFOLIO_SIMULATION_CONFIRMED"
             if confirmed
-            else "CASE_EXPANSION_V11_5_BLOCKED_PARTIAL_RESULTS" if (sim.get("calculated_result_count",0) > 0 and sim.get("blocked_result_count",0) > 0) else "CASE_EXPANSION_V11_5_BLOCKED"
+            else "CASE_EXPANSION_V11_5_BLOCKED"
         ),
         "portfolio_count": sim.get("portfolio_count", 0),
         "calculated_result_count": sim.get("calculated_result_count", 0),
@@ -40,9 +36,6 @@ def main():
         "missing_label_count": sim.get("missing_label_count", 0),
         "cost_model_status": "PROXY_ONLY",
         "risk_audit_pass": risk_ok,
-        "partial_results_available": sim.get("calculated_result_count",0) > 0 and sim.get("blocked_result_count",0) > 0,
-        "partial_results_usable_for_report": sim.get("calculated_result_count",0) > 0,
-        "partial_results_eligible_for_v12": False,
         "ready_for_v12": False,
         "v12_blocking_reasons": risk.get("v12_blocking_reasons", []),
         "blocking_reasons": (
@@ -53,8 +46,7 @@ def main():
                 "NO_CALCULATED_RESULTS" if not calc_ok else None,
                 "BLOCKED_RESULTS_PRESENT" if not blocked_ok else None,
                 "NULL_RETURNS" if not null_ok else None,
-                "PARTIAL_RESULTS" if (sim.get("calculated_result_count",0) > 0 and sim.get("blocked_result_count",0) > 0) else None,
-        "RISK_AUDIT_FAIL" if not risk_ok else None,
+                "RISK_AUDIT_FAIL" if not risk_ok else None,
             ]
         ),
         "ready_for_alpha_claim": False,

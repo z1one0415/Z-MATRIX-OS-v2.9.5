@@ -8,5 +8,6 @@
     "PAPER_TRACKING_PERIOD_NOT_COMPLETED",
     "COST_MODEL_PROXY_ONLY",
     "NO_OUT_OF_SAMPLE_LIVE_TRACKING"
-  ]
+  ],
+  "forbidden_action_violations": []
 }

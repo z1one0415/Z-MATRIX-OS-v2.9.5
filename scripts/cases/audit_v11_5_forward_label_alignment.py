@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Audit forward label alignment for V11.5 portfolio simulation."""
+"""Audit forward label alignment — correct indentation."""
 import json
 from pathlib import Path
 W=Path(__file__).resolve().parent.parent.parent;C=W/"runtime_reports"/"cases";L=W/"runtime_reports/cases/v8_large_data"
@@ -8,18 +8,18 @@ lb=json.loads((L/"v8_forward_return_labels.json").read_text())
 lab={}
 for l in lb["labels"]:lab[(l["as_of_date"],l["ticker"],l["horizon"])]=l
 eligible=[s for s in sn["snapshots"]if s.get("rankic_direction")in("NEGATIVE","POSITIVE")and s.get("favored_bucket_size",0)>0]
-expected=0;found=0;missing=[];result_expected=0;result_blocked=0
+expected=0;found=0;missing=[];result_exp=0;result_blk=0
 for s in eligible:
     for hn in["T20","T60"]:
-        result_expected+=1;res_miss=0
+        result_exp+=1;res_miss=0
         for bkt in["favored_bucket","comparison_bucket"]:
             for tk in s.get(bkt,[]):
                 expected+=1
                 k=(s["as_of_date"],tk,hn)
                 if k in lab:found+=1
-                else:missing.append({"watch_id":s["watch_id"],"factor_id":s["factor_id"],"horizon":hn,"bucket":bkt,"ticker":tk,"as_of_date":s["as_of_date"]});res_miss+=1
-        if res_miss>0:result_blocked+=1
+                else:missing.append({"watch_id":s["watch_id"],"ticker":tk,"horizon":hn,"bucket":bkt});res_miss+=1
+        if res_miss>0:result_blk+=1
 ready=expected>0 and found==expected
-a={"status":"V11_5_FORWARD_LABEL_ALIGNMENT_PASS"if ready else"V11_5_FORWARD_LABEL_ALIGNMENT_BLOCKED","expected_label_count":expected,"found_label_count":found,"missing_label_count":len(missing),"coverage":round(found/expected,4)if expected else 0,"missing_labels":missing[:10],"result_level_expected":result_expected,"result_level_calculable":result_expected-result_blocked,"result_level_blocked":result_blocked,"ready_for_portfolio_simulation":ready}
+a={"status":"V11_5_FORWARD_LABEL_ALIGNMENT_PASS"if ready else"V11_5_FORWARD_LABEL_ALIGNMENT_BLOCKED","expected_label_count":expected,"found_label_count":found,"missing_label_count":len(missing),"coverage":round(found/expected,4)if expected else 0,"result_level_expected":result_exp,"result_level_calculable":result_exp-result_blk,"result_level_blocked":result_blk,"ready_for_portfolio_simulation":ready}
 json.dump(a,open(C/"v11_5_forward_label_alignment_audit.json","w"),indent=2)
-print(f"Alignment: {'PASS' if ready else 'BLOCKED'} | found={found}/{expected} blocked_rslt={result_blocked}/{result_expected}")
+print(f"Alignment: {'PASS' if ready else 'BLOCKED'} | found={found}/{expected} blocked_rslt={result_blk}/{result_exp}")

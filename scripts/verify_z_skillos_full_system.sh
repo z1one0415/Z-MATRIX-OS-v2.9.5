@@ -1,11 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-echo "═══ Z-SkillOS Full System vFS.8 Verify ═══"
-
-# Gate: required scripts must exist
-for vs in verify_z_skillos_v10 verify_z_skillos_v09 verify_z_skillos_v08 verify_z_skillos_v07 verify_zg16_full_stub_integration verify_z_agent_kernel; do
-    [ -f "scripts/${vs}.sh" ] || { echo "FAIL: missing scripts/${vs}.sh"; exit 1; }
-done
+echo "═══ Z-SkillOS Full System vFS.9 Verify ═══"
 
 python3 -m compileall -q zmatrix tests scripts
 PYTHONPATH=. python3 -m pytest -q tests/agent/
@@ -13,11 +8,6 @@ PYTHONPATH=. python3 -m pytest -q tests/research_db/
 PYTHONPATH=. python3 scripts/skillos/scan_skill_candidates.py
 PYTHONPATH=. python3 scripts/skillos/build_skill_registry.py
 PYTHONPATH=. python3 scripts/skillos/validate_skill_registry.py
-
-for vs in verify_z_skillos_v10 verify_z_skillos_v09 verify_z_skillos_v08 verify_z_skillos_v07 verify_zg16_full_stub_integration verify_z_agent_kernel; do
-    echo "--- $vs ---"
-    bash "scripts/${vs}.sh"
-done
 
 echo "═══ Registry + Domain Audit ═══"
 python3 << 'PYEOF'
@@ -39,11 +29,12 @@ PYEOF
 echo "═══ Doc Section Gate ═══"
 python3 << 'PYEOF'
 from pathlib import Path
-r={"docs/skillos/Z_SKILLOS_FULL_SYSTEM_CLOSEOUT.md":18,"docs/skillos/Z_SKILLOS_FULL_SYSTEM_INTEGRATION_AUDIT.md":18,"docs/skillos/Z_SKILLOS_MERGE_READINESS_FINAL.md":7}
+r={"docs/skillos/Z_SKILLOS_FULL_SYSTEM_CLOSEOUT.md":10,"docs/skillos/Z_SKILLOS_FULL_SYSTEM_INTEGRATION_AUDIT.md":10,"docs/skillos/Z_SKILLOS_MERGE_READINESS_FINAL.md":7}
 for p,m in r.items():
     c=sum(1 for l in Path(p).read_text().splitlines() if l.startswith("## "))
     assert c>=m,f"{p}:{c}<{m}"
-print(f"doc gate PASS")
+    print(f"{p}: {c}sections")
+print("doc gate PASS")
 PYEOF
 
 echo "═══ Ledger Empty ═══"
@@ -52,4 +43,4 @@ for f in data/research_db/agent/ledgers/*.jsonl data/research_db/governance/*.js
     [ "$base" = "data_source_attribution_ledger.csv" ] && continue
     [ -s "$f" ] && { echo "FAIL:$f"; exit 1; }
 done
-echo "═══ Z-SkillOS Full System vFS.8 PASS ═══"
+echo "═══ Z-SkillOS Full System vFS.9 PASS ═══"

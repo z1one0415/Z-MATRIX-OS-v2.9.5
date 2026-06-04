@@ -1,10 +1,8 @@
 {
-  "status": "V12_ALPHA_OPERATING_LOOP_ENTRY_BLOCKED",
-  "ready_for_alpha_operating_loop": false,
-  "research_only": false,
-  "blocking_reasons": [
-    "PAPER_TRACKING_PERIOD_NOT_COMPLETED"
-  ],
+  "status": "V12_ALPHA_OPERATING_LOOP_RESEARCH_ONLY_ALLOWED",
+  "ready_for_alpha_operating_loop": true,
+  "research_only": true,
+  "blocking_reasons": [],
   "ready_for_alpha_claim": false,
   "alpha_validated": false,
   "production": "BLOCKED",

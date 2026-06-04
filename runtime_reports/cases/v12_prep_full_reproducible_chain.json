@@ -1,0 +1,15 @@
+{
+  "status": "V12_PREP_FULL_REPRODUCIBLE_CHAIN_PASS",
+  "steps_returncode_pass": true,
+  "gate_logic_consistent": true,
+  "v11_5_confirmed": true,
+  "v12_gate_status": "V12_ALPHA_OPERATING_LOOP_ENTRY_BLOCKED",
+  "blocking_reasons": [
+    "PAPER_TRACKING_PERIOD_NOT_COMPLETED"
+  ],
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

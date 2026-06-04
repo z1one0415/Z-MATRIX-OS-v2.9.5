@@ -3,7 +3,6 @@
   "ready_for_alpha_operating_loop": false,
   "research_only": false,
   "blocking_reasons": [
-    "V11_5_NOT_CONFIRMED",
     "PAPER_TRACKING_PERIOD_NOT_COMPLETED"
   ],
   "ready_for_alpha_claim": false,

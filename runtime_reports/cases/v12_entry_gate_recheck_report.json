@@ -4,9 +4,7 @@
   "research_only": false,
   "ready_for_alpha_operating_loop": false,
   "blocking_reasons": [
-    "PAPER_TRACKING_PERIOD_NOT_COMPLETED",
-    "COST_MODEL_PROXY_ONLY",
-    "NO_OUT_OF_SAMPLE_LIVE_TRACKING"
+    "PAPER_TRACKING_PERIOD_NOT_COMPLETED"
   ],
   "next_required_action": "COMPLETE_OOS_PAPER_TRACKING_PERIOD",
   "ready_for_alpha_claim": false,

@@ -16,7 +16,7 @@
   "full_chain_hardgate_pass": true,
   "closeout_confirmed": true,
   "v12_gate_blocked": true,
-  "v12_reasons_present": true,
+  "v12_reasons_present": false,
   "safety_blocked": true,
   "alpha_blocked": true,
   "final_closeout_status": "CASE_EXPANSION_V11_5_PAPER_PORTFOLIO_SIMULATION_CONFIRMED",

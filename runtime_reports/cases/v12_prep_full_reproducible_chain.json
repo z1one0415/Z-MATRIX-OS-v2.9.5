@@ -2,8 +2,10 @@
   "status": "V12_PREP_FULL_REPRODUCIBLE_CHAIN_PASS",
   "steps_returncode_pass": true,
   "gate_logic_consistent": true,
+  "gate_ready_semantics_ok": true,
+  "gate_research_only_semantics_ok": true,
+  "safety_blocked": true,
   "v12_gate_status": "V12_ALPHA_OPERATING_LOOP_ENTRY_BLOCKED",
-  "v12_gate_blocked_or_research_only": true,
   "blocking_reasons": [
     "PAPER_TRACKING_PERIOD_NOT_COMPLETED"
   ],

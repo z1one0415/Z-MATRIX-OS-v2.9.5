@@ -3,8 +3,6 @@
   "substage_confirmed": true,
   "substage_ready_for_v12_gate": false,
   "paper_tracking_period_completed": false,
-  "registry_count": 30,
-  "audit_pass": true,
   "global_ready_for_v12": false,
   "ready_for_alpha_claim": false,
   "alpha_validated": false,

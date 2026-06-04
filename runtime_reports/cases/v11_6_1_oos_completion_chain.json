@@ -2,6 +2,7 @@
   "status": "V11_6_1_OOS_COMPLETION_CHAIN_PASS",
   "steps_returncode_pass": true,
   "paper_tracking_period_completed": true,
+  "completion_ready_for_v12_gate": true,
   "v12_gate_status": "V12_ALPHA_OPERATING_LOOP_RESEARCH_ONLY_ALLOWED",
   "v12_blocking_reasons": [],
   "ready_for_alpha_claim": false,

@@ -2,6 +2,7 @@
   "status": "V11_6_1_OOS_COMPLETION_AUDIT_PASS",
   "paper_tracking_period_completed": true,
   "completion_ready_for_v12_gate": true,
+  "contract_purity_ok": true,
   "blocking_reasons": [],
   "ready_for_alpha_claim": false,
   "alpha_validated": false,

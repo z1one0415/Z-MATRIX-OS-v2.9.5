@@ -1,0 +1,22 @@
+{
+  "status": "V12_PREP_PREFLIGHT_PASS",
+  "baseline_commit": "ef6384e1854dd3ef50dd1a7031798e32ca79fe03",
+  "v11_5_confirmed": true,
+  "selector_e": 840,
+  "selector_f": 840,
+  "selector_ok": true,
+  "alignment_f": 840,
+  "alignment_e": 840,
+  "alignment_ok": true,
+  "sim_calc": 30,
+  "sim_blocked": 0,
+  "sim_ok": true,
+  "v12_blocked": true,
+  "hardgate": true,
+  "ready_for_v12_prep": true,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

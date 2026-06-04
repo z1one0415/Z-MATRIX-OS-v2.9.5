@@ -1,0 +1,19 @@
+{
+  "status": "V11_6_OOS_PAPER_TRACKING_CONTRACT_BUILT",
+  "source_v11_5_commit": "ef6384e1854dd3ef50dd1a7031798e32ca79fe03",
+  "source_as_of_date": "20240905",
+  "tracking_mode": "PAPER_ONLY_OOS_TRACKING",
+  "tracking_horizons": [
+    "T20",
+    "T60"
+  ],
+  "tracking_status": "NOT_COMPLETED",
+  "minimum_tracking_periods_required": 1,
+  "paper_tracking_period_completed": false,
+  "ready_for_v12": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

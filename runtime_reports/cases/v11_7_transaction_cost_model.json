@@ -1,0 +1,15 @@
+{
+  "status": "V11_7_COST_MODEL_BUILT",
+  "one_way_fee_bps": 3,
+  "round_trip_fee_bps": 6,
+  "stamp_tax_model": "RESEARCH_PROXY",
+  "slippage_proxy_bps": 10,
+  "turnover_estimate": 0.25,
+  "liquidity_penalty": 5,
+  "amount_capacity_proxy": 100000000.0,
+  "volume_capacity_proxy": 0.05,
+  "min_trade_amount_threshold": 10000,
+  "cost_model_status": "RESEARCH_COST_MODEL_V1",
+  "cost_model_proxy_only": false,
+  "eligible_for_v12_cost_gate": true
+}

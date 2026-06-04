@@ -1,0 +1,286 @@
+{
+  "status": "V11_7_COST_MODEL_EVALUATION_BUILT",
+  "cost_model_status": "RESEARCH_COST_MODEL_V1",
+  "not_PROXY_ONLY": true,
+  "adjusted_results": [
+    {
+      "factor_id": "AMOUNT_20D_AVG",
+      "horizon": "T20",
+      "original_spread": -0.099546,
+      "adjusted_spread": -0.101146,
+      "cost_model": "RESEARCH_COST_MODEL_V1",
+      "paper_only": true,
+      "investment_action": "NONE"
+    },
+    {
+      "factor_id": "AMOUNT_20D_AVG",
+      "horizon": "T60",
+      "original_spread": 0.090412,
+      "adjusted_spread": 0.088812,
+      "cost_model": "RESEARCH_COST_MODEL_V1",
+      "paper_only": true,
+      "investment_action": "NONE"
+    },
+    {
+      "factor_id": "AMOUNT_20D_AVG",
+      "horizon": "T20",
+      "original_spread": -0.099546,
+      "adjusted_spread": -0.101146,
+      "cost_model": "RESEARCH_COST_MODEL_V1",
+      "paper_only": true,
+      "investment_action": "NONE"
+    },
+    {
+      "factor_id": "AMOUNT_20D_AVG",
+      "horizon": "T60",
+      "original_spread": 0.090412,
+      "adjusted_spread": 0.088812,
+      "cost_model": "RESEARCH_COST_MODEL_V1",
+      "paper_only": true,
+      "investment_action": "NONE"
+    },
+    {
+      "factor_id": "AMOUNT_20D_AVG",
+      "horizon": "T20",
+      "original_spread": -0.099546,
+      "adjusted_spread": -0.101146,
+      "cost_model": "RESEARCH_COST_MODEL_V1",
+      "paper_only": true,
+      "investment_action": "NONE"
+    },
+    {
+      "factor_id": "AMOUNT_20D_AVG",
+      "horizon": "T60",
+      "original_spread": 0.090412,
+      "adjusted_spread": 0.088812,
+      "cost_model": "RESEARCH_COST_MODEL_V1",
+      "paper_only": true,
+      "investment_action": "NONE"
+    },
+    {
+      "factor_id": "AMOUNT_60D_AVG",
+      "horizon": "T20",
+      "original_spread": -0.107872,
+      "adjusted_spread": -0.109472,
+      "cost_model": "RESEARCH_COST_MODEL_V1",
+      "paper_only": true,
+      "investment_action": "NONE"
+    },
+    {
+      "factor_id": "AMOUNT_60D_AVG",
+      "horizon": "T60",
+      "original_spread": 0.105597,
+      "adjusted_spread": 0.103997,
+      "cost_model": "RESEARCH_COST_MODEL_V1",
+      "paper_only": true,
+      "investment_action": "NONE"
+    },
+    {
+      "factor_id": "AMOUNT_60D_AVG",
+      "horizon": "T20",
+      "original_spread": -0.107872,
+      "adjusted_spread": -0.109472,
+      "cost_model": "RESEARCH_COST_MODEL_V1",
+      "paper_only": true,
+      "investment_action": "NONE"
+    },
+    {
+      "factor_id": "AMOUNT_60D_AVG",
+      "horizon": "T60",
+      "original_spread": 0.105597,
+      "adjusted_spread": 0.103997,
+      "cost_model": "RESEARCH_COST_MODEL_V1",
+      "paper_only": true,
+      "investment_action": "NONE"
+    },
+    {
+      "factor_id": "AMOUNT_60D_AVG",
+      "horizon": "T20",
+      "original_spread": -0.107872,
+      "adjusted_spread": -0.109472,
+      "cost_model": "RESEARCH_COST_MODEL_V1",
+      "paper_only": true,
+      "investment_action": "NONE"
+    },
+    {
+      "factor_id": "AMOUNT_60D_AVG",
+      "horizon": "T60",
+      "original_spread": 0.105597,
+      "adjusted_spread": 0.103997,
+      "cost_model": "RESEARCH_COST_MODEL_V1",
+      "paper_only": true,
+      "investment_action": "NONE"
+    },
+    {
+      "factor_id": "MOM_60D",
+      "horizon": "T20",
+      "original_spread": -0.048293,
+      "adjusted_spread": -0.049893,
+      "cost_model": "RESEARCH_COST_MODEL_V1",
+      "paper_only": true,
+      "investment_action": "NONE"
+    },
+    {
+      "factor_id": "MOM_60D",
+      "horizon": "T60",
+      "original_spread": 0.109482,
+      "adjusted_spread": 0.107882,
+      "cost_model": "RESEARCH_COST_MODEL_V1",
+      "paper_only": true,
+      "investment_action": "NONE"
+    },
+    {
+      "factor_id": "MOM_60D",
+      "horizon": "T20",
+      "original_spread": -0.048293,
+      "adjusted_spread": -0.049893,
+      "cost_model": "RESEARCH_COST_MODEL_V1",
+      "paper_only": true,
+      "investment_action": "NONE"
+    },
+    {
+      "factor_id": "MOM_60D",
+      "horizon": "T60",
+      "original_spread": 0.109482,
+      "adjusted_spread": 0.107882,
+      "cost_model": "RESEARCH_COST_MODEL_V1",
+      "paper_only": true,
+      "investment_action": "NONE"
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_60D",
+      "horizon": "T20",
+      "original_spread": -0.048293,
+      "adjusted_spread": -0.049893,
+      "cost_model": "RESEARCH_COST_MODEL_V1",
+      "paper_only": true,
+      "investment_action": "NONE"
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_60D",
+      "horizon": "T60",
+      "original_spread": 0.109482,
+      "adjusted_spread": 0.107882,
+      "cost_model": "RESEARCH_COST_MODEL_V1",
+      "paper_only": true,
+      "investment_action": "NONE"
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_60D",
+      "horizon": "T20",
+      "original_spread": -0.048293,
+      "adjusted_spread": -0.049893,
+      "cost_model": "RESEARCH_COST_MODEL_V1",
+      "paper_only": true,
+      "investment_action": "NONE"
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_60D",
+      "horizon": "T60",
+      "original_spread": 0.109482,
+      "adjusted_spread": 0.107882,
+      "cost_model": "RESEARCH_COST_MODEL_V1",
+      "paper_only": true,
+      "investment_action": "NONE"
+    },
+    {
+      "factor_id": "VOLATILITY_20D",
+      "horizon": "T20",
+      "original_spread": -0.113672,
+      "adjusted_spread": -0.115272,
+      "cost_model": "RESEARCH_COST_MODEL_V1",
+      "paper_only": true,
+      "investment_action": "NONE"
+    },
+    {
+      "factor_id": "VOLATILITY_20D",
+      "horizon": "T60",
+      "original_spread": -0.262075,
+      "adjusted_spread": -0.263675,
+      "cost_model": "RESEARCH_COST_MODEL_V1",
+      "paper_only": true,
+      "investment_action": "NONE"
+    },
+    {
+      "factor_id": "VOLATILITY_20D",
+      "horizon": "T20",
+      "original_spread": -0.113672,
+      "adjusted_spread": -0.115272,
+      "cost_model": "RESEARCH_COST_MODEL_V1",
+      "paper_only": true,
+      "investment_action": "NONE"
+    },
+    {
+      "factor_id": "VOLATILITY_20D",
+      "horizon": "T60",
+      "original_spread": -0.262075,
+      "adjusted_spread": -0.263675,
+      "cost_model": "RESEARCH_COST_MODEL_V1",
+      "paper_only": true,
+      "investment_action": "NONE"
+    },
+    {
+      "factor_id": "VOLATILITY_60D",
+      "horizon": "T20",
+      "original_spread": -0.063586,
+      "adjusted_spread": -0.065186,
+      "cost_model": "RESEARCH_COST_MODEL_V1",
+      "paper_only": true,
+      "investment_action": "NONE"
+    },
+    {
+      "factor_id": "VOLATILITY_60D",
+      "horizon": "T60",
+      "original_spread": -0.212125,
+      "adjusted_spread": -0.213725,
+      "cost_model": "RESEARCH_COST_MODEL_V1",
+      "paper_only": true,
+      "investment_action": "NONE"
+    },
+    {
+      "factor_id": "VOLATILITY_60D",
+      "horizon": "T20",
+      "original_spread": -0.063586,
+      "adjusted_spread": -0.065186,
+      "cost_model": "RESEARCH_COST_MODEL_V1",
+      "paper_only": true,
+      "investment_action": "NONE"
+    },
+    {
+      "factor_id": "VOLATILITY_60D",
+      "horizon": "T60",
+      "original_spread": -0.212125,
+      "adjusted_spread": -0.213725,
+      "cost_model": "RESEARCH_COST_MODEL_V1",
+      "paper_only": true,
+      "investment_action": "NONE"
+    },
+    {
+      "factor_id": "VOLATILITY_60D",
+      "horizon": "T20",
+      "original_spread": -0.063586,
+      "adjusted_spread": -0.065186,
+      "cost_model": "RESEARCH_COST_MODEL_V1",
+      "paper_only": true,
+      "investment_action": "NONE"
+    },
+    {
+      "factor_id": "VOLATILITY_60D",
+      "horizon": "T60",
+      "original_spread": -0.212125,
+      "adjusted_spread": -0.213725,
+      "cost_model": "RESEARCH_COST_MODEL_V1",
+      "paper_only": true,
+      "investment_action": "NONE"
+    }
+  ],
+  "gross_positive_adjusted": 10,
+  "net_positive_adjusted": 10,
+  "eligible_for_v12_cost_gate": true,
+  "ready_for_v12": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,13 @@
+{
+  "status": "V11_6_OOS_PAPER_TRACKING_AUDIT_PASS",
+  "registry_count": 30,
+  "registry_count_ok": true,
+  "paper_only_ok": true,
+  "no_investment_action_ok": true,
+  "tracking_not_completed": true,
+  "tracking_period_completed_ok": false,
+  "ready_for_v12": false,
+  "blocking_reasons": [
+    "PAPER_TRACKING_PERIOD_NOT_COMPLETED"
+  ]
+}

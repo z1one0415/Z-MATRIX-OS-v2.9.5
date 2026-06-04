@@ -1,0 +1,40 @@
+{
+  "status": "V11_8_WALK_FORWARD_TRACKING_BUILT",
+  "walk_forward_period_count": 3,
+  "valid_oos_period_count": 3,
+  "minimum_oos_period_required": 2,
+  "coverage_contract": "PORTFOLIO_LEVEL_WATCH_BUCKET_TICKER_HORIZON",
+  "all_periods_fail_closed": true,
+  "walk_forward_ready_for_v12": true,
+  "periods": [
+    {
+      "as_of_date": "20240905",
+      "selector_status": "FULL",
+      "calculated_results": 30,
+      "blocked_results": 0,
+      "coverage": 1.0,
+      "coverage_contract": "PORTFOLIO_LEVEL_WATCH_BUCKET_TICKER_HORIZON"
+    },
+    {
+      "as_of_date": "20240605",
+      "selector_status": "FULL",
+      "calculated_results": 30,
+      "blocked_results": 0,
+      "coverage": 1.0,
+      "coverage_contract": "PORTFOLIO_LEVEL_WATCH_BUCKET_TICKER_HORIZON"
+    },
+    {
+      "as_of_date": "20240305",
+      "selector_status": "FULL",
+      "calculated_results": 30,
+      "blocked_results": 0,
+      "coverage": 1.0,
+      "coverage_contract": "PORTFOLIO_LEVEL_WATCH_BUCKET_TICKER_HORIZON"
+    }
+  ],
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

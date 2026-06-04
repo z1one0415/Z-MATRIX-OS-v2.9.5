@@ -1,0 +1,14 @@
+{
+  "status": "V11_6_OOS_PAPER_TRACKING_FRAMEWORK_CONFIRMED",
+  "contract_built": true,
+  "registry_built": true,
+  "schedule_built": true,
+  "audit_pass": true,
+  "paper_tracking_period_completed": false,
+  "ready_for_v12": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

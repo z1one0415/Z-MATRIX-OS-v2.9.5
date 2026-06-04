@@ -1,0 +1,11 @@
+{
+  "status": "V11_8_WALK_FORWARD_TRACKING_CONFIRMED",
+  "period_count": 3,
+  "valid_oos_count": 3,
+  "ready_for_v12": true,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

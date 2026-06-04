@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
-echo "═══ Z-SkillOS v0.04 (absorbed by full-system audit) ═══"
+echo "═══ Z-SkillOS v0.04 absorbed historical gate ═══"
 python3 -m compileall -q zmatrix tests scripts
-PYTHONPATH=. python3 scripts/skillos/build_skill_registry.py 2>/dev/null || true
-PYTHONPATH=. python3 scripts/skillos/validate_skill_registry.py 2>/dev/null || true
-PYTHONPATH=. python3 -c "
+PYTHONPATH=. python3 scripts/skillos/build_skill_registry.py
+PYTHONPATH=. python3 scripts/skillos/validate_skill_registry.py
+python3 -c "
 from zmatrix.agent.skill_domain_registry import R
-c=sum(1 for p in R.values() if p)
-assert c>=3,f'concrete: {c}'
-print(f'v0.04 PASS: {c} concrete routers')
+c={d for d,p in R.items() if p}; f={d for d,p in R.items() if not p}
+assert len(c)>=3,f'too few concrete: {len(c)}'
+assert 'SYSTEM' in c,'SYSTEM missing'
+print(f'v0.04 PASS: concrete={len(c)}')
 "

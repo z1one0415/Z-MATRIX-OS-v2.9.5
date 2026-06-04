@@ -31,3 +31,9 @@ Auto merge. Production. Broker/runtime. External API. Real trade. Main write. By
 ---
 ## Current State: SKILLOS_READY_WAITING_PARENT_STABLE
 Z-SkillOS full-system closeout vFS.11 is internally ready. Final merge paused — parent branch is still moving. Do not auto-merge. Do not tag. Do not start SkillOS v1.0. Resume when parent stable commit is declared.
+
+---
+## Final Alignment: V11.6.3
+Merge branch: merge/skillos-final-on-v11-6-3 | Merge commit: 1be30e8 | Parent: 4337cf6
+14 conflicts resolved (cases→KEEP_PARENT). Parent protection: contract_purity_ok=true, v12_gate=RESEARCH_ONLY, production/broker/real_trade=BLOCKED.
+Tests: compileall 0 errors, agent 214, research_db 1261. Status: MERGE_BRANCH_READY_FOR_HUMAN_REVIEW. Do not auto-merge.

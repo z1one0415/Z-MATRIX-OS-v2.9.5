@@ -27,3 +27,7 @@ Checkout target. Rerun full verify + ZK verify. Confirm no pollution. Tag only a
 ## Forbidden
 
 Auto merge. Production. Broker/runtime. External API. Real trade. Main write. Bypass review.
+
+---
+## Current State: SKILLOS_READY_WAITING_PARENT_STABLE
+Z-SkillOS full-system closeout vFS.11 is internally ready. Final merge paused — parent branch is still moving. Do not auto-merge. Do not tag. Do not start SkillOS v1.0. Resume when parent stable commit is declared.

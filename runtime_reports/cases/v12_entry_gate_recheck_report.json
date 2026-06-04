@@ -1,12 +1,10 @@
 {
-  "status": "V12_PREP_FULL_REPRODUCIBLE_CHAIN_PASS",
-  "steps_returncode_pass": true,
-  "gate_logic_consistent": true,
+  "status": "V12_ENTRY_GATE_RECHECK_BUILT",
   "v12_gate_status": "V12_ALPHA_OPERATING_LOOP_ENTRY_BLOCKED",
-  "v12_gate_blocked_or_research_only": true,
   "blocking_reasons": [
     "PAPER_TRACKING_PERIOD_NOT_COMPLETED"
   ],
+  "next_required_action": "COMPLETE_OOS_PAPER_TRACKING_PERIOD",
   "ready_for_alpha_claim": false,
   "alpha_validated": false,
   "production": "BLOCKED",

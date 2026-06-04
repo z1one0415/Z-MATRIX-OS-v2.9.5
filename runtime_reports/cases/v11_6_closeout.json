@@ -1,9 +1,11 @@
 {
   "status": "V11_6_OOS_PAPER_TRACKING_FRAMEWORK_CONFIRMED",
   "substage_confirmed": true,
-  "substage_ready_for_v12_gate": true,
+  "completion_engine_built": true,
   "paper_tracking_period_completed": true,
-  "global_ready_for_v12": true,
+  "substage_ready_for_v12_gate": true,
+  "completion_blocking_reasons": [],
+  "global_ready_for_v12": false,
   "ready_for_alpha_claim": false,
   "alpha_validated": false,
   "production": "BLOCKED",

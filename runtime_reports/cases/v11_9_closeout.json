@@ -1,0 +1,13 @@
+{
+  "status": "V11_9_Z9_PAPER_AUTOPSY_PREP_CONFIRMED",
+  "substage_confirmed": true,
+  "substage_ready_for_v12_gate": true,
+  "autopsy_input_ready": true,
+  "factor_lifecycle_seeded": true,
+  "global_ready_for_v12": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

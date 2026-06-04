@@ -1,0 +1,13 @@
+{
+  "status": "V11_7_COST_MODEL_UPGRADE_CONFIRMED",
+  "substage_confirmed": true,
+  "substage_ready_for_v12_gate": true,
+  "cost_model_status": "RESEARCH_COST_MODEL_V1",
+  "eligible_for_v12_cost_gate": true,
+  "global_ready_for_v12": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

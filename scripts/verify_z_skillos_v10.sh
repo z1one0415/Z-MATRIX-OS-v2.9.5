@@ -60,6 +60,22 @@ bkeys=["external_api_used","shadowbroker_deployed","production_allowed","trade_a
 ckeys=["买"+"入","卖"+"出","持"+"有","目标"+"价","仓"+"位","下"+"单","调"+"仓","执"+"行","自动"+"运行"]
 rkeys=["subprocess"+".run(","os"+".system("]
 denylist_files=["account_constitution.py","prompt_patch_preview.py","prompt_patch_audit.py","prompt_patch_request.py","reviewers.py","council.py"]
+def strip_comments_and_strings(text):
+    try:
+        tokens = list(tokenize.generate_tokens(io.StringIO(text).readline))
+        result = []
+        for tok in tokens:
+            if tok.type in (tokenize.COMMENT, tokenize.STRING):
+                continue
+            result.append(tok.string)
+        return ''.join(result)
+    except tokenize.TokenError:
+        import re as _re
+        clean = _re.sub(r'""".*?"""', '', text, flags=_re.DOTALL)
+        clean = _re.sub(r"'''.*?'''", '', clean, flags=_re.DOTALL)
+        clean = _re.sub(r'#.*', '', clean)
+        return clean
+
 en_re=re.compile(r"\b(BUY|SELL|HOLD)\b")
 
 for r in["zmatrix","scripts","tests/agent","data/research_db/agent/registry"]:
@@ -68,7 +84,7 @@ for r in["zmatrix","scripts","tests/agent","data/research_db/agent/registry"]:
     for f in p.rglob("*.py"):
         if f.name in denylist_files:continue
         t=f.read_text("utf-8",errors="ignore")
-        clean=re.sub(r"#.*","",t)
+        clean=strip_comments_and_strings(t)
         clean=re.sub(r"\w*FORBIDDEN\w*\s*=\s*\{[^}]*\}","",clean)
         clean=re.sub(r"\w*DENYLIST\w*\s*=\s*\{[^}]*\}","",clean)
         for k in bkeys:

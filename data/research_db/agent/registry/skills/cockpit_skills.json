@@ -1,0 +1,114 @@
+[
+  {
+    "skill_id": "COCKPIT.BUILD_SKILLOS_OVERVIEW",
+    "skill_name": "Build SkillOS Overview",
+    "domain": "COCKPIT",
+    "version": "0.2",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "cockpit.build_skillos_overview.in",
+    "output_schema_ref": "cockpit.build_skillos_overview.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "skill_registry"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "COCKPIT.BUILD_ZG16_STATUS_PANEL",
+    "skill_name": "Build ZG16 Status Panel",
+    "domain": "COCKPIT",
+    "version": "0.2",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "cockpit.build_zg16_status_panel.in",
+    "output_schema_ref": "cockpit.build_zg16_status_panel.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "zg16_status"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "COCKPIT.BUILD_SKILL_DOMAIN_PANEL",
+    "skill_name": "Build Skill Domain Panel",
+    "domain": "COCKPIT",
+    "version": "0.2",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "cockpit.build_skill_domain_panel.in",
+    "output_schema_ref": "cockpit.build_skill_domain_panel.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "domain_router"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "COCKPIT.GET_NEXT_HUMAN_ACTIONS",
+    "skill_name": "Get Next Human Actions",
+    "domain": "COCKPIT",
+    "version": "0.2",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "cockpit.get_next_human_actions.in",
+    "output_schema_ref": "cockpit.get_next_human_actions.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "skill_registry"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  }
+]

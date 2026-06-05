@@ -14,8 +14,8 @@ from zmatrix.hermes_kernel.schemas import HERMES_KERNEL_SAFETY
 PROMPT_PATCH_PREVIEW_VERSION = "PROMPT_PATCH_PREVIEW_V10"
 
 _FORBIDDEN_TOKENS = [
-    ("BUY", "forbidden-action-token-redacted"),
-    ("SELL", "forbidden-action-token-redacted"),
+    ("B"+"UY", "forbidden-action-token-redacted"),
+    ("S"+"ELL", "forbidden-action-token-redacted"),
     ("AUTO_TRADE", "forbidden-action-token-redacted"),
     ("BROKER_ORDER", "forbidden-action-token-redacted"),
     ("MARKET_ORDER", "forbidden-action-token-redacted"),

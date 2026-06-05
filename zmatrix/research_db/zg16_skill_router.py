@@ -102,3 +102,8 @@ def _analysis_zone_draft(env, ctx):
 def _caseforge_draft(env, ctx):
     from .zg16_skill_wrappers import create_caseforge_draft_proposal
     return create_caseforge_draft_proposal(env.get("ticker",""), ctx.get("hypothesis_id",""), ctx.get("annotation_id",""))
+
+
+def route_skill(skill_id: str, command_envelope: dict, context_slice: dict) -> dict:
+    """Domain router entrypoint for Z-SkillOS compatibility."""
+    return route_zg16_skill(skill_id, command_envelope, context_slice)

@@ -11,7 +11,7 @@ from pathlib import Path
 SKILL_REGISTRY_PATH = os.environ.get(
     "Z_SKILL_REGISTRY_PATH",
     str(Path(__file__).resolve().parent.parent.parent
-        / "data" / "research_db" / "agent" / "registry" / "skill_registry.json"),
+        / "data" / "research_db" / "agent" / "registry" / "skill_registry.generated.json"),
 )
 
 

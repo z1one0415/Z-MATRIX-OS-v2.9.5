@@ -1,0 +1,170 @@
+[
+  {
+    "skill_id": "RESEARCHDB.GET_LAYER_STATUS",
+    "skill_name": "Get Layer Status",
+    "domain": "RESEARCHDB",
+    "version": "0.3",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "researchdb.get_layer_status.in",
+    "output_schema_ref": "researchdb.get_layer_status.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "researchdb_layers"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "RESEARCHDB.GET_DATASET_REGISTRY",
+    "skill_name": "Get Dataset Registry",
+    "domain": "RESEARCHDB",
+    "version": "0.3",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "researchdb.get_dataset_registry.in",
+    "output_schema_ref": "researchdb.get_dataset_registry.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "dataset_registry"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "RESEARCHDB.GET_CASE_INDEX_SUMMARY",
+    "skill_name": "Get Case Index Summary",
+    "domain": "RESEARCHDB",
+    "version": "0.3",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "researchdb.get_case_index_summary.in",
+    "output_schema_ref": "researchdb.get_case_index_summary.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": true,
+    "proposal_required": false,
+    "read_layers": [
+      "case_index"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "RESEARCHDB.GET_SOURCE_HEALTH_SUMMARY",
+    "skill_name": "Get Source Health Summary",
+    "domain": "RESEARCHDB",
+    "version": "0.3",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "researchdb.get_source_health_summary.in",
+    "output_schema_ref": "researchdb.get_source_health_summary.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": true,
+    "proposal_required": false,
+    "read_layers": [
+      "source_health"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "RESEARCHDB.GET_SKILL_REGISTRY_VIEW",
+    "skill_name": "Get Skill Registry View",
+    "domain": "RESEARCHDB",
+    "version": "0.3",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "researchdb.get_skill_registry_view.in",
+    "output_schema_ref": "researchdb.get_skill_registry_view.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "skill_registry"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "RESEARCHDB.GET_RESEARCHDB_READINESS",
+    "skill_name": "Get ResearchDB Readiness",
+    "domain": "RESEARCHDB",
+    "version": "0.3",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "researchdb.get_researchdb_readiness.in",
+    "output_schema_ref": "researchdb.get_researchdb_readiness.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": true,
+    "proposal_required": false,
+    "read_layers": [
+      "researchdb_status"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  }
+]

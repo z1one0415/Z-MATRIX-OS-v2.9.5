@@ -1,0 +1,170 @@
+[
+  {
+    "skill_id": "DATAFORGE.GET_SNAPSHOT_SCHEMA",
+    "skill_name": "Get Snapshot Schema",
+    "domain": "DATAFORGE",
+    "version": "0.3",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "dataforge.get_snapshot_schema.in",
+    "output_schema_ref": "dataforge.get_snapshot_schema.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "snapshot_schema"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "DATAFORGE.VALIDATE_SNAPSHOT_DRY",
+    "skill_name": "Validate Snapshot Dry",
+    "domain": "DATAFORGE",
+    "version": "0.3",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "dataforge.validate_snapshot_dry.in",
+    "output_schema_ref": "dataforge.validate_snapshot_dry.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": true,
+    "proposal_required": false,
+    "read_layers": [
+      "snapshot_dry"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "DATAFORGE.GET_DATA_QUALITY_SUMMARY",
+    "skill_name": "Get Data Quality Summary",
+    "domain": "DATAFORGE",
+    "version": "0.3",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "dataforge.get_data_quality_summary.in",
+    "output_schema_ref": "dataforge.get_data_quality_summary.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": true,
+    "proposal_required": false,
+    "read_layers": [
+      "data_quality"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "DATAFORGE.GET_ATTRIBUTION_SUMMARY",
+    "skill_name": "Get Attribution Summary",
+    "domain": "DATAFORGE",
+    "version": "0.3",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "dataforge.get_attribution_summary.in",
+    "output_schema_ref": "dataforge.get_attribution_summary.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": true,
+    "proposal_required": false,
+    "read_layers": [
+      "data_attribution"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "DATAFORGE.GET_REFRESH_TIER_STATUS",
+    "skill_name": "Get Refresh Tier Status",
+    "domain": "DATAFORGE",
+    "version": "0.3",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "dataforge.get_refresh_tier_status.in",
+    "output_schema_ref": "dataforge.get_refresh_tier_status.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R0_READ",
+    "requires_human_review": false,
+    "proposal_required": false,
+    "read_layers": [
+      "refresh_tiers"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  },
+  {
+    "skill_id": "DATAFORGE.GET_DATAFORGE_READINESS",
+    "skill_name": "Get DataForge Readiness",
+    "domain": "DATAFORGE",
+    "version": "0.3",
+    "lifecycle_status": "REGISTERED",
+    "skill_layer": "L0_ATOMIC",
+    "input_schema_ref": "dataforge.get_dataforge_readiness.in",
+    "output_schema_ref": "dataforge.get_dataforge_readiness.out",
+    "allowed_callers": [
+      "z-orchestrator"
+    ],
+    "risk_level": "R1_ANNOTATE",
+    "requires_human_review": true,
+    "proposal_required": false,
+    "read_layers": [
+      "dataforge_status"
+    ],
+    "write_layers": [],
+    "verify_script": null,
+    "router_ref": "",
+    "enabled": true,
+    "production_allowed": false,
+    "external_api_used": false,
+    "shadowbroker_deployed": false,
+    "trade_allowed": false,
+    "verdict_allowed": false
+  }
+]

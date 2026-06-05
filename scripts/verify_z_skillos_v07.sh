@@ -35,7 +35,9 @@ print('council runtime PASS')
 echo "=== v07 Forbidden Scan ==="
 python3 << 'INNEREOF'
 from pathlib import Path
+import io
 import re
+import tokenize
 
 bkeys=["external_api_used","shadowbroker_deployed","production_allowed","trade_allowed","verdict_allowed","broker_order_allowed","real_trade_allowed","auto_buy_allowed","auto_sell_allowed","investment_verdict_allowed","trade_signal_allowed","buy_sell_hold_allowed","portfolio_allowed"]
 ckeys=["买"+"入","卖"+"出","持"+"有","目标"+"价","止"+"盈","止"+"损","仓"+"位"]

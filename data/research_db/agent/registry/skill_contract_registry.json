@@ -1,8 +1,8 @@
 {
   "contract_version": "1.0.0",
   "source_registry": "skill_registry.generated.json",
+  "generation_policy": "REPRODUCIBLE_STATIC_BUILD",
   "skill_count": 104,
-  "generated_at": "2026-06-05T20:28:58.390945Z",
   "contracts": [
     {
       "skill_id": "AUTOCASE.GET_INTAKE_SCHEMA",

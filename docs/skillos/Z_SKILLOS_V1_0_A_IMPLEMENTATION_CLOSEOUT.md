@@ -2,7 +2,13 @@
 
 ## Status
 
-Z_SKILLOS_V1_0_A_CONTRACT_REGISTRY_INFRA_COMPLETE
+Z_SKILLOS_V1_0_A_CONTRACT_REGISTRY_INFRA_COMPLETE_WITH_REVIEW_PATCH
+
+## Review Fixes Applied
+
+- P0-1: Removed dynamic `generated_at` → replaced with `generation_policy: REPRODUCIBLE_STATIC_BUILD`
+- P0-2: Added Domain Count Reconcile section (17 concrete vs 20 registry)
+- Non-blocking: Synced test forbidden set with validator (`buy`, `sell`, `order`, `execution` added)
 
 ## Scope
 
@@ -47,6 +53,15 @@ semantic category, and safety profile — without modifying any runtime enforcem
 | domains_count | 20 |
 | max_risk | R2_DRAFT |
 | semantic_categories | DETERMINISTIC, STRUCTURED_DRAFT, NARRATIVE_RENDERER |
+
+## Domain Count Reconcile
+
+| Metric | Value |
+|:--|:--|
+| concrete_domain_count | 17 |
+| registry_domain_count | 20 |
+
+Interpretation: registry_domain_count (20) reflects contract-visible domain labels present in `skill_registry.generated.json`. concrete_domain_count (17) reflects the actual routed SkillOS concrete domains from `skill_domain_registry.py`. The difference of 3 comes from registry-internal domain labels (e.g. matrix alias domains, legacy label variants, or sub-domain groupings) that exist in the generated registry but do not represent independent concrete routers. v1.0-A does NOT add new concrete routers and does NOT modify `skill_domain_registry.py`.
 
 ## Verification
 

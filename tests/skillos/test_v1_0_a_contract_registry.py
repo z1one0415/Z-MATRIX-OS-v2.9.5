@@ -67,7 +67,8 @@ class TestContractEntriesHaveSchemas:
 
     def test_no_forbidden_runtime_fields(self, contract_registry):
         forbidden = {"production", "broker", "real_trade", "broker_runtime",
-                     "auto_buy", "auto_sell", "trade_allowed"}
+                     "auto_buy", "auto_sell", "trade_allowed",
+                     "buy", "sell", "order", "execution"}
         text = json.dumps(contract_registry).lower()
         found = [w for w in forbidden if w in text]
         assert not found, f"forbidden words in registry: {found}"

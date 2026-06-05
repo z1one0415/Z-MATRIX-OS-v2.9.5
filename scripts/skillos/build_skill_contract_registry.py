@@ -139,8 +139,8 @@ def build() -> dict:
     return {
         "contract_version": "1.0.0",
         "source_registry": "skill_registry.generated.json",
+        "generation_policy": "REPRODUCIBLE_STATIC_BUILD",
         "skill_count": len(contracts),
-        "generated_at": __import__("datetime").datetime.utcnow().isoformat() + "Z",
         "contracts": contracts,
     }
 

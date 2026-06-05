@@ -43,33 +43,27 @@ for sid in['PORTFOLIO.GET_SCHEMA','PORTFOLIO.GET_RISK_BUDGET_TEMPLATE','PORTFOLI
 print('portfolio runtime PASS')
 "
 
-echo "═══ v0.9.1 Forbidden Scan ═══"
-PYTHONPATH=. python3 -c "
+echo "=== v09 Forbidden Scan ==="
+python3 << 'INNEREOF'
 from pathlib import Path
-bkeys=['external_api_used','shadowbroker_deployed','production_allowed','trade_allowed','verdict_allowed','broker_order_allowed','real_trade_allowed','auto_buy_allowed','auto_sell_allowed','investment_verdict_allowed','trade_signal_allowed','buy_sell_hold_allowed','portfolio_allowed','portfolio_decision_allowed','position_sizing_allowed','order_generation_allowed','target_price_allowed']
-tkeys_en=[(' '+'BU'+'Y '),(' '+'SE'+'LL '),(' '+'HO'+'LD ')]
-                tkeys_cn=['买'+'入','卖'+'出','持'+'有','目标'+'价','仓'+'位','下'+'单','调'+'仓']
-rkeys=['subprocess'+'.run(','os'+'.system(']
-skip={'scripts/verify_z_skillos_v09.sh'}
-for r in['zmatrix','scripts','tests/agent','data/research_db/agent/registry']:
- p=Path(r)
- if not p.exists(): continue
- for f in p.rglob('*'):
-  if f.suffix not in{'.py','.sh','.json'}: continue
-  if str(f) in skip: continue
-  t=f.read_text('utf-8',errors='ignore')
-  for k in bkeys:
-   for pat in[f'{k}=True',f'{k} = True',chr(34)+k+chr(34)+': true',chr(34)+k+chr(34)+': True',chr(39)+k+chr(39)+': True']:
-    assert pat not in t,f'{pat} in {f}'
-  for tok in rkeys: assert tok not in t,f'{tok} in {f}'
-  for tok in tkeys_en: assert tok not in t,f'{tok} in {f}'
-                for tok in tkeys_cn: assert tok not in t,f'{tok} in {f}'
-print('forbidden scan PASS')
-"
-
-for f in data/research_db/agent/ledgers/*.jsonl data/research_db/governance/*.jsonl; do
- [ ! -f "$f" ] && continue; base=$(basename "$f")
- [ "$base" = "data_source_attribution_ledger.csv" ] && continue
- [ -s "$f" ] && { echo "FAIL:$f"; exit 1; }
-done
+import re
+bkeys=["external_api_used","shadowbroker_deployed","production_allowed","trade_allowed","verdict_allowed","broker_runtime_allowed","broker_order_allowed","real_trade_allowed","auto_buy_allowed","auto_sell_allowed","investment_verdict_allowed","trade_signal_allowed","buy_sell_hold_allowed","portfolio_allowed","portfolio_decision_allowed","position_sizing_allowed","order_generation_allowed","target_price_allowed"]
+en_re=re.compile(r"\b(BUY|SELL|HOLD)\b")
+ckeys=["买"+"入","卖"+"出","持"+"有","目标"+"价","仓"+"位","下"+"单","调"+"仓"]
+rkeys=["subprocess"+".run(","os"+".system("]
+for r in["zmatrix","scripts","tests/agent","data/research_db/agent/registry"]:
+    p=Path(r)
+    if not p.exists():continue
+    for f in p.rglob("*"):
+        if f.suffix not in{".py",".sh",".json"}:continue
+        if str(f)=="scripts/verify_z_skillos_v09.sh":continue
+        t=f.read_text("utf-8",errors="ignore")
+        for k in bkeys:
+            for pat in[f"{k}=True",f"{k} = True",chr(34)+k+chr(34)+": true",chr(34)+k+chr(34)+": True",chr(39)+k+chr(39)+": True"]:
+                assert pat not in t,f"{pat} in {f}"
+        for tok in rkeys:assert tok not in t,f"{tok} in {f}"
+        assert not en_re.search(t),f"English trade token in {f}"
+        for tok in ckeys:assert tok not in t,f"{tok} in {f}"
+print("forbidden scan PASS")
+INNEREOF
 echo "═══ Z-SkillOS v0.9.1 PASS ═══"

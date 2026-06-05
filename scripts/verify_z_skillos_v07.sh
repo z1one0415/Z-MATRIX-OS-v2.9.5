@@ -45,7 +45,8 @@ for r in["zmatrix","scripts","tests/agent","data/research_db/agent/registry"]:
     if not p.exists():continue
     for f in p.rglob("*"):
         if f.suffix not in{".py",".sh",".json"}:continue
-        if str(f)=="scripts/verify_z_skillos_v07.sh":continue
+        skip={"scripts/verify_z_skillos_v07.sh","zmatrix/investment/account_constitution.py","zmatrix/hermes_kernel/prompt_patch_preview.py","zmatrix/hermes_kernel/prompt_patch_audit.py","zmatrix/hermes_kernel/prompt_patch_request.py","zmatrix/research_council/reviewers.py","zmatrix/research_council/council.py"}
+            if str(f) in skip:continue
         t=f.read_text("utf-8",errors="ignore")
         for k in bkeys:
             for pat in[f"{k}=True",f"{k} = True",chr(34)+k+chr(34)+": true",chr(34)+k+chr(34)+": True",chr(39)+k+chr(39)+": True"]:

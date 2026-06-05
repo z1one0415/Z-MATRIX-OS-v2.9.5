@@ -2,16 +2,24 @@
   "status": "V12_1_LIVE_PAPER_DUE_SCHEDULE_BUILT",
   "scheduled_run_count": 8,
   "waiting_for_future_label_count": 8,
-  "ready_for_completion": false,
+  "live_paper_start_date_resolved": true,
+  "live_paper_start_as_of_date": "20240906",
+  "ready_for_completion": true,
   "schedule_items": [
     {
       "live_paper_run_id": "V12_1_LPR_001",
       "research_signal_id": "V12_RS_001",
       "factor_id": "AMOUNT_20D_AVG",
       "horizon": "T20",
-      "schedule_status": "WAITING_FOR_FUTURE_LABEL",
+      "source_start_as_of_date": "20240905",
+      "live_paper_start_as_of_date": "20240906",
       "required_label_horizon": "T20",
+      "required_label_key": {
+        "as_of_date": "20240906",
+        "horizon": "T20"
+      },
       "required_label_status": "NOT_YET_AVAILABLE",
+      "schedule_status": "WAITING_FOR_FUTURE_LABEL",
       "paper_only": true,
       "investment_action": "NONE",
       "trade_action": "NONE"
@@ -21,9 +29,15 @@
       "research_signal_id": "V12_RS_003",
       "factor_id": "AMOUNT_60D_AVG",
       "horizon": "T20",
-      "schedule_status": "WAITING_FOR_FUTURE_LABEL",
+      "source_start_as_of_date": "20240905",
+      "live_paper_start_as_of_date": "20240906",
       "required_label_horizon": "T20",
+      "required_label_key": {
+        "as_of_date": "20240906",
+        "horizon": "T20"
+      },
       "required_label_status": "NOT_YET_AVAILABLE",
+      "schedule_status": "WAITING_FOR_FUTURE_LABEL",
       "paper_only": true,
       "investment_action": "NONE",
       "trade_action": "NONE"
@@ -33,9 +47,15 @@
       "research_signal_id": "V12_RS_005",
       "factor_id": "MOM_60D",
       "horizon": "T20",
-      "schedule_status": "WAITING_FOR_FUTURE_LABEL",
+      "source_start_as_of_date": "20240905",
+      "live_paper_start_as_of_date": "20240906",
       "required_label_horizon": "T20",
+      "required_label_key": {
+        "as_of_date": "20240906",
+        "horizon": "T20"
+      },
       "required_label_status": "NOT_YET_AVAILABLE",
+      "schedule_status": "WAITING_FOR_FUTURE_LABEL",
       "paper_only": true,
       "investment_action": "NONE",
       "trade_action": "NONE"
@@ -45,9 +65,15 @@
       "research_signal_id": "V12_RS_007",
       "factor_id": "TRAILING_BENCHMARK_RELATIVE_60D",
       "horizon": "T20",
-      "schedule_status": "WAITING_FOR_FUTURE_LABEL",
+      "source_start_as_of_date": "20240905",
+      "live_paper_start_as_of_date": "20240906",
       "required_label_horizon": "T20",
+      "required_label_key": {
+        "as_of_date": "20240906",
+        "horizon": "T20"
+      },
       "required_label_status": "NOT_YET_AVAILABLE",
+      "schedule_status": "WAITING_FOR_FUTURE_LABEL",
       "paper_only": true,
       "investment_action": "NONE",
       "trade_action": "NONE"
@@ -57,9 +83,15 @@
       "research_signal_id": "V12_RS_009",
       "factor_id": "VOLATILITY_20D",
       "horizon": "T20",
-      "schedule_status": "WAITING_FOR_FUTURE_LABEL",
+      "source_start_as_of_date": "20240905",
+      "live_paper_start_as_of_date": "20240906",
       "required_label_horizon": "T20",
+      "required_label_key": {
+        "as_of_date": "20240906",
+        "horizon": "T20"
+      },
       "required_label_status": "NOT_YET_AVAILABLE",
+      "schedule_status": "WAITING_FOR_FUTURE_LABEL",
       "paper_only": true,
       "investment_action": "NONE",
       "trade_action": "NONE"
@@ -69,9 +101,15 @@
       "research_signal_id": "V12_RS_010",
       "factor_id": "VOLATILITY_20D",
       "horizon": "T60",
-      "schedule_status": "WAITING_FOR_FUTURE_LABEL",
+      "source_start_as_of_date": "20240905",
+      "live_paper_start_as_of_date": "20240906",
       "required_label_horizon": "T60",
+      "required_label_key": {
+        "as_of_date": "20240906",
+        "horizon": "T60"
+      },
       "required_label_status": "NOT_YET_AVAILABLE",
+      "schedule_status": "WAITING_FOR_FUTURE_LABEL",
       "paper_only": true,
       "investment_action": "NONE",
       "trade_action": "NONE"
@@ -81,9 +119,15 @@
       "research_signal_id": "V12_RS_011",
       "factor_id": "VOLATILITY_60D",
       "horizon": "T20",
-      "schedule_status": "WAITING_FOR_FUTURE_LABEL",
+      "source_start_as_of_date": "20240905",
+      "live_paper_start_as_of_date": "20240906",
       "required_label_horizon": "T20",
+      "required_label_key": {
+        "as_of_date": "20240906",
+        "horizon": "T20"
+      },
       "required_label_status": "NOT_YET_AVAILABLE",
+      "schedule_status": "WAITING_FOR_FUTURE_LABEL",
       "paper_only": true,
       "investment_action": "NONE",
       "trade_action": "NONE"
@@ -93,17 +137,21 @@
       "research_signal_id": "V12_RS_012",
       "factor_id": "VOLATILITY_60D",
       "horizon": "T60",
-      "schedule_status": "WAITING_FOR_FUTURE_LABEL",
+      "source_start_as_of_date": "20240905",
+      "live_paper_start_as_of_date": "20240906",
       "required_label_horizon": "T60",
+      "required_label_key": {
+        "as_of_date": "20240906",
+        "horizon": "T60"
+      },
       "required_label_status": "NOT_YET_AVAILABLE",
+      "schedule_status": "WAITING_FOR_FUTURE_LABEL",
       "paper_only": true,
       "investment_action": "NONE",
       "trade_action": "NONE"
     }
   ],
-  "blocking_reasons": [
-    "LIVE_PAPER_FUTURE_LABELS_NOT_AVAILABLE"
-  ],
+  "blocking_reasons": [],
   "ready_for_alpha_claim": false,
   "alpha_validated": false,
   "production": "BLOCKED",

@@ -6,6 +6,7 @@
   "blocked_run_count": 4,
   "all_live_paper_runs_completed": true,
   "live_paper_completion_status": "COMPLETED",
+  "reused_source_date_count": 0,
   "updated_runs": [
     {
       "live_paper_run_id": "V12_1_LPR_001",
@@ -18,8 +19,13 @@
       "paper_only": true,
       "investment_action": "NONE",
       "trade_action": "NONE",
-      "forward_labels_available": 71,
-      "forward_label_base_date": "20240905"
+      "required_label_key": {
+        "as_of_date": "20240906",
+        "horizon": "T20"
+      },
+      "forward_labels_available": 70,
+      "label_key_validated": true,
+      "label_source": "v8_forward_return_labels.json"
     },
     {
       "live_paper_run_id": "V12_1_LPR_002",
@@ -31,7 +37,9 @@
       "run_status": "PRESERVED_REJECTED",
       "paper_only": true,
       "investment_action": "NONE",
-      "trade_action": "NONE"
+      "trade_action": "NONE",
+      "label_source": "",
+      "label_key_validated": false
     },
     {
       "live_paper_run_id": "V12_1_LPR_003",
@@ -44,8 +52,13 @@
       "paper_only": true,
       "investment_action": "NONE",
       "trade_action": "NONE",
-      "forward_labels_available": 71,
-      "forward_label_base_date": "20240905"
+      "required_label_key": {
+        "as_of_date": "20240906",
+        "horizon": "T20"
+      },
+      "forward_labels_available": 70,
+      "label_key_validated": true,
+      "label_source": "v8_forward_return_labels.json"
     },
     {
       "live_paper_run_id": "V12_1_LPR_004",
@@ -57,7 +70,9 @@
       "run_status": "PRESERVED_REJECTED",
       "paper_only": true,
       "investment_action": "NONE",
-      "trade_action": "NONE"
+      "trade_action": "NONE",
+      "label_source": "",
+      "label_key_validated": false
     },
     {
       "live_paper_run_id": "V12_1_LPR_005",
@@ -70,8 +85,13 @@
       "paper_only": true,
       "investment_action": "NONE",
       "trade_action": "NONE",
-      "forward_labels_available": 71,
-      "forward_label_base_date": "20240905"
+      "required_label_key": {
+        "as_of_date": "20240906",
+        "horizon": "T20"
+      },
+      "forward_labels_available": 70,
+      "label_key_validated": true,
+      "label_source": "v8_forward_return_labels.json"
     },
     {
       "live_paper_run_id": "V12_1_LPR_006",
@@ -83,7 +103,9 @@
       "run_status": "PRESERVED_REJECTED",
       "paper_only": true,
       "investment_action": "NONE",
-      "trade_action": "NONE"
+      "trade_action": "NONE",
+      "label_source": "",
+      "label_key_validated": false
     },
     {
       "live_paper_run_id": "V12_1_LPR_007",
@@ -96,8 +118,13 @@
       "paper_only": true,
       "investment_action": "NONE",
       "trade_action": "NONE",
-      "forward_labels_available": 71,
-      "forward_label_base_date": "20240905"
+      "required_label_key": {
+        "as_of_date": "20240906",
+        "horizon": "T20"
+      },
+      "forward_labels_available": 70,
+      "label_key_validated": true,
+      "label_source": "v8_forward_return_labels.json"
     },
     {
       "live_paper_run_id": "V12_1_LPR_008",
@@ -109,7 +136,9 @@
       "run_status": "PRESERVED_REJECTED",
       "paper_only": true,
       "investment_action": "NONE",
-      "trade_action": "NONE"
+      "trade_action": "NONE",
+      "label_source": "",
+      "label_key_validated": false
     },
     {
       "live_paper_run_id": "V12_1_LPR_009",
@@ -122,8 +151,13 @@
       "paper_only": true,
       "investment_action": "NONE",
       "trade_action": "NONE",
-      "forward_labels_available": 71,
-      "forward_label_base_date": "20240905"
+      "required_label_key": {
+        "as_of_date": "20240906",
+        "horizon": "T20"
+      },
+      "forward_labels_available": 70,
+      "label_key_validated": true,
+      "label_source": "v8_forward_return_labels.json"
     },
     {
       "live_paper_run_id": "V12_1_LPR_010",
@@ -136,8 +170,13 @@
       "paper_only": true,
       "investment_action": "NONE",
       "trade_action": "NONE",
-      "forward_labels_available": 71,
-      "forward_label_base_date": "20240905"
+      "required_label_key": {
+        "as_of_date": "20240906",
+        "horizon": "T60"
+      },
+      "forward_labels_available": 70,
+      "label_key_validated": true,
+      "label_source": "v8_forward_return_labels.json"
     },
     {
       "live_paper_run_id": "V12_1_LPR_011",
@@ -150,8 +189,13 @@
       "paper_only": true,
       "investment_action": "NONE",
       "trade_action": "NONE",
-      "forward_labels_available": 71,
-      "forward_label_base_date": "20240905"
+      "required_label_key": {
+        "as_of_date": "20240906",
+        "horizon": "T20"
+      },
+      "forward_labels_available": 70,
+      "label_key_validated": true,
+      "label_source": "v8_forward_return_labels.json"
     },
     {
       "live_paper_run_id": "V12_1_LPR_012",
@@ -164,8 +208,13 @@
       "paper_only": true,
       "investment_action": "NONE",
       "trade_action": "NONE",
-      "forward_labels_available": 71,
-      "forward_label_base_date": "20240905"
+      "required_label_key": {
+        "as_of_date": "20240906",
+        "horizon": "T60"
+      },
+      "forward_labels_available": 70,
+      "label_key_validated": true,
+      "label_source": "v8_forward_return_labels.json"
     }
   ],
   "blocking_reasons": [],

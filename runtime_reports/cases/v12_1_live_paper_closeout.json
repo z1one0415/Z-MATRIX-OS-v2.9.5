@@ -13,6 +13,8 @@
   "safety_blocked": true,
   "no_trading_actions": true,
   "rejected_not_reactivated": true,
+  "label_key_reused_source_date_count": 0,
+  "label_key_clean": true,
   "active_run_count": 8,
   "rejected_preserved_count": 4,
   "next_required_action": "V12_2_RESEARCH_ONLY_Z9_FEEDBACK_LOOP",

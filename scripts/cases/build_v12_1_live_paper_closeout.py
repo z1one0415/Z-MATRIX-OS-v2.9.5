@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""V12.1: Live Paper Closeout — aggregate all V12.1 outputs and determine next action."""
+"""V12.1: Live Paper Closeout — aggregate all V12.1 outputs with label-key validation."""
 import json
 from pathlib import Path
 
@@ -49,26 +49,31 @@ def main():
         delta.get("trade_action_count", -1) == 0,
     ])
 
-    # Check for rejected reactivation
-    rejected_count = registry.get("rejected_preserved_count", 0)
-    schedule_scheduled = schedule.get("scheduled_run_count", 0)
+    # Check rejected reactivation
     active_in_registry = registry.get("active_live_paper_run_count", 0)
-    rejected_ok = schedule_scheduled == active_in_registry  # schedule should only contain active
+    schedule_scheduled = schedule.get("scheduled_run_count", 0)
+    rejected_ok = schedule_scheduled == active_in_registry
+
+    # Check label-key validation
+    reused_date_count = status_update.get("reused_source_date_count", 0)
+    label_key_clean = reused_date_count == 0
 
     completion_status = status_update.get("live_paper_completion_status", "UNKNOWN")
-    all_completed = status_update.get("all_live_paper_runs_completed", False)
 
     # Determine next action
-    if all_completed:
+    if not audit_pass:
+        next_action = "FIX_V12_1_AUDIT_BLOCKED"
+    elif completion_status == "COMPLETED":
+        # Must have passed all label-key validations
         next_action = "V12_2_RESEARCH_ONLY_Z9_FEEDBACK_LOOP"
     else:
         next_action = "WAIT_FOR_LIVE_PAPER_DUE_LABELS"
 
-    closeout_passed = all_components_ok and safety_ok and no_actions and rejected_ok
+    closeout_passed = all_components_ok and safety_ok and no_actions and rejected_ok and label_key_clean
 
     result = {
-        "status": "V12_1_LIVE_PAPER_LOOP_CONFIRMED" if closeout_passed else "V12_1_LIVE_PAPER_LOOP_INCOMPLETE",
-        "live_paper_loop_confirmed": closeout_passed,
+        "status": "V12_1_LIVE_PAPER_LOOP_CONFIRMED" if (closeout_passed and audit_pass) else "V12_1_LIVE_PAPER_LOOP_INCOMPLETE",
+        "live_paper_loop_confirmed": closeout_passed and audit_pass,
         "live_paper_completion_status": completion_status,
         "components": {
             "contract_built": contract_built,
@@ -81,8 +86,10 @@ def main():
         "safety_blocked": safety_ok,
         "no_trading_actions": no_actions,
         "rejected_not_reactivated": rejected_ok,
+        "label_key_reused_source_date_count": reused_date_count,
+        "label_key_clean": label_key_clean,
         "active_run_count": active_in_registry,
-        "rejected_preserved_count": rejected_count,
+        "rejected_preserved_count": registry.get("rejected_preserved_count", 0),
         "next_required_action": next_action,
         "ready_for_alpha_claim": False,
         "alpha_validated": False,
@@ -92,7 +99,8 @@ def main():
     }
 
     json.dump(result, open(C / "v12_1_live_paper_closeout.json", "w"), indent=2)
-    print(f"V12.1 Closeout: {result['status']} | completion={completion_status} | next={next_action}")
+    print(f"V12.1 Closeout: {result['status']} | completion={completion_status} | "
+          f"label_clean={label_key_clean} | next={next_action}")
 
 
 if __name__ == "__main__":

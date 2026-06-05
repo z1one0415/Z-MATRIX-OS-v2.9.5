@@ -1,0 +1,15 @@
+{
+  "status": "V12_1_LIVE_PAPER_LOOP_AUDIT_PASS",
+  "live_paper_loop_confirmed": true,
+  "future_label_status": "COMPLETED",
+  "forbidden_action_violations": [],
+  "rejected_reactivation_violations": [],
+  "blocking_reasons": [],
+  "investment_action_count": 0,
+  "trade_action_count": 0,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

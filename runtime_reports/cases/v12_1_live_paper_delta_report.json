@@ -1,0 +1,21 @@
+{
+  "status": "V12_1_LIVE_PAPER_DELTA_REPORT_BUILT",
+  "active_run_count": 8,
+  "completed_run_count": 8,
+  "waiting_run_count": 0,
+  "blocked_run_count": 4,
+  "delta_summary": {
+    "new_completed": 8,
+    "new_waiting": 0,
+    "new_blocked": 4
+  },
+  "research_only": true,
+  "paper_only": true,
+  "investment_action_count": 0,
+  "trade_action_count": 0,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

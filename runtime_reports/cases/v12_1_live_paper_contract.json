@@ -1,0 +1,21 @@
+{
+  "status": "V12_1_LIVE_PAPER_CONTRACT_BUILT",
+  "source_v12_closeout": "V12_RESEARCH_ONLY_OPERATING_LOOP_CONFIRMED",
+  "operating_mode": "RESEARCH_ONLY_LIVE_PAPER_LOOP",
+  "research_only": true,
+  "source_signal_count": 12,
+  "pending_observation_count": 8,
+  "rejected_observation_count": 4,
+  "activation_policy": "PENDING_ONLY",
+  "rejected_policy": "KEEP_REJECTED",
+  "tracking_horizons": [
+    "T20",
+    "T60"
+  ],
+  "fail_closed": true,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

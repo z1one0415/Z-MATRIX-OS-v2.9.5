@@ -55,7 +55,8 @@ echo "═══ v0.10.3 Forbidden Scan ═══"
 PYTHONPATH=. python3 -c "
 from pathlib import Path
 bkeys=['external_api_used','shadowbroker_deployed','production_allowed','trade_allowed','verdict_allowed','broker_runtime_allowed','broker_order_allowed','real_trade_allowed','auto_buy_allowed','auto_sell_allowed','investment_verdict_allowed','trade_signal_allowed','buy_sell_hold_allowed','portfolio_allowed','portfolio_decision_allowed','position_sizing_allowed','order_generation_allowed','target_price_allowed','workflow_execution_allowed','multi_domain_execution_allowed','portfolio_allowed']
-tkeys=['B'+'UY','S'+'ELL','H'+'OLD','买'+'入','卖'+'出','持'+'有','目标'+'价','仓'+'位','下'+'单','调'+'仓','执'+'行','自动'+'运行']
+tkeys_en=[(' '+'BU'+'Y '),(' '+'SE'+'LL '),(' '+'HO'+'LD ')]
+                tkeys_cn=['买'+'入','卖'+'出','持'+'有','目标'+'价','仓'+'位','下'+'单','调'+'仓','执'+'行','自动'+'运行']
 rkeys=['subprocess'+'.run(','os'+'.system(']
 skip={'scripts/verify_z_skillos_v10.sh'}
 for r in['zmatrix','scripts','tests/agent','data/research_db/agent/registry']:
@@ -69,7 +70,8 @@ for r in['zmatrix','scripts','tests/agent','data/research_db/agent/registry']:
    for pat in[f'{k}=True',f'{k} = True',chr(34)+k+chr(34)+': true',chr(34)+k+chr(34)+': True',chr(39)+k+chr(39)+': True']:
     assert pat not in t,f'{pat} in {f}'
   for tok in rkeys: assert tok not in t,f'{tok} in {f}'
-  for tok in tkeys: assert tok not in t,f'{tok} in {f}'
+  for tok in tkeys_en: assert tok not in t,f'{tok} in {f}'
+                for tok in tkeys_cn: assert tok not in t,f'{tok} in {f}'
 print('forbidden scan PASS')
 "
 

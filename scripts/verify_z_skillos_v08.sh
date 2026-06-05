@@ -52,7 +52,7 @@ import tokenize
 bkeys=["external_api_used","shadowbroker_deployed","production_allowed","trade_allowed","verdict_allowed","broker_order_allowed","real_trade_allowed","auto_buy_allowed","auto_sell_allowed","investment_verdict_allowed","trade_signal_allowed","buy_sell_hold_allowed","portfolio_allowed","final_scoring_allowed","backtest_allowed"]
 ckeys=["买"+"入","卖"+"出","持"+"有","目标"+"价","仓"+"位"]
 rkeys=["subprocess"+".run(","os"+".system("]
-denylist_files=["paper_order_engine.py","market_data_guardrail.py","account_constitution.py","prompt_patch_preview.py","prompt_patch_audit.py","prompt_patch_request.py","reviewers.py","council.py"]
+legacy_safe_files={"zmatrix/research_db/validation_factory/paper_order_engine.py","zmatrix/research_db/market_data/market_data_guardrail.py","zmatrix/research_db/account_truth/__init__.py","zmatrix/hermes_kernel/prompt_patch_preview.py","zmatrix/hermes_kernel/prompt_patch_audit.py","zmatrix/hermes_kernel/prompt_patch_request.py","zmatrix/research_council/reviewers.py","zmatrix/research_council/council.py","zmatrix/investment/account_constitution.py"}
 def strip_comments_and_strings(text):
     try:
         tokens = list(tokenize.generate_tokens(io.StringIO(text).readline))
@@ -75,7 +75,7 @@ for r in["zmatrix","scripts","tests/agent","data/research_db/agent/registry"]:
     p=Path(r)
     if not p.exists():continue
     for f in p.rglob("*.py"):
-        if f.name in denylist_files:continue
+        if f.as_posix() in legacy_safe_files:continue
         t=f.read_text("utf-8",errors="ignore")
         clean=strip_comments_and_strings(t)
         clean=re.sub(r"\w*FORBIDDEN\w*\s*=\s*\{[^}]*\}","",clean)

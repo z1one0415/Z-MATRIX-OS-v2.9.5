@@ -1,0 +1,28 @@
+{
+  "status": "V12_RESEARCH_ONLY_OPERATING_CONTRACT_BUILT",
+  "gate_status": "V12_ALPHA_OPERATING_LOOP_RESEARCH_ONLY_ALLOWED",
+  "research_only": true,
+  "operating_mode": "RESEARCH_ONLY_PAPER_LOOP",
+  "allowed_actions": [
+    "BUILD_RESEARCH_SIGNAL",
+    "RUN_PAPER_OBSERVATION",
+    "WRITE_Z9_AUTOPSY_INPUT",
+    "UPDATE_FACTOR_LIFECYCLE_RESEARCH_STATE",
+    "GENERATE_RESEARCH_REPORT"
+  ],
+  "forbidden_actions": [
+    "BUY",
+    "SELL",
+    "ADD_POSITION",
+    "REDUCE_POSITION",
+    "BROKER_ORDER",
+    "REAL_TRADE",
+    "PRODUCTION_SIGNAL",
+    "ALPHA_VALIDATED_CLAIM"
+  ],
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

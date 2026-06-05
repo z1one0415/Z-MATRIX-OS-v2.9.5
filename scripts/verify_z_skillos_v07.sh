@@ -35,14 +35,11 @@ print('council runtime PASS')
 echo "=== v07 Forbidden Scan ==="
 python3 << 'INNEREOF'
 from pathlib import Path
-import io
 import re
+import io
 import tokenize
+import subprocess
 
-bkeys=["external_api_used","shadowbroker_deployed","production_allowed","trade_allowed","verdict_allowed","broker_order_allowed","real_trade_allowed","auto_buy_allowed","auto_sell_allowed","investment_verdict_allowed","trade_signal_allowed","buy_sell_hold_allowed","portfolio_allowed"]
-ckeys=["买"+"入","卖"+"出","持"+"有","目标"+"价","止"+"盈","止"+"损","仓"+"位"]
-rkeys=["subprocess"+".run(","os"+".system("]
-legacy_safe_files={"zmatrix/research_db/validation_factory/paper_order_engine.py","zmatrix/research_db/market_data/market_data_guardrail.py","zmatrix/research_db/account_truth/__init__.py","zmatrix/hermes_kernel/prompt_patch_preview.py","zmatrix/hermes_kernel/prompt_patch_audit.py","zmatrix/hermes_kernel/prompt_patch_request.py","zmatrix/research_council/reviewers.py","zmatrix/research_council/council.py","zmatrix/investment/account_constitution.py"}
 def strip_comments_and_strings(text):
     try:
         tokens = list(tokenize.generate_tokens(io.StringIO(text).readline))
@@ -53,45 +50,43 @@ def strip_comments_and_strings(text):
             result.append(tok.string)
         return ''.join(result)
     except tokenize.TokenError:
-        import re as _re
-        clean = _re.sub(r'""".*?"""', '', text, flags=_re.DOTALL)
-        clean = _re.sub(r"'''.*?'''", '', clean, flags=_re.DOTALL)
-        clean = _re.sub(r'#.*', '', clean)
+        clean = text
+        clean = re.sub(r'""".*?"""', '', clean, flags=re.DOTALL)
+        clean = re.sub(r"'''.*?'''", '', clean, flags=re.DOTALL)
+        clean = re.sub(r'#.*', '', clean)
         return clean
 
+bkeys=["external_api_used","shadowbroker_deployed","production_allowed","trade_allowed","verdict_allowed","broker_order_allowed","real_trade_allowed","auto_buy_allowed","auto_sell_allowed","investment_verdict_allowed","trade_signal_allowed","buy_sell_hold_allowed","portfolio_allowed"]
+ckeys=["买"+"入","卖"+"出","持"+"有","目标"+"价","止"+"盈","止"+"损","仓"+"位"]
+rkeys=["subprocess"+".run(","os"+".system("]
 en_re=re.compile(r"\b(BUY|SELL|HOLD)\b")
-
-import subprocess, os
-    parent="origin/v4.0-batch-0-final-hardgates-scope-lock"
-    try:
-        result=subprocess.run(["git","diff","--name-only",parent+"...HEAD"],capture_output=True,text=True)
-        changed=set(result.stdout.strip().split("
-"))
-    except:changed=set()
-    for f_str in changed:
-        f=Path(f_str)
-        if not f.exists():continue
-        if f.suffix==".py":
-            t=f.read_text("utf-8",errors="ignore")
-            clean=strip_comments_and_strings(t)
-            for k in bkeys:
-                for pat in[f"{{k}}=True",f"{{k}} = True",chr(34)+k+chr(34)+": true",chr(34)+k+chr(34)+": True",chr(39)+k+chr(39)+": True"]:
-                    assert pat not in clean,f"{{pat}} in {{f}}"
-            for tok in rkeys:assert tok not in clean,f"{{tok}} in {{f}}"
-            assert not en_re.search(clean),f"English trade token in {{f}}"
-            for tok in ckeys:assert tok not in clean,f"{{tok}} in {{f}}"
-        elif f.suffix==".sh":
-            if "verify_z_skillos" in f_str and f_str.endswith(".sh"):continue
-            t=f.read_text("utf-8",errors="ignore")
-            for k in bkeys:
-                for pat in[f"{{k}}=True",f"{{k}} = True",chr(34)+k+chr(34)+": true",chr(34)+k+chr(34)+": True",chr(39)+k+chr(39)+": True"]:
-                    assert pat not in t,f"{{pat}} in {{f}}"
-            for tok in rkeys:assert tok not in t,f"{{tok}} in {{f}}"
-        elif f.suffix==".json":
-            t=f.read_text("utf-8",errors="ignore")
-            for k in bkeys:
-                for pat in[chr(34)+k+chr(34)+": true",chr(34)+k+chr(34)+": True"]:
-                    assert pat not in t,f"{{pat}} in {{f}}"
+parent="origin/v4.0-batch-0-final-hardgates-scope-lock"
+result=subprocess.run(["git","diff","--name-only",f"{parent}...HEAD"],capture_output=True,text=True)
+changed=set(line for line in result.stdout.split("\n") if line)
+for f_str in changed:
+    f=Path(f_str)
+    if not f.exists():continue
+    if f.suffix==".py":
+        t=f.read_text("utf-8",errors="ignore")
+        clean=strip_comments_and_strings(t)
+        for k in bkeys:
+            for pat in[f"{k}=True",f"{k} = True",chr(34)+k+chr(34)+": true",chr(34)+k+chr(34)+": True",chr(39)+k+chr(39)+": True"]:
+                assert pat not in clean,f"{pat} in {f}"
+        for tok in rkeys:assert tok not in clean,f"{tok} in {f}"
+        assert not en_re.search(clean),f"English trade token in {f}"
+        for tok in ckeys:assert tok not in clean,f"{tok} in {f}"
+    elif f.suffix==".sh":
+        if "verify_z_skillos" in f_str and f_str.endswith(".sh"):continue
+        t=f.read_text("utf-8",errors="ignore")
+        for k in bkeys:
+            for pat in[f"{k}=True",f"{k} = True",chr(34)+k+chr(34)+": true",chr(34)+k+chr(34)+": True",chr(39)+k+chr(39)+": True"]:
+                assert pat not in t,f"{pat} in {f}"
+        for tok in rkeys:assert tok not in t,f"{tok} in {f}"
+    elif f.suffix==".json":
+        t=f.read_text("utf-8",errors="ignore")
+        for k in bkeys:
+            for pat in[chr(34)+k+chr(34)+": true",chr(34)+k+chr(34)+": True"]:
+                assert pat not in t,f"{pat} in {f}"
 print("forbidden scan PASS")
 INNEREOF
 

@@ -2,7 +2,7 @@
 
 ## Status
 
-Z_SKILLOS_FULL_SYSTEM_MERGED_AND_GATE_FLATTENED
+SKILLOS_V0_BASELINE_FROZEN_ON_V12_1_RESEARCH_ONLY_PARENT
 
 ## Target Branch
 
@@ -14,16 +14,35 @@ v4.0-batch-0-final-hardgates-scope-lock
 
 ## SkillOS Merge Point
 
-4debba7 (skillos: flatten full-system verify chain)
+4debba7
+
+## Freeze Branch
+
+postmerge/skillos-v0-baseline-freeze
+
+## Freeze Commit
+
+89622d9
 
 ## Merge Lineage
 
 - source SkillOS branch: merge/skillos-final-on-v11-6-3
 - source SkillOS merge commit: 1be30e8
-- source latest SkillOS commit: 3d31d0f (skillos-fs.24)
+- source latest SkillOS commit: 3d31d0f
 - target merge commit: c290efd
 - gate flatten commit: 4debba7
 - parent V12 additions: 422cf45 + 3e34938
+- freeze commit: 89622d9
+
+## Baseline Interpretation
+
+This baseline is not a pre-V12 baseline.
+
+This baseline is a Z-SkillOS v0 freeze on top of a parent branch that has already advanced into V12.1 research-only live paper loop.
+
+Therefore the correct next action is not V12 start.
+
+The correct next action is V12.2 Research-only Z9 Feedback Loop Preflight.
 
 ## SkillOS Baseline
 
@@ -61,6 +80,23 @@ Required preserved state:
 - broker_runtime=BLOCKED
 - real_trade=BLOCKED
 
+## Parent V12.1 State
+
+Required preserved state:
+
+- V12.1 live paper loop confirmed
+- live_paper_completion_status=COMPLETED
+- active_run_count=8
+- rejected_preserved_count=4
+- rejected_not_reactivated=true
+- no_trading_actions=true
+- ready_for_alpha_claim=false
+- alpha_validated=false
+- production=BLOCKED
+- broker_runtime=BLOCKED
+- real_trade=BLOCKED
+- next_required_action=V12_2_RESEARCH_ONLY_Z9_FEEDBACK_LOOP
+
 ## Verified Commands
 
 Required post-merge verification:
@@ -78,17 +114,17 @@ Required post-merge verification:
 
 ## Decision
 
-Baseline is frozen for review.
+Baseline is frozen for review on top of V12.1 research-only parent.
 
 Do not tag yet.
 
 Do not start SkillOS v1.0 yet.
 
-Do not start V12 implementation yet.
+Do not treat V12.1 as alpha validation.
 
 ## Next Allowed
 
-V12 Research-only Preflight Gate.
+V12.2 Research-only Z9 Feedback Loop Preflight.
 
 ## Forbidden
 
@@ -98,4 +134,6 @@ V12 Research-only Preflight Gate.
 - alpha claim
 - auto tag
 - SkillOS v1.0
-- V12 implementation before preflight
+- portfolio decision
+- order generation
+- buy/sell/hold

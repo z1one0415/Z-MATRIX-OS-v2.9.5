@@ -1,14 +1,18 @@
 #!/usr/bin/env bash
 set -euo pipefail
 echo "═══ Z-SkillOS v0.7.4 Council Final ═══"
-python3 -m compileall -q zmatrix tests scripts
-PYTHONPATH=. python3 -m pytest -q tests/agent/
-PYTHONPATH=. python3 -m pytest -q tests/research_db/
-PYTHONPATH=. python3 scripts/skillos/scan_skill_candidates.py
-PYTHONPATH=. python3 scripts/skillos/build_skill_registry.py
-PYTHONPATH=. python3 scripts/skillos/validate_skill_registry.py
-bash scripts/verify_zg16_full_stub_integration.sh
-bash scripts/verify_z_agent_kernel.sh
+if [[ "${Z_SKILLOS_FLAT_VERIFY:-0}" != "1" ]]; then
+    python3 -m compileall -q zmatrix tests scripts
+    PYTHONPATH=. python3 -m pytest -q tests/agent/
+    PYTHONPATH=. python3 -m pytest -q tests/research_db/
+    PYTHONPATH=. python3 scripts/skillos/scan_skill_candidates.py
+    PYTHONPATH=. python3 scripts/skillos/build_skill_registry.py
+    PYTHONPATH=. python3 scripts/skillos/validate_skill_registry.py
+    bash scripts/verify_zg16_full_stub_integration.sh
+    bash scripts/verify_z_agent_kernel.sh
+else
+    echo "flat mode: shared compile/test/registry and inherited chain handled by caller"
+fi
 echo "═══ v0.7.4 Registry + Council Runtime ═══"
 PYTHONPATH=. python3 -c "
 import json; from pathlib import Path

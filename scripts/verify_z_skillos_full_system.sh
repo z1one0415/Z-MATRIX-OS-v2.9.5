@@ -16,7 +16,13 @@ PYTHONPATH=. python3 scripts/skillos/build_skill_registry.py
 PYTHONPATH=. python3 scripts/skillos/validate_skill_registry.py
 
 echo "═══ Full Verify Chain ═══"
-for vs in verify_z_skillos_v10 verify_z_skillos_v09 verify_z_skillos_v08 verify_z_skillos_v07 verify_z_skillos_v06 verify_z_skillos_v05 verify_z_skillos_v04 verify_z_skillos_v03 verify_z_skillos_v02 verify_z_skillos_v01 verify_zg16_full_stub_integration verify_z_agent_kernel; do
+for vs in verify_z_skillos_v10 verify_z_skillos_v09 verify_z_skillos_v08 verify_z_skillos_v07; do
+    echo "--- $vs local gates ---"
+    Z_SKILLOS_FLAT_VERIFY=1 bash "scripts/${vs}.sh"
+done
+
+echo "═══ Historical / Integration Verify Chain ═══"
+for vs in verify_z_skillos_v06 verify_z_skillos_v05 verify_z_skillos_v04 verify_z_skillos_v03 verify_z_skillos_v02 verify_z_skillos_v01 verify_zg16_full_stub_integration verify_z_agent_kernel; do
     echo "--- $vs ---"
     bash "scripts/${vs}.sh"
 done

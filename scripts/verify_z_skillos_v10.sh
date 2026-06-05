@@ -1,23 +1,27 @@
 #!/usr/bin/env bash
 set -euo pipefail
 echo "═══ Z-SkillOS v0.10.3 Workflow Hardened ═══"
-python3 -m compileall -q zmatrix tests scripts
-PYTHONPATH=. python3 -m pytest -q tests/agent/
-PYTHONPATH=. python3 -m pytest -q tests/research_db/
-PYTHONPATH=. python3 scripts/skillos/scan_skill_candidates.py
-PYTHONPATH=. python3 scripts/skillos/build_skill_registry.py
-PYTHONPATH=. python3 scripts/skillos/validate_skill_registry.py
-bash scripts/verify_z_skillos_v09.sh
-bash scripts/verify_z_skillos_v08.sh
-bash scripts/verify_z_skillos_v07.sh
-bash scripts/verify_z_skillos_v06.sh
-bash scripts/verify_z_skillos_v05.sh
-bash scripts/verify_z_skillos_v04.sh
-bash scripts/verify_z_skillos_v03.sh
-bash scripts/verify_z_skillos_v02.sh
-bash scripts/verify_z_skillos_v01.sh
-bash scripts/verify_zg16_full_stub_integration.sh
-bash scripts/verify_z_agent_kernel.sh
+if [[ "${Z_SKILLOS_FLAT_VERIFY:-0}" != "1" ]]; then
+    python3 -m compileall -q zmatrix tests scripts
+    PYTHONPATH=. python3 -m pytest -q tests/agent/
+    PYTHONPATH=. python3 -m pytest -q tests/research_db/
+    PYTHONPATH=. python3 scripts/skillos/scan_skill_candidates.py
+    PYTHONPATH=. python3 scripts/skillos/build_skill_registry.py
+    PYTHONPATH=. python3 scripts/skillos/validate_skill_registry.py
+    bash scripts/verify_z_skillos_v09.sh
+    bash scripts/verify_z_skillos_v08.sh
+    bash scripts/verify_z_skillos_v07.sh
+    bash scripts/verify_z_skillos_v06.sh
+    bash scripts/verify_z_skillos_v05.sh
+    bash scripts/verify_z_skillos_v04.sh
+    bash scripts/verify_z_skillos_v03.sh
+    bash scripts/verify_z_skillos_v02.sh
+    bash scripts/verify_z_skillos_v01.sh
+    bash scripts/verify_zg16_full_stub_integration.sh
+    bash scripts/verify_z_agent_kernel.sh
+else
+    echo "flat mode: shared compile/test/registry and inherited chain handled by caller"
+fi
 
 echo "═══ v0.10.3 Registry Safety ═══"
 PYTHONPATH=. python3 -c "

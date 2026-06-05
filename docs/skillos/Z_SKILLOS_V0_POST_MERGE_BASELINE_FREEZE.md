@@ -20,9 +20,13 @@ v4.0-batch-0-final-hardgates-scope-lock
 
 postmerge/skillos-v0-baseline-freeze
 
-## Freeze Commit
+## Original Freeze Commit
 
 89622d9
+
+## Reconcile Commit
+
+78b7753
 
 ## Merge Lineage
 

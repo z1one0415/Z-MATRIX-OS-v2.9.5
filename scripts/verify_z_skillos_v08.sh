@@ -52,7 +52,7 @@ import tokenize
 bkeys=["external_api_used","shadowbroker_deployed","production_allowed","trade_allowed","verdict_allowed","broker_order_allowed","real_trade_allowed","auto_buy_allowed","auto_sell_allowed","investment_verdict_allowed","trade_signal_allowed","buy_sell_hold_allowed","portfolio_allowed","final_scoring_allowed","backtest_allowed"]
 ckeys=["买"+"入","卖"+"出","持"+"有","目标"+"价","仓"+"位"]
 rkeys=["subprocess"+".run(","os"+".system("]
-denylist_files=["market_data_guardrail.py","account_constitution.py","prompt_patch_preview.py","prompt_patch_audit.py","prompt_patch_request.py","reviewers.py","council.py"]
+denylist_files=["paper_order_engine.py","market_data_guardrail.py","account_constitution.py","prompt_patch_preview.py","prompt_patch_audit.py","prompt_patch_request.py","reviewers.py","council.py"]
 def strip_comments_and_strings(text):
     try:
         tokens = list(tokenize.generate_tokens(io.StringIO(text).readline))

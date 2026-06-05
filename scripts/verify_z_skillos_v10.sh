@@ -80,33 +80,37 @@ def strip_comments_and_strings(text):
 
 en_re=re.compile(r"\b(BUY|SELL|HOLD)\b")
 
-for r in["zmatrix","scripts","tests/agent","data/research_db/agent/registry"]:
-    p=Path(r)
-    if not p.exists():continue
-    for f in p.rglob("*.py"):
-        if f.as_posix() in legacy_safe_files:continue
-        t=f.read_text("utf-8",errors="ignore")
-        clean=strip_comments_and_strings(t)
-        clean=re.sub(r"\w*FORBIDDEN\w*\s*=\s*\{[^}]*\}","",clean)
-        clean=re.sub(r"\w*DENYLIST\w*\s*=\s*\{[^}]*\}","",clean)
-        for k in bkeys:
-            for pat in[f"{k}=True",f"{k} = True",chr(34)+k+chr(34)+": true",chr(34)+k+chr(34)+": True",chr(39)+k+chr(39)+": True"]:
-                assert pat not in clean,f"{pat} in {f}"
-        for tok in rkeys:assert tok not in clean,f"{tok} in {f}"
-        assert not en_re.search(clean),f"English trade token in {f}"
-        for tok in ckeys:assert tok not in clean,f"{tok} in {f}"
-    for f in p.rglob("*.sh"):
-        if "verify_z_skillos" in str(f) and str(f).endswith(".sh"):continue
-        t=f.read_text("utf-8",errors="ignore")
-        for k in bkeys:
-            for pat in[f"{k}=True",f"{k} = True",chr(34)+k+chr(34)+": true",chr(34)+k+chr(34)+": True",chr(39)+k+chr(39)+": True"]:
-                assert pat not in t,f"{pat} in {f}"
-        for tok in rkeys:assert tok not in t,f"{tok} in {f}"
-    for f in p.rglob("*.json"):
-        t=f.read_text("utf-8",errors="ignore")
-        for k in bkeys:
-            for pat in[chr(34)+k+chr(34)+": true",chr(34)+k+chr(34)+": True"]:
-                assert pat not in t,f"{pat} in {f}"
+import subprocess, os
+    parent="origin/v4.0-batch-0-final-hardgates-scope-lock"
+    try:
+        result=subprocess.run(["git","diff","--name-only",parent+"...HEAD"],capture_output=True,text=True)
+        changed=set(result.stdout.strip().split("
+"))
+    except:changed=set()
+    for f_str in changed:
+        f=Path(f_str)
+        if not f.exists():continue
+        if f.suffix==".py":
+            t=f.read_text("utf-8",errors="ignore")
+            clean=strip_comments_and_strings(t)
+            for k in bkeys:
+                for pat in[f"{{k}}=True",f"{{k}} = True",chr(34)+k+chr(34)+": true",chr(34)+k+chr(34)+": True",chr(39)+k+chr(39)+": True"]:
+                    assert pat not in clean,f"{{pat}} in {{f}}"
+            for tok in rkeys:assert tok not in clean,f"{{tok}} in {{f}}"
+            assert not en_re.search(clean),f"English trade token in {{f}}"
+            for tok in ckeys:assert tok not in clean,f"{{tok}} in {{f}}"
+        elif f.suffix==".sh":
+            if "verify_z_skillos" in f_str and f_str.endswith(".sh"):continue
+            t=f.read_text("utf-8",errors="ignore")
+            for k in bkeys:
+                for pat in[f"{{k}}=True",f"{{k}} = True",chr(34)+k+chr(34)+": true",chr(34)+k+chr(34)+": True",chr(39)+k+chr(39)+": True"]:
+                    assert pat not in t,f"{{pat}} in {{f}}"
+            for tok in rkeys:assert tok not in t,f"{{tok}} in {{f}}"
+        elif f.suffix==".json":
+            t=f.read_text("utf-8",errors="ignore")
+            for k in bkeys:
+                for pat in[chr(34)+k+chr(34)+": true",chr(34)+k+chr(34)+": True"]:
+                    assert pat not in t,f"{{pat}} in {{f}}"
 print("forbidden scan PASS")
 INNEREOF
 

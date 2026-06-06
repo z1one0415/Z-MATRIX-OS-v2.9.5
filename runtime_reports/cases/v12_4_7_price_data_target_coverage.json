@@ -1,0 +1,56 @@
+{
+  "status": "V12_4_7_PRICE_DATA_TARGET_COVERAGE_BUILT",
+  "coverage_pass_file_count": 0,
+  "coverage_blocked_file_count": 2,
+  "target_coverage_ok": false,
+  "selected_price_file": null,
+  "ready_for_label_regeneration": false,
+  "ready_for_cycle2_recalculation": false,
+  "ready_for_v12_5_feedback": false,
+  "validations": [
+    {
+      "candidate_file": "data/research_db/market_data/processed/v8_expanded_daily_price_bar.csv",
+      "coverage_validation_status": "COVERAGE_BLOCKED",
+      "target_ticker": "600837",
+      "target_as_of_date": "20240909",
+      "ticker_rows": 0,
+      "has_target_as_of_date": false,
+      "target_window_start": "20240909",
+      "target_window_end_min": "20241201",
+      "target_window_end_max": "20241231",
+      "has_exit_window_data": false,
+      "available_trade_date_count_after_as_of": 0,
+      "earliest_available_date": "",
+      "latest_available_date": "",
+      "blocking_reasons": [
+        "SCHEMA_NOT_PASS"
+      ]
+    },
+    {
+      "candidate_file": "data/research_db/market_data/processed/core12_daily_price_bar.csv",
+      "coverage_validation_status": "COVERAGE_BLOCKED",
+      "target_ticker": "600837",
+      "target_as_of_date": "20240909",
+      "ticker_rows": 0,
+      "has_target_as_of_date": false,
+      "target_window_start": "20240909",
+      "target_window_end_min": "20241201",
+      "target_window_end_max": "20241231",
+      "has_exit_window_data": false,
+      "available_trade_date_count_after_as_of": 0,
+      "earliest_available_date": "",
+      "latest_available_date": "",
+      "blocking_reasons": [
+        "SCHEMA_NOT_PASS"
+      ]
+    }
+  ],
+  "blocking_reasons": [
+    "TARGET_COVERAGE_NOT_MET"
+  ],
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

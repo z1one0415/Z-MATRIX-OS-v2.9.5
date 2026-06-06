@@ -1,0 +1,70 @@
+{
+  "status": "V12_4_7_PRICE_DATA_SCHEMA_VALIDATION_BUILT",
+  "schema_validated_file_count": 0,
+  "schema_blocked_file_count": 2,
+  "schema_consistency_ok": true,
+  "ready_for_coverage_validation": false,
+  "validations": [
+    {
+      "candidate_file": "data/research_db/market_data/processed/v8_expanded_daily_price_bar.csv",
+      "schema_validation_status": "SCHEMA_BLOCKED",
+      "required_fields_checked": [
+        "ticker",
+        "trade_date",
+        "close",
+        "adjusted_close",
+        "volume"
+      ],
+      "has_ticker_column": false,
+      "has_trade_date_column": false,
+      "has_close_column": false,
+      "has_adjusted_close_column": false,
+      "has_volume_column": false,
+      "missing_required_fields": [],
+      "ticker_format_ok": false,
+      "date_format_ok": false,
+      "close_numeric_ok": false,
+      "adjusted_close_numeric_ok": false,
+      "volume_numeric_ok": false,
+      "blocking_reasons": [
+        "FILE_NOT_FOUND"
+      ]
+    },
+    {
+      "candidate_file": "data/research_db/market_data/processed/core12_daily_price_bar.csv",
+      "schema_validation_status": "SCHEMA_BLOCKED",
+      "required_fields_checked": [
+        "ticker",
+        "trade_date",
+        "close",
+        "adjusted_close",
+        "volume"
+      ],
+      "has_ticker_column": false,
+      "has_trade_date_column": false,
+      "has_close_column": false,
+      "has_adjusted_close_column": false,
+      "has_volume_column": false,
+      "missing_required_fields": [],
+      "ticker_format_ok": false,
+      "date_format_ok": false,
+      "close_numeric_ok": false,
+      "adjusted_close_numeric_ok": false,
+      "volume_numeric_ok": false,
+      "blocking_reasons": [
+        "FILE_NOT_FOUND"
+      ]
+    }
+  ],
+  "blocking_reasons": [
+    "NO_FILE_PASSED_SCHEMA"
+  ],
+  "ready_for_label_regeneration": false,
+  "ready_for_cycle2_recalculation": false,
+  "ready_for_v12_5_feedback": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

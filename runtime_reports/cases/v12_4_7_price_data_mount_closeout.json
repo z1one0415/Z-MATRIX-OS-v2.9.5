@@ -1,0 +1,17 @@
+{
+  "status": "V12_4_7_PRICE_DATA_MOUNT_CONFIRMED_WAITING_FOR_FILE",
+  "price_data_mount_gate_confirmed": true,
+  "price_file_mounted": false,
+  "schema_validated": false,
+  "target_coverage_ok": false,
+  "ready_for_label_regeneration": false,
+  "cycle2_completion_status": "BLOCKED",
+  "v12_5_feedback_allowed": false,
+  "selected_price_file": null,
+  "recommended_next_action": "MOUNT_VALID_PRICE_DATA_FILE",
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

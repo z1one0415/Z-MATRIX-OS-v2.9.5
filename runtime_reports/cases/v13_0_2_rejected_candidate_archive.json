@@ -1,0 +1,68 @@
+{
+  "status": "V13_0_2_REJECTED_CANDIDATE_ARCHIVE_BUILT",
+  "rejected_count": 5,
+  "rejected_candidates": [
+    {
+      "candidate_id": "V13_CAND_001",
+      "factor_name": "QUALITY_ADJUSTED_REVERSAL",
+      "failed_tokens_used": [
+        "AMOUNT_60D_AVG",
+        "MOM_60D",
+        "VOLATILITY_20D"
+      ],
+      "computed_overlap_score": 1.0,
+      "rejection_reason": "FAILED_SEED_REUSE_OVERLAP_TOO_HIGH",
+      "reuse_allowed_in_v13_0_2": false
+    },
+    {
+      "candidate_id": "V13_CAND_002",
+      "factor_name": "LIQUIDITY_DRY_UP_REVERSAL",
+      "failed_tokens_used": [
+        "AMOUNT_20D_AVG",
+        "MOM_60D"
+      ],
+      "computed_overlap_score": 0.867,
+      "rejection_reason": "FAILED_SEED_REUSE_OVERLAP_TOO_HIGH",
+      "reuse_allowed_in_v13_0_2": false
+    },
+    {
+      "candidate_id": "V13_CAND_003",
+      "factor_name": "STABILITY_RANK_PERSISTENCE",
+      "failed_tokens_used": [
+        "TRAILING_BENCHMARK_RELATIVE_60D",
+        "VOLATILITY_20D"
+      ],
+      "computed_overlap_score": 0.867,
+      "rejection_reason": "FAILED_SEED_REUSE_OVERLAP_TOO_HIGH",
+      "reuse_allowed_in_v13_0_2": false
+    },
+    {
+      "candidate_id": "V13_CAND_004",
+      "factor_name": "VOLATILITY_COMPRESSION_BREAKOUT",
+      "failed_tokens_used": [
+        "VOLATILITY_20D",
+        "VOLATILITY_60D"
+      ],
+      "computed_overlap_score": 0.867,
+      "rejection_reason": "FAILED_SEED_REUSE_OVERLAP_TOO_HIGH",
+      "reuse_allowed_in_v13_0_2": false
+    },
+    {
+      "candidate_id": "V13_CAND_006",
+      "factor_name": "LIQUIDITY_REGIME_X_MOMENTUM",
+      "failed_tokens_used": [
+        "AMOUNT_20D_AVG",
+        "MOM_60D"
+      ],
+      "computed_overlap_score": 0.867,
+      "rejection_reason": "FAILED_SEED_REUSE_OVERLAP_TOO_HIGH",
+      "reuse_allowed_in_v13_0_2": false
+    }
+  ],
+  "ready_for_redesigned_pool": true,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

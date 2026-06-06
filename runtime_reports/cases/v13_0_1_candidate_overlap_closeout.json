@@ -1,0 +1,16 @@
+{
+  "status": "V13_0_1_CANDIDATE_OVERLAP_RESCORING_BLOCKED",
+  "candidate_count": 8,
+  "accepted_for_v13_1_count": 3,
+  "reject_as_reuse_count": 5,
+  "require_redesign_justification_count": 0,
+  "not_justified_count": 0,
+  "ready_for_v13_1_paper_bootstrap_next_stage": false,
+  "alpha_claim_allowed": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "recommended_next_action": "REDESIGN_V13_CANDIDATE_POOL"
+}

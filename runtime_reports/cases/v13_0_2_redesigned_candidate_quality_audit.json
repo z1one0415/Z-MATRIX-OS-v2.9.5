@@ -1,0 +1,19 @@
+{
+  "status": "V13_0_2_REDESIGNED_CANDIDATE_QUALITY_AUDIT_PASS",
+  "accepted_for_v13_1_count": 8,
+  "preferred_target_met": true,
+  "archived_rejected_reentry_count": 0,
+  "reject_as_reuse_count": 0,
+  "ready_for_v13_1_paper_bootstrap_next_stage": true,
+  "forbidden_action_violations": [],
+  "candidate_violations": [],
+  "safety_violations": [],
+  "blocking_reasons": [],
+  "investment_action_count": 0,
+  "trade_action_count": 0,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

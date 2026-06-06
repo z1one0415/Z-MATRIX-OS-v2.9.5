@@ -1,0 +1,14 @@
+{
+  "status": "V13_1_PAPER_BOOTSTRAP_BLOCKED",
+  "registered_candidate_count": 8,
+  "ready_for_bucket_construction_count": 0,
+  "blocked_candidate_count": 8,
+  "ready_for_v13_2_bucket_construction_next_stage": false,
+  "alpha_claim_allowed": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "recommended_next_action": "FIX_V13_1_FIELD_AVAILABILITY_OR_REDESIGN_CANDIDATES"
+}

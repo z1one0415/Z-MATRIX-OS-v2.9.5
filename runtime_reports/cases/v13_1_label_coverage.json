@@ -1,0 +1,97 @@
+{
+  "status": "V13_1_LABEL_COVERAGE_CHECK_BUILT",
+  "candidate_count": 8,
+  "full_coverage_candidate_count": 8,
+  "blocked_label_candidate_count": 0,
+  "excluded_tickers": [
+    "600837"
+  ],
+  "checks": [
+    {
+      "v13_1_candidate_run_id": "V13_1_RUN_001",
+      "factor_name": "INDUSTRY_NEUTRAL_REL_STRENGTH",
+      "target_horizon": "T60",
+      "eligible_ticker_count": 70,
+      "label_covered_ticker_count": 70,
+      "missing_label_ticker_count": 0,
+      "full_label_coverage": true,
+      "label_coverage_status": "FULL_COVERAGE"
+    },
+    {
+      "v13_1_candidate_run_id": "V13_1_RUN_002",
+      "factor_name": "DOWNSIDE_VOL_ADJUSTED_STRENGTH",
+      "target_horizon": "T60",
+      "eligible_ticker_count": 70,
+      "label_covered_ticker_count": 70,
+      "missing_label_ticker_count": 0,
+      "full_label_coverage": true,
+      "label_coverage_status": "FULL_COVERAGE"
+    },
+    {
+      "v13_1_candidate_run_id": "V13_1_RUN_003",
+      "factor_name": "FUNDAMENTAL_MOMENTUM_PROXY",
+      "target_horizon": "T60",
+      "eligible_ticker_count": 70,
+      "label_covered_ticker_count": 70,
+      "missing_label_ticker_count": 0,
+      "full_label_coverage": true,
+      "label_coverage_status": "FULL_COVERAGE"
+    },
+    {
+      "v13_1_candidate_run_id": "V13_1_RUN_004",
+      "factor_name": "SECTOR_DISPERSION_REVERSAL",
+      "target_horizon": "T20",
+      "eligible_ticker_count": 70,
+      "label_covered_ticker_count": 70,
+      "missing_label_ticker_count": 0,
+      "full_label_coverage": true,
+      "label_coverage_status": "FULL_COVERAGE"
+    },
+    {
+      "v13_1_candidate_run_id": "V13_1_RUN_005",
+      "factor_name": "DRAWDOWN_RECOVERY_QUALITY",
+      "target_horizon": "T20",
+      "eligible_ticker_count": 70,
+      "label_covered_ticker_count": 70,
+      "missing_label_ticker_count": 0,
+      "full_label_coverage": true,
+      "label_coverage_status": "FULL_COVERAGE"
+    },
+    {
+      "v13_1_candidate_run_id": "V13_1_RUN_006",
+      "factor_name": "TURNOVER_STABILITY_ANOMALY",
+      "target_horizon": "T20",
+      "eligible_ticker_count": 70,
+      "label_covered_ticker_count": 70,
+      "missing_label_ticker_count": 0,
+      "full_label_coverage": true,
+      "label_coverage_status": "FULL_COVERAGE"
+    },
+    {
+      "v13_1_candidate_run_id": "V13_1_RUN_007",
+      "factor_name": "RELATIVE_RANK_ACCELERATION",
+      "target_horizon": "T20",
+      "eligible_ticker_count": 70,
+      "label_covered_ticker_count": 70,
+      "missing_label_ticker_count": 0,
+      "full_label_coverage": true,
+      "label_coverage_status": "FULL_COVERAGE"
+    },
+    {
+      "v13_1_candidate_run_id": "V13_1_RUN_008",
+      "factor_name": "FUNDAMENTAL_QUALITY_STABILITY",
+      "target_horizon": "T60",
+      "eligible_ticker_count": 70,
+      "label_covered_ticker_count": 70,
+      "missing_label_ticker_count": 0,
+      "full_label_coverage": true,
+      "label_coverage_status": "FULL_COVERAGE"
+    }
+  ],
+  "ready_for_bucket_construction_count": 8,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

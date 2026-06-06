@@ -1,0 +1,29 @@
+{
+  "status": "V13_1_PAPER_BOOTSTRAP_AUDIT_BLOCKED",
+  "paper_bootstrap_confirmed": false,
+  "registered_candidate_count": 8,
+  "event_clean_excluded": true,
+  "archived_rejected_reentry_count": 0,
+  "ready_for_bucket_construction_count": 0,
+  "ready_for_v13_2_bucket_construction_next_stage": false,
+  "forbidden_action_violations": [
+    "production_contract",
+    "broker_runtime_contract",
+    "real_trade_contract"
+  ],
+  "candidate_violations": [],
+  "data_violations": [],
+  "safety_violations": [],
+  "blocking_reasons": [
+    "production_contract",
+    "broker_runtime_contract",
+    "real_trade_contract"
+  ],
+  "investment_action_count": 0,
+  "trade_action_count": 0,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

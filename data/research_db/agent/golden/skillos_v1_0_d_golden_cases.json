@@ -1,0 +1,76 @@
+{
+  "golden_version": "1.0.0",
+  "hash_algorithm": "SHA-256",
+  "canonical_json_policy": "sort_keys=True, separators=(',',':'), ensure_ascii=False",
+  "output_hash_excluded_fields": ["narrative", "input_hash", "output_hash"],
+  "generation_policy": "STATIC_REPRODUCIBLE_MANIFEST",
+  "case_count": 4,
+  "cases": [
+    {
+      "case_id": "GOLDEN.SYSTEM.GET_SKILLOS_STATUS.001",
+      "skill_id": "SYSTEM.GET_SKILLOS_STATUS",
+      "input_payload": {},
+      "output_payload": {
+        "skill_id": "SYSTEM.GET_SKILLOS_STATUS",
+        "skill_version": "1.0.0",
+        "status": "SUCCESS",
+        "risk_level": "R0_READ"
+      },
+      "expected_input_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "expected_output_hash": "8ece47a283b8b848fb583a904237bac99f3bf7cf2557e2405964cd2e1b895ee6",
+      "expected_hash_algorithm": "SHA-256",
+      "excluded_output_fields": ["narrative", "input_hash", "output_hash"]
+    },
+    {
+      "case_id": "GOLDEN.GOVERNANCE.GET_VERIFY_SCRIPT_REGISTRY.001",
+      "skill_id": "GOVERNANCE.GET_VERIFY_SCRIPT_REGISTRY",
+      "input_payload": {},
+      "output_payload": {
+        "skill_id": "GOVERNANCE.GET_VERIFY_SCRIPT_REGISTRY",
+        "skill_version": "1.0.0",
+        "status": "SUCCESS",
+        "risk_level": "R0_READ"
+      },
+      "expected_input_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "expected_output_hash": "e812dfe6c05c28a5aa21366c3b465e461ddbee1c4d2f32a2e065f6ac34ccab7d",
+      "expected_hash_algorithm": "SHA-256",
+      "excluded_output_fields": ["narrative", "input_hash", "output_hash"]
+    },
+    {
+      "case_id": "GOLDEN.RESEARCHDB.GET_LAYER_STATUS.001",
+      "skill_id": "RESEARCHDB.GET_LAYER_STATUS",
+      "input_payload": {
+        "data_snapshot_id": "snap-001"
+      },
+      "output_payload": {
+        "skill_id": "RESEARCHDB.GET_LAYER_STATUS",
+        "skill_version": "1.0.0",
+        "status": "SUCCESS",
+        "risk_level": "R0_READ",
+        "data_snapshot_id": "snap-001"
+      },
+      "expected_input_hash": "f80c6f016bc664c4379dae072c3576b37087f4deb20c307ea8e270a89c34d6ce",
+      "expected_output_hash": "6c6ebe210f0cda1634b886e9e73a99594155aeeaf36cfa78ee97cfa06223da31",
+      "expected_hash_algorithm": "SHA-256",
+      "excluded_output_fields": ["narrative", "input_hash", "output_hash"]
+    },
+    {
+      "case_id": "GOLDEN.FACTOR.GET_FACTOR_REGISTRY.001",
+      "skill_id": "FACTOR.GET_FACTOR_REGISTRY",
+      "input_payload": {
+        "data_snapshot_id": "snap-002"
+      },
+      "output_payload": {
+        "skill_id": "FACTOR.GET_FACTOR_REGISTRY",
+        "skill_version": "1.0.0",
+        "status": "SUCCESS",
+        "risk_level": "R0_READ",
+        "data_snapshot_id": "snap-002"
+      },
+      "expected_input_hash": "a9abfb1963c42b47e4f3233dddc6ccc5eb6117f7381b3d0e7fbf87be74423c52",
+      "expected_output_hash": "4fe0d366ba3ab10cc3956d3606426bc04efb3c3bb5e2944a2e405bc515265f7f",
+      "expected_hash_algorithm": "SHA-256",
+      "excluded_output_fields": ["narrative", "input_hash", "output_hash"]
+    }
+  ]
+}

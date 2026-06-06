@@ -1,0 +1,30 @@
+{
+  "status": "V12_4_7_PRICE_DATA_MOUNT_CONTRACT_BUILT",
+  "mount_mode": "SCHEMA_GATED_PRICE_DATA_MOUNT",
+  "target_ticker": "600837",
+  "target_as_of_date": "20240909",
+  "target_horizon": "T60",
+  "required_fields": [
+    "ticker",
+    "trade_date",
+    "close",
+    "adjusted_close",
+    "volume"
+  ],
+  "candidate_files": [
+    "data/research_db/market_data/processed/v8_expanded_daily_price_bar.csv",
+    "data/research_db/market_data/processed/core12_daily_price_bar.csv"
+  ],
+  "coverage_policy": "TICKER_DATE_TO_T60_EXIT_WINDOW_REQUIRED",
+  "expected_exit_date_min": "20241201",
+  "expected_exit_date_max": "20241231",
+  "fail_closed": true,
+  "ready_for_label_regeneration": false,
+  "ready_for_cycle2_recalculation": false,
+  "ready_for_v12_5_feedback": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

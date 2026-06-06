@@ -1,0 +1,43 @@
+{
+  "status": "V12_4_7_PRICE_DATA_FILE_DISCOVERY_BUILT",
+  "candidates_checked": 2,
+  "candidates_found": 0,
+  "candidates_readable": 0,
+  "price_file_discovered": false,
+  "ready_for_schema_validation": false,
+  "candidates": [
+    {
+      "candidate_file": "data/research_db/market_data/processed/v8_expanded_daily_price_bar.csv",
+      "exists": false,
+      "size_bytes": 0,
+      "readable": false,
+      "file_type": "csv",
+      "discovery_status": "NOT_FOUND",
+      "blocking_reasons": [
+        "FILE_NOT_FOUND"
+      ]
+    },
+    {
+      "candidate_file": "data/research_db/market_data/processed/core12_daily_price_bar.csv",
+      "exists": false,
+      "size_bytes": 0,
+      "readable": false,
+      "file_type": "csv",
+      "discovery_status": "NOT_FOUND",
+      "blocking_reasons": [
+        "FILE_NOT_FOUND"
+      ]
+    }
+  ],
+  "blocking_reasons": [
+    "PRICE_DATA_FILE_NOT_MOUNTED"
+  ],
+  "ready_for_label_regeneration": false,
+  "ready_for_cycle2_recalculation": false,
+  "ready_for_v12_5_feedback": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

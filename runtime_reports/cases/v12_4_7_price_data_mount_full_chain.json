@@ -1,0 +1,18 @@
+{
+  "status": "V12_4_7_PRICE_DATA_MOUNT_FULL_CHAIN_PASS",
+  "steps_returncode_pass": true,
+  "price_file_mounted": false,
+  "schema_validated": false,
+  "target_coverage_ok": false,
+  "ready_for_label_regeneration": false,
+  "cycle2_still_blocked": true,
+  "v12_5_still_blocked": true,
+  "recommended_next_action": "MOUNT_VALID_PRICE_DATA_FILE",
+  "investment_action_count": 0,
+  "trade_action_count": 0,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

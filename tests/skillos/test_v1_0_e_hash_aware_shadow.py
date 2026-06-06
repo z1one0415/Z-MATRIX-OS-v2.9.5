@@ -87,3 +87,12 @@ class TestNoModifications:
         from zmatrix.agent import skill_hash_aware_auditor
         source = inspect.getsource(skill_hash_aware_auditor)
         assert "result_envelope" not in source.lower().replace("_", "")
+
+    def test_boundary_reconcile_documents_policy_exception(self):
+        """Verify D.1 policy patch document exists and explains the hash field exclusion."""
+        doc = Path("docs/skillos/Z_SKILLOS_V1_0_D_1_HASH_FIELD_EXCLUSION_POLICY_PATCH.md")
+        assert doc.exists(), "D.1 policy patch doc missing"
+        content = doc.read_text()
+        assert "input_hash" in content
+        assert "output_hash" in content
+        assert "circular" in content

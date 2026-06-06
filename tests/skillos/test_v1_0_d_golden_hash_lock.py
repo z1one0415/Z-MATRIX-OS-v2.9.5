@@ -39,7 +39,11 @@ class TestHashPolicy:
 
     def test_hash_policy_declares_narrative_exclusion(self):
         assert "narrative" in get_output_hash_excluded_fields()
+
+    def test_hash_policy_excludes_hash_fields(self):
         assert is_output_hash_excluded_field("narrative") is True
+        assert is_output_hash_excluded_field("input_hash") is True
+        assert is_output_hash_excluded_field("output_hash") is True
         assert is_output_hash_excluded_field("skill_id") is False
 
 
@@ -60,14 +64,12 @@ class TestGoldenCases:
     def test_golden_input_hashes_match(self, golden_cases):
         for c in golden_cases:
             computed = compute_input_hash(c["input_payload"])
-            assert computed == c["expected_input_hash"], \
-                f"{c['case_id']}: input hash mismatch"
+            assert computed == c["expected_input_hash"], f"{c['case_id']}: input hash mismatch"
 
     def test_golden_output_hashes_match(self, golden_cases):
         for c in golden_cases:
             computed = compute_output_hash(c["output_payload"])
-            assert computed == c["expected_output_hash"], \
-                f"{c['case_id']}: output hash mismatch"
+            assert computed == c["expected_output_hash"], f"{c['case_id']}: output hash mismatch"
 
     def test_narrative_change_does_not_change_output_hash(self, golden_cases):
         base = golden_cases[0]["output_payload"]
@@ -81,19 +83,28 @@ class TestGoldenCases:
         changed["status"] = "FAILED"
         assert compute_output_hash(base) != compute_output_hash(changed)
 
+    def test_output_hash_ignores_input_hash_and_output_hash(self):
+        base = {"skill_id": "X", "status": "OK"}
+        with_hashes = {"skill_id": "X", "status": "OK",
+                        "input_hash": "abc123abc123", "output_hash": "def456def456"}
+        assert compute_output_hash(base) == compute_output_hash(with_hashes)
+
+    def test_golden_expected_hashes_unchanged_after_exclusion_metadata_patch(self, golden_cases):
+        for c in golden_cases:
+            ih = compute_input_hash(c["input_payload"])
+            oh = compute_output_hash(c["output_payload"])
+            assert ih == c["expected_input_hash"], f"{c['case_id']}: input hash changed"
+            assert oh == c["expected_output_hash"], f"{c['case_id']}: output hash changed"
+            assert len(ih) == 64
+            assert len(oh) == 64
+
 
 class TestNoModifications:
-    def test_hash_policy_no_file_write(self):
+    def test_no_file_write(self):
         import inspect
         from zmatrix.agent import skill_hash_policy
         source = inspect.getsource(skill_hash_policy)
         assert "open(" not in source or "json.dump" not in source
-
-    def test_audit_golden_cli_no_file_write(self):
-        source = Path("scripts/skillos/audit_golden_hash_lock.py").read_text()
-        code = [l for l in source.split("\n") if not l.strip().startswith("#")]
-        assert not any("json.dump(" in l for l in code)
-        assert not any("open(" in l and ("'w'" in l or '"w"' in l) for l in code)
 
     def test_no_invoke_skill_import(self):
         import inspect

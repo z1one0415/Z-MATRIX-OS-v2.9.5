@@ -8,8 +8,6 @@ Z_SKILLOS_V1_0_D_GOLDEN_HASH_LOCK_COMPLETE
 
 Golden hash policy + golden I/O lock only.
 
-Freezes the hash rules from v1.0-C as a static policy manifest and 4 golden cases with expected hashes. Any hash regression will be caught by golden lock audit.
-
 ## Delivered
 
 | # | File | Role |
@@ -25,68 +23,31 @@ Freezes the hash rules from v1.0-C as a static policy manifest and 4 golden case
 | Field | Value |
 |:--|:--|
 | hash_algorithm | SHA-256 |
-| canonical_json | sort_keys=True, separators=["",""], ensure_ascii=False |
-| output_hash_excluded_fields | ["narrative"] |
+| canonical_json | sort_keys=True, separators=[",", ":"], ensure_ascii=False |
+| output_hash_excluded_fields | ["narrative", "input_hash", "output_hash"] |
 | dynamic_fields | None |
 
-## Golden Cases
+## v1.0-D.1 Policy Evolution
 
-| Case ID | Input Hash | Output Hash |
-|:--|:--|:--|
-| GOLDEN.SYSTEM.001 | `44136fa3...` | `8ece47a2...` |
-| GOLDEN.GOVERNANCE.001 | `44136fa3...` | `e812dfe6...` |
-| GOLDEN.RESEARCHDB.001 | `f80c6f01...` | `6c6ebe21...` |
-| GOLDEN.FACTOR.001 | `a9abfb19...` | `4fe0d366...` |
+v1.0-E required schema-complete output payloads containing `input_hash` and `output_hash`. These hash fields are now treated as volatile/circular and excluded from output hash computation. See `Z_SKILLOS_V1_0_D_1_HASH_FIELD_EXCLUSION_POLICY_PATCH.md` for full rationale. Golden expected hashes are unchanged because existing golden output payloads do not include hash fields.
 
 ## Golden Audit Results
 
 | Check | Result |
 |:--|:--|
-| input_hash_match | 4/4 ✅ |
-| output_hash_match | 4/4 ✅ |
-| narrative_change_same_hash | ✅ |
-| non_narrative_change_diff_hash | ✅ |
-| dynamic_fields_present | 0 |
+| input_hash_match | 4/4 |
+| output_hash_match | 4/4 |
+| narrative_change_same_hash | yes |
+| non_narrative_change_diff_hash | yes |
 
 ## Explicit Non-Scope
 
-- No invoke_skill integration
-- No hard enforcement
-- No schema enforcement
-- No result_envelope modification
-- No skill_hashing.py modification
-- No runtime_reports
-- No ledger
-- No parent branch advancement
-- No production / broker / real_trade
+No invoke_skill / hard enforcement / schema enforcement / result_envelope / runtime_reports / ledger / parent branch advancement / production / broker / real_trade.
 
 ## Verification
 
-| Gate | Result |
-|:--|:--:|
-| audit_golden_hash_lock | ✅ Z_SKILLOS_V1_0_D_GOLDEN_HASH_LOCK_PASS |
-| pytest v1.0-d | ✅ 14 passed |
-| pytest v1.0-c | ✅ 14 passed |
-| pytest v1.0-b | ✅ 17 passed |
-| pytest v1.0-a | ✅ 12 passed |
-| compileall | ✅ PASS |
-| agent tests | ✅ 214 |
-| research_db tests | ✅ 1261 |
-
-## Boundary
-
-| Check | Result |
-|:--|:--|
-| invoke_skill_touched | No |
-| result_envelope_touched | No |
-| skill_hashing_touched | No (policy is additive) |
-| schema_validator_touched | No |
-| contract_registry_touched | No |
-| runtime_reports_touched | No |
-| existing_files_modified | 0 |
-| production/broker/real_trade | BLOCKED |
+compileall PASS, all existing tests PASS (214 agent + 1261 research_db).
 
 ## Next
 
-v1.0-E Hash-aware Shadow Audit or Golden Regression Expansion.
-NOT hard enforcement.
+v1.0-E Hash-aware Shadow Audit.

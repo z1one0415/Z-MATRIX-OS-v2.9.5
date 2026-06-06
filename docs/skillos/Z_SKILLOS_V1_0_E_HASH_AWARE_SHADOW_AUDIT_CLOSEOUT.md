@@ -75,11 +75,14 @@ v1.0-E: hash_aware_auditor (chains A+B+C+D)
 |:--|:--|
 | invoke_skill_touched | No |
 | result_envelope_touched | No |
-| skill_hashing_touched | No |
-| hash_policy_touched | No |
-| golden_cases_touched | No |
+| skill_hashing_touched | Yes — policy-aligned volatile field exclusion (narrative+hash) |
+| hash_policy_touched | Yes — D.1 policy patch extended excluded fields |
+| golden_cases_touched | Yes — excluded_output_fields metadata updated only |
 | runtime_reports_touched | No |
+| existing_files_modified | 3 (policy-aligned, see D.1 patch) |
 | production/broker/real_trade | BLOCKED |
+
+Boundary Exception: These modifications are allowed only because they are documented under `v1.0-D.1 Hash Field Exclusion Policy Patch`. The `input_hash`/`output_hash` fields must be excluded from `compute_output_hash` to prevent circular hash computation when the v1.0-E auditor inserts hash fields into schema-complete output payloads. No runtime path, invoke_skill, result_envelope, or runtime_reports were touched.
 
 ## Next
 

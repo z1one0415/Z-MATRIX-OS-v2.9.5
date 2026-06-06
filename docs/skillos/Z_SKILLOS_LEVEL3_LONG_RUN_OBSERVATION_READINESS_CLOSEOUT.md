@@ -10,7 +10,7 @@ Long-run observation readiness verification only. No Level 4.
 
 ## Delivered
 
-long-run audit (50 runs), long-run tests.
+long-run audit (100 runs), long-run tests.
 
 ## Verified
 

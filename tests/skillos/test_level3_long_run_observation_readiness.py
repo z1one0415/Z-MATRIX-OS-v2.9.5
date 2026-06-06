@@ -4,7 +4,7 @@ import os, json, pytest
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
-LONG_RUN_RUNS = 50
+LONG_RUN_RUNS = 100
 
 from zmatrix.agent.skillos_level3_config import get_level3_config
 from zmatrix.agent.skillos_level3_runtime_adapter import build_runtime_adapter_event, run_level3_runtime_adapter

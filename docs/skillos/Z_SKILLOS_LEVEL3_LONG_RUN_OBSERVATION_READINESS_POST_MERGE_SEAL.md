@@ -10,7 +10,7 @@ commit: `90ba4e3`
 
 ## Verified
 
-50 runs. Disabled: zero effects. Enabled: 50 tmp writes. No warning/blocking. Failures CONTINUE. Sentinel unchanged.
+100 runs. Disabled: zero effects. Enabled: 100 tmp writes. No warning/blocking. Failures CONTINUE. Sentinel unchanged.
 
 ## Level
 

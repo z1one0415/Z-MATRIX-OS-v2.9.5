@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Audit Level 3 long-run observation readiness. 50 repeated runs. Tmp paths only."""
+"""Audit Level 3 long-run observation readiness. 100 repeated runs. Tmp paths only."""
 
 import os, sys, json
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
-LONG_RUN_RUNS = 50
+LONG_RUN_RUNS = 100
 
 from zmatrix.agent.skillos_level3_config import get_level3_config
 from zmatrix.agent.skillos_level3_runtime_adapter import build_runtime_adapter_event, run_level3_runtime_adapter

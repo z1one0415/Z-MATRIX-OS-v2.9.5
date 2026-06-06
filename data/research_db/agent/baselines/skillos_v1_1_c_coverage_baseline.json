@@ -1,0 +1,16 @@
+{
+  "baseline_version": "1.1-C",
+  "generation_policy": "STATIC_REPRODUCIBLE_BASELINE",
+  "source": {
+    "v1_1_bx_seal_commit": "48438d6",
+    "v1_1_c_planning_gate_commit": "00ae8cd"
+  },
+  "coverage": {
+    "case_count": 24,
+    "domains_covered_min": 16,
+    "registry_exact": true,
+    "excluded_narrative": true,
+    "excluded_write_layers": true,
+    "excluded_proposal_required": true
+  }
+}

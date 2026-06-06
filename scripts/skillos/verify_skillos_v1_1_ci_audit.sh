@@ -5,6 +5,9 @@ echo "═══ Z-SkillOS v1.1-A CI Audit Integration ═══"
 echo "--- audit_golden_regression ---"
 PYTHONPATH=. python3 scripts/skillos/audit_golden_regression.py
 
+echo "--- audit_golden_coverage_v1_1_c ---"
+PYTHONPATH=. python3 scripts/skillos/audit_golden_coverage_v1_1_c.py
+
 echo "--- audit_hash_aware_shadow ---"
 PYTHONPATH=. python3 scripts/skillos/audit_hash_aware_shadow.py
 

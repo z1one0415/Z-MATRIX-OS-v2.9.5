@@ -78,10 +78,13 @@ class TestCIWrapper:
 
     def test_ci_wrapper_contains_semantic_drift_after_v1_0_a_to_f(self):
         content = Path(WRAPPER).read_text()
-        # Drift audit must appear after v1.0-A tests (last test batch)
         a_test_line = content.index("test_v1_0_a_contract_registry.py")
         drift_line = content.index("audit_semantic_drift.py")
         assert drift_line > a_test_line, "drift audit must be after v1.0 tests"
+
+    def test_ci_audit_wrapper_runs_v1_1_c_golden_coverage(self):
+        content = Path(WRAPPER).read_text()
+        assert "audit_golden_coverage_v1_1_c.py" in content
 
 
 class TestWrapperExecution:

@@ -1,0 +1,519 @@
+{
+  "regression_version": "1.1-C",
+  "hash_algorithm": "SHA-256",
+  "generation_policy": "REPRODUCIBLE_STATIC_BUILD",
+  "source_registry": "skill_contract_registry.json",
+  "v1_0_f_cases": 12,
+  "v1_1_c_added": 12,
+  "case_count": 24,
+  "domains_covered": 18,
+  "registry_exact": true,
+  "cases": [
+    {
+      "case_id": "REGRESSION.AUTOCASE.GET_INTAKE_SCHEMA.001",
+      "skill_id": "AUTOCASE.GET_INTAKE_SCHEMA",
+      "domain": "AUTOCASE",
+      "risk_level": "R0_READ",
+      "input_payload": {},
+      "output_payload": {
+        "skill_id": "AUTOCASE.GET_INTAKE_SCHEMA",
+        "skill_version": "1.0.0",
+        "status": "SUCCESS",
+        "risk_level": "R0_READ"
+      },
+      "expected_input_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "expected_output_hash": "dbb09fa12b7b5a0bbbf6db24854471f3a37b300dd3aef7b6293ee468d5f294f6",
+      "expected_hash_algorithm": "SHA-256",
+      "excluded_output_fields": [
+        "narrative",
+        "input_hash",
+        "output_hash"
+      ]
+    },
+    {
+      "case_id": "REGRESSION.BMATRIX.GET_SCHEMA.001",
+      "skill_id": "BMATRIX.GET_SCHEMA",
+      "domain": "BMATRIX",
+      "risk_level": "R0_READ",
+      "input_payload": {},
+      "output_payload": {
+        "skill_id": "BMATRIX.GET_SCHEMA",
+        "skill_version": "1.0.0",
+        "status": "SUCCESS",
+        "risk_level": "R0_READ"
+      },
+      "expected_input_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "expected_output_hash": "37bd9a6a344b5d11a74d46d1fe1bb46643e0875a2e0ce2a44b05bdf20eabe2c7",
+      "expected_hash_algorithm": "SHA-256",
+      "excluded_output_fields": [
+        "narrative",
+        "input_hash",
+        "output_hash"
+      ]
+    },
+    {
+      "case_id": "REGRESSION.CASEFORGE.GET_CASE_DRAFT_SCHEMA.001",
+      "skill_id": "CASEFORGE.GET_CASE_DRAFT_SCHEMA",
+      "domain": "CASEFORGE",
+      "risk_level": "R0_READ",
+      "input_payload": {},
+      "output_payload": {
+        "skill_id": "CASEFORGE.GET_CASE_DRAFT_SCHEMA",
+        "skill_version": "1.0.0",
+        "status": "SUCCESS",
+        "risk_level": "R0_READ"
+      },
+      "expected_input_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "expected_output_hash": "af8133bde297d3a6cf8d4a3d6f575e5f16e609d88c637250d5ab172d8a5008ee",
+      "expected_hash_algorithm": "SHA-256",
+      "excluded_output_fields": [
+        "narrative",
+        "input_hash",
+        "output_hash"
+      ]
+    },
+    {
+      "case_id": "REGRESSION.COCKPIT.BUILD_SKILLOS_OVERVIEW.001",
+      "skill_id": "COCKPIT.BUILD_SKILLOS_OVERVIEW",
+      "domain": "COCKPIT",
+      "risk_level": "R1_ANNOTATE",
+      "input_payload": {},
+      "output_payload": {
+        "skill_id": "COCKPIT.BUILD_SKILLOS_OVERVIEW",
+        "skill_version": "1.0.0",
+        "status": "SUCCESS",
+        "risk_level": "R1_ANNOTATE"
+      },
+      "expected_input_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "expected_output_hash": "ed3dd730b32779a0d9b1becc933a3ec530101db060c4e96a529068056ca36254",
+      "expected_hash_algorithm": "SHA-256",
+      "excluded_output_fields": [
+        "narrative",
+        "input_hash",
+        "output_hash"
+      ]
+    },
+    {
+      "case_id": "REGRESSION.COUNCIL.GET_COUNCIL_SCHEMA.001",
+      "skill_id": "COUNCIL.GET_COUNCIL_SCHEMA",
+      "domain": "COUNCIL",
+      "risk_level": "R0_READ",
+      "input_payload": {},
+      "output_payload": {
+        "skill_id": "COUNCIL.GET_COUNCIL_SCHEMA",
+        "skill_version": "1.0.0",
+        "status": "SUCCESS",
+        "risk_level": "R0_READ"
+      },
+      "expected_input_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "expected_output_hash": "cfe23e3c3e35502d55d154e778ba50be1da10c36cdf998c3b3075b33133ff699",
+      "expected_hash_algorithm": "SHA-256",
+      "excluded_output_fields": [
+        "narrative",
+        "input_hash",
+        "output_hash"
+      ]
+    },
+    {
+      "case_id": "REGRESSION.DATAFORGE.GET_SNAPSHOT_SCHEMA.001",
+      "skill_id": "DATAFORGE.GET_SNAPSHOT_SCHEMA",
+      "domain": "DATAFORGE",
+      "risk_level": "R0_READ",
+      "input_payload": {},
+      "output_payload": {
+        "skill_id": "DATAFORGE.GET_SNAPSHOT_SCHEMA",
+        "skill_version": "1.0.0",
+        "status": "SUCCESS",
+        "risk_level": "R0_READ"
+      },
+      "expected_input_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "expected_output_hash": "acf70994b18d8c6c836e50076eb0b2ccbcfdc71088facc937fa76b96a27360e9",
+      "expected_hash_algorithm": "SHA-256",
+      "excluded_output_fields": [
+        "narrative",
+        "input_hash",
+        "output_hash"
+      ]
+    },
+    {
+      "case_id": "REGRESSION.DMATRIX.GET_SCHEMA.001",
+      "skill_id": "DMATRIX.GET_SCHEMA",
+      "domain": "DMATRIX",
+      "risk_level": "R0_READ",
+      "input_payload": {},
+      "output_payload": {
+        "skill_id": "DMATRIX.GET_SCHEMA",
+        "skill_version": "1.0.0",
+        "status": "SUCCESS",
+        "risk_level": "R0_READ"
+      },
+      "expected_input_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "expected_output_hash": "d3334f2e34c554add9da181507971c9d1901e05ff541cc03bae188862e8c7aa9",
+      "expected_hash_algorithm": "SHA-256",
+      "excluded_output_fields": [
+        "narrative",
+        "input_hash",
+        "output_hash"
+      ]
+    },
+    {
+      "case_id": "REGRESSION.FACTOR.GET_FACTOR_REGISTRY.001",
+      "skill_id": "FACTOR.GET_FACTOR_REGISTRY",
+      "domain": "FACTOR",
+      "risk_level": "R0_READ",
+      "input_payload": {},
+      "output_payload": {
+        "skill_id": "FACTOR.GET_FACTOR_REGISTRY",
+        "skill_version": "1.0.0",
+        "status": "SUCCESS",
+        "risk_level": "R0_READ"
+      },
+      "expected_input_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "expected_output_hash": "1b48c82a6f837a8099d64dc94eee67a973cbd581734ce4d1daaa6b8f915019f7",
+      "expected_hash_algorithm": "SHA-256",
+      "excluded_output_fields": [
+        "narrative",
+        "input_hash",
+        "output_hash"
+      ]
+    },
+    {
+      "case_id": "REGRESSION.GOVERNANCE.GET_VERIFY_SCRIPT_REGISTRY.001",
+      "skill_id": "GOVERNANCE.GET_VERIFY_SCRIPT_REGISTRY",
+      "domain": "GOVERNANCE",
+      "risk_level": "R0_READ",
+      "input_payload": {},
+      "output_payload": {
+        "skill_id": "GOVERNANCE.GET_VERIFY_SCRIPT_REGISTRY",
+        "skill_version": "1.0.0",
+        "status": "SUCCESS",
+        "risk_level": "R0_READ"
+      },
+      "expected_input_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "expected_output_hash": "e812dfe6c05c28a5aa21366c3b465e461ddbee1c4d2f32a2e065f6ac34ccab7d",
+      "expected_hash_algorithm": "SHA-256",
+      "excluded_output_fields": [
+        "narrative",
+        "input_hash",
+        "output_hash"
+      ]
+    },
+    {
+      "case_id": "REGRESSION.MEMORY.GET_MEMORY_CANDIDATE_SCHEMA.001",
+      "skill_id": "MEMORY.GET_MEMORY_CANDIDATE_SCHEMA",
+      "domain": "MEMORY",
+      "risk_level": "R0_READ",
+      "input_payload": {},
+      "output_payload": {
+        "skill_id": "MEMORY.GET_MEMORY_CANDIDATE_SCHEMA",
+        "skill_version": "1.0.0",
+        "status": "SUCCESS",
+        "risk_level": "R0_READ"
+      },
+      "expected_input_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "expected_output_hash": "1d5015af6be2ad29199ad5869d176a362097f8fa1cfa16d7f608ca2472ed6538",
+      "expected_hash_algorithm": "SHA-256",
+      "excluded_output_fields": [
+        "narrative",
+        "input_hash",
+        "output_hash"
+      ]
+    },
+    {
+      "case_id": "REGRESSION.PORTFOLIO.GET_SCHEMA.001",
+      "skill_id": "PORTFOLIO.GET_SCHEMA",
+      "domain": "PORTFOLIO",
+      "risk_level": "R0_READ",
+      "input_payload": {},
+      "output_payload": {
+        "skill_id": "PORTFOLIO.GET_SCHEMA",
+        "skill_version": "1.0.0",
+        "status": "SUCCESS",
+        "risk_level": "R0_READ"
+      },
+      "expected_input_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "expected_output_hash": "41d31eb1c5417e286c4faaa07d40ba49c8ec0e5bd389faae25377f0055de81dd",
+      "expected_hash_algorithm": "SHA-256",
+      "excluded_output_fields": [
+        "narrative",
+        "input_hash",
+        "output_hash"
+      ]
+    },
+    {
+      "case_id": "REGRESSION.RESEARCHDB.GET_LAYER_STATUS.001",
+      "skill_id": "RESEARCHDB.GET_LAYER_STATUS",
+      "domain": "RESEARCHDB",
+      "risk_level": "R0_READ",
+      "input_payload": {
+        "data_snapshot_id": "snap-reg-001"
+      },
+      "output_payload": {
+        "skill_id": "RESEARCHDB.GET_LAYER_STATUS",
+        "skill_version": "1.0.0",
+        "status": "SUCCESS",
+        "risk_level": "R0_READ"
+      },
+      "expected_input_hash": "2ccf41412339f37e7eb033521a5b8184048827d0dc4ac50bf0bb591b52c73950",
+      "expected_output_hash": "8b1a59ab2bee181ab93e86bfc23517df1c0d1c6d21cecd6a82be53d533eeb0d4",
+      "expected_hash_algorithm": "SHA-256",
+      "excluded_output_fields": [
+        "narrative",
+        "input_hash",
+        "output_hash"
+      ]
+    },
+    {
+      "case_id": "REGRESSION.SYSTEM.GET_SKILLOS_STATUS.001",
+      "skill_id": "SYSTEM.GET_SKILLOS_STATUS",
+      "domain": "SYSTEM",
+      "risk_level": "R0_READ",
+      "input_payload": {},
+      "output_payload": {
+        "skill_id": "SYSTEM.GET_SKILLOS_STATUS",
+        "skill_version": "1.0.0",
+        "status": "SUCCESS",
+        "risk_level": "R0_READ"
+      },
+      "expected_input_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "expected_output_hash": "8ece47a283b8b848fb583a904237bac99f3bf7cf2557e2405964cd2e1b895ee6",
+      "expected_hash_algorithm": "SHA-256",
+      "excluded_output_fields": [
+        "narrative",
+        "input_hash",
+        "output_hash"
+      ]
+    },
+    {
+      "case_id": "REGRESSION.SYSTEM.GET_SKILL_REGISTRY_SUMMARY.001",
+      "skill_id": "SYSTEM.GET_SKILL_REGISTRY_SUMMARY",
+      "domain": "SYSTEM",
+      "risk_level": "R0_READ",
+      "input_payload": {},
+      "output_payload": {
+        "skill_id": "SYSTEM.GET_SKILL_REGISTRY_SUMMARY",
+        "skill_version": "1.0.0",
+        "status": "SUCCESS",
+        "risk_level": "R0_READ"
+      },
+      "expected_input_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "expected_output_hash": "f4fbc4fd726cd972124185ffcef3861b966a8d353a9262082da234cb850fa381",
+      "expected_hash_algorithm": "SHA-256",
+      "excluded_output_fields": [
+        "narrative",
+        "input_hash",
+        "output_hash"
+      ]
+    },
+    {
+      "case_id": "REGRESSION.SYSTEM.GET_RESEARCH_SUMMARY.001",
+      "skill_id": "SYSTEM.GET_RESEARCH_SUMMARY",
+      "domain": "SYSTEM_VERIFY",
+      "risk_level": "R0_READ",
+      "input_payload": {},
+      "output_payload": {
+        "skill_id": "SYSTEM.GET_RESEARCH_SUMMARY",
+        "skill_version": "1.0.0",
+        "status": "SUCCESS",
+        "risk_level": "R0_READ"
+      },
+      "expected_input_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "expected_output_hash": "1db2c72585ee5efd922d761f780ffa8bafe690129212e9e5db2155a554a72eb4",
+      "expected_hash_algorithm": "SHA-256",
+      "excluded_output_fields": [
+        "narrative",
+        "input_hash",
+        "output_hash"
+      ]
+    },
+    {
+      "case_id": "REGRESSION.WORKFLOW.GET_WORKFLOW_SCHEMA.001",
+      "skill_id": "WORKFLOW.GET_WORKFLOW_SCHEMA",
+      "domain": "WORKFLOW",
+      "risk_level": "R0_READ",
+      "input_payload": {},
+      "output_payload": {
+        "skill_id": "WORKFLOW.GET_WORKFLOW_SCHEMA",
+        "skill_version": "1.0.0",
+        "status": "SUCCESS",
+        "risk_level": "R0_READ"
+      },
+      "expected_input_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "expected_output_hash": "e5cde2aa3b8ab9f439000de7ed10dd6b5ce794d6928f9bb5fc4c9bef1fec2583",
+      "expected_hash_algorithm": "SHA-256",
+      "excluded_output_fields": [
+        "narrative",
+        "input_hash",
+        "output_hash"
+      ]
+    },
+    {
+      "case_id": "REGRESSION.ZC35.GET_SCHEMA.001",
+      "skill_id": "ZC35.GET_SCHEMA",
+      "domain": "ZC35",
+      "risk_level": "R0_READ",
+      "input_payload": {},
+      "output_payload": {
+        "skill_id": "ZC35.GET_SCHEMA",
+        "skill_version": "1.0.0",
+        "status": "SUCCESS",
+        "risk_level": "R0_READ"
+      },
+      "expected_input_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "expected_output_hash": "01bbfd3e51b04485b5c3647cb307341d49cedd26439117895086559817c34cd6",
+      "expected_hash_algorithm": "SHA-256",
+      "excluded_output_fields": [
+        "narrative",
+        "input_hash",
+        "output_hash"
+      ]
+    },
+    {
+      "case_id": "REGRESSION.ZG16.GET_SOURCE_REGISTRY.001",
+      "skill_id": "ZG16.GET_SOURCE_REGISTRY",
+      "domain": "Z_G16_PHYSICAL",
+      "risk_level": "R0_READ",
+      "input_payload": {},
+      "output_payload": {
+        "skill_id": "ZG16.GET_SOURCE_REGISTRY",
+        "skill_version": "1.0.0",
+        "status": "SUCCESS",
+        "risk_level": "R0_READ"
+      },
+      "expected_input_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "expected_output_hash": "fedd15d179ff1c6a40d6ed8fe4da53a37c3292a023094b064ff6407cd841f27f",
+      "expected_hash_algorithm": "SHA-256",
+      "excluded_output_fields": [
+        "narrative",
+        "input_hash",
+        "output_hash"
+      ]
+    },
+    {
+      "case_id": "REGRESSION.REPORT.RENDER_DRAFT.001",
+      "skill_id": "REPORT.RENDER_DRAFT",
+      "domain": "REPORTING",
+      "risk_level": "R2_DRAFT",
+      "input_payload": {},
+      "output_payload": {
+        "skill_id": "REPORT.RENDER_DRAFT",
+        "skill_version": "1.0.0",
+        "status": "SUCCESS",
+        "risk_level": "R2_DRAFT"
+      },
+      "expected_input_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "expected_output_hash": "252e90080b447b4b3a715253b10c7a47b4dcc5f3a72a093ae65dbef0af60800e",
+      "expected_hash_algorithm": "SHA-256",
+      "excluded_output_fields": [
+        "narrative",
+        "input_hash",
+        "output_hash"
+      ]
+    },
+    {
+      "case_id": "REGRESSION.COUNCIL.GET_EXPERT_ROLE_REGISTRY.001",
+      "skill_id": "COUNCIL.GET_EXPERT_ROLE_REGISTRY",
+      "domain": "COUNCIL",
+      "risk_level": "R0_READ",
+      "input_payload": {},
+      "output_payload": {
+        "skill_id": "COUNCIL.GET_EXPERT_ROLE_REGISTRY",
+        "skill_version": "1.0.0",
+        "status": "SUCCESS",
+        "risk_level": "R0_READ"
+      },
+      "expected_input_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "expected_output_hash": "8b7d4505319b4c680104a9f99a51b29efcc008c1c13c87f28ea1ea55532a224c",
+      "expected_hash_algorithm": "SHA-256",
+      "excluded_output_fields": [
+        "narrative",
+        "input_hash",
+        "output_hash"
+      ]
+    },
+    {
+      "case_id": "REGRESSION.GOVERNANCE.GET_LEDGER_STATUS.001",
+      "skill_id": "GOVERNANCE.GET_LEDGER_STATUS",
+      "domain": "GOVERNANCE",
+      "risk_level": "R0_READ",
+      "input_payload": {},
+      "output_payload": {
+        "skill_id": "GOVERNANCE.GET_LEDGER_STATUS",
+        "skill_version": "1.0.0",
+        "status": "SUCCESS",
+        "risk_level": "R0_READ"
+      },
+      "expected_input_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "expected_output_hash": "527a66878ebb908948e1aef82908ab49396550f29b80f2383221a24022639d40",
+      "expected_hash_algorithm": "SHA-256",
+      "excluded_output_fields": [
+        "narrative",
+        "input_hash",
+        "output_hash"
+      ]
+    },
+    {
+      "case_id": "REGRESSION.PORTFOLIO.GET_RISK_BUDGET_TEMPLATE.001",
+      "skill_id": "PORTFOLIO.GET_RISK_BUDGET_TEMPLATE",
+      "domain": "PORTFOLIO",
+      "risk_level": "R0_READ",
+      "input_payload": {},
+      "output_payload": {
+        "skill_id": "PORTFOLIO.GET_RISK_BUDGET_TEMPLATE",
+        "skill_version": "1.0.0",
+        "status": "SUCCESS",
+        "risk_level": "R0_READ"
+      },
+      "expected_input_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "expected_output_hash": "6708392d48b3c4a33f9c6f61a2a8927b26f085a54b14395ea8401882b107e6bb",
+      "expected_hash_algorithm": "SHA-256",
+      "excluded_output_fields": [
+        "narrative",
+        "input_hash",
+        "output_hash"
+      ]
+    },
+    {
+      "case_id": "REGRESSION.FACTOR.GET_FACTOR_SCHEMA.001",
+      "skill_id": "FACTOR.GET_FACTOR_SCHEMA",
+      "domain": "FACTOR",
+      "risk_level": "R0_READ",
+      "input_payload": {},
+      "output_payload": {
+        "skill_id": "FACTOR.GET_FACTOR_SCHEMA",
+        "skill_version": "1.0.0",
+        "status": "SUCCESS",
+        "risk_level": "R0_READ"
+      },
+      "expected_input_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "expected_output_hash": "5923e5931ac2de54ac3135bf96e203e980a56c3689dfe1225fc3d0849623dcb1",
+      "expected_hash_algorithm": "SHA-256",
+      "excluded_output_fields": [
+        "narrative",
+        "input_hash",
+        "output_hash"
+      ]
+    },
+    {
+      "case_id": "REGRESSION.RESEARCHDB.GET_DATASET_REGISTRY.001",
+      "skill_id": "RESEARCHDB.GET_DATASET_REGISTRY",
+      "domain": "RESEARCHDB",
+      "risk_level": "R0_READ",
+      "input_payload": {},
+      "output_payload": {
+        "skill_id": "RESEARCHDB.GET_DATASET_REGISTRY",
+        "skill_version": "1.0.0",
+        "status": "SUCCESS",
+        "risk_level": "R0_READ"
+      },
+      "expected_input_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "expected_output_hash": "f7d1febed89d847c1c5580298dbdd47a3c1b48574f5713471f98da0eb7118ecc",
+      "expected_hash_algorithm": "SHA-256",
+      "excluded_output_fields": [
+        "narrative",
+        "input_hash",
+        "output_hash"
+      ]
+    }
+  ]
+}

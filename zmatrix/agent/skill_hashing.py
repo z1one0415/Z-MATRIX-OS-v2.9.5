@@ -38,8 +38,9 @@ def compute_output_hash(payload: dict) -> str:
     Only deterministic fields are included in the hash.
     Narrative/LLM-rendered fields are excluded if present.
     """
-    # Strip narrative field if present (LLM output, not deterministic)
-    clean = {k: v for k, v in payload.items() if k != "narrative"}
+    # Strip volatile fields: narrative (LLM output), hash fields (circular)
+    volatile = {"narrative", "input_hash", "output_hash"}
+    clean = {k: v for k, v in payload.items() if k not in volatile}
     return compute_sha256(canonical_json(clean))
 
 

@@ -1,0 +1,117 @@
+{
+  "status": "V13_1_4_MATERIALIZED_FEATURE_STORE_VALIDATION_PASS",
+  "per_candidate_validation_status": [
+    {
+      "factor_name": "INDUSTRY_NEUTRAL_REL_STRENGTH",
+      "required_columns": [
+        "sector",
+        "industry"
+      ],
+      "covered_ticker_count": 1,
+      "missing_value_count": 0,
+      "numeric_parse_error_count": 0,
+      "coverage_ratio": 1.0,
+      "candidate_validation_status": "FEATURE_VALUES_VALIDATED",
+      "blocking_reasons": []
+    },
+    {
+      "factor_name": "DOWNSIDE_VOL_ADJUSTED_STRENGTH",
+      "required_columns": [
+        "drawdown_depth_20d",
+        "recovery_slope_5d",
+        "downside_vol_20d"
+      ],
+      "covered_ticker_count": 1,
+      "missing_value_count": 0,
+      "numeric_parse_error_count": 0,
+      "coverage_ratio": 1.0,
+      "candidate_validation_status": "FEATURE_VALUES_VALIDATED",
+      "blocking_reasons": []
+    },
+    {
+      "factor_name": "FUNDAMENTAL_MOMENTUM_PROXY",
+      "required_columns": [
+        "fundamental_proxy_score"
+      ],
+      "covered_ticker_count": 1,
+      "missing_value_count": 0,
+      "numeric_parse_error_count": 0,
+      "coverage_ratio": 1.0,
+      "candidate_validation_status": "FEATURE_VALUES_VALIDATED",
+      "blocking_reasons": []
+    },
+    {
+      "factor_name": "SECTOR_DISPERSION_REVERSAL",
+      "required_columns": [
+        "sector",
+        "industry"
+      ],
+      "covered_ticker_count": 1,
+      "missing_value_count": 0,
+      "numeric_parse_error_count": 0,
+      "coverage_ratio": 1.0,
+      "candidate_validation_status": "FEATURE_VALUES_VALIDATED",
+      "blocking_reasons": []
+    },
+    {
+      "factor_name": "DRAWDOWN_RECOVERY_QUALITY",
+      "required_columns": [
+        "drawdown_depth_20d",
+        "recovery_slope_5d"
+      ],
+      "covered_ticker_count": 1,
+      "missing_value_count": 0,
+      "numeric_parse_error_count": 0,
+      "coverage_ratio": 1.0,
+      "candidate_validation_status": "FEATURE_VALUES_VALIDATED",
+      "blocking_reasons": []
+    },
+    {
+      "factor_name": "TURNOVER_STABILITY_ANOMALY",
+      "required_columns": [
+        "turnover"
+      ],
+      "covered_ticker_count": 1,
+      "missing_value_count": 0,
+      "numeric_parse_error_count": 0,
+      "coverage_ratio": 1.0,
+      "candidate_validation_status": "FEATURE_VALUES_VALIDATED",
+      "blocking_reasons": []
+    },
+    {
+      "factor_name": "RELATIVE_RANK_ACCELERATION",
+      "required_columns": [
+        "short_rank",
+        "medium_rank",
+        "rank_acceleration"
+      ],
+      "covered_ticker_count": 1,
+      "missing_value_count": 0,
+      "numeric_parse_error_count": 0,
+      "coverage_ratio": 1.0,
+      "candidate_validation_status": "FEATURE_VALUES_VALIDATED",
+      "blocking_reasons": []
+    },
+    {
+      "factor_name": "FUNDAMENTAL_QUALITY_STABILITY",
+      "required_columns": [
+        "fundamental_proxy_score"
+      ],
+      "covered_ticker_count": 1,
+      "missing_value_count": 0,
+      "numeric_parse_error_count": 0,
+      "coverage_ratio": 1.0,
+      "candidate_validation_status": "FEATURE_VALUES_VALIDATED",
+      "blocking_reasons": []
+    }
+  ],
+  "candidate_ready_after_materialization_count": 8,
+  "field_value_integrity_pass": true,
+  "ready_for_v13_2_bucket_construction_next_stage": false,
+  "alpha_claim_allowed": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

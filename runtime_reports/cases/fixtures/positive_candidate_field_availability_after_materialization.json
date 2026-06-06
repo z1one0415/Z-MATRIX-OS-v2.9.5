@@ -1,0 +1,15 @@
+{
+  "status": "V13_1_FIELD_GATE_AFTER_MATERIALIZATION_BUILT",
+  "candidate_count": 8,
+  "fields_available_candidate_count": 8,
+  "fields_missing_candidate_count": 0,
+  "field_gate_source": "v13_1_4_materialized_feature_store_validation.per_candidate_validation_status",
+  "ready_for_v13_2_bucket_construction_next_stage": true,
+  "v13_2_requires_separate_approval": true,
+  "alpha_claim_allowed": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,166 @@
+{
+  "status": "V13_1_4_MATERIALIZED_FEATURE_STORE_BUILT",
+  "materialized_feature_store_built": true,
+  "materialized_feature_store_path": "runtime_reports/cases/fixtures/positive_materialized_features_20240909.csv",
+  "per_feature_group_materialization_status": [
+    {
+      "feature_group": "sector_or_industry",
+      "status": "MATERIALIZED",
+      "generated_columns": [
+        "sector",
+        "industry"
+      ],
+      "covered_ticker_count": 5,
+      "missing_ticker_count": 0,
+      "source_sha256": "ec9474f884b57b96",
+      "blocking_reasons": []
+    },
+    {
+      "feature_group": "fundamental_proxy_field",
+      "status": "MATERIALIZED",
+      "generated_columns": [
+        "fundamental_proxy_score"
+      ],
+      "covered_ticker_count": 5,
+      "missing_ticker_count": 0,
+      "source_sha256": "3e39a3f52bad2b7b",
+      "blocking_reasons": []
+    },
+    {
+      "feature_group": "price_bar_input",
+      "status": "MATERIALIZED",
+      "generated_columns": [
+        "drawdown_depth_20d",
+        "recovery_slope_5d",
+        "downside_vol_20d"
+      ],
+      "covered_ticker_count": 5,
+      "missing_ticker_count": 0,
+      "source_sha256": "d1ec6281f9d42880",
+      "blocking_reasons": []
+    },
+    {
+      "feature_group": "turnover",
+      "status": "MATERIALIZED",
+      "generated_columns": [
+        "turnover"
+      ],
+      "covered_ticker_count": 5,
+      "missing_ticker_count": 0,
+      "source_sha256": "df48c95ea1f179e2",
+      "blocking_reasons": []
+    },
+    {
+      "feature_group": "rank_short_medium",
+      "status": "MATERIALIZED",
+      "generated_columns": [
+        "short_rank",
+        "medium_rank",
+        "rank_acceleration"
+      ],
+      "covered_ticker_count": 5,
+      "missing_ticker_count": 0,
+      "source_sha256": "de52cbf5014896f3",
+      "blocking_reasons": []
+    }
+  ],
+  "per_candidate_feature_status": [
+    {
+      "factor_name": "INDUSTRY_NEUTRAL_REL_STRENGTH",
+      "required_feature_groups": [
+        "sector_or_industry"
+      ],
+      "materialized_feature_groups": [
+        "sector_or_industry"
+      ],
+      "blocked_feature_groups": [],
+      "candidate_materialization_status": "MATERIALIZED"
+    },
+    {
+      "factor_name": "DOWNSIDE_VOL_ADJUSTED_STRENGTH",
+      "required_feature_groups": [
+        "drawdown_or_recovery"
+      ],
+      "materialized_feature_groups": [
+        "drawdown_or_recovery"
+      ],
+      "blocked_feature_groups": [],
+      "candidate_materialization_status": "MATERIALIZED"
+    },
+    {
+      "factor_name": "FUNDAMENTAL_MOMENTUM_PROXY",
+      "required_feature_groups": [
+        "fundamental_proxy_field"
+      ],
+      "materialized_feature_groups": [
+        "fundamental_proxy_field"
+      ],
+      "blocked_feature_groups": [],
+      "candidate_materialization_status": "MATERIALIZED"
+    },
+    {
+      "factor_name": "SECTOR_DISPERSION_REVERSAL",
+      "required_feature_groups": [
+        "sector_or_industry"
+      ],
+      "materialized_feature_groups": [
+        "sector_or_industry"
+      ],
+      "blocked_feature_groups": [],
+      "candidate_materialization_status": "MATERIALIZED"
+    },
+    {
+      "factor_name": "DRAWDOWN_RECOVERY_QUALITY",
+      "required_feature_groups": [
+        "drawdown_or_recovery"
+      ],
+      "materialized_feature_groups": [
+        "drawdown_or_recovery"
+      ],
+      "blocked_feature_groups": [],
+      "candidate_materialization_status": "MATERIALIZED"
+    },
+    {
+      "factor_name": "TURNOVER_STABILITY_ANOMALY",
+      "required_feature_groups": [
+        "turnover"
+      ],
+      "materialized_feature_groups": [
+        "turnover"
+      ],
+      "blocked_feature_groups": [],
+      "candidate_materialization_status": "MATERIALIZED"
+    },
+    {
+      "factor_name": "RELATIVE_RANK_ACCELERATION",
+      "required_feature_groups": [
+        "rank_short_medium"
+      ],
+      "materialized_feature_groups": [
+        "rank_short_medium"
+      ],
+      "blocked_feature_groups": [],
+      "candidate_materialization_status": "MATERIALIZED"
+    },
+    {
+      "factor_name": "FUNDAMENTAL_QUALITY_STABILITY",
+      "required_feature_groups": [
+        "fundamental_proxy_field"
+      ],
+      "materialized_feature_groups": [
+        "fundamental_proxy_field"
+      ],
+      "blocked_feature_groups": [],
+      "candidate_materialization_status": "MATERIALIZED"
+    }
+  ],
+  "feature_value_integrity_checked": true,
+  "empty_required_value_count": 0,
+  "ready_for_v13_2_bucket_construction_next_stage": false,
+  "alpha_claim_allowed": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

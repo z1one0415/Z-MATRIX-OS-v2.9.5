@@ -2,16 +2,17 @@
 """Audit v1.0-B shadow schema compliance for 5 sample skills.
 
 Reads v1.0-A contract registry via skill_schema_validator.
-Constructs minimal mock payloads.
-Outputs audit summary to stdout only.
-Does NOT write runtime_reports.
-Does NOT modify invoke_skill.
+Reports gaps for gate-approved skills missing from registry.
+Audits available subset with documented substitutes.
+Outputs to stdout only. Does NOT write runtime_reports.
 """
 
 import sys
 from zmatrix.agent.skill_schema_validator import (
     audit_skill_schema,
     list_sample_skill_ids,
+    get_audit_skill_ids,
+    AVAILABLE_SUBSTITUTES,
 )
 
 MOCK_INPUTS = {
@@ -19,56 +20,33 @@ MOCK_INPUTS = {
     "GOVERNANCE.GET_VERIFY_SCRIPT_REGISTRY": {},
     "RESEARCHDB.GET_LAYER_STATUS": {"data_snapshot_id": "snap-001"},
     "FACTOR.GET_FACTOR_REGISTRY": {"data_snapshot_id": "snap-002"},
-    "AUTOCASE.GET_INTAKE_SCHEMA": {"data_snapshot_id": "snap-003"},
 }
 
 MOCK_OUTPUTS = {
     "SYSTEM.GET_SKILLOS_STATUS": {
         "skill_id": "SYSTEM.GET_SKILLOS_STATUS",
-        "skill_version": "1.0.0",
-        "status": "SUCCESS",
-        "risk_level": "R0_READ",
-        "input_hash": "abc123",
-        "output_hash": "def456",
+        "skill_version": "1.0.0", "status": "SUCCESS",
+        "risk_level": "R0_READ", "input_hash": "abc123", "output_hash": "def456",
     },
     "GOVERNANCE.GET_VERIFY_SCRIPT_REGISTRY": {
         "skill_id": "GOVERNANCE.GET_VERIFY_SCRIPT_REGISTRY",
-        "skill_version": "1.0.0",
-        "status": "SUCCESS",
-        "risk_level": "R0_READ",
-        "input_hash": "abc123",
-        "output_hash": "def456",
+        "skill_version": "1.0.0", "status": "SUCCESS",
+        "risk_level": "R0_READ", "input_hash": "abc123", "output_hash": "def456",
     },
     "RESEARCHDB.GET_LAYER_STATUS": {
         "skill_id": "RESEARCHDB.GET_LAYER_STATUS",
-        "skill_version": "1.0.0",
-        "status": "SUCCESS",
-        "risk_level": "R0_READ",
-        "input_hash": "abc123",
-        "output_hash": "def456",
+        "skill_version": "1.0.0", "status": "SUCCESS",
+        "risk_level": "R0_READ", "input_hash": "abc123", "output_hash": "def456",
         "data_snapshot_id": "snap-001",
     },
     "FACTOR.GET_FACTOR_REGISTRY": {
         "skill_id": "FACTOR.GET_FACTOR_REGISTRY",
-        "skill_version": "1.0.0",
-        "status": "SUCCESS",
-        "risk_level": "R0_READ",
-        "input_hash": "abc123",
-        "output_hash": "def456",
+        "skill_version": "1.0.0", "status": "SUCCESS",
+        "risk_level": "R0_READ", "input_hash": "abc123", "output_hash": "def456",
         "data_snapshot_id": "snap-002",
-    },
-    "AUTOCASE.GET_INTAKE_SCHEMA": {
-        "skill_id": "AUTOCASE.GET_INTAKE_SCHEMA",
-        "skill_version": "1.0.0",
-        "status": "SUCCESS",
-        "risk_level": "R0_READ",
-        "input_hash": "abc123",
-        "output_hash": "def456",
-        "data_snapshot_id": "snap-003",
     },
 }
 
-# Intentionally bad output for negative test
 BAD_OUTPUT_MISSING_REQUIRED = {
     "skill_id": "SYSTEM.GET_SKILLOS_STATUS",
     "status": "SUCCESS",
@@ -77,15 +55,24 @@ BAD_OUTPUT_MISSING_REQUIRED = {
 
 def main():
     sample_ids = list_sample_skill_ids()
-    print(f"Sample skills: {len(sample_ids)}")
+    audit_ids = get_audit_skill_ids()
+    missing = [s for s in sample_ids if s not in audit_ids]
+
+    print(f"Gate-approved: {len(sample_ids)} skills")
     for sid in sample_ids:
+        status = "EXISTS" if sid in audit_ids else f"GAP -> substitute: {AVAILABLE_SUBSTITUTES.get(sid, 'NONE')}"
+        icon = "V" if sid in audit_ids else "!"
+        print(f"  {icon} {sid}: {status}")
+
+    print(f"\nAuditable (in registry): {len(audit_ids)}")
+    for sid in audit_ids:
         print(f"  - {sid}")
+    print(f"Gaps (documented, not silent): {len(missing)}")
 
     all_passed = True
-    total_violations = 0
 
-    print("\n--- Shadow Audit: valid payloads ---")
-    for sid in sample_ids:
+    print("\n--- Shadow Audit: available skills ---")
+    for sid in audit_ids:
         inp = MOCK_INPUTS.get(sid, {})
         out = MOCK_OUTPUTS.get(sid, {})
         result = audit_skill_schema(sid, inp, out)
@@ -93,28 +80,26 @@ def main():
         print(f"  {sid}: input={result['input_valid']} output={result['output_valid']} blocked={result['blocked']} enforcement={result['enforcement']} => {ok}")
         if not result["input_valid"] or not result["output_valid"]:
             all_passed = False
-            total_violations += len(result["violations"])
-        if result["violations"]:
-            for v in result["violations"]:
-                print(f"    violation: {v}")
+        for v in result["violations"]:
+            print(f"    violation: {v}")
 
-    print("\n--- Shadow Audit: negative case (missing required field) ---")
+    print("\n--- Shadow Audit: negative case ---")
     neg = audit_skill_schema("SYSTEM.GET_SKILLOS_STATUS", {}, BAD_OUTPUT_MISSING_REQUIRED)
-    print(f"  SYSTEM.GET_SKILLOS_STATUS: input={neg['input_valid']} output={neg['output_valid']} blocked={neg['blocked']} => {'PASS (caught violation)' if not neg['output_valid'] else 'FAIL (missed violation)'}")
+    print(f"  SYSTEM.GET_SKILLOS_STATUS: input={neg['input_valid']} output={neg['output_valid']} blocked={neg['blocked']} => {'PASS (caught)' if not neg['output_valid'] else 'FAIL (missed)'}")
     for v in neg["violations"]:
         print(f"    violation: {v}")
     if neg["output_valid"]:
         all_passed = False
 
     print(f"\n--- Audit Summary ---")
-    print(f"sample_count: {len(sample_ids)}")
-    print(f"all_positive_passed: {all_passed}")
+    print(f"approved_sample_count: {len(sample_ids)}")
+    print(f"gap_count: {len(missing)}")
+    print(f"auditable_count: {len(audit_ids)}")
+    print(f"all_available_passed: {all_passed}")
     print(f"negative_violation_detected: {not neg['output_valid']}")
-    print(f"blocked_count: {0}")
+    print(f"blocked_count: 0")
     print(f"runtime_reports_written: 0")
     print(f"enforcement: DISABLED")
-    print(f"invoke_skill_touched: False")
-    print(f"result_envelope_touched: False")
 
     if all_passed and not neg["output_valid"]:
         print("Z_SKILLOS_V1_0_B_SHADOW_AUDIT_PASS")

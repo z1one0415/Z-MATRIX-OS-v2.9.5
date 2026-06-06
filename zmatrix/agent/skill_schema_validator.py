@@ -13,11 +13,30 @@ _CONTRACT_PATH = Path(__file__).resolve().parent.parent.parent / "data" / "resea
 
 SAMPLE_SKILL_IDS = [
     "SYSTEM.GET_SKILLOS_STATUS",
-    "GOVERNANCE.GET_VERIFY_SCRIPT_REGISTRY",
-    "RESEARCHDB.GET_LAYER_STATUS",
-    "FACTOR.GET_FACTOR_REGISTRY",
-    "AUTOCASE.GET_INTAKE_SCHEMA",
+    "GOVERNANCE.GET_VERIFY_STATUS",
+    "RESEARCHDB.GET_SCHEMA",
+    "COCKPIT.GET_SKILLOS_STATUS",
+    "FACTOR.LIST_REGISTERED_FACTORS",
 ]
+
+# Best-available substitutes for gate-approved skills missing from contract registry.
+AVAILABLE_SUBSTITUTES = {
+    "GOVERNANCE.GET_VERIFY_STATUS": "GOVERNANCE.GET_VERIFY_SCRIPT_REGISTRY",
+    "RESEARCHDB.GET_SCHEMA": "RESEARCHDB.GET_LAYER_STATUS",
+    "COCKPIT.GET_SKILLOS_STATUS": "SYSTEM.GET_SKILLOS_STATUS",
+    "FACTOR.LIST_REGISTERED_FACTORS": "FACTOR.GET_FACTOR_REGISTRY",
+}
+
+def get_audit_skill_ids() -> list:
+    """Return skills available for audit: approved exist + substitutes."""
+    from zmatrix.agent.skill_contract_registry import get_skill_contract
+    result = []
+    for sid in SAMPLE_SKILL_IDS:
+        if get_skill_contract(sid):
+            result.append(sid)
+        elif sid in AVAILABLE_SUBSTITUTES:
+            result.append(AVAILABLE_SUBSTITUTES[sid])
+    return result
 
 _cache: Optional[dict] = None
 

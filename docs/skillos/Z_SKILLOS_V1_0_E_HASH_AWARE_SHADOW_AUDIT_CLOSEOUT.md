@@ -86,5 +86,5 @@ Boundary Exception: These modifications are allowed only because they are docume
 
 ## Next
 
-v1.0-F: Golden Regression Expansion or v1.1 planning.
+v1.0-F Golden Regression Expansion (completed).
 NOT hard enforcement.

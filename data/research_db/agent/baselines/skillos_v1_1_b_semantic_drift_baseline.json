@@ -1,0 +1,35 @@
+{
+  "baseline_version": "1.1-B",
+  "generation_policy": "STATIC_REPRODUCIBLE_BASELINE",
+  "source": {
+    "v1_0_seal_commit": "cc22d6c",
+    "v1_1_a_commit": "b84acd5",
+    "v1_1_b_planning_gate_commit": "014f366"
+  },
+  "targets": {
+    "contract_registry": {
+      "path": "data/research_db/agent/registry/skill_contract_registry.json",
+      "contract_count": 104,
+      "unique_skill_id_count": 104,
+      "sha256": "98537a75b2ab39e9f8a3220fdc947ea4dadba4606b2616f0f2c7f6ba465a3d1b",
+      "schema_projection_sha256": "07180f3b7dd9b0c4e8e3812357aa38671155fff5ec10114238c478ff0da91974"
+    },
+    "hash_policy": {
+      "path": "zmatrix/agent/skill_hash_policy.py",
+      "hash_algorithm": "SHA-256",
+      "excluded_output_fields": ["narrative", "input_hash", "output_hash"],
+      "sha256": "fae98173e3ec7d191056bd6c5e26ac22f080f5e96b5d1962a3d168e5069a853c"
+    },
+    "golden_hash_lock": {
+      "path": "data/research_db/agent/golden/skillos_v1_0_d_golden_cases.json",
+      "case_count": 4,
+      "sha256": "b51ab179ef1ec4cb9afc69a34bcca44225b71c174fab34184169ccaf4efb719b"
+    },
+    "golden_regression": {
+      "path": "data/research_db/agent/golden/skillos_v1_0_f_golden_regression_cases.json",
+      "case_count": 12,
+      "domains_covered": 12,
+      "sha256": "fba1699bc2ae07ef2c779ebc60ed2587969c526b0bc50021d285a6dbc036606c"
+    }
+  }
+}

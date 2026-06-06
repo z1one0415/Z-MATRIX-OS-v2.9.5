@@ -1,0 +1,144 @@
+{
+  "status": "V13_1_4_MATERIALIZED_FEATURE_STORE_BLOCKED",
+  "materialized_feature_store_built": false,
+  "blocked_reasons": [
+    "SOURCE_NOT_FOUND",
+    "SOURCE_NOT_FOUND",
+    "SOURCE_NOT_FOUND",
+    "SOURCE_NOT_FOUND",
+    "FORBIDDEN_FIELD:forward_return"
+  ],
+  "per_feature_group_materialization_status": [
+    {
+      "feature_group": "sector_or_industry",
+      "status": "BLOCKED",
+      "blocking_reasons": [
+        "SOURCE_NOT_FOUND"
+      ]
+    },
+    {
+      "feature_group": "fundamental_proxy_field",
+      "status": "BLOCKED",
+      "blocking_reasons": [
+        "SOURCE_NOT_FOUND"
+      ]
+    },
+    {
+      "feature_group": "price_bar_input",
+      "status": "BLOCKED",
+      "blocking_reasons": [
+        "SOURCE_NOT_FOUND"
+      ]
+    },
+    {
+      "feature_group": "turnover",
+      "status": "BLOCKED",
+      "blocking_reasons": [
+        "SOURCE_NOT_FOUND"
+      ]
+    },
+    {
+      "feature_group": "rank_short_medium",
+      "status": "BLOCKED",
+      "blocking_reasons": [
+        "FORBIDDEN_FIELD:forward_return"
+      ]
+    }
+  ],
+  "per_candidate_feature_status": [
+    {
+      "factor_name": "INDUSTRY_NEUTRAL_REL_STRENGTH",
+      "required_feature_groups": [
+        "sector_or_industry"
+      ],
+      "materialized_feature_groups": [],
+      "blocked_feature_groups": [
+        "sector_or_industry"
+      ],
+      "candidate_materialization_status": "BLOCKED"
+    },
+    {
+      "factor_name": "DOWNSIDE_VOL_ADJUSTED_STRENGTH",
+      "required_feature_groups": [
+        "drawdown_or_recovery"
+      ],
+      "materialized_feature_groups": [],
+      "blocked_feature_groups": [
+        "drawdown_or_recovery"
+      ],
+      "candidate_materialization_status": "BLOCKED"
+    },
+    {
+      "factor_name": "FUNDAMENTAL_MOMENTUM_PROXY",
+      "required_feature_groups": [
+        "fundamental_proxy_field"
+      ],
+      "materialized_feature_groups": [],
+      "blocked_feature_groups": [
+        "fundamental_proxy_field"
+      ],
+      "candidate_materialization_status": "BLOCKED"
+    },
+    {
+      "factor_name": "SECTOR_DISPERSION_REVERSAL",
+      "required_feature_groups": [
+        "sector_or_industry"
+      ],
+      "materialized_feature_groups": [],
+      "blocked_feature_groups": [
+        "sector_or_industry"
+      ],
+      "candidate_materialization_status": "BLOCKED"
+    },
+    {
+      "factor_name": "DRAWDOWN_RECOVERY_QUALITY",
+      "required_feature_groups": [
+        "drawdown_or_recovery"
+      ],
+      "materialized_feature_groups": [],
+      "blocked_feature_groups": [
+        "drawdown_or_recovery"
+      ],
+      "candidate_materialization_status": "BLOCKED"
+    },
+    {
+      "factor_name": "TURNOVER_STABILITY_ANOMALY",
+      "required_feature_groups": [
+        "turnover"
+      ],
+      "materialized_feature_groups": [],
+      "blocked_feature_groups": [
+        "turnover"
+      ],
+      "candidate_materialization_status": "BLOCKED"
+    },
+    {
+      "factor_name": "RELATIVE_RANK_ACCELERATION",
+      "required_feature_groups": [
+        "rank_short_medium"
+      ],
+      "materialized_feature_groups": [],
+      "blocked_feature_groups": [
+        "rank_short_medium"
+      ],
+      "candidate_materialization_status": "BLOCKED"
+    },
+    {
+      "factor_name": "FUNDAMENTAL_QUALITY_STABILITY",
+      "required_feature_groups": [
+        "fundamental_proxy_field"
+      ],
+      "materialized_feature_groups": [],
+      "blocked_feature_groups": [
+        "fundamental_proxy_field"
+      ],
+      "candidate_materialization_status": "BLOCKED"
+    }
+  ],
+  "alpha_claim_allowed": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

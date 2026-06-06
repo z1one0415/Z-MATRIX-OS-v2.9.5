@@ -1,0 +1,2 @@
+ticker,as_of_date,sector,industry,fundamental_proxy_score,drawdown_depth_20d,recovery_slope_5d,downside_vol_20d,turnover,short_rank,medium_rank,rank_acceleration,source_sha256,generation_method
+000001,20240909,Finance,Banking,80.0,-0.032225,-0.001493,0.000539,0.05,1,2,1,"ec9474f884b57b96,3e39a3f52bad2b7b,d1ec6281f9d42880,df48c95ea1f179e2,de52cbf5014896f3",V13_1_4_MATERIALIZER

@@ -1,0 +1,30 @@
+{
+  "mount_decisions": [
+    {
+      "feature_group": "sector_or_industry",
+      "mount_decision": "MOUNT_VALIDATED",
+      "selected_source_path": "tests/fixtures/v13_1_4_materialization/positive/sector_industry.csv"
+    },
+    {
+      "feature_group": "fundamental_proxy_field",
+      "mount_decision": "MOUNT_VALIDATED",
+      "selected_source_path": "tests/fixtures/v13_1_4_materialization/positive/fundamental_proxy.csv"
+    },
+    {
+      "feature_group": "price_bar_input",
+      "mount_decision": "MOUNT_VALIDATED",
+      "selected_source_path": "tests/fixtures/v13_1_4_materialization/positive/daily_price_bar.csv"
+    },
+    {
+      "feature_group": "turnover",
+      "mount_decision": "MOUNT_VALIDATED",
+      "selected_source_path": "tests/fixtures/v13_1_4_materialization/positive/turnover.csv"
+    },
+    {
+      "feature_group": "rank_short_medium",
+      "mount_decision": "MOUNT_VALIDATED",
+      "selected_source_path": "tests/fixtures/v13_1_4_materialization/positive/rank_inputs.csv"
+    }
+  ],
+  "mount_validated_group_count": 5
+}

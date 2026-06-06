@@ -18,6 +18,28 @@ _FORBIDDEN_OUTPUT_TOKENS = frozenset({"BUY", "SELL", "AUTO_EXECUTE", "READY_FOR_
 _FORBIDDEN_ALLOWLIST = frozenset({"SELL_ON_NEWS_TRAP"})
 
 
+def _observe_level3_non_blocking(*, skill_id: str, result: dict) -> None:
+    """Optional Level 3 shadow observation. Non-blocking. Never mutates result."""
+    try:
+        from zmatrix.agent.skillos_level3_config import is_level3_enabled
+        if not is_level3_enabled():
+            return
+        from zmatrix.agent.skillos_level3_runtime_adapter import (
+            build_runtime_adapter_event,
+            run_level3_runtime_adapter,
+        )
+        event = build_runtime_adapter_event(
+            event_id=f"level3:{skill_id}",
+            skill_id=skill_id,
+            schema_validation_result="PASS" if result.get("status") in ("DRAFT_CREATED",) else "FAIL",
+            input_hash=None,
+            output_hash=None,
+        )
+        run_level3_runtime_adapter(event, result_envelope=result)
+    except Exception:
+        pass
+
+
 def _blocked_result(skill_id: str, reason: str) -> dict:
     return {
         "skill_id": skill_id,
@@ -149,6 +171,7 @@ def invoke_skill(command_envelope: dict, context_slice: dict) -> dict:
         if _contains_forbidden_token(routed_result):
             routed_result["status"] = "BLOCKED"
             routed_result["blocked_reason"] = "Output contains forbidden token"
+        _observe_level3_non_blocking(skill_id=skill_id, result=routed_result)
         return routed_result
 
     write_layers = skill.get("write_layers", [])
@@ -182,4 +205,5 @@ def invoke_skill(command_envelope: dict, context_slice: dict) -> dict:
             "production_allowed": False,
         }
 
+    _observe_level3_non_blocking(skill_id=skill_id, result=result)
     return result

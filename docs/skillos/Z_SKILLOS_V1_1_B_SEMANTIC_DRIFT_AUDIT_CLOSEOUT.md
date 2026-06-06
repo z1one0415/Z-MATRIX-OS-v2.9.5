@@ -2,7 +2,15 @@
 
 ## Status
 
-Z_SKILLOS_V1_1_B_SEMANTIC_DRIFT_AUDIT_COMPLETE
+Z_SKILLOS_V1_1_B_SEMANTIC_DRIFT_AUDIT_APPROVAL_READY
+
+## Review Patch
+
+- Fixed regression coverage WARN semantics.
+- Coverage increase now returns WARN (not FAIL_CI).
+- Coverage loss remains FAIL_CI.
+- Same-count regression hash change remains FAIL_CI.
+- No baseline update. No runtime integration.
 
 ## Approval
 

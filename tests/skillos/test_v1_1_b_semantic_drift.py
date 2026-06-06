@@ -87,6 +87,36 @@ class TestDriftDetection:
         result = compare_snapshots(baseline, mutated)
         assert result["drift_detected"] is True
 
+    def test_regression_coverage_increase_warn(self):
+        baseline = load_baseline_snapshot()
+        current = build_current_snapshot()
+        mutated = copy.deepcopy(current)
+        mutated["golden_regression"]["case_count"] = 999
+        result = compare_snapshots(baseline, mutated)
+        assert result["drift_detected"] is False  # WARN is not drift
+        reg = [t for t in result["targets"] if t["target"] == "golden_regression"][0]
+        assert reg["severity"] == "WARN"
+
+    def test_regression_domain_increase_warn(self):
+        baseline = load_baseline_snapshot()
+        current = build_current_snapshot()
+        mutated = copy.deepcopy(current)
+        mutated["golden_regression"]["domains_covered"] = 99
+        result = compare_snapshots(baseline, mutated)
+        reg = [t for t in result["targets"] if t["target"] == "golden_regression"][0]
+        assert reg["severity"] == "WARN"
+
+    def test_regression_same_count_hash_change_fail_ci(self):
+        baseline = load_baseline_snapshot()
+        current = build_current_snapshot()
+        mutated = copy.deepcopy(current)
+        # Same count, same domains, but hash changed
+        mutated["golden_regression"]["sha256"] = "deadbeef" * 8
+        result = compare_snapshots(baseline, mutated)
+        assert result["drift_detected"] is True
+        reg = [t for t in result["targets"] if t["target"] == "golden_regression"][0]
+        assert reg["severity"] == "FAIL_CI"
+
     def test_severity_never_fail_closed(self):
         result = audit_semantic_drift()
         assert result["max_severity"] in ("INFO", "WARN", "FAIL_CI")

@@ -159,20 +159,22 @@ def _compare_target(name: str, baseline_t: dict, current_t: dict) -> str:
         if baseline_t.get("sha256") != current_t.get("sha256"):
             return "FAIL_CI"
     elif name == "golden_regression":
-        if baseline_t.get("sha256") != current_t.get("sha256"):
-            return "FAIL_CI"
         bc = baseline_t.get("case_count", 0)
         cc = current_t.get("case_count", 0)
-        if cc < bc:
-            return "FAIL_CI"
-        elif cc > bc:
-            return "WARN"
         bd = baseline_t.get("domains_covered", 0)
         cd = current_t.get("domains_covered", 0)
+
+        # Count/domain checks first (before hash)
+        if cc < bc:
+            return "FAIL_CI"
         if cd < bd:
             return "FAIL_CI"
-        elif cd > bd:
+        if cc > bc or cd > bd:
             return "WARN"
+
+        # Same count — content hash change is FAIL_CI
+        if baseline_t.get("sha256") != current_t.get("sha256"):
+            return "FAIL_CI"
     return "INFO"
 
 

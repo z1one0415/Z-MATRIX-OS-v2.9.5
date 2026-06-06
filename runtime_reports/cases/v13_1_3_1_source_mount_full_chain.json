@@ -1,0 +1,18 @@
+{
+  "status": "V13_1_3_1_SOURCE_MOUNT_FULL_CHAIN_PASS",
+  "accepted_for_validation_count": 0,
+  "mount_validated_group_count": 0,
+  "candidate_mount_ready_count": 0,
+  "candidate_mount_blocked_count": 8,
+  "ready_for_v13_1_4_feature_materialization_next_stage": false,
+  "ready_for_v13_2_bucket_construction_next_stage": false,
+  "alpha_claim_allowed": false,
+  "recommended_next_action": "MOUNT_MISSING_V13_FEATURE_SOURCES",
+  "investment_action_count": 0,
+  "trade_action_count": 0,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

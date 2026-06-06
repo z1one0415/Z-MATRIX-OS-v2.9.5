@@ -1,0 +1,17 @@
+{
+  "status": "V13_1_3_1_SOURCE_MOUNT_AUDIT_PASS",
+  "source_mount_gate_confirmed": true,
+  "mount_validated_group_count": 0,
+  "candidate_mount_ready_count": 0,
+  "ready_for_v13_1_4_feature_materialization_next_stage": false,
+  "ready_for_v13_2_bucket_construction_next_stage": false,
+  "forbidden_action_violations": [],
+  "investment_action_count": 0,
+  "trade_action_count": 0,
+  "alpha_claim_allowed": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

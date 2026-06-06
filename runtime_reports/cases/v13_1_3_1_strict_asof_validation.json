@@ -1,0 +1,41 @@
+{
+  "status": "V13_1_3_1_STRICT_ASOF_VALIDATION_BUILT",
+  "feature_group_count": 5,
+  "asof_pass_group_count": 0,
+  "asof_blocked_group_count": 0,
+  "timing_warning_group_count": 0,
+  "no_source_group_count": 5,
+  "validations": [
+    {
+      "feature_group": "sector_or_industry",
+      "asof_status": "NO_SOURCE"
+    },
+    {
+      "feature_group": "fundamental_proxy_field",
+      "asof_status": "NO_SOURCE"
+    },
+    {
+      "feature_group": "price_bar_input",
+      "asof_status": "NO_SOURCE"
+    },
+    {
+      "feature_group": "turnover",
+      "asof_status": "NO_SOURCE"
+    },
+    {
+      "feature_group": "rank_short_medium",
+      "asof_status": "NO_SOURCE"
+    }
+  ],
+  "future_data_violations": [],
+  "forward_label_leakage_violations": [],
+  "ready_for_mount_decision": true,
+  "feature_materialization_allowed": false,
+  "v13_2_bucket_construction_allowed": false,
+  "alpha_claim_allowed": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

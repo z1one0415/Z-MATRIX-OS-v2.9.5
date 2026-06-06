@@ -1,0 +1,15 @@
+{
+  "status": "V13_1_3_1_SOURCE_MOUNT_CONFIRMED_BLOCKED",
+  "source_mount_gate_confirmed": true,
+  "mount_validated_group_count": 0,
+  "candidate_mount_ready_count": 0,
+  "ready_for_v13_1_4_feature_materialization_next_stage": false,
+  "ready_for_v13_2_bucket_construction_next_stage": false,
+  "alpha_claim_allowed": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "recommended_next_action": "MOUNT_MISSING_V13_FEATURE_SOURCES"
+}

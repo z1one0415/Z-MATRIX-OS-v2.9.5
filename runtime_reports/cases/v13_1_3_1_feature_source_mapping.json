@@ -1,0 +1,23 @@
+{
+  "status": "V13_1_3_1_FEATURE_SOURCE_MAPPING_BUILT",
+  "feature_group_count": 5,
+  "mapped_group_count": 0,
+  "no_source_group_count": 5,
+  "ambiguous_group_count": 0,
+  "mappings": {
+    "turnover": [],
+    "sector_or_industry": [],
+    "fundamental_proxy_field": [],
+    "price_bar_input": [],
+    "rank_short_medium": []
+  },
+  "ready_for_strict_schema_validation": false,
+  "feature_materialization_allowed": false,
+  "v13_2_bucket_construction_allowed": false,
+  "alpha_claim_allowed": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

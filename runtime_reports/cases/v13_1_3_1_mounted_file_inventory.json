@@ -1,0 +1,37 @@
+{
+  "status": "V13_1_3_1_MOUNTED_FILE_INVENTORY_BUILT",
+  "paths_checked_count": 8,
+  "raw_files_seen_count": 2,
+  "accepted_for_validation_count": 0,
+  "placeholder_file_count": 2,
+  "empty_file_rejected_count": 0,
+  "files": [
+    {
+      "path": "data/research_db/market_data/processed/.gitkeep",
+      "file_name": ".gitkeep",
+      "file_type": "unknown",
+      "size_bytes": 0,
+      "is_placeholder": true,
+      "accepted_for_validation": false,
+      "rejection_reason": "PLACEHOLDER_FILE"
+    },
+    {
+      "path": "data/research_db/market_data/raw/.gitkeep",
+      "file_name": ".gitkeep",
+      "file_type": "unknown",
+      "size_bytes": 0,
+      "is_placeholder": true,
+      "accepted_for_validation": false,
+      "rejection_reason": "PLACEHOLDER_FILE"
+    }
+  ],
+  "ready_for_source_mapping": false,
+  "feature_materialization_allowed": false,
+  "v13_2_bucket_construction_allowed": false,
+  "alpha_claim_allowed": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

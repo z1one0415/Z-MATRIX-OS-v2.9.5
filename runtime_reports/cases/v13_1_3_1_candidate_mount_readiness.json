@@ -1,0 +1,121 @@
+{
+  "status": "V13_1_3_1_CANDIDATE_MOUNT_READINESS_BUILT",
+  "candidate_count": 8,
+  "candidate_mount_ready_count": 0,
+  "candidate_mount_partial_count": 0,
+  "candidate_mount_blocked_count": 8,
+  "candidates": [
+    {
+      "v13_1_candidate_run_id": "V13_1_RUN_001",
+      "factor_name": "INDUSTRY_NEUTRAL_REL_STRENGTH",
+      "required_feature_groups": [
+        "sector_or_industry"
+      ],
+      "validated_feature_groups": [],
+      "blocked_feature_groups": [
+        "sector_or_industry"
+      ],
+      "candidate_mount_status": "MOUNT_BLOCKED",
+      "ready_for_v13_1_4_materialization": false
+    },
+    {
+      "v13_1_candidate_run_id": "V13_1_RUN_002",
+      "factor_name": "DOWNSIDE_VOL_ADJUSTED_STRENGTH",
+      "required_feature_groups": [
+        "drawdown_or_recovery"
+      ],
+      "validated_feature_groups": [],
+      "blocked_feature_groups": [
+        "drawdown_or_recovery"
+      ],
+      "candidate_mount_status": "MOUNT_BLOCKED",
+      "ready_for_v13_1_4_materialization": false
+    },
+    {
+      "v13_1_candidate_run_id": "V13_1_RUN_003",
+      "factor_name": "FUNDAMENTAL_MOMENTUM_PROXY",
+      "required_feature_groups": [
+        "fundamental_proxy_field"
+      ],
+      "validated_feature_groups": [],
+      "blocked_feature_groups": [
+        "fundamental_proxy_field"
+      ],
+      "candidate_mount_status": "MOUNT_BLOCKED",
+      "ready_for_v13_1_4_materialization": false
+    },
+    {
+      "v13_1_candidate_run_id": "V13_1_RUN_004",
+      "factor_name": "SECTOR_DISPERSION_REVERSAL",
+      "required_feature_groups": [
+        "sector_or_industry"
+      ],
+      "validated_feature_groups": [],
+      "blocked_feature_groups": [
+        "sector_or_industry"
+      ],
+      "candidate_mount_status": "MOUNT_BLOCKED",
+      "ready_for_v13_1_4_materialization": false
+    },
+    {
+      "v13_1_candidate_run_id": "V13_1_RUN_005",
+      "factor_name": "DRAWDOWN_RECOVERY_QUALITY",
+      "required_feature_groups": [
+        "drawdown_or_recovery"
+      ],
+      "validated_feature_groups": [],
+      "blocked_feature_groups": [
+        "drawdown_or_recovery"
+      ],
+      "candidate_mount_status": "MOUNT_BLOCKED",
+      "ready_for_v13_1_4_materialization": false
+    },
+    {
+      "v13_1_candidate_run_id": "V13_1_RUN_006",
+      "factor_name": "TURNOVER_STABILITY_ANOMALY",
+      "required_feature_groups": [
+        "turnover"
+      ],
+      "validated_feature_groups": [],
+      "blocked_feature_groups": [
+        "turnover"
+      ],
+      "candidate_mount_status": "MOUNT_BLOCKED",
+      "ready_for_v13_1_4_materialization": false
+    },
+    {
+      "v13_1_candidate_run_id": "V13_1_RUN_007",
+      "factor_name": "RELATIVE_RANK_ACCELERATION",
+      "required_feature_groups": [
+        "rank_short_medium"
+      ],
+      "validated_feature_groups": [],
+      "blocked_feature_groups": [
+        "rank_short_medium"
+      ],
+      "candidate_mount_status": "MOUNT_BLOCKED",
+      "ready_for_v13_1_4_materialization": false
+    },
+    {
+      "v13_1_candidate_run_id": "V13_1_RUN_008",
+      "factor_name": "FUNDAMENTAL_QUALITY_STABILITY",
+      "required_feature_groups": [
+        "fundamental_proxy_field"
+      ],
+      "validated_feature_groups": [],
+      "blocked_feature_groups": [
+        "fundamental_proxy_field"
+      ],
+      "candidate_mount_status": "MOUNT_BLOCKED",
+      "ready_for_v13_1_4_materialization": false
+    }
+  ],
+  "ready_for_v13_1_4_materialization_candidate_count": 0,
+  "ready_for_v13_2_bucket_construction_next_stage": false,
+  "alpha_claim_allowed": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

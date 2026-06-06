@@ -1,0 +1,52 @@
+{
+  "status": "V13_1_3_1_MOUNT_DECISION_BUILT",
+  "feature_group_count": 5,
+  "mount_validated_group_count": 0,
+  "mount_blocked_group_count": 0,
+  "no_source_group_count": 5,
+  "mount_decisions": [
+    {
+      "feature_group": "sector_or_industry",
+      "schema_status": "NO_SOURCE",
+      "coverage_status": "NO_SOURCE",
+      "asof_status": "NO_SOURCE",
+      "mount_decision": "NO_SOURCE"
+    },
+    {
+      "feature_group": "fundamental_proxy_field",
+      "schema_status": "NO_SOURCE",
+      "coverage_status": "NO_SOURCE",
+      "asof_status": "NO_SOURCE",
+      "mount_decision": "NO_SOURCE"
+    },
+    {
+      "feature_group": "price_bar_input",
+      "schema_status": "NO_SOURCE",
+      "coverage_status": "NO_SOURCE",
+      "asof_status": "NO_SOURCE",
+      "mount_decision": "NO_SOURCE"
+    },
+    {
+      "feature_group": "turnover",
+      "schema_status": "NO_SOURCE",
+      "coverage_status": "NO_SOURCE",
+      "asof_status": "NO_SOURCE",
+      "mount_decision": "NO_SOURCE"
+    },
+    {
+      "feature_group": "rank_short_medium",
+      "schema_status": "NO_SOURCE",
+      "coverage_status": "NO_SOURCE",
+      "asof_status": "NO_SOURCE",
+      "mount_decision": "NO_SOURCE"
+    }
+  ],
+  "ready_for_v13_1_4_feature_materialization_next_stage": false,
+  "ready_for_v13_2_bucket_construction_next_stage": false,
+  "alpha_claim_allowed": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

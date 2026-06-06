@@ -1,0 +1,122 @@
+{
+  "status": "V13_0_FAILED_SEED_DENYLIST_BUILT",
+  "denylist_policy": "BLOCK_FAILED_V12_SEED_REUSE",
+  "denylist_count": 12,
+  "denylist_items": [
+    {
+      "factor_id": "AMOUNT_20D_AVG",
+      "horizon": "T20",
+      "final_state": "WEAKENED_ON_FIRST_LIVE_CYCLE",
+      "policy_decision": "DO_NOT_PROMOTE",
+      "reuse_allowed": false,
+      "reuse_exception_allowed": true,
+      "reuse_exception_condition": "MUST_BE_REDESIGNED_WITH_NEW_DEFINITION_AND_NEW_HYPOTHESIS"
+    },
+    {
+      "factor_id": "AMOUNT_20D_AVG",
+      "horizon": "T60",
+      "final_state": "WEAKENED_AFTER_SECOND_CYCLE",
+      "policy_decision": "DO_NOT_PROMOTE",
+      "reuse_allowed": false,
+      "reuse_exception_allowed": true,
+      "reuse_exception_condition": "MUST_BE_REDESIGNED_WITH_NEW_DEFINITION_AND_NEW_HYPOTHESIS"
+    },
+    {
+      "factor_id": "AMOUNT_60D_AVG",
+      "horizon": "T20",
+      "final_state": "WEAKENED_ON_FIRST_LIVE_CYCLE",
+      "policy_decision": "DO_NOT_PROMOTE",
+      "reuse_allowed": false,
+      "reuse_exception_allowed": true,
+      "reuse_exception_condition": "MUST_BE_REDESIGNED_WITH_NEW_DEFINITION_AND_NEW_HYPOTHESIS"
+    },
+    {
+      "factor_id": "AMOUNT_60D_AVG",
+      "horizon": "T60",
+      "final_state": "WEAKENED_AFTER_SECOND_CYCLE",
+      "policy_decision": "DO_NOT_PROMOTE",
+      "reuse_allowed": false,
+      "reuse_exception_allowed": true,
+      "reuse_exception_condition": "MUST_BE_REDESIGNED_WITH_NEW_DEFINITION_AND_NEW_HYPOTHESIS"
+    },
+    {
+      "factor_id": "MOM_60D",
+      "horizon": "T20",
+      "final_state": "WEAKENED_ON_FIRST_LIVE_CYCLE",
+      "policy_decision": "DO_NOT_PROMOTE",
+      "reuse_allowed": false,
+      "reuse_exception_allowed": true,
+      "reuse_exception_condition": "MUST_BE_REDESIGNED_WITH_NEW_DEFINITION_AND_NEW_HYPOTHESIS"
+    },
+    {
+      "factor_id": "MOM_60D",
+      "horizon": "T60",
+      "final_state": "WEAKENED_AFTER_SECOND_CYCLE",
+      "policy_decision": "DO_NOT_PROMOTE",
+      "reuse_allowed": false,
+      "reuse_exception_allowed": true,
+      "reuse_exception_condition": "MUST_BE_REDESIGNED_WITH_NEW_DEFINITION_AND_NEW_HYPOTHESIS"
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_60D",
+      "horizon": "T20",
+      "final_state": "WEAKENED_ON_FIRST_LIVE_CYCLE",
+      "policy_decision": "DO_NOT_PROMOTE",
+      "reuse_allowed": false,
+      "reuse_exception_allowed": true,
+      "reuse_exception_condition": "MUST_BE_REDESIGNED_WITH_NEW_DEFINITION_AND_NEW_HYPOTHESIS"
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_60D",
+      "horizon": "T60",
+      "final_state": "WEAKENED_AFTER_SECOND_CYCLE",
+      "policy_decision": "DO_NOT_PROMOTE",
+      "reuse_allowed": false,
+      "reuse_exception_allowed": true,
+      "reuse_exception_condition": "MUST_BE_REDESIGNED_WITH_NEW_DEFINITION_AND_NEW_HYPOTHESIS"
+    },
+    {
+      "factor_id": "VOLATILITY_20D",
+      "horizon": "T20",
+      "final_state": "WEAKENED_ON_FIRST_LIVE_CYCLE",
+      "policy_decision": "DO_NOT_PROMOTE",
+      "reuse_allowed": false,
+      "reuse_exception_allowed": true,
+      "reuse_exception_condition": "MUST_BE_REDESIGNED_WITH_NEW_DEFINITION_AND_NEW_HYPOTHESIS"
+    },
+    {
+      "factor_id": "VOLATILITY_20D",
+      "horizon": "T60",
+      "final_state": "WEAKENED_ON_FIRST_LIVE_CYCLE",
+      "policy_decision": "DO_NOT_PROMOTE",
+      "reuse_allowed": false,
+      "reuse_exception_allowed": true,
+      "reuse_exception_condition": "MUST_BE_REDESIGNED_WITH_NEW_DEFINITION_AND_NEW_HYPOTHESIS"
+    },
+    {
+      "factor_id": "VOLATILITY_60D",
+      "horizon": "T20",
+      "final_state": "WEAKENED_ON_FIRST_LIVE_CYCLE",
+      "policy_decision": "DO_NOT_PROMOTE",
+      "reuse_allowed": false,
+      "reuse_exception_allowed": true,
+      "reuse_exception_condition": "MUST_BE_REDESIGNED_WITH_NEW_DEFINITION_AND_NEW_HYPOTHESIS"
+    },
+    {
+      "factor_id": "VOLATILITY_60D",
+      "horizon": "T60",
+      "final_state": "WEAKENED_ON_FIRST_LIVE_CYCLE",
+      "policy_decision": "DO_NOT_PROMOTE",
+      "reuse_allowed": false,
+      "reuse_exception_allowed": true,
+      "reuse_exception_condition": "MUST_BE_REDESIGNED_WITH_NEW_DEFINITION_AND_NEW_HYPOTHESIS"
+    }
+  ],
+  "direct_reuse_allowed_count": 0,
+  "ready_for_candidate_filtering": true,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

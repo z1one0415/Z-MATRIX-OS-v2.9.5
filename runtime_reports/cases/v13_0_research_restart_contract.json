@@ -1,0 +1,21 @@
+{
+  "status": "V13_0_RESEARCH_RESTART_CONTRACT_BUILT",
+  "restart_mode": "NEW_CANDIDATE_DISCOVERY_AFTER_FAILED_RESEARCH_LOOP",
+  "v12_cycle_count": 2,
+  "v12_total_hit_count": 0,
+  "v12_total_observation_count": 12,
+  "v12_alpha_claim_allowed": false,
+  "v12_next_cycle_seed_count": 0,
+  "v12_research_loop_closed": true,
+  "v13_must_not_reuse_failed_seed": true,
+  "v13_requires_universe_eligibility_gate": true,
+  "v13_requires_suspension_filter": true,
+  "v13_requires_full_label_coverage": true,
+  "v13_candidate_discovery_allowed": true,
+  "v13_paper_bootstrap_allowed": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

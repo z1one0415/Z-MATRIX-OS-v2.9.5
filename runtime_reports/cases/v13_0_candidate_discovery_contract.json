@@ -1,0 +1,33 @@
+{
+  "status": "V13_0_CANDIDATE_DISCOVERY_CONTRACT_BUILT",
+  "discovery_mode": "NEW_HYPOTHESIS_ONLY",
+  "failed_seed_reuse_blocked": true,
+  "universe_eligibility_required": true,
+  "candidate_count_target": 8,
+  "candidate_count_min": 4,
+  "allowed_candidate_families": [
+    "CROSS_SECTIONAL_QUALITY_REVERSAL",
+    "FUNDAMENTAL_MOMENTUM_PROXY",
+    "LIQUIDITY_REGIME_INTERACTION",
+    "RELATIVE_STRENGTH_STABILITY",
+    "VOLATILITY_ADJUSTED_REVERSAL",
+    "INDUSTRY_NEUTRAL_RANK_INTERACTION"
+  ],
+  "blocked_candidate_families": [
+    "RAW_AMOUNT_AVERAGE_REUSE",
+    "RAW_MOMENTUM_60D_REUSE",
+    "RAW_TRAILING_BENCHMARK_REUSE",
+    "RAW_VOLATILITY_REUSE"
+  ],
+  "requires_new_hypothesis_id": true,
+  "requires_factor_definition_hash": true,
+  "requires_denylists_check": true,
+  "requires_universe_gate": true,
+  "ready_for_candidate_generation": true,
+  "ready_for_paper_bootstrap": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

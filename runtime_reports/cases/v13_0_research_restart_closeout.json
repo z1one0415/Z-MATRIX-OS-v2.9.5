@@ -1,0 +1,17 @@
+{
+  "status": "V13_0_RESEARCH_RESTART_CONFIRMED",
+  "v12_loop_closed": true,
+  "v12_failed_seed_denied": true,
+  "universe_gate_confirmed": true,
+  "accepted_candidate_count": 8,
+  "blocked_candidate_count": 0,
+  "rejected_candidate_count": 0,
+  "ready_for_v13_1_paper_bootstrap_next_stage": true,
+  "alpha_claim_allowed": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "recommended_next_action": "V13_1_RESEARCH_ONLY_PAPER_BOOTSTRAP_FOR_NEW_CANDIDATES"
+}

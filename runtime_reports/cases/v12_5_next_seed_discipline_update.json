@@ -1,0 +1,14 @@
+{
+  "status": "V12_5_NEXT_SEED_DISCIPLINE_UPDATE_BUILT",
+  "previous_disciplined_seed_count": 4,
+  "removed_seed_count": 4,
+  "remaining_seed_count": 0,
+  "removed_reason": "WEAKENED_AFTER_SECOND_CYCLE",
+  "next_cycle_seed_count": 0,
+  "ready_for_next_live_paper_cycle": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,91 @@
+{
+  "status": "V13_0_V12_FAILURE_FREEZE_MANIFEST_BUILT",
+  "freeze_scope": "V12_FAILED_RESEARCH_LOOP",
+  "cycle_count": 2,
+  "total_evaluated_observations": 12,
+  "total_hit_count": 0,
+  "total_miss_count": 12,
+  "research_loop_outcome": "NO_ALPHA_FOUND",
+  "failed_seed_reuse_policy": "DENY_REUSE_UNLESS_REDESIGNED_AND_REJUSTIFIED",
+  "v12_loop_closed": true,
+  "frozen_factors": [
+    {
+      "factor_id": "AMOUNT_20D_AVG",
+      "horizon": "T20",
+      "final_state": "WEAKENED_ON_FIRST_LIVE_CYCLE",
+      "reuse_allowed": false
+    },
+    {
+      "factor_id": "AMOUNT_20D_AVG",
+      "horizon": "T60",
+      "final_state": "WEAKENED_AFTER_SECOND_CYCLE",
+      "reuse_allowed": false
+    },
+    {
+      "factor_id": "AMOUNT_60D_AVG",
+      "horizon": "T20",
+      "final_state": "WEAKENED_ON_FIRST_LIVE_CYCLE",
+      "reuse_allowed": false
+    },
+    {
+      "factor_id": "AMOUNT_60D_AVG",
+      "horizon": "T60",
+      "final_state": "WEAKENED_AFTER_SECOND_CYCLE",
+      "reuse_allowed": false
+    },
+    {
+      "factor_id": "MOM_60D",
+      "horizon": "T20",
+      "final_state": "WEAKENED_ON_FIRST_LIVE_CYCLE",
+      "reuse_allowed": false
+    },
+    {
+      "factor_id": "MOM_60D",
+      "horizon": "T60",
+      "final_state": "WEAKENED_AFTER_SECOND_CYCLE",
+      "reuse_allowed": false
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_60D",
+      "horizon": "T20",
+      "final_state": "WEAKENED_ON_FIRST_LIVE_CYCLE",
+      "reuse_allowed": false
+    },
+    {
+      "factor_id": "TRAILING_BENCHMARK_RELATIVE_60D",
+      "horizon": "T60",
+      "final_state": "WEAKENED_AFTER_SECOND_CYCLE",
+      "reuse_allowed": false
+    },
+    {
+      "factor_id": "VOLATILITY_20D",
+      "horizon": "T20",
+      "final_state": "WEAKENED_ON_FIRST_LIVE_CYCLE",
+      "reuse_allowed": false
+    },
+    {
+      "factor_id": "VOLATILITY_20D",
+      "horizon": "T60",
+      "final_state": "WEAKENED_ON_FIRST_LIVE_CYCLE",
+      "reuse_allowed": false
+    },
+    {
+      "factor_id": "VOLATILITY_60D",
+      "horizon": "T20",
+      "final_state": "WEAKENED_ON_FIRST_LIVE_CYCLE",
+      "reuse_allowed": false
+    },
+    {
+      "factor_id": "VOLATILITY_60D",
+      "horizon": "T60",
+      "final_state": "WEAKENED_ON_FIRST_LIVE_CYCLE",
+      "reuse_allowed": false
+    }
+  ],
+  "ready_for_new_candidate_discovery": true,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

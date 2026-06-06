@@ -1,0 +1,18 @@
+{
+  "status": "V12_5_MULTICYCLE_FEEDBACK_CONFIRMED",
+  "multicycle_feedback_confirmed": true,
+  "cycle_count": 2,
+  "cycle2_hit_count": 0,
+  "cycle2_miss_count": 4,
+  "cycle2_hit_rate": 0.0,
+  "weakened_after_second_cycle_count": 4,
+  "confirmed_after_second_cycle_count": 0,
+  "next_cycle_seed_count": 0,
+  "alpha_claim_allowed": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "recommended_next_action": "STOP_RESEARCH_LOOP_NO_ELIGIBLE_SEEDS"
+}

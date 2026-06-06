@@ -1,0 +1,15 @@
+{
+  "status": "V13_0_2_REDESIGNED_CANDIDATE_POOL_CONFIRMED",
+  "candidate_count": 9,
+  "accepted_for_v13_1_count": 8,
+  "archived_rejected_reentry_count": 0,
+  "reject_as_reuse_count": 0,
+  "ready_for_v13_1_paper_bootstrap_next_stage": true,
+  "alpha_claim_allowed": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "recommended_next_action": "V13_1_RESEARCH_ONLY_PAPER_BOOTSTRAP_FOR_REDESIGNED_CANDIDATES"
+}

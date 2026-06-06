@@ -1,0 +1,17 @@
+{
+  "status": "V13_0_2_CANDIDATE_REDESIGN_CONTRACT_BUILT",
+  "redesign_mode": "REPLACE_REJECTED_HIGH_OVERLAP_CANDIDATES",
+  "preserve_accepted_candidate_count": 3,
+  "rejected_candidate_count": 5,
+  "target_candidate_count": 8,
+  "min_accepted_for_v13_1": 4,
+  "preferred_accepted_for_v13_1": 6,
+  "requires_overlap_rescoring": true,
+  "requires_universe_gate": true,
+  "ready_for_v13_1_paper_bootstrap": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

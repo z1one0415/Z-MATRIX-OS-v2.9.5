@@ -27,8 +27,12 @@ def main():
 
     for c in cases:
         sid = c["skill_id"]
-        if not get_skill_contract(sid):
+        ct = get_skill_contract(sid)
+        if not ct:
             errors.append(f"{sid}: not in registry")
+            continue
+        if c["domain"] != ct["domain"]:
+            errors.append(f"{sid}: domain mismatch case={c['domain']} contract={ct['domain']}")
         ih = compute_input_hash(c["input_payload"])
         oh = compute_output_hash(c["output_payload"])
         if ih != c["expected_input_hash"]:

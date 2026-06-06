@@ -2,7 +2,14 @@
 
 ## Status
 
-Z_SKILLOS_V1_1_C_GOLDEN_COVERAGE_EXPANSION_COMPLETE
+Z_SKILLOS_V1_1_C_GOLDEN_COVERAGE_EXPANSION_APPROVAL_READY
+
+## Review Patch
+
+- Fixed domain coverage to be contract-registry-derived.
+- Builder now derives case.domain from skill_contract_registry.
+- Auditor verifies case.domain == contract.domain.
+- Tests lock domain registry-exact behavior.
 
 ## Scope
 

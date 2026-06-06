@@ -31,7 +31,16 @@ class TestCoverageBasics:
         assert len(ids) == len(set(ids))
 
 class TestExclusions:
-    def test_excludes_narrative_renderer(self, cases):
+    def test_case_domain_matches_contract_domain(self, cases):
+        for c in cases:
+            ct = get_skill_contract(c["skill_id"])
+            assert ct is not None
+            assert c["domain"] == ct["domain"], \
+                f"{c['skill_id']}: case.domain={c['domain']} != contract.domain={ct['domain']}"
+
+    def test_domains_covered_are_contract_domains(self, cases):
+        domains = {c["domain"] for c in cases}
+        assert len(domains) >= 16
         for c in cases:
             ct = get_skill_contract(c["skill_id"])
             assert ct["semantic_category"] != "NARRATIVE_RENDERER", f"{c['skill_id']} is narrative"

@@ -12,19 +12,19 @@ ROOT = Path(__file__).resolve().parent.parent.parent
 F12 = ROOT / "data/research_db/agent/golden/skillos_v1_0_f_golden_regression_cases.json"
 OUT = ROOT / "data/research_db/agent/golden/skillos_v1_1_c_golden_regression_cases_24.json"
 
-NEW_SKILLS = [
-    ("SYSTEM", "SYSTEM.GET_SKILLOS_STATUS"),
-    ("SYSTEM", "SYSTEM.GET_SKILL_REGISTRY_SUMMARY"),
-    ("SYSTEM_VERIFY", "SYSTEM.GET_RESEARCH_SUMMARY"),
-    ("WORKFLOW", "WORKFLOW.GET_WORKFLOW_SCHEMA"),
-    ("ZC35", "ZC35.GET_SCHEMA"),
-    ("Z_G16_PHYSICAL", "ZG16.GET_SOURCE_REGISTRY"),
-    ("REPORTING", "REPORT.RENDER_DRAFT"),
-    ("COUNCIL", "COUNCIL.GET_EXPERT_ROLE_REGISTRY"),
-    ("GOVERNANCE", "GOVERNANCE.GET_LEDGER_STATUS"),
-    ("PORTFOLIO", "PORTFOLIO.GET_RISK_BUDGET_TEMPLATE"),
-    ("FACTOR", "FACTOR.GET_FACTOR_SCHEMA"),
-    ("RESEARCHDB", "RESEARCHDB.GET_DATASET_REGISTRY"),
+NEW_SKILL_IDS = [
+    "SYSTEM.GET_SKILLOS_STATUS",
+    "SYSTEM.GET_SKILL_REGISTRY_SUMMARY",
+    "SYSTEM.GET_RESEARCH_SUMMARY",
+    "WORKFLOW.GET_WORKFLOW_SCHEMA",
+    "ZC35.GET_SCHEMA",
+    "ZG16.GET_SOURCE_REGISTRY",
+    "REPORT.RENDER_DRAFT",
+    "COUNCIL.GET_EXPERT_ROLE_REGISTRY",
+    "GOVERNANCE.GET_LEDGER_STATUS",
+    "PORTFOLIO.GET_RISK_BUDGET_TEMPLATE",
+    "FACTOR.GET_FACTOR_SCHEMA",
+    "RESEARCHDB.GET_DATASET_REGISTRY",
 ]
 
 MINIMAL_OUTPUT = {
@@ -42,13 +42,14 @@ def build():
     existing_ids = {c["skill_id"] for c in old_cases}
 
     new_cases = []
-    for domain, sid in NEW_SKILLS:
+    for sid in NEW_SKILL_IDS:
         if sid in existing_ids:
             continue
         c = get_skill_contract(sid)
         if c is None:
             print(f"SKIP: {sid} not in registry", file=sys.stderr)
             continue
+        domain = c["domain"]  # contract-derived, not manual
         risk = c["risk_level"]
         out = dict(MINIMAL_OUTPUT)
         out["skill_id"] = sid

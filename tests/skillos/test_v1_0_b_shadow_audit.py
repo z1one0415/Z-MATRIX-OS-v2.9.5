@@ -50,6 +50,22 @@ class TestSampleSkills:
         assert len(ids) > 0
         assert "SYSTEM.GET_SKILLOS_STATUS" in ids
 
+    def test_audit_skill_ids_unique(self):
+        """get_audit_skill_ids must return no duplicates."""
+        ids = get_audit_skill_ids()
+        assert len(ids) == len(set(ids)), f"duplicates in audit ids: {ids}"
+
+    def test_duplicate_substitute_count_documented(self):
+        """COCKPIT.GET_SKILLOS_STATUS substitute collides with SYSTEM.GET_SKILLOS_STATUS."""
+        ids = get_audit_skill_ids()
+        unique = len(set(ids))
+        # COCKPIT→SYSTEM causes a duplicate: 5 approved, 4 unique auditable
+        assert unique == 4, f"expected 4 unique, got {unique}: {ids}"
+        assert "SYSTEM.GET_SKILLOS_STATUS" in ids
+        assert "GOVERNANCE.GET_VERIFY_SCRIPT_REGISTRY" in ids
+        assert "RESEARCHDB.GET_LAYER_STATUS" in ids
+        assert "FACTOR.GET_FACTOR_REGISTRY" in ids
+
 
 class TestInputValidation:
     def test_validate_input_schema_success(self):

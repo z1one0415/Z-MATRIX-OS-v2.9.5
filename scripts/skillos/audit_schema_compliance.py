@@ -93,8 +93,17 @@ def main():
 
     print(f"\n--- Audit Summary ---")
     print(f"approved_sample_count: {len(sample_ids)}")
-    print(f"gap_count: {len(missing)}")
-    print(f"auditable_count: {len(audit_ids)}")
+    print(f"registry_gap_count: {len(missing)}")
+    print(f"auditable_unique_count: {len(audit_ids)}")
+    # Count substitutes that collide: total substitutions attempted minus unique additions
+    sub_attempts = sum(1 for s in sample_ids if s not in audit_ids and s in AVAILABLE_SUBSTITUTES)
+    # But we need to count collisions. Count how many approved have substitutes,
+    # subtract how many unique auditable came from substitutes.
+    approved_with_sub = [s for s in sample_ids if s in AVAILABLE_SUBSTITUTES]
+    direct_count = sum(1 for s in sample_ids if s in audit_ids)
+    sub_added = len(audit_ids) - direct_count
+    dupes = len(approved_with_sub) - sub_added
+    print(f"duplicate_substitute_count: {dupes}")
     print(f"all_available_passed: {all_passed}")
     print(f"negative_violation_detected: {not neg['output_valid']}")
     print(f"blocked_count: 0")

@@ -2,7 +2,16 @@
 
 ## Status
 
-Z_SKILLOS_V1_0_B_SHADOW_AUDIT_COMPLETE_WITH_SAMPLE_RECONCILE
+Z_SKILLOS_V1_0_B_SHADOW_AUDIT_COMPLETE_WITH_SAMPLE_RECONCILE_AND_DEDUPE
+
+## Dedupe Patch
+
+- `SAMPLE_SKILL_IDS` remains the exact gate-approved list.
+- Missing registry ids remain explicitly reported as gaps.
+- `get_audit_skill_ids()` now returns unique auditable skill ids (deduplicated).
+- COCKPIT.GET_SKILLOS_STATUS substitute collides with SYSTEM.GET_SKILLOS_STATUS → deduplicated.
+- `duplicate_substitute_count=1` reported in audit summary.
+- New tests: `test_audit_skill_ids_unique`, `test_duplicate_substitute_count_documented`.
 
 ## Review Patch
 
@@ -45,8 +54,9 @@ GO issued after auditing commit `4dfb90c`.
 |:--|:--|
 | mode | SHADOW_AUDIT_ONLY |
 | approved_sample_count | 5 |
-| gap_count | 4 |
-| auditable_count | 4 (1 direct + 3 substitutes) |
+| registry_gap_count | 4 |
+| auditable_unique_count | 4 |
+| duplicate_substitute_count | 1 |
 | all_available_passed | True |
 | negative_violation_detected | True |
 | blocked_count | 0 |

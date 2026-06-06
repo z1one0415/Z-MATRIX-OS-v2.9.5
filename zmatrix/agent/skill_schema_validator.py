@@ -28,14 +28,20 @@ AVAILABLE_SUBSTITUTES = {
 }
 
 def get_audit_skill_ids() -> list:
-    """Return skills available for audit: approved exist + substitutes."""
+    """Return unique auditable skill_ids with documented substitutes, deduplicated."""
     from zmatrix.agent.skill_contract_registry import get_skill_contract
+    seen = set()
     result = []
     for sid in SAMPLE_SKILL_IDS:
         if get_skill_contract(sid):
-            result.append(sid)
+            candidate = sid
         elif sid in AVAILABLE_SUBSTITUTES:
-            result.append(AVAILABLE_SUBSTITUTES[sid])
+            candidate = AVAILABLE_SUBSTITUTES[sid]
+        else:
+            continue
+        if candidate not in seen:
+            result.append(candidate)
+            seen.add(candidate)
     return result
 
 _cache: Optional[dict] = None

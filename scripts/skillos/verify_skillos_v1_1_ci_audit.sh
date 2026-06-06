@@ -29,4 +29,7 @@ PYTHONPATH=. python3 -m pytest -q tests/skillos/test_v1_0_b_shadow_audit.py
 echo "--- v1.0-A contract registry tests ---"
 PYTHONPATH=. python3 -m pytest -q tests/skillos/test_v1_0_a_contract_registry.py
 
-echo "═══ Z-SkillOS v1.1-A CI Audit Integration PASS ═══"
+echo "--- audit_semantic_drift ---"
+PYTHONPATH=. python3 scripts/skillos/audit_semantic_drift.py
+
+echo "═══ Z-Skillos v1.1-A CI Audit Integration PASS ═══"

@@ -49,6 +49,16 @@ class TestCIWrapper:
         for word in ["production", "broker_runtime", "real_trade", "auto_buy", "auto_sell"]:
             assert word not in content, f"wrapper references {word}"
 
+    def test_ci_audit_wrapper_runs_semantic_drift(self):
+        """v1.1-B.x: drift audit integrated into CI wrapper."""
+        content = Path(WRAPPER).read_text()
+        assert "audit_semantic_drift.py" in content
+
+    def test_ci_audit_wrapper_drift_warn_passes_ci(self):
+        """WARN severity exits 0 — does not break CI."""
+        content = Path(WRAPPER).read_text()
+        assert "set -euo pipefail" in content  # FAIL_CI exits 1 naturally
+
 
 class TestWrapperExecution:
     def test_ci_audit_wrapper_bash_syntax(self):

@@ -2,7 +2,7 @@
 
 ## Status
 
-Z_SKILLOS_LEVEL4_P1_PLANNING_DECISION_PENDING
+Z_SKILLOS_LEVEL4_P1_PLANNING_DECISION_APPROVED_FOR_PLANNING_ONLY
 
 ## Purpose
 
@@ -38,12 +38,14 @@ Record the human approval decision for whether Z-SkillOS should proceed to P1 pl
 
 | Field | Value |
 |:--|:--|
-| **approver_name** | `PENDING` |
-| **approver_role** | `PENDING` |
-| **approval_date** | `PENDING` |
-| **decision** | `PENDING` |
-| **required_follow_up** | `PENDING` |
-| **conditions** | `PENDING` |
+| **approver_name** | `Project Owner` |
+| **approver_role** | `Human Approver / Project Owner` |
+| **approval_date** | `2026-06-07` |
+| **decision** | `GO_FOR_P1_PLANNING_ONLY` |
+| **required_follow_up** | `Create docs-only P1 planning branch for internal-only side-channel architecture. No implementation. No warning enablement. No merge.` |
+| **conditions** | `P1 planning only. Docs-only. No runtime code. No warning enablement. No caller-visible warning. No result_envelope mutation. No blocking. No fail-closed. No production/broker/real_trade. No V12.x. No tag. No Level 5 planning. Level 5 remains BLOCKED.` |
+| **approved_branch_name** | `plan/skillos-level4-p1-side-channel-planning` |
+| **rollback_triggers** | `Any P1 implementation; any runtime code; any warning enablement; any caller-visible warning; any result_envelope mutation; any blocking/fail-closed behavior; any production/broker/real_trade linkage; any V12.x advancement; any tag; any Level 5 planning attempt; any merge attempt before review.` |
 
 ## Signature Block
 

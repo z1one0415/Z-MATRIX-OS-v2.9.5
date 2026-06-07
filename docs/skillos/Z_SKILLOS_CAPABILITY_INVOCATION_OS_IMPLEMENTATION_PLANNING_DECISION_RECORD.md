@@ -1,18 +1,26 @@
 # Z-SkillOS Capability Invocation OS Implementation Planning Decision Record
 
 ## Status
-Z_SKILLOS_CAPABILITY_INVOCATION_OS_IMPLEMENTATION_PLANNING_DECISION_PENDING
 
-## Decision Question
-Should Z-SkillOS proceed to Capability Invocation OS implementation planning only?
+Z_SKILLOS_CAPABILITY_INVOCATION_OS_IMPLEMENTATION_PLANNING_DECISION_APPROVED_FOR_PLANNING_ONLY
 
-## Decision Options
-1. NO_GO_STAY_CAPABILITY_OS_PLANNING_MERGED | 2. MORE_CAPABILITY_OS_PLANNING_REVIEW_REQUIRED | 3. GO_FOR_CAPABILITY_OS_IMPLEMENTATION_PLANNING_ONLY | 4. REJECT_CAPABILITY_OS_IMPLEMENTATION_PATH
+## Decision
 
-## Rejected
-DIRECT_RUNTIME_IMPLEMENTATION, DIRECT_ADAPTER_IMPLEMENTATION, CREATE_IMPLEMENTATION_BRANCH, CAPABILITY_REGISTRY_RUNTIME_NOW, POLICY_ROUTER_RUNTIME_NOW, COMPOSITION_ENGINE_RUNTIME_NOW, EVIDENCE_BUS_RUNTIME_NOW, RUNTIME_GUARD_CODE_NOW, WARNING_ENABLEMENT, CALLER_VISIBLE_WARNING, RESULT_ENVELOPE_MUTATION, BLOCKING_OR_FAIL_CLOSED, PRODUCTION_BROKER_REAL_TRADE, LEVEL5_PLANNING_NOW, TAG_RELEASE.
+GO_FOR_CAPABILITY_OS_IMPLEMENTATION_PLANNING_ONLY
 
-## Approver Record (all PENDING)
-approver_name, approver_role, approval_date, decision, approved_branch_name, required_follow_up, conditions, reviewed_documents, reviewed_risks, rollback_triggers, next_allowed_action.
+## Approver Record
 
-## Note: Empty approver fields are intentional. Awaits human completion.
+| Field | Value |
+|:--|:--|
+| **approver_name** | `Project Owner` |
+| **approver_role** | `Human Approver / Project Owner` |
+| **approval_date** | `2026-06-07` |
+| **decision** | `GO_FOR_CAPABILITY_OS_IMPLEMENTATION_PLANNING_ONLY` |
+| **approved_branch_name** | `plan/skillos-capability-invocation-os-implementation-planning` |
+| **required_follow_up** | `Create docs-only implementation planning branch. No runtime implementation. No adapter implementation. No merge.` |
+| **conditions** | `Docs-only implementation planning only. No runtime code. No adapter code. No executable capability registry. No policy router runtime. No composition engine runtime. No evidence bus runtime. No runtime guard code. No warning enablement. No caller-visible warning. No result_envelope mutation. No blocking. No fail-closed. No production/broker/real_trade. No V12.x. No tag. No Level 5 planning. Level 5 remains BLOCKED.` |
+| **rollback_triggers** | `Any runtime implementation; any adapter code; any executable capability registry; any policy router runtime code; any composition engine runtime code; any evidence bus runtime code; any runtime guard code; any warning enablement; any caller-visible warning; any result_envelope mutation; any blocking/fail-closed behavior; any production/broker/real_trade linkage; any V12.x advancement; any tag; any Level 5 planning attempt; any merge attempt before review.` |
+
+## Next Legal Entry
+
+Create docs-only implementation planning branch.

@@ -96,3 +96,35 @@ class TestLevel4NoBlocking:
         config = load_config(None)
         result = evaluate_level4(Level4EvaluationInput(), config)
         assert result.action != "FAIL_CLOSED"
+
+    # ── malformed config object hardening ──
+
+    def test_malformed_config_object_returns_continue(self):
+        """Malformed config object (namedtuple with wrong fields) returns CONTINUE."""
+        from collections import namedtuple
+        BadConfig = namedtuple("BadConfig", [])
+        cfg = BadConfig()
+        result = evaluate_level4(Level4EvaluationInput(), cfg)  # type: ignore
+        assert result.action == "CONTINUE"
+
+    def test_malformed_config_object_no_exception(self):
+        """Malformed config object must not raise caller-visible exception."""
+        from collections import namedtuple
+        BadConfig = namedtuple("BadConfig", [])
+        cfg = BadConfig()
+        try:
+            evaluate_level4(Level4EvaluationInput(), cfg)  # type: ignore
+        except Exception as e:
+            pytest.fail(f"Unexpected exception from malformed config: {e}")
+
+    def test_none_config_object_returns_continue(self):
+        """None config object must return CONTINUE."""
+        result = evaluate_level4(Level4EvaluationInput(), None)  # type: ignore
+        assert result.action == "CONTINUE"
+
+    def test_none_config_object_no_exception(self):
+        """None config object must not raise exception."""
+        try:
+            evaluate_level4(Level4EvaluationInput(), None)  # type: ignore
+        except Exception as e:
+            pytest.fail(f"Unexpected exception from None config: {e}")

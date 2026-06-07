@@ -30,9 +30,9 @@ Disabled-by-default skeleton + proof harness only. No warning enablement. No run
 
 | Test | Path | Coverage |
 |:--|:--|:--|
-| Disabled Default | `tests/skillos/level4/test_level4_disabled_default.py` | 15 cases: config, guards, evaluator |
+| Disabled Default | `tests/skillos/level4/test_level4_disabled_default.py` | 31 cases: config, guards, evaluator, non-bool truthy guard hardening |
 | Envelope Immutability | `tests/skillos/level4/test_level4_envelope_immutability.py` | 9 cases: hash, fields, keys |
-| No Blocking | `tests/skillos/level4/test_level4_no_blocking.py` | 12 cases: 8 failure scenarios, exception safety |
+| No Blocking | `tests/skillos/level4/test_level4_no_blocking.py` | 18 cases: 8 failure scenarios, exception safety, malformed config, guard hardening |
 | No Production Linkage | `tests/skillos/level4/test_level4_no_production_linkage.py` | 6 cases: static analysis, AST scan, runtime import |
 | No Side Effects | `tests/skillos/level4/test_level4_no_side_effects.py` | 8 cases: files, stdout/stderr, audit paths |
 
@@ -40,11 +40,19 @@ Disabled-by-default skeleton + proof harness only. No warning enablement. No run
 
 | Proof | Verified By |
 |:--|:--|
-| Disabled default | test_level4_disabled_default.py: 15 cases |
+| Disabled default | test_level4_disabled_default.py: 31 cases |
 | Envelope immutability | test_level4_envelope_immutability.py: 9 cases |
-| No blocking | test_level4_no_blocking.py: 12 cases |
+| No blocking | test_level4_no_blocking.py: 18 cases |
 | No production linkage | test_level4_no_production_linkage.py: 6 cases |
 | No side effects | test_level4_no_side_effects.py: 8 cases |
+
+## Guard Hardening
+
+P0 guard hardening micro-patch applied:
+- Strict `bool True` only: non-bool truthy values (`1`, `"true"`, `"yes"`, `[True]`, `{"x": True}`, `object()`) remain disabled.
+- `is_level4_enabled`: uses `getattr(config, "warning_enabled", False) is True` instead of `bool(...) is True`.
+- `should_emit_warning`: all three sub-controls must be exactly `bool True`; any non-bool value blocks emission.
+- Malformed/missing config attributes: caught and return `False` with no exception.
 
 ## Boundary
 

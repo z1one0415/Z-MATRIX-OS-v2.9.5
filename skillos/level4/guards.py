@@ -16,7 +16,7 @@ def is_level4_enabled(config: Level4Config) -> bool:
     Returns False for any error, missing data, or non-bool-true value.
     """
     try:
-        return bool(config.warning_enabled) is True
+        return getattr(config, "warning_enabled", False) is True
     except Exception:
         return False
 
@@ -29,9 +29,9 @@ def should_emit_warning(config: Level4Config) -> bool:
     """
     try:
         return (
-            is_level4_enabled(config)
-            and bool(config.audit_file_enabled) is True
-            and bool(config.operator_report_enabled) is True
+            getattr(config, "warning_enabled", False) is True
+            and getattr(config, "audit_file_enabled", False) is True
+            and getattr(config, "operator_report_enabled", False) is True
         )
     except Exception:
         return False

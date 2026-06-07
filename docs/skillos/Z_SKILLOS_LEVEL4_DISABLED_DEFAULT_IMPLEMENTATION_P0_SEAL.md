@@ -19,7 +19,8 @@ Z_SKILLOS_LEVEL4_DISABLED_DEFAULT_IMPLEMENTATION_P0_SEALED
 ## Delivered
 
 - disabled-by-default skeleton (5 modules)
-- proof harness (5 test files, 50+ test cases)
+- proof harness (5 test files, 64 passing tests after guard hardening)
+- P0 guard hardening: strict bool True only, non-bool truthy values remain disabled
 - docs closeout and seal
 
 ## Boundary

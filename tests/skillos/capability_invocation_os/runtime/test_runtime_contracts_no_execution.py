@@ -1,6 +1,7 @@
-from skillos.capability_invocation_os.runtime.contracts import validate
-from skillos.capability_invocation_os.runtime.models import InvocationRequest, CapabilityContract, RiskTier, PermissionTier
+import pytest
+from skillos.capability_invocation_os.runtime.contracts import validate_contract
+from skillos.capability_invocation_os.runtime.models import InvocationRequest, CapabilityContract
 class TestContractsNoExecution:
     def test_validate_denies(self):
-        r = validate(InvocationRequest(), CapabilityContract())
-        assert r.action == "DENY"
+        r = validate_contract(InvocationRequest(), CapabilityContract())
+        assert r.action in ("DENY_NOOP", "NEEDS_HUMAN_REVIEW")

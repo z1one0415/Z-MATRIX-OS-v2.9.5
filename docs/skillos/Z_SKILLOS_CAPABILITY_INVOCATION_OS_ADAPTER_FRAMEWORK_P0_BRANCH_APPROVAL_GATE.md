@@ -1,0 +1,3 @@
+# Adapter Framework P0 Approval Gate
+## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_ADAPTER_FRAMEWORK_P0_BRANCH_APPROVAL_GATE_READY
+Baseline: 4996374 | Adapter Planning POST_MERGE_SEALED | Level 5: BLOCKED. Question: Create Adapter Framework P0 disabled-default branch without Z-MATRIX adapters? Options: NO_GO_STAY|MORE_REVIEW|GO_FOR_P0_BRANCH_ONLY|REJECT. Rejected: DIRECT_Z2/Z8/Z9/V3/WORLDBLOCKS/DEALCOMPASS_ADAPTER, CAPABILITY_EXEC, ZMATRIX_CALL, RUNTIME, ADAPTER_EXEC, WARNING, ENVELOPE, BLOCKING, PRODUCTION, LEVEL5, TAG. Evidence: Adapter planning merged✅|30 docs✅|P0/Level4 reg✅|No adapter code✅|Level 5 BLOCKED✅

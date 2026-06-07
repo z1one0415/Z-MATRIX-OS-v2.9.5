@@ -1,0 +1,3 @@
+# Adapter Framework P0 Decision Brief
+## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_ADAPTER_FRAMEWORK_P0_BRANCH_DECISION_BRIEF_READY
+Adapter planning merged, 30 docs, no adapter code, Level 5 BLOCKED. Options: NO_GO_STAY|MORE_REVIEW|**GO_FOR_P0_BRANCH_ONLY**|REJECT. Recommend: GO_FOR_ADAPTER_FRAMEWORK_P0_DISABLED_DEFAULT_BRANCH_ONLY. Human must decide.

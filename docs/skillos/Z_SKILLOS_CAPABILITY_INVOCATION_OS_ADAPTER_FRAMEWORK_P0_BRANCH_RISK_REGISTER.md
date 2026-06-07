@@ -1,0 +1,3 @@
+# Adapter Framework P0 Risk Register
+## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_ADAPTER_FRAMEWORK_P0_BRANCH_RISK_REGISTER_READY
+R1:Framework→ZMATRIX S:Critical M:Forbidden imports C:AST scan R:Z2/Z8/Z9 import. R2:Config→enable S:Critical M:hardcoded False C:Config CI R:True enabled. R3:Execution S:Critical M:DENY default C:Exec gate R:Execution. R4:T5 S:Critical M:NEVER_GRANTED C:Tier CI R:T5. R5:Side-effects S:Medium M:NoopSink C:CI R:File write. R6:Production S:Critical M:Forbidden C:No-prod CI R:Production. R7:No seal S:Medium M:Mandatory C:Merge gate R:Merge no seal. R8:Level5 S:Medium M:BLOCKED C:CI grep R:Level5.

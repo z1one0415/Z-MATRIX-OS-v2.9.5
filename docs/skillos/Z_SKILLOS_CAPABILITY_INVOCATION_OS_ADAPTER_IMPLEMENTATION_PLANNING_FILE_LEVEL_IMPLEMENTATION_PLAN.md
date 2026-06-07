@@ -1,0 +1,3 @@
+# Adapter File-Level Implementation Plan
+## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_ADAPTER_FILE_LEVEL_IMPLEMENTATION_PLAN_READY
+FUTURE_PLAN_ONLY. Future files: adapter base interface (skillos/capability_invocation_os/adapters/base.py), adapter registry (skillos/capability_invocation_os/adapters/registry.py), contract schemas, wave0-4 adapter files, future tests (tests/skillos/capability_invocation_os/adapters/). Do not create these files in this phase. No adapter implementation. No adapter code. No runtime enablement. No capability execution. No Z-MATRIX imports. No production/broker/real_trade. Level 5 BLOCKED.

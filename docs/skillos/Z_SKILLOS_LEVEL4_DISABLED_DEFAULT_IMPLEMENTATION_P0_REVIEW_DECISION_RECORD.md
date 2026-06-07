@@ -2,7 +2,7 @@
 
 ## Status
 
-Z_SKILLOS_LEVEL4_DISABLED_DEFAULT_IMPLEMENTATION_P0_REVIEW_DECISION_PENDING
+Z_SKILLOS_LEVEL4_DISABLED_DEFAULT_IMPLEMENTATION_P0_REVIEW_DECISION_APPROVED_FOR_MERGE_REVIEW_ONLY
 
 ## Purpose
 
@@ -40,16 +40,16 @@ Record the human approval decision for whether P0 disabled-default skeleton and 
 
 | Field | Value |
 |:--|:--|
-| **approver_name** | `PENDING` |
-| **approver_role** | `PENDING` |
-| **approval_date** | `PENDING` |
-| **decision** | `PENDING` |
-| **required_follow_up** | `PENDING` |
-| **conditions** | `PENDING` |
-| **reviewed_tests** | `PENDING` |
-| **reviewed_risks** | `PENDING` |
-| **rollback_triggers** | `PENDING` |
-| **next_allowed_branch_or_action** | `PENDING` |
+| **approver_name** | `Project Owner` |
+| **approver_role** | `Human Approver / Project Owner` |
+| **approval_date** | `2026-06-07` |
+| **decision** | `GO_FOR_P0_MERGE_REVIEW_ONLY` |
+| **required_follow_up** | `Prepare P0 merge review only. Do not merge directly. Do not proceed to P1. Do not enable warning.` |
+| **conditions** | `P0 may proceed to merge review only. No P1. No direct merge. No warning enablement. No caller-visible warning. No result_envelope mutation. No blocking. No fail-closed. No production/broker/real_trade. No V12.x. No tag. Level 5 remains BLOCKED.` |
+| **reviewed_tests** | `YES — 64/64 tests passing.` |
+| **reviewed_risks** | `YES — P0 review risk register reviewed.` |
+| **rollback_triggers** | `Any warning enablement; any caller-visible warning; any result_envelope mutation; any blocking/fail-closed behavior; any production/broker/real_trade linkage; any V12.x advancement; any tag; any Level 5 planning attempt; any P1 work before merge review; any direct merge without merge review.` |
+| **next_allowed_branch_or_action** | `Prepare P0 merge review only on impl/skillos-level4-disabled-default-warning.` |
 
 ## Consequence Map
 

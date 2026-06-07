@@ -1,3 +1,3 @@
-# Adapter CONTRACT STANDARD
-## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_ADAPTER_IMPLEMENTATION_PLANNING_CONTRACT_STANDARD_READY
-FUTURE_PLAN_ONLY. No adapter code. No Z-MATRIX imports. No execution. No enablement. No warning. No production. Level 5 BLOCKED.
+# Adapter Contract Standard
+## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_ADAPTER_CONTRACT_STANDARD_READY
+Adapter contract standard: input schema draft (types,constraints,required), output schema draft (types,guarantees), side-effect declaration (none/file/network/external), evidence requirements (what,how,where), preconditions (state before), postconditions (state after), degradation behavior (deny/degrade/manual), future test requirements. No runtime execution.

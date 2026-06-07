@@ -1,3 +1,3 @@
 # Adapter Merge REVIEW
 ## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_ADAPTER_IMPLEMENTATION_PLANNING_MERGE_REVIEW_READY
-28 docs total. No adapter. No execution. Level 5 BLOCKED. Seal mandatory.
+28 docs total (16 plan+7 review+5 merge). No adapter code. No execution. Options: MORE_REVIEW | GO_FOR_DOCS_ONLY_MERGE_APPROVAL | REJECT. Rejected: ADAPTER_IMPL, RUNTIME, EXEC, ZMATRIX, WARNING, ENVELOPE, BLOCKING, PRODUCTION, LEVEL5, TAG. Seal mandatory if merged. Level 5 BLOCKED.

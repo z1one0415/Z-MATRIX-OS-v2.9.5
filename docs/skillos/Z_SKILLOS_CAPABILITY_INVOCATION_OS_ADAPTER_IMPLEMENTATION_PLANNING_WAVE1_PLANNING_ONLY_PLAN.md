@@ -1,3 +1,3 @@
-# Adapter WAVE1 PLANNING ONLY PLAN
-## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_ADAPTER_IMPLEMENTATION_PLANNING_WAVE1_PLANNING_ONLY_PLAN_READY
-FUTURE_PLAN_ONLY. No adapter code. No Z-MATRIX imports. No execution. No enablement. No warning. No production. Level 5 BLOCKED.
+# Adapter Wave1 Planning Only Plan
+## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_ADAPTER_WAVE1_PLANNING_ONLY_PLAN_READY
+Wave 1 Planning Only: World Blocks planning (assembly-line design, validation), Deal Compass review (deal flow analysis, negotiation prep), Business model planning (MissNail analysis), Product architecture planning. No runtime execution. No adapter code. T2 risk tier.

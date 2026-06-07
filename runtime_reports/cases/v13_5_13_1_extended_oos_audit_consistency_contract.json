@@ -1,0 +1,19 @@
+{
+  "status": "V13_5_13_1_EXTENDED_OOS_AUDIT_CONSISTENCY_CONTRACT_BUILT",
+  "candidate": "RANK_ACCELERATION_ONLY",
+  "previous_oos_source": "V13_5_7",
+  "previous_oos_month_count": 19,
+  "previous_oos_end": "20260331",
+  "true_new_oos_definition": "rebalance_date > previous_oos_end",
+  "audit_inconsistency_detected": true,
+  "forbidden_new_month_examples": [
+    "20241129",
+    "20250127"
+  ],
+  "true_new_oos_months": [],
+  "true_new_oos_count": 0,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

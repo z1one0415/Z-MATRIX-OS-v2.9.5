@@ -1,10 +1,11 @@
 {
-  "status": "V13_5_13_20D_MONITOR_BUILT",
-  "monitored_months": 19,
-  "positive_months": 10,
-  "negative_months": 9,
-  "mean_20d_hl": 0.001987,
-  "20d_scope_retained": true,
+  "status": "V13_5_13_TACTICAL_20D_MONITOR_NOT_UPDATED_NO_TRUE_NEW_OOS",
+  "monitoring_updated": false,
+  "new_oos_month_count": 0,
+  "historical_monitoring_summary_retained": true,
+  "candidate_retained_from_prior_monitoring": true,
   "alpha_claim_allowed": false,
-  "production": "BLOCKED"
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
 }

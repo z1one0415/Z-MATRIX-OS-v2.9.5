@@ -40,7 +40,7 @@ Commit `a9cba6b3d6c86c0531eb74a9233c602150e1c69b` — `Z_SKILLOS_LEVEL4_HUMAN_AP
 
 ## Boundary
 
-No implementation. No runtime code. No warning emission. No caller-visible warning. No result_envelope mutation. No blocking. No fail-closed. No production/broker/real_trade. No V12.x. No tag. No Level 5 planning.
+No implementation. No runtime code. No warning emission. No caller-visible warning. No result_envelope mutation. No blocking. No fail-closed. No production/broker/real_trade. No V12.x. No tag. No Level 5 planning. Level 5 remains BLOCKED unless separately authorized by a future explicit Level 5 planning gate.
 
 ## Next
 

@@ -1,0 +1,6 @@
+# Runtime P0 Review Decision Brief
+## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_RUNTIME_DISABLED_DEFAULT_P0_REVIEW_DECISION_BRIEF_READY
+13 modules, 10 tests, 8 adapter docs, 86/86 pass, Level 5 BLOCKED.
+Option: NO_GO_FIX | MORE_REVIEW | **GO_FOR_MERGE_REVIEW_ONLY** | REJECT
+Recommend: GO_FOR_RUNTIME_DISABLED_DEFAULT_P0_MERGE_REVIEW_ONLY — human must decide.
+Human fields: all PENDING.

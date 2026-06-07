@@ -1,0 +1,210 @@
+{
+  "status": "V13_5_3_MONTHLY_BUCKET_ASSIGNMENTS_BUILT",
+  "bucket_assignment_file": "runtime_reports/cases/v13_5_3_monthly_bucket_assignments.csv",
+  "rebalance_date_count": 38,
+  "assigned_row_count": 17778,
+  "bucket_labels": [
+    "LOW",
+    "MID",
+    "HIGH"
+  ],
+  "bucket_distribution_by_month": {
+    "20210831": {
+      "LOW": 142,
+      "MID": 141,
+      "HIGH": 141
+    },
+    "20210930": {
+      "LOW": 143,
+      "MID": 142,
+      "HIGH": 142
+    },
+    "20211029": {
+      "LOW": 144,
+      "MID": 143,
+      "HIGH": 143
+    },
+    "20211130": {
+      "LOW": 145,
+      "MID": 144,
+      "HIGH": 144
+    },
+    "20211231": {
+      "LOW": 145,
+      "MID": 145,
+      "HIGH": 144
+    },
+    "20220128": {
+      "LOW": 146,
+      "MID": 146,
+      "HIGH": 145
+    },
+    "20220228": {
+      "LOW": 147,
+      "MID": 146,
+      "HIGH": 146
+    },
+    "20220331": {
+      "LOW": 147,
+      "MID": 147,
+      "HIGH": 146
+    },
+    "20220429": {
+      "LOW": 147,
+      "MID": 147,
+      "HIGH": 147
+    },
+    "20220531": {
+      "LOW": 148,
+      "MID": 148,
+      "HIGH": 147
+    },
+    "20220630": {
+      "LOW": 150,
+      "MID": 149,
+      "HIGH": 149
+    },
+    "20220729": {
+      "LOW": 151,
+      "MID": 151,
+      "HIGH": 150
+    },
+    "20220831": {
+      "LOW": 153,
+      "MID": 153,
+      "HIGH": 153
+    },
+    "20220930": {
+      "LOW": 155,
+      "MID": 155,
+      "HIGH": 155
+    },
+    "20221031": {
+      "LOW": 157,
+      "MID": 156,
+      "HIGH": 156
+    },
+    "20221130": {
+      "LOW": 157,
+      "MID": 157,
+      "HIGH": 156
+    },
+    "20221230": {
+      "LOW": 158,
+      "MID": 158,
+      "HIGH": 158
+    },
+    "20230131": {
+      "LOW": 158,
+      "MID": 158,
+      "HIGH": 158
+    },
+    "20230228": {
+      "LOW": 160,
+      "MID": 159,
+      "HIGH": 159
+    },
+    "20230331": {
+      "LOW": 160,
+      "MID": 160,
+      "HIGH": 160
+    },
+    "20230428": {
+      "LOW": 161,
+      "MID": 161,
+      "HIGH": 161
+    },
+    "20230531": {
+      "LOW": 162,
+      "MID": 162,
+      "HIGH": 161
+    },
+    "20230630": {
+      "LOW": 162,
+      "MID": 162,
+      "HIGH": 161
+    },
+    "20230731": {
+      "LOW": 162,
+      "MID": 162,
+      "HIGH": 161
+    },
+    "20230831": {
+      "LOW": 162,
+      "MID": 162,
+      "HIGH": 161
+    },
+    "20230928": {
+      "LOW": 162,
+      "MID": 162,
+      "HIGH": 161
+    },
+    "20231031": {
+      "LOW": 162,
+      "MID": 162,
+      "HIGH": 161
+    },
+    "20231130": {
+      "LOW": 163,
+      "MID": 162,
+      "HIGH": 162
+    },
+    "20231229": {
+      "LOW": 163,
+      "MID": 163,
+      "HIGH": 162
+    },
+    "20240131": {
+      "LOW": 163,
+      "MID": 163,
+      "HIGH": 162
+    },
+    "20240229": {
+      "LOW": 163,
+      "MID": 163,
+      "HIGH": 162
+    },
+    "20240329": {
+      "LOW": 163,
+      "MID": 163,
+      "HIGH": 162
+    },
+    "20240430": {
+      "LOW": 163,
+      "MID": 163,
+      "HIGH": 162
+    },
+    "20240531": {
+      "LOW": 163,
+      "MID": 163,
+      "HIGH": 162
+    },
+    "20240628": {
+      "LOW": 163,
+      "MID": 163,
+      "HIGH": 162
+    },
+    "20240731": {
+      "LOW": 163,
+      "MID": 163,
+      "HIGH": 162
+    },
+    "20240830": {
+      "LOW": 163,
+      "MID": 163,
+      "HIGH": 162
+    },
+    "20240909": {
+      "LOW": 163,
+      "MID": 163,
+      "HIGH": 163
+    }
+  },
+  "monthly_bucket_balance_pass": true,
+  "forbidden_outcome_columns_present": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "recommended_next_action": "BUILD_V13_5_3_MONTHLY_OUTCOME_LABELS"
+}

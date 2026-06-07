@@ -1,0 +1,3 @@
+# Wave0 File Level Future Implementation Plan
+## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_WAVE0_READONLY_ADAPTER_PLANNING_FILE_LEVEL_FUTURE_IMPLEMENTATION_PLAN_READY
+FUTURE_PLAN_ONLY. No adapter code. No execution. No enablement. Level 5 BLOCKED.

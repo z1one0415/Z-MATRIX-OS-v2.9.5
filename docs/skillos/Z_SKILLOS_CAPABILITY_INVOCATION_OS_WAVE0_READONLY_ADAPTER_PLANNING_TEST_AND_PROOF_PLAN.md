@@ -1,3 +1,3 @@
-# Wave0 Test And Proof Plan
-## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_WAVE0_READONLY_ADAPTER_PLANNING_TEST_AND_PROOF_PLAN_READY
-FUTURE_PLAN_ONLY. No adapter code. No execution. No enablement. Level 5 BLOCKED.
+# Wave0 Test and Proof Plan
+## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_WAVE0_TEST_AND_PROOF_PLAN_READY
+Future test categories (FUTURE_PLAN_ONLY): no adapter code tests (verify no adapter code committed), no write tests (verify no file/branch/merge operations), no merge tests (verify no merge operations), no branch mutation tests, no file mutation tests, no runtime enablement tests (is_*_enabled always returns False), no adapter execution enablement tests, no capability execution tests, evidence/citation contract tests (hash chain integrity), read-only permission tests (READ_ONLY granted, WRITE/EXEC/PROD denied). No test code in this phase. Level 5 BLOCKED.

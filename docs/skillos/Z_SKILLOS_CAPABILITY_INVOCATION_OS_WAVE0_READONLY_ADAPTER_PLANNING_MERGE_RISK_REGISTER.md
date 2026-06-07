@@ -1,3 +1,2 @@
-# Wave0 Merge MERGE_RISK_REGISTER
-## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_WAVE0_READONLY_ADAPTER_PLANNING_MERGE_RISK_REGISTER_READY
-10 risks.
+# Wave0 Plan Merge Risk Register | Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_WAVE0_READONLY_ADAPTER_PLANNING_MERGE_RISK_REGISTER_READY
+R1:Plan→impl S:Critical M:PLAN_ONLY C:Impl gate R:Code. R2:Read→write S:Critical M:Read-only C:Write gate R:Write. R3:GitHub→mutation S:Critical M:No write C:GitHub gate R:Mutation. R4:T5 S:Critical M:NEVER C:Tier R:T5. R5:Production S:Critical M:Forbidden C:CI R:Prod. R6:Evidence S:Medium M:Immutable C:Evidence CI R:Mutation. R7:No seal S:Medium M:Mandatory C:Merge R:No seal. R8:Doc thin S:Low M:Hardened C:Review R:Missing. R9:Scope creep S:Medium M:Explicit scope C:Wave gate R:Violation. R10:Level5 S:Medium M:BLOCKED C:CI grep R:Level5.

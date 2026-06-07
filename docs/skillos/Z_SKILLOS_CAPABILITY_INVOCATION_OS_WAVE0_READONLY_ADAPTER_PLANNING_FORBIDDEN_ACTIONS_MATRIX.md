@@ -1,3 +1,3 @@
 # Wave0 Forbidden Actions Matrix
-## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_WAVE0_READONLY_ADAPTER_PLANNING_FORBIDDEN_ACTIONS_MATRIX_READY
-FUTURE_PLAN_ONLY. No adapter code. No execution. No enablement. Level 5 BLOCKED.
+## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_WAVE0_FORBIDDEN_ACTIONS_MATRIX_READY
+Forbidden actions (ALL PERMANENT OR GATED): write mutation (PERMANENT without future write gate), branch mutation (PERMANENT), merge (PERMANENT), delete (PERMANENT), external publish (PERMANENT without future publish gate), issue/PR comment mutation (PERMANENT without future comment gate), production action (PERMANENT), broker/real_trade (PERMANENT), capability execution (PERMANENT at Wave0), adapter execution enablement (PERMANENT at Wave0), runtime enablement (PERMANENT at Wave0), result_envelope mutation (PERMANENT), caller-visible warning (PERMANENT), blocking/fail-closed (PERMANENT at Level 4), Level 5 behavior (PERMANENTLY BLOCKED).

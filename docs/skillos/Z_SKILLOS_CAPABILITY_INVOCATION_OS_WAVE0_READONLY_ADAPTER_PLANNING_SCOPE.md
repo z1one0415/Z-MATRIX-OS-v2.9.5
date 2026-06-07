@@ -1,3 +1,3 @@
-# Wave0 Scope
+# Wave0 Read-Only Adapter Scope
 ## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_WAVE0_READONLY_ADAPTER_PLANNING_SCOPE_READY
-FUTURE_PLAN_ONLY. No adapter code. No execution. No enablement. Level 5 BLOCKED.
+Wave0 modules: GitHub read-only (fetch file, fetch metadata, compare refs, list changed files, inspect HEAD, inspect commits), document generation (markdown, HTML, report, summary generation), local docs inspection (read, search, extract status, verify seals, compare expected), report reading (parse, extract evidence, compare status, summarize risks). All read-only or generation-only. No write. No merge. No branch mutation. No file mutation. No capability execution. No production. Level 5 BLOCKED.

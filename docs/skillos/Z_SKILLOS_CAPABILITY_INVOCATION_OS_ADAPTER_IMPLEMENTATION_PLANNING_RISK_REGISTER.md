@@ -1,0 +1,3 @@
+# Adapter Planning RISK REGISTER
+## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_ADAPTER_IMPLEMENTATION_PLANNING_RISK_REGISTER_READY
+R1:Planning→impl S:Critical L:Medium M:PLAN_ONLY label C:Impl gate R:Adapter code. R2:Adapter→exec S:Critical L:Low M:Forbidden imports C:Adapter gate R:Z2/Z8/Z9 import. R3:Wave→code S:Critical L:Low M:Wave requires approval C:Wave gate R:Wave code. R4:Production link S:Critical L:VeryLow M:Forbidden C:No-production CI R:Production ref. R5:T5 bypass S:Critical L:VeryLow M:NEVER_GRANTED C:Tier CI R:T5. R6:Warning enable S:Medium L:Low M:No warning C:Warning gate R:Enabled. R7:No seal S:Medium L:Low M:Mandatory C:Merge gate R:Merge no seal. R8:Level5 drift S:Medium L:Low M:BLOCKED C:CI grep R:Level5.

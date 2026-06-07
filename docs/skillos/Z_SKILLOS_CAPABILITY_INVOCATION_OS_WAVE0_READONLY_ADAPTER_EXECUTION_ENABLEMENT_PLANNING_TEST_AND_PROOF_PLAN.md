@@ -1,0 +1,3 @@
+# Enablement Test and Proof Plan
+## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_WAVE0_READONLY_ADAPTER_EXECUTION_ENABLEMENT_PLANNING_TEST_AND_PROOF_PLAN_READY
+Future proof categories: disabled-by-default proof, strict bool proof, kill switch proof, no network proof, no write proof, no production proof, no broker/real_trade proof, no result_envelope mutation proof, no blocking/fail-closed proof, per-adapter permission proof, evidence hash proof, caller-visible output proof. FUTURE_PLAN_ONLY. No enablement in this phase. No runtime. No adapter exec. No real call. No network. No file write. No Z-MATRIX. No production. Level 5: BLOCKED.

@@ -1,3 +1,3 @@
-# Enablement Merge MERGE_RISK_REGISTER
+# Enablement Merge RISK_REGISTER
 ## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_WAVE0_READONLY_ADAPTER_EXECUTION_ENABLEMENT_PLANNING_MERGE_RISK_REGISTER_READY
-Enablement planning only. No enablement. Level 5 BLOCKED.
+Enablement merge risk (10 risks). R1:Plan→enable S:C M:PLAN_ONLY C:Gate R:Enable. R2:Gate bypass S:C M:Triple gate C:CI R:Bypass. R3:Network S:C M:No net C:Net gate R:Call. R4:File S:C M:No write C:Write gate R:Write. R5:Exec S:C M:DENY C:Exec gate R:Execution. R6:Prod S:C M:Forbidden C:CI R:Prod. R7:No seal S:M M:Mandatory C:Merge R:No seal. R8:Doc S:L M:Hardened C:Review R:Missing. R9:Scope S:M M:Explicit C:Wave gate R:Violation. R10:Level5 S:M M:Level 5: BLOCKED C:CI grep R:Level5.

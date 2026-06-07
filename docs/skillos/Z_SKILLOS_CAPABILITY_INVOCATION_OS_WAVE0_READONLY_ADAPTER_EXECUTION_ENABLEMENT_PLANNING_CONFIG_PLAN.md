@@ -1,3 +1,3 @@
-# Enablement CONFIG_PLAN
+# Enablement Config Plan
 ## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_WAVE0_READONLY_ADAPTER_EXECUTION_ENABLEMENT_PLANNING_CONFIG_PLAN_READY
-FUTURE_PLAN_ONLY. No enablement. No runtime. No call. Level 5 BLOCKED.
+Config plan: requested vs enabled separation (requested flags never enable, separate enabled functions always return False in current phase). Strict bool True only. No env direct enable. No non-bool truthy enable. Human seal required for any future enablement. Rollout flag defaults false. Config parse error = disabled. FUTURE_PLAN_ONLY. No enablement in this phase. No runtime. No adapter exec. No real call. No network. No file write. No Z-MATRIX. No production. Level 5: BLOCKED.

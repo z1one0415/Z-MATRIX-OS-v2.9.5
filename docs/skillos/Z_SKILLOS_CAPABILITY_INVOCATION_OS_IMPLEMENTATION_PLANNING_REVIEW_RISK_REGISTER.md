@@ -1,0 +1,2 @@
+# Risk Register | Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_IMPLEMENTATION_PLANNING_REVIEW_RISK_REGISTER_READY
+R1: Planning→runtime | R2: Adapter→code | R3: Registry→executable | R4: Router→runtime | R5: Engine→code | R6: Guard→code | R7: T5 unblock | R8: Evidence→code | R9: Production coupling | R10: Warning enablement | R11: Merge no seal | R12: Level 5 drift. All: S:Critical-High, mitigation: FUTURE_PLAN_ONLY, gate control, rollback trigger defined.

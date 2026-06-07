@@ -1,0 +1,3 @@
+# Enablement Review RISK_REGISTER
+## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_WAVE0_READONLY_ADAPTER_EXECUTION_ENABLEMENT_PLANNING_REVIEW_RISK_REGISTER_READY
+Enablement review risk register (12 risks). R1:Plan→enable S:C M:PLAN_ONLY C:Enable gate R:Enable. R2:Network S:C M:No net C:Net gate R:Call. R3:File S:C M:No write C:Write gate R:Write. R4:Gate bypass S:C M:Triple gate C:Gate CI R:Bypass. R5:Exec S:C M:DENY C:Exec gate R:Execution. R6:ZMATRIX S:C M:Forbidden C:AST R:Import. R7:Prod S:C M:Forbidden C:CI R:Prod. R8:No seal S:M M:Mandatory C:Merge R:No seal. R9:Doc thin S:L M:Hardened C:Review R:Missing. R10:Scope S:M M:Explicit C:Wave gate R:Violation. R11:Skip S:L M:Documented C:Unskip R:Blind. R12:Level5 S:M M:Level 5: BLOCKED C:CI grep R:Level5.

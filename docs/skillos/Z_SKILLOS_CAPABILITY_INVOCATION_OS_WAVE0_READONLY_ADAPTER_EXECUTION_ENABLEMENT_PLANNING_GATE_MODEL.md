@@ -1,0 +1,3 @@
+# Enablement Gate Model
+## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_WAVE0_READONLY_ADAPTER_EXECUTION_ENABLEMENT_PLANNING_GATE_MODEL_READY
+Future triple-gate model: 1) Runtime gate (is_runtime_enabled), 2) Adapter framework gate (is_adapter_framework_enabled), 3) Individual Wave0 adapter gate (per-adapter enable flag). All three must be strict True for any adapter to execute. Any gate false = disabled/noop. Gates are AND-ed, not OR-ed. FUTURE_PLAN_ONLY. No enablement in this phase. No runtime. No adapter exec. No real call. No network. No file write. No Z-MATRIX. No production. Level 5: BLOCKED.

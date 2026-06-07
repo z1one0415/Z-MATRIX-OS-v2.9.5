@@ -1,0 +1,23 @@
+{
+  "status": "V13_5_3_MONTHLY_FEATURE_SNAPSHOTS_BUILT",
+  "feature_snapshot_file": "runtime_reports/cases/v13_5_3_monthly_feature_snapshots.csv",
+  "rebalance_date_count": 38,
+  "usable_rebalance_date_count": 38,
+  "excluded_rebalance_dates": [],
+  "minimum_ticker_count_per_month": 400,
+  "feature_side_real_only": true,
+  "known_at_pass": true,
+  "future_leakage_check_pass": true,
+  "forbidden_label_columns_present": false,
+  "feature_groups": [
+    "price_momentum",
+    "rank",
+    "turnover"
+  ],
+  "blocked_reasons": [],
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "recommended_next_action": "BUILD_V13_5_3_MONTHLY_BUCKET_ASSIGNMENTS"
+}

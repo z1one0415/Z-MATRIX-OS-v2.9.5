@@ -1,0 +1,39 @@
+{
+  "status": "V13_5_3_MULTI_REBALANCE_ALPHA_EVIDENCE_METRICS_BUILT",
+  "validation_mode": "RESEARCH_ALPHA_EVIDENCE_ONLY",
+  "rebalance_frequency": "MONTHLY",
+  "sample_month_count": 38,
+  "evaluation_horizons": [
+    "20D",
+    "60D"
+  ],
+  "bucket_monotonicity_20d_pass": false,
+  "bucket_monotonicity_60d_pass": false,
+  "long_short_spread_20d_mean": -0.009357,
+  "long_short_spread_60d_mean": 0,
+  "cost_adjusted_spread_20d_mean": -0.012357,
+  "cost_adjusted_spread_60d_mean": 0,
+  "rank_ic_20d_mean": 0.0,
+  "rank_ic_60d_mean": 0,
+  "rank_ic_20d_tstat": 0,
+  "rank_ic_60d_tstat": 0,
+  "win_rate_20d": 0.3157894736842105,
+  "win_rate_60d": 0,
+  "max_drawdown_20d": -0.05,
+  "max_drawdown_60d": 0,
+  "month_by_month_stability_pass": false,
+  "year_by_year_stability_pass": false,
+  "contribution_concentration_pass": true,
+  "regime_split_available": false,
+  "cost_model": {
+    "oneway_bps": 15,
+    "roundtrip_bps": 30,
+    "model": "FIXED_PCT"
+  },
+  "evidence_score": -6.2,
+  "evidence_grade": "BLOCKED",
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,20 @@
+{
+  "status": "V13_5_3_MONTHLY_OUTCOME_LABEL_PANEL_BUILT",
+  "role": "OUTCOME_LABEL_ONLY",
+  "label_horizons": [
+    "20D",
+    "60D"
+  ],
+  "outcome_label_file": "runtime_reports/cases/v13_5_3_monthly_outcome_label_panel.csv",
+  "labeled_rebalance_date_count": 38,
+  "label_row_count": 17746,
+  "feature_side_access_allowed": false,
+  "written_to_feature_store": false,
+  "label_known_after_rebalance": true,
+  "leakage_firewall_passed": true,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "recommended_next_action": "RUN_V13_5_3_MULTI_REBALANCE_ALPHA_EVIDENCE"
+}

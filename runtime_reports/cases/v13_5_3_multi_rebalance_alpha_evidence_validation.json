@@ -1,0 +1,25 @@
+{
+  "status": "V13_5_3_MULTI_REBALANCE_ALPHA_EVIDENCE_BLOCKED",
+  "alpha_validation_executed": true,
+  "validation_mode": "RESEARCH_ALPHA_EVIDENCE_ONLY",
+  "sample_month_count": 38,
+  "evidence_passed": false,
+  "blocked_reasons": [
+    "SPREAD_NEGATIVE",
+    "NON_MONOTONIC"
+  ],
+  "high_20d_avg_return": 0.005575,
+  "mid_20d_avg_return": 0.014222,
+  "low_20d_avg_return": 0.014932,
+  "long_short_spread_20d_mean": -0.009357,
+  "cost_adjusted_spread": -0.012357,
+  "bucket_monotonicity": false,
+  "win_rate_20d": 0.3157894736842105,
+  "alpha_claim_allowed": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "recommended_next_action": "IMPROVE_FACTORS_OR_REJECT_ALPHA_HYPOTHESIS"
+}

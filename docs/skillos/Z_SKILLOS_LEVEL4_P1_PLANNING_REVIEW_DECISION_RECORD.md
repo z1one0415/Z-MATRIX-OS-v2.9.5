@@ -2,7 +2,7 @@
 
 ## Status
 
-Z_SKILLOS_LEVEL4_P1_PLANNING_REVIEW_DECISION_PENDING
+Z_SKILLOS_LEVEL4_P1_PLANNING_REVIEW_DECISION_APPROVED_FOR_MERGE_REVIEW_ONLY
 
 ## Decision Question
 
@@ -25,16 +25,16 @@ DIRECT_MERGE, DIRECT_P1_IMPLEMENTATION, WARNING_ENABLEMENT, CALLER_VISIBLE_WARNI
 
 | Field | Value |
 |:--|:--|
-| **approver_name** | `PENDING` |
-| **approver_role** | `PENDING` |
-| **approval_date** | `PENDING` |
-| **decision** | `PENDING` |
-| **required_follow_up** | `PENDING` |
-| **conditions** | `PENDING` |
-| **reviewed_documents** | `PENDING` |
-| **reviewed_risks** | `PENDING` |
-| **rollback_triggers** | `PENDING` |
-| **next_allowed_action** | `PENDING` |
+| **approver_name** | `Project Owner` |
+| **approver_role** | `Human Approver / Project Owner` |
+| **approval_date** | `2026-06-07` |
+| **decision** | `GO_FOR_P1_PLANNING_MERGE_REVIEW_ONLY` |
+| **required_follow_up** | `Prepare P1 planning merge review package only. Do not merge. Do not implement. Do not enable warning.` |
+| **conditions** | `Docs-only merge review only. No merge. No P1 implementation. No runtime code. No warning enablement. No caller-visible warning. No result_envelope mutation. No blocking. No fail-closed. No production/broker/real_trade. No V12.x. No tag. No Level 5 planning. Level 5 remains BLOCKED.` |
+| **reviewed_documents** | `YES` |
+| **reviewed_risks** | `YES` |
+| **rollback_triggers** | `Any merge attempt before merge approval; any P1 implementation; any runtime code; any warning enablement; any caller-visible warning; any result_envelope mutation; any blocking/fail-closed behavior; any production/broker/real_trade linkage; any V12.x advancement; any tag; any Level 5 planning attempt.` |
+| **next_allowed_action** | `Prepare P1 planning merge review package only.` |
 
 ## Note
 

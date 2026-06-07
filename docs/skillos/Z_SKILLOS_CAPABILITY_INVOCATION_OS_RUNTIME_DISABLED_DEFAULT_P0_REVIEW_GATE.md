@@ -1,0 +1,7 @@
+# Runtime P0 Review Gate
+## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_RUNTIME_DISABLED_DEFAULT_P0_REVIEW_GATE_READY
+Baseline: 123eb99 | Runtime P0 SEALED | Adapter Readiness SEALED | 86/86 tests
+Question: Accept Runtime P0 for merge review?
+Options: NO_GO_FIX | MORE_REVIEW | GO_FOR_MERGE_REVIEW_ONLY | REJECT
+Rejected: DIRECT_MERGE, ADAPTER, CAPABILITY_EXEC, ZMATRIX_CALL, WARNING, ENVELOPE, BLOCKING, PRODUCTION, LEVEL5, TAG.
+Evidence: 13 modules, 10 tests, 8 adapter docs, 86/86 pass, Level 5 BLOCKED.

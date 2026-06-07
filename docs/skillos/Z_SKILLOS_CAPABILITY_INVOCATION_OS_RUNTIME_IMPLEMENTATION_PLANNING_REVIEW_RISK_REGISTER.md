@@ -1,0 +1,2 @@
+# Review | Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_RUNTIME_IMPLEMENTATION_PLANNING_REVIEW_RISK_REGISTER_READY
+12 risks with severity/likelihood/mitigation/control/rollback.

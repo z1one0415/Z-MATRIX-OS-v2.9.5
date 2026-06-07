@@ -2,7 +2,7 @@
 
 ## Status
 
-Z_SKILLOS_LEVEL4_HUMAN_APPROVAL_DECISION_PENDING
+Z_SKILLOS_LEVEL4_HUMAN_APPROVAL_DECISION_APPROVED_FOR_IMPLEMENTATION_PLAN_ONLY
 
 ## Purpose
 
@@ -38,17 +38,17 @@ Record the human approval decision for Level 4 Soft Warning capability authoriza
 
 | Field | Value |
 |:--|:--|
-| **approver_name** | `PENDING` |
-| **approver_role** | `PENDING` |
-| **approval_date** | `PENDING` |
-| **decision** | `PENDING` |
-| **required_follow_up** | `PENDING` |
-| **conditions** | `PENDING` |
-| **reviewed_checklist** | `PENDING` |
-| **reviewed_risk_register** | `PENDING` |
-| **approved_branch_name** | `PENDING` (only if GO_FOR_LEVEL4_IMPLEMENTATION_PLAN_ONLY) |
-| **planning_phase_max_duration** | `PENDING` (only if GO_FOR_LEVEL4_IMPLEMENTATION_PLAN_ONLY) |
-| **rollback_triggers** | `PENDING` |
+| **approver_name** | `Project Owner` |
+| **approver_role** | `Human Approver / Project Owner` |
+| **approval_date** | `2026-06-07` |
+| **decision** | `GO_FOR_LEVEL4_IMPLEMENTATION_PLAN_ONLY` |
+| **required_follow_up** | `Create a future named planning branch only. Produce Level 4 implementation plan artifacts and 8 gate proof plans before any runtime code. No implementation authorized.` |
+| **conditions** | `Docs-only planning branch only. No runtime code. No warning emission. No caller-visible output. No result_envelope mutation. No blocking. No fail-closed. No production/broker/real_trade. No V12.x. No tag. Level 5 remains BLOCKED.` |
+| **reviewed_checklist** | `YES` |
+| **reviewed_risk_register** | `YES` |
+| **approved_branch_name** | `plan/skillos-level4-implementation-plan-only` |
+| **planning_phase_max_duration** | `one planning phase; must close with post-merge seal before any further authorization` |
+| **rollback_triggers** | `Any code/script/test/data/runtime_reports change; any runtime warning; any caller-visible warning; any result_envelope mutation; any blocking/fail-closed behavior; any production/broker/real_trade linkage; any V12.x advancement; any tag; any Level 5 planning attempt.` |
 
 ## Consequence Map
 

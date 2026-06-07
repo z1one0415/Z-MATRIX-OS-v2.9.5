@@ -1,0 +1,3 @@
+# Wave0 P0 RISK_REGISTER
+## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_WAVE0_READONLY_ADAPTER_P0_BRANCH_RISK_REGISTER_READY
+R1:Config→enable S:Critical M:Hardcoded False C:CI R:True. R2:KillSwitch S:Critical M:overrides C:CI R:Bypass. R3:Network S:Critical M:No imports C:AST scan R:requests import. R4:Write S:Critical M:No write C:Side-effect CI R:File write. R5:Exec S:Critical M:DENY C:Exec gate R:Execution. R6:ZMATRIX S:Critical M:Forbidden C:AST scan R:Z2 import. R7:Prod S:Critical M:Forbidden C:CI R:Production. R8:No seal S:Medium M:Mandatory C:Merge R:No seal. R9:Level5 S:Medium M:BLOCKED C:CI grep R:Level5.

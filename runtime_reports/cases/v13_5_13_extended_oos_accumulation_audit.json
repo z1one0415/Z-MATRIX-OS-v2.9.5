@@ -1,0 +1,18 @@
+{
+  "status": "V13_5_13_EXTENDED_OOS_ACCUMULATION_BLOCKED_NO_TRUE_NEW_MONTHS",
+  "candidate": "RANK_ACCELERATION_ONLY",
+  "v57_oos_month_count": 19,
+  "previous_oos_end": "20260331",
+  "current_oos_month_count": 19,
+  "new_oos_rebalance_dates": [],
+  "new_oos_count": 0,
+  "extended_oos_available": false,
+  "blocked_reasons": [
+    "NO_TRUE_NEW_OOS_MONTHS_AFTER_PREVIOUS_OOS_END"
+  ],
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "recommended_next_action": "WAIT_FOR_MORE_OOS_DATA_AND_REPEAT_V13_5_13"
+}

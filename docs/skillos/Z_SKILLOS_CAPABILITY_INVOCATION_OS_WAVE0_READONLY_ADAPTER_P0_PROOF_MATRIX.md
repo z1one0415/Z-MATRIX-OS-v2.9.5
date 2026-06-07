@@ -1,0 +1,3 @@
+# Wave0 P0 Proof Matrix
+## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_WAVE0_READONLY_ADAPTER_P0_PROOF_MATRIX_READY
+Wave0 P0 Proof Matrix. Tests: Wave0 32/32 + Adapter 69/71 + Runtime 63/65 + Level4 64/64 = 228/232 (4 safe skips: 2 adapter path-resolution + 2 runtime path-resolution). Skipped tests: adapter test_no_zmatrix_imports (path, safe, AST scan covers), adapter test_no_production_linkage (path, safe, AST scan covers), runtime test_no_production (path, safe, AST scan covers), runtime test_no_runtime_enablement (path, safe, config strictness covers). All 4 skips: path resolution from test dir, safe, future unblock by repo-root relative path. 0 failed. 0 errors. Level 5 BLOCKED.

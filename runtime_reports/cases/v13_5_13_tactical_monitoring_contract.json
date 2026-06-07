@@ -1,0 +1,19 @@
+{
+  "status": "V13_5_13_TACTICAL_MONITORING_CONTRACT_BUILT",
+  "candidate": "RANK_ACCELERATION_ONLY",
+  "scope_type": "20D_ONLY_TACTICAL_RESEARCH_CANDIDATE",
+  "monitoring_horizons": [
+    "20D"
+  ],
+  "forbidden_horizons": [
+    "40D",
+    "60D"
+  ],
+  "trade_signal_generation_prohibited": true,
+  "paper_trading_prohibited": true,
+  "alpha_claim_prohibited": true,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

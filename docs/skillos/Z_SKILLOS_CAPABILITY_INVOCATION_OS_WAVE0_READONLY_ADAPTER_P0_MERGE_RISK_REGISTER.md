@@ -1,0 +1,3 @@
+# Wave0 P0 Merge RISK_REGISTER
+## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_WAVE0_READONLY_ADAPTER_P0_MERGE_RISK_REGISTER_READY
+Wave0 P0 Merge Risk (10 risks). R1:Config S:C M:Hardcoded C:CI R:True. R2:Network S:C M:No imports C:AST R:requests. R3:Write S:C M:No write C:Side-effect R:File. R4:Exec S:C M:DENY C:Exec gate R:Execution. R5:Prod S:C M:Forbidden C:CI R:Production. R6:No seal S:M M:Mandatory C:Merge R:No seal. R7:Skip S:L M:Documented C:Unskip R:Blind. R8:Doc S:L M:Hardened C:Review R:Missing. R9:Scope S:M M:Explicit C:Wave gate R:Violation. R10:Level5 S:M M:BLOCKED C:CI grep R:Level5.

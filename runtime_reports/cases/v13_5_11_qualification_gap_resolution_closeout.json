@@ -1,0 +1,11 @@
+{
+  "status": "V13_5_11_QUALIFICATION_GAP_RESOLVED_DEMOTE_TO_TACTICAL",
+  "v13_5_11_executed": true,
+  "candidate": "RANK_ACCELERATION_ONLY",
+  "demoted_to_tactical": true,
+  "v13_6_prep_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

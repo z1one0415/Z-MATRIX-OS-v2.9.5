@@ -1,0 +1,12 @@
+{
+  "status": "V13_5_13_REGIME_SCOPE_MONITOR_BUILT",
+  "monitored_months": 19,
+  "up_market_months": 8,
+  "up_market_avg_hl": -0.002521,
+  "down_market_months": 11,
+  "down_market_avg_hl": 0.005265,
+  "down_market_scope_violated": false,
+  "down_market_block_retained": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED"
+}

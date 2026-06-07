@@ -1,0 +1,12 @@
+{
+  "status": "V13_5_13_TACTICAL_MONITORING_SCORECARD_NO_NEW_OOS",
+  "candidate": "RANK_ACCELERATION_ONLY",
+  "total_oos_months": 19,
+  "new_oos_months_added": 0,
+  "composite_score": 3,
+  "monitoring_grade": "NO_NEW_OOS",
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

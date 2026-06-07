@@ -2,7 +2,7 @@
 
 ## Status
 
-Z_SKILLOS_LEVEL4_IMPLEMENTATION_BRANCH_DECISION_PENDING
+Z_SKILLOS_LEVEL4_IMPLEMENTATION_BRANCH_DECISION_APPROVED_FOR_DISABLED_DEFAULT_BRANCH_ONLY
 
 ## Purpose
 
@@ -38,16 +38,16 @@ Record the human approval decision for whether to authorize a disabled-by-defaul
 
 | Field | Value |
 |:--|:--|
-| **approver_name** | `PENDING` |
-| **approver_role** | `PENDING` |
-| **approval_date** | `PENDING` |
-| **decision** | `PENDING` |
-| **approved_branch_name** | `PENDING` (only if option 3: `impl/skillos-level4-disabled-default-warning`) |
-| **implementation_scope** | `PENDING` |
-| **required_tests** | `PENDING` |
-| **conditions** | `PENDING` |
-| **rollback_triggers** | `PENDING` |
-| **post_branch_review_required** | `PENDING` |
+| **approver_name** | `Project Owner` |
+| **approver_role** | `Human Approver / Project Owner` |
+| **approval_date** | `2026-06-07` |
+| **decision** | `GO_FOR_DISABLED_DEFAULT_IMPLEMENTATION_BRANCH_ONLY` |
+| **approved_branch_name** | `impl/skillos-level4-disabled-default-warning` |
+| **implementation_scope** | `Create a future implementation branch for disabled-by-default Level 4 internal soft-warning mechanics only. The branch may add code only under strict gates, but warning emission must remain disabled by default. No caller-visible warning, no result_envelope mutation, no blocking, no fail-closed, no production/broker/real_trade, no V12.x, no tag, no Level 5 planning.` |
+| **required_tests** | `Disabled-by-default proof; envelope immutability proof; no-blocking proof; no-production linkage proof; warning side-channel boundary proof; rollback safety proof; severity escalation proof; false-positive handling proof.` |
+| **conditions** | `The future branch must keep LEVEL4_WARNING_ENABLED=false by default. Any warning path must be internal-only or operator-review-only. No caller-visible output. No result_envelope mutation. No blocking. No fail-closed. No production/broker/real_trade. No V12.x. No tag. Level 5 remains BLOCKED. Separate post-implementation human review is required before any enablement.` |
+| **rollback_triggers** | `Any warning emitted while disabled; any caller-visible warning; any result_envelope mutation; any blocking/fail-closed behavior; any production/broker/real_trade linkage; any V12.x advancement; any tag; any Level 5 planning attempt; any missing rollback path; any failed disabled-by-default proof.` |
+| **post_branch_review_required** | `YES. Separate human approval required after implementation branch completion and before merge or enablement.` |
 
 ## Consequence Map
 

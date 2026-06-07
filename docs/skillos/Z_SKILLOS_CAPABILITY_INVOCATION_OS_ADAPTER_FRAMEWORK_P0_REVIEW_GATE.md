@@ -1,0 +1,3 @@
+# Adapter Framework P0 Review Gate
+## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_ADAPTER_FRAMEWORK_P0_REVIEW_GATE_READY
+Baseline: a966123 | P0 SEALED | Config hardened | Registration disabled. Question: Accept Adapter Framework P0 for merge review? Options: NO_GO_FIX | MORE_REVIEW | GO_FOR_MERGE_REVIEW_ONLY | REJECT. Rejected: DIRECT_MERGE, ZMATRIX_ADAPTER, RUNTIME_ENABLEMENT, ADAPTER_EXEC, CAPABILITY_EXEC, ZMATRIX_CALL, WARNING, ENVELOPE, BLOCKING, PRODUCTION, LEVEL5, TAG. Evidence: 10 modules + 11 tests + docs. Config hardened. Tests: 35/37+63/65+64/64=162/166. No Z-MATRIX adapters. No execution. Level 5 BLOCKED. Next: human review decision.

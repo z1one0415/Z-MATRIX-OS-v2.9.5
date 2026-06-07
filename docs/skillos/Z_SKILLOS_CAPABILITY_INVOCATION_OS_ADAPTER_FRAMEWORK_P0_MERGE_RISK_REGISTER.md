@@ -1,0 +1,3 @@
+# Adapter Framework P0 Merge Risk Register
+## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_ADAPTER_FRAMEWORK_P0_MERGE_RISK_REGISTER_READY
+R1:Config S:Critical L:VeryLow M:Hardcoded C:CI R:True on. R2:Merge→adapter S:Critical L:Low M:Separate gate C:Adapter gate R:ZMATRIX adapter. R3:Registration→store S:High L:Low M:Returns None C:Registry CI R:Store. R4:Exec S:Critical L:VeryLow M:DENY C:Exec gate R:Execution. R5:T5 S:Critical L:VeryLow M:NEVER C:Tier CI R:T5. R6:Evidence S:Medium L:Low M:Noop C:Sink CI R:File. R7:Blocking S:Critical L:VeryLow M:CONTINUE C:Guard CI R:BLOCKED. R8:No seal S:Medium L:Low M:Mandatory C:Merge gate R:No seal. R9:Skip S:Low L:Low M:Documented C:Unskip R:Blind. R10:Level5 S:Medium L:Low M:BLOCKED C:CI grep R:Level5.

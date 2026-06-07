@@ -1,0 +1,3 @@
+# Wave0 Read-Only Adapter Interface Plan
+## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_WAVE0_READONLY_ADAPTER_PLANNING_INTERFACE_PLAN_READY
+Future interface fields (FUTURE_PLAN_ONLY): adapter_id, adapter_kind (readonly/generation), read_scope (files/commits/docs/reports), input_contract (request_id, target_uri, format), output_contract (content, status, hash, citations), evidence_contract (source_ref, source_hash, request_hash, output_hash), permission_tier (READ_ONLY), forbidden_actions (write, merge, delete, publish, mutation), degrade_behavior (return DENY_NOOP). No execution method. No write method. No runtime code in this phase. Level 5 BLOCKED.

@@ -1,0 +1,2 @@
+# Wave0 Plan Review Decision Record | Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_WAVE0_READONLY_ADAPTER_PLANNING_REVIEW_DECISION_PENDING
+Options: NO_GO_FIX|MORE_REVIEW|GO_FOR_MERGE_REVIEW_ONLY|REJECT. Rejected: ADAPTER_IMPL,CODE,RUNTIME,EXEC,ZMATRIX,WARNING,ENVELOPE,BLOCKING,PRODUCTION,LEVEL5,TAG. PENDING: approver_name,approver_role,approval_date,decision,reviewed_docs,reviewed_risks,required_follow_up,conditions,rollback_triggers,next_allowed_action. Awaits human.

@@ -1,0 +1,3 @@
+# Wave0 Read-Only Adapter Planning Overview
+## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_WAVE0_READONLY_ADAPTER_PLANNING_OVERVIEW_READY
+Docs-only Wave0 read-only adapter planning. Depends on Adapter Framework P0 merged (efccd91). Scope: GitHub read-only, document generation, local docs inspection, report reading. All adapters are read-only/generation-only planning only. No adapter code. No adapter implementation. No write. No merge. No branch mutation. No file mutation. No runtime enablement. No adapter execution enablement. No capability execution. No Z-MATRIX calling. No production/broker/real_trade. Level 5 BLOCKED. Next: Wave0 planning review only. Future Wave0 implementation requires separate approval.

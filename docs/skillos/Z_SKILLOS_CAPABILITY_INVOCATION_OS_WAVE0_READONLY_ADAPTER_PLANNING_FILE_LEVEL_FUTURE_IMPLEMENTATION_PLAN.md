@@ -1,0 +1,3 @@
+# Wave0 File-Level Future Implementation Plan
+## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_WAVE0_FILE_LEVEL_FUTURE_IMPLEMENTATION_PLAN_READY
+FUTURE_PLAN_ONLY. Future files: skillos/capability_invocation_os/adapters/wave0/__init__.py, skillos/capability_invocation_os/adapters/wave0/base.py, skillos/capability_invocation_os/adapters/wave0/github_readonly.py, skillos/capability_invocation_os/adapters/wave0/document_generation.py, skillos/capability_invocation_os/adapters/wave0/local_docs_inspection.py, skillos/capability_invocation_os/adapters/wave0/report_reading.py, tests/skillos/capability_invocation_os/adapters/wave0/. Do not create these files in this phase. No adapter code. Level 5 BLOCKED.

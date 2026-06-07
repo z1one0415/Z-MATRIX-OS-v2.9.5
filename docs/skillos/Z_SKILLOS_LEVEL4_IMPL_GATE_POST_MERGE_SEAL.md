@@ -6,7 +6,7 @@ Z_SKILLOS_LEVEL4_IMPL_GATE_POST_MERGE_SEALED
 
 ## Merge
 
-commit: PENDING
+commit: `8267c44`
 
 ## Locked (13 docs)
 

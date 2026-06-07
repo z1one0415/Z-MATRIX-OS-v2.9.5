@@ -1,3 +1,3 @@
-# Impl Plan SEAL
+# Impl SEAL
 ## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_WAVE0_READONLY_ADAPTER_EXECUTION_ENABLEMENT_IMPLEMENTATION_PLANNING_SEALED
-Branch: plan/...impl-planning. Decision: 5e7dbe5. 14 docs. Cap OS: ENABLEMENT_IMPL_PLANNING_READY. Level 5: BLOCKED. Next: review.
+Branch: plan/...impl-planning. Decision: 5e7dbe5. 26 docs. Cap OS: ENABLEMENT_IMPL_PLANNING_READY. Level 5: BLOCKED. Next: review.

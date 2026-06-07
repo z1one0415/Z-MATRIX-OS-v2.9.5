@@ -1,3 +1,3 @@
-# Wave0 P0 Review REVIEW_RISK_REGISTER
+# Wave0 P0 Review RISK_REGISTER
 ## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_WAVE0_READONLY_ADAPTER_P0_REVIEW_RISK_REGISTER_READY
-Wave0 P0 disabled-default. No runtime. No exec. Level 5 BLOCKED.
+Wave0 P0 Review Risk Register (12 risks). R1:Config S:C L:VL M:Hardcoded C:CI R:True. R2:KS S:C L:VL M:overrides C:CI R:Bypass. R3:Network S:C L:VL M:No imports C:AST R:requests. R4:Write S:C L:VL M:No write C:Side-effect R:File. R5:Exec S:C L:VL M:DENY C:Exec gate R:Execution. R6:ZMATRIX S:C L:VL M:Forbidden C:AST R:Z2. R7:Prod S:C L:VL M:Forbidden C:CI R:Production. R8:No seal S:M L:L M:Mandatory C:Merge R:No seal. R9:Skip S:L L:L M:Documented C:Unskip R:Blind. R10:Doc thin S:L L:L M:Hardened C:Review R:Missing. R11:Scope S:M L:L M:Explicit C:Wave gate R:Violation. R12:Level5 S:M L:L M:BLOCKED C:CI grep R:Level5.

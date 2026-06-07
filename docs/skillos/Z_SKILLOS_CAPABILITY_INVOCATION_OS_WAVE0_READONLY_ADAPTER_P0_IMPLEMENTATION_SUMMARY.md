@@ -1,3 +1,3 @@
-# Wave0 P0 IMPLEMENTATION_SUMMARY
+# Wave0 P0 Implementation Summary
 ## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_WAVE0_READONLY_ADAPTER_P0_IMPLEMENTATION_SUMMARY_READY
-Wave0 P0: 12 modules + 13 tests. No runtime. No exec. No network. No write. Level 5 BLOCKED.
+Wave0 read-only adapter P0 disabled-default skeleton. 12 modules: config (all enabled returns False, strict True only requested, kill switch overrides), models (internal-only, no execution fields), base (no execute/run/call/invoke), github_readonly (future actions list only, forbidden write/merge/comment, no API calls), document_generation (outputs list only, no file write/publish), local_docs_inspection (future actions list only, no file mutation), report_reading (future actions only, no report write), permissions (write/production/broker denied), evidence (Noop default, InMemory optional), failsafe (no blocking), kill_switch (all disabled, overrides). No runtime. No exec. No network. No file write. No Z-MATRIX. Level 5 BLOCKED. Tests: Wave0 32/32 + Adapter 69/71 + Runtime 63/65 + Level4 64/64 = 228/232 (4 safe skips: 2 adapter path-resolution + 2 runtime path-resolution).

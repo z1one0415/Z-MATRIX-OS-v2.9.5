@@ -1,0 +1,20 @@
+{
+  "status": "V13_5_13_TACTICAL_MONITORING_RETAINED",
+  "v13_5_13_executed": true,
+  "candidate": "RANK_ACCELERATION_ONLY",
+  "monitoring_grade": "RETAINED",
+  "composite_score": 3,
+  "oos_months_monitored": 19,
+  "new_oos_months_added": 2,
+  "20d_scope_retained": true,
+  "regime_scope_violated": false,
+  "v13_6_prep_allowed": false,
+  "paper_trading_allowed": false,
+  "alpha_claim_allowed": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "recommended_next_action": "CONTINUE_TACTICAL_MONITORING_AND_EXTENDED_OOS_ACCUMULATION"
+}

@@ -1,0 +1,10 @@
+{
+  "status": "V13_5_13_DECAY_AFTER_20D_MONITOR_BUILT",
+  "monitored_months_40d": 18,
+  "mean_40d_hl": -0.003868,
+  "monitored_months_60d": 17,
+  "mean_60d_hl": -0.015959,
+  "20d_only_scope_retained": true,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED"
+}

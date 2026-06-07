@@ -1,0 +1,18 @@
+{
+  "status": "V13_5_12_SCOPE_FREEZE_REVIEW_PASS",
+  "v13_5_12_executed": true,
+  "candidate": "RANK_ACCELERATION_ONLY",
+  "scope_frozen": true,
+  "frozen_scope": "20D_ONLY_TACTICAL_RESEARCH_CANDIDATE",
+  "candidate_baseline_formula_modified": false,
+  "candidate_baseline_modified": false,
+  "full_qualification_status": "BLOCKED",
+  "v13_6_prep_allowed": false,
+  "paper_trading_allowed": false,
+  "alpha_claim_allowed": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

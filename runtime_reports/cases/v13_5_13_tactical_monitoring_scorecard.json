@@ -1,0 +1,10 @@
+{
+  "status": "V13_5_13_TACTICAL_MONITORING_SCORECARD_BUILT",
+  "candidate": "RANK_ACCELERATION_ONLY",
+  "total_oos_months": 19,
+  "new_oos_months_added": 2,
+  "composite_score": 3,
+  "monitoring_grade": "RETAINED",
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED"
+}

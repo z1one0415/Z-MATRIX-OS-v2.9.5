@@ -1,0 +1,3 @@
+# Wave0 P0 BOUNDARY_REPORT
+## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_WAVE0_READONLY_ADAPTER_P0_BOUNDARY_REPORT_READY
+Wave0 P0: 12 modules + 13 tests. No runtime. No exec. No network. No write. Level 5 BLOCKED.

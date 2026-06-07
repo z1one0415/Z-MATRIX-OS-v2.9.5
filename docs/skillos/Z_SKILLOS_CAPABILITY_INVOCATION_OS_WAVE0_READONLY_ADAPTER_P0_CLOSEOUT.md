@@ -1,0 +1,3 @@
+# Wave0 P0 CLOSEOUT
+## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_WAVE0_READONLY_ADAPTER_P0_READY_FOR_REVIEW
+12 modules + 13 tests + docs. No runtime. Level 5 BLOCKED. Next: review.

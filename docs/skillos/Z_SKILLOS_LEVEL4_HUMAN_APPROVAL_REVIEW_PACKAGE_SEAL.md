@@ -55,10 +55,10 @@ No implementation. No warning. No caller visibility. No result_envelope mutation
 
 | If Decision | Then Next Legal Entry |
 |:--|:--|
-| NO_GO_STAY_LEVEL3 | Level 5 planning gate prep |
+| NO_GO_STAY_LEVEL3 | Level 3 remains max capability. No Level 4 branch. Level 5 remains BLOCKED unless separately authorized by a future explicit gate. |
 | MORE_DOCS_ONLY_PLANNING | Produce specified follow-up docs |
 | GO_FOR_LEVEL4_IMPLEMENTATION_PLAN_ONLY | Create named planning branch; produce 8 gate proofs |
-| REJECT_LEVEL4_WARNING_CAPABILITY | Archive Level 4 docs; Level 5 becomes next |
+| REJECT_LEVEL4_WARNING_CAPABILITY | Level 4 permanently closed. Level 5 remains BLOCKED unless separately authorized by a future explicit Level 5 planning gate. |
 
 ## Future Branch
 

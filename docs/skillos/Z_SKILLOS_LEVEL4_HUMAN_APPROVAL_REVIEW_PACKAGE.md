@@ -64,7 +64,7 @@ A complete technical gate specification for Level 4 Soft Warning, consisting of:
 | NO_GO_STAY_LEVEL3 | Low | Level 4 work stops; Level 3 remains max |
 | MORE_DOCS_ONLY_PLANNING | Low | Additional planning documents before decision |
 | GO_FOR_LEVEL4_IMPLEMENTATION_PLAN_ONLY | Medium | Authorize a future planning branch ONLY |
-| REJECT_LEVEL4_WARNING_CAPABILITY | Medium | Close Level 4 permanently; skip to Level 5 later |
+| REJECT_LEVEL4_WARNING_CAPABILITY | Medium | Close Level 4 permanently; Level 5 remains BLOCKED unless separately authorized by a future explicit Level 5 planning gate |
 
 ## Explicitly Forbidden Outcomes
 

@@ -19,7 +19,7 @@ Record the human approval decision for Level 4 Soft Warning capability authoriza
 | 1 | **NO_GO_STAY_LEVEL3** | Low | Level 4 work ends. Level 3 remains max capability. No future Level 4 branch. |
 | 2 | **MORE_DOCS_ONLY_PLANNING** | Low | Additional planning documents required before decision can be made. |
 | 3 | **GO_FOR_LEVEL4_IMPLEMENTATION_PLAN_ONLY** | Medium | Authorize creation of a future branch for disabled-by-default implementation planning. No runtime code. |
-| 4 | **REJECT_LEVEL4_WARNING_CAPABILITY** | Medium | Permanently close Level 4. Skip directly to Level 5 (Fail-Closed) when ready. |
+| 4 | **REJECT_LEVEL4_WARNING_CAPABILITY** | Medium | Permanently close Level 4. Level 5 remains BLOCKED unless separately authorized by a future explicit Level 5 planning gate. |
 
 ## Rejected Options (Not on the Ballot)
 
@@ -54,10 +54,10 @@ Record the human approval decision for Level 4 Soft Warning capability authoriza
 
 | If Decision Is | Then |
 |:--|:--|
-| NO_GO_STAY_LEVEL3 | Z-SkillOS max remains Level 3. Level 4 docs archived. Next legal entry: Level 5 planning only. |
+| NO_GO_STAY_LEVEL3 | Z-SkillOS max remains Level 3. Level 4 docs archived. Level 5 remains BLOCKED unless separately authorized by a future explicit gate. |
 | MORE_DOCS_ONLY_PLANNING | Specified follow-up documents produced. Decision re-evaluated. |
 | GO_FOR_LEVEL4_IMPLEMENTATION_PLAN_ONLY | Named branch created. 8 gate proofs produced. No runtime code. Re-approval required before any warning emission. |
-| REJECT_LEVEL4_WARNING_CAPABILITY | Level 4 permanently closed. Docs archived. Level 5 becomes next legal entry. |
+| REJECT_LEVEL4_WARNING_CAPABILITY | Level 4 permanently closed. Docs archived. Level 5 remains BLOCKED unless separately authorized by a future explicit Level 5 planning gate. |
 
 ## Signature Block
 

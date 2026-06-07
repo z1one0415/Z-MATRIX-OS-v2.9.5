@@ -1,3 +1,3 @@
-# Adapter Overview
-## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_ADAPTER_PLANNING_OVERVIEW_READY
-Adapter implementation planning overview. Scope: docs-only planning for adapter interface, permissions, contracts, evidence, rollback, waves 0-4. Depends on Runtime P1 merged. No adapter code. No Z-MATRIX imports. No capability execution. No runtime enablement. No warning. No production. Level 5 BLOCKED.
+# Adapter Implementation Planning Overview
+## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_ADAPTER_IMPLEMENTATION_PLANNING_OVERVIEW_READY
+Docs-only adapter implementation planning for Capability Invocation OS. Scope: adapter interface standard, permission model, contract standard, evidence requirements, rollback/degrade, forbidden actions matrix, waves 0-4, test/proof, file-level plan. Depends on Runtime P1 merged. No adapter code. No Z-MATRIX imports. No capability execution. No runtime enablement. No warning. No production. Level 5 BLOCKED. Next: human adapter planning merge approval decision only.

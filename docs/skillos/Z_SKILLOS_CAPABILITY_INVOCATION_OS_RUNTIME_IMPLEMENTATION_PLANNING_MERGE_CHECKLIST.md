@@ -1,2 +1,3 @@
-# Merge | Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_RUNTIME_IMPLEMENTATION_PLANNING_MERGE_CHECKLIST_READY
-14 plan+7 review+5 merge. No code/runtime/adapter. Level 5 BLOCKED. Seal mandatory.
+# Z-SkillOS Capability Invocation OS Runtime Implementation Planning Merge Checklist
+## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_RUNTIME_IMPLEMENTATION_PLANNING_MERGE_CHECKLIST_READY
+14 runtime-plan ✅ | 7 review ✅ | 5 merge-review ✅ | No code/tests/runtime ✅ | No seals modified ✅ | No adapter/warning/production ✅ | Level 5 BLOCKED ✅ | Seal mandatory ✅ | P0 64/64 ✅

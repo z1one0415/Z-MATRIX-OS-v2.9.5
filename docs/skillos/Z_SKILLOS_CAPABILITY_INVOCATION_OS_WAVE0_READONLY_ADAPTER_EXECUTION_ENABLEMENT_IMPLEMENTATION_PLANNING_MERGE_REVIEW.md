@@ -1,0 +1,3 @@
+# Impl Plan Merge MERGE_REVIEW
+## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_WAVE0_READONLY_ADAPTER_EXECUTION_ENABLEMENT_IMPLEMENTATION_PLANNING_MERGE_REVIEW_READY
+FUTURE_PLAN_ONLY. No implementation. No code change. No runtime. No exec. No call. No network. No file. No Z-MATRIX. No production. Level 5: BLOCKED.

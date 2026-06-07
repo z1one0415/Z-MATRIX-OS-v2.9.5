@@ -1,0 +1,3 @@
+# Adapter Review MERGE_READINESS
+## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_ADAPTER_IMPLEMENTATION_PLANNING_REVIEW_MERGE_READINESS_READY
+Readiness only, not merge. Source@HEAD. Target@b742c98. Post-merge seal mandatory.

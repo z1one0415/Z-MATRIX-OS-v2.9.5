@@ -1,0 +1,3 @@
+# Adapter Merge REVIEW
+## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_ADAPTER_IMPLEMENTATION_PLANNING_MERGE_REVIEW_READY
+28 docs total. No adapter. No execution. Level 5 BLOCKED. Seal mandatory.

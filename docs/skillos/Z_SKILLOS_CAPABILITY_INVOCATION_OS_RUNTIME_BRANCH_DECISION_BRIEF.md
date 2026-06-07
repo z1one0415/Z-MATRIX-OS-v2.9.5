@@ -1,0 +1,4 @@
+# Brief | Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_RUNTIME_BRANCH_DECISION_BRIEF_READY
+Evidence: Runtime planning merged, 84 docs, P0 64/64, no runtime/adapter, Level 5 BLOCKED.
+Options: NO_GO_STAY | MORE_REVIEW | **GO_FOR_RUNTIME_DISABLED_DEFAULT_P0_BRANCH_ONLY** | REJECT
+Recommendation: GO_FOR_RUNTIME_DISABLED_DEFAULT_P0_BRANCH_ONLY — human must decide. No auto.

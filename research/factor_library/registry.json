@@ -62,5 +62,8 @@
   "monitoring_execution_started": false,
   "queue_monitoring_plan_decision_status": "APPROVED_BY_HUMAN",
   "queue_monitoring_plan_decision_ref": "research/factor_library/reviews/batch_003/f5_1_6_queue_monitoring_plan_decision/batch3_queue_monitoring_plan_decision_closeout.json",
-  "monitoring_dry_run_planning_allowed": true
+  "monitoring_dry_run_planning_allowed": true,
+  "queue_monitoring_dry_run_planning_status": "PLANNED_ONLY",
+  "queue_monitoring_dry_run_planning_ref": "research/factor_library/reviews/batch_003/f5_1_7_queue_monitoring_dry_run_planning/batch3_dry_run_planning_closeout.json",
+  "dry_run_execution_started": false
 }

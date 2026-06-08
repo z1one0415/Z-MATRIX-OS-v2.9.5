@@ -1,0 +1,9 @@
+{
+ "pipeline_signature": "V13-F5-1-7-BATCH3-QUEUE-MONITORING-DRY-RUN-PLANNING",
+ "base_commit": "1048830b1020ecc276b223eeb0d2d2255f0422e4",
+ "dashboard_type": "REVIEW_SCHEMA_ONLY",
+ "allowed_panels": ["approved_queue_panel","hold_queue_panel","guardrail_status_panel","evidence_freshness_panel","family_overlap_panel","blocked_output_filter_panel","safety_boundary_panel","next_decision_panel"],
+ "forbidden_panels": ["trading_panel","broker_panel","portfolio_panel","alpha_panel","order_panel","production_panel"],
+ "execution_allowed": false,
+ "alpha_claim_allowed": false
+}

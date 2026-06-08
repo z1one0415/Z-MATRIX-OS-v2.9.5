@@ -1,0 +1,29 @@
+{
+ "pipeline_signature": "V13-F5-1-7-BATCH3-QUEUE-MONITORING-DRY-RUN-PLANNING",
+ "base_commit": "1048830b1020ecc276b223eeb0d2d2255f0422e4",
+ "proof_count": 22,
+ "proofs": [
+  {"id":"P01","proof":"no_monitoring_execution","status":"VERIFIED_IN_PLANNING"},
+  {"id":"P02","proof":"no_candidate_review_execution","status":"VERIFIED_IN_PLANNING"},
+  {"id":"P03","proof":"no_factor_calculation","status":"VERIFIED_IN_PLANNING"},
+  {"id":"P04","proof":"no_factor_result_update","status":"VERIFIED_IN_PLANNING"},
+  {"id":"P05","proof":"no_runtime_reports_write","status":"VERIFIED_IN_PLANNING"},
+  {"id":"P06","proof":"no_runtime_audit_write","status":"VERIFIED_IN_PLANNING"},
+  {"id":"P07","proof":"no_candidate_promotion","status":"VERIFIED_IN_PLANNING"},
+  {"id":"P08","proof":"no_alpha_claim","status":"VERIFIED_IN_PLANNING"},
+  {"id":"P09","proof":"no_multi_factor_composite","status":"VERIFIED_IN_PLANNING"},
+  {"id":"P10","proof":"no_weight_optimization","status":"VERIFIED_IN_PLANNING"},
+  {"id":"P11","proof":"no_paper_trading","status":"VERIFIED_IN_PLANNING"},
+  {"id":"P12","proof":"no_production","status":"VERIFIED_IN_PLANNING"},
+  {"id":"P13","proof":"no_broker_runtime","status":"VERIFIED_IN_PLANNING"},
+  {"id":"P14","proof":"no_real_trade","status":"VERIFIED_IN_PLANNING"},
+  {"id":"P15","proof":"no_skillos_modification","status":"VERIFIED_IN_PLANNING"},
+  {"id":"P16","proof":"no_v13_6","status":"VERIFIED_IN_PLANNING"},
+  {"id":"P17","proof":"no_tag","status":"VERIFIED_IN_PLANNING"},
+  {"id":"P18","proof":"approved_queue_unchanged","status":"VERIFIED_IN_PLANNING"},
+  {"id":"P19","proof":"hold_queue_unchanged","status":"VERIFIED_IN_PLANNING"},
+  {"id":"P20","proof":"F26_F27_no_auto_unlock","status":"VERIFIED_IN_PLANNING"},
+  {"id":"P21","proof":"blocked_outputs_removed","status":"VERIFIED_IN_PLANNING"},
+  {"id":"P22","proof":"noop_output_only","status":"VERIFIED_IN_PLANNING"}
+ ]
+}

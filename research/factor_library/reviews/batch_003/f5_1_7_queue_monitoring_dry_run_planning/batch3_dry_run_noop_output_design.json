@@ -1,0 +1,10 @@
+{
+ "pipeline_signature": "V13-F5-1-7-BATCH3-QUEUE-MONITORING-DRY-RUN-PLANNING",
+ "base_commit": "1048830b1020ecc276b223eeb0d2d2255f0422e4",
+ "output_mode": "NOOP_REVIEW_ONLY",
+ "execution_allowed": false,
+ "alpha_claim_allowed": false,
+ "trade_signal_allowed": false,
+ "allowed_outputs": ["dry_run_status","factor_review_state","guardrail_state","evidence_state","hold_unlock_state","blocked_output_filter_state","noop_output_hash","review_dashboard_payload"],
+ "forbidden_outputs": ["alpha_signal","buy_signal","sell_signal","order_signal","position_weight","portfolio_weight","broker_payload","real_trade_payload","production_signal"]
+}

@@ -1,0 +1,10 @@
+{
+ "pipeline_signature": "V13-F5-1-7-BATCH3-QUEUE-MONITORING-DRY-RUN-PLANNING",
+ "base_commit": "1048830b1020ecc276b223eeb0d2d2255f0422e4",
+ "decision_log_type": "DRY_RUN_PLANNING_SCHEMA_ONLY",
+ "log_execution_started": false,
+ "runtime_log_created": false,
+ "runtime_reports_write": false,
+ "fields": ["dry_run_id","factor_id","queue_status","input_snapshot_hash","guardrail_state","evidence_state","decision_state","blocked_output_filter_state","noop_output_hash","reviewer_notes_placeholder"],
+ "forbidden_fields": ["buy_signal","sell_signal","position_weight","alpha_claim","order_signal","broker_payload","real_trade_payload"]
+}

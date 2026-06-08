@@ -1,0 +1,23 @@
+{
+ "pipeline_signature": "V13-F5-1-7-BATCH3-QUEUE-MONITORING-DRY-RUN-PLANNING",
+ "base_commit": "1048830b1020ecc276b223eeb0d2d2255f0422e4",
+ "checklist_type": "DRY_RUN_PLANNING_REVIEW",
+ "checks": [
+  {"id":"GC01","name":"pit_known_at_still_valid","status":"PLANNED"},
+  {"id":"GC02","name":"coverage_tier_still_valid","status":"PLANNED"},
+  {"id":"GC03","name":"application_contract_still_readonly","status":"PLANNED"},
+  {"id":"GC04","name":"blocked_outputs_still_blocked","status":"PLANNED"},
+  {"id":"GC05","name":"blocked_downstream_still_blocked","status":"PLANNED"},
+  {"id":"GC06","name":"true_oos_required_before_promotion","status":"PLANNED"},
+  {"id":"GC07","name":"family_overlap_recheck_required","status":"PLANNED"},
+  {"id":"GC08","name":"F26_hold_conditions_not_satisfied","status":"PLANNED"},
+  {"id":"GC09","name":"F27_turnover_cost_guardrail_required","status":"PLANNED"},
+  {"id":"GC10","name":"no_auto_unlock_for_held_factors","status":"PLANNED"},
+  {"id":"GC11","name":"no_runtime_reports_write","status":"PLANNED"},
+  {"id":"GC12","name":"no_factor_result_update","status":"PLANNED"},
+  {"id":"GC13","name":"no_candidate_promotion","status":"PLANNED"},
+  {"id":"GC14","name":"no_alpha_claim","status":"PLANNED"},
+  {"id":"GC15","name":"no_broker_runtime","status":"PLANNED"},
+  {"id":"GC16","name":"no_real_trade","status":"PLANNED"}
+ ]
+}

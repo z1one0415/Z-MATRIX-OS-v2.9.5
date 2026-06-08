@@ -1,0 +1,20 @@
+{
+  "pipeline_signature": "Z2-V13-F2-3-2-F03R-MATERIALIZATION-PLANNING",
+  "status": "F03R_MATERIALIZATION_PLANNING_CONTRACT_BUILT",
+  "hypothesis_id": "F03R",
+  "hypothesis_name": "INDUSTRY_RELATIVE_REVERSAL",
+  "parent_factor_id": "F03",
+  "parent_factor_status": "REJECTED_CURRENT_DIRECTION",
+  "proposed_formula": "industry_relative_reversal_score = -1 * industry_relative_strength_score",
+  "planning_only": true,
+  "materialization_executed": false,
+  "validation_executed": false,
+  "data_snooping_risk_acknowledged": true,
+  "same_sample_validation_for_promotion_forbidden": true,
+  "requires_separate_holdout_or_future_oos_validation": true,
+  "promotion_review_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

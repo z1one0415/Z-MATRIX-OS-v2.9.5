@@ -1,0 +1,29 @@
+{
+  "pipeline_signature": "Z2-V13-F2-3-2-F06-EXTENDED-MATERIALIZATION",
+  "status": "F06_FUNDAMENTAL_QUALITY_EXTENDED_MATERIALIZED",
+  "factor_id": "F06",
+  "materialization_executed": true,
+  "extended_panel_built": true,
+  "materialized_row_count": 5193,
+  "covered_ticker_count": 5193,
+  "coverage_ratio": 0.9975,
+  "rebalance_date_count": 2,
+  "rebalance_dates": [
+    "20251231",
+    "20260331"
+  ],
+  "sample_month_count_after_extension": 2,
+  "minimum_month_count_required": 12,
+  "preferred_month_count_required": 24,
+  "sample_extension_passed": false,
+  "strict_pit_filter_applied": true,
+  "null_known_at_row_count": 0,
+  "placeholder_zero_row_count": 0,
+  "future_leakage_check_pass": true,
+  "forbidden_label_columns_present": false,
+  "forbidden_label_columns_found": [],
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

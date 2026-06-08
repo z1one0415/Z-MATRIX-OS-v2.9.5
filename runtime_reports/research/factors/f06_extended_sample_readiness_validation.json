@@ -1,0 +1,20 @@
+{
+  "pipeline_signature": "Z2-V13-F2-3-2-F06-EXTENDED-READINESS",
+  "status": "F06_EXTENDED_SAMPLE_READINESS_BLOCKED",
+  "factor_id": "F06",
+  "pit_passed": true,
+  "coverage_passed": true,
+  "sample_month_count": 2,
+  "minimum_month_count_required": 12,
+  "preferred_month_count_required": 24,
+  "minimum_sample_passed": false,
+  "preferred_sample_passed": false,
+  "ready_for_revalidation": false,
+  "blocked_reasons": [
+    "sample_month_count_2_below_minimum_12"
+  ],
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

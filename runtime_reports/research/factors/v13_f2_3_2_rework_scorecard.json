@@ -1,0 +1,19 @@
+{
+  "pipeline_signature": "Z2-V13-F2-3-2-REWORK-SCORECARD",
+  "status": "V13_F2_3_2_REWORK_SCORECARD_BUILT",
+  "f06_extension_attempted": true,
+  "f06_ready_for_revalidation": false,
+  "f06_sample_month_count_after_extension": 2,
+  "f03r_planning_built": true,
+  "f03r_materialized": false,
+  "f03r_validated": false,
+  "ready_for_next_validation": [],
+  "ready_for_promotion_review": [],
+  "multi_factor_composite_built": false,
+  "oos_alpha_validation_executed": false,
+  "v13_6_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

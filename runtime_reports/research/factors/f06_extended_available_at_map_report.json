@@ -1,0 +1,21 @@
+{
+  "pipeline_signature": "Z2-V13-F2-3-2-F06-AVAILABLE-AT-MAP",
+  "status": "F06_EXTENDED_AVAILABLE_AT_MAP_BUILT",
+  "map_built": true,
+  "row_count": 5193,
+  "covered_ticker_count": 5193,
+  "covered_report_period_count": 2,
+  "covered_report_periods": [
+    "20251231",
+    "20260331"
+  ],
+  "null_ann_date_row_count": 0,
+  "null_known_at_row_count": 0,
+  "null_available_at_row_count": 0,
+  "future_statement_leakage_detected": false,
+  "blocked_reasons": [],
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

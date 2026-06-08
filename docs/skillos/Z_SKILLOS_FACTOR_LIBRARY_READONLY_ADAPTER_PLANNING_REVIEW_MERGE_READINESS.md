@@ -37,3 +37,6 @@ Z_SKILLOS_CAP_INVOCATION_OS_FACTOR_LIBRARY_READONLY_ADAPTER_PLANNING_V2
 Wave0: FROZEN. Sandbox Evidence: MERGED. Impact Review: MERGED. Factor Library Planning: pending merge. A1: blocked. B1: blocked.
 
 ## Factor Library | Planning | ${f#*_} | Level 5 BLOCKED
+
+- Merge readiness is conditional on human approval and does not authorize A1/B1 merge.
+- Merge readiness preserves C1 dependency, parent factor interface baseline d02b60c9, and impact review seal 22252711.

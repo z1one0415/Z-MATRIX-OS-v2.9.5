@@ -37,3 +37,6 @@ Human fills all 10 PENDING fields → review decision seal
 
 > Factor Library | Planning | Review Decision | 10 PENDING | Level 5 BLOCKED
 ## Factor Library | Planning | ${f#*_} | Level 5 BLOCKED
+
+- pending_alignment_scope: PENDING — verify Factor Library adapter dependency before A1/B1 merge.
+- pending_boundary_recheck: PENDING — verify no implementation or enablement is authorized.

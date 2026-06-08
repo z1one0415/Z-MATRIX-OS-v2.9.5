@@ -37,3 +37,6 @@ Z_SKILLOS_CAP_INVOCATION_OS_FACTOR_LIBRARY_READONLY_ADAPTER_PLANNING_V2
 Wave0: FROZEN. Sandbox Evidence: MERGED. Impact Review: MERGED. Factor Library Planning: pending merge. A1: blocked. B1: blocked.
 
 ## Factor Library | Planning | ${f#*_} | Level 5 BLOCKED
+
+- Human review must verify that A1 and B1 remain blocked until factor-interface alignment hardening is complete.
+- This closeout does not authorize implementation, adapter execution, runtime enablement, or capability execution.

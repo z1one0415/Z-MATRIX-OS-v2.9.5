@@ -54,6 +54,7 @@
   "batch3_candidate_review_prep_status": "PREPARED_FOR_HUMAN_REVIEW",
   "candidate_review_executed": false,
   "candidate_promotion_executed": false,
-  "candidate_review_prep_commit": "d02b60c9c7ad8500dd5403c28710f850cf11bc47",
-  "batch3_prep_review_ref": "research/factor_library/reviews/batch_003/f5_1_3_candidate_review_prep/batch3_candidate_review_prep_closeout.json"
+  "batch3_prep_review_ref": "research/factor_library/reviews/batch_003/f5_1_3_candidate_review_prep/batch3_candidate_review_prep_closeout.json",
+  "candidate_review_prep_base_commit": "d02b60c9c7ad8500dd5403c28710f850cf11bc47",
+  "candidate_review_prep_artifact_commit": "3ef13a255c76d9acf02812d2ae3a2dda53947bd2"
 }

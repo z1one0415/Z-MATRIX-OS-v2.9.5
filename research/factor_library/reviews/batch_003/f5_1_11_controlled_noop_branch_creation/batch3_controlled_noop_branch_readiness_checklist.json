@@ -1,0 +1,87 @@
+{
+  "pipeline_signature": "V13-F5-1-11-CONTROLLED-NOOP-DRY-RUN-BRANCH-CREATION",
+  "base_commit": "0c2e6553d819d790a4c10e90acc111d3e8eb9da6",
+  "checklist_count": 20,
+  "items": [
+    {
+      "item": "base_commit_verified",
+      "status": "PASS"
+    },
+    {
+      "item": "F5_1_10_decision_verified",
+      "status": "PASS"
+    },
+    {
+      "item": "controlled_noop_branch_allowed",
+      "status": "PASS"
+    },
+    {
+      "item": "branch_created_from_exact_base",
+      "status": "PASS"
+    },
+    {
+      "item": "no_runner_implementation",
+      "status": "PASS"
+    },
+    {
+      "item": "no_dry_run_execution",
+      "status": "PASS"
+    },
+    {
+      "item": "no_monitoring_execution",
+      "status": "PASS"
+    },
+    {
+      "item": "no_candidate_review_execution",
+      "status": "PASS"
+    },
+    {
+      "item": "no_factor_calculation",
+      "status": "PASS"
+    },
+    {
+      "item": "no_factor_result_update",
+      "status": "PASS"
+    },
+    {
+      "item": "no_runtime_reports",
+      "status": "PASS"
+    },
+    {
+      "item": "no_runtime_audit",
+      "status": "PASS"
+    },
+    {
+      "item": "no_external_data_fetch",
+      "status": "PASS"
+    },
+    {
+      "item": "no_promotion",
+      "status": "PASS"
+    },
+    {
+      "item": "no_alpha_claim",
+      "status": "PASS"
+    },
+    {
+      "item": "no_broker",
+      "status": "PASS"
+    },
+    {
+      "item": "no_real_trade",
+      "status": "PASS"
+    },
+    {
+      "item": "no_skillos_modification",
+      "status": "PASS"
+    },
+    {
+      "item": "f26_f27_hold_locked",
+      "status": "PASS"
+    },
+    {
+      "item": "next_entry_is_p0_implementation_planning_only",
+      "status": "PASS"
+    }
+  ]
+}

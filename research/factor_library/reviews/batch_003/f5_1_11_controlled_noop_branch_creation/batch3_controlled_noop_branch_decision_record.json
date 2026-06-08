@@ -1,0 +1,15 @@
+{
+  "pipeline_signature": "V13-F5-1-11-CONTROLLED-NOOP-DRY-RUN-BRANCH-CREATION",
+  "base_commit": "0c2e6553d819d790a4c10e90acc111d3e8eb9da6",
+  "decision_status": "BRANCH_CREATED",
+  "decision": "CONTROLLED_NOOP_DRY_RUN_EXECUTION_BRANCH_CREATED",
+  "branch": "impl/research-batch3-controlled-noop-dry-run-execution-p0",
+  "next_legal_entry": "CONTROLLED_NOOP_DRY_RUN_EXECUTION_P0_IMPLEMENTATION_PLANNING_ONLY",
+  "implementation_allowed_now": false,
+  "dry_run_execution_started": false,
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,31 @@
+{
+  "pipeline_signature": "V13-F5-1-11-CONTROLLED-NOOP-DRY-RUN-BRANCH-CREATION",
+  "base_commit": "0c2e6553d819d790a4c10e90acc111d3e8eb9da6",
+  "allowed_future_scope": [
+    "controlled_noop_dry_run_execution_p0_implementation_planning",
+    "noop_runner_static_artifact_contract",
+    "static_input_snapshot_reader_plan",
+    "hash_only_evidence_plan",
+    "noop_output_contract_plan",
+    "no_side_effect_safety_guard_plan",
+    "rollback_plan"
+  ],
+  "blocked_scope": [
+    "dry_run_execution",
+    "monitoring_execution",
+    "candidate_review_execution",
+    "factor_calculation",
+    "factor_result_update",
+    "runtime_reports_write",
+    "runtime_audit_write",
+    "external_data_fetch",
+    "candidate_promotion",
+    "alpha_claim",
+    "paper_trading",
+    "production",
+    "broker_runtime",
+    "real_trade",
+    "SkillOS_adapter_implementation",
+    "V13_6"
+  ]
+}

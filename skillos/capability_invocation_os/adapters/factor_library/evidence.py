@@ -1,20 +1,27 @@
 """Evidence — hash-only, in-memory, no file writes. C1 handoff fields present."""
-import hashlib, json
+import hashlib
+import json
+
 from skillos.capability_invocation_os.adapters.factor_library.models import (
-    FactorEvidenceEnvelopeView, FactorAdapterDecision, BLOCKED_OUTPUTS,
+    FactorEvidenceEnvelopeView, FactorAdapterDecision,
 )
+
 
 def build_request_hash(request) -> str:
     return hashlib.sha256(json.dumps(str(request), sort_keys=True).encode()).hexdigest()
 
+
 def build_response_hash_placeholder() -> str:
     return "response_hash_placeholder_p0"
+
 
 def build_decision_hash(decision: FactorAdapterDecision) -> str:
     return hashlib.sha256(decision.value.encode()).hexdigest()
 
+
 def build_factor_evidence_view(source_commit: str = "") -> FactorEvidenceEnvelopeView:
     return FactorEvidenceEnvelopeView(source_commit=source_commit)
+
 
 def build_c1_evidence_handoff(request_hash: str, decision_hash: str, commit: str = "") -> dict:
     return {

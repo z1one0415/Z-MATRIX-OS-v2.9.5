@@ -1,0 +1,128 @@
+{
+  "pipeline_signature": "V13-F5-1-11-CONTROLLED-NOOP-DRY-RUN-BRANCH-CREATION",
+  "base_commit": "4dd8e86ff391e0af9e55de46ae3c93545798336c",
+  "clean_rebuild": true,
+  "forbidden_count": 24,
+  "forbidden_actions": [
+    {
+      "action": "dry_run_execution",
+      "status": "FORBIDDEN",
+      "enforcement": "STOP_AND_NOOP"
+    },
+    {
+      "action": "monitoring_execution",
+      "status": "FORBIDDEN",
+      "enforcement": "STOP_AND_NOOP"
+    },
+    {
+      "action": "candidate_review_execution",
+      "status": "FORBIDDEN",
+      "enforcement": "STOP_AND_NOOP"
+    },
+    {
+      "action": "factor_calculation",
+      "status": "FORBIDDEN",
+      "enforcement": "STOP_AND_NOOP"
+    },
+    {
+      "action": "alpha_claim",
+      "status": "FORBIDDEN",
+      "enforcement": "STOP_AND_NOOP"
+    },
+    {
+      "action": "production",
+      "status": "FORBIDDEN",
+      "enforcement": "STOP_AND_NOOP"
+    },
+    {
+      "action": "broker_runtime",
+      "status": "FORBIDDEN",
+      "enforcement": "STOP_AND_NOOP"
+    },
+    {
+      "action": "real_trade",
+      "status": "FORBIDDEN",
+      "enforcement": "STOP_AND_NOOP"
+    },
+    {
+      "action": "v13_6",
+      "status": "FORBIDDEN",
+      "enforcement": "STOP_AND_NOOP"
+    },
+    {
+      "action": "f26_f27_auto_unlock",
+      "status": "FORBIDDEN",
+      "enforcement": "STOP_AND_NOOP"
+    },
+    {
+      "action": "buy_signal",
+      "status": "FORBIDDEN",
+      "enforcement": "STOP_AND_NOOP"
+    },
+    {
+      "action": "sell_signal",
+      "status": "FORBIDDEN",
+      "enforcement": "STOP_AND_NOOP"
+    },
+    {
+      "action": "order_signal",
+      "status": "FORBIDDEN",
+      "enforcement": "STOP_AND_NOOP"
+    },
+    {
+      "action": "position_weight",
+      "status": "FORBIDDEN",
+      "enforcement": "STOP_AND_NOOP"
+    },
+    {
+      "action": "multi_factor_composite",
+      "status": "FORBIDDEN",
+      "enforcement": "STOP_AND_NOOP"
+    },
+    {
+      "action": "weight_optimization",
+      "status": "FORBIDDEN",
+      "enforcement": "STOP_AND_NOOP"
+    },
+    {
+      "action": "paper_trading",
+      "status": "FORBIDDEN",
+      "enforcement": "STOP_AND_NOOP"
+    },
+    {
+      "action": "runtime_reports_write",
+      "status": "FORBIDDEN",
+      "enforcement": "STOP_AND_NOOP"
+    },
+    {
+      "action": "runtime_audit_write",
+      "status": "FORBIDDEN",
+      "enforcement": "STOP_AND_NOOP"
+    },
+    {
+      "action": "external_data_fetch",
+      "status": "FORBIDDEN",
+      "enforcement": "STOP_AND_NOOP"
+    },
+    {
+      "action": "candidate_promotion",
+      "status": "FORBIDDEN",
+      "enforcement": "STOP_AND_NOOP"
+    },
+    {
+      "action": "skillos_modification",
+      "status": "FORBIDDEN",
+      "enforcement": "STOP_AND_NOOP"
+    },
+    {
+      "action": "v13_6",
+      "status": "FORBIDDEN",
+      "enforcement": "STOP_AND_NOOP"
+    },
+    {
+      "action": "tag",
+      "status": "FORBIDDEN",
+      "enforcement": "STOP_AND_NOOP"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "pipeline_signature": "V13-F5-1-11-CONTROLLED-NOOP-DRY-RUN-BRANCH-CREATION",
+  "base_commit": "4dd8e86ff391e0af9e55de46ae3c93545798336c",
+  "clean_rebuild": true,
+  "violation_count": 0,
+  "violations": [],
+  "checks": {
+    "no_runner_implementation": true,
+    "no_dry_run_execution": true,
+    "no_monitoring_execution": true,
+    "no_candidate_review_execution": true,
+    "no_factor_execution": true,
+    "no_runtime_reports_write": true,
+    "no_candidate_promotion": true,
+    "no_alpha_claim": true,
+    "no_production": true,
+    "no_broker_runtime": true,
+    "no_real_trade": true,
+    "no_v13_6": true,
+    "f26_f27_no_auto_unlock": true
+  }
+}

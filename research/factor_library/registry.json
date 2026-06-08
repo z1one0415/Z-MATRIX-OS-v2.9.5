@@ -70,5 +70,12 @@
   "dry_run_execution_planning_allowed": true,
   "dry_run_planning_decision_ref": "research/factor_library/reviews/batch_003/f5_1_8_dry_run_planning_decision/batch3_dry_run_planning_decision_closeout.json",
   "dry_run_execution_planning_status": "PLANNED_ONLY",
-  "dry_run_execution_planning_ref": "research/factor_library/reviews/batch_003/f5_1_9_dry_run_execution_planning/batch3_dry_run_execution_planning_closeout.json"
+  "dry_run_execution_planning_ref": "research/factor_library/reviews/batch_003/f5_1_9_dry_run_execution_planning/batch3_dry_run_execution_planning_closeout.json",
+  "f5_1_10_clean_rebuild_status": "REBUILT_FROM_4DD8E86",
+  "f5_1_10_invalidated_commit": "0c2e6553d819d790a4c10e90acc111d3e8eb9da6",
+  "f5_1_11_invalidated_commit": "a6c3ff25b943277aa70a104373ead26e29e2199d",
+  "controlled_noop_dry_run_branch_allowed": true,
+  "controlled_noop_dry_run_branch_created": false,
+  "noop_runner_implemented": false,
+  "next_legal_entry": "CREATE_CLEAN_CONTROLLED_NOOP_DRY_RUN_BRANCH_FROM_REBUILT_BASE_ONLY"
 }

@@ -59,5 +59,8 @@
   "candidate_review_prep_artifact_commit": "3ef13a255c76d9acf02812d2ae3a2dda53947bd2",
   "batch3_queue_monitoring_plan_status": "PLANNED_ONLY",
   "batch3_queue_monitoring_plan_ref": "research/factor_library/reviews/batch_003/f5_1_5_queue_monitoring_plan/batch3_monitoring_plan_closeout.json",
-  "monitoring_execution_started": false
+  "monitoring_execution_started": false,
+  "queue_monitoring_plan_decision_status": "APPROVED_BY_HUMAN",
+  "queue_monitoring_plan_decision_ref": "research/factor_library/reviews/batch_003/f5_1_6_queue_monitoring_plan_decision/batch3_queue_monitoring_plan_decision_closeout.json",
+  "monitoring_dry_run_planning_allowed": true
 }

@@ -92,5 +92,6 @@
   "batch3_monitoring_plan_refs": {
     "monitoring_plan_directory": "research/factor_library/reviews/batch_003/f5_1_5_queue_monitoring_plan/",
     "closeout": "research/factor_library/reviews/batch_003/f5_1_5_queue_monitoring_plan/batch3_monitoring_plan_closeout.json"
-  }
+  },
+  "queue_monitoring_plan_decision_status": "APPROVED_BY_HUMAN"
 }

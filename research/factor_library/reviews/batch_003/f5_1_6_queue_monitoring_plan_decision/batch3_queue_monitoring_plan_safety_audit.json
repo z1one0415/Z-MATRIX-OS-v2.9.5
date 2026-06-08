@@ -1,0 +1,28 @@
+{
+ "pipeline_signature": "V13-F5-1-6-HUMAN-BATCH3-QUEUE-MONITORING-PLAN-DECISION",
+ "base_commit": "2ef4e44bce650a7c603b251a9b7a6142151ecb84",
+ "violation_count": 0,
+ "violations": [],
+ "checks": {
+  "no_monitoring_execution": true,
+  "no_candidate_review_execution": true,
+  "no_factor_execution": true,
+  "no_factor_result_modification": true,
+  "no_candidate_promotion": true,
+  "no_alpha_claim": true,
+  "no_multi_factor_composite": true,
+  "no_weight_optimization": true,
+  "no_paper_trading": true,
+  "no_production": true,
+  "no_broker_runtime": true,
+  "no_real_trade": true,
+  "no_skillos_modification": true,
+  "no_runtime_reports_modification": true,
+  "no_trading_execution_broker_modification": true,
+  "no_v13_6": true,
+  "no_tag": true,
+  "f26_f27_no_auto_unlock": true,
+  "frozen_candidates_unchanged": true,
+  "rejected_factors_unchanged": true
+ }
+}

@@ -1,0 +1,15 @@
+{
+ "pipeline_signature": "V13-F5-1-6-HUMAN-BATCH3-QUEUE-MONITORING-PLAN-DECISION",
+ "base_commit": "2ef4e44bce650a7c603b251a9b7a6142151ecb84",
+ "factor_count": 8,
+ "factors": [
+  {"factor_id":"F21","decision":"APPROVED_FOR_MONITORING_DRY_RUN_PLANNING","monitoring_execution_started":false,"candidate_review_executed":false,"promotion_allowed":false,"alpha_claim_allowed":false,"production":"BLOCKED","broker_runtime":"BLOCKED","real_trade":"BLOCKED"},
+  {"factor_id":"F22","decision":"APPROVED_FOR_MONITORING_DRY_RUN_PLANNING","monitoring_execution_started":false,"candidate_review_executed":false,"promotion_allowed":false,"alpha_claim_allowed":false,"production":"BLOCKED","broker_runtime":"BLOCKED","real_trade":"BLOCKED"},
+  {"factor_id":"F24","decision":"APPROVED_FOR_MONITORING_DRY_RUN_PLANNING","monitoring_execution_started":false,"candidate_review_executed":false,"promotion_allowed":false,"alpha_claim_allowed":false,"production":"BLOCKED","broker_runtime":"BLOCKED","real_trade":"BLOCKED"},
+  {"factor_id":"F30","decision":"APPROVED_FOR_MONITORING_DRY_RUN_PLANNING","monitoring_execution_started":false,"candidate_review_executed":false,"promotion_allowed":false,"alpha_claim_allowed":false,"production":"BLOCKED","broker_runtime":"BLOCKED","real_trade":"BLOCKED"},
+  {"factor_id":"F31","decision":"APPROVED_FOR_MONITORING_DRY_RUN_PLANNING","monitoring_execution_started":false,"candidate_review_executed":false,"promotion_allowed":false,"alpha_claim_allowed":false,"production":"BLOCKED","broker_runtime":"BLOCKED","real_trade":"BLOCKED"},
+  {"factor_id":"F34","decision":"APPROVED_FOR_MONITORING_DRY_RUN_PLANNING","monitoring_execution_started":false,"candidate_review_executed":false,"promotion_allowed":false,"alpha_claim_allowed":false,"production":"BLOCKED","broker_runtime":"BLOCKED","real_trade":"BLOCKED"},
+  {"factor_id":"F26","decision":"HOLD_REMAINS_LOCKED","automatic_unlock_allowed":false,"blocked_until":"HUMAN_HOLD_UNLOCK_DECISION","monitoring_dry_run_scope":"HOLD_UNLOCK_CONDITION_TRACKING_PLAN_ONLY","promotion_allowed":false,"alpha_claim_allowed":false,"production":"BLOCKED","broker_runtime":"BLOCKED","real_trade":"BLOCKED"},
+  {"factor_id":"F27","decision":"HOLD_REMAINS_LOCKED","automatic_unlock_allowed":false,"blocked_until":"HUMAN_HOLD_UNLOCK_DECISION","monitoring_dry_run_scope":"HOLD_UNLOCK_CONDITION_TRACKING_PLAN_ONLY","promotion_allowed":false,"alpha_claim_allowed":false,"production":"BLOCKED","broker_runtime":"BLOCKED","real_trade":"BLOCKED"}
+ ]
+}

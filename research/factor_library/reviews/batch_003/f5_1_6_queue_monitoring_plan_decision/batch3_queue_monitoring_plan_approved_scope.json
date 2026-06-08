@@ -1,0 +1,29 @@
+{
+ "pipeline_signature": "V13-F5-1-6-HUMAN-BATCH3-QUEUE-MONITORING-PLAN-DECISION",
+ "base_commit": "2ef4e44bce650a7c603b251a9b7a6142151ecb84",
+ "allowed_next_scope": [
+  "queue_monitoring_dry_run_planning",
+  "monitoring_input_snapshot_design",
+  "monitoring_decision_log_design",
+  "monitoring_noop_output_design",
+  "hold_unlock_condition_tracking_design",
+  "review_dashboard_schema_design"
+ ],
+ "blocked_next_scope": [
+  "monitoring_execution",
+  "candidate_review_execution",
+  "factor_calculation",
+  "factor_result_update",
+  "candidate_promotion",
+  "alpha_claim",
+  "multi_factor_composite",
+  "weight_optimization",
+  "paper_trading",
+  "production",
+  "broker_runtime",
+  "real_trade",
+  "SkillOS_adapter_implementation",
+  "V13_6"
+ ],
+ "scope_type": "DRY_RUN_PLANNING_ONLY"
+}

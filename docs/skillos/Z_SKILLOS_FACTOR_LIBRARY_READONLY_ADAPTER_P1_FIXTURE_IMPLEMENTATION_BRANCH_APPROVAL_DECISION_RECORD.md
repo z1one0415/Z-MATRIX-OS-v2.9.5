@@ -1,26 +1,43 @@
 # Z-SkillOS Factor Library Read-Only Adapter P1 Fixture Implementation Branch Approval Decision Record
 
-## Status: Z_SKILLOS_FACTOR_LIBRARY_READONLY_ADAPTER_P1_FIXTURE_IMPLEMENTATION_BRANCH_APPROVAL_DECISION_PENDING
+## Status: Z_SKILLOS_FACTOR_LIBRARY_READONLY_ADAPTER_P1_FIXTURE_IMPLEMENTATION_BRANCH_APPROVAL_DECISION_APPROVED
 
-## Date: 2026-06-08
+## Date: 2026-06-09
 ## Base Branch: postmerge/skillos-v0-baseline-freeze
-## Base HEAD: 94ef1675e70cc165d683ead235be849c27db58e3
+## Base HEAD: 1b21ac0955af4c099e17c3e20abba808f31cb4e5
 
 ## Decision Fields
 
 | Field | Value |
 |:--|:--|
-| approver_name | PENDING |
-| approver_role | PENDING |
-| approval_date | PENDING |
-| decision | PENDING |
-| reviewed_p0_seal | PENDING |
-| reviewed_p1_fixture_planning_seal | PENDING |
-| approved_branch_name | PENDING |
-| approved_scope | PENDING |
-| conditions | PENDING |
-| rollback_triggers | PENDING |
-| next_allowed_action | PENDING |
+| approver_name | Human (周毅) |
+| approver_role | Project Owner |
+| approval_date | 2026-06-09 |
+| decision | APPROVE_FACTOR_LIBRARY_P1_FIXTURE_DISABLED_DEFAULT_IMPLEMENTATION_BRANCH |
+| reviewed_p0_seal | VERIFIED — POST_MERGE_SEALED |
+| reviewed_p1_fixture_planning_seal | VERIFIED — POST_MERGE_SEALED |
+| approved_branch_name | impl/skillos-factor-library-readonly-adapter-p1-fixture-disabled-default |
+| approved_scope | Fixture-only disabled-default implementation: fixtures.py, fixture_provider.py, fixture-only response/evidence builders, fake in-memory fixtures, proof tests, no real factor read. |
+| conditions | See below |
+| rollback_triggers | See Risk Register |
+| next_allowed_action | Create implementation branch and implement fixture-only layer |
+
+## Conditions
+
+- No runtime enablement.
+- No adapter execution enablement.
+- No capability execution.
+- No real factor call.
+- No real Z-MATRIX call.
+- No research/factor_library read.
+- No parent artifact copy.
+- No network.
+- No runtime_reports.
+- No runtime_audit.
+- No production/broker/real_trade.
+- No alpha claim.
+- No paper trading.
+- Level 5 remains BLOCKED.
 
 ## Available Decisions
 
@@ -31,7 +48,7 @@
 | 3 | REJECT_P1_FIXTURE_IMPLEMENTATION_BRANCH | Reject fixture implementation branch entirely |
 | 4 | PAUSE_FACTOR_LIBRARY_FIXTURE_WORK | Pause all factor library fixture work pending other priorities |
 
-## Recommended Decision
+## Selected Decision
 
 **APPROVE_FACTOR_LIBRARY_P1_FIXTURE_DISABLED_DEFAULT_IMPLEMENTATION_BRANCH**
 
@@ -43,25 +60,27 @@
 4. The implementation branch scope is strictly limited to fake static data and fixture-only tests.
 5. No real data access, no runtime enablement, no capability execution.
 6. Risk register identifies 14 risks with full mitigation and rollback triggers.
-7. This is a natural progression from planning to implementation following established gate pattern.
+7. Approval gate checklist (28 checks) all passed.
 
-## If Approved — Target Branch
+## Approved Target Branch
 
 ```
 impl/skillos-factor-library-readonly-adapter-p1-fixture-disabled-default
 ```
 
-## If Approved — Allowed Scope
+## Approved Scope
 
 - `fixtures.py` — static fake fixture data
 - `fixture_provider.py` — fixture provider with hardcoded fake returns
-- Fixture-only tests under `tests/skillos/adapters/factor_library/`
+- Minimal adapter.py extension for fixture_mode test injection
+- Fixture-only evidence and output filter extensions
+- Fixture-only tests under `tests/skillos/capability_invocation_os/adapters/factor_library/`
 - Optional static JSON under `tests/fixtures/skillos/factor_library/`
 - All outputs carry `no_real_source_flag=True` and `P1_FIXTURE_ONLY=True`
 - All adapters remain `enabled() → False`
 - Kill switch remains active
 
-## If Approved — Forbidden Even After Approval
+## Forbidden Even After Approval
 
 - No real factor read
 - No research/factor_library read
@@ -78,42 +97,21 @@ impl/skillos-factor-library-readonly-adapter-p1-fixture-disabled-default
 
 ## Boundary Confirmation
 
-- No runtime enablement is authorized by this gate
-- No adapter execution enablement is authorized by this gate
-- No capability execution is authorized by this gate
-- No real factor call is authorized by this gate
-- No real Z-MATRIX module call is authorized by this gate
-- No production/broker/real_trade is authorized by this gate
-- No alpha claim is authorized by this gate
-- No paper trading is authorized by this gate
-- No Level 5 planning is authorized by this gate
-- All of the above remain BLOCKED and FORBIDDEN regardless of decision
-
-## Post-Decision Actions
-
-### If APPROVE:
-1. Create branch `impl/skillos-factor-library-readonly-adapter-p1-fixture-disabled-default` from postmerge HEAD
-2. Implement fixtures.py, fixture_provider.py, fixture tests
-3. All P0 tests must continue passing (48/48)
-4. New fixture tests must pass
-5. Submit for merge review with full evidence
-
-### If REQUEST_MORE_DETAIL:
-1. Additional planning documents added to postmerge
-2. Return to this gate after planning update
-
-### If REJECT:
-1. No implementation branch created
-2. Factor library work paused or redirected
-
-### If PAUSE:
-1. No implementation branch created
-2. Work paused pending other priorities
-3. Gate remains READY for future decision
+- No runtime enablement is authorized by this decision
+- No adapter execution enablement is authorized by this decision
+- No capability execution is authorized by this decision
+- No real factor call is authorized by this decision
+- No real Z-MATRIX module call is authorized by this decision
+- No production/broker/real_trade is authorized by this decision
+- No alpha claim is authorized by this decision
+- No paper trading is authorized by this decision
+- No Level 5 planning is authorized by this decision
+- All of the above remain BLOCKED and FORBIDDEN
 
 ## Signatures
 
 - Gate Author: Z2 Engineering Agent
 - Gate Date: 2026-06-08
-- Decision: PENDING
-- Decision Date: PENDING
+- Decision: APPROVE_FACTOR_LIBRARY_P1_FIXTURE_DISABLED_DEFAULT_IMPLEMENTATION_BRANCH
+- Decision Date: 2026-06-09
+- Approver: Human (周毅)

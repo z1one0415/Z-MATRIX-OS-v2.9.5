@@ -1,0 +1,30 @@
+{
+  "pipeline_signature": "Z2-V13-F3-4-TRUE-OOS-REQUIREMENT-CONTRACT",
+  "status": "V13_F3_4_TRUE_OOS_REQUIREMENT_CONTRACT_BUILT",
+  "base_commit": "e6a3567",
+  "requirement_plan_only": true,
+  "true_oos_validation_executed": false,
+  "oos_label_generation_executed": false,
+  "composite_execution_allowed": false,
+  "composite_panel_generation_allowed": false,
+  "weight_optimization_allowed": false,
+  "candidate_scope": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "blueprint_scope": "F04_F10_F11_RESEARCH_TRIAD_BLUEPRINT",
+  "minimum_true_oos_months_required": 6,
+  "preferred_true_oos_months_required": 12,
+  "same_sample_promotion_forbidden": true,
+  "freeze_pre_sample_reuse_forbidden": true,
+  "promotion_allowed": false,
+  "v13_6_allowed": false,
+  "paper_trading_allowed": false,
+  "alpha_claim_allowed": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,33 @@
+{
+  "pipeline_signature": "Z2-V13-F3-4-FREEZE-BOUNDARY-OOS-ELIGIBILITY",
+  "status": "V13_F3_4_FREEZE_BOUNDARY_OOS_ELIGIBILITY_PLAN_BUILT",
+  "selection_boundary_commit": "e6a3567",
+  "freeze_source_commit": "c4d59ba",
+  "candidate_factors": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "per_factor_last_in_sample_rebalance_date": [
+    {
+      "factor_id": "F04",
+      "last_in_sample_rebalance_date": "N/A"
+    },
+    {
+      "factor_id": "F10",
+      "last_in_sample_rebalance_date": "N/A"
+    },
+    {
+      "factor_id": "F11",
+      "last_in_sample_rebalance_date": "N/A"
+    }
+  ],
+  "minimum_oos_start_exclusive_rule": "after max(last_in_sample_rebalance_date, candidate_freeze_boundary)",
+  "same_sample_reuse_forbidden": true,
+  "oos_eligibility_check_executed": false,
+  "true_oos_validation_executed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

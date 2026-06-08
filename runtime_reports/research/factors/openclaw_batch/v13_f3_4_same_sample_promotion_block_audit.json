@@ -1,0 +1,14 @@
+{
+  "pipeline_signature": "Z2-V13-F3-4-SAME-SAMPLE-PROMOTION-BLOCK-AUDIT",
+  "status": "V13_F3_4_SAME_SAMPLE_PROMOTION_BLOCK_AUDIT_PASS",
+  "same_sample_promotion_blocked": true,
+  "ready_for_promotion_review": [],
+  "true_oos_validation_executed": false,
+  "composite_execution_executed": false,
+  "alpha_claim_allowed": false,
+  "violation_count": 0,
+  "violations": [],
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

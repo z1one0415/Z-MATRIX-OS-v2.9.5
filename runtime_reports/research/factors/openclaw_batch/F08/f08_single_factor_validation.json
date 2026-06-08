@@ -1,0 +1,14 @@
+{
+  "factor_id": "F08",
+  "single_factor_validation_executed": false,
+  "ic_validation_executed": false,
+  "bucket_validation_executed": false,
+  "cost_adjusted_validation_executed": false,
+  "regime_split_executed": false,
+  "sample_month_count": 1,
+  "evidence_score": "BLOCKED_BY_SAMPLE",
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

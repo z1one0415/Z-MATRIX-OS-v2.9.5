@@ -1,0 +1,20 @@
+{
+  "factor_id": "F03R",
+  "factor_name": "INDUSTRY_RELATIVE_REVERSAL",
+  "subsession_status": "PASS_PLANNING_ONLY",
+  "materialized": false,
+  "pit_passed": false,
+  "coverage_passed": false,
+  "single_factor_validation_executed": false,
+  "evidence_score": "HYPOTHESIS_ONLY",
+  "ready_for_parent_merge": true,
+  "ready_for_promotion_review": false,
+  "data_snooping_risk_acknowledged": true,
+  "same_sample_validation_for_promotion_forbidden": true,
+  "multi_factor_composite_built": false,
+  "v13_6_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,13 @@
+{
+  "factor_id": "F13",
+  "factor_name": "SHAREHOLDER_YIELD_LIGHT",
+  "evidence_score": "BLOCKED_BY_SAMPLE",
+  "single_factor_validation_executed": false,
+  "sample_month_count": 1,
+  "min_month_count_required": 12,
+  "is_price_only": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

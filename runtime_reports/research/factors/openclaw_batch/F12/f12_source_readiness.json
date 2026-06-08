@@ -1,0 +1,13 @@
+{
+  "factor_id": "F12",
+  "price_bars_available": true,
+  "price_bar_file_count": 5523,
+  "fundamentals_available": true,
+  "fundamental_file_count": 5206,
+  "data_sources_satisfied": true,
+  "blocked_reasons": [],
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,23 @@
+{
+  "pipeline_signature": "Z2-V13-F3-0-SUBSESSION-FORMULA",
+  "factor_id": "F03R",
+  "factor_name": "INDUSTRY_RELATIVE_REVERSAL",
+  "factor_family": "REVERSAL",
+  "priority": "P2",
+  "formula": "industry_relative_reversal_score = -1 * industry_relative_strength_score",
+  "economic_hypothesis": "in current regime, top industry-relative stocks underperform (reversal)",
+  "data_sources": [
+    "price_bars",
+    "sector_mapping"
+  ],
+  "horizons": [
+    "PLANNING_ONLY"
+  ],
+  "required_diagnostics": [],
+  "is_planning_only": true,
+  "requires_fundamentals": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

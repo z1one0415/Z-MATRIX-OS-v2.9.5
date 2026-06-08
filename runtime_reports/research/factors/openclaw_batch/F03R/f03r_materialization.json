@@ -1,0 +1,11 @@
+{
+  "factor_id": "F03R",
+  "materialization_executed": false,
+  "extended_panel_built": false,
+  "planning_only": true,
+  "note": "data_snooping_risk; requires separate holdout or future OOS validation",
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

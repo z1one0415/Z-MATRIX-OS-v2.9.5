@@ -1,0 +1,27 @@
+{
+  "pipeline_signature": "Z2-V13-F3-0-SUBSESSION-FORMULA",
+  "factor_id": "F13",
+  "factor_name": "SHAREHOLDER_YIELD_LIGHT",
+  "factor_family": "YIELD",
+  "priority": "P1",
+  "formula": "shareholder_yield = dividend_yield_proxy - dilution_proxy",
+  "economic_hypothesis": "companies returning cash to shareholders outperform",
+  "data_sources": [
+    "fundamentals",
+    "corporate_action"
+  ],
+  "horizons": [
+    "20D",
+    "60D"
+  ],
+  "required_diagnostics": [
+    "source_readiness",
+    "dividend_coverage"
+  ],
+  "is_planning_only": false,
+  "requires_fundamentals": true,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,27 @@
+{
+  "pipeline_signature": "Z2-V13-F3-0-SUBSESSION-FORMULA",
+  "factor_id": "F12",
+  "factor_name": "VALUE_COMPOSITE_LIGHT",
+  "factor_family": "VALUE",
+  "priority": "P1",
+  "formula": "value_score = rank(bps/price) + rank(eps/price)",
+  "economic_hypothesis": "cheap stocks outperform expensive stocks",
+  "data_sources": [
+    "fundamentals",
+    "price_bars"
+  ],
+  "horizons": [
+    "20D",
+    "60D"
+  ],
+  "required_diagnostics": [
+    "reporting_freshness",
+    "coverage"
+  ],
+  "is_planning_only": false,
+  "requires_fundamentals": true,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,11 @@
+{
+  "factor_id": "F03R",
+  "factor_name": "INDUSTRY_RELATIVE_REVERSAL",
+  "evidence_score": "HYPOTHESIS_ONLY",
+  "single_factor_validation_executed": false,
+  "planning_only": true,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

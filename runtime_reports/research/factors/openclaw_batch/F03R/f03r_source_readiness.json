@@ -1,0 +1,9 @@
+{
+  "factor_id": "F03R",
+  "price_bars_available": true,
+  "data_sources_satisfied": true,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,26 @@
+{
+  "pipeline_signature": "Z2-V13-F3-0-SUBSESSION-FORMULA",
+  "factor_id": "F10",
+  "factor_name": "LOW_VOLATILITY",
+  "factor_family": "RISK",
+  "priority": "P0",
+  "formula": "low_volatility_score = -std(daily_return, 60D)",
+  "economic_hypothesis": "low volatility stocks outperform high volatility stocks on risk-adjusted basis",
+  "data_sources": [
+    "price_bars"
+  ],
+  "horizons": [
+    "20D",
+    "60D"
+  ],
+  "required_diagnostics": [
+    "down_market_protection",
+    "volatility_regime_split"
+  ],
+  "is_planning_only": false,
+  "requires_fundamentals": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

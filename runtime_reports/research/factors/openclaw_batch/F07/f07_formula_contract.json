@@ -1,0 +1,26 @@
+{
+  "pipeline_signature": "Z2-V13-F3-0-SUBSESSION-FORMULA",
+  "factor_id": "F07",
+  "factor_name": "PROFITABILITY_MOMENTUM_LIGHT",
+  "factor_family": "FUNDAMENTAL_MOMENTUM",
+  "priority": "P1",
+  "formula": "profitability_momentum = current_profitability_proxy - prior_period_profitability_proxy",
+  "economic_hypothesis": "improving profitability signals future outperformance",
+  "data_sources": [
+    "fundamentals"
+  ],
+  "horizons": [
+    "20D",
+    "60D"
+  ],
+  "required_diagnostics": [
+    "period_comparison",
+    "disclosure_freshness"
+  ],
+  "is_planning_only": false,
+  "requires_fundamentals": true,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,42 +1,19 @@
 # Wave0 Controlled Read-Only Execution Planning Review Decision Record
 
-## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_WAVE0_CONTROLLED_READONLY_EXECUTION_PLANNING_REVIEW_DECISION_PENDING
-Branch: plan/...controlled-readonly-execution-planning @ 86b5851 | Level 5: BLOCKED
+## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_WAVE0_CONTROLLED_READONLY_EXECUTION_PLANNING_REVIEW_DECISION_APPROVED_FOR_MERGE_REVIEW_ONLY
+Branch: plan/...controlled-readonly-execution-planning @ 7c19888 | Level 5: BLOCKED
 
-## PENDING Decision Fields (10 total)
+| Field | Value |
+|:--|:--|
+| approver_name | `Project Owner` |
+| approver_role | `Human Approver / Project Owner` |
+| approval_date | `2026-06-07` |
+| decision | `GO_FOR_CONTROLLED_EXECUTION_PLANNING_MERGE_REVIEW_ONLY` |
+| reviewed_docs | `YES — Hardening v2 cloud verified at 7c198886950efeeeb5206247f8d8186c7c8b936e.` |
+| reviewed_risks | `YES — Review Risk Register has 12 risks; Merge Risk Register has 10 risks.` |
+| required_follow_up | `Prepare merge approval decision, then perform docs-only merge and post-merge seal if target HEAD remains unchanged.` |
+| conditions | `Docs-only. No runtime enablement. No adapter execution enablement. No capability execution. No real adapter call. No network call. No file read/write. No external publish. No Z-MATRIX module calling. No Z-MATRIX module adapter. No warning enablement. No caller-visible warning. No result_envelope mutation. No blocking. No fail-closed. No production/broker/real_trade. No V12.x. No tag. No Level 5 planning. Level 5 remains BLOCKED.` |
+| rollback_triggers | `Any code change; any test change; any runtime enablement; any adapter execution enablement; any capability execution; any real adapter call; any network call; any file read/write; any external publish; any Z-MATRIX module call; any Z-MATRIX module adapter; any warning enablement; any caller-visible warning; any result_envelope mutation; any blocking/fail-closed behavior; any production/broker/real_trade linkage; any V12.x advancement; any tag; any Level 5 planning attempt.` |
+| next_allowed_action | `Wave0 Controlled Read-Only Execution Planning merge approval decision only.` |
 
-| # | Field | Status | Description |
-|:--|:--|:--:|:--|
-| 1 | approver_name | PENDING | Human approver identity |
-| 2 | approver_role | PENDING | Role: Human Approver / Project Owner |
-| 3 | approval_date | PENDING | Date of decision (YYYY-MM-DD) |
-| 4 | decision | PENDING | GO_FOR_MERGE_REVIEW / NO_GO / MORE_REVIEW / REJECT |
-| 5 | reviewed_docs | PENDING | Confirmation: 26 docs reviewed, all FUTURE_PLAN_ONLY |
-| 6 | reviewed_risks | PENDING | Confirmation: Risk Register with 12 items reviewed |
-| 7 | required_follow_up | PENDING | Next action after review approval |
-| 8 | conditions | PENDING | Constraints: docs-only merge, no enablement, no execution |
-| 9 | rollback_triggers | PENDING | Conditions requiring rollback of review decision |
-| 10 | next_allowed_action | PENDING | Only merge approval decision, no merge, no enablement |
-
-## Decision Options
-| # | Option | Meaning |
-|:--|:--|:--|
-| 1 | GO_FOR_CONTROLLED_EXECUTION_PLANNING_MERGE_REVIEW_ONLY | Proceed to merge review |
-| 2 | NO_GO_FIX_CONTROLLED_EXECUTION_PLANNING | Fix planning docs |
-| 3 | MORE_CONTROLLED_EXECUTION_PLANNING_REVIEW_REQUIRED | Need more review |
-| 4 | REJECT_CONTROLLED_EXECUTION_PATH | Terminate path |
-
-## Rejected Options (Permanent)
-DIRECT_MERGE_WITHOUT_REVIEW | DIRECT_RUNTIME_ENABLEMENT | DIRECT_ADAPTER_EXECUTION | DIRECT_CAPABILITY_EXECUTION | REAL_ADAPTER_CALL_NOW | NETWORK_CALL_NOW | FILE_WRITE_NOW | ZMATRIX_CALL_NOW | PRODUCTION_BROKER_REAL_TRADE | TAG_RELEASE | LEVEL5_PLANNING_NOW
-
-## Human Decision Template
-```
-Date: YYYY-MM-DD
-Approver: __________________
-Decision: [1|2|3|4]
-Notes: __________________
-```
-
-## Next: Human fills all 10 PENDING fields → Review Decision Seal
-
-> Cap OS Wave0 | Controlled Exec Planning | Review Decision Record | 10 PENDING | Level 5 BLOCKED
+> Cap OS Wave0 | Controlled Exec Planning | Review Decision | APPROVED | Level 5 BLOCKED

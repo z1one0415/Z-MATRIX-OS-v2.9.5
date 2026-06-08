@@ -1,0 +1,33 @@
+{
+  "pipeline_signature": "Z2-V13-F2-3-2-F06-SOURCE-AUDIT",
+  "status": "F06_FUNDAMENTAL_EXTENSION_SOURCE_AUDIT_BUILT",
+  "factor_id": "F06",
+  "fundamental_directory_exists": true,
+  "total_fundamental_files": 5206,
+  "total_fundamental_rows": 5206,
+  "required_fields_available": true,
+  "available_fundamental_field_count": 108,
+  "available_end_date_periods": [
+    "20251231",
+    "20260331"
+  ],
+  "available_end_date_count": 2,
+  "total_ann_dates_discovered": 26,
+  "has_ann_date": true,
+  "has_end_date": true,
+  "candidate_rebalance_month_count": 1,
+  "candidate_rebalance_months": [
+    "202603"
+  ],
+  "minimum_month_count_required": 12,
+  "preferred_month_count_required": 24,
+  "extension_possible": true,
+  "blocked_reasons": [],
+  "synthetic_fundamentals_used": false,
+  "lookahead_ann_date_detected": false,
+  "forward_filled_future_statement_detected": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

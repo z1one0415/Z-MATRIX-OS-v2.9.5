@@ -1,0 +1,4 @@
+# Z-MATRIX Integration Multi-Planning Decision Record
+## Status: Z_SKILLOS_ZMATRIX_INTEGRATION_MULTI_PLANNING_DECISION_PENDING
+Base: postmerge @ 67cd642 | Level 5: BLOCKED
+## Options: 1-GO_FOR_MULTI_PLANNING_ONLY | 2-NO_GO | 3-MORE_REVIEW | 4-REJECT

@@ -1,0 +1,19 @@
+{
+  "pipeline_signature": "V13-F5-1-11-CONTROLLED-NOOP-DRY-RUN-BRANCH-CREATION",
+  "base_commit": "4dd8e86ff391e0af9e55de46ae3c93545798336c",
+  "clean_rebuild": true,
+  "allowed_future_scope": [
+    "create_clean_controlled_noop_dry_run_branch",
+    "noop_runner_static_artifact_contract"
+  ],
+  "blocked_scope": [
+    "dry_run_execution",
+    "monitoring_execution",
+    "candidate_review_execution",
+    "factor_calculation",
+    "production",
+    "broker_runtime",
+    "real_trade",
+    "V13_6"
+  ]
+}

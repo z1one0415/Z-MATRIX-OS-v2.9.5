@@ -1,0 +1,8 @@
+{
+  "pipeline_signature": "V13-F5-1-11-CONTROLLED-NOOP-DRY-RUN-BRANCH-CREATION",
+  "base_commit": "4dd8e86ff391e0af9e55de46ae3c93545798336c",
+  "clean_rebuild": true,
+  "decision_status": "CLEAN_REBUILD_READY_FOR_BRANCH_CREATION",
+  "next_legal_entry": "CREATE_CLEAN_CONTROLLED_NOOP_DRY_RUN_BRANCH_FROM_REBUILT_BASE_ONLY",
+  "implementation_allowed_now": false
+}

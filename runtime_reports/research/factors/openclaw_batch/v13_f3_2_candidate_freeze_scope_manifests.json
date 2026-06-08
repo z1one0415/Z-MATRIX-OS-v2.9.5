@@ -1,0 +1,71 @@
+[
+  {
+    "factor_id": "F04",
+    "factor_name": "RESIDUAL_MOMENTUM",
+    "freeze_status": "FROZEN_CANDIDATE",
+    "candidate_type": "FULL_HORIZON_RESEARCH_CANDIDATE",
+    "source_decision": "V13.F3.1",
+    "allowed_horizons": [
+      "20D",
+      "60D"
+    ],
+    "blocked_horizons": [],
+    "allowed_regimes": [
+      "ALL_RESEARCH_REGIMES"
+    ],
+    "blocked_regimes": [],
+    "known_risks": [
+      "evidence=PASS_RESEARCH_EVIDENCE",
+      "signal_stability=PASS",
+      "horizon_regime=FULL_HORIZON_CANDIDATE",
+      "cost_fragility=COST_RESILIENT"
+    ],
+    "requires_true_oos_before_promotion": true,
+    "promotion_allowed": false,
+    "alpha_claim_allowed": false
+  },
+  {
+    "factor_id": "F10",
+    "factor_name": "LOW_VOLATILITY",
+    "freeze_status": "FROZEN_CANDIDATE",
+    "candidate_type": "REGIME_SPECIFIC_RESEARCH_CANDIDATE",
+    "source_decision": "V13.F3.1",
+    "allowed_horizons": [
+      "20D",
+      "60D"
+    ],
+    "preferred_regimes": [
+      "DOWN_MARKET",
+      "HIGH_VOLATILITY"
+    ],
+    "risk_flags": [
+      "MAY_UNDERPERFORM_IN_STRONG_UP_MARKET"
+    ],
+    "requires_regime_gate_before_use": true,
+    "requires_true_oos_before_promotion": true,
+    "promotion_allowed": false,
+    "alpha_claim_allowed": false
+  },
+  {
+    "factor_id": "F11",
+    "factor_name": "SHORT_TERM_REVERSAL",
+    "freeze_status": "FROZEN_TACTICAL_CANDIDATE",
+    "candidate_type": "TACTICAL_RESEARCH_CANDIDATE",
+    "source_decision": "V13.F3.1",
+    "allowed_horizons": [
+      "5D",
+      "20D"
+    ],
+    "blocked_horizons": [
+      "60D_FOR_STANDALONE_USE"
+    ],
+    "risk_flags": [
+      "COST_FRAGILE_HIGH_TURNOVER",
+      "TACTICAL_ONLY"
+    ],
+    "requires_cost_gate_before_use": true,
+    "requires_true_oos_before_promotion": true,
+    "promotion_allowed": false,
+    "alpha_claim_allowed": false
+  }
+]

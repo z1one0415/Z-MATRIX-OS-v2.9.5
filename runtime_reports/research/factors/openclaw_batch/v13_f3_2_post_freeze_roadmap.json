@@ -1,0 +1,22 @@
+{
+  "pipeline_signature": "Z2-V13-F3-2-POST-FREEZE-ROADMAP",
+  "status": "V13_F3_2_POST_FREEZE_ROADMAP_BUILT",
+  "next_allowed_steps": [
+    "PREPARE_V13_F3_3_RESEARCH_COMPOSITE_DESIGN",
+    "PREPARE_V13_F3_4_TRUE_OOS_REQUIREMENT_PLAN",
+    "PREPARE_V13_F3_5_CANDIDATE_MONITORING_PLAN"
+  ],
+  "recommended_next_action": "PREPARE_V13_F3_3_RESEARCH_COMPOSITE_DESIGN",
+  "forbidden_next_steps": [
+    "V13_6",
+    "PAPER_TRADING",
+    "ALPHA_CLAIM",
+    "PRODUCTION",
+    "BROKER_RUNTIME",
+    "REAL_TRADE"
+  ],
+  "multi_factor_composite_execution_allowed": false,
+  "multi_factor_composite_design_allowed": true,
+  "weight_optimization_allowed": false,
+  "alpha_claim_allowed": false
+}

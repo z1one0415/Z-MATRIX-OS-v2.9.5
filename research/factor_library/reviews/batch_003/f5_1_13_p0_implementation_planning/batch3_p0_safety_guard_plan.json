@@ -1,0 +1,175 @@
+{
+  "pipeline_signature": "V13-F5-1-13-CONTROLLED-NOOP-DRY-RUN-EXECUTION-P0-IMPLEMENTATION-PLANNING",
+  "base_commit": "3c49f076a39a5d93c1c23a029c8bfb4018a06f69",
+  "guard_count": 24,
+  "guards": [
+    {
+      "guard_id": "kill_if_runner_enable_requested",
+      "trigger": "detected_in_runner_payload",
+      "action": "KILL_AND_NOOP",
+      "rollback_marker": true,
+      "test_required": true
+    },
+    {
+      "guard_id": "kill_if_dry_run_execution_requested_before_p0_approval",
+      "trigger": "detected_in_runner_payload",
+      "action": "KILL_AND_NOOP",
+      "rollback_marker": true,
+      "test_required": true
+    },
+    {
+      "guard_id": "kill_if_factor_calculation_requested",
+      "trigger": "detected_in_runner_payload",
+      "action": "KILL_AND_NOOP",
+      "rollback_marker": true,
+      "test_required": true
+    },
+    {
+      "guard_id": "kill_if_factor_result_update_requested",
+      "trigger": "detected_in_runner_payload",
+      "action": "KILL_AND_NOOP",
+      "rollback_marker": true,
+      "test_required": true
+    },
+    {
+      "guard_id": "kill_if_external_data_fetch_requested",
+      "trigger": "detected_in_runner_payload",
+      "action": "KILL_AND_NOOP",
+      "rollback_marker": true,
+      "test_required": true
+    },
+    {
+      "guard_id": "kill_if_runtime_reports_write_requested",
+      "trigger": "detected_in_runner_payload",
+      "action": "KILL_AND_NOOP",
+      "rollback_marker": true,
+      "test_required": true
+    },
+    {
+      "guard_id": "kill_if_runtime_audit_write_requested",
+      "trigger": "detected_in_runner_payload",
+      "action": "KILL_AND_NOOP",
+      "rollback_marker": true,
+      "test_required": true
+    },
+    {
+      "guard_id": "kill_if_candidate_review_execution_requested",
+      "trigger": "detected_in_runner_payload",
+      "action": "KILL_AND_NOOP",
+      "rollback_marker": true,
+      "test_required": true
+    },
+    {
+      "guard_id": "kill_if_candidate_promotion_requested",
+      "trigger": "detected_in_runner_payload",
+      "action": "KILL_AND_NOOP",
+      "rollback_marker": true,
+      "test_required": true
+    },
+    {
+      "guard_id": "kill_if_alpha_claim_requested",
+      "trigger": "detected_in_runner_payload",
+      "action": "KILL_AND_NOOP",
+      "rollback_marker": true,
+      "test_required": true
+    },
+    {
+      "guard_id": "kill_if_buy_signal_requested",
+      "trigger": "detected_in_runner_payload",
+      "action": "KILL_AND_NOOP",
+      "rollback_marker": true,
+      "test_required": true
+    },
+    {
+      "guard_id": "kill_if_sell_signal_requested",
+      "trigger": "detected_in_runner_payload",
+      "action": "KILL_AND_NOOP",
+      "rollback_marker": true,
+      "test_required": true
+    },
+    {
+      "guard_id": "kill_if_order_signal_requested",
+      "trigger": "detected_in_runner_payload",
+      "action": "KILL_AND_NOOP",
+      "rollback_marker": true,
+      "test_required": true
+    },
+    {
+      "guard_id": "kill_if_position_weight_requested",
+      "trigger": "detected_in_runner_payload",
+      "action": "KILL_AND_NOOP",
+      "rollback_marker": true,
+      "test_required": true
+    },
+    {
+      "guard_id": "kill_if_multi_factor_composite_requested",
+      "trigger": "detected_in_runner_payload",
+      "action": "KILL_AND_NOOP",
+      "rollback_marker": true,
+      "test_required": true
+    },
+    {
+      "guard_id": "kill_if_weight_optimization_requested",
+      "trigger": "detected_in_runner_payload",
+      "action": "KILL_AND_NOOP",
+      "rollback_marker": true,
+      "test_required": true
+    },
+    {
+      "guard_id": "kill_if_paper_trading_requested",
+      "trigger": "detected_in_runner_payload",
+      "action": "KILL_AND_NOOP",
+      "rollback_marker": true,
+      "test_required": true
+    },
+    {
+      "guard_id": "kill_if_production_requested",
+      "trigger": "detected_in_runner_payload",
+      "action": "KILL_AND_NOOP",
+      "rollback_marker": true,
+      "test_required": true
+    },
+    {
+      "guard_id": "kill_if_broker_runtime_requested",
+      "trigger": "detected_in_runner_payload",
+      "action": "KILL_AND_NOOP",
+      "rollback_marker": true,
+      "test_required": true
+    },
+    {
+      "guard_id": "kill_if_real_trade_requested",
+      "trigger": "detected_in_runner_payload",
+      "action": "KILL_AND_NOOP",
+      "rollback_marker": true,
+      "test_required": true
+    },
+    {
+      "guard_id": "kill_if_skillos_adapter_requested",
+      "trigger": "detected_in_runner_payload",
+      "action": "KILL_AND_NOOP",
+      "rollback_marker": true,
+      "test_required": true
+    },
+    {
+      "guard_id": "kill_if_v13_6_requested",
+      "trigger": "detected_in_runner_payload",
+      "action": "KILL_AND_NOOP",
+      "rollback_marker": true,
+      "test_required": true
+    },
+    {
+      "guard_id": "kill_if_tag_requested",
+      "trigger": "detected_in_runner_payload",
+      "action": "KILL_AND_NOOP",
+      "rollback_marker": true,
+      "test_required": true
+    },
+    {
+      "guard_id": "kill_if_f26_f27_auto_unlock_requested",
+      "trigger": "detected_in_runner_payload",
+      "action": "KILL_AND_NOOP",
+      "rollback_marker": true,
+      "test_required": true
+    }
+  ]
+}

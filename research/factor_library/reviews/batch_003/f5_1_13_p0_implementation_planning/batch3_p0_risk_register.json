@@ -1,0 +1,151 @@
+{
+  "pipeline_signature": "V13-F5-1-13-CONTROLLED-NOOP-DRY-RUN-EXECUTION-P0-IMPLEMENTATION-PLANNING",
+  "base_commit": "3c49f076a39a5d93c1c23a029c8bfb4018a06f69",
+  "risk_count": 16,
+  "risks": [
+    {
+      "risk_id": "IR-R01",
+      "title": "P0 planning mistaken for P0 implementation",
+      "severity": "HIGH",
+      "likelihood": "MEDIUM",
+      "mitigation": "Planning-level controls",
+      "control": "Safety guard plan, proof matrix, safety audit",
+      "rollback_trigger": "Detected in runner"
+    },
+    {
+      "risk_id": "IR-R02",
+      "title": "Noop runner contract mistaken for runner code",
+      "severity": "HIGH",
+      "likelihood": "LOW",
+      "mitigation": "Planning-level controls",
+      "control": "Safety guard plan, proof matrix, safety audit",
+      "rollback_trigger": "Detected in runner"
+    },
+    {
+      "risk_id": "IR-R03",
+      "title": "Static snapshot plan mistaken for real snapshot write",
+      "severity": "MEDIUM",
+      "likelihood": "LOW",
+      "mitigation": "Planning-level controls",
+      "control": "Safety guard plan, proof matrix, safety audit",
+      "rollback_trigger": "Detected in runner"
+    },
+    {
+      "risk_id": "IR-R04",
+      "title": "Hash evidence plan mistaken for persistent evidence",
+      "severity": "MEDIUM",
+      "likelihood": "LOW",
+      "mitigation": "Planning-level controls",
+      "control": "Safety guard plan, proof matrix, safety audit",
+      "rollback_trigger": "Detected in runner"
+    },
+    {
+      "risk_id": "IR-R05",
+      "title": "Noop output mistaken for trading signal",
+      "severity": "CRITICAL",
+      "likelihood": "LOW",
+      "mitigation": "Planning-level controls",
+      "control": "Safety guard plan, proof matrix, safety audit",
+      "rollback_trigger": "Detected in runner"
+    },
+    {
+      "risk_id": "IR-R06",
+      "title": "Safety guard plan not executed before implementation",
+      "severity": "HIGH",
+      "likelihood": "LOW",
+      "mitigation": "Planning-level controls",
+      "control": "Safety guard plan, proof matrix, safety audit",
+      "rollback_trigger": "Detected in runner"
+    },
+    {
+      "risk_id": "IR-R07",
+      "title": "Runtime_reports write pre-run",
+      "severity": "HIGH",
+      "likelihood": "LOW",
+      "mitigation": "Planning-level controls",
+      "control": "Safety guard plan, proof matrix, safety audit",
+      "rollback_trigger": "Detected in runner"
+    },
+    {
+      "risk_id": "IR-R08",
+      "title": "Runtime_audit write pre-run",
+      "severity": "HIGH",
+      "likelihood": "LOW",
+      "mitigation": "Planning-level controls",
+      "control": "Safety guard plan, proof matrix, safety audit",
+      "rollback_trigger": "Detected in runner"
+    },
+    {
+      "risk_id": "IR-R09",
+      "title": "External data fetch pre-run",
+      "severity": "MEDIUM",
+      "likelihood": "LOW",
+      "mitigation": "Planning-level controls",
+      "control": "Safety guard plan, proof matrix, safety audit",
+      "rollback_trigger": "Detected in runner"
+    },
+    {
+      "risk_id": "IR-R10",
+      "title": "Factor calculation pre-run",
+      "severity": "HIGH",
+      "likelihood": "LOW",
+      "mitigation": "Planning-level controls",
+      "control": "Safety guard plan, proof matrix, safety audit",
+      "rollback_trigger": "Detected in runner"
+    },
+    {
+      "risk_id": "IR-R11",
+      "title": "Factor result update pre-run",
+      "severity": "HIGH",
+      "likelihood": "LOW",
+      "mitigation": "Planning-level controls",
+      "control": "Safety guard plan, proof matrix, safety audit",
+      "rollback_trigger": "Detected in runner"
+    },
+    {
+      "risk_id": "IR-R12",
+      "title": "F26/F27 automatic unlock",
+      "severity": "CRITICAL",
+      "likelihood": "LOW",
+      "mitigation": "Planning-level controls",
+      "control": "Safety guard plan, proof matrix, safety audit",
+      "rollback_trigger": "Detected in runner"
+    },
+    {
+      "risk_id": "IR-R13",
+      "title": "SkillOS adapter pre-run",
+      "severity": "HIGH",
+      "likelihood": "LOW",
+      "mitigation": "Planning-level controls",
+      "control": "Safety guard plan, proof matrix, safety audit",
+      "rollback_trigger": "Detected in runner"
+    },
+    {
+      "risk_id": "IR-R14",
+      "title": "V13_6 pre-run",
+      "severity": "CRITICAL",
+      "likelihood": "LOW",
+      "mitigation": "Planning-level controls",
+      "control": "Safety guard plan, proof matrix, safety audit",
+      "rollback_trigger": "Detected in runner"
+    },
+    {
+      "risk_id": "IR-R15",
+      "title": "Broker/real_trade downstream misconnect",
+      "severity": "CRITICAL",
+      "likelihood": "LOW",
+      "mitigation": "Planning-level controls",
+      "control": "Safety guard plan, proof matrix, safety audit",
+      "rollback_trigger": "Detected in runner"
+    },
+    {
+      "risk_id": "IR-R16",
+      "title": "Registry refs written as execution started",
+      "severity": "MEDIUM",
+      "likelihood": "LOW",
+      "mitigation": "Planning-level controls",
+      "control": "Safety guard plan, proof matrix, safety audit",
+      "rollback_trigger": "Detected in runner"
+    }
+  ]
+}

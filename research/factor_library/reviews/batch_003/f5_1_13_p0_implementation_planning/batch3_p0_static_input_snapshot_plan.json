@@ -1,0 +1,21 @@
+{
+  "pipeline_signature": "V13-F5-1-13-CONTROLLED-NOOP-DRY-RUN-EXECUTION-P0-IMPLEMENTATION-PLANNING",
+  "base_commit": "3c49f076a39a5d93c1c23a029c8bfb4018a06f69",
+  "input_sources": [
+    "factor_manifest",
+    "validation_snapshot",
+    "guardrail_profile",
+    "application_contract",
+    "evidence_envelope",
+    "candidate_review_decision",
+    "queue_monitoring_plan_decision",
+    "dry_run_planning_decision",
+    "branch_creation_seal"
+  ],
+  "external_data_required": false,
+  "runtime_data_required": false,
+  "factor_recalculation_required": false,
+  "factor_result_update_required": false,
+  "snapshot_write_allowed": false,
+  "snapshot_output_future": "in_memory_or_test_fixture_only"
+}

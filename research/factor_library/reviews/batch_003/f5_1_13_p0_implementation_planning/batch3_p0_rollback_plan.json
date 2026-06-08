@@ -1,0 +1,17 @@
+{
+  "pipeline_signature": "V13-F5-1-13-CONTROLLED-NOOP-DRY-RUN-EXECUTION-P0-IMPLEMENTATION-PLANNING",
+  "base_commit": "3c49f076a39a5d93c1c23a029c8bfb4018a06f69",
+  "rollback_scope": [
+    "delete_f5_1_13_planning_artifacts",
+    "revert_registry_p0_planning_refs",
+    "preserve_F5_1_12_clean_branch_creation",
+    "preserve_F5_1_10_11_lineage_clean_rebuild",
+    "preserve_candidate_review_queue",
+    "preserve_hold_queue",
+    "preserve_rejected_history"
+  ],
+  "no_runtime_report_cleanup_required": true,
+  "no_runtime_audit_cleanup_required": true,
+  "no_factor_result_cleanup_required": true,
+  "because_no_execution_occurred": true
+}

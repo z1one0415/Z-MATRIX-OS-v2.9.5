@@ -1,0 +1,9 @@
+{
+  "status": "F03_INDUSTRY_RELATIVE_STRENGTH_MATERIALIZED",
+  "row_count": 9839,
+  "covered_ticker_count": "920992",
+  "coverage_ratio": 0.996,
+  "known_at_pass": true,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED"
+}

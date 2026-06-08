@@ -1,0 +1,11 @@
+{
+  "status": "V13_F2_1_1_F06_PIT_REPAIR_PASS",
+  "f06_null_known_at_row_count": 0,
+  "f06_placeholder_zero_row_count": 0,
+  "validated_factor_count": 2,
+  "ic_validation_executed": false,
+  "v13_6_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "recommended_next_action": "PREPARE_V13_F2_2_SINGLE_FACTOR_VALIDATION_PLANNING"
+}

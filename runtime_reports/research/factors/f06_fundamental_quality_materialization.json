@@ -1,0 +1,11 @@
+{
+  "status": "F06_FUNDAMENTAL_QUALITY_MATERIALIZED",
+  "row_count": 5186,
+  "covered_ticker_count": 5185,
+  "coverage_ratio": 0.9386,
+  "null_known_at_row_count": 0,
+  "placeholder_zero_row_count": 0,
+  "known_at_pass": true,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED"
+}

@@ -1,0 +1,47 @@
+{
+  "pipeline_signature": "Z2-V13-F3-4-1-CANONICAL-OOS-BOUNDARY-PLAN",
+  "status": "V13_F3_4_1_CANONICAL_OOS_BOUNDARY_PLAN_PASS",
+  "selection_boundary_commit": "e6a3567",
+  "freeze_source_commit": "c4d59ba",
+  "current_requirement_commit": "27e16bb0",
+  "candidate_scope": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "per_factor_last_in_sample_rebalance_date": [
+    {
+      "factor_id": "F04",
+      "resolved": true,
+      "last_in_sample_rebalance_date": "20260501",
+      "source_rebalance_date_count": 25,
+      "blocked_reasons": []
+    },
+    {
+      "factor_id": "F10",
+      "resolved": true,
+      "last_in_sample_rebalance_date": "20260430",
+      "source_rebalance_date_count": 50,
+      "blocked_reasons": []
+    },
+    {
+      "factor_id": "F11",
+      "resolved": true,
+      "last_in_sample_rebalance_date": "20260430",
+      "source_rebalance_date_count": 50,
+      "blocked_reasons": []
+    }
+  ],
+  "max_last_in_sample_rebalance_date": "20260501",
+  "minimum_oos_start_exclusive": "20260501",
+  "true_oos_start_rule": "oos_rebalance_date > max_last_in_sample_rebalance_date",
+  "same_sample_reuse_forbidden": true,
+  "freeze_pre_sample_reuse_forbidden": true,
+  "boundary_resolved": true,
+  "true_oos_validation_executed": false,
+  "oos_label_generation_executed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

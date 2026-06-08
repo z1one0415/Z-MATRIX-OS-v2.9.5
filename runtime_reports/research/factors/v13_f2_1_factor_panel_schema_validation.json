@@ -1,0 +1,23 @@
+{
+  "status": "V13_F2_1_FACTOR_PANEL_SCHEMA_VALIDATION_PASS",
+  "validated_factors": [
+    "F03",
+    "F06"
+  ],
+  "schema_passed_factor_count": 2,
+  "schema_blocked_factor_count": 0,
+  "per_factor_schema": [
+    {
+      "factor_id": "F03",
+      "required_columns_present": true,
+      "schema_passed": true
+    },
+    {
+      "factor_id": "F06",
+      "required_columns_present": true,
+      "schema_passed": true
+    }
+  ],
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED"
+}

@@ -1,0 +1,17 @@
+# Wave0 Controlled Read-Only Execution Planning Decision Record
+
+## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_WAVE0_CONTROLLED_READONLY_EXECUTION_PLANNING_DECISION_PENDING
+Base: postmerge @ b62d6e4 | Level 5: BLOCKED
+
+## Decision Options
+1. GO_FOR_WAVE0_CONTROLLED_READONLY_EXECUTION_PLANNING_ONLY
+2. NO_GO_STAY_WAVE0_EXECUTION_ENABLEMENT_P0_MERGED
+3. MORE_CONTROLLED_READONLY_EXECUTION_REVIEW_REQUIRED
+4. REJECT_WAVE0_CONTROLLED_EXECUTION_PATH
+
+## Human Decision Template
+```
+Date: YYYY-MM-DD | Approver: ____ | Decision: [1|2|3|4] | Notes: ____
+```
+
+> Cap OS Wave0 | Controlled Exec Planning | Decision Record | PENDING

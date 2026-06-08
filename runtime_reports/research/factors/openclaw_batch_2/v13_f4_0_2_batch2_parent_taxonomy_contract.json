@@ -1,0 +1,22 @@
+{
+  "pipeline_signature": "Z2-V13-F4-0-2-BATCH2-PARENT-TAXONOMY-CONTRACT",
+  "status": "V13_F4_0_2_BATCH2_PARENT_TAXONOMY_CONTRACT_BUILT",
+  "base_commit": "90958a2b",
+  "canonicalization_only": true,
+  "expected_lanes_from_contract": 7,
+  "frozen_candidates_preserved": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "f3_5_1_monitoring_execution_allowed": false,
+  "f3_6_true_oos_validation_allowed": false,
+  "source_audit_group_taxonomy_fix_required": true,
+  "lane_count_consistency_required": true,
+  "f17_f20_group_must_not_be_coverage_blocked": true,
+  "multi_factor_composite_built": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

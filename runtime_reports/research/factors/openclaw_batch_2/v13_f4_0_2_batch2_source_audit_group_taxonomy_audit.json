@@ -1,0 +1,44 @@
+{
+  "pipeline_signature": "Z2-V13-F4-0-2-BATCH2-SOURCE-AUDIT-GROUP-TAXONOMY-AUDIT",
+  "status": "V13_F4_0_2_BATCH2_SOURCE_AUDIT_GROUP_TAXONOMY_AUDIT_BUILT",
+  "source_audit_group_id": "F17_F20_GROUP",
+  "source_audit_group_members": [
+    "F17",
+    "F18",
+    "F19",
+    "F20"
+  ],
+  "group_status": "SOURCE_AUDIT_GROUP_COMPLETED",
+  "all_members_source_audit_clean": true,
+  "per_member": {
+    "F17": {
+      "materialization_executed": false,
+      "validation_executed": null,
+      "evidence_score": "UNKNOWN",
+      "source_audit_clean": true
+    },
+    "F18": {
+      "materialization_executed": false,
+      "validation_executed": null,
+      "evidence_score": "UNKNOWN",
+      "source_audit_clean": true
+    },
+    "F19": {
+      "materialization_executed": false,
+      "validation_executed": null,
+      "evidence_score": "UNKNOWN",
+      "source_audit_clean": true
+    },
+    "F20": {
+      "materialization_executed": false,
+      "validation_executed": null,
+      "evidence_score": "UNKNOWN",
+      "source_audit_clean": true
+    }
+  },
+  "group_must_not_be_coverage_blocked": true,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

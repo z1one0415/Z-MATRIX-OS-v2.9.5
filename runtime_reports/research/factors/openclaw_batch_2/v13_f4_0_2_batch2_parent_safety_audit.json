@@ -1,0 +1,9 @@
+{
+  "pipeline_signature": "Z2-V13-F4-0-2-BATCH2-PARENT-SAFETY-AUDIT",
+  "status": "V13_F4_0_2_BATCH2_PARENT_SAFETY_AUDIT_PASS",
+  "violation_count": 0,
+  "violations": [],
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

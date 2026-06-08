@@ -1,0 +1,21 @@
+{
+  "pipeline_signature": "Z2-V13-F4-0-2-BATCH2-LANE-VS-FACTOR-COUNT-AUDIT",
+  "status": "V13_F4_0_2_BATCH2_LANE_VS_FACTOR_COUNT_AUDIT_BUILT",
+  "expected_lanes_from_contract": 7,
+  "completed_lanes_detected": 7,
+  "factor_level_artifact_count": 10,
+  "lane_count_consistency_passed": true,
+  "subsession_contract_lanes": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

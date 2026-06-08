@@ -1,0 +1,7 @@
+{
+ "pipeline_signature": "V13-F5-1-4-HUMAN-BATCH3-CANDIDATE-REVIEW-DECISION",
+ "base_commit": "57d05daf0347fc1c76311da4f7122585cf03912d",
+ "queue_name": "BATCH3_CANDIDATE_REVIEW_REJECTED_QUEUE",
+ "description": "Factors rejected from Batch3 candidate review.",
+ "factors": []
+}

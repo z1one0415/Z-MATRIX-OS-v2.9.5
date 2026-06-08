@@ -1,0 +1,23 @@
+{
+ "pipeline_signature": "V13-F5-1-4-HUMAN-BATCH3-CANDIDATE-REVIEW-DECISION",
+ "base_commit": "57d05daf0347fc1c76311da4f7122585cf03912d",
+ "violation_count": 0,
+ "violations": [],
+ "checks": {
+  "no_candidate_promotion": true,
+  "no_alpha_claim": true,
+  "no_multi_factor_composite": true,
+  "no_weight_optimization": true,
+  "no_paper_trading": true,
+  "no_production": true,
+  "no_broker_runtime": true,
+  "no_real_trade": true,
+  "no_skillos_modification": true,
+  "no_runtime_reports_modification": true,
+  "no_factor_results_modification": true,
+  "no_v13_6": true,
+  "no_tag": true,
+  "frozen_candidates_unchanged": true,
+  "rejected_factors_unchanged": true
+ }
+}

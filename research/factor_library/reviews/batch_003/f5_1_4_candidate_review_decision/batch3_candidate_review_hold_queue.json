@@ -1,0 +1,17 @@
+{
+ "pipeline_signature": "V13-F5-1-4-HUMAN-BATCH3-CANDIDATE-REVIEW-DECISION",
+ "base_commit": "57d05daf0347fc1c76311da4f7122585cf03912d",
+ "queue_name": "BATCH3_CANDIDATE_REVIEW_HOLD_QUEUE",
+ "description": "Factors held from candidate review queue pending additional evidence or overlap resolution.",
+ "factors": [
+  {"factor_id":"F26","factor_name":"VOLUME_PRESSURE","family":"LIQUIDITY_VOLUME","hold_reason":"HIGH family overlap risk with F11 (REVERSAL) and rejected F05 (TURNOVER_STABILITY). Requires family overlap study before candidate review.","unlock_conditions":["family_overlap_resolution_study","overlap_review_document"]},
+  {"factor_id":"F27","factor_name":"TURNOVER_ACCELERATION","family":"LIQUIDITY_VOLUME","hold_reason":"HIGH family overlap risk with F11 (REVERSAL) and rejected F05 (TURNOVER_STABILITY). Turnover/cost guardrail not_run. Requires overlap resolution and guardrail before candidate review.","unlock_conditions":["family_overlap_resolution_study","turnover_cost_guardrail_execution","guardrail_pass"]}
+ ],
+ "promotion_allowed": false,
+ "alpha_claim_allowed": false,
+ "multi_factor_composite_built": false,
+ "weight_optimization_executed": false,
+ "production": "BLOCKED",
+ "broker_runtime": "BLOCKED",
+ "real_trade": "BLOCKED"
+}

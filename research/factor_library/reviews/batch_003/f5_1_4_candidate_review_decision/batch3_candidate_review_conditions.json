@@ -1,0 +1,15 @@
+{
+ "pipeline_signature": "V13-F5-1-4-HUMAN-BATCH3-CANDIDATE-REVIEW-DECISION",
+ "base_commit": "57d05daf0347fc1c76311da4f7122585cf03912d",
+ "conditions": [
+  {"condition_id":"C1","description":"F26/F27 family overlap study must be completed before hold factors can enter candidate review","status":"NOT_STARTED","assigned_to":"PENDING","deadline":"PENDING"},
+  {"condition_id":"C2","description":"F27 turnover/cost guardrail must be executed and pass","status":"NOT_STARTED","assigned_to":"PENDING","deadline":"PENDING"},
+  {"condition_id":"C3","description":"All approved factors must complete true OOS validation before frozen candidate consideration","status":"NOT_STARTED","assigned_to":"PENDING","deadline":"PENDING"},
+  {"condition_id":"C4","description":"No approved factor may be promoted to frozen candidate without passing candidate review gate","status":"ACTIVE","assigned_to":"SYSTEM_ENFORCED","deadline":"N/A"}
+ ],
+ "promotion_allowed": false,
+ "alpha_claim_allowed": false,
+ "production": "BLOCKED",
+ "broker_runtime": "BLOCKED",
+ "real_trade": "BLOCKED"
+}

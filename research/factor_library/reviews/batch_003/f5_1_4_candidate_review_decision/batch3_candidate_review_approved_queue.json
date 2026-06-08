@@ -1,0 +1,22 @@
+{
+ "pipeline_signature": "V13-F5-1-4-HUMAN-BATCH3-CANDIDATE-REVIEW-DECISION",
+ "base_commit": "57d05daf0347fc1c76311da4f7122585cf03912d",
+ "queue_name": "BATCH3_CANDIDATE_REVIEW_QUEUE",
+ "description": "Factors approved for candidate review. Not frozen. Not promoted. Not alpha. Only enters review queue.",
+ "queue_type": "REVIEW_ONLY",
+ "factors": [
+  {"factor_id":"F21","factor_name":"TREND_PERSISTENCE_QUALITY","family":"TREND_STRUCTURE","queue_entry_date":"2026-06-08","designated_reviewer":"PENDING"},
+  {"factor_id":"F22","factor_name":"BREAKOUT_STRENGTH","family":"TREND_STRUCTURE","queue_entry_date":"2026-06-08","designated_reviewer":"PENDING"},
+  {"factor_id":"F24","factor_name":"VOLATILITY_COMPRESSION_BREAKOUT","family":"TREND_STRUCTURE","queue_entry_date":"2026-06-08","designated_reviewer":"PENDING"},
+  {"factor_id":"F30","factor_name":"VOLUME_PRICE_CONFIRMATION","family":"LIQUIDITY_VOLUME","queue_entry_date":"2026-06-08","designated_reviewer":"PENDING"},
+  {"factor_id":"F31","factor_name":"DOWNSIDE_TAIL_RISK","family":"TAIL_RISK","queue_entry_date":"2026-06-08","designated_reviewer":"PENDING"},
+  {"factor_id":"F34","factor_name":"VOLATILITY_REGIME_SHIFT","family":"TAIL_RISK","queue_entry_date":"2026-06-08","designated_reviewer":"PENDING"}
+ ],
+ "promotion_allowed": false,
+ "alpha_claim_allowed": false,
+ "multi_factor_composite_built": false,
+ "weight_optimization_executed": false,
+ "production": "BLOCKED",
+ "broker_runtime": "BLOCKED",
+ "real_trade": "BLOCKED"
+}

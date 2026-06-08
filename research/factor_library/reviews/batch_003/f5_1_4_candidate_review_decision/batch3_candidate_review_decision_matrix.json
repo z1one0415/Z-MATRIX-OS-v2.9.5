@@ -1,0 +1,18 @@
+{
+ "pipeline_signature": "V13-F5-1-4-HUMAN-BATCH3-CANDIDATE-REVIEW-DECISION",
+ "base_commit": "57d05daf0347fc1c76311da4f7122585cf03912d",
+ "factor_count": 8,
+ "approved_count": 6,
+ "held_count": 2,
+ "rejected_count": 0,
+ "factors": [
+  {"factor_id":"F21","decision":"APPROVED","family":"TREND_STRUCTURE","reason":"PIT/coverage/guardrail pass. Overlap MEDIUM but unique directional signal."},
+  {"factor_id":"F22","decision":"APPROVED","family":"TREND_STRUCTURE","reason":"PIT/coverage/guardrail pass. Overlap MEDIUM but unique directional signal."},
+  {"factor_id":"F24","decision":"APPROVED","family":"TREND_STRUCTURE","reason":"PIT/coverage/guardrail pass. Overlap MEDIUM but unique directional signal."},
+  {"factor_id":"F26","decision":"HELD","family":"LIQUIDITY_VOLUME","reason":"HIGH family overlap risk with F11 (REVERSAL) and rejected F05. Needs overlap resolution before candidate review."},
+  {"factor_id":"F27","decision":"HELD","family":"LIQUIDITY_VOLUME","reason":"HIGH family overlap risk with F11 (REVERSAL) and rejected F05. Turnover/cost guardrail also not_run."},
+  {"factor_id":"F30","decision":"APPROVED","family":"LIQUIDITY_VOLUME","reason":"PIT/coverage/guardrail pass. Overlap MEDIUM but volume-price signal is structurally distinct."},
+  {"factor_id":"F31","decision":"APPROVED","family":"TAIL_RISK","reason":"PIT/coverage/guardrail pass. Overlap MEDIUM with F10 but different risk domain."},
+  {"factor_id":"F34","decision":"APPROVED","family":"TAIL_RISK","reason":"PIT/coverage/guardrail pass. Overlap MEDIUM with F10 but different risk domain."}
+ ]
+}

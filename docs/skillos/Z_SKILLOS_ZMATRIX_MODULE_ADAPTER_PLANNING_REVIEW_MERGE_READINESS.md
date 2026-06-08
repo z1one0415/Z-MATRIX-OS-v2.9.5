@@ -1,0 +1,3 @@
+# Z_SKILLOS_ZMATRIX_MODULE_ADAPTER_PLANNING — MERGE_READINESS
+> Status: _REVIEW_MERGE_READINESS_READY | FUTURE_PLAN_ONLY | Level 5 BLOCKED
+> Branch: plan/...zmatrix-adapter | Base: c7c4ac9 | 26 docs planned

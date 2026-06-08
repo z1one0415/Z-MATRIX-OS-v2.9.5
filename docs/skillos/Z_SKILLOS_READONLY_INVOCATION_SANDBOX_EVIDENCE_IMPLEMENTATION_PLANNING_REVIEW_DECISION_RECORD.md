@@ -1,50 +1,14 @@
-# Read-Only Invocation Sandbox Evidence Implementation Planning — Review Decision Record
-
-## Status: Z_SKILLOS_READONLY_INVOCATION_SANDBOX_EVIDENCE_IMPLEMENTATION_PLANNING_REVIEW_DECISION_PENDING
-Branch: plan/...clean | Base: postmerge @ 07543c80 | Level 5: BLOCKED
-
-## PENDING Decision Fields (10 total)
-
-| # | Field | Status | Description |
-|:--:|:--|:--:|:--|
-| 1 | approver_name | PENDING | Human approver identity |
-| 2 | approver_role | PENDING | Human Approver / Project Owner |
-| 3 | approval_date | PENDING | Date (YYYY-MM-DD) |
-| 4 | decision | PENDING | GO_FOR_MERGE / NO_GO / MORE / REJECT |
-| 5 | reviewed_docs | PENDING | 26 docs reviewed, clean rebuild |
-| 6 | reviewed_risks | PENDING | Review Risk Register 12 items |
-| 7 | required_follow_up | PENDING | Prepare merge approval decision |
-| 8 | conditions | PENDING | Docs-only, no enablement, clean only |
-| 9 | rollback_triggers | PENDING | Code/test changes, stale files, contamination |
-| 10 | next_allowed_action | PENDING | Merge approval decision only |
-
-## Decision Options
-1. GO_FOR_SANDBOX_EVIDENCE_IMPLEMENTATION_PLANNING_MERGE_REVIEW_ONLY
-2. NO_GO_FIX_SANDBOX_EVIDENCE_IMPLEMENTATION_PLANNING
-3. MORE_SANDBOX_EVIDENCE_IMPLEMENTATION_REVIEW_REQUIRED
-4. REJECT_SANDBOX_EVIDENCE_IMPLEMENTATION_PATH
-
-## Human Decision Template
-```
-Date: YYYY-MM-DD | Approver: ____ | Decision: [1|2|3|4] | Notes: ____
-```
-
-## Next
-Human fills all 10 PENDING fields → review decision seal
-
-> Sandbox Evidence | Clean Impl | Review Decision | 10 PENDING | Level 5 BLOCKED
-## Evidence
-- Clean rebuild from postmerge @ 07543c80
-- Polluted head 21078c22 not reused
-- 26 docs (14 planning + 7 review + 5 merge)
-- 0 code changes, 0 test changes
-- 0 runtime_reports / runtime_audit / data
-
-## Boundary
-No implementation. No code change. No test change. No runtime enablement. No adapter execution. No capability execution. No real call. No Z-MATRIX call. No network. No file write. Level 5 BLOCKED.
-
-## Forbidden Actions
-1. Implementation code | 2. Code/test changes | 3. Runtime enablement | 4. Adapter execution | 5. Capability execution | 6. Real adapter call | 7. Z-MATRIX call | 8. Network | 9. File write | 10. production/broker/real_trade | 11. Tag | 12. Level 5 planning
-
-## Next Legal Entry
-Human review decision only. No merge. No auto-decision.
+## Status: Z_SKILLOS_READONLY_INVOCATION_SANDBOX_EVIDENCE_IMPLEMENTATION_PLANNING_REVIEW_DECISION_APPROVED_FOR_MERGE_REVIEW_ONLY
+Branch: plan/...clean @ 81aa688b | Level 5: BLOCKED
+| Field | Value |
+|:--|:--|
+| approver_name | `Project Owner` |
+| approver_role | `Human Approver / Project Owner` |
+| approval_date | `2026-06-08` |
+| decision | `GO_FOR_SANDBOX_EVIDENCE_IMPL_MERGE_REVIEW_ONLY` |
+| reviewed_docs | `YES — C1 clean 81aa688b. 26 docs. Base 07543c80. Polluted 21078c22 deprecated.` |
+| reviewed_risks | `YES — Review 12, Merge 10 risks. Depth thresholds verified.` |
+| required_follow_up | `Prepare merge approval, then docs-only merge + post-merge seal.` |
+| conditions | `Docs-only. No implementation. No code/tests. No runtime/adapter/capability. No Z-MATRIX call. No runtime_reports. No production. Level 5 BLOCKED.` |
+| rollback_triggers | `Any code/test change; enablement; real call; stale files; merge without seal.` |
+| next_allowed_action | `C1 merge approval decision only.` |

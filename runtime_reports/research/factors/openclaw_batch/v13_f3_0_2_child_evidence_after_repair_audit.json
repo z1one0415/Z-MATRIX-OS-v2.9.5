@@ -1,0 +1,158 @@
+{
+  "pipeline_signature": "Z2-V13-F3-0-2-AFTER-REPAIR-CHILD-AUDIT",
+  "status": "V13_F3_0_2_CHILD_EVIDENCE_AFTER_REPAIR_AUDIT_PASS",
+  "audited_factor_count": 8,
+  "after_repair_inconsistent_factor_count": 0,
+  "after_repair_inconsistent_factors": [],
+  "per_factor": [
+    {
+      "factor_id": "F04",
+      "resolved_closeout_path": "runtime_reports/research/factors/openclaw_batch/F04/f04_closeout_recomputed.json",
+      "materialized": true,
+      "pit_passed": true,
+      "coverage_passed": true,
+      "coverage_tier": "U475",
+      "expanded_covered_ticker_count": 5208,
+      "single_factor_validation_executed": true,
+      "evidence_score": "PASS_RESEARCH_EVIDENCE",
+      "canonical_evidence_score": "PASS_RESEARCH_EVIDENCE",
+      "after_repair_consistent": true,
+      "planning_only": false,
+      "blocked_reasons": []
+    },
+    {
+      "factor_id": "F10",
+      "resolved_closeout_path": "runtime_reports/research/factors/openclaw_batch/F10/f10_closeout_recomputed.json",
+      "materialized": true,
+      "pit_passed": true,
+      "coverage_passed": true,
+      "coverage_tier": "U475",
+      "expanded_covered_ticker_count": 5208,
+      "single_factor_validation_executed": true,
+      "evidence_score": "PASS_RESEARCH_EVIDENCE",
+      "canonical_evidence_score": "PASS_RESEARCH_EVIDENCE",
+      "after_repair_consistent": true,
+      "planning_only": false,
+      "blocked_reasons": []
+    },
+    {
+      "factor_id": "F11",
+      "resolved_closeout_path": "runtime_reports/research/factors/openclaw_batch/F11/f11_closeout_recomputed.json",
+      "materialized": true,
+      "pit_passed": true,
+      "coverage_passed": true,
+      "coverage_tier": "U475",
+      "expanded_covered_ticker_count": 5208,
+      "single_factor_validation_executed": true,
+      "evidence_score": "PASS_RESEARCH_EVIDENCE",
+      "canonical_evidence_score": "PASS_RESEARCH_EVIDENCE",
+      "after_repair_consistent": true,
+      "planning_only": false,
+      "blocked_reasons": []
+    },
+    {
+      "factor_id": "F12",
+      "resolved_closeout_path": "runtime_reports/research/factors/openclaw_batch/F12/f12_closeout.json",
+      "materialized": true,
+      "pit_passed": true,
+      "coverage_passed": false,
+      "coverage_tier": "N/A",
+      "expanded_covered_ticker_count": 0,
+      "single_factor_validation_executed": false,
+      "evidence_score": "BLOCKED_BY_SAMPLE",
+      "canonical_evidence_score": "COVERAGE_BLOCKED",
+      "after_repair_consistent": false,
+      "planning_only": false,
+      "blocked_reasons": [
+        "canonical=COVERAGE_BLOCKED"
+      ]
+    },
+    {
+      "factor_id": "F13",
+      "resolved_closeout_path": "runtime_reports/research/factors/openclaw_batch/F13/f13_closeout.json",
+      "materialized": true,
+      "pit_passed": true,
+      "coverage_passed": false,
+      "coverage_tier": "N/A",
+      "expanded_covered_ticker_count": 0,
+      "single_factor_validation_executed": false,
+      "evidence_score": "BLOCKED_BY_SAMPLE",
+      "canonical_evidence_score": "COVERAGE_BLOCKED",
+      "after_repair_consistent": false,
+      "planning_only": false,
+      "blocked_reasons": [
+        "canonical=COVERAGE_BLOCKED"
+      ]
+    },
+    {
+      "factor_id": "F07",
+      "resolved_closeout_path": "runtime_reports/research/factors/openclaw_batch/F07/f07_closeout.json",
+      "materialized": true,
+      "pit_passed": true,
+      "coverage_passed": false,
+      "coverage_tier": "N/A",
+      "expanded_covered_ticker_count": 0,
+      "single_factor_validation_executed": false,
+      "evidence_score": "BLOCKED_BY_SAMPLE",
+      "canonical_evidence_score": "COVERAGE_BLOCKED",
+      "after_repair_consistent": false,
+      "planning_only": false,
+      "blocked_reasons": [
+        "canonical=COVERAGE_BLOCKED"
+      ]
+    },
+    {
+      "factor_id": "F08",
+      "resolved_closeout_path": "runtime_reports/research/factors/openclaw_batch/F08/f08_closeout.json",
+      "materialized": true,
+      "pit_passed": true,
+      "coverage_passed": false,
+      "coverage_tier": "N/A",
+      "expanded_covered_ticker_count": 0,
+      "single_factor_validation_executed": false,
+      "evidence_score": "BLOCKED_BY_SAMPLE",
+      "canonical_evidence_score": "COVERAGE_BLOCKED",
+      "after_repair_consistent": false,
+      "planning_only": false,
+      "blocked_reasons": [
+        "canonical=COVERAGE_BLOCKED"
+      ]
+    },
+    {
+      "factor_id": "F03R",
+      "resolved_closeout_path": "runtime_reports/research/factors/openclaw_batch/F03R/f03r_closeout.json",
+      "materialized": false,
+      "pit_passed": false,
+      "coverage_passed": false,
+      "coverage_tier": "N/A",
+      "expanded_covered_ticker_count": 0,
+      "single_factor_validation_executed": false,
+      "evidence_score": "HYPOTHESIS_ONLY",
+      "canonical_evidence_score": "HYPOTHESIS_ONLY",
+      "after_repair_consistent": true,
+      "planning_only": false,
+      "blocked_reasons": [
+        "canonical=HYPOTHESIS_ONLY"
+      ]
+    }
+  ],
+  "pass_research_evidence_factors": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "blocked_by_sample_factors": [
+    "F12",
+    "F13",
+    "F07",
+    "F08"
+  ],
+  "hypothesis_only_factors": [
+    "F03R"
+  ],
+  "materialized_but_coverage_blocked_factors": [],
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

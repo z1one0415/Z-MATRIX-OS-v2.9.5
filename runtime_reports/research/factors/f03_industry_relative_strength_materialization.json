@@ -1,9 +1,16 @@
 {
   "status": "F03_INDUSTRY_RELATIVE_STRENGTH_MATERIALIZED",
-  "row_count": 9839,
-  "covered_ticker_count": "920992",
+  "factor_id": "F03",
+  "factor_name": "INDUSTRY_RELATIVE_STRENGTH",
+  "source_mode": "REAL_PRICE_BARS_AND_REAL_SECTOR_MAPPING",
+  "materialized_row_count": 9839,
+  "covered_ticker_count": 498,
   "coverage_ratio": 0.996,
+  "rebalance_date_count": 20,
   "known_at_pass": true,
+  "future_leakage_check_pass": true,
+  "forbidden_label_columns_present": false,
+  "output_path": "runtime_reports/research/factors/f03_industry_relative_strength_panel.csv",
   "alpha_claim_allowed": false,
   "production": "BLOCKED"
 }

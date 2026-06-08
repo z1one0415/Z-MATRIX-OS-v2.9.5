@@ -1,0 +1,13 @@
+{
+  "status": "V13_F2_1_2_METADATA_CONSISTENCY_AUDIT_PASS",
+  "f03_covered_ticker_count_type": "int",
+  "f03_covered_ticker_count_matches_panel": true,
+  "f03_row_count_matches_panel": true,
+  "f06_required_proxy_columns_present": true,
+  "f06_covered_ticker_count_matches_panel": true,
+  "f06_row_count_matches_panel": true,
+  "metadata_consistency_passed": true,
+  "blocked_reasons": [],
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED"
+}

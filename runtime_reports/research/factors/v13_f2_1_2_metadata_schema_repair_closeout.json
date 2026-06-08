@@ -1,0 +1,19 @@
+{
+  "status": "V13_F2_1_2_METADATA_SCHEMA_REPAIR_PASS",
+  "f03_metadata_consistency_passed": true,
+  "f06_panel_schema_passed": true,
+  "f03_pit_passed": true,
+  "f06_pit_passed": true,
+  "f03_coverage_passed": true,
+  "f06_coverage_passed": true,
+  "validated_factor_count": 2,
+  "ready_for_f2_2_single_factor_validation": [
+    "F03",
+    "F06"
+  ],
+  "ic_validation_executed": false,
+  "v13_6_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "recommended_next_action": "PREPARE_V13_F2_2_SINGLE_FACTOR_VALIDATION_PLANNING"
+}

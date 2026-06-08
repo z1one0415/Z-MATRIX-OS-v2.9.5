@@ -1,0 +1,33 @@
+{
+  "pipeline_signature": "Z2-V13-F2-2-PLANNING-CONTRACT",
+  "status": "V13_F2_2_SINGLE_FACTOR_VALIDATION_PLANNING_CONTRACT_BUILT",
+  "v13_f2_2_executed": true,
+  "planning_only": true,
+  "validation_executed": false,
+  "validated_factor_scope": [
+    "F03",
+    "F06"
+  ],
+  "allowed_validation_methods": [
+    "IC",
+    "RANK_IC",
+    "BUCKET_SPREAD",
+    "HORIZON_SPLIT",
+    "REGIME_SPLIT",
+    "COST_ADJUSTED_SPREAD"
+  ],
+  "validation_methods_executed_this_round": [],
+  "outcome_label_generation_allowed_next_step": true,
+  "outcome_label_written_to_feature_panel": false,
+  "multi_factor_composite_allowed": false,
+  "multi_factor_composite_built": false,
+  "v13_6_allowed": false,
+  "paper_trading_allowed": false,
+  "alpha_claim_allowed": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "recommended_next_action": "BUILD_SINGLE_FACTOR_VALIDATION_METHOD_CONTRACTS"
+}

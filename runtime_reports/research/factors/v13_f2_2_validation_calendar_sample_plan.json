@@ -1,0 +1,19 @@
+{
+  "pipeline_signature": "Z2-V13-F2-2-CALENDAR-SAMPLE",
+  "status": "V13_F2_2_VALIDATION_CALENDAR_SAMPLE_PLAN_BUILT",
+  "rebalance_frequency": "MONTHLY",
+  "candidate_rebalance_dates_source": "F03_F06_PANEL_INTERSECTION",
+  "minimum_month_count_required": 12,
+  "preferred_month_count_required": 24,
+  "minimum_cross_section_ticker_count": 100,
+  "sample_sufficiency_checked_this_round": false,
+  "sample_sufficiency_check_allowed_next_step": true,
+  "validation_horizons": [
+    "20D",
+    "60D"
+  ],
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

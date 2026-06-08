@@ -1,0 +1,22 @@
+{
+  "pipeline_signature": "Z2-V13-F3-4-OOS-CALENDAR-REQUIREMENT-PLAN",
+  "status": "V13_F3_4_OOS_CALENDAR_REQUIREMENT_PLAN_BUILT",
+  "rebalance_frequency": "MONTHLY",
+  "candidate_scope": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "minimum_true_oos_rebalance_months_required": 6,
+  "preferred_true_oos_rebalance_months_required": 12,
+  "minimum_cross_section_coverage_tier": "U475",
+  "minimum_covered_ticker_count": 475,
+  "oos_calendar_generation_executed": false,
+  "oos_validation_executed": false,
+  "blocked_if_oos_months_below_minimum": true,
+  "blocked_if_coverage_below_u475": true,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

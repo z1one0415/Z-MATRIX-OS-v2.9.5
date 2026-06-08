@@ -1,0 +1,53 @@
+{
+  "pipeline_signature": "Z2-V13-F3-4-GATE-LABEL-REQUIREMENT-PLAN",
+  "status": "V13_F3_4_GATE_LABEL_REQUIREMENT_PLAN_BUILT",
+  "gates": [
+    {
+      "gate_id": "REGIME_GATE_FOR_F10",
+      "applies_to": [
+        "F10"
+      ],
+      "required_oos_labels": [
+        "market_return_20d",
+        "market_volatility_20d",
+        "drawdown_state",
+        "regime_state"
+      ],
+      "lookahead_regime_label_forbidden": true,
+      "gate_execution_executed": false
+    },
+    {
+      "gate_id": "COST_TURNOVER_GATE_FOR_F11",
+      "applies_to": [
+        "F11"
+      ],
+      "required_oos_labels": [
+        "estimated_turnover",
+        "round_trip_cost_bps",
+        "spread_proxy",
+        "cost_state"
+      ],
+      "future_cost_estimate_forbidden": true,
+      "gate_execution_executed": false
+    },
+    {
+      "gate_id": "HORIZON_GATE",
+      "applies_to": [
+        "F04",
+        "F10",
+        "F11"
+      ],
+      "required_oos_labels": [
+        "target_horizon",
+        "factor_allowed_horizons"
+      ],
+      "gate_execution_executed": false
+    }
+  ],
+  "gate_execution_allowed_this_round": false,
+  "true_oos_validation_executed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,59 @@
+{
+  "pipeline_signature": "Z2-V13-F3-1-HORIZON-REGIME-REVIEW",
+  "status": "V13_F3_1_HORIZON_REGIME_REVIEW_BUILT",
+  "reviewed_factors": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "per_factor_horizon_regime": [
+    {
+      "factor_id": "F04",
+      "available_horizons": [
+        "20D",
+        "60D"
+      ],
+      "has_20d": true,
+      "has_60d": true,
+      "has_5d": false,
+      "horizon_regime_verdict": "FULL_HORIZON_CANDIDATE"
+    },
+    {
+      "factor_id": "F10",
+      "available_horizons": [
+        "20D",
+        "60D"
+      ],
+      "has_20d": true,
+      "has_60d": true,
+      "has_5d": false,
+      "horizon_regime_verdict": "REGIME_SPECIFIC_CANDIDATE"
+    },
+    {
+      "factor_id": "F11",
+      "available_horizons": [
+        "5D",
+        "20D",
+        "60D"
+      ],
+      "has_20d": true,
+      "has_60d": true,
+      "has_5d": true,
+      "horizon_regime_verdict": "HORIZON_SPECIFIC_CANDIDATE"
+    }
+  ],
+  "regime_specific_candidates": [
+    "F10"
+  ],
+  "horizon_specific_candidates": [
+    "F11"
+  ],
+  "full_horizon_candidates": [
+    "F04",
+    "F11"
+  ],
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

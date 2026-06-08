@@ -1,0 +1,100 @@
+{
+  "pipeline_signature": "Z2-V13-F3-1-CANDIDATE-REVIEW-SCORECARD",
+  "status": "V13_F3_1_CANDIDATE_REVIEW_SCORECARD_BUILT",
+  "reviewed_factors": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "per_factor_candidate_decision": [
+    {
+      "factor_id": "F04",
+      "decision": "FREEZE_CANDIDATE",
+      "decision_reasons": [
+        "evidence=PASS_RESEARCH_EVIDENCE",
+        "signal_stability=PASS",
+        "horizon_regime=FULL_HORIZON_CANDIDATE",
+        "cost_fragility=COST_RESILIENT"
+      ],
+      "candidate_scope": {
+        "allowed_horizons": [
+          "20D",
+          "60D"
+        ],
+        "blocked_horizons": [],
+        "allowed_regimes": [],
+        "blocked_regimes": []
+      },
+      "requires_oos": false,
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false
+    },
+    {
+      "factor_id": "F10",
+      "decision": "REGIME_SPECIFIC_CANDIDATE",
+      "decision_reasons": [
+        "evidence=PASS_RESEARCH_EVIDENCE",
+        "signal_stability=PASS",
+        "horizon_regime=REGIME_SPECIFIC_CANDIDATE",
+        "cost_fragility=COST_RESILIENT"
+      ],
+      "candidate_scope": {
+        "allowed_horizons": [
+          "20D",
+          "60D"
+        ],
+        "blocked_horizons": [],
+        "allowed_regimes": [],
+        "blocked_regimes": []
+      },
+      "requires_oos": false,
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false
+    },
+    {
+      "factor_id": "F11",
+      "decision": "TACTICAL_CANDIDATE",
+      "decision_reasons": [
+        "evidence=PASS_RESEARCH_EVIDENCE",
+        "signal_stability=PASS",
+        "horizon_regime=HORIZON_SPECIFIC_CANDIDATE",
+        "cost_fragility=COST_FRAGILE_HIGH_TURNOVER"
+      ],
+      "candidate_scope": {
+        "allowed_horizons": [
+          "5D",
+          "20D",
+          "60D"
+        ],
+        "blocked_horizons": [],
+        "allowed_regimes": [],
+        "blocked_regimes": []
+      },
+      "requires_oos": false,
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false
+    }
+  ],
+  "candidate_freeze_ready": [
+    "F04",
+    "F10"
+  ],
+  "tactical_candidate_ready": [
+    "F11"
+  ],
+  "needs_oos_factors": [],
+  "rework_required_factors": [],
+  "rejected_factors": [],
+  "ready_for_f3_2_candidate_freeze_review": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "ready_for_promotion_review": [],
+  "multi_factor_composite_built": false,
+  "v13_6_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

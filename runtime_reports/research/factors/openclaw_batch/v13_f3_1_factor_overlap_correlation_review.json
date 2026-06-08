@@ -1,0 +1,23 @@
+{
+  "pipeline_signature": "Z2-V13-F3-1-FACTOR-OVERLAP-CORRELATION-REVIEW",
+  "status": "V13_F3_1_FACTOR_OVERLAP_CORRELATION_REVIEW_BUILT",
+  "reviewed_factors": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "correlation_matrix_built": true,
+  "high_correlation_threshold": 0.75,
+  "high_overlap_pairs": [],
+  "diversified_candidate_set": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "excluded_due_to_overlap": [],
+  "multi_factor_composite_built": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

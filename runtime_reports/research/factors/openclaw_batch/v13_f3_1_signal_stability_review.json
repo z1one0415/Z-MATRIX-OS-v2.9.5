@@ -1,0 +1,48 @@
+{
+  "pipeline_signature": "Z2-V13-F3-1-SIGNAL-STABILITY-REVIEW",
+  "status": "V13_F3_1_SIGNAL_STABILITY_REVIEW_BUILT",
+  "reviewed_factors": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "per_factor_signal_stability": [
+    {
+      "factor_id": "F04",
+      "ic_20d_direction_pass": true,
+      "ic_60d_direction_pass": true,
+      "bucket_spread_20d_pass": true,
+      "bucket_spread_60d_pass": true,
+      "monotonicity_pass": true,
+      "win_rate_pass": true,
+      "month_concentration_risk": false,
+      "signal_stability_status": "PASS"
+    },
+    {
+      "factor_id": "F10",
+      "ic_20d_direction_pass": true,
+      "ic_60d_direction_pass": true,
+      "bucket_spread_20d_pass": true,
+      "bucket_spread_60d_pass": true,
+      "monotonicity_pass": true,
+      "win_rate_pass": true,
+      "month_concentration_risk": false,
+      "signal_stability_status": "PASS"
+    },
+    {
+      "factor_id": "F11",
+      "ic_20d_direction_pass": true,
+      "ic_60d_direction_pass": true,
+      "bucket_spread_20d_pass": true,
+      "bucket_spread_60d_pass": true,
+      "monotonicity_pass": true,
+      "win_rate_pass": true,
+      "month_concentration_risk": false,
+      "signal_stability_status": "PASS"
+    }
+  ],
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,121 @@
+{
+  "pipeline_signature": "Z2-V13-F3-1-CANDIDATE-EVIDENCE-PACKAGES",
+  "status": "V13_F3_1_CANDIDATE_EVIDENCE_PACKAGES_BUILT",
+  "candidate_review_factors": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "evidence_packages": [
+    {
+      "factor_id": "F04",
+      "factor_name": "RESIDUAL_MOMENTUM",
+      "formula": "residual_momentum = stock_return_20d - beta_to_market_proxy * market_return_20d - industry_return_component",
+      "horizons": [
+        "20D",
+        "60D"
+      ],
+      "evidence_score": "PASS_RESEARCH_EVIDENCE",
+      "materialized": true,
+      "pit_passed": true,
+      "coverage_passed": true,
+      "coverage_tier": "U475",
+      "covered_ticker_count": 5208,
+      "total_universe": 5523,
+      "sample_month_count": 62,
+      "single_factor_validation_executed": true,
+      "ic_executed": true,
+      "ic_summary": {
+        "mean_ic_20d": "N/A",
+        "mean_ic_60d": "N/A",
+        "evidence_score": "PASS_RESEARCH_EVIDENCE"
+      },
+      "bucket_summary": {
+        "high_low_spread_20d": "N/A",
+        "high_low_spread_60d": "N/A",
+        "cost_adjusted_20d": "N/A"
+      },
+      "known_risks": [],
+      "research_only_flags": [],
+      "alpha_claim_allowed": false,
+      "production": "BLOCKED",
+      "broker_runtime": "BLOCKED",
+      "real_trade": "BLOCKED"
+    },
+    {
+      "factor_id": "F10",
+      "factor_name": "LOW_VOLATILITY",
+      "formula": "low_volatility_score = -std(daily_return, 60D)",
+      "horizons": [
+        "20D",
+        "60D"
+      ],
+      "evidence_score": "PASS_RESEARCH_EVIDENCE",
+      "materialized": true,
+      "pit_passed": true,
+      "coverage_passed": true,
+      "coverage_tier": "U475",
+      "covered_ticker_count": 5208,
+      "total_universe": 5523,
+      "sample_month_count": 62,
+      "single_factor_validation_executed": true,
+      "ic_executed": true,
+      "ic_summary": {
+        "mean_ic_20d": "N/A",
+        "mean_ic_60d": "N/A",
+        "evidence_score": "PASS_RESEARCH_EVIDENCE"
+      },
+      "bucket_summary": {
+        "high_low_spread_20d": "N/A",
+        "high_low_spread_60d": "N/A",
+        "cost_adjusted_20d": "N/A"
+      },
+      "known_risks": [],
+      "research_only_flags": [],
+      "alpha_claim_allowed": false,
+      "production": "BLOCKED",
+      "broker_runtime": "BLOCKED",
+      "real_trade": "BLOCKED"
+    },
+    {
+      "factor_id": "F11",
+      "factor_name": "SHORT_TERM_REVERSAL",
+      "formula": "short_term_reversal_score = -return_5d",
+      "horizons": [
+        "5D",
+        "20D",
+        "60D"
+      ],
+      "evidence_score": "PASS_RESEARCH_EVIDENCE",
+      "materialized": true,
+      "pit_passed": true,
+      "coverage_passed": true,
+      "coverage_tier": "U475",
+      "covered_ticker_count": 5208,
+      "total_universe": 5523,
+      "sample_month_count": 62,
+      "single_factor_validation_executed": true,
+      "ic_executed": true,
+      "ic_summary": {
+        "mean_ic_20d": "N/A",
+        "mean_ic_60d": "N/A",
+        "evidence_score": "PASS_RESEARCH_EVIDENCE"
+      },
+      "bucket_summary": {
+        "high_low_spread_20d": "N/A",
+        "high_low_spread_60d": "N/A",
+        "cost_adjusted_20d": "N/A"
+      },
+      "known_risks": [],
+      "research_only_flags": [],
+      "alpha_claim_allowed": false,
+      "production": "BLOCKED",
+      "broker_runtime": "BLOCKED",
+      "real_trade": "BLOCKED"
+    }
+  ],
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

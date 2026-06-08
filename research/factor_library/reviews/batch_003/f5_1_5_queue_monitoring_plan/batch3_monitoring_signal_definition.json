@@ -1,0 +1,14 @@
+{
+ "pipeline_signature": "V13-F5-1-5-BATCH3-CANDIDATE-REVIEW-QUEUE-MONITORING-PLAN",
+ "base_commit": "52452c476ca92c6038ee1800e8f1e504a6c50898",
+ "signal_definitions": [
+  {"signal_type":"evidence_freshness_signal","signal_purpose":"review_monitoring_only","allowed_downstream":["candidate_review_queue_monitoring","human_review_dashboard","SkillOS_readonly_context_future"],"blocked_downstream":["Z8_EXECUTION_RUNTIME","V3_TRADE_SANDBOX","BROKER","REAL_TRADE","PRODUCTION"],"alpha_claim_allowed":false,"execution_allowed":false},
+  {"signal_type":"guardrail_status_signal","signal_purpose":"review_monitoring_only","allowed_downstream":["candidate_review_queue_monitoring","human_review_dashboard"],"blocked_downstream":["Z8_EXECUTION_RUNTIME","V3_TRADE_SANDBOX","BROKER","REAL_TRADE","PRODUCTION"],"alpha_claim_allowed":false,"execution_allowed":false},
+  {"signal_type":"family_overlap_status_signal","signal_purpose":"hold_unlock_monitoring","allowed_downstream":["hold_queue_monitoring","human_review_dashboard"],"blocked_downstream":["Z8_EXECUTION_RUNTIME","V3_TRADE_SANDBOX","BROKER","REAL_TRADE","PRODUCTION"],"alpha_claim_allowed":false,"execution_allowed":false},
+  {"signal_type":"pit_coverage_status_signal","signal_purpose":"review_monitoring_only","allowed_downstream":["candidate_review_queue_monitoring","human_review_dashboard"],"blocked_downstream":["Z8_EXECUTION_RUNTIME","V3_TRADE_SANDBOX","BROKER","REAL_TRADE","PRODUCTION"],"alpha_claim_allowed":false,"execution_allowed":false},
+  {"signal_type":"oos_readiness_signal","signal_purpose":"review_monitoring_only","allowed_downstream":["candidate_review_queue_monitoring","human_review_dashboard"],"blocked_downstream":["Z8_EXECUTION_RUNTIME","V3_TRADE_SANDBOX","BROKER","REAL_TRADE","PRODUCTION"],"alpha_claim_allowed":false,"execution_allowed":false},
+  {"signal_type":"review_queue_staleness_signal","signal_purpose":"review_monitoring_only","allowed_downstream":["human_review_dashboard"],"blocked_downstream":["Z8_EXECUTION_RUNTIME","V3_TRADE_SANDBOX","BROKER","REAL_TRADE","PRODUCTION"],"alpha_claim_allowed":false,"execution_allowed":false},
+  {"signal_type":"hold_unlock_readiness_signal","signal_purpose":"hold_unlock_monitoring","allowed_downstream":["hold_queue_monitoring","human_review_dashboard"],"blocked_downstream":["Z8_EXECUTION_RUNTIME","V3_TRADE_SANDBOX","BROKER","REAL_TRADE","PRODUCTION"],"alpha_claim_allowed":false,"execution_allowed":false}
+ ],
+ "forbidden_signal_types":["alpha_signal","buy_signal","sell_signal","order_signal","position_weight_signal","portfolio_signal","broker_signal","real_trade_signal"]
+}

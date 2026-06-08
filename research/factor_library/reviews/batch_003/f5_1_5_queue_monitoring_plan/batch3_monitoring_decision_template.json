@@ -1,0 +1,18 @@
+{
+ "pipeline_signature": "V13-F5-1-5-BATCH3-CANDIDATE-REVIEW-QUEUE-MONITORING-PLAN",
+ "base_commit": "52452c476ca92c6038ee1800e8f1e504a6c50898",
+ "decision_status": "PENDING_HUMAN_REVIEW",
+ "allowed_future_decisions": ["START_QUEUE_MONITORING_DRY_RUN_PLAN","HOLD_QUEUE_MONITORING_FOR_MORE_EVIDENCE","REVISE_APPROVED_QUEUE","REVISE_HOLD_QUEUE"],
+ "forbidden_future_decisions": ["PROMOTE_TO_FROZEN_CANDIDATE","PROMOTE_TO_ALPHA","BUILD_MULTI_FACTOR_COMPOSITE","RUN_WEIGHT_OPTIMIZATION","START_PAPER_TRADING","START_PRODUCTION","ENABLE_BROKER_RUNTIME","ENABLE_REAL_TRADE"],
+ "pending_fields": {
+  "approver_name": "PENDING",
+  "approver_role": "PENDING",
+  "approval_date": "PENDING",
+  "decision": "PENDING",
+  "approved_monitoring_scope": [],
+  "held_factors": [],
+  "conditions": "PENDING",
+  "rollback_triggers": "PENDING",
+  "next_legal_entry": "PENDING"
+ }
+}

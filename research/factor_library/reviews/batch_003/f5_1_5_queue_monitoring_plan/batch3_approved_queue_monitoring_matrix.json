@@ -1,0 +1,14 @@
+{
+ "pipeline_signature": "V13-F5-1-5-BATCH3-CANDIDATE-REVIEW-QUEUE-MONITORING-PLAN",
+ "base_commit": "52452c476ca92c6038ee1800e8f1e504a6c50898",
+ "queue_type": "APPROVED",
+ "factor_count": 6,
+ "factors": [
+  {"factor_id":"F21","queue_status":"IN_CANDIDATE_REVIEW_QUEUE","review_execution_status":"NOT_EXECUTED","monitoring_plan_status":"PLANNED_ONLY","monitoring_horizon":"20D_60D","required_preconditions":["pit_passed","coverage_passed","guardrails_checked","family_overlap_reviewed","true_oos_required_before_promotion"],"promotion_allowed":false,"alpha_claim_allowed":false,"production":"BLOCKED","broker_runtime":"BLOCKED","real_trade":"BLOCKED"},
+  {"factor_id":"F22","queue_status":"IN_CANDIDATE_REVIEW_QUEUE","review_execution_status":"NOT_EXECUTED","monitoring_plan_status":"PLANNED_ONLY","monitoring_horizon":"20D_60D","required_preconditions":["pit_passed","coverage_passed","guardrails_checked","family_overlap_reviewed","true_oos_required_before_promotion"],"promotion_allowed":false,"alpha_claim_allowed":false,"production":"BLOCKED","broker_runtime":"BLOCKED","real_trade":"BLOCKED"},
+  {"factor_id":"F24","queue_status":"IN_CANDIDATE_REVIEW_QUEUE","review_execution_status":"NOT_EXECUTED","monitoring_plan_status":"PLANNED_ONLY","monitoring_horizon":"20D_60D","required_preconditions":["pit_passed","coverage_passed","guardrails_checked","family_overlap_reviewed","true_oos_required_before_promotion"],"promotion_allowed":false,"alpha_claim_allowed":false,"production":"BLOCKED","broker_runtime":"BLOCKED","real_trade":"BLOCKED"},
+  {"factor_id":"F30","queue_status":"IN_CANDIDATE_REVIEW_QUEUE","review_execution_status":"NOT_EXECUTED","monitoring_plan_status":"PLANNED_ONLY","monitoring_horizon":"20D_60D","required_preconditions":["pit_passed","coverage_passed","guardrails_checked","family_overlap_reviewed","true_oos_required_before_promotion"],"promotion_allowed":false,"alpha_claim_allowed":false,"production":"BLOCKED","broker_runtime":"BLOCKED","real_trade":"BLOCKED"},
+  {"factor_id":"F31","queue_status":"IN_CANDIDATE_REVIEW_QUEUE","review_execution_status":"NOT_EXECUTED","monitoring_plan_status":"PLANNED_ONLY","monitoring_horizon":"20D_60D","required_preconditions":["pit_passed","coverage_passed","guardrails_checked","family_overlap_reviewed","true_oos_required_before_promotion","tail_risk_guardrail_required"],"promotion_allowed":false,"alpha_claim_allowed":false,"production":"BLOCKED","broker_runtime":"BLOCKED","real_trade":"BLOCKED"},
+  {"factor_id":"F34","queue_status":"IN_CANDIDATE_REVIEW_QUEUE","review_execution_status":"NOT_EXECUTED","monitoring_plan_status":"PLANNED_ONLY","monitoring_horizon":"20D_60D","required_preconditions":["pit_passed","coverage_passed","guardrails_checked","family_overlap_reviewed","true_oos_required_before_promotion","regime_shift_guardrail_required"],"promotion_allowed":false,"alpha_claim_allowed":false,"production":"BLOCKED","broker_runtime":"BLOCKED","real_trade":"BLOCKED"}
+ ]
+}

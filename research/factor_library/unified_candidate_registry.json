@@ -88,5 +88,9 @@
     "review_prep_directory": "research/factor_library/reviews/batch_003/f5_1_3_candidate_review_prep/",
     "decision_template": "research/factor_library/reviews/batch_003/f5_1_3_candidate_review_prep/batch3_candidate_review_prep_decision_template.json",
     "overview": "research/factor_library/reviews/batch_003/f5_1_3_candidate_review_prep/batch3_candidate_review_prep_overview.json"
+  },
+  "batch3_monitoring_plan_refs": {
+    "monitoring_plan_directory": "research/factor_library/reviews/batch_003/f5_1_5_queue_monitoring_plan/",
+    "closeout": "research/factor_library/reviews/batch_003/f5_1_5_queue_monitoring_plan/batch3_monitoring_plan_closeout.json"
   }
 }

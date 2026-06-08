@@ -1,0 +1,19 @@
+{
+ "pipeline_signature": "V13-F5-1-5-BATCH3-CANDIDATE-REVIEW-QUEUE-MONITORING-PLAN",
+ "base_commit": "52452c476ca92c6038ee1800e8f1e504a6c50898",
+ "batch": "batch_003",
+ "approved_queue_count": 6,
+ "hold_queue_count": 2,
+ "rejected_queue_count": 0,
+ "approved_factors": ["F21","F22","F24","F30","F31","F34"],
+ "held_factors": ["F26","F27"],
+ "monitoring_plan_only": true,
+ "monitoring_execution_started": false,
+ "candidate_review_executed": false,
+ "candidate_promotion_executed": false,
+ "promotion_allowed": false,
+ "alpha_claim_allowed": false,
+ "production": "BLOCKED",
+ "broker_runtime": "BLOCKED",
+ "real_trade": "BLOCKED"
+}

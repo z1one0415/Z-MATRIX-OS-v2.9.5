@@ -1,0 +1,19 @@
+{
+ "pipeline_signature": "V13-F5-1-5-BATCH3-CANDIDATE-REVIEW-QUEUE-MONITORING-PLAN",
+ "base_commit": "52452c476ca92c6038ee1800e8f1e504a6c50898",
+ "approved_factor_evidence_requirements": {
+  "required_for_review": ["factor_manifest","validation_snapshot","guardrail_profile","application_contract","evidence_envelope","candidate_review_decision","queue_entry_record","family_overlap_summary","true_oos_requirement","monitoring_log_future_placeholder"],
+  "notes": "monitoring_log_future_placeholder is a future placeholder only. No runtime log created this round. No runtime_reports created."
+ },
+ "held_factor_evidence_requirements": {
+  "required_for_unlock": ["hold_reason","overlap_resolution_study","guardrail_execution_result_if_required","human_unlock_decision","no_auto_unlock_proof"],
+  "notes": "Hold factors may NOT be automatically unlocked. HUMAN_HOLD_UNLOCK_DECISION required."
+ },
+ "monitoring_execution_started": false,
+ "candidate_review_executed": false,
+ "promotion_allowed": false,
+ "alpha_claim_allowed": false,
+ "production": "BLOCKED",
+ "broker_runtime": "BLOCKED",
+ "real_trade": "BLOCKED"
+}

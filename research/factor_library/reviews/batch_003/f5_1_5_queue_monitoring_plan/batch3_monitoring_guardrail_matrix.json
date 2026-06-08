@@ -1,0 +1,16 @@
+{
+ "pipeline_signature": "V13-F5-1-5-BATCH3-CANDIDATE-REVIEW-QUEUE-MONITORING-PLAN",
+ "base_commit": "52452c476ca92c6038ee1800e8f1e504a6c50898",
+ "guardrail_monitoring_scope": ["F21","F22","F24","F30","F31","F34","F26","F27"],
+ "entries": [
+  {"guardrail":"pit_and_known_at","applicable_to":["F21","F22","F24","F30","F31","F34","F26","F27"],"monitoring_type":"STALENESS_CHECK","description":"Monitor that pit_passed and known_at policy remain valid as time progresses"},
+  {"guardrail":"coverage_tier","applicable_to":["F21","F22","F24","F30","F31","F34","F26","F27"],"monitoring_type":"TIER_CHECK","description":"Monitor coverage_tier stays >= U475"},
+  {"guardrail":"family_overlap","applicable_to":["F21","F22","F24","F30","F31","F34","F26","F27"],"monitoring_type":"OVERLAP_REVIEW","description":"Monitor family overlap status; especially critical for F26/F27 hold unlock"},
+  {"guardrail":"true_oos","applicable_to":["F21","F22","F24","F30","F31","F34","F26","F27"],"monitoring_type":"READINESS_CHECK","description":"Monitor whether true OOS data window has become available for validation"},
+  {"guardrail":"turnover_and_cost","applicable_to":["F27"],"monitoring_type":"GUARDRAIL_EXECUTION","description":"Monitor F27 turnover/cost guardrail status; required before hold unlock"},
+  {"guardrail":"tail_risk","applicable_to":["F31"],"monitoring_type":"GUARDRAIL_EXECUTION","description":"Monitor F31 tail risk guardrail status; required before candidate review completion"},
+  {"guardrail":"regime_shift","applicable_to":["F34"],"monitoring_type":"GUARDRAIL_EXECUTION","description":"Monitor F34 regime shift guardrail status; required before candidate review completion"}
+ ],
+ "monitoring_execution_started": false,
+ "monitoring_only_planning": true
+}

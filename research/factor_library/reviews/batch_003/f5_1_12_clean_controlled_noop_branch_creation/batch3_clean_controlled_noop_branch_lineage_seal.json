@@ -1,0 +1,16 @@
+{
+  "pipeline_signature": "V13-F5-1-12-CREATE-CLEAN-CONTROLLED-NOOP-DRY-RUN-BRANCH",
+  "lineage_status": "SEALED_CLEAN",
+  "branch": "impl/research-batch3-controlled-noop-dry-run-execution-p0-clean",
+  "source_rebuild_commit": "61503b90a255aed788ba19354dab0ef50e276d3b",
+  "trusted_parent_commit": "4dd8e86ff391e0af9e55de46ae3c93545798336c",
+  "polluted_rebuilds_deprecated": [
+    "a622b3d921aebc513bcde98d1ade1be09120c131"
+  ],
+  "polluted_f5_1_10_deprecated": "0c2e6553d819d790a4c10e90acc111d3e8eb9da6",
+  "polluted_f5_1_11_deprecated": "a6c3ff25b943277aa70a104373ead26e29e2199d",
+  "old_polluted_impl_branch": "impl/research-batch3-controlled-noop-dry-run-execution-p0",
+  "old_polluted_impl_branch_reused": false,
+  "skillos_not_modified": true,
+  "docs_skillos_not_modified": true
+}

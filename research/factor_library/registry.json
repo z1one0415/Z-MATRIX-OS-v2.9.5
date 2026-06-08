@@ -77,5 +77,9 @@
   "controlled_noop_dry_run_branch_allowed": true,
   "controlled_noop_dry_run_branch_created": false,
   "noop_runner_implemented": false,
-  "next_legal_entry": "CREATE_CLEAN_CONTROLLED_NOOP_DRY_RUN_BRANCH_FROM_REBUILT_BASE_ONLY"
+  "next_legal_entry": "CONTROLLED_NOOP_DRY_RUN_EXECUTION_P0_IMPLEMENTATION_PLANNING_ONLY",
+  "clean_controlled_noop_dry_run_branch_created": true,
+  "clean_controlled_noop_dry_run_branch_ref": "impl/research-batch3-controlled-noop-dry-run-execution-p0-clean",
+  "clean_controlled_noop_dry_run_branch_source_commit": "61503b90a255aed788ba19354dab0ef50e276d3b",
+  "old_polluted_noop_branch_deprecated": true
 }

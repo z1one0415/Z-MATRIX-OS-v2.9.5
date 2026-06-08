@@ -1,0 +1,10 @@
+{
+  "pipeline_signature": "Z2-V13-F4-0-BATCH2-SAFETY-AUDIT",
+  "status": "V13_F4_0_BATCH2_SAFETY_AUDIT_PASS",
+  "violation_count": 0,
+  "violations": [],
+  "frozen_candidates_mutated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

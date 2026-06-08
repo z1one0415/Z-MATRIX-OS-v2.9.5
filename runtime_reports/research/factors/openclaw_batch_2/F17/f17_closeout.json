@@ -1,0 +1,16 @@
+{
+  "factor_id": "F17",
+  "factor_name": "POLICY_CATALYST_DECAY",
+  "subsession_status": "SOURCE_AUDIT_COMPLETE",
+  "materialization_executed": false,
+  "validation_executed": false,
+  "ready_for_parent_merge": true,
+  "ready_for_promotion_review": false,
+  "data_snooping_risk_acknowledged": true,
+  "multi_factor_composite_built": false,
+  "v13_6_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

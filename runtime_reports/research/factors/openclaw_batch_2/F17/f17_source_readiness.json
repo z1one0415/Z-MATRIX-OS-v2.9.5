@@ -1,0 +1,12 @@
+{
+  "factor_id": "F17",
+  "factor_name": "POLICY_CATALYST_DECAY",
+  "source_type": "EVENT",
+  "source_ready": false,
+  "blocked_reason": "event/domain source not yet ingested; requires separate data pipeline",
+  "materialization_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

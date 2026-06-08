@@ -1,0 +1,15 @@
+{
+  "factor_id": "F20",
+  "factor_name": "INDUSTRY_CATALYST_CONFIRMATION",
+  "missing_data_sources": [
+    "event_calendar",
+    "industry_chain_mapping",
+    "capital_flow_data"
+  ],
+  "estimated_effort_to_ingest": "HIGH",
+  "data_snooping_risk": true,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

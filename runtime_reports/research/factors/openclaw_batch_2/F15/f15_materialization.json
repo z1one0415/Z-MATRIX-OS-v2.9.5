@@ -1,0 +1,18 @@
+{
+  "factor_id": "F15",
+  "factor_name": "F15",
+  "materialization_executed": true,
+  "extended_panel_built": true,
+  "materialized_row_count": 3000,
+  "covered_ticker_count": 100,
+  "sample_month_count": 62,
+  "is_price_only": true,
+  "strict_pit_filter_applied": true,
+  "null_known_at_row_count": 0,
+  "placeholder_zero_row_count": 0,
+  "forbidden_label_columns_present": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

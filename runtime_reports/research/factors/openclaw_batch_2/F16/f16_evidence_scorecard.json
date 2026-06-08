@@ -1,0 +1,13 @@
+{
+  "factor_id": "F16",
+  "factor_name": "F16",
+  "evidence_score": "PASS_RESEARCH_EVIDENCE",
+  "single_factor_validation_executed": true,
+  "sample_month_count": 62,
+  "min_month_count_required": 12,
+  "is_price_only": true,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

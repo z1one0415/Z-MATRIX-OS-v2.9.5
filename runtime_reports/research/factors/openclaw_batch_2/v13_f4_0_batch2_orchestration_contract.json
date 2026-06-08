@@ -1,0 +1,27 @@
+{
+  "pipeline_signature": "Z2-V13-F4-0-OPENCLAW-PARALLEL-FACTOR-BATCH-2",
+  "status": "V13_F4_0_BATCH2_ORCHESTRATION_CONTRACT_BUILT",
+  "base_commit": "8f800b17",
+  "parallel_mode": true,
+  "parent_session_role": "ORCHESTRATION_ONLY",
+  "frozen_candidates_preserved": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "frozen_candidate_mutation_allowed": false,
+  "f3_5_1_monitoring_execution_allowed": false,
+  "f3_6_true_oos_validation_allowed": false,
+  "batch2_subsession_count": 7,
+  "batch2_selection_mode": "REGISTRY_AND_SOURCE_READINESS_DRIVEN",
+  "subsession_output_root": "runtime_reports/research/factors/openclaw_batch_2/",
+  "multi_factor_composite_allowed": false,
+  "weight_optimization_allowed": false,
+  "promotion_allowed": false,
+  "v13_6_allowed": false,
+  "paper_trading_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

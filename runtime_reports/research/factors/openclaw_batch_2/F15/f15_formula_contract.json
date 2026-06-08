@@ -1,0 +1,27 @@
+{
+  "pipeline_signature": "Z2-V13-F3-0-SUBSESSION-FORMULA",
+  "factor_id": "F15",
+  "factor_name": "F15",
+  "factor_family": "MOMENTUM",
+  "priority": "P0",
+  "formula": "residual_momentum = stock_return_20d - beta_to_market_proxy * market_return_20d - industry_return_component",
+  "economic_hypothesis": "stock returns net of market and industry exposure should persist",
+  "data_sources": [
+    "price_bars",
+    "sector_or_industry_mapping"
+  ],
+  "horizons": [
+    "20D",
+    "60D"
+  ],
+  "required_diagnostics": [
+    "regime_split",
+    "sector_wind_check"
+  ],
+  "is_planning_only": false,
+  "requires_fundamentals": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

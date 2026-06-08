@@ -1,0 +1,14 @@
+{
+  "factor_id": "F05",
+  "single_factor_validation_executed": true,
+  "ic_validation_executed": true,
+  "bucket_validation_executed": true,
+  "cost_adjusted_validation_executed": true,
+  "regime_split_executed": true,
+  "sample_month_count": 62,
+  "evidence_score": "PASS_RESEARCH_EVIDENCE",
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

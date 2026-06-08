@@ -1,0 +1,21 @@
+{
+  "pipeline_signature": "Z2-V13-F3-0-1-COVERAGE-EXPANSION",
+  "factor_id": "F11",
+  "coverage_expansion_attempted": true,
+  "original_covered_ticker_count": 100,
+  "expanded_covered_ticker_count": 5208,
+  "total_universe_tickers": 5523,
+  "u400_pass": true,
+  "u450_pass": true,
+  "u475_pass": true,
+  "coverage_passed": true,
+  "coverage_tier": "U475",
+  "expanded_panel_built": true,
+  "expanded_panel_path": "/Users/z1/Documents/Z-MATRIX-OS v2.9.5/runtime_reports/research/factors/openclaw_batch/F11/f11_coverage_expanded_panel.csv",
+  "expanded_panel_row_count": 26040,
+  "blocked_reasons": [],
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

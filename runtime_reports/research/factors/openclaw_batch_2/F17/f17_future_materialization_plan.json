@@ -1,0 +1,11 @@
+{
+  "factor_id": "F17",
+  "factor_name": "POLICY_CATALYST_DECAY",
+  "requires_future_data_gate": true,
+  "materialization_executed": false,
+  "estimated_minimum_months_after_data_ingestion": 12,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

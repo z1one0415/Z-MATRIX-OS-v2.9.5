@@ -1,0 +1,11 @@
+{
+  "factor_id": "F15",
+  "coverage_validation_executed": true,
+  "total_universe_tickers": 5523,
+  "covered_ticker_count": 100,
+  "coverage_pass": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

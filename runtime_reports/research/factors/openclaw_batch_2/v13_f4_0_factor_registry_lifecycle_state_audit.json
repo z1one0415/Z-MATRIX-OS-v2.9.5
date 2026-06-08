@@ -1,0 +1,93 @@
+{
+  "pipeline_signature": "Z2-V13-F4-0-FACTOR-REGISTRY-LIFECYCLE-AUDIT",
+  "status": "V13_F4_0_FACTOR_REGISTRY_LIFECYCLE_AUDIT_BUILT",
+  "registered_factor_count": 20,
+  "frozen_candidates": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "monitoring_waiting_factors": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "rejected_factors": [
+    "F03"
+  ],
+  "hypothesis_only_factors": [
+    "F03R"
+  ],
+  "blocked_by_sample_factors": [
+    "F06",
+    "F07",
+    "F08",
+    "F12",
+    "F13"
+  ],
+  "ready_for_batch2_selection_candidates": [
+    {
+      "factor_id": "F01",
+      "factor_name": "RANK_ACCELERATION_20D_TACTICAL",
+      "lane_type": "MATERIALIZATION_AND_VALIDATION"
+    },
+    {
+      "factor_id": "F02",
+      "factor_name": "DOWNSIDE_VOL_ADJUSTED_STRENGTH",
+      "lane_type": "MATERIALIZATION_AND_VALIDATION"
+    },
+    {
+      "factor_id": "F05",
+      "factor_name": "TURNOVER_STABILITY",
+      "lane_type": "MATERIALIZATION_AND_VALIDATION"
+    },
+    {
+      "factor_id": "F09",
+      "factor_name": "EARNINGS_REVISION",
+      "lane_type": "MATERIALIZATION_AND_VALIDATION"
+    },
+    {
+      "factor_id": "F14",
+      "factor_name": "ASSET_GROWTH_DISCIPLINE",
+      "lane_type": "MATERIALIZATION_AND_VALIDATION"
+    },
+    {
+      "factor_id": "F15",
+      "factor_name": "ACCRUALS_QUALITY",
+      "lane_type": "MATERIALIZATION_AND_VALIDATION"
+    },
+    {
+      "factor_id": "F16",
+      "factor_name": "SENTIMENT_ATTENTION",
+      "lane_type": "MATERIALIZATION_AND_VALIDATION"
+    }
+  ],
+  "source_audit_only_candidates": [
+    {
+      "factor_id": "F17",
+      "factor_name": "POLICY_CATALYST_DECAY",
+      "lane_type": "SOURCE_AUDIT_ONLY"
+    },
+    {
+      "factor_id": "F18",
+      "factor_name": "SUPPLY_DEMAND_TENSION",
+      "lane_type": "SOURCE_AUDIT_ONLY"
+    },
+    {
+      "factor_id": "F19",
+      "factor_name": "CAPITAL_FLOW_CONFIRMATION",
+      "lane_type": "SOURCE_AUDIT_ONLY"
+    },
+    {
+      "factor_id": "F20",
+      "factor_name": "INDUSTRY_CATALYST_CONFIRMATION",
+      "lane_type": "SOURCE_AUDIT_ONLY"
+    }
+  ],
+  "excluded_from_batch2": [],
+  "registry_resolution_errors": [],
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

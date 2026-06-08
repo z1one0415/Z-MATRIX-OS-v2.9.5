@@ -1,0 +1,12 @@
+{
+  "factor_id": "F19",
+  "factor_name": "CAPITAL_FLOW_CONFIRMATION",
+  "source_type": "FLOW",
+  "source_ready": false,
+  "blocked_reason": "event/domain source not yet ingested; requires separate data pipeline",
+  "materialization_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

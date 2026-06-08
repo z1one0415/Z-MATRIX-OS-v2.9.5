@@ -1,0 +1,18 @@
+{
+  "factor_id": "F14",
+  "factor_name": "F14",
+  "subsession_status": "PASS",
+  "materialized": true,
+  "pit_passed": true,
+  "coverage_passed": false,
+  "single_factor_validation_executed": true,
+  "evidence_score": "PASS_RESEARCH_EVIDENCE",
+  "ready_for_parent_merge": true,
+  "ready_for_promotion_review": false,
+  "multi_factor_composite_built": false,
+  "v13_6_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

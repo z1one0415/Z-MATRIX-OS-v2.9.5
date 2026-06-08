@@ -1,0 +1,107 @@
+{
+  "pipeline_signature": "Z2-V13-F4-0-BATCH2-FACTOR-SELECTION-SCORECARD",
+  "status": "V13_F4_0_BATCH2_FACTOR_SELECTION_SCORECARD_BUILT",
+  "selection_scope_from_registry": true,
+  "selection_candidate_count": 11,
+  "selected_batch2_lanes": [
+    {
+      "lane_id": "A",
+      "factor_id": "F05",
+      "factor_name": "TURNOVER_STABILITY",
+      "lane_type": "MATERIALIZATION_AND_VALIDATION",
+      "selection_reason": [
+        "price_based",
+        "high_source_readiness",
+        "low_pit_risk"
+      ],
+      "forbidden_if": [
+        "synthetic_source",
+        "lookahead",
+        "coverage_u475_blocked"
+      ]
+    },
+    {
+      "lane_id": "B",
+      "factor_id": "F02",
+      "factor_name": "DOWNSIDE_VOL_ADJUSTED_STRENGTH_REIMPLEMENTATION",
+      "lane_type": "MATERIALIZATION_AND_VALIDATION",
+      "selection_reason": [
+        "formula_collision_identified_in_F3.0",
+        "needs_clean_reimplementation"
+      ],
+      "forbidden_if": [
+        "formula_collision_not_resolved"
+      ]
+    },
+    {
+      "lane_id": "C",
+      "factor_id": "F09",
+      "factor_name": "EARNINGS_REVISION",
+      "lane_type": "SOURCE_AUDIT_ONLY",
+      "selection_reason": [
+        "source_feasibility_check",
+        "needs_analyst_data"
+      ],
+      "forbidden_if": [
+        "synthetic_analyst_data"
+      ]
+    },
+    {
+      "lane_id": "D",
+      "factor_id": "F14",
+      "factor_name": "ASSET_GROWTH_DISCIPLINE",
+      "lane_type": "MATERIALIZATION_AND_VALIDATION",
+      "selection_reason": [
+        "balanced_source_profile",
+        "research_diversification"
+      ],
+      "forbidden_if": [
+        "coverage_u475_blocked"
+      ]
+    },
+    {
+      "lane_id": "E",
+      "factor_id": "F15",
+      "factor_name": "ACCRUALS_QUALITY",
+      "lane_type": "MATERIALIZATION_AND_VALIDATION",
+      "selection_reason": [
+        "balanced_source_profile",
+        "research_diversification"
+      ],
+      "forbidden_if": [
+        "coverage_u475_blocked"
+      ]
+    },
+    {
+      "lane_id": "F",
+      "factor_id": "F16",
+      "factor_name": "SENTIMENT_ATTENTION",
+      "lane_type": "MATERIALIZATION_AND_VALIDATION",
+      "selection_reason": [
+        "price_based_with_volume",
+        "diversification"
+      ],
+      "forbidden_if": [
+        "coverage_u475_blocked"
+      ]
+    },
+    {
+      "lane_id": "G",
+      "factor_id": "F17_F20_GROUP",
+      "factor_name": "EVENT_DOMAIN_SOURCE_AUDIT_GROUP",
+      "lane_type": "SOURCE_AUDIT_ONLY",
+      "selection_reason": [
+        "event_source_feasibility",
+        "domain_data_maturity"
+      ],
+      "forbidden_if": [
+        "materialization_attempted"
+      ]
+    }
+  ],
+  "frozen_candidate_overlap_blocked": true,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

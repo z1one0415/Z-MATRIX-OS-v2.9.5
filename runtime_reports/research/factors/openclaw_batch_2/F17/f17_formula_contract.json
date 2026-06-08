@@ -1,0 +1,11 @@
+{
+  "pipeline_signature": "Z2-V13-F4-0-SUBSESSION-FORMULA",
+  "factor_id": "F17",
+  "factor_name": "POLICY_CATALYST_DECAY",
+  "source_type": "EVENT",
+  "lane_type": "SOURCE_AUDIT_ONLY",
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

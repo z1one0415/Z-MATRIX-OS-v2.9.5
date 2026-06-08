@@ -1,0 +1,12 @@
+{
+  "factor_id": "F18",
+  "factor_name": "SUPPLY_DEMAND_TENSION",
+  "source_type": "INDUSTRY",
+  "source_ready": false,
+  "blocked_reason": "event/domain source not yet ingested; requires separate data pipeline",
+  "materialization_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

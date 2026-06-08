@@ -1,0 +1,56 @@
+{
+  "pipeline_signature": "Z2-V13-F3-0-1-OPENCLAW-CHILD-AUDIT",
+  "status": "V13_F3_0_CHILD_EVIDENCE_CONSISTENCY_AUDIT_BUILT",
+  "audited_factor_count": 8,
+  "inconsistent_factor_count": 3,
+  "inconsistent_factors": [
+    {
+      "factor_id": "F04",
+      "child_claimed_evidence_score": "PASS_RESEARCH_EVIDENCE",
+      "recomputed_evidence_score": "MATERIALIZED_BUT_COVERAGE_BLOCKED",
+      "claim_consistent_with_artifacts": false,
+      "inconsistency_reasons": [
+        "coverage_passed_false_but_child_claimed_PASS_RESEARCH_EVIDENCE"
+      ]
+    },
+    {
+      "factor_id": "F10",
+      "child_claimed_evidence_score": "PASS_RESEARCH_EVIDENCE",
+      "recomputed_evidence_score": "MATERIALIZED_BUT_COVERAGE_BLOCKED",
+      "claim_consistent_with_artifacts": false,
+      "inconsistency_reasons": [
+        "coverage_passed_false_but_child_claimed_PASS_RESEARCH_EVIDENCE"
+      ]
+    },
+    {
+      "factor_id": "F11",
+      "child_claimed_evidence_score": "PASS_RESEARCH_EVIDENCE",
+      "recomputed_evidence_score": "MATERIALIZED_BUT_COVERAGE_BLOCKED",
+      "claim_consistent_with_artifacts": false,
+      "inconsistency_reasons": [
+        "coverage_passed_false_but_child_claimed_PASS_RESEARCH_EVIDENCE"
+      ]
+    }
+  ],
+  "coverage_fail_but_pass_claim_factors": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "corrected_pass_research_evidence_factors": [],
+  "corrected_blocked_factors": [
+    "F04",
+    "F10",
+    "F11",
+    "F12",
+    "F13",
+    "F07",
+    "F08",
+    "F03R"
+  ],
+  "corrected_hypothesis_only_factors": [],
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

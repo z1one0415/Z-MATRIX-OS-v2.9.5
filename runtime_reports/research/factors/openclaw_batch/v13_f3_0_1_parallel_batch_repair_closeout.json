@@ -1,0 +1,42 @@
+{
+  "pipeline_signature": "Z2-V13-F3-0-1-PARALLEL-BATCH-REPAIR-CLOSEOUT",
+  "status": "V13_F3_0_1_PARALLEL_BATCH_REPAIR_BLOCKED",
+  "base_commit": "673ec6c",
+  "repair_executed": true,
+  "inconsistent_factor_count_before_repair": 3,
+  "inconsistent_factor_count_after_repair": 3,
+  "coverage_expansion_attempted_factors": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "pass_research_evidence_after_repair": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "materialized_but_coverage_blocked_after_repair": [],
+  "blocked_by_sample_factors": [],
+  "hypothesis_only_factors": [
+    "F03R"
+  ],
+  "ready_for_next_validation": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "ready_for_promotion_review": [],
+  "multi_factor_composite_built": false,
+  "oos_alpha_validation_executed": false,
+  "skillos_protocol_modified": false,
+  "frontend_modified": false,
+  "v13_6_allowed": false,
+  "paper_trading_allowed": false,
+  "alpha_claim_allowed": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "recommended_next_action": "PREPARE_V13_F3_1_FACTOR_CANDIDATE_REVIEW"
+}

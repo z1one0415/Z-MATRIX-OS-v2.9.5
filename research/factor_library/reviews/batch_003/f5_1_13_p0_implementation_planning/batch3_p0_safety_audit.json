@@ -35,5 +35,9 @@
     "no_tag": true,
     "f26_f27_no_auto_unlock": true
   },
-  "docs_only_planning": true
+  "docs_only_planning": true,
+  "full_test_gate_checked": true,
+  "interface_tests_run": true,
+  "candidate_review_tests_run": true,
+  "local_partial_only_test_report_replaced": true
 }

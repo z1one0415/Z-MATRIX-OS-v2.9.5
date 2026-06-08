@@ -21,5 +21,16 @@
   "real_trade": "BLOCKED",
   "skillos_modified": false,
   "status": "V13_F5_1_13_P0_IMPLEMENTATION_PLANNING_READY_FOR_HUMAN_DECISION",
-  "next_legal_entry": "HUMAN_CONTROLLED_NOOP_DRY_RUN_P0_IMPLEMENTATION_PLANNING_DECISION_ONLY"
+  "next_legal_entry": "HUMAN_CONTROLLED_NOOP_DRY_RUN_P0_IMPLEMENTATION_PLANNING_DECISION_ONLY",
+  "test_gate_closed": true,
+  "test_gate_status": "V13_F5_1_13_1_TEST_GATE_CLOSED",
+  "full_test_suites_run": [
+    "tests/research/factors/interface",
+    "tests/research/factors/candidate_review"
+  ],
+  "full_test_result": {
+    "interface": "65 passed in 0.07s",
+    "candidate_review": "206 passed in 0.42s",
+    "total": "271 passed, 0 failed, 0 skipped"
+  }
 }

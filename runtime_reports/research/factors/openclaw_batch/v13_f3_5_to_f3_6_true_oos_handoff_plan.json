@@ -1,0 +1,20 @@
+{
+  "pipeline_signature": "Z2-V13-F3-5-TO-F3-6-TRUE-OOS-HANDOFF-PLAN",
+  "status": "V13_F3_5_TO_F3_6_TRUE_OOS_HANDOFF_PLAN_BUILT",
+  "handoff_allowed_only_when": {
+    "minimum_true_oos_months_available": 6,
+    "preferred_true_oos_months_available": 12,
+    "coverage_tier": "U475",
+    "oos_labels_isolated": true,
+    "monitoring_state_not_suspended": true,
+    "same_sample_reuse_blocked": true
+  },
+  "ready_for_f3_6_now": false,
+  "true_oos_validation_executed": false,
+  "oos_label_generation_executed": false,
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

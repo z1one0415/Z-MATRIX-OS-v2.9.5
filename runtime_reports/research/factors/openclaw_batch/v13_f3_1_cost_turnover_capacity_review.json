@@ -1,0 +1,86 @@
+{
+  "pipeline_signature": "Z2-V13-F3-1-COST-TURNOVER-CAPACITY-REVIEW",
+  "status": "V13_F3_1_COST_TURNOVER_CAPACITY_REVIEW_BUILT",
+  "reviewed_factors": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "round_trip_cost_bps_tested": [
+    30,
+    50,
+    100
+  ],
+  "per_factor_cost_review": [
+    {
+      "factor_id": "F04",
+      "horizons": [
+        "20D",
+        "60D"
+      ],
+      "has_short_horizon_5d": false,
+      "cost_bps_tested": [
+        30,
+        50,
+        100
+      ],
+      "cost_surviving_30bps": true,
+      "cost_surviving_50bps": true,
+      "cost_surviving_100bps": true,
+      "cost_fragility": "COST_RESILIENT"
+    },
+    {
+      "factor_id": "F10",
+      "horizons": [
+        "20D",
+        "60D"
+      ],
+      "has_short_horizon_5d": false,
+      "cost_bps_tested": [
+        30,
+        50,
+        100
+      ],
+      "cost_surviving_30bps": true,
+      "cost_surviving_50bps": true,
+      "cost_surviving_100bps": true,
+      "cost_fragility": "COST_RESILIENT"
+    },
+    {
+      "factor_id": "F11",
+      "horizons": [
+        "5D",
+        "20D",
+        "60D"
+      ],
+      "has_short_horizon_5d": true,
+      "cost_bps_tested": [
+        30,
+        50,
+        100
+      ],
+      "cost_surviving_30bps": false,
+      "cost_surviving_50bps": false,
+      "cost_surviving_100bps": false,
+      "cost_fragility": "COST_FRAGILE_HIGH_TURNOVER"
+    }
+  ],
+  "cost_surviving_factors": [
+    "F04",
+    "F10"
+  ],
+  "cost_fragile_factors": [
+    "F11"
+  ],
+  "capacity_risk_flags": [
+    {
+      "factor_id": "F11",
+      "flag": "HIGH_IMPLIED_TURNOVER"
+    }
+  ],
+  "trade_or_position_columns_generated": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

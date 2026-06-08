@@ -1,0 +1,42 @@
+{
+  "pipeline_signature": "Z2-V13-F3-1-CANDIDATE-REVIEW-CLOSEOUT",
+  "status": "V13_F3_1_CANDIDATE_REVIEW_PASS",
+  "base_commit": "337dbb5",
+  "candidate_review_executed": true,
+  "reviewed_factors": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "candidate_freeze_ready": [
+    "F04",
+    "F10"
+  ],
+  "tactical_candidate_ready": [
+    "F11"
+  ],
+  "needs_oos_factors": [],
+  "rework_required_factors": [],
+  "rejected_factors": [],
+  "ready_for_f3_2_candidate_freeze_review": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "ready_for_promotion_review": [],
+  "promotion_review_allowed": false,
+  "multi_factor_composite_built": false,
+  "weight_optimization_executed": false,
+  "oos_alpha_validation_executed": false,
+  "skillos_protocol_modified": false,
+  "frontend_modified": false,
+  "v13_6_allowed": false,
+  "paper_trading_allowed": false,
+  "alpha_claim_allowed": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "recommended_next_action": "PREPARE_V13_F3_2_CANDIDATE_FREEZE_REVIEW"
+}

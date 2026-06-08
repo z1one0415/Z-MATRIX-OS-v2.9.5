@@ -1,0 +1,35 @@
+{
+  "pipeline_signature": "Z2-V13-F3-2-CANDIDATE-FREEZE-REGISTRY",
+  "status": "V13_F3_2_CANDIDATE_FREEZE_REGISTRY_BUILT",
+  "frozen_candidate_count": 3,
+  "frozen_candidates": [
+    {
+      "factor_id": "F04",
+      "candidate_type": "FULL_HORIZON_RESEARCH_CANDIDATE",
+      "freeze_status": "FROZEN_CANDIDATE"
+    },
+    {
+      "factor_id": "F10",
+      "candidate_type": "REGIME_SPECIFIC_RESEARCH_CANDIDATE",
+      "freeze_status": "FROZEN_CANDIDATE"
+    },
+    {
+      "factor_id": "F11",
+      "candidate_type": "TACTICAL_RESEARCH_CANDIDATE",
+      "freeze_status": "FROZEN_TACTICAL_CANDIDATE"
+    }
+  ],
+  "ready_for_f3_3_research_composite_design": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "ready_for_promotion_review": [],
+  "promotion_allowed": false,
+  "multi_factor_composite_built": false,
+  "weight_optimization_executed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

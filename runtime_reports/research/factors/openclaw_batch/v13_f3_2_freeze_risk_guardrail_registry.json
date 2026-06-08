@@ -1,0 +1,32 @@
+{
+  "pipeline_signature": "Z2-V13-F3-2-FREEZE-RISK-GUARDRAIL-REGISTRY",
+  "status": "V13_F3_2_FREEZE_RISK_GUARDRAIL_REGISTRY_BUILT",
+  "guardrails": [
+    {
+      "factor_id": "F04",
+      "guardrail_type": "FULL_HORIZON_RESEARCH_ONLY",
+      "requires_oos_before_promotion": true,
+      "requires_composite_interaction_review": true
+    },
+    {
+      "factor_id": "F10",
+      "guardrail_type": "REGIME_SPECIFIC",
+      "requires_regime_gate": true,
+      "blocked_if_regime_gate_missing": true,
+      "requires_oos_before_promotion": true
+    },
+    {
+      "factor_id": "F11",
+      "guardrail_type": "TACTICAL_COST_FRAGILE",
+      "requires_cost_gate": true,
+      "blocked_if_cost_gate_missing": true,
+      "requires_turnover_monitoring": true,
+      "requires_oos_before_promotion": true
+    }
+  ],
+  "multi_factor_composite_built": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

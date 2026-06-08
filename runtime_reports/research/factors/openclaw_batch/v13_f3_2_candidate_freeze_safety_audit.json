@@ -1,0 +1,9 @@
+{
+  "pipeline_signature": "Z2-V13-F3-2-CANDIDATE-FREEZE-SAFETY-AUDIT",
+  "status": "V13_F3_2_CANDIDATE_FREEZE_SAFETY_AUDIT_PASS",
+  "violation_count": 0,
+  "violations": [],
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

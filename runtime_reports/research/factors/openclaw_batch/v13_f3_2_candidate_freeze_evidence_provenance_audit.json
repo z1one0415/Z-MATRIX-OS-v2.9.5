@@ -1,0 +1,49 @@
+{
+  "pipeline_signature": "Z2-V13-F3-2-CANDIDATE-FREEZE-EVIDENCE-PROVENANCE-AUDIT",
+  "status": "V13_F3_2_CANDIDATE_FREEZE_EVIDENCE_PROVENANCE_AUDIT_PASS",
+  "audited_factors": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "all_candidate_sources_valid": true,
+  "all_coverage_u475": true,
+  "all_pit_passed": true,
+  "all_single_factor_validation_executed": true,
+  "provenance_passed_factor_count": 3,
+  "provenance_blocked_factor_count": 0,
+  "blocked_reasons": [],
+  "per_factor": [
+    {
+      "factor_id": "F04",
+      "coverage_u475": true,
+      "pit_passed": true,
+      "single_factor_validation_executed": true,
+      "alpha_blocked": true,
+      "production_blocked": true,
+      "source_valid": true
+    },
+    {
+      "factor_id": "F10",
+      "coverage_u475": true,
+      "pit_passed": true,
+      "single_factor_validation_executed": true,
+      "alpha_blocked": true,
+      "production_blocked": true,
+      "source_valid": true
+    },
+    {
+      "factor_id": "F11",
+      "coverage_u475": true,
+      "pit_passed": true,
+      "single_factor_validation_executed": true,
+      "alpha_blocked": true,
+      "production_blocked": true,
+      "source_valid": true
+    }
+  ],
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,42 @@
+{
+  "pipeline_signature": "Z2-V13-F3-2-CANDIDATE-FREEZE-CLOSEOUT",
+  "status": "V13_F3_2_CANDIDATE_FREEZE_PASS",
+  "base_commit": "5de48e0",
+  "candidate_freeze_executed": true,
+  "frozen_candidate_count": 3,
+  "frozen_candidates": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "f04_freeze_status": "FROZEN_CANDIDATE",
+  "f10_freeze_status": "FROZEN_REGIME_SPECIFIC_CANDIDATE",
+  "f11_freeze_status": "FROZEN_TACTICAL_CANDIDATE",
+  "ready_for_f3_3_research_composite_design": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "ready_for_f3_4_true_oos_requirement_plan": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "ready_for_promotion_review": [],
+  "promotion_review_allowed": false,
+  "multi_factor_composite_built": false,
+  "multi_factor_composite_design_allowed_next": true,
+  "weight_optimization_executed": false,
+  "oos_alpha_validation_executed": false,
+  "skillos_protocol_modified": false,
+  "frontend_modified": false,
+  "v13_6_allowed": false,
+  "paper_trading_allowed": false,
+  "alpha_claim_allowed": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "recommended_next_action": "PREPARE_V13_F3_3_RESEARCH_COMPOSITE_DESIGN"
+}

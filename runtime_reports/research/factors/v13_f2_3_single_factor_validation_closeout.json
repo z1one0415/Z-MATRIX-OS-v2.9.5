@@ -1,0 +1,44 @@
+{
+  "pipeline_signature": "Z2-V13-F2-3-VALIDATION-CLOSEOUT",
+  "status": "V13_F2_3_SINGLE_FACTOR_VALIDATION_PASS",
+  "v13_f2_3_executed": true,
+  "outcome_label_generation_executed": true,
+  "label_isolation_passed": true,
+  "ic_validation_executed": true,
+  "rank_ic_validation_executed": true,
+  "bucket_return_validation_executed": true,
+  "regime_diagnostics_executed": true,
+  "cost_adjusted_validation_executed": true,
+  "validated_factors": [
+    "F03",
+    "F06"
+  ],
+  "per_factor_final_status": [
+    {
+      "factor_id": "F03",
+      "sample_month_count": 20,
+      "evidence_score": "REJECTED",
+      "rationale": "No evidence of predictive power (IC=-0.0588/-0.0577, spread=-0.0099/-0.0100)"
+    },
+    {
+      "factor_id": "F06",
+      "sample_month_count": 1,
+      "evidence_score": "BLOCKED_BY_INSUFFICIENT_SAMPLE",
+      "rationale": "Only 1 months of data; minimum 12 required"
+    }
+  ],
+  "ready_for_next_research_gate": [],
+  "multi_factor_composite_built": false,
+  "oos_alpha_validation_executed": false,
+  "skillos_protocol_modified": false,
+  "frontend_modified": false,
+  "v13_6_allowed": false,
+  "paper_trading_allowed": false,
+  "alpha_claim_allowed": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "recommended_next_action": "EXTEND_SAMPLE_OR_BLOCK_SINGLE_FACTOR_VALIDATION"
+}

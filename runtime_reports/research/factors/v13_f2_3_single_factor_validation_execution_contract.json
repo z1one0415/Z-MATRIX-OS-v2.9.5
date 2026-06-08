@@ -1,0 +1,27 @@
+{
+  "pipeline_signature": "Z2-V13-F2-3-EXECUTION-CONTRACT",
+  "status": "V13_F2_3_SINGLE_FACTOR_VALIDATION_EXECUTION_CONTRACT_BUILT",
+  "v13_f2_3_executed": true,
+  "execution_scope": [
+    "F03",
+    "F06"
+  ],
+  "validation_execution_allowed": true,
+  "outcome_label_generation_allowed": true,
+  "outcome_label_write_to_factor_panel_allowed": false,
+  "ic_validation_allowed": true,
+  "rank_ic_validation_allowed": true,
+  "bucket_return_validation_allowed": true,
+  "horizon_split_allowed": true,
+  "regime_split_allowed": true,
+  "cost_adjusted_allowed": true,
+  "multi_factor_composite_allowed": false,
+  "v13_6_allowed": false,
+  "paper_trading_allowed": false,
+  "alpha_claim_allowed": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

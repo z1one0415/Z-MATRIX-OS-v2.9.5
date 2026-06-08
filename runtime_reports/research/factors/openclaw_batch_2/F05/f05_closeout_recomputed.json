@@ -1,0 +1,17 @@
+{
+  "factor_id": "F05",
+  "evidence_score": "PASS_RESEARCH_EVIDENCE",
+  "subsession_status": "PASS",
+  "coverage_passed": true,
+  "coverage_tier": "U475",
+  "expanded_covered_ticker_count": 5208,
+  "ready_for_candidate_review": true,
+  "ready_for_promotion_review": false,
+  "recomputed_from_artifacts": true,
+  "multi_factor_composite_built": false,
+  "v13_6_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

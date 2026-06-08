@@ -1,0 +1,10 @@
+{
+  "factor_id": "F09",
+  "evidence_score": "SOURCE_AUDIT_CONTRACT_VIOLATED",
+  "subsession_status": "BLOCKED",
+  "ready_for_candidate_review": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

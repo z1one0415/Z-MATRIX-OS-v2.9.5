@@ -1,0 +1,40 @@
+{
+  "pipeline_signature": "Z2-V13-F4-0-1-BATCH2-MERGE-REPAIRED",
+  "status": "V13_F4_0_1_BATCH2_MERGE_REPAIRED_BUILT",
+  "expected_subsessions_from_contract": 7,
+  "completed_subsessions_detected": 10,
+  "subsession_count_consistency_passed": false,
+  "pass_research_evidence_factors": [
+    "F02",
+    "F05",
+    "F14",
+    "F15",
+    "F16"
+  ],
+  "materialized_but_coverage_blocked_factors": [
+    "F17",
+    "F18",
+    "F19",
+    "F20"
+  ],
+  "source_audit_contract_violated_factors": [
+    "F09"
+  ],
+  "source_audit_only_completed": [],
+  "ready_for_candidate_review": [
+    "F02",
+    "F05",
+    "F14",
+    "F15",
+    "F16"
+  ],
+  "ready_for_promotion_review": [],
+  "frozen_candidates_mutated": false,
+  "multi_factor_composite_built": false,
+  "weight_optimization_executed": false,
+  "v13_6_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,92 @@
+{
+  "pipeline_signature": "Z2-V13-F4-0-1-BATCH2-CHILD-EVIDENCE-CONSISTENCY-AUDIT",
+  "status": "V13_F4_0_1_BATCH2_CHILD_EVIDENCE_CONSISTENCY_AUDIT_BUILT",
+  "audited_factor_count": 6,
+  "inconsistent_factor_count": 6,
+  "inconsistent_factors": [
+    "F02",
+    "F05",
+    "F14",
+    "F15",
+    "F16",
+    "F09"
+  ],
+  "per_factor": [
+    {
+      "factor_id": "F02",
+      "child_claimed_evidence_score": "PASS_RESEARCH_EVIDENCE",
+      "coverage_passed": false,
+      "covered_ticker_count": 100,
+      "recomputed_evidence_score": "MATERIALIZED_BUT_COVERAGE_BLOCKED",
+      "claim_consistent_with_artifacts": false,
+      "inconsistency_reasons": [
+        "coverage_passed_false_but_child_claimed_PASS_RESEARCH_EVIDENCE"
+      ],
+      "ready_for_candidate_review": false
+    },
+    {
+      "factor_id": "F05",
+      "child_claimed_evidence_score": "PASS_RESEARCH_EVIDENCE",
+      "coverage_passed": false,
+      "covered_ticker_count": 100,
+      "recomputed_evidence_score": "MATERIALIZED_BUT_COVERAGE_BLOCKED",
+      "claim_consistent_with_artifacts": false,
+      "inconsistency_reasons": [
+        "coverage_passed_false_but_child_claimed_PASS_RESEARCH_EVIDENCE"
+      ],
+      "ready_for_candidate_review": false
+    },
+    {
+      "factor_id": "F14",
+      "child_claimed_evidence_score": "PASS_RESEARCH_EVIDENCE",
+      "coverage_passed": false,
+      "covered_ticker_count": 100,
+      "recomputed_evidence_score": "MATERIALIZED_BUT_COVERAGE_BLOCKED",
+      "claim_consistent_with_artifacts": false,
+      "inconsistency_reasons": [
+        "coverage_passed_false_but_child_claimed_PASS_RESEARCH_EVIDENCE"
+      ],
+      "ready_for_candidate_review": false
+    },
+    {
+      "factor_id": "F15",
+      "child_claimed_evidence_score": "PASS_RESEARCH_EVIDENCE",
+      "coverage_passed": false,
+      "covered_ticker_count": 100,
+      "recomputed_evidence_score": "MATERIALIZED_BUT_COVERAGE_BLOCKED",
+      "claim_consistent_with_artifacts": false,
+      "inconsistency_reasons": [
+        "coverage_passed_false_but_child_claimed_PASS_RESEARCH_EVIDENCE"
+      ],
+      "ready_for_candidate_review": false
+    },
+    {
+      "factor_id": "F16",
+      "child_claimed_evidence_score": "PASS_RESEARCH_EVIDENCE",
+      "coverage_passed": false,
+      "covered_ticker_count": 100,
+      "recomputed_evidence_score": "MATERIALIZED_BUT_COVERAGE_BLOCKED",
+      "claim_consistent_with_artifacts": false,
+      "inconsistency_reasons": [
+        "coverage_passed_false_but_child_claimed_PASS_RESEARCH_EVIDENCE"
+      ],
+      "ready_for_candidate_review": false
+    },
+    {
+      "factor_id": "F09",
+      "child_claimed_evidence_score": "PASS_RESEARCH_EVIDENCE",
+      "coverage_passed": false,
+      "covered_ticker_count": 100,
+      "recomputed_evidence_score": "SOURCE_AUDIT_CONTRACT_VIOLATED",
+      "claim_consistent_with_artifacts": false,
+      "inconsistency_reasons": [
+        "source_audit_only_lane_materialized_and_validated"
+      ],
+      "ready_for_candidate_review": false
+    }
+  ],
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

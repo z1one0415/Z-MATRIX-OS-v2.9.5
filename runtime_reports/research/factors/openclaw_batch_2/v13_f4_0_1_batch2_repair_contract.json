@@ -1,0 +1,31 @@
+{
+  "pipeline_signature": "Z2-V13-F4-0-1-BATCH2-REPAIR-CONTRACT",
+  "status": "V13_F4_0_1_BATCH2_REPAIR_CONTRACT_BUILT",
+  "base_commit": "0d660e10",
+  "repair_only": true,
+  "frozen_candidates_preserved": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "frozen_candidate_mutation_allowed": false,
+  "f3_5_1_monitoring_execution_allowed": false,
+  "f3_6_true_oos_validation_allowed": false,
+  "candidate_review_allowed": false,
+  "promotion_allowed": false,
+  "coverage_fail_blocks_pass": true,
+  "sample_fail_blocks_pass": true,
+  "source_blocked_blocks_pass": true,
+  "source_audit_only_materialization_forbidden": true,
+  "source_audit_only_validation_forbidden": true,
+  "parent_merge_must_recompute_from_child_artifacts": true,
+  "child_closeout_self_claim_not_sufficient": true,
+  "multi_factor_composite_built": false,
+  "weight_optimization_executed": false,
+  "v13_6_allowed": false,
+  "paper_trading_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

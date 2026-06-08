@@ -1,0 +1,51 @@
+{
+  "pipeline_signature": "Z2-V13-F4-0-1-BATCH2-REPAIR-CLOSEOUT",
+  "status": "V13_F4_0_1_BATCH2_REPAIR_PASS",
+  "base_commit": "0d660e10",
+  "repair_executed": true,
+  "frozen_candidates_preserved": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "frozen_candidates_mutated": false,
+  "f3_5_1_monitoring_execution_executed": false,
+  "f3_6_true_oos_validation_executed": false,
+  "coverage_fail_pass_conflict_fixed": true,
+  "source_audit_contract_violation_fixed": true,
+  "subsession_count_consistency_passed": false,
+  "pass_research_evidence_factors_after_repair": [
+    "F02",
+    "F05",
+    "F14",
+    "F15",
+    "F16"
+  ],
+  "materialized_but_coverage_blocked_factors": [
+    "F17",
+    "F18",
+    "F19",
+    "F20"
+  ],
+  "ready_for_candidate_review_after_repair": [
+    "F02",
+    "F05",
+    "F14",
+    "F15",
+    "F16"
+  ],
+  "ready_for_promotion_review": [],
+  "multi_factor_composite_built": false,
+  "weight_optimization_executed": false,
+  "skillos_protocol_modified": false,
+  "frontend_modified": false,
+  "v13_6_allowed": false,
+  "paper_trading_allowed": false,
+  "alpha_claim_allowed": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "recommended_next_action": "PREPARE_V13_F4_1_BATCH2_CANDIDATE_REVIEW"
+}

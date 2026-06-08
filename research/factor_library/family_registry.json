@@ -1,0 +1,20 @@
+{
+ "pipeline_signature": "V13.F5.1.2-BACKFILL-FAMILY-REGISTRY",
+ "base_commit": "635aa77cc1801bcc9fd85fe6ce48f5f3a995912c",
+ "families": [
+  {"family_id":"MOMENTUM","members":["F04"]},
+  {"family_id":"RISK","members":["F10"]},
+  {"family_id":"REVERSAL","members":["F11"]},
+  {"family_id":"FUNDAMENTAL_DISCIPLINE","members":["F14"]},
+  {"family_id":"ACCOUNTING_QUALITY","members":["F15"]},
+  {"family_id":"SENTIMENT_ATTENTION","members":["F16"]},
+  {"family_id":"TREND_STRUCTURE","members":["F21","F22","F24"]},
+  {"family_id":"LIQUIDITY_VOLUME","members":["F26","F27","F30"]},
+  {"family_id":"TAIL_RISK","members":["F31","F34"]}
+ ],
+ "family_count": 9,
+ "alpha_claim_allowed": false,
+ "production": "BLOCKED",
+ "broker_runtime": "BLOCKED",
+ "real_trade": "BLOCKED"
+}

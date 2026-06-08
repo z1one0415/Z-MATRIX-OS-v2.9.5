@@ -1,0 +1,18 @@
+{
+ "pipeline_signature": "V13.F5.1.2-BATCH3-INTERFACE-BACKFILL",
+ "base_commit": "635aa77cc1801bcc9fd85fe6ce48f5f3a995912c",
+ "batch": "batch_003",
+ "expected_backfill_count": 8,
+ "completed_backfill_count": 8,
+ "interface_version": "factor.application.v1",
+ "ready_for_candidate_review": [],
+ "ready_for_promotion_review": [],
+ "promotion_allowed": false,
+ "multi_factor_composite_built": false,
+ "weight_optimization_executed": false,
+ "alpha_claim_allowed": false,
+ "production": "BLOCKED",
+ "broker_runtime": "BLOCKED",
+ "real_trade": "BLOCKED",
+ "next_legal_entry": "V13.F5.1.3_BATCH3_CANDIDATE_REVIEW_PREP"
+}

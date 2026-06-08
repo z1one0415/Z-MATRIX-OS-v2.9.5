@@ -1,0 +1,18 @@
+{
+  "pipeline_signature": "V13.F5.1.2-BACKFILL-VALIDATION",
+  "factor_id": "F27",
+  "factor_name": "TURNOVER_ACCELERATION",
+  "coverage_passed": true,
+  "pit_passed": true,
+  "single_factor_validation_executed": true,
+  "true_oos_validation_executed": false,
+  "ready_for_candidate_review": false,
+  "ready_for_promotion_review": [],
+  "promotion_allowed": false,
+  "multi_factor_composite_built": false,
+  "weight_optimization_executed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

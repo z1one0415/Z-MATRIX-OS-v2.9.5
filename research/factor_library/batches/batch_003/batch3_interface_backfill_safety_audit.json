@@ -1,0 +1,23 @@
+{
+ "pipeline_signature": "V13.F5.1.2-BATCH3-BACKFILL-SAFETY-AUDIT",
+ "base_commit": "635aa77cc1801bcc9fd85fe6ce48f5f3a995912c",
+ "violation_count": 0,
+ "violations": [],
+ "checks": {
+  "all_factors_have_5_artifacts": true,
+  "all_application_contracts_pass_16_hard_requires": true,
+  "all_validation_snapshots_block_promotion_alpha": true,
+  "all_manifest_promotion_allowed_false": true,
+  "all_production_blocked": true,
+  "frozen_candidates_unchanged": true,
+  "rejected_factors_unchanged": true,
+  "no_factor_execution": true,
+  "no_skillos_modification": true,
+  "no_runtime_reports_modification": true,
+  "no_broker_trading_execution_modification": true
+ },
+ "alpha_claim_allowed": false,
+ "production": "BLOCKED",
+ "broker_runtime": "BLOCKED",
+ "real_trade": "BLOCKED"
+}

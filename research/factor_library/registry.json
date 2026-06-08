@@ -1,0 +1,15 @@
+{
+ "pipeline_signature": "V13.F5.1.2-BACKFILL-REGISTRY-UPDATE",
+ "base_commit": "635aa77cc1801bcc9fd85fe6ce48f5f3a995912c",
+ "registries_updated": ["factor_registry","family_registry","unified_candidate_registry","rejected_factor_registry"],
+ "frozen_candidates": ["F04","F10","F11","F14","F15","F16"],
+ "rejected_factors": ["F02","F03","F05"],
+ "hypothesis_only": ["F03R"],
+ "blocked_by_sample": ["F06","F07","F08","F12","F13"],
+ "source_audit": ["F09","F17","F18","F19","F20"],
+ "backfilled_batch3_pre_interface": ["F21","F22","F24","F26","F27","F30","F31","F34"],
+ "alpha_claim_allowed": false,
+ "production": "BLOCKED",
+ "broker_runtime": "BLOCKED",
+ "real_trade": "BLOCKED"
+}

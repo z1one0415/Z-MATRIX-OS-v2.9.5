@@ -1,0 +1,13 @@
+{
+ "pipeline_signature": "V13.F5.1.2-BACKFILL-REJECTED-REGISTRY",
+ "base_commit": "635aa77cc1801bcc9fd85fe6ce48f5f3a995912c",
+ "rejected_factors": [
+  {"factor_id":"F02","factor_name":"DOWNSIDE_VOL_ADJUSTED_STRENGTH","reason":"FAMILY_OVERLAP_WITH_F10","rejection_commit":"e848abe6"},
+  {"factor_id":"F03","factor_name":"INDUSTRY_RELATIVE_STRENGTH","reason":"DIRECTIONAL_HYPOTHESIS_REVERSAL","rejection_commit":"8d293e0"},
+  {"factor_id":"F05","factor_name":"TURNOVER_STABILITY","reason":"FAMILY_OVERLAP_WITH_F11","rejection_commit":"e848abe6"}
+ ],
+ "alpha_claim_allowed": false,
+ "production": "BLOCKED",
+ "broker_runtime": "BLOCKED",
+ "real_trade": "BLOCKED"
+}

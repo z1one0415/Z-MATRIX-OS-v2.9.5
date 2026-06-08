@@ -1,0 +1,22 @@
+{
+ "pipeline_signature": "V13.F5.1.2-BATCH3-BACKFILL-EVIDENCE-AUDIT",
+ "base_commit": "635aa77cc1801bcc9fd85fe6ce48f5f3a995912c",
+ "audited_backfill_count": 8,
+ "per_factor_evidence": [
+  {"factor_id":"F21","manifest_present":true,"validation_present":true,"guardrail_present":true,"application_contract_present":true,"envelope_present":true},
+  {"factor_id":"F22","manifest_present":true,"validation_present":true,"guardrail_present":true,"application_contract_present":true,"envelope_present":true},
+  {"factor_id":"F24","manifest_present":true,"validation_present":true,"guardrail_present":true,"application_contract_present":true,"envelope_present":true},
+  {"factor_id":"F26","manifest_present":true,"validation_present":true,"guardrail_present":true,"application_contract_present":true,"envelope_present":true},
+  {"factor_id":"F27","manifest_present":true,"validation_present":true,"guardrail_present":true,"application_contract_present":true,"envelope_present":true},
+  {"factor_id":"F30","manifest_present":true,"validation_present":true,"guardrail_present":true,"application_contract_present":true,"envelope_present":true},
+  {"factor_id":"F31","manifest_present":true,"validation_present":true,"guardrail_present":true,"application_contract_present":true,"envelope_present":true},
+  {"factor_id":"F34","manifest_present":true,"validation_present":true,"guardrail_present":true,"application_contract_present":true,"envelope_present":true}
+ ],
+ "all_backfilled": true,
+ "frozen_candidates_unchanged": true,
+ "rejected_factors_unchanged": true,
+ "alpha_claim_allowed": false,
+ "production": "BLOCKED",
+ "broker_runtime": "BLOCKED",
+ "real_trade": "BLOCKED"
+}

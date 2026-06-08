@@ -1,0 +1,42 @@
+{
+  "pipeline_signature": "V13.F5.1.2-BACKFILL-APPLICATION-CONTRACT",
+  "interface_version": "factor.application.v1",
+  "factor_id": "F21",
+  "factor_name": "TREND_PERSISTENCE_QUALITY",
+  "allowed_application_modes": [
+    "RESEARCH_EVIDENCE_READ",
+    "VALIDATION_SUMMARY_READ",
+    "GUARDRAIL_SUMMARY_READ",
+    "MONITORING_READ"
+  ],
+  "blocked_application_modes": [
+    "ALPHA_SIGNAL",
+    "PORTFOLIO_WEIGHT",
+    "ORDER_SIGNAL",
+    "PAPER_TRADING",
+    "BROKER_RUNTIME",
+    "REAL_TRADE",
+    "PRODUCTION"
+  ],
+  "allowed_outputs": [
+    "research_factor_score",
+    "monitoring_state"
+  ],
+  "blocked_outputs": [
+    "buy_signal",
+    "sell_signal",
+    "position_weight",
+    "expected_return_claim",
+    "alpha_claim"
+  ],
+  "blocked_downstream_consumers": [
+    "Z8_EXECUTION_RUNTIME",
+    "V3_TRADE_SANDBOX",
+    "BROKER",
+    "REAL_TRADE"
+  ],
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,23 @@
+{
+  "pipeline_signature": "V13.F5.1.2-BACKFILL-EVIDENCE",
+  "factor_id": "F26",
+  "factor_name": "VOLUME_PRESSURE",
+  "source_commit": "635aa77cc1801bcc9fd85fe6ce48f5f3a995912c",
+  "artifact_refs": {
+    "formula_contract": "runtime_reports/research/factors/openclaw_batch_3/F26/f26_formula_contract_repaired.json",
+    "materialization": "runtime_reports/research/factors/openclaw_batch_3/F26/f26_materialization.json",
+    "coverage_validation": "runtime_reports/research/factors/openclaw_batch_3/F26/f26_coverage_validation.json",
+    "pit_leakage_validation": "runtime_reports/research/factors/openclaw_batch_3/F26/f26_pit_leakage_validation.json",
+    "single_factor_validation": "runtime_reports/research/factors/openclaw_batch_3/F26/f26_single_factor_validation.json",
+    "closeout": "runtime_reports/research/factors/openclaw_batch_3/F26/f26_closeout.json"
+  },
+  "evidence_hashes": {},
+  "pit_audited": true,
+  "coverage_audited": true,
+  "family_overlap_audited": true,
+  "provenance_audited": true,
+  "pre_interface_artifacts": true,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

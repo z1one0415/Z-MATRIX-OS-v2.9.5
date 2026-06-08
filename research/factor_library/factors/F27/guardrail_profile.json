@@ -1,0 +1,28 @@
+{
+  "pipeline_signature": "V13.F5.1.2-BACKFILL-GUARDRAIL",
+  "factor_id": "F27",
+  "factor_name": "TURNOVER_ACCELERATION",
+  "guardrail_type": "STANDARD_PRICE_VOLUME",
+  "required_guardrails": [
+    "coverage_u475",
+    "pit_pass",
+    "single_factor_validation"
+  ],
+  "passed": [
+    "coverage_u475",
+    "pit_pass",
+    "single_factor_validation"
+  ],
+  "failed": [],
+  "not_run": [
+    "true_oos_validation"
+  ],
+  "failure_mode": null,
+  "risk_flags": [],
+  "requires_true_oos_before_promotion": true,
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

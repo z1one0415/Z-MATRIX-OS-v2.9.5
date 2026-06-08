@@ -1,0 +1,32 @@
+{
+  "pipeline_signature": "V13.F5.1.2-BACKFILL-MANIFEST",
+  "interface_version": "factor.application.v1",
+  "factor_id": "F26",
+  "factor_name": "VOLUME_PRESSURE",
+  "factor_family_id": "LIQUIDITY_VOLUME",
+  "factor_type": "PRICE_VOLUME_RISK",
+  "factor_status": "PRE_INTERFACE_BACKFILLED",
+  "formula_ref": "runtime_reports/research/factors/openclaw_batch_3/F26/f26_formula_contract_repaired.json",
+  "source_data_refs": [
+    "data/price_bars"
+  ],
+  "universe_policy": "FULL_A_SHARE_UNIVERSE_5523",
+  "asof_policy": {
+    "requires_known_at": true,
+    "requires_pit": true
+  },
+  "horizon_policy": {
+    "allowed_horizons": [
+      "20D",
+      "60D"
+    ],
+    "blocked_horizons": []
+  },
+  "ready_for_candidate_review": false,
+  "ready_for_promotion_review": [],
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,29 @@
+{
+ "pipeline_signature": "V13.F5.1.2-BACKFILL-UNIFIED-CANDIDATE-REGISTRY",
+ "base_commit": "635aa77cc1801bcc9fd85fe6ce48f5f3a995912c",
+ "total_frozen_candidate_count": 6,
+ "frozen_candidates": [
+  {"factor_id":"F04","candidate_type":"FULL_HORIZON_RESEARCH_CANDIDATE"},
+  {"factor_id":"F10","candidate_type":"REGIME_SPECIFIC_RESEARCH_CANDIDATE"},
+  {"factor_id":"F11","candidate_type":"TACTICAL_RESEARCH_CANDIDATE"},
+  {"factor_id":"F14","candidate_type":"TACTICAL_FUNDAMENTAL_DISCIPLINE"},
+  {"factor_id":"F15","candidate_type":"TACTICAL_ACCOUNTING_QUALITY"},
+  {"factor_id":"F16","candidate_type":"TACTICAL_SENTIMENT_ATTENTION"}
+ ],
+ "pre_interface_candidates": [
+  {"factor_id":"F21","status":"PRE_INTERFACE_BACKFILLED","requires_interface_backfill":false},
+  {"factor_id":"F22","status":"PRE_INTERFACE_BACKFILLED","requires_interface_backfill":false},
+  {"factor_id":"F24","status":"PRE_INTERFACE_BACKFILLED","requires_interface_backfill":false},
+  {"factor_id":"F26","status":"PRE_INTERFACE_BACKFILLED","requires_interface_backfill":false},
+  {"factor_id":"F27","status":"PRE_INTERFACE_BACKFILLED","requires_interface_backfill":false},
+  {"factor_id":"F30","status":"PRE_INTERFACE_BACKFILLED","requires_interface_backfill":false},
+  {"factor_id":"F31","status":"PRE_INTERFACE_BACKFILLED","requires_interface_backfill":false},
+  {"factor_id":"F34","status":"PRE_INTERFACE_BACKFILLED","requires_interface_backfill":false}
+ ],
+ "ready_for_candidate_review":[],
+ "ready_for_promotion_review":[],
+ "alpha_claim_allowed": false,
+ "production": "BLOCKED",
+ "broker_runtime": "BLOCKED",
+ "real_trade": "BLOCKED"
+}

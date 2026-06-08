@@ -1,0 +1,45 @@
+{
+  "pipeline_signature": "Z2-V13-F3-0-PARALLEL-BATCH-MERGE",
+  "status": "V13_F3_0_PARALLEL_FACTOR_BATCH_MERGE_BUILT",
+  "expected_subsessions": 8,
+  "completed_subsessions": 8,
+  "merged_factors": [
+    "F04",
+    "F10",
+    "F11",
+    "F12",
+    "F13",
+    "F07",
+    "F08",
+    "F03R"
+  ],
+  "pass_research_evidence_factors": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "tactical_only_factors": [],
+  "blocked_factors": [
+    "F12",
+    "F13",
+    "F07",
+    "F08"
+  ],
+  "hypothesis_only_factors": [
+    "F03R"
+  ],
+  "ready_for_next_validation": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "ready_for_promotion_review": [],
+  "subsession_output_isolation_verified": true,
+  "multi_factor_composite_built": false,
+  "v13_6_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "safety_violations": []
+}

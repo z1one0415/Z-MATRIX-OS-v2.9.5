@@ -1,0 +1,18 @@
+{
+  "factor_id": "F12",
+  "factor_name": "VALUE_COMPOSITE_LIGHT",
+  "subsession_status": "BLOCKED",
+  "materialized": true,
+  "pit_passed": true,
+  "coverage_passed": false,
+  "single_factor_validation_executed": false,
+  "evidence_score": "BLOCKED_BY_SAMPLE",
+  "ready_for_parent_merge": true,
+  "ready_for_promotion_review": false,
+  "multi_factor_composite_built": false,
+  "v13_6_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

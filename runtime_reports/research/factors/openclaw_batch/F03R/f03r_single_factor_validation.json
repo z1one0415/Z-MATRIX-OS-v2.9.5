@@ -1,0 +1,11 @@
+{
+  "factor_id": "F03R",
+  "single_factor_validation_executed": false,
+  "planning_only": true,
+  "same_sample_validation_for_promotion_forbidden": true,
+  "data_snooping_risk_acknowledged": true,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

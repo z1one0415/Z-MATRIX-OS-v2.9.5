@@ -1,0 +1,28 @@
+{
+  "pipeline_signature": "Z2-V13-F3-0-SUBSESSION-FORMULA",
+  "factor_id": "F11",
+  "factor_name": "SHORT_TERM_REVERSAL",
+  "factor_family": "REVERSAL",
+  "priority": "P0",
+  "formula": "short_term_reversal_score = -return_5d",
+  "economic_hypothesis": "short-term winners tend to reverse over next weeks",
+  "data_sources": [
+    "price_bars"
+  ],
+  "horizons": [
+    "5D",
+    "20D",
+    "60D"
+  ],
+  "required_diagnostics": [
+    "turnover_cost_30bps",
+    "turnover_cost_50bps",
+    "crowding_check"
+  ],
+  "is_planning_only": false,
+  "requires_fundamentals": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

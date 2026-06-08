@@ -1,0 +1,11 @@
+{
+  "factor_id": "F07",
+  "pit_validation_executed": true,
+  "known_at_available": true,
+  "null_known_at_rows": 0,
+  "pit_pass": true,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,27 @@
+{
+  "pipeline_signature": "Z2-V13-F3-0-SUBSESSION-FORMULA",
+  "factor_id": "F08",
+  "factor_name": "CASH_FLOW_YIELD_LIGHT",
+  "factor_family": "YIELD",
+  "priority": "P1",
+  "formula": "cash_flow_yield = ocfps / close_price",
+  "economic_hypothesis": "high cash flow yield stocks outperform",
+  "data_sources": [
+    "fundamentals",
+    "price_bars"
+  ],
+  "horizons": [
+    "20D",
+    "60D"
+  ],
+  "required_diagnostics": [
+    "coverage",
+    "disclosure_freshness"
+  ],
+  "is_planning_only": false,
+  "requires_fundamentals": true,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,9 @@
+{
+  "factor_id": "F03R",
+  "coverage_validation_executed": false,
+  "planning_only": true,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

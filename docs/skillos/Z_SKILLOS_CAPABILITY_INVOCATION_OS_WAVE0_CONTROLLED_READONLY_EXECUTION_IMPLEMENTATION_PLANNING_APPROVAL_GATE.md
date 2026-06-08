@@ -1,0 +1,21 @@
+# Wave0 Controlled Read-Only Execution Implementation Planning Approval Gate
+
+## Status: Z_SKILLOS_CAPABILITY_INVOCATION_OS_WAVE0_CONTROLLED_READONLY_EXECUTION_IMPLEMENTATION_PLANNING_APPROVAL_GATE_READY
+Base: postmerge @ 53a27036 | Level 5: BLOCKED
+
+## Gate Question
+Should Z-SkillOS proceed to Wave0 Controlled Read-Only Execution Implementation Planning only, based on merged controlled read-only execution planning, without implementation, runtime enablement, adapter execution enablement, capability execution, real adapter call, network call, or file I/O?
+
+## Decision Options
+| # | Option |
+|:--|:--|
+| 1 | **GO_FOR_WAVE0_CONTROLLED_READONLY_EXECUTION_IMPLEMENTATION_PLANNING_ONLY** |
+| 2 | NO_GO_STAY_CONTROLLED_EXECUTION_PLANNING_MERGED |
+| 3 | MORE_CONTROLLED_EXECUTION_IMPLEMENTATION_PLANNING_REVIEW_REQUIRED |
+| 4 | REJECT_CONTROLLED_EXECUTION_IMPLEMENTATION_PATH |
+
+## Rejected (Permanent): DIRECT_RUNTIME_ENABLEMENT | DIRECT_ADAPTER_EXECUTION_ENABLEMENT | DIRECT_CAPABILITY_EXECUTION | IMPLEMENT_CONTROLLED_EXECUTION_CODE_NOW | REAL_ADAPTER_CALL_NOW | REAL_GITHUB_CALL_NOW | NETWORK_CALL_NOW | FILE_READ_WRITE_NOW | ZMATRIX_MODULE_CALLING_NOW | ZMATRIX_MODULE_ADAPTER_NOW | PRODUCTION_BROKER_REAL_TRADE | TAG_RELEASE | LEVEL5_PLANNING_NOW
+
+## Prerequisites: ✅ CONTROLLED_READONLY_EXECUTION_PLANNING_POST_MERGE_SEALED (53a27036) | ✅ 374 tests | ✅ Level 5 BLOCKED
+
+> Cap OS Wave0 | Controlled Exec Impl Planning | Approval Gate | Level 5 BLOCKED

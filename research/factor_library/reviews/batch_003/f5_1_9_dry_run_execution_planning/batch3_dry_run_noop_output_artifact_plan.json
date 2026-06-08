@@ -1,0 +1,31 @@
+{
+  "pipeline_signature": "V13-F5-1-9-BATCH3-DRY-RUN-EXECUTION-PLANNING",
+  "base_commit": "8ce0a0f2abe6c32d9d8b346f1cf9dc4060538aa7",
+  "artifact_creation_now": false,
+  "execution_allowed": false,
+  "trade_signal_allowed": false,
+  "alpha_claim_allowed": false,
+  "broker_runtime_allowed": false,
+  "real_trade_allowed": false,
+  "allowed_artifacts": [
+    "dry_run_contract_validation_summary",
+    "input_snapshot_hashes",
+    "evidence_state_summary",
+    "guardrail_state_summary",
+    "blocked_output_filter_summary",
+    "noop_decision_summary",
+    "rollback_marker_summary"
+  ],
+  "forbidden_artifacts": [
+    "alpha_signal",
+    "buy_signal",
+    "sell_signal",
+    "order_signal",
+    "position_weight",
+    "expected_return_claim",
+    "portfolio_weight",
+    "broker_payload",
+    "real_trade_payload",
+    "production_signal"
+  ]
+}

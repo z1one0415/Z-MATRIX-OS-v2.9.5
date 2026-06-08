@@ -1,0 +1,17 @@
+{
+  "pipeline_signature": "V13-F5-1-9-BATCH3-DRY-RUN-EXECUTION-PLANNING",
+  "base_commit": "8ce0a0f2abe6c32d9d8b346f1cf9dc4060538aa7",
+  "rollback_actions": [
+    "delete_f5_1_9_planning_artifacts",
+    "revert_registry_dry_run_execution_planning_refs",
+    "preserve_F5_1_8_decision_artifacts",
+    "preserve_F5_1_7_planning_artifacts",
+    "preserve_candidate_review_queue",
+    "preserve_hold_queue",
+    "preserve_rejected_history",
+    "no_factor_result_rollback_required",
+    "no_runtime_report_cleanup_required",
+    "no_runtime_audit_cleanup_required"
+  ],
+  "note": "No execution occurred. No runtime_reports. No factor results modified. Rollback only needs to remove planning refs."
+}

@@ -1,0 +1,32 @@
+{
+  "pipeline_signature": "V13-F5-1-9-BATCH3-DRY-RUN-EXECUTION-PLANNING",
+  "base_commit": "8ce0a0f2abe6c32d9d8b346f1cf9dc4060538aa7",
+  "violation_count": 0,
+  "violations": [],
+  "checks": {
+    "no_dry_run_execution": true,
+    "no_monitoring_execution": true,
+    "no_candidate_review_execution": true,
+    "no_factor_calculation": true,
+    "no_factor_result_update": true,
+    "no_runtime_reports_write": true,
+    "no_runtime_audit_write": true,
+    "no_external_data_fetch": true,
+    "no_candidate_promotion": true,
+    "no_alpha_claim": true,
+    "no_buy_signal": true,
+    "no_sell_signal": true,
+    "no_order_signal": true,
+    "no_position_weight": true,
+    "no_multi_factor_composite": true,
+    "no_weight_optimization": true,
+    "no_paper_trading": true,
+    "no_production": true,
+    "no_broker_runtime": true,
+    "no_real_trade": true,
+    "no_skillos_modification": true,
+    "no_v13_6": true,
+    "no_tag": true,
+    "f26_f27_no_auto_unlock": true
+  }
+}

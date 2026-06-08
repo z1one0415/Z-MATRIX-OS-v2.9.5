@@ -1,0 +1,184 @@
+{
+  "pipeline_signature": "V13-F5-1-9-BATCH3-DRY-RUN-EXECUTION-PLANNING",
+  "base_commit": "8ce0a0f2abe6c32d9d8b346f1cf9dc4060538aa7",
+  "approved_factors": [
+    {
+      "factor_id": "F21",
+      "queue_status": "IN_CANDIDATE_REVIEW_QUEUE",
+      "input_freeze_status": "PLANNED_ONLY",
+      "required_static_inputs": [
+        "factor_manifest",
+        "validation_snapshot",
+        "guardrail_profile",
+        "application_contract",
+        "evidence_envelope",
+        "candidate_review_decision",
+        "queue_monitoring_plan_decision",
+        "dry_run_planning_decision"
+      ],
+      "runtime_data_required": false,
+      "external_data_required": false,
+      "factor_recalculation_required": false,
+      "factor_result_update_required": false,
+      "runtime_reports_write_required": false,
+      "runtime_audit_write_required": false,
+      "input_hash_required": true,
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false
+    },
+    {
+      "factor_id": "F22",
+      "queue_status": "IN_CANDIDATE_REVIEW_QUEUE",
+      "input_freeze_status": "PLANNED_ONLY",
+      "required_static_inputs": [
+        "factor_manifest",
+        "validation_snapshot",
+        "guardrail_profile",
+        "application_contract",
+        "evidence_envelope",
+        "candidate_review_decision",
+        "queue_monitoring_plan_decision",
+        "dry_run_planning_decision"
+      ],
+      "runtime_data_required": false,
+      "external_data_required": false,
+      "factor_recalculation_required": false,
+      "factor_result_update_required": false,
+      "runtime_reports_write_required": false,
+      "runtime_audit_write_required": false,
+      "input_hash_required": true,
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false
+    },
+    {
+      "factor_id": "F24",
+      "queue_status": "IN_CANDIDATE_REVIEW_QUEUE",
+      "input_freeze_status": "PLANNED_ONLY",
+      "required_static_inputs": [
+        "factor_manifest",
+        "validation_snapshot",
+        "guardrail_profile",
+        "application_contract",
+        "evidence_envelope",
+        "candidate_review_decision",
+        "queue_monitoring_plan_decision",
+        "dry_run_planning_decision"
+      ],
+      "runtime_data_required": false,
+      "external_data_required": false,
+      "factor_recalculation_required": false,
+      "factor_result_update_required": false,
+      "runtime_reports_write_required": false,
+      "runtime_audit_write_required": false,
+      "input_hash_required": true,
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false
+    },
+    {
+      "factor_id": "F30",
+      "queue_status": "IN_CANDIDATE_REVIEW_QUEUE",
+      "input_freeze_status": "PLANNED_ONLY",
+      "required_static_inputs": [
+        "factor_manifest",
+        "validation_snapshot",
+        "guardrail_profile",
+        "application_contract",
+        "evidence_envelope",
+        "candidate_review_decision",
+        "queue_monitoring_plan_decision",
+        "dry_run_planning_decision"
+      ],
+      "runtime_data_required": false,
+      "external_data_required": false,
+      "factor_recalculation_required": false,
+      "factor_result_update_required": false,
+      "runtime_reports_write_required": false,
+      "runtime_audit_write_required": false,
+      "input_hash_required": true,
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false
+    },
+    {
+      "factor_id": "F31",
+      "queue_status": "IN_CANDIDATE_REVIEW_QUEUE",
+      "input_freeze_status": "PLANNED_ONLY",
+      "required_static_inputs": [
+        "factor_manifest",
+        "validation_snapshot",
+        "guardrail_profile",
+        "application_contract",
+        "evidence_envelope",
+        "candidate_review_decision",
+        "queue_monitoring_plan_decision",
+        "dry_run_planning_decision"
+      ],
+      "runtime_data_required": false,
+      "external_data_required": false,
+      "factor_recalculation_required": false,
+      "factor_result_update_required": false,
+      "runtime_reports_write_required": false,
+      "runtime_audit_write_required": false,
+      "input_hash_required": true,
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false
+    },
+    {
+      "factor_id": "F34",
+      "queue_status": "IN_CANDIDATE_REVIEW_QUEUE",
+      "input_freeze_status": "PLANNED_ONLY",
+      "required_static_inputs": [
+        "factor_manifest",
+        "validation_snapshot",
+        "guardrail_profile",
+        "application_contract",
+        "evidence_envelope",
+        "candidate_review_decision",
+        "queue_monitoring_plan_decision",
+        "dry_run_planning_decision"
+      ],
+      "runtime_data_required": false,
+      "external_data_required": false,
+      "factor_recalculation_required": false,
+      "factor_result_update_required": false,
+      "runtime_reports_write_required": false,
+      "runtime_audit_write_required": false,
+      "input_hash_required": true,
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false
+    }
+  ],
+  "held_factors": [
+    {
+      "factor_id": "F26",
+      "queue_status": "HELD",
+      "input_freeze_status": "PLANNED_ONLY",
+      "hold_tracking_inputs": [
+        "hold_queue",
+        "hold_conditions",
+        "family_overlap_matrix",
+        "dry_run_planning_decision"
+      ],
+      "automatic_unlock_allowed": false,
+      "human_unlock_decision_required": true,
+      "unlock_execution_allowed": false,
+      "runtime_data_required": false,
+      "factor_recalculation_required": false
+    },
+    {
+      "factor_id": "F27",
+      "queue_status": "HELD",
+      "input_freeze_status": "PLANNED_ONLY",
+      "hold_tracking_inputs": [
+        "hold_queue",
+        "hold_conditions",
+        "family_overlap_matrix",
+        "dry_run_planning_decision"
+      ],
+      "automatic_unlock_allowed": false,
+      "human_unlock_decision_required": true,
+      "unlock_execution_allowed": false,
+      "runtime_data_required": false,
+      "factor_recalculation_required": false
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "pipeline_signature": "Z2-V13-F2-3-1-F03R-REGISTRY",
+  "status": "F03R_INDUSTRY_RELATIVE_REVERSAL_HYPOTHESIS_REGISTERED",
+  "hypothesis_id": "F03R",
+  "hypothesis_name": "INDUSTRY_RELATIVE_REVERSAL",
+  "parent_factor_id": "F03",
+  "parent_factor_status": "REJECTED_CURRENT_DIRECTION",
+  "hypothesis_type": "DIRECTIONAL_REVERSAL_CANDIDATE",
+  "proposed_formula": "industry_relative_reversal_score = -1 * industry_relative_strength_score",
+  "economic_hypothesis": "industry-relative winners may underperform and industry-relative laggards may mean-revert in this sample regime",
+  "registration_only": true,
+  "materialization_executed": false,
+  "validation_executed": false,
+  "promotion_review_allowed": false,
+  "requires_separate_materialization_gate": true,
+  "requires_separate_validation_gate": true,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

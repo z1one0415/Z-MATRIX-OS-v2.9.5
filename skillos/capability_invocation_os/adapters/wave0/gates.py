@@ -96,3 +96,26 @@ def evaluate_wave0_triple_gate(
         final=final,
         reason=reason,
     )
+
+# ── Controlled Read-Only Gate ──────────────────────────────────────
+@dataclass(frozen=True)
+class ControlledReadonlyGateDecision:
+    runtime_gate: Wave0GateState = Wave0GateState.DISABLED
+    adapter_framework_gate: Wave0GateState = Wave0GateState.DISABLED
+    wave0_p0_gate: Wave0GateState = Wave0GateState.DISABLED
+    controlled_readonly_gate: Wave0GateState = Wave0GateState.DISABLED
+    individual_adapter_gate: Wave0GateState = Wave0GateState.DISABLED
+    permission_gate: Wave0GateState = Wave0GateState.DISABLED
+    evidence_gate: Wave0GateState = Wave0GateState.DISABLED
+    final: str = "DENY_DISABLED"
+    reason: str = "P0 disabled-default"
+
+def evaluate_controlled_readonly_gate(cfg, adapter_kind, input_kind) -> ControlledReadonlyGateDecision:
+    return ControlledReadonlyGateDecision(reason="P0: all gates disabled, controlled execution not enabled")
+
+class ControlledReadonlyGateState(Enum):
+    MISSING = "MISSING"
+    MALFORMED = "MALFORMED"
+    DISABLED = "DISABLED"
+    REQUESTED = "REQUESTED"
+

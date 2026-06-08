@@ -34,6 +34,18 @@ class EnablementDecision:
     gate_decision: Optional[Wave0TripleGateDecision] = None
 
 
+def request_controlled_readonly(cfg, adapter_kind, input_kind):
+    return EnablementDecision(action=EnablementAction.DISABLED, reason="P0: controlled readonly execution disabled")
+
+
+def deny_controlled_readonly(reason: str = "disabled"):
+    return EnablementDecision(action=EnablementAction.DENY_NOOP, reason=reason)
+
+
+def plan_controlled_readonly(cfg, adapter_kind, input_kind):
+    return EnablementDecision(action=EnablementAction.PLAN_ONLY, reason="P0: planning only, no execution")
+
+
 def plan_wave0_enablement(
     cfg: Wave0ExecutionConfig,
     adapter_kind: Wave0AdapterKind,
@@ -90,3 +102,16 @@ def describe_enablement_state(
         name: "REQUESTED (not enabled — P0 disabled-default)" if requested else "DISABLED"
         for name, requested in adapters.items()
     }
+
+# ── Controlled Read-Only ──────────────────────────────────
+def request_controlled_readonly(cfg, adapter_kind, input_kind):
+    from .enablement import EnablementDecision, EnablementAction
+    return EnablementDecision(action=EnablementAction.DISABLED, reason="P0: disabled")
+
+def deny_controlled_readonly(reason: str = "disabled"):
+    from .enablement import EnablementDecision, EnablementAction
+    return EnablementDecision(action=EnablementAction.DENY_NOOP, reason=reason)
+
+def plan_controlled_readonly(cfg, adapter_kind, input_kind):
+    from .enablement import EnablementDecision, EnablementAction
+    return EnablementDecision(action=EnablementAction.PLAN_ONLY, reason="P0: planning only")

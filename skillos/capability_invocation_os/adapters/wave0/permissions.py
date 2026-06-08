@@ -81,3 +81,9 @@ def can_read(adapter_kind: Wave0AdapterKind) -> bool:
 def can_generate(adapter_kind: Wave0AdapterKind) -> bool:
     """Check if adapter can generate output. P0: False."""
     return False
+
+
+def validate_controlled_readonly_permission(adapter_kind, input_kind, permission) -> bool:
+    """P0: all controlled readonly permissions denied."""
+    return False
+

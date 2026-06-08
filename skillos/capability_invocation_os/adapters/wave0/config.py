@@ -110,3 +110,19 @@ class Wave0Config:
     """Backward-compatible wrapper."""
     def __init__(self, s=None):
         self._exec = Wave0ExecutionConfig.from_dict(s) if isinstance(s, dict) else Wave0ExecutionConfig()
+
+
+# ── Controlled Read-Only Execution flags (P0: all disabled) ────────
+def is_controlled_readonly_enabled(cfg) -> bool: return False
+def is_controlled_report_reading_enabled(cfg) -> bool: return False
+def is_controlled_document_generation_enabled(cfg) -> bool: return False
+def is_controlled_local_docs_inspection_enabled(cfg) -> bool: return False
+def is_controlled_github_metadata_enabled(cfg) -> bool: return False
+
+
+# ── Controlled Read-Only ────────────────────────────────
+def is_controlled_readonly_enabled(cfg) -> bool: return False
+def is_controlled_report_reading_enabled(cfg) -> bool: return False
+def is_controlled_document_generation_enabled(cfg) -> bool: return False
+def is_controlled_local_docs_inspection_enabled(cfg) -> bool: return False
+def is_controlled_github_metadata_enabled(cfg) -> bool: return False

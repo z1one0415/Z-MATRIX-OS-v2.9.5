@@ -81,3 +81,8 @@ def get_evidence_sink():
 def reset_evidence_sink():
     global _default_sink
     _default_sink = NoopWave0EvidenceSink()
+
+# ── Controlled Read-Only Evidence ─────────────────────────
+def plan_controlled_readonly_evidence(decision) -> dict:
+    import hashlib
+    return {"hash": hashlib.sha256(str(decision).encode()).hexdigest(), "type": "controlled_readonly"}

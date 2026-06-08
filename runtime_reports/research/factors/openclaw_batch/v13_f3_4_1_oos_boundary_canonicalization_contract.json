@@ -1,0 +1,25 @@
+{
+  "pipeline_signature": "Z2-V13-F3-4-1-OOS-BOUNDARY-CANONICALIZATION-CONTRACT",
+  "status": "V13_F3_4_1_OOS_BOUNDARY_CANONICALIZATION_CONTRACT_BUILT",
+  "base_commit": "27e16bb0",
+  "canonicalization_only": true,
+  "candidate_scope": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "must_resolve_last_in_sample_rebalance_date": true,
+  "na_last_in_sample_date_allowed": false,
+  "true_oos_validation_executed": false,
+  "oos_label_generation_executed": false,
+  "composite_execution_executed": false,
+  "composite_panel_generated": false,
+  "weight_optimization_executed": false,
+  "promotion_allowed": false,
+  "v13_6_allowed": false,
+  "paper_trading_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

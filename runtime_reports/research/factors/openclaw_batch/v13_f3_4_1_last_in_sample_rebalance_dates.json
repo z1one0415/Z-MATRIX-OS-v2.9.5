@@ -1,0 +1,42 @@
+{
+  "pipeline_signature": "Z2-V13-F3-4-1-LAST-IN-SAMPLE-DATE-RESOLUTION",
+  "status": "V13_F3_4_1_LAST_IN_SAMPLE_REBALANCE_DATES_RESOLVED",
+  "candidate_scope": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "resolved_factor_count": 3,
+  "blocked_factor_count": 0,
+  "unresolved_factors": [],
+  "per_factor": [
+    {
+      "factor_id": "F04",
+      "resolved": true,
+      "last_in_sample_rebalance_date": "20260501",
+      "source_rebalance_date_count": 25,
+      "blocked_reasons": []
+    },
+    {
+      "factor_id": "F10",
+      "resolved": true,
+      "last_in_sample_rebalance_date": "20260430",
+      "source_rebalance_date_count": 50,
+      "blocked_reasons": []
+    },
+    {
+      "factor_id": "F11",
+      "resolved": true,
+      "last_in_sample_rebalance_date": "20260430",
+      "source_rebalance_date_count": 50,
+      "blocked_reasons": []
+    }
+  ],
+  "all_last_in_sample_dates_resolved": true,
+  "any_na_last_in_sample_date": false,
+  "true_oos_validation_executed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,19 @@
+{
+  "status": "V13_F2_1_FACTOR_COVERAGE_VALIDATION_PASS",
+  "coverage_passed_factor_count": 2,
+  "per_factor_coverage": [
+    {
+      "factor_id": "F03",
+      "coverage_ratio": 0.996,
+      "coverage_passed": true
+    },
+    {
+      "factor_id": "F06",
+      "coverage_ratio": 0.9386,
+      "coverage_threshold": 0.8,
+      "coverage_passed": true
+    }
+  ],
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED"
+}

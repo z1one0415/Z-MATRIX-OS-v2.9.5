@@ -1,0 +1,7 @@
+{
+  "status": "F06_PIT_NULL_ROW_AUDIT_PASS",
+  "null_known_at_row_count": 0,
+  "pit_null_audit_passed": true,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED"
+}

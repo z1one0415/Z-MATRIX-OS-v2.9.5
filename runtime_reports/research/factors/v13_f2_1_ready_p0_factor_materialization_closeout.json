@@ -1,0 +1,8 @@
+{
+  "status": "V13_F2_1_READY_P0_FACTOR_MATERIALIZATION_PASS",
+  "validated_factor_count": 2,
+  "v13_6_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "recommended_next_action": "PREPARE_V13_F2_2_SINGLE_FACTOR_VALIDATION_PLANNING"
+}

@@ -1,0 +1,176 @@
+{
+  "pipeline_signature": "Z2-V13-F3-0-3-BLOCKED-TAXONOMY-AUDIT",
+  "status": "V13_F3_0_3_BLOCKED_FACTOR_TAXONOMY_AUDIT_PASS",
+  "audited_factor_count": 8,
+  "after_repair_inconsistent_factor_count": 0,
+  "after_repair_inconsistent_factors": [],
+  "per_factor": [
+    {
+      "factor_id": "F04",
+      "evidence_score": "PASS_RESEARCH_EVIDENCE",
+      "canonical_evidence_score": "PASS_RESEARCH_EVIDENCE",
+      "display_evidence_score": "PASS_RESEARCH_EVIDENCE",
+      "after_repair_consistent": true,
+      "materialized": true,
+      "pit_passed": true,
+      "coverage_passed": true,
+      "single_factor_validation_executed": true,
+      "sample_month_count_or_cov": 5208,
+      "planning_only": false,
+      "blocked_reasons": []
+    },
+    {
+      "factor_id": "F10",
+      "evidence_score": "PASS_RESEARCH_EVIDENCE",
+      "canonical_evidence_score": "PASS_RESEARCH_EVIDENCE",
+      "display_evidence_score": "PASS_RESEARCH_EVIDENCE",
+      "after_repair_consistent": true,
+      "materialized": true,
+      "pit_passed": true,
+      "coverage_passed": true,
+      "single_factor_validation_executed": true,
+      "sample_month_count_or_cov": 5208,
+      "planning_only": false,
+      "blocked_reasons": []
+    },
+    {
+      "factor_id": "F11",
+      "evidence_score": "PASS_RESEARCH_EVIDENCE",
+      "canonical_evidence_score": "PASS_RESEARCH_EVIDENCE",
+      "display_evidence_score": "PASS_RESEARCH_EVIDENCE",
+      "after_repair_consistent": true,
+      "materialized": true,
+      "pit_passed": true,
+      "coverage_passed": true,
+      "single_factor_validation_executed": true,
+      "sample_month_count_or_cov": 5208,
+      "planning_only": false,
+      "blocked_reasons": []
+    },
+    {
+      "factor_id": "F12",
+      "evidence_score": "BLOCKED_BY_SAMPLE",
+      "canonical_evidence_score": "COVERAGE_BLOCKED_WITH_INSUFFICIENT_SAMPLE",
+      "display_evidence_score": "BLOCKED_BY_SAMPLE",
+      "after_repair_consistent": true,
+      "materialized": true,
+      "pit_passed": true,
+      "coverage_passed": false,
+      "single_factor_validation_executed": false,
+      "sample_month_count_or_cov": 0,
+      "planning_only": false,
+      "blocked_reasons": [
+        "",
+        "",
+        "coverage_failed",
+        "",
+        "validation_not_executed"
+      ]
+    },
+    {
+      "factor_id": "F13",
+      "evidence_score": "BLOCKED_BY_SAMPLE",
+      "canonical_evidence_score": "COVERAGE_BLOCKED_WITH_INSUFFICIENT_SAMPLE",
+      "display_evidence_score": "BLOCKED_BY_SAMPLE",
+      "after_repair_consistent": true,
+      "materialized": true,
+      "pit_passed": true,
+      "coverage_passed": false,
+      "single_factor_validation_executed": false,
+      "sample_month_count_or_cov": 0,
+      "planning_only": false,
+      "blocked_reasons": [
+        "",
+        "",
+        "coverage_failed",
+        "",
+        "validation_not_executed"
+      ]
+    },
+    {
+      "factor_id": "F07",
+      "evidence_score": "BLOCKED_BY_SAMPLE",
+      "canonical_evidence_score": "COVERAGE_BLOCKED_WITH_INSUFFICIENT_SAMPLE",
+      "display_evidence_score": "BLOCKED_BY_SAMPLE",
+      "after_repair_consistent": true,
+      "materialized": true,
+      "pit_passed": true,
+      "coverage_passed": false,
+      "single_factor_validation_executed": false,
+      "sample_month_count_or_cov": 0,
+      "planning_only": false,
+      "blocked_reasons": [
+        "",
+        "",
+        "coverage_failed",
+        "",
+        "validation_not_executed"
+      ]
+    },
+    {
+      "factor_id": "F08",
+      "evidence_score": "BLOCKED_BY_SAMPLE",
+      "canonical_evidence_score": "COVERAGE_BLOCKED_WITH_INSUFFICIENT_SAMPLE",
+      "display_evidence_score": "BLOCKED_BY_SAMPLE",
+      "after_repair_consistent": true,
+      "materialized": true,
+      "pit_passed": true,
+      "coverage_passed": false,
+      "single_factor_validation_executed": false,
+      "sample_month_count_or_cov": 0,
+      "planning_only": false,
+      "blocked_reasons": [
+        "",
+        "",
+        "coverage_failed",
+        "",
+        "validation_not_executed"
+      ]
+    },
+    {
+      "factor_id": "F03R",
+      "evidence_score": "HYPOTHESIS_ONLY",
+      "canonical_evidence_score": "HYPOTHESIS_ONLY",
+      "display_evidence_score": "HYPOTHESIS_ONLY",
+      "after_repair_consistent": true,
+      "materialized": false,
+      "pit_passed": false,
+      "coverage_passed": false,
+      "single_factor_validation_executed": false,
+      "sample_month_count_or_cov": 0,
+      "planning_only": true,
+      "blocked_reasons": [
+        "not_materialized",
+        "pit_failed",
+        "coverage_failed",
+        "",
+        "validation_not_executed"
+      ]
+    }
+  ],
+  "pass_research_evidence_factors": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "blocked_by_sample_factors": [
+    "F12",
+    "F13",
+    "F07",
+    "F08"
+  ],
+  "coverage_blocked_factors": [
+    "F12",
+    "F13",
+    "F07",
+    "F08"
+  ],
+  "hypothesis_only_factors": [
+    "F03R"
+  ],
+  "taxonomy_consistency_passed": true,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

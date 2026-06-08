@@ -1,0 +1,3 @@
+## Status: Z_SKILLOS_SKILL_COMPOSITION_GRAPH_P0_PLANNING_MERGE_DECISION_SEALED
+## Decision: GO_FOR_SKILL_COMPOSITION_GRAPH_P0_PLANNING_DOCS_ONLY_MERGE_APPROVAL
+## Source: plan/...composition-graph | Target: postmerge @ fd75e4f3 | docs-only | Level 5 BLOCKED

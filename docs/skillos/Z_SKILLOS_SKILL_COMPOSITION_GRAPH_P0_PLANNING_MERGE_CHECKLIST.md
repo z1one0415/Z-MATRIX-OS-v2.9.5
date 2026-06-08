@@ -1,0 +1,1 @@
+> Status: _MERGE_CHECKLIST_READY | Level 5 BLOCKED | 15 checks: 26 docs-only, 0 code, 0 tests, FUTURE_PLAN_ONLY, Level 5 BLOCKED, No Z-MATRIX, No cyclic graph, Seals unchanged, Review passed, Decision approved, Target HEAD, No stale, Depth met, Risks registered

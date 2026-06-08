@@ -1,0 +1,1 @@
+> Status: _REVIEW_DECISION_PENDING | Level 5 BLOCKED | 10 PENDING: approver_name, approver_role, approval_date, decision, reviewed_docs, reviewed_risks, required_follow_up, conditions, rollback_triggers, next_allowed_action

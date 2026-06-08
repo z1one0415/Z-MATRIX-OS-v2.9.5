@@ -1,0 +1,28 @@
+{
+  "pipeline_signature": "Z2-V13-F3-5-CANDIDATE-MONITORING-PLAN-CONTRACT",
+  "status": "V13_F3_5_CANDIDATE_MONITORING_PLAN_CONTRACT_BUILT",
+  "base_commit": "680f1542",
+  "monitoring_plan_only": true,
+  "monitoring_execution_allowed": false,
+  "candidate_scope": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "minimum_oos_start_exclusive": "20260501",
+  "monitoring_frequency": "MONTHLY",
+  "true_oos_validation_executed": false,
+  "oos_label_generation_executed": false,
+  "composite_execution_allowed": false,
+  "composite_panel_generation_allowed": false,
+  "weight_optimization_allowed": false,
+  "promotion_allowed": false,
+  "v13_6_allowed": false,
+  "paper_trading_allowed": false,
+  "alpha_claim_allowed": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

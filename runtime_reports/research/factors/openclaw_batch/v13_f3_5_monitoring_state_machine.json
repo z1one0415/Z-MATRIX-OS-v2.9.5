@@ -1,0 +1,66 @@
+{
+  "pipeline_signature": "Z2-V13-F3-5-MONITORING-STATE-MACHINE",
+  "status": "V13_F3_5_MONITORING_STATE_MACHINE_BUILT",
+  "states": [
+    "FROZEN",
+    "RETAINED",
+    "WATCH",
+    "ORANGE",
+    "SUSPENSION_REVIEW",
+    "SUSPENDED",
+    "REWORK_REQUIRED",
+    "REJECTED"
+  ],
+  "allowed_transitions": [
+    {
+      "from": "FROZEN",
+      "to": "RETAINED"
+    },
+    {
+      "from": "RETAINED",
+      "to": "WATCH"
+    },
+    {
+      "from": "WATCH",
+      "to": "ORANGE"
+    },
+    {
+      "from": "ORANGE",
+      "to": "SUSPENSION_REVIEW"
+    },
+    {
+      "from": "SUSPENSION_REVIEW",
+      "to": "SUSPENDED"
+    },
+    {
+      "from": "SUSPENDED",
+      "to": "REWORK_REQUIRED"
+    },
+    {
+      "from": "REWORK_REQUIRED",
+      "to": "REJECTED"
+    },
+    {
+      "from": "WATCH",
+      "to": "RETAINED"
+    },
+    {
+      "from": "ORANGE",
+      "to": "WATCH"
+    }
+  ],
+  "state_decision_basis": [
+    "monthly_rank_ic",
+    "bucket_spread",
+    "cost_adjusted_spread",
+    "regime_gate_result",
+    "cost_turnover_gate_result",
+    "coverage_tier",
+    "data_quality"
+  ],
+  "promotion_state_absent": true,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

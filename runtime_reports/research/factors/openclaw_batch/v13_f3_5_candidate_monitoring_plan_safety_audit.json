@@ -1,0 +1,9 @@
+{
+  "pipeline_signature": "Z2-V13-F3-5-CANDIDATE-MONITORING-PLAN-SAFETY-AUDIT",
+  "status": "V13_F3_5_CANDIDATE_MONITORING_PLAN_SAFETY_AUDIT_PASS",
+  "violation_count": 0,
+  "violations": [],
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

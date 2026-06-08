@@ -1,0 +1,20 @@
+{
+  "pipeline_signature": "Z2-V13-F2-3-1-F03-REJECTION",
+  "status": "F03_REJECTION_DISPOSITION_BUILT",
+  "factor_id": "F03",
+  "factor_name": "INDUSTRY_RELATIVE_STRENGTH",
+  "previous_evidence_score": "REJECTED",
+  "sample_month_count": 20,
+  "ic_20d_mean": -0.0588,
+  "ic_60d_mean": -0.0577,
+  "high_low_spread_20d": -0.0099,
+  "dominant_failure_mode": "DIRECTIONAL_HYPOTHESIS_REVERSAL",
+  "current_direction_rejected": true,
+  "promotion_review_allowed": false,
+  "multi_factor_composite_allowed": false,
+  "recommended_next_action": "REGISTER_F03R_INDUSTRY_RELATIVE_REVERSAL_HYPOTHESIS",
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

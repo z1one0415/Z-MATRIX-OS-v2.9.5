@@ -1,0 +1,24 @@
+{
+  "pipeline_signature": "Z2-V13-F2-3-1-DISPOSITION-CONTRACT",
+  "status": "V13_F2_3_1_EVIDENCE_DISPOSITION_CONTRACT_BUILT",
+  "v13_f2_3_1_executed": true,
+  "disposition_only": true,
+  "materialization_executed": false,
+  "validation_executed": false,
+  "multi_factor_composite_built": false,
+  "promotion_review_allowed": false,
+  "target_factors": [
+    "F03",
+    "F06"
+  ],
+  "new_hypothesis_registration_allowed": true,
+  "new_hypothesis_validation_allowed": false,
+  "v13_6_allowed": false,
+  "paper_trading_allowed": false,
+  "alpha_claim_allowed": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

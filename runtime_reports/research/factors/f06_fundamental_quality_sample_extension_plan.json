@@ -1,0 +1,30 @@
+{
+  "pipeline_signature": "Z2-V13-F2-3-1-F06-EXTENSION-PLAN",
+  "status": "F06_SAMPLE_EXTENSION_PLAN_BUILT",
+  "factor_id": "F06",
+  "current_sample_month_count": 1,
+  "minimum_month_count_required": 12,
+  "preferred_month_count_required": 24,
+  "required_extension_target": {
+    "minimum_additional_months_needed": 11,
+    "preferred_additional_months_needed": 23
+  },
+  "extension_methods_allowed": [
+    "EXPAND_FUNDAMENTAL_HISTORY",
+    "REBUILD_AVAILABLE_AT_MAPPING",
+    "BACKFILL_DISCLOSURE_DATES",
+    "REBUILD_REBALANCE_COVERAGE"
+  ],
+  "extension_methods_forbidden": [
+    "SYNTHETIC_FUNDAMENTALS",
+    "FORWARD_FILLED_FUTURE_STATEMENTS",
+    "LOOKAHEAD_ANN_DATE",
+    "OUTCOME_LABEL_IMPUTATION"
+  ],
+  "materialization_allowed_next_gate": true,
+  "validation_allowed_after_extension": true,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

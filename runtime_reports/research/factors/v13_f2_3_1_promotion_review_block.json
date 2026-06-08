@@ -1,0 +1,25 @@
+{
+  "pipeline_signature": "Z2-V13-F2-3-1-PROMOTION-BLOCK",
+  "status": "V13_F2_3_1_PROMOTION_REVIEW_BLOCK_BUILT",
+  "promotion_review_allowed": false,
+  "ready_for_f2_4_promotion_review": [],
+  "blocked_factors": [
+    {
+      "factor_id": "F03",
+      "reason": "REJECTED_CURRENT_DIRECTION"
+    },
+    {
+      "factor_id": "F06",
+      "reason": "INSUFFICIENT_SAMPLE"
+    }
+  ],
+  "multi_factor_composite_allowed": false,
+  "v13_6_allowed": false,
+  "paper_trading_allowed": false,
+  "alpha_claim_allowed": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,7 @@
+{
+ "pipeline_signature": "V13-F5-1-8-HUMAN-BATCH3-QUEUE-MONITORING-DRY-RUN-PLANNING-DECISION",
+ "base_commit": "4db899ed7920f3c4e1570dd5608f934d4c19266c",
+ "allowed_next_scope": ["dry_run_execution_plan_design","dry_run_runner_noop_contract_design","dry_run_input_snapshot_freeze_design","dry_run_decision_log_noop_schema","dry_run_output_artifact_plan","dry_run_safety_guard_plan","hold_unlock_tracking_noop_plan","rollback_plan"],
+ "blocked_next_scope": ["dry_run_execution","monitoring_execution","candidate_review_execution","factor_calculation","factor_result_update","candidate_promotion","alpha_claim","multi_factor_composite","weight_optimization","paper_trading","production","broker_runtime","real_trade","SkillOS_adapter_implementation","V13_6"],
+ "scope_type": "DRY_RUN_EXECUTION_PLANNING_ONLY"
+}

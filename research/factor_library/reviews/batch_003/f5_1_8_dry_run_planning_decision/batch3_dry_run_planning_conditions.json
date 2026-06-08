@@ -1,0 +1,9 @@
+{
+ "pipeline_signature": "V13-F5-1-8-HUMAN-BATCH3-QUEUE-MONITORING-DRY-RUN-PLANNING-DECISION",
+ "base_commit": "4db899ed7920f3c4e1570dd5608f934d4c19266c",
+ "approved_factor_conditions": ["dry_run_execution_planning_only","dry_run_runner_must_be_noop","no_runtime_reports_write","no_runtime_audit_write","no_factor_recalculation","no_factor_result_update","no_candidate_review_execution","no_promotion","no_alpha_claim","no_broker_downstream"],
+ "held_factor_conditions": [
+  {"factor_id":"F26","conditions":["hold_remains_locked","family_overlap_resolution_required","no_automatic_unlock","human_hold_unlock_decision_required"],"status":"PENDING"},
+  {"factor_id":"F27","conditions":["hold_remains_locked","family_overlap_resolution_required","turnover_cost_guardrail_required","no_automatic_unlock","human_hold_unlock_decision_required"],"status":"PENDING"}
+ ]
+}

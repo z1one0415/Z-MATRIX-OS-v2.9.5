@@ -97,5 +97,6 @@
   "dry_run_planning_refs": {
     "dry_run_planning_directory": "research/factor_library/reviews/batch_003/f5_1_7_queue_monitoring_dry_run_planning",
     "closeout": "research/factor_library/reviews/batch_003/f5_1_7_queue_monitoring_dry_run_planning/batch3_dry_run_planning_closeout.json"
-  }
+  },
+  "dry_run_planning_decision_status": "APPROVED_BY_HUMAN"
 }

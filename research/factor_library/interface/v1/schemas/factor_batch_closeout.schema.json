@@ -2,7 +2,7 @@
  "$schema": "https://json-schema.org/draft/2020-12/schema",
  "type": "object",
  "additionalProperties": false,
- "required": ["expected_lanes","completed_lanes","status"],
+ "required": ["expected_lanes","completed_lanes","status","ready_for_promotion_review","promotion_allowed","alpha_claim_allowed","production","broker_runtime","real_trade"],
  "properties": {
   "pipeline_signature": {"type": "string"},
   "base_commit": {"type": "string"},
@@ -15,6 +15,8 @@
   "source_audit_only_completed": {"type": "array", "items": {"type": "string"}},
   "hypothesis_only_factors": {"type": "array", "items": {"type": "string"}},
   "ready_for_candidate_review": {"type": "array", "items": {"type": "string"}},
+  "ready_for_promotion_review": {"type": "array", "maxItems": 0},
+  "promotion_allowed": {"type": "boolean", "const": false},
   "pre_interface_artifacts": {"type": "boolean"},
   "interface_v1_backfill_required": {"type": "boolean"},
   "alpha_claim_allowed": {"type": "boolean", "const": false},

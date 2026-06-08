@@ -4,12 +4,14 @@
 
 ## Purpose
 
-Standardize how all factors in the Z-MATRIX-OS factor library are registered, validated, monitored, and consumed across research pipelines. Every factor — frozen, monitore, pre-interface, or source-audit — must conform to these interfaces before entering candidate review or any downstream consumption.
+Standardize how all factors in the Z-MATRIX-OS factor library are registered, validated, monitored, and consumed across research pipelines. Every factor — frozen, monitored, pre-interface, or source-audit — must conform to these interfaces before entering candidate review or any downstream consumption.
 
 ## Scope
 
 - All 40 factors (Core 20 + Extended 20) are subject to this interface.
-- All Batch1/Batch2/Batch3 artifacts are pre-interface until backfilled.
+- All future downstream use requires interface-compliant artifacts.
+- Batch3 artifacts are explicitly pre-interface and must be backfilled in V13.F5.1.2 before candidate review.
+- Earlier frozen candidates (Batch1/Batch2) may be backfilled in a separate legacy-interface normalization gate if needed; this does not block Batch3 backfill.
 - This interface does not implement SkillOS adapters.
 - This interface does not modify existing runtime artifacts retroactively.
 

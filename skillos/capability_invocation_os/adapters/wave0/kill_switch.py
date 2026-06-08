@@ -79,3 +79,8 @@ def reset_kill_switch():
 def ks() -> Wave0KillSwitch:
     """Backward-compatible alias."""
     return _global_kill_switch
+
+
+def is_controlled_readonly_killed() -> bool:
+    from .kill_switch import get_kill_switch
+    return get_kill_switch().is_any_active()

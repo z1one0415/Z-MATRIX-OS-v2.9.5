@@ -1,0 +1,46 @@
+{
+  "pipeline_signature": "Z2-V13-F2-3-BUCKET",
+  "status": "V13_F2_3_SINGLE_FACTOR_BUCKET_VALIDATION_BUILT",
+  "bucket_validation_executed": true,
+  "validated_factors": [
+    "F03",
+    "F06"
+  ],
+  "bucket_count": 3,
+  "bucket_labels": [
+    "LOW",
+    "MID",
+    "HIGH"
+  ],
+  "per_factor_bucket_evidence": [
+    {
+      "factor_id": "F03",
+      "sample_month_count": 20,
+      "high_low_spread_20d": -0.009945,
+      "high_low_spread_60d": -0.009994,
+      "cost_adjusted_high_low_spread_20d": -0.012945,
+      "cost_adjusted_high_low_spread_60d": -0.012994,
+      "bucket_monotonicity_20d_rate": 0.1,
+      "bucket_monotonicity_60d_rate": 0.1,
+      "bucket_validation_executed": true,
+      "bucket_evidence_status": "PASS"
+    },
+    {
+      "factor_id": "F06",
+      "sample_month_count": 1,
+      "high_low_spread_20d": -0.014182,
+      "high_low_spread_60d": 0.0,
+      "cost_adjusted_high_low_spread_20d": -0.017182,
+      "cost_adjusted_high_low_spread_60d": -0.003,
+      "bucket_monotonicity_20d_rate": 0.0,
+      "bucket_monotonicity_60d_rate": 0.0,
+      "bucket_validation_executed": true,
+      "bucket_evidence_status": "BLOCKED_BY_INSUFFICIENT_SAMPLE"
+    }
+  ],
+  "multi_factor_composite_built": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

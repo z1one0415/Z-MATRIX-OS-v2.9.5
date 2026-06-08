@@ -1,0 +1,14 @@
+{
+  "pipeline_signature": "Z2-V13-F2-3-LABEL-ISOLATION",
+  "status": "V13_F2_3_OUTCOME_LABEL_ISOLATION_VALIDATION_PASS",
+  "label_isolation_passed": true,
+  "feature_panel_write_detected": false,
+  "factor_panels_contain_outcome_labels": false,
+  "label_role_valid": true,
+  "label_known_after_rebalance": true,
+  "blocked_reasons": [],
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

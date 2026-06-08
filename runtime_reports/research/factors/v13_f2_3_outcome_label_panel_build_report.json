@@ -1,0 +1,20 @@
+{
+  "pipeline_signature": "Z2-V13-F2-3-OUTCOME-LABEL-PANEL",
+  "status": "V13_F2_3_OUTCOME_LABEL_PANEL_BUILT",
+  "label_panel_built": true,
+  "label_role": "OUTCOME_LABEL_ONLY",
+  "label_horizons": [
+    "20D",
+    "60D"
+  ],
+  "label_row_count": 97400,
+  "covered_rebalance_date_count": 20,
+  "covered_ticker_count": 5175,
+  "written_to_factor_panel": false,
+  "label_known_after_rebalance": true,
+  "forbidden_columns_written_to_factor_panel": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

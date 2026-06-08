@@ -4,10 +4,11 @@
   "factor_id": "F31",
   "factor_name": "DOWNSIDE_TAIL_RISK",
   "allowed_application_modes": [
-    "RESEARCH_EVIDENCE_READ",
-    "VALIDATION_SUMMARY_READ",
-    "GUARDRAIL_SUMMARY_READ",
-    "MONITORING_READ"
+    "EVIDENCE_READ",
+    "VALIDATION_SUMMARY",
+    "GUARDRAIL_SUMMARY",
+    "CANDIDATE_MONITOR",
+    "RESEARCH_CONTEXT"
   ],
   "blocked_application_modes": [
     "ALPHA_SIGNAL",
@@ -38,5 +39,11 @@
   "alpha_claim_allowed": false,
   "production": "BLOCKED",
   "broker_runtime": "BLOCKED",
-  "real_trade": "BLOCKED"
+  "real_trade": "BLOCKED",
+  "legacy_mode_aliases": {
+    "RESEARCH_EVIDENCE_READ": "EVIDENCE_READ",
+    "VALIDATION_SUMMARY_READ": "VALIDATION_SUMMARY",
+    "GUARDRAIL_SUMMARY_READ": "GUARDRAIL_SUMMARY",
+    "MONITORING_READ": "CANDIDATE_MONITOR"
+  }
 }

@@ -25,7 +25,7 @@
   "pipeline_signature": {"type": "string"},
   "factor_id": {"type": "string"},
   "factor_name": {"type": "string"},
-  "allowed_application_modes": {"type": "array", "items": {"type": "string"}},
+  "allowed_application_modes": {"type": "array", "items": {"type": "string", "enum": ["REGISTRY_READ","EVIDENCE_READ","VALIDATION_SUMMARY","GUARDRAIL_SUMMARY","CANDIDATE_MONITOR","RESEARCH_CONTEXT","SCORING_CONTEXT_DRY_PLAN","COMPOSITION_GRAPH_DRY_PLAN"]}},
   "blocked_application_modes": {"type": "array", "items": {"type": "string"}},
   "allowed_outputs": {"type": "array", "items": {"type": "string"}},
   "blocked_outputs": {"type": "array", "items": {"type": "string"}},

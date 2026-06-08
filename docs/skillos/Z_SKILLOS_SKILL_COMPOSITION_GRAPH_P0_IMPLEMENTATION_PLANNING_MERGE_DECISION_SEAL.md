@@ -1,0 +1,3 @@
+## Status: Z_SKILLOS_SKILL_COMPOSITION_GRAPH_P0_IMPLEMENTATION_PLANNING_FACTOR_ALIGNED_MERGE_DECISION_SEALED
+## Decision: GO_FOR_B1_FACTOR_ALIGNED_DOCS_ONLY_MERGE_APPROVAL
+## Source: plan/...composition-graph-factor-aligned-clean | Target: postmerge @ 7383510 | docs-only | Level 5 BLOCKED

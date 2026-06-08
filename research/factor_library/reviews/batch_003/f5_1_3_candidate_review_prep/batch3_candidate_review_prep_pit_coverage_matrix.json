@@ -1,0 +1,15 @@
+{
+ "pipeline_signature": "V13-F5-1-3-BATCH3-CANDIDATE-REVIEW-PREP",
+ "base_commit": "d02b60c9c7ad8500dd5403c28710f850cf11bc47",
+ "factor_count": 8,
+ "factors": [
+  {"factor_id":"F21","pit_passed":true,"known_at_required":true,"known_at_policy_present":true,"coverage_passed":true,"coverage_tier":"U475","single_factor_validation_executed":true,"true_oos_validation_executed":false,"candidate_review_precondition_status":"PASS","blockers":["true_oos_not_run"]},
+  {"factor_id":"F22","pit_passed":true,"known_at_required":true,"known_at_policy_present":true,"coverage_passed":true,"coverage_tier":"U475","single_factor_validation_executed":true,"true_oos_validation_executed":false,"candidate_review_precondition_status":"PASS","blockers":["true_oos_not_run"]},
+  {"factor_id":"F24","pit_passed":true,"known_at_required":true,"known_at_policy_present":true,"coverage_passed":true,"coverage_tier":"U475","single_factor_validation_executed":true,"true_oos_validation_executed":false,"candidate_review_precondition_status":"PASS","blockers":["true_oos_not_run"]},
+  {"factor_id":"F26","pit_passed":true,"known_at_required":true,"known_at_policy_present":true,"coverage_passed":true,"coverage_tier":"U475","single_factor_validation_executed":true,"true_oos_validation_executed":false,"candidate_review_precondition_status":"PASS","blockers":["true_oos_not_run"]},
+  {"factor_id":"F27","pit_passed":true,"known_at_required":true,"known_at_policy_present":true,"coverage_passed":true,"coverage_tier":"U475","single_factor_validation_executed":true,"true_oos_validation_executed":false,"candidate_review_precondition_status":"PASS","blockers":["true_oos_not_run","turnover_cost_guardrail_not_run"]},
+  {"factor_id":"F30","pit_passed":true,"known_at_required":true,"known_at_policy_present":true,"coverage_passed":true,"coverage_tier":"U475","single_factor_validation_executed":true,"true_oos_validation_executed":false,"candidate_review_precondition_status":"PASS","blockers":["true_oos_not_run"]},
+  {"factor_id":"F31","pit_passed":true,"known_at_required":true,"known_at_policy_present":true,"coverage_passed":true,"coverage_tier":"U475","single_factor_validation_executed":true,"true_oos_validation_executed":false,"candidate_review_precondition_status":"PASS","blockers":["true_oos_not_run","tail_risk_guardrail_not_run"]},
+  {"factor_id":"F34","pit_passed":true,"known_at_required":true,"known_at_policy_present":true,"coverage_passed":true,"coverage_tier":"U475","single_factor_validation_executed":true,"true_oos_validation_executed":false,"candidate_review_precondition_status":"PASS","blockers":["true_oos_not_run","regime_shift_guardrail_not_run"]}
+ ]
+}

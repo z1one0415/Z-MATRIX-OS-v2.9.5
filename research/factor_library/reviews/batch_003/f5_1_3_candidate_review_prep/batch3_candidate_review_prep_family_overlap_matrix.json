@@ -1,0 +1,17 @@
+{
+ "pipeline_signature": "V13-F5-1-3-BATCH3-CANDIDATE-REVIEW-PREP",
+ "base_commit": "d02b60c9c7ad8500dd5403c28710f850cf11bc47",
+ "family_count": 9,
+ "existing_frozen_candidates": ["F04","F10","F11","F14","F15","F16"],
+ "rejected_factors": ["F02","F03","F05"],
+ "overlaps": [
+  {"factor_id":"F21","family_id":"TREND_STRUCTURE","same_family_factor_count":3,"overlap_with_frozen_candidates":["F04","F11"],"overlap_with_rejected":[],"overlap_risk_level":"MEDIUM","overlap_review_required":true,"recommended_action":"KEEP_FOR_REVIEW"},
+  {"factor_id":"F22","family_id":"TREND_STRUCTURE","same_family_factor_count":3,"overlap_with_frozen_candidates":["F04","F11"],"overlap_with_rejected":[],"overlap_risk_level":"MEDIUM","overlap_review_required":true,"recommended_action":"KEEP_FOR_REVIEW"},
+  {"factor_id":"F24","family_id":"TREND_STRUCTURE","same_family_factor_count":3,"overlap_with_frozen_candidates":["F10","F11"],"overlap_with_rejected":[],"overlap_risk_level":"MEDIUM","overlap_review_required":true,"recommended_action":"KEEP_FOR_REVIEW"},
+  {"factor_id":"F26","family_id":"LIQUIDITY_VOLUME","same_family_factor_count":3,"overlap_with_frozen_candidates":["F11"],"overlap_with_rejected":["F05"],"overlap_risk_level":"HIGH","overlap_review_required":true,"recommended_action":"HOLD_FOR_FAMILY_OVERLAP_REVIEW"},
+  {"factor_id":"F27","family_id":"LIQUIDITY_VOLUME","same_family_factor_count":3,"overlap_with_frozen_candidates":["F11"],"overlap_with_rejected":["F05"],"overlap_risk_level":"HIGH","overlap_review_required":true,"recommended_action":"HOLD_FOR_FAMILY_OVERLAP_REVIEW"},
+  {"factor_id":"F30","family_id":"LIQUIDITY_VOLUME","same_family_factor_count":3,"overlap_with_frozen_candidates":["F04","F05"],"overlap_with_rejected":["F05"],"overlap_risk_level":"MEDIUM","overlap_review_required":true,"recommended_action":"KEEP_FOR_REVIEW"},
+  {"factor_id":"F31","family_id":"TAIL_RISK","same_family_factor_count":2,"overlap_with_frozen_candidates":["F10"],"overlap_with_rejected":["F02"],"overlap_risk_level":"MEDIUM","overlap_review_required":true,"recommended_action":"KEEP_FOR_REVIEW"},
+  {"factor_id":"F34","family_id":"TAIL_RISK","same_family_factor_count":2,"overlap_with_frozen_candidates":["F10"],"overlap_with_rejected":["F02"],"overlap_risk_level":"MEDIUM","overlap_review_required":true,"recommended_action":"KEEP_FOR_REVIEW"}
+ ]
+}

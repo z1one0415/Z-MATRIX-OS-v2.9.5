@@ -39,3 +39,18 @@ Branch: plan/...clean | Base: postmerge @ 07543c80 | Level 5: BLOCKED | Items: 1
 All pass → proceed to REVIEW_GATE → human decision
 
 > Sandbox Evidence | Clean Impl | Review Checklist | 18 items | Level 5 BLOCKED
+## Evidence
+- Clean rebuild from postmerge @ 07543c80
+- Polluted head 21078c22 not reused
+- 26 docs (14 planning + 7 review + 5 merge)
+- 0 code changes, 0 test changes
+- 0 runtime_reports / runtime_audit / data
+
+## Boundary
+No implementation. No code change. No test change. No runtime enablement. No adapter execution. No capability execution. No real call. No Z-MATRIX call. No network. No file write. Level 5 BLOCKED.
+
+## Forbidden Actions
+1. Implementation code | 2. Code/test changes | 3. Runtime enablement | 4. Adapter execution | 5. Capability execution | 6. Real adapter call | 7. Z-MATRIX call | 8. Network | 9. File write | 10. production/broker/real_trade | 11. Tag | 12. Level 5 planning
+
+## Next Legal Entry
+Human review decision only. No merge. No auto-decision.

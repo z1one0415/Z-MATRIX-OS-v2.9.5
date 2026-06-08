@@ -33,3 +33,18 @@ Date: YYYY-MM-DD | Approver: ____ | Decision: [1|2|3|4] | Notes: ____
 Human fills all 10 PENDING fields → review decision seal
 
 > Sandbox Evidence | Clean Impl | Review Decision | 10 PENDING | Level 5 BLOCKED
+## Evidence
+- Clean rebuild from postmerge @ 07543c80
+- Polluted head 21078c22 not reused
+- 26 docs (14 planning + 7 review + 5 merge)
+- 0 code changes, 0 test changes
+- 0 runtime_reports / runtime_audit / data
+
+## Boundary
+No implementation. No code change. No test change. No runtime enablement. No adapter execution. No capability execution. No real call. No Z-MATRIX call. No network. No file write. Level 5 BLOCKED.
+
+## Forbidden Actions
+1. Implementation code | 2. Code/test changes | 3. Runtime enablement | 4. Adapter execution | 5. Capability execution | 6. Real adapter call | 7. Z-MATRIX call | 8. Network | 9. File write | 10. production/broker/real_trade | 11. Tag | 12. Level 5 planning
+
+## Next Legal Entry
+Human review decision only. No merge. No auto-decision.

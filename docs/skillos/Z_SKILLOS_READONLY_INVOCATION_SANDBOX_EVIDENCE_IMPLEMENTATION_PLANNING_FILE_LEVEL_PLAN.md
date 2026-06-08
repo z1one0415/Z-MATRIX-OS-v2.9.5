@@ -21,3 +21,21 @@ Docs-only proof. No code proof. No tests proof. No enablement proofs. No real ca
 ## Next Legal Entry
 Implementation planning review only. Human fills REVIEW_DECISION_RECORD.
 > Sandbox Evidence | Clean Impl | FILE_LEVEL_PLAN | FUTURE_PLAN_ONLY | Level 5 BLOCKED
+
+## Scope
+FUTURE_PLAN_ONLY. Docs-only. Plan the implementation of sandbox evidence components.
+
+## Evidence / Dependency
+Sandbox Evidence Planning POST_MERGE_SEALED. Wave0 P0 control layer merged.
+
+## Boundary
+No implementation. No code change. No test change. No runtime enablement. No adapter execution. No capability execution. No real call. No Z-MATRIX call. No network. No file write. No hidden persistence. Level 5 BLOCKED.
+
+## Forbidden Actions
+1. Implementation code | 2. Code/test changes | 3. Runtime enablement | 4. Adapter execution | 5. Capability execution | 6. Real adapter call | 7. Z-MATRIX module call | 8. Network call | 9. File write | 10. External publish | 11. Hidden persistence | 12. production/broker/real_trade | 13. Tag | 14. Level 5 planning
+
+## Proof / Review Requirements
+18 proof categories defined in TEST_AND_PROOF_PLAN. All 26 docs verified: docs-only, no code, no tests, no enablement.
+
+## Next Legal Entry
+Implementation planning review only. Human fills REVIEW_DECISION_RECORD.

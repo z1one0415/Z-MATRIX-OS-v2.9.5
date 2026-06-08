@@ -1,0 +1,86 @@
+{
+  "registry_name": "Z_MATRIX_CURRENT_FACTOR_SEED_REGISTRY_V1",
+  "current_seed_factor_count": 2,
+  "seeds": [
+    {
+      "factor_id": "F01",
+      "factor_name": "RANK_ACCELERATION_20D_TACTICAL",
+      "canonical_candidate_id": "RANK_ACCELERATION_ONLY",
+      "factor_family": "TACTICAL_MOMENTUM",
+      "factor_role": "20D_ONLY_TACTICAL_RESEARCH_CANDIDATE",
+      "source_commit": "46aabbd",
+      "formula": "rank_acceleration = short_rank - medium_rank",
+      "required_data_sources": [
+        "price_bars"
+      ],
+      "required_features": [
+        "short_rank",
+        "medium_rank",
+        "rank_acceleration"
+      ],
+      "horizon_scope": {
+        "allowed": [
+          "20D"
+        ],
+        "forbidden": [
+          "40D",
+          "60D",
+          "LONG_HORIZON"
+        ]
+      },
+      "regime_scope": {
+        "preferred": [
+          "UP_MARKET",
+          "SIDEWAYS_TO_BULLISH"
+        ],
+        "blocked": [
+          "DOWN_MARKET",
+          "DRAWDOWN",
+          "SEVERE_HIGH_VOL"
+        ]
+      },
+      "current_lifecycle_state": "ORANGE_MONITORING",
+      "current_runtime_state": {
+        "candidate_retained": true,
+        "candidate_suspended": false,
+        "candidate_rejected": false,
+        "waiting_for": "2026-05-29 20D formal label"
+      },
+      "alpha_claim_allowed": false,
+      "v13_6_allowed": false,
+      "paper_trading_allowed": false,
+      "production": "BLOCKED",
+      "broker_runtime": "BLOCKED",
+      "real_trade": "BLOCKED"
+    },
+    {
+      "factor_id": "F02",
+      "factor_name": "DOWNSIDE_VOL_ADJUSTED_STRENGTH",
+      "canonical_candidate_id": "DOWNSIDE_VOL_ADJUSTED_STRENGTH",
+      "factor_family": "RISK_ADJUSTED_STRENGTH",
+      "factor_role": "RESEARCH_CANDIDATE_FROZEN",
+      "source_commit": "e75fc6a",
+      "oos_evidence_summary": {
+        "20D_HL": 0.066069
+      },
+      "formula_identity_state": {
+        "formula_equivalence_detected": true,
+        "implementation_alias_detected": true,
+        "proxy_collision_detected": true,
+        "requires_formula_reimplementation": true,
+        "blocked_formula_aliases": [
+          "DOWNSIDE_VOL_TILT",
+          "DRAWDOWN_RECOVERY_QUALITY"
+        ]
+      },
+      "current_lifecycle_state": "RESEARCH_CANDIDATE_FROZEN",
+      "next_gate": "V13_5_N4_EXTENDED_OOS_MONITORING_GATE",
+      "alpha_claim_allowed": false,
+      "v13_6_allowed": false,
+      "paper_trading_allowed": false,
+      "production": "BLOCKED",
+      "broker_runtime": "BLOCKED",
+      "real_trade": "BLOCKED"
+    }
+  ]
+}

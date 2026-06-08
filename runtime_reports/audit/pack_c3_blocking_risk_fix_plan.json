@@ -1,0 +1,44 @@
+[
+  {
+    "risk_id": "P1-001",
+    "module": "account_truth",
+    "finding": "Reconciliation tolerance may mask real errors",
+    "fix_goal": "Account reconciliation must not false-PASS due to over-wide tolerance",
+    "tolerance_policy": "Explicit tolerance per field type: price=0.01, quantity=0, amount=0.01, equity=1.0",
+    "strict_mode": "Any amount difference > tolerance \u2192 ERROR. No silent swallowing.",
+    "warning_mode": "Difference <= tolerance \u2192 PASS with recorded difference_abs/difference_pct in report",
+    "fail_closed_mode": "Missing required field \u2192 MISSING_REQUIRED_FIELD \u2192 ERROR",
+    "known_mismatch_fixture": "Fixture with known price mismatch(1000 vs 1001) \u2192 MUST return FAILED, not PASS",
+    "acceptance_criteria": [
+      "Amount difference > tolerance \u2192 ERROR status",
+      "Amount difference <= tolerance \u2192 PASS but record difference",
+      "Tolerance must NOT default to infinite",
+      "Reconciliation report must output difference_abs, difference_pct, tolerance_used",
+      "Known mismatch fixture triggers FAILED not PASS"
+    ],
+    "regression_tests": 5,
+    "deadline": "Pack C.4",
+    "production_blocked": true
+  },
+  {
+    "risk_id": "P1-004",
+    "module": "replay",
+    "finding": "Rolling replay fails without calendar",
+    "fix_goal": "Rolling replay must FAIL_CLOSED when calendar is missing or malformed",
+    "calendar_required": true,
+    "missing_calendar_behavior": "FAIL_CLOSED \u2014 return error dict with status=FAILED, error_type=CALENDAR_MISSING",
+    "malformed_calendar_behavior": "FAIL_CLOSED \u2014 return error dict with status=FAILED, error_type=CALENDAR_MALFORMED",
+    "valid_calendar_behavior": "Normal rolling slices with calendar-based date stepping",
+    "audit_message": "Calendar dependency must be logged in replay audit trail",
+    "acceptance_criteria": [
+      "calendar=None \u2192 FAIL_CLOSED (not 0 slices, not COMPLETED)",
+      "Malformed calendar \u2192 FAIL_CLOSED",
+      "Valid calendar \u2192 normal rolling slices produced",
+      "Audit closeout records calendar dependency",
+      "No silent empty result on calendar failure"
+    ],
+    "regression_tests": 5,
+    "deadline": "Pack C.4",
+    "production_blocked": true
+  }
+]

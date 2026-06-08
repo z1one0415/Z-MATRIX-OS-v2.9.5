@@ -1,0 +1,29 @@
+{
+  "status": "V13_F0_F1_MAIN_FACTOR_DOMAIN_AND_SEED_REGISTRY_PASS",
+  "v13_f0_f1_executed": true,
+  "main_factor_domain_built": true,
+  "factor_entity_schema_built": true,
+  "factor_lifecycle_policy_built": true,
+  "factor_domain_registry_built": true,
+  "factor_to_main_research_layer_mapping_built": true,
+  "current_factor_seed_registry_built": true,
+  "current_seed_factor_count": 2,
+  "current_seed_factors": [
+    "RANK_ACCELERATION_20D_TACTICAL",
+    "DOWNSIDE_VOL_ADJUSTED_STRENGTH"
+  ],
+  "registered_factor_count": 20,
+  "materialized_factor_count_this_round": 0,
+  "multi_factor_composite_built": false,
+  "skillos_protocol_modified": false,
+  "frontend_modified": false,
+  "v13_6_allowed": false,
+  "paper_trading_allowed": false,
+  "alpha_claim_allowed": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "recommended_next_action": "PREPARE_V13_F2_P0_FACTOR_ENTITY_MATERIALIZATION_PLANNING"
+}

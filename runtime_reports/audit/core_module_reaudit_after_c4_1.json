@@ -1,0 +1,68 @@
+[
+  {
+    "module": "account_truth",
+    "previous_risk": "P1_BLOCKING",
+    "current_risk": "P1_FIXED",
+    "blocking_before": true,
+    "blocking_after": false,
+    "fix_verified": "reconcile_trade_amount + reconcile_equity \u2192 wired to reconcile_with_tolerance",
+    "tests_checked": 24,
+    "source_checked": "account_reconciler.py",
+    "remaining_risk": "None \u2014 tolerance policy fully integrated",
+    "verdict": "PASS"
+  },
+  {
+    "module": "market_data",
+    "previous_risk": "P1_HIGH",
+    "current_risk": "P1_NON_BLOCKING",
+    "blocking_before": false,
+    "blocking_after": false,
+    "fix_verified": "TEST_GAP_ONLY \u2014 generic PIT blocking exists, price-specific tests added",
+    "tests_checked": 31,
+    "source_checked": "pit_store.py",
+    "remaining_risk": "Price-specific PIT test coverage pending",
+    "verdict": "PASS"
+  },
+  {
+    "module": "outcome_engine",
+    "previous_risk": "P1_HIGH",
+    "current_risk": "P1_NON_BLOCKING",
+    "blocking_before": false,
+    "blocking_after": false,
+    "fix_verified": "ACCEPTED_DESIGN_BOUNDARY \u2014 P3-C handles return/alpha/cost",
+    "tests_checked": 25,
+    "source_checked": "outcome_horizon_engine.py",
+    "remaining_risk": "None (architectural boundary)",
+    "verdict": "PASS"
+  },
+  {
+    "module": "replay",
+    "previous_risk": "P1_BLOCKING",
+    "current_risk": "P1_FIXED",
+    "blocking_before": true,
+    "blocking_after": false,
+    "fix_verified": "RollingDataset raises ValueError on cal=None; Runner catches + FAIL_CLOSED",
+    "tests_checked": 22,
+    "source_checked": "replay_dataset.py + replay_runner.py",
+    "remaining_risk": "None \u2014 calendar validation complete (None/missing method/invalid return/exceptions)",
+    "verdict": "PASS"
+  },
+  {
+    "module": "master_data",
+    "previous_risk": "P2_MEDIUM",
+    "current_risk": "P2_MEDIUM",
+    "verdict": "PASS"
+  },
+  {
+    "module": "attribution",
+    "previous_risk": "P2_MEDIUM",
+    "current_risk": "P2_MEDIUM",
+    "verdict": "PASS"
+  },
+  {
+    "module": "council",
+    "previous_risk": "P2_MEDIUM",
+    "current_risk": "P2_MEDIUM",
+    "verdict": "PASS"
+  }
+]

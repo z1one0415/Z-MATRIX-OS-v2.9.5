@@ -1,0 +1,18 @@
+{
+  "status": "V13_F0_F1_MAIN_RESEARCH_CODE_REALITY_AUDIT_BUILT",
+  "main_research_system_is_primary": true,
+  "skillos_is_protocol_layer": true,
+  "frontend_is_interaction_layer": true,
+  "research_entities_belong_to_main_research": true,
+  "factor_domain_currently_missing": true,
+  "scripts_cases_is_current_pipeline_legacy": true,
+  "runtime_reports_cases_is_current_evidence_store": true,
+  "tests_cases_runtime_bound": true,
+  "factor_registry_existing": false,
+  "allowed_to_create_main_factor_domain": true,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "recommended_next_action": "BUILD_MAIN_FACTOR_DOMAIN_SKELETON"
+}

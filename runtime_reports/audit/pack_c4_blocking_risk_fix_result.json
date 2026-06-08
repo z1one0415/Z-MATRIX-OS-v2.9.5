@@ -1,0 +1,24 @@
+[
+  {
+    "risk_id": "P1-001",
+    "module": "account_truth",
+    "status": "FIXED_IN_C4_1",
+    "tests_added": [
+      "reconcile_trade_amount wired to reconcile_with_tolerance",
+      "reconcile_equity wired to reconcile_with_tolerance"
+    ],
+    "acceptance_criteria_passed": true,
+    "blocking_pack_d": false
+  },
+  {
+    "risk_id": "P1-004",
+    "module": "replay",
+    "status": "FIXED_IN_C4_1",
+    "tests_added": [
+      "RollingDataset raises ValueError on calendar=None",
+      "Runner catches + returns FAILED"
+    ],
+    "acceptance_criteria_passed": true,
+    "blocking_pack_d": false
+  }
+]

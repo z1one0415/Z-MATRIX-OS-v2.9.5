@@ -1,0 +1,129 @@
+{
+  "policy_name": "Z_MATRIX_FACTOR_DOMAIN_REGISTRY_V1",
+  "factors": [
+    {
+      "factor_id": "F01",
+      "factor_name": "RANK_ACCELERATION_20D_TACTICAL",
+      "factor_family": "TACTICAL_MOMENTUM",
+      "registry_status": "CURRENT_SEED"
+    },
+    {
+      "factor_id": "F02",
+      "factor_name": "DOWNSIDE_VOL_ADJUSTED_STRENGTH",
+      "factor_family": "RISK_ADJUSTED_STRENGTH",
+      "registry_status": "CURRENT_SEED"
+    },
+    {
+      "factor_id": "F03",
+      "factor_name": "INDUSTRY_RELATIVE_STRENGTH",
+      "factor_family": "CROSS_SECTIONAL_MOMENTUM",
+      "registry_status": "REGISTERED_NOT_MATERIALIZED"
+    },
+    {
+      "factor_id": "F04",
+      "factor_name": "RESIDUAL_MOMENTUM",
+      "factor_family": "CROSS_SECTIONAL_MOMENTUM",
+      "registry_status": "REGISTERED_NOT_MATERIALIZED"
+    },
+    {
+      "factor_id": "F05",
+      "factor_name": "TURNOVER_STABILITY",
+      "factor_family": "LIQUIDITY_STRUCTURE",
+      "registry_status": "REGISTERED_NOT_MATERIALIZED"
+    },
+    {
+      "factor_id": "F06",
+      "factor_name": "FUNDAMENTAL_QUALITY",
+      "factor_family": "FUNDAMENTAL_QUALITY",
+      "registry_status": "REGISTERED_NOT_MATERIALIZED"
+    },
+    {
+      "factor_id": "F07",
+      "factor_name": "PROFITABILITY_MOMENTUM",
+      "factor_family": "FUNDAMENTAL_MOMENTUM",
+      "registry_status": "REGISTERED_NOT_MATERIALIZED"
+    },
+    {
+      "factor_id": "F08",
+      "factor_name": "CASH_FLOW_YIELD",
+      "factor_family": "VALUE",
+      "registry_status": "REGISTERED_NOT_MATERIALIZED"
+    },
+    {
+      "factor_id": "F09",
+      "factor_name": "EARNINGS_REVISION",
+      "factor_family": "EVENT_GUESS",
+      "registry_status": "REGISTERED_NOT_MATERIALIZED"
+    },
+    {
+      "factor_id": "F10",
+      "factor_name": "LOW_VOLATILITY",
+      "factor_family": "RISK_ADJUSTED_STRENGTH",
+      "registry_status": "REGISTERED_NOT_MATERIALIZED"
+    },
+    {
+      "factor_id": "F11",
+      "factor_name": "SHORT_TERM_REVERSAL",
+      "factor_family": "SHORT_HORIZON",
+      "registry_status": "REGISTERED_NOT_MATERIALIZED"
+    },
+    {
+      "factor_id": "F12",
+      "factor_name": "VALUE_COMPOSITE",
+      "factor_family": "VALUE",
+      "registry_status": "REGISTERED_NOT_MATERIALIZED"
+    },
+    {
+      "factor_id": "F13",
+      "factor_name": "SHAREHOLDER_YIELD",
+      "factor_family": "VALUE",
+      "registry_status": "REGISTERED_NOT_MATERIALIZED"
+    },
+    {
+      "factor_id": "F14",
+      "factor_name": "ASSET_GROWTH_DISCIPLINE",
+      "factor_family": "FUNDAMENTAL_QUALITY",
+      "registry_status": "REGISTERED_NOT_MATERIALIZED"
+    },
+    {
+      "factor_id": "F15",
+      "factor_name": "ACCRUALS_QUALITY",
+      "factor_family": "FUNDAMENTAL_QUALITY",
+      "registry_status": "REGISTERED_NOT_MATERIALIZED"
+    },
+    {
+      "factor_id": "F16",
+      "factor_name": "SENTIMENT_ATTENTION",
+      "factor_family": "EVENT_GUESS",
+      "registry_status": "REGISTERED_NOT_MATERIALIZED"
+    },
+    {
+      "factor_id": "F17",
+      "factor_name": "POLICY_CATALYST_DECAY",
+      "factor_family": "EVENT_GUESS",
+      "registry_status": "REGISTERED_NOT_MATERIALIZED"
+    },
+    {
+      "factor_id": "F18",
+      "factor_name": "SUPPLY_DEMAND_TENSION",
+      "factor_family": "LIQUIDITY_STRUCTURE",
+      "registry_status": "REGISTERED_NOT_MATERIALIZED"
+    },
+    {
+      "factor_id": "F19",
+      "factor_name": "CAPITAL_FLOW_CONFIRMATION",
+      "factor_family": "LIQUIDITY_STRUCTURE",
+      "registry_status": "REGISTERED_NOT_MATERIALIZED"
+    },
+    {
+      "factor_id": "F20",
+      "factor_name": "INDUSTRY_CATALYST_CONFIRMATION",
+      "factor_family": "CROSS_SECTIONAL_MOMENTUM",
+      "registry_status": "REGISTERED_NOT_MATERIALIZED"
+    }
+  ],
+  "blocked_aliases": [
+    "DOWNSIDE_VOL_TILT",
+    "DRAWDOWN_RECOVERY_QUALITY"
+  ]
+}

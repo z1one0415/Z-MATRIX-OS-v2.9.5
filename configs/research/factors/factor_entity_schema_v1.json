@@ -1,0 +1,40 @@
+{
+  "schema_name": "Z_MATRIX_MAIN_FACTOR_ENTITY_SCHEMA_V1",
+  "entity_type": "ALPHA_EVIDENCE_PRIMITIVE",
+  "required_fields": [
+    "factor_id",
+    "factor_name",
+    "factor_family",
+    "factor_role",
+    "main_research_layer_position",
+    "required_data_sources",
+    "required_features",
+    "formula",
+    "horizon_scope",
+    "regime_scope",
+    "validation_protocol",
+    "expert_domain_hooks",
+    "pipeline_hooks",
+    "control_policy",
+    "skillos_exposure_policy",
+    "frontend_display_policy",
+    "lifecycle_state",
+    "alpha_claim_allowed",
+    "production",
+    "broker_runtime",
+    "real_trade"
+  ],
+  "forbidden_fields": [
+    "buy_signal",
+    "sell_signal",
+    "trade_signal",
+    "target_weight",
+    "position_size",
+    "broker_order",
+    "real_trade_action"
+  ],
+  "alpha_claim_allowed_default": false,
+  "production_default": "BLOCKED",
+  "broker_runtime_default": "BLOCKED",
+  "real_trade_default": "BLOCKED"
+}

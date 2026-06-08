@@ -1,0 +1,31 @@
+{
+  "policy_name": "Z_MATRIX_FACTOR_LIFECYCLE_POLICY_V1",
+  "allowed_states": [
+    "PROPOSED",
+    "REGISTERED",
+    "MATERIALIZED",
+    "VALIDATED_IN_SAMPLE",
+    "OOS_SUPPORTED",
+    "TACTICAL_ONLY",
+    "RESEARCH_CANDIDATE_FROZEN",
+    "ORANGE_MONITORING",
+    "SUSPENSION_REVIEW_REQUIRED",
+    "SUSPENDED",
+    "REJECTED"
+  ],
+  "forbidden_states": [
+    "ALPHA_VALIDATED",
+    "V13_6_READY",
+    "PAPER_TRADING_READY",
+    "PRODUCTION_READY",
+    "BROKER_READY",
+    "REAL_TRADE_READY"
+  ],
+  "state_transition_requires_runtime_evidence": true,
+  "skillos_cannot_override_lifecycle": true,
+  "frontend_cannot_override_lifecycle": true,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

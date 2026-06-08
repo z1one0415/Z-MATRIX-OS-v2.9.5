@@ -1,0 +1,22 @@
+{
+  "mapping_name": "Z_MATRIX_FACTOR_TO_MAIN_RESEARCH_LAYER_MAPPING_V1",
+  "system_layers": {
+    "main_research_system": {
+      "layer_1_bottom_research_independent_skill": "factor definition and computation",
+      "layer_2_pipeline_combination": "PIT/OOS/IC/bucket/regime/correlation validation",
+      "layer_3_expert_domain": "10-chain x 5-force explanation, sector wind, catalyst decay, risk redteam",
+      "layer_4_system_control": "freeze, demote, monitor, suspend, reject"
+    },
+    "z_skillos": {
+      "role": "agent call protocol only",
+      "can_call_factor_capability": true,
+      "can_define_factor_entity": false,
+      "can_override_factor_lifecycle": false
+    },
+    "frontend": {
+      "role": "display and interaction only",
+      "can_display_factor_state": true,
+      "can_override_factor_lifecycle": false
+    }
+  }
+}

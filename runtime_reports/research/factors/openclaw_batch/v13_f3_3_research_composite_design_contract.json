@@ -1,0 +1,31 @@
+{
+  "pipeline_signature": "Z2-V13-F3-3-RESEARCH-COMPOSITE-DESIGN-CONTRACT",
+  "status": "V13_F3_3_RESEARCH_COMPOSITE_DESIGN_CONTRACT_BUILT",
+  "base_commit": "c4d59ba",
+  "design_only": true,
+  "composite_execution_allowed": false,
+  "composite_panel_generation_allowed": false,
+  "weight_optimization_allowed": false,
+  "candidate_scope": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "candidate_roles": {
+    "F04": "CORE_FULL_HORIZON_SIGNAL",
+    "F10": "REGIME_DEFENSIVE_SIGNAL",
+    "F11": "TACTICAL_SHORT_HORIZON_SIGNAL"
+  },
+  "requires_true_oos_before_any_alpha_claim": true,
+  "requires_f3_4_oos_plan_before_execution": true,
+  "requires_f3_5_monitoring_plan_before_execution": true,
+  "promotion_allowed": false,
+  "v13_6_allowed": false,
+  "paper_trading_allowed": false,
+  "alpha_claim_allowed": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

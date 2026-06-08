@@ -1,0 +1,32 @@
+{
+  "pipeline_signature": "Z2-V13-F3-3-RESEARCH-COMPOSITE-BLUEPRINT",
+  "status": "V13_F3_3_RESEARCH_COMPOSITE_BLUEPRINT_BUILT",
+  "blueprint_name": "F04_F10_F11_RESEARCH_TRIAD_BLUEPRINT",
+  "blueprint_only": true,
+  "composite_formula_executable": false,
+  "numeric_weights_assigned": false,
+  "component_roles": {
+    "F04": "CORE_FULL_HORIZON",
+    "F10": "REGIME_DEFENSIVE",
+    "F11": "TACTICAL_REVERSAL"
+  },
+  "activation_logic_design": [
+    "F04 active as core research signal",
+    "F10 active only if regime gate passes",
+    "F11 active only if cost/turnover gate passes",
+    "No component may activate outside frozen horizon scope"
+  ],
+  "forbidden_outputs": [
+    "composite_factor_value",
+    "portfolio_weight",
+    "trade_signal",
+    "position",
+    "order",
+    "broker_instruction"
+  ],
+  "ready_for_f3_4_true_oos_requirement_plan": true,
+  "ready_for_f3_5_candidate_monitoring_plan": true,
+  "promotion_allowed": false,
+  "v13_6_allowed": false,
+  "alpha_claim_allowed": false
+}

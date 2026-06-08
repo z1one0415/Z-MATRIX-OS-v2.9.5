@@ -1,0 +1,28 @@
+{
+  "pipeline_signature": "Z2-V13-F2-2-FACTOR-DIAGNOSTIC",
+  "status": "V13_F2_2_FACTOR_SPECIFIC_DIAGNOSTIC_PLAN_BUILT",
+  "diagnostic_scope": [
+    "F03",
+    "F06"
+  ],
+  "f03_diagnostics": [
+    "sector_concentration",
+    "industry_neutrality",
+    "sector_wind_overlap",
+    "regime_split",
+    "20d_vs_60d_decay"
+  ],
+  "f06_diagnostics": [
+    "quality_score_dispersion",
+    "reporting_period_distribution",
+    "disclosure_freshness",
+    "fundamental_staleness",
+    "20d_vs_60d_decay"
+  ],
+  "diagnostics_executed_this_round": [],
+  "diagnostics_allowed_next_step": true,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

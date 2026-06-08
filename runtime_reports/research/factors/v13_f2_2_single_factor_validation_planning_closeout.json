@@ -1,0 +1,28 @@
+{
+  "pipeline_signature": "Z2-V13-F2-2-PLANNING-CLOSEOUT",
+  "status": "V13_F2_2_SINGLE_FACTOR_VALIDATION_PLANNING_PASS",
+  "v13_f2_2_executed": true,
+  "planning_only": true,
+  "validation_executed": false,
+  "ready_for_f2_3_single_factor_validation_execution": [
+    "F03",
+    "F06"
+  ],
+  "ic_validation_executed": false,
+  "rank_ic_validation_executed": false,
+  "bucket_return_validation_executed": false,
+  "outcome_label_generation_executed": false,
+  "oos_alpha_validation_executed": false,
+  "multi_factor_composite_built": false,
+  "skillos_protocol_modified": false,
+  "frontend_modified": false,
+  "v13_6_allowed": false,
+  "paper_trading_allowed": false,
+  "alpha_claim_allowed": false,
+  "ready_for_alpha_claim": false,
+  "alpha_validated": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "recommended_next_action": "PREPARE_V13_F2_3_SINGLE_FACTOR_VALIDATION_EXECUTION"
+}

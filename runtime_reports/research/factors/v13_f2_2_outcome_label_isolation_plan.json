@@ -1,0 +1,34 @@
+{
+  "pipeline_signature": "Z2-V13-F2-2-OUTCOME-LABEL-ISOLATION",
+  "status": "V13_F2_2_OUTCOME_LABEL_ISOLATION_PLAN_BUILT",
+  "label_generation_executed": false,
+  "label_generation_allowed_next_step": true,
+  "label_role": "OUTCOME_LABEL_ONLY",
+  "label_horizons": [
+    "20D",
+    "60D"
+  ],
+  "label_source": "real_price_bars_after_rebalance_date",
+  "feature_panel_write_allowed": false,
+  "feature_panel_contains_outcome_labels": false,
+  "label_panel_output_planned": "runtime_reports/research/factors/single_factor_outcome_label_panel.csv",
+  "required_label_columns": [
+    "rebalance_date",
+    "ticker",
+    "forward_return_20d",
+    "forward_return_60d",
+    "label_known_after_rebalance",
+    "label_role"
+  ],
+  "forbidden_in_factor_panels": [
+    "forward_return_20d",
+    "forward_return_60d",
+    "future_return",
+    "target_return",
+    "label"
+  ],
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

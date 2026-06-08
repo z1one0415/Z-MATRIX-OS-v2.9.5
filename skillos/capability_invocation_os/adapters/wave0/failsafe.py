@@ -82,3 +82,14 @@ def _degrade_to_manual_review():
 
 def _deny_wave0_adapter():
     return Wave0Decision(action="DENY", reason="wave0 adapter denied")
+
+
+def degrade_controlled_readonly_to_noop():
+    from .failsafe import FailsafeDecision
+    return FailsafeDecision(action="DENY_NOOP", reason="degraded to noop")
+def degrade_controlled_readonly_to_plan_only():
+    from .failsafe import FailsafeDecision
+    return FailsafeDecision(action="PLAN_ONLY", reason="degraded to plan only")
+def deny_controlled_readonly_without_exception(reason: str = "denied"):
+    from .failsafe import FailsafeDecision
+    return FailsafeDecision(action="DENY", reason=reason)

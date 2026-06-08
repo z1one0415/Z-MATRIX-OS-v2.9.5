@@ -90,3 +90,14 @@ def describe_enablement_state(
         name: "REQUESTED (not enabled — P0 disabled-default)" if requested else "DISABLED"
         for name, requested in adapters.items()
     }
+
+
+def request_controlled_readonly(cfg, adapter_kind, input_kind):
+    from .enablement import EnablementDecision, EnablementAction
+    return EnablementDecision(action=EnablementAction.DISABLED, reason="P0: controlled readonly disabled")
+def deny_controlled_readonly(reason: str = "disabled"):
+    from .enablement import EnablementDecision, EnablementAction
+    return EnablementDecision(action=EnablementAction.DENY_NOOP, reason=reason)
+def plan_controlled_readonly(cfg, adapter_kind, input_kind):
+    from .enablement import EnablementDecision, EnablementAction
+    return EnablementDecision(action=EnablementAction.PLAN_ONLY, reason="P0: planning only")

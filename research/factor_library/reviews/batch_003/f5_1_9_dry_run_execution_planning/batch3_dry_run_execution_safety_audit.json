@@ -28,5 +28,9 @@
     "no_v13_6": true,
     "no_tag": true,
     "f26_f27_no_auto_unlock": true
-  }
+  },
+  "proof_semantics_checked": true,
+  "proof_names_are_negative_or_noop_only": true,
+  "positive_execution_proof_names_removed": true,
+  "human_review_readability_hardened": true
 }

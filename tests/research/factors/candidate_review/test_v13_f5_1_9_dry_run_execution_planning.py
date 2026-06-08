@@ -115,3 +115,35 @@ def test_runtime():
 def test_audit():
     r = subprocess.run("git diff --name-only -- runtime_audit",shell=True,capture_output=True,text=True)
     assert r.stdout.strip() == ""
+
+def test_proof_26():
+    p = json.loads((D / "batch3_dry_run_execution_proof_matrix.json").read_text())
+    assert p.get("proof_count",0) >= 26
+
+def test_proof_names_negative():
+    p = json.loads((D / "batch3_dry_run_execution_proof_matrix.json").read_text())
+    forbidden = ["dry_run_execution","monitoring_execution","candidate_review_execution","factor_calculation","factor_result_update",
+                 "runtime_reports_write","runtime_audit_write","external_data_fetch","candidate_promotion","alpha_claim",
+                 "production","broker_runtime","real_trade"]
+    for pr in p.get("proofs",[]):
+        name = pr.get("proof","")
+        for fb in forbidden:
+            assert name != fb, f"Positive proof name found: {name}"
+
+def test_proof_prefix():
+    p = json.loads((D / "batch3_dry_run_execution_proof_matrix.json").read_text())
+    for pr in p.get("proofs",[]):
+        name = pr.get("proof","")
+        ok = name.startswith("no_") or name.endswith("_only") or name == "rollback_plan_ready" or "no_auto_unlock" in name
+        assert ok, f"Proof name not negative/noop: {name}"
+
+def test_closeout_seal():
+    co = json.loads((D / "batch3_dry_run_execution_planning_closeout.json").read_text())
+    assert co.get("proof_semantics_seal_status") == "V13_F5_1_9_1_PROOF_SEMANTICS_SEAL_APPLIED"
+
+def test_safety_seal():
+    s = json.loads((D / "batch3_dry_run_execution_safety_audit.json").read_text())
+    assert s.get("proof_semantics_checked") is True
+    assert s.get("proof_names_are_negative_or_noop_only") is True
+    assert s.get("positive_execution_proof_names_removed") is True
+    assert s.get("human_review_readability_hardened") is True

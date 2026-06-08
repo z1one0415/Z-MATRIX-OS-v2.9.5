@@ -23,5 +23,8 @@
   "real_trade": "BLOCKED",
   "skillos_modified": false,
   "status": "V13_F5_1_9_BATCH3_DRY_RUN_EXECUTION_PLANNING_READY_FOR_HUMAN_DECISION",
-  "next_legal_entry": "HUMAN_BATCH3_DRY_RUN_EXECUTION_PLANNING_DECISION_ONLY"
+  "next_legal_entry": "HUMAN_BATCH3_DRY_RUN_EXECUTION_PLANNING_DECISION_ONLY",
+  "proof_semantics_seal_required": true,
+  "proof_semantics_seal_status": "V13_F5_1_9_1_PROOF_SEMANTICS_SEAL_APPLIED",
+  "proof_names_are_negative_or_noop_only": true
 }

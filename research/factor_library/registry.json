@@ -1,0 +1,77 @@
+{
+  "pipeline_signature": "V13.F5.1.2-BACKFILL-REGISTRY-UPDATE",
+  "base_commit": "635aa77cc1801bcc9fd85fe6ce48f5f3a995912c",
+  "registries_updated": [
+    "factor_registry",
+    "family_registry",
+    "unified_candidate_registry",
+    "rejected_factor_registry"
+  ],
+  "frozen_candidates": [
+    "F04",
+    "F10",
+    "F11",
+    "F14",
+    "F15",
+    "F16"
+  ],
+  "rejected_factors": [
+    "F02",
+    "F03",
+    "F05"
+  ],
+  "hypothesis_only": [
+    "F03R"
+  ],
+  "blocked_by_sample": [
+    "F06",
+    "F07",
+    "F08",
+    "F12",
+    "F13"
+  ],
+  "source_audit": [
+    "F09",
+    "F17",
+    "F18",
+    "F19",
+    "F20"
+  ],
+  "backfilled_batch3_pre_interface": [
+    "F21",
+    "F22",
+    "F24",
+    "F26",
+    "F27",
+    "F30",
+    "F31",
+    "F34"
+  ],
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "batch3_candidate_review_prep_status": "PREPARED_FOR_HUMAN_REVIEW",
+  "candidate_review_executed": false,
+  "candidate_promotion_executed": false,
+  "batch3_prep_review_ref": "research/factor_library/reviews/batch_003/f5_1_3_candidate_review_prep/batch3_candidate_review_prep_closeout.json",
+  "candidate_review_prep_base_commit": "d02b60c9c7ad8500dd5403c28710f850cf11bc47",
+  "candidate_review_prep_artifact_commit": "3ef13a255c76d9acf02812d2ae3a2dda53947bd2",
+  "batch3_queue_monitoring_plan_status": "PLANNED_ONLY",
+  "batch3_queue_monitoring_plan_ref": "research/factor_library/reviews/batch_003/f5_1_5_queue_monitoring_plan/batch3_monitoring_plan_closeout.json",
+  "monitoring_execution_started": false,
+  "queue_monitoring_plan_decision_status": "APPROVED_BY_HUMAN",
+  "queue_monitoring_plan_decision_ref": "research/factor_library/reviews/batch_003/f5_1_6_queue_monitoring_plan_decision/batch3_queue_monitoring_plan_decision_closeout.json",
+  "monitoring_dry_run_planning_allowed": true,
+  "queue_monitoring_dry_run_planning_status": "PLANNED_ONLY",
+  "queue_monitoring_dry_run_planning_ref": "research/factor_library/reviews/batch_003/f5_1_7_queue_monitoring_dry_run_planning/batch3_dry_run_planning_closeout.json",
+  "dry_run_execution_started": false,
+  "dry_run_planning_decision_status": "APPROVED_BY_HUMAN",
+  "dry_run_execution_planning_allowed": true,
+  "dry_run_planning_decision_ref": "research/factor_library/reviews/batch_003/f5_1_8_dry_run_planning_decision/batch3_dry_run_planning_decision_closeout.json",
+  "dry_run_execution_planning_status": "PLANNED_ONLY",
+  "dry_run_execution_planning_ref": "research/factor_library/reviews/batch_003/f5_1_9_dry_run_execution_planning/batch3_dry_run_execution_planning_closeout.json",
+  "dry_run_execution_planning_decision_status": "APPROVED_BY_HUMAN",
+  "controlled_noop_dry_run_branch_allowed": true,
+  "dry_run_execution_planning_decision_ref": "research/factor_library/reviews/batch_003/f5_1_10_dry_run_execution_planning_decision/batch3_dry_run_execution_planning_decision_closeout.json"
+}

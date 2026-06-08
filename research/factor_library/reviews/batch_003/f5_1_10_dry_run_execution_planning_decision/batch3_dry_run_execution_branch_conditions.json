@@ -1,0 +1,41 @@
+{
+  "pipeline_signature": "V13-F5-1-10-HUMAN-BATCH3-DRY-RUN-EXECUTION-PLANNING-DECISION",
+  "base_commit": "4dd8e86ff391e0af9e55de46ae3c93545798336c",
+  "approved_factor_conditions": [
+    "noop_runner_only",
+    "static_artifacts_only",
+    "no_external_data",
+    "no_factor_recalculation",
+    "no_factor_result_update",
+    "no_runtime_reports_write",
+    "no_runtime_audit_write",
+    "no_candidate_review_execution",
+    "no_promotion",
+    "no_alpha_claim",
+    "no_broker_downstream",
+    "hash_only_evidence"
+  ],
+  "held_factor_conditions": [
+    {
+      "factor_id": "F26",
+      "conditions": [
+        "hold_remains_locked",
+        "family_overlap_resolution_still_required",
+        "no_automatic_unlock",
+        "human_hold_unlock_decision_required"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "factor_id": "F27",
+      "conditions": [
+        "hold_remains_locked",
+        "family_overlap_resolution_still_required",
+        "turnover_cost_guardrail_still_required",
+        "no_automatic_unlock",
+        "human_hold_unlock_decision_required"
+      ],
+      "status": "PENDING"
+    }
+  ]
+}

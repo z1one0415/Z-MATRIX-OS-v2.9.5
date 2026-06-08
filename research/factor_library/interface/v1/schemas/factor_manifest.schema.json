@@ -1,0 +1,25 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "type": "object",
+ "additionalProperties": false,
+ "required": ["factor_id","factor_name","factor_family","formula","economic_hypothesis","alpha_claim_allowed","production","broker_runtime","real_trade"],
+ "properties": {
+  "pipeline_signature": {"type": "string"},
+  "factor_id": {"type": "string"},
+  "factor_name": {"type": "string"},
+  "factor_family": {"type": "string"},
+  "formula": {"type": "string"},
+  "economic_hypothesis": {"type": "string"},
+  "data_sources": {"type": "array", "items": {"type": "string"}},
+  "horizons": {"type": "array", "items": {"type": "string"}},
+  "required_diagnostics": {"type": "array", "items": {"type": "string"}},
+  "is_planning_only": {"type": "boolean"},
+  "requires_fundamentals": {"type": "boolean"},
+  "alpha_claim_allowed": {"type": "boolean", "const": false},
+  "ready_for_alpha_claim": {"type": "boolean", "const": false},
+  "alpha_validated": {"type": "boolean", "const": false},
+  "production": {"type": "string", "const": "BLOCKED"},
+  "broker_runtime": {"type": "string", "const": "BLOCKED"},
+  "real_trade": {"type": "string", "const": "BLOCKED"}
+ }
+}

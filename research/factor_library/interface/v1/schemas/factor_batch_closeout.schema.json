@@ -1,0 +1,25 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "type": "object",
+ "additionalProperties": false,
+ "required": ["expected_lanes","completed_lanes","status"],
+ "properties": {
+  "pipeline_signature": {"type": "string"},
+  "base_commit": {"type": "string"},
+  "expected_lanes": {"type": "integer"},
+  "completed_lanes": {"type": "integer"},
+  "status": {"type": "string"},
+  "pass_research_evidence_factors": {"type": "array", "items": {"type": "string"}},
+  "coverage_blocked_factors": {"type": "array", "items": {"type": "string"}},
+  "formula_contract_contaminated_factors": {"type": "array", "items": {"type": "string"}},
+  "source_audit_only_completed": {"type": "array", "items": {"type": "string"}},
+  "hypothesis_only_factors": {"type": "array", "items": {"type": "string"}},
+  "ready_for_candidate_review": {"type": "array", "items": {"type": "string"}},
+  "pre_interface_artifacts": {"type": "boolean"},
+  "interface_v1_backfill_required": {"type": "boolean"},
+  "alpha_claim_allowed": {"type": "boolean", "const": false},
+  "production": {"type": "string", "const": "BLOCKED"},
+  "broker_runtime": {"type": "string", "const": "BLOCKED"},
+  "real_trade": {"type": "string", "const": "BLOCKED"}
+ }
+}

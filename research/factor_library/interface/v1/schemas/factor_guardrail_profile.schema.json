@@ -1,0 +1,23 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "type": "object",
+ "additionalProperties": false,
+ "required": ["factor_id","guardrail_type","requires_true_oos_before_promotion"],
+ "properties": {
+  "pipeline_signature": {"type": "string"},
+  "factor_id": {"type": "string"},
+  "guardrail_type": {"type": "string"},
+  "requires_regime_gate": {"type": "boolean"},
+  "requires_cost_gate": {"type": "boolean"},
+  "requires_disclosure_staleness_gate": {"type": "boolean"},
+  "requires_sentiment_crowding_gate": {"type": "boolean"},
+  "requires_turnover_monitoring": {"type": "boolean"},
+  "requires_true_oos_before_promotion": {"type": "boolean"},
+  "blocked_if_regime_gate_missing": {"type": "boolean"},
+  "blocked_if_cost_gate_missing": {"type": "boolean"},
+  "alpha_claim_allowed": {"type": "boolean", "const": false},
+  "production": {"type": "string", "const": "BLOCKED"},
+  "broker_runtime": {"type": "string", "const": "BLOCKED"},
+  "real_trade": {"type": "string", "const": "BLOCKED"}
+ }
+}

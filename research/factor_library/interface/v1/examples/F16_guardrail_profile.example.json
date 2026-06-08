@@ -1,0 +1,16 @@
+{
+ "pipeline_signature": "F16-GUARDRAIL-PROFILE-v1-EXAMPLE",
+ "factor_id": "F16",
+ "factor_name": "SENTIMENT_ATTENTION",
+ "guardrail_type": "TACTICAL_SENTIMENT_ATTENTION",
+ "requires_sentiment_crowding_gate": true,
+ "requires_cost_gate": true,
+ "requires_turnover_monitoring": true,
+ "requires_true_oos_before_promotion": true,
+ "blocked_if_regime_gate_missing": false,
+ "blocked_if_cost_gate_missing": true,
+ "alpha_claim_allowed": false,
+ "production": "BLOCKED",
+ "broker_runtime": "BLOCKED",
+ "real_trade": "BLOCKED"
+}

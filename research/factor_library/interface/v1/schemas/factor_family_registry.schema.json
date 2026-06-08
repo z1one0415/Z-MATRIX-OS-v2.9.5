@@ -1,0 +1,15 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "type": "object",
+ "additionalProperties": false,
+ "required": ["families"],
+ "properties": {
+  "pipeline_signature": {"type": "string"},
+  "family_count": {"type": "integer"},
+  "families": {"type": "array", "items": {"type": "object"}},
+  "alpha_claim_allowed": {"type": "boolean", "const": false},
+  "production": {"type": "string", "const": "BLOCKED"},
+  "broker_runtime": {"type": "string", "const": "BLOCKED"},
+  "real_trade": {"type": "string", "const": "BLOCKED"}
+ }
+}

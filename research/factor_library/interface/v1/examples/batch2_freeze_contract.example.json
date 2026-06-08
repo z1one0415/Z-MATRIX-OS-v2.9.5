@@ -1,0 +1,19 @@
+{
+ "pipeline_signature": "BATCH2-FREEZE-CONTRACT-v1-EXAMPLE",
+ "base_commit": "e848abe6",
+ "freeze_review_scope": ["F14","F15","F16"],
+ "rejected_factors_preserved": ["F02","F05"],
+ "existing_frozen_candidates_preserved": ["F04","F10","F11"],
+ "candidate_freeze_allowed": true,
+ "promotion_allowed": false,
+ "multi_factor_composite_allowed": false,
+ "weight_optimization_allowed": false,
+ "f3_5_1_monitoring_execution_allowed": false,
+ "f3_6_true_oos_validation_allowed": false,
+ "v13_6_allowed": false,
+ "paper_trading_allowed": false,
+ "alpha_claim_allowed": false,
+ "production": "BLOCKED",
+ "broker_runtime": "BLOCKED",
+ "real_trade": "BLOCKED"
+}

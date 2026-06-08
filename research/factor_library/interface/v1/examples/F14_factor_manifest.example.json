@@ -1,0 +1,19 @@
+{
+ "pipeline_signature": "F14-MANIFEST-v1-EXAMPLE",
+ "factor_id": "F14",
+ "factor_name": "ASSET_GROWTH_DISCIPLINE",
+ "factor_family": "FUNDAMENTAL_DISCIPLINE_FAMILY",
+ "formula": "asset_growth_rate = (total_assets_current - total_assets_prior) / total_assets_prior; disciplined_growth = -z(asset_growth_rate) + z(roe) + z(ocf_to_assets)",
+ "economic_hypothesis": "Firms with sustainable, disciplined asset growth (not excessive) outperform firms with uncontrolled expansion",
+ "data_sources": ["fundamentals", "price_bars"],
+ "horizons": ["20D"],
+ "required_diagnostics": ["disclosure_freshness", "fundamental_sample_age"],
+ "is_planning_only": false,
+ "requires_fundamentals": true,
+ "alpha_claim_allowed": false,
+ "ready_for_alpha_claim": false,
+ "alpha_validated": false,
+ "production": "BLOCKED",
+ "broker_runtime": "BLOCKED",
+ "real_trade": "BLOCKED"
+}

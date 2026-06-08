@@ -1,0 +1,19 @@
+{
+ "pipeline_signature": "FACTOR-MANIFEST-v1-TEMPLATE",
+ "factor_id": "",
+ "factor_name": "",
+ "factor_family": "",
+ "formula": "",
+ "economic_hypothesis": "",
+ "data_sources": [],
+ "horizons": [],
+ "required_diagnostics": [],
+ "is_planning_only": false,
+ "requires_fundamentals": false,
+ "alpha_claim_allowed": false,
+ "ready_for_alpha_claim": false,
+ "alpha_validated": false,
+ "production": "BLOCKED",
+ "broker_runtime": "BLOCKED",
+ "real_trade": "BLOCKED"
+}

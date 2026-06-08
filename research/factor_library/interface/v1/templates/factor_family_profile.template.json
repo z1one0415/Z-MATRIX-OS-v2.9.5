@@ -1,0 +1,10 @@
+{
+ "pipeline_signature": "FACTOR-FAMILY-PROFILE-v1-TEMPLATE",
+ "family_name": "",
+ "members": [],
+ "overlap_with_existing": [],
+ "alpha_claim_allowed": false,
+ "production": "BLOCKED",
+ "broker_runtime": "BLOCKED",
+ "real_trade": "BLOCKED"
+}

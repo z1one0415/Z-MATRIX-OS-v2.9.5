@@ -1,0 +1,23 @@
+{
+ "pipeline_signature": "FACTOR-BATCH-CLOSEOUT-v1-TEMPLATE",
+ "base_commit": "",
+ "expected_lanes": 0,
+ "completed_lanes": 0,
+ "status": "",
+ "pass_research_evidence_factors": [],
+ "coverage_blocked_factors": [],
+ "formula_contract_contaminated_factors": [],
+ "source_audit_only_completed": [],
+ "hypothesis_only_factors": [],
+ "ready_for_candidate_review": [],
+ "pre_interface_artifacts": false,
+ "interface_v1_backfill_required": false,
+ "alpha_claim_allowed": false,
+ "ready_for_alpha_claim": false,
+ "alpha_validated": false,
+ "v13_6_allowed": false,
+ "paper_trading_allowed": false,
+ "production": "BLOCKED",
+ "broker_runtime": "BLOCKED",
+ "real_trade": "BLOCKED"
+}

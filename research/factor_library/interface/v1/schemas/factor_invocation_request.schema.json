@@ -1,0 +1,16 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "type": "object",
+ "additionalProperties": false,
+ "required": ["invocation_intent","factor_id"],
+ "properties": {
+  "pipeline_signature": {"type": "string"},
+  "invocation_intent": {"type": "string", "enum": ["REGISTRY_READ","EVIDENCE_READ","VALIDATION_SUMMARY","GUARDRAIL_SUMMARY","CANDIDATE_MONITOR","RESEARCH_CONTEXT","SCORING_CONTEXT_DRY_PLAN","COMPOSITION_GRAPH_DRY_PLAN"]},
+  "factor_id": {"type": "string"},
+  "requested_outputs": {"type": "array", "items": {"type": "string"}},
+  "alpha_claim_allowed": {"type": "boolean", "const": false},
+  "production": {"type": "string", "const": "BLOCKED"},
+  "broker_runtime": {"type": "string", "const": "BLOCKED"},
+  "real_trade": {"type": "string", "const": "BLOCKED"}
+ }
+}

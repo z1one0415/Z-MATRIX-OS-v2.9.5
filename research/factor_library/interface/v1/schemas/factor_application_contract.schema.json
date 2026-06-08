@@ -1,0 +1,24 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "type": "object",
+ "additionalProperties": false,
+ "required": ["factor_id","blocked_application_modes","blocked_outputs","blocked_downstream_consumers"],
+ "properties": {
+  "pipeline_signature": {"type": "string"},
+  "factor_id": {"type": "string"},
+  "factor_name": {"type": "string"},
+  "allowed_application_modes": {"type": "array", "items": {"type": "string"}},
+  "blocked_application_modes": {
+   "type": "array",
+   "items": {"type": "string"},
+   "contains": {"enum": ["ALPHA_SIGNAL","PORTFOLIO_WEIGHT","ORDER_SIGNAL","PAPER_TRADING","BROKER_RUNTIME","REAL_TRADE","PRODUCTION"]}
+  },
+  "allowed_outputs": {"type": "array", "items": {"type": "string"}},
+  "blocked_outputs": {"type": "array", "items": {"type": "string"}},
+  "blocked_downstream_consumers": {"type": "array", "items": {"type": "string"}},
+  "alpha_claim_allowed": {"type": "boolean", "const": false},
+  "production": {"type": "string", "const": "BLOCKED"},
+  "broker_runtime": {"type": "string", "const": "BLOCKED"},
+  "real_trade": {"type": "string", "const": "BLOCKED"}
+ }
+}

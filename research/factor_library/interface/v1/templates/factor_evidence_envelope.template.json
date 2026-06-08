@@ -1,0 +1,19 @@
+{
+ "pipeline_signature": "FACTOR-EVIDENCE-ENVELOPE-v1-TEMPLATE",
+ "factor_id": "",
+ "factor_name": "",
+ "materialized": false,
+ "pit_passed": false,
+ "coverage_passed": false,
+ "coverage_tier": "",
+ "sample_month_count": 0,
+ "covered_ticker_count": 0,
+ "single_factor_validation_executed": false,
+ "evidence_score": "",
+ "known_risks": [],
+ "pre_interface_artifacts": false,
+ "alpha_claim_allowed": false,
+ "production": "BLOCKED",
+ "broker_runtime": "BLOCKED",
+ "real_trade": "BLOCKED"
+}

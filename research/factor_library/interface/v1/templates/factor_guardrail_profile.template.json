@@ -1,0 +1,17 @@
+{
+ "pipeline_signature": "FACTOR-GUARDRAIL-PROFILE-v1-TEMPLATE",
+ "factor_id": "",
+ "guardrail_type": "",
+ "requires_regime_gate": false,
+ "requires_cost_gate": false,
+ "requires_disclosure_staleness_gate": false,
+ "requires_sentiment_crowding_gate": false,
+ "requires_turnover_monitoring": false,
+ "requires_true_oos_before_promotion": true,
+ "blocked_if_regime_gate_missing": false,
+ "blocked_if_cost_gate_missing": false,
+ "alpha_claim_allowed": false,
+ "production": "BLOCKED",
+ "broker_runtime": "BLOCKED",
+ "real_trade": "BLOCKED"
+}

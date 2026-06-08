@@ -1,0 +1,25 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "type": "object",
+ "additionalProperties": false,
+ "required": ["factor_id","materialized","pit_passed","coverage_passed","single_factor_validation_executed"],
+ "properties": {
+  "pipeline_signature": {"type": "string"},
+  "factor_id": {"type": "string"},
+  "factor_name": {"type": "string"},
+  "materialized": {"type": "boolean"},
+  "pit_passed": {"type": "boolean"},
+  "coverage_passed": {"type": "boolean"},
+  "coverage_tier": {"type": "string"},
+  "sample_month_count": {"type": "integer"},
+  "covered_ticker_count": {"type": "integer"},
+  "single_factor_validation_executed": {"type": "boolean"},
+  "evidence_score": {"type": "string"},
+  "known_risks": {"type": "array", "items": {"type": "string"}},
+  "pre_interface_artifacts": {"type": "boolean"},
+  "alpha_claim_allowed": {"type": "boolean", "const": false},
+  "production": {"type": "string", "const": "BLOCKED"},
+  "broker_runtime": {"type": "string", "const": "BLOCKED"},
+  "real_trade": {"type": "string", "const": "BLOCKED"}
+ }
+}

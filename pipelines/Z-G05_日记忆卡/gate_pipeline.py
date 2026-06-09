@@ -288,9 +288,45 @@ def run(tickers: list[str] | None = None, mode: str = "full", dry_run: bool = Fa
         print(f"  ℹ️ 无活跃催化剂 (当日无预排事件)")
     result["sections"]["催化剂状态"] = catalyst_items
 
+    # ── 第3.5段: 补充模块采集 ──
+    print(f"\n🔧 [3.5/4] 补充模块采集...")
+    try:
+        from zmatrix.daily_memory.memory_card_modules import (
+            collect_g18_decisions, collect_g17_risk_events,
+            collect_factor_monitoring_snapshot, collect_z9_posterior_entries,
+            generate_tomorrow_focus
+        )
+        tickers_in_scope = [p["code"] for p in positions]
+        g18_decisions = collect_g18_decisions(tickers_in_scope)
+        g17_events = collect_g17_risk_events(tickers_in_scope)
+        factor_snapshot = collect_factor_monitoring_snapshot()
+        z9_entries = collect_z9_posterior_entries(today_str)
+        tomorrow_focus = generate_tomorrow_focus(g18_decisions, g17_events, catalyst_items)
+        print(f"  ✅ G18决策: {g18_decisions.get('status','?')}")
+        print(f"  ✅ G17风控: {g17_events.get('status','?')}")
+        print(f"  ✅ 因子监控: {factor_snapshot.get('status','?')}")
+        print(f"  ✅ Z9后验: {z9_entries.get('status','?')}")
+        print(f"  ✅ 明日关注: {len(tomorrow_focus)}项")
+    except Exception as e:
+        print(f"  ⚠️ 补充模块采集失败: {e}")
+        g18_decisions = {"status": "unavailable", "reason": str(e)}
+        g17_events = {"status": "unavailable", "reason": str(e)}
+        factor_snapshot = {"status": "unavailable", "reason": str(e)}
+        z9_entries = {"status": "unavailable", "reason": str(e)}
+        tomorrow_focus = []
+
+    supplementary = {
+        "g18_decisions": g18_decisions,
+        "g17_risk_events": g17_events,
+        "factor_monitoring": factor_snapshot,
+        "z9_posterior": z9_entries,
+        "tomorrow_focus": tomorrow_focus,
+    }
+    result["sections"].update(supplementary)
+
     # ── 第4段: 日记忆卡生成 ──
     print(f"\n📝 [4/4] 日记忆卡整合:")
-    daily_card_md = _generate_daily_card_md(today_str, snapshot, catalyst_items, result)
+    daily_card_md = _generate_daily_card_md(today_str, snapshot, catalyst_items, result, supplementary)
 
     # 预览头部
     for line in daily_card_md.split("\n")[:20]:
@@ -343,11 +379,12 @@ def _extract_catalysts(memory_path: Path, today_str: str) -> list[dict]:
     return catalysts
 
 
-def _generate_daily_card_md(date_str: str, snapshot: dict, catalysts: list[dict], _result: dict) -> str:
-    """生成日记忆卡 Markdown"""
+def _generate_daily_card_md(date_str: str, snapshot: dict, catalysts: list[dict], _result: dict, supplementary: dict | None = None) -> str:
+    """生成日记忆卡 Markdown (9 modules)"""
     indices = snapshot.get("indices", {})
     positions = snapshot.get("positions_tracking", [])
     pf = snapshot.get("portfolio_summary", {})
+    supplementary = supplementary or {}
 
     lines = []
     lines.append(f"## 📅 {date_str} 日记忆卡")
@@ -394,16 +431,76 @@ def _generate_daily_card_md(date_str: str, snapshot: dict, catalysts: list[dict]
             lines.append(f"- {icon} **{cat.get('ticker','')}** {cat.get('event','')} — {cat.get('status','')}")
         lines.append("")
 
-    # 观察区
-    lines.append("### 🔍 今日观察")
+    # G18 决策
+    g18 = supplementary.get("g18_decisions", {})
+    lines.append("### 🎯 G18 决策追踪")
     lines.append("")
-    lines.append("> [自动生成 — 待Z2天师补充定性分析]")
+    if g18.get("status") == "ok" and g18.get("decisions"):
+        lines.append("| 标的 | 动作 | 评分 | 风控标志 |")
+        lines.append("|------|------|------|----------|")
+        for tk, d in g18["decisions"].items():
+            flags = ", ".join(d.get("risk_flags", [])) or "无"
+            lines.append(f"| {tk} | {d.get('action','?')} | {d.get('score',0)} | {flags} |")
+    else:
+        lines.append(f"> G18: {g18.get('status', 'unavailable')} — {g18.get('note', g18.get('reason', ''))}")
+    lines.append("")
+
+    # G17 风控
+    g17 = supplementary.get("g17_risk_events", {})
+    lines.append("### 🛡️ G17 风控事件")
+    lines.append("")
+    if g17.get("status") == "ok" and g17.get("assessments"):
+        lines.append("| 标的 | 风控等级 | 触发规则 | 门控 | 必审 |")
+        lines.append("|------|----------|----------|------|------|")
+        for tk, a in g17["assessments"].items():
+            rules = ", ".join(a.get("triggered_rules", [])[:3]) or "无"
+            lines.append(f"| {tk} | {a.get('risk_level','?')} | {rules} | {a.get('action_gate','?')} | {'\u2757' if a.get('must_review') else '\u2714\ufe0f'} |")
+    else:
+        lines.append(f"> G17: {g17.get('status', 'unavailable')}")
+    lines.append("")
+
+    # 因子监控
+    factor = supplementary.get("factor_monitoring", {})
+    lines.append("### 📊 因子监控快照")
+    lines.append("")
+    if factor.get("status") == "ok":
+        lines.append(f"- 总因子数: {factor.get('total_factors', 0)}")
+        lines.append(f"- 信号就绪: {factor.get('signal_ready', 0)}")
+        lines.append(f"- 监控完成: {factor.get('monitoring_done', 0)}")
+        lines.append(f"- 已封堵: {factor.get('blocked', 0)}")
+        lines.append(f"- 最后运行: {factor.get('last_run_date', 'N/A')}")
+    else:
+        lines.append(f"> 因子监控: {factor.get('status', 'unavailable')}")
+    lines.append("")
+
+    # Z9 后验
+    z9 = supplementary.get("z9_posterior", {})
+    lines.append("### 🔬 Z9 后验入口")
+    lines.append("")
+    if z9.get("status") == "ok":
+        preds_due = z9.get("predictions_due", [])
+        vals = z9.get("validations_pending", [])
+        cal = z9.get("calibration_status", {})
+        lines.append(f"- 今日到期预测: {len(preds_due)}条")
+        for p in preds_due[:5]:
+            lines.append(f"  - {p.get('ticker','?')}: {p.get('prediction','?')} (制于{p.get('made_date','?')})")
+        lines.append(f"- 待验证: {len(vals)}条")
+        lines.append(f"- 校准: 总{cal.get('total_predictions',0)}/已验{cal.get('validated',0)} 准确率{cal.get('accuracy_pct','N/A')}%")
+    else:
+        lines.append(f"> Z9: {z9.get('status', 'unavailable')}")
     lines.append("")
 
     # 明日关注
+    tomorrow = supplementary.get("tomorrow_focus", [])
     lines.append("### 👀 明日关注")
     lines.append("")
-    lines.append("> [自动生成 — 待盘后复盘补充]")
+    if tomorrow:
+        lines.append("| 标的 | 原因 | 优先级 | 行动 |")
+        lines.append("|------|------|--------|------|")
+        for item in tomorrow[:10]:
+            lines.append(f"| {item.get('ticker','?')} | {item.get('reason','?')} | {item.get('priority','?')} | {item.get('action_required','?')} |")
+    else:
+        lines.append("> 无特别关注事项")
     lines.append("")
 
     lines.append("---")

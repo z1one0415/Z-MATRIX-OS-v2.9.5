@@ -1,0 +1,55 @@
+{
+  "pipeline_signature": "Z2-V13-F5-2-BATCH3-HORIZON-REGIME-COST-REVIEW",
+  "status": "V13_F5_2_HORIZON_REGIME_COST_REVIEW_PASS",
+  "base_commit": "0d79dcc",
+  "classifications": {
+    "F21": {
+      "horizon": "TACTICAL_20D_60D",
+      "regime_dependency": "LOW",
+      "cost_tier": "LOW",
+      "classification": "TACTICAL_CANDIDATE"
+    },
+    "F22": {
+      "horizon": "TACTICAL_20D_60D",
+      "regime_dependency": "LOW",
+      "cost_tier": "LOW",
+      "classification": "WATCH_ONLY"
+    },
+    "F24": {
+      "horizon": "TACTICAL_20D_60D",
+      "regime_dependency": "MODERATE",
+      "cost_tier": "LOW",
+      "classification": "TACTICAL_CANDIDATE"
+    },
+    "F26": {
+      "horizon": "TACTICAL_20D_60D",
+      "regime_dependency": "LOW",
+      "cost_tier": "MODERATE",
+      "classification": "WATCH_ONLY"
+    },
+    "F27": {
+      "horizon": "TACTICAL_20D_60D",
+      "regime_dependency": "LOW",
+      "cost_tier": "MODERATE",
+      "classification": "WATCH_ONLY"
+    },
+    "F30": {
+      "horizon": "TACTICAL_20D_60D",
+      "regime_dependency": "LOW",
+      "cost_tier": "LOW",
+      "classification": "TACTICAL_CANDIDATE"
+    },
+    "F31": {
+      "horizon": "TACTICAL_20D_60D",
+      "regime_dependency": "MODERATE",
+      "cost_tier": "LOW",
+      "classification": "REGIME_SPECIFIC_CANDIDATE"
+    },
+    "F34": {
+      "horizon": "TACTICAL_20D_60D",
+      "regime_dependency": "HIGH",
+      "cost_tier": "LOW",
+      "classification": "WATCH_ONLY"
+    }
+  }
+}

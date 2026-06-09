@@ -1,0 +1,99 @@
+{
+  "pipeline_signature": "Z2-V13-F5-2-BATCH3-CANDIDATE-EVIDENCE-PACKAGE-AUDIT",
+  "status": "V13_F5_2_EVIDENCE_PACKAGE_AUDIT_PASS",
+  "base_commit": "0d79dcc",
+  "factors_audited": ["F21", "F22", "F24", "F26", "F27", "F30", "F31", "F34"],
+  "per_factor_audit": {
+    "F21": {
+      "manifest": true,
+      "validation_snapshot": true,
+      "guardrail_profile": true,
+      "application_contract": true,
+      "evidence_envelope": true,
+      "blocks_alpha": true,
+      "blocks_production": true,
+      "coverage_passed": true,
+      "pit_passed": true
+    },
+    "F22": {
+      "manifest": true,
+      "validation_snapshot": true,
+      "guardrail_profile": true,
+      "application_contract": true,
+      "evidence_envelope": true,
+      "blocks_alpha": true,
+      "blocks_production": true,
+      "coverage_passed": true,
+      "pit_passed": true
+    },
+    "F24": {
+      "manifest": true,
+      "validation_snapshot": true,
+      "guardrail_profile": true,
+      "application_contract": true,
+      "evidence_envelope": true,
+      "blocks_alpha": true,
+      "blocks_production": true,
+      "coverage_passed": true,
+      "pit_passed": true
+    },
+    "F26": {
+      "manifest": true,
+      "validation_snapshot": true,
+      "guardrail_profile": true,
+      "application_contract": true,
+      "evidence_envelope": true,
+      "blocks_alpha": true,
+      "blocks_production": true,
+      "coverage_passed": true,
+      "pit_passed": true
+    },
+    "F27": {
+      "manifest": true,
+      "validation_snapshot": true,
+      "guardrail_profile": true,
+      "application_contract": true,
+      "evidence_envelope": true,
+      "blocks_alpha": true,
+      "blocks_production": true,
+      "coverage_passed": true,
+      "pit_passed": true
+    },
+    "F30": {
+      "manifest": true,
+      "validation_snapshot": true,
+      "guardrail_profile": true,
+      "application_contract": true,
+      "evidence_envelope": true,
+      "blocks_alpha": true,
+      "blocks_production": true,
+      "coverage_passed": true,
+      "pit_passed": true
+    },
+    "F31": {
+      "manifest": true,
+      "validation_snapshot": true,
+      "guardrail_profile": true,
+      "application_contract": true,
+      "evidence_envelope": true,
+      "blocks_alpha": true,
+      "blocks_production": true,
+      "coverage_passed": true,
+      "pit_passed": true
+    },
+    "F34": {
+      "manifest": true,
+      "validation_snapshot": true,
+      "guardrail_profile": true,
+      "application_contract": true,
+      "evidence_envelope": true,
+      "blocks_alpha": true,
+      "blocks_production": true,
+      "coverage_passed": true,
+      "pit_passed": true
+    }
+  },
+  "all_pass": true,
+  "ready_for_promotion_review": [],
+  "violation_count": 0
+}

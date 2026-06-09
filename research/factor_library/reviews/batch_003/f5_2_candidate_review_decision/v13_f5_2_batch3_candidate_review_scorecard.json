@@ -1,0 +1,25 @@
+{
+  "pipeline_signature": "Z2-V13-F5-2-BATCH3-CANDIDATE-REVIEW-SCORECARD",
+  "status": "V13_F5_2_BATCH3_CANDIDATE_REVIEW_SCORECARD_COMPLETE",
+  "base_commit": "0d79dcc",
+  "reviewed_factors": ["F21", "F22", "F24", "F26", "F27", "F30", "F31", "F34"],
+  "freeze_review_ready": [],
+  "tactical_candidate_ready": ["F21", "F24", "F30"],
+  "regime_specific_candidate_ready": ["F31"],
+  "watch_only": ["F22", "F26", "F27", "F34"],
+  "rework_required": [],
+  "rejected": [],
+  "ready_for_promotion_review": [],
+  "candidate_freeze_executed": false,
+  "promotion_allowed": false,
+  "scorecard_rationale": {
+    "F21": "TACTICAL — trend persistence quality unique from F04 raw momentum, 20D/60D tactical horizon",
+    "F24": "TACTICAL — volatility compression breakout is unique trigger mechanism not in existing frozen set",
+    "F30": "TACTICAL — volume-price confirmation best representative of LIQUIDITY_VOLUME family, complements F11",
+    "F31": "REGIME_SPECIFIC — downside tail risk is direct defensive measurement, distinct from F10 regime detection",
+    "F22": "WATCH — breakout strength overlaps F24, only one from same sub-concept advances",
+    "F26": "WATCH — on HOLD from F5.1.4, needs more evidence, high overlap with F11",
+    "F27": "WATCH — on HOLD from F5.1.4, needs more evidence, high overlap with F11",
+    "F34": "WATCH — volatility regime shift overlaps F10 regime angle"
+  }
+}

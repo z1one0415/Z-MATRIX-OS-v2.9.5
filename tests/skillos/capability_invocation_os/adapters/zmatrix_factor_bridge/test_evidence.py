@@ -166,13 +166,70 @@ def test_c1_handoff_preserves_source_and_hash_fields():
     )
 
     resp = allow_bridge_readonly_context()
-    handoff = build_a1_bridge_c1_handoff(resp)
+    bridge_evidence = build_a1_bridge_evidence(resp, source_factor_response=source_response)
+    bridge_response = A1FactorBridgeResponse(
+        response_id=resp.response_id,
+        decision=resp.decision,
+        evidence=bridge_evidence,
+        forbidden_outputs_removed=resp.forbidden_outputs_removed,
+        degraded=resp.degraded,
+    )
+    handoff = build_a1_bridge_c1_handoff(bridge_response)
 
-    assert "source_class" in handoff
-    assert "no_real_source_flag" in handoff
-    assert "fixture_source_commit" in handoff
-    assert "request_hash" in handoff
-    assert "factor_decision_hash" in handoff
-    assert "bridge_decision_hash" in handoff
-    assert "c1_handoff_marker" in handoff
+    assert handoff["source_class"] == "factor_library_fixture"
+    assert handoff["no_real_source_flag"] is True
+    assert handoff["fixture_source_commit"] == "P1_FIXTURE_ONLY"
+    assert handoff["factor_decision_hash"] != ""
+    assert handoff["bridge_decision_hash"] != ""
     assert handoff["c1_handoff_marker"] is True
+
+
+def test_c1_handoff_uses_existing_bridge_response_evidence():
+    """When bridge response already has evidence, C1 handoff must use it, not default."""
+    resp = allow_bridge_readonly_context()
+    pre_built = A1FactorBridgeEvidence(
+        source_commit="P1_FIXTURE_ONLY", source_class="factor_library_fixture",
+        no_real_source_flag=True, fixture_source_commit="P1_FIXTURE_ONLY",
+        request_hash="abc123", response_hash_placeholder="resp_ph",
+        factor_decision_hash="factor_hash",
+        bridge_decision_hash=build_a1_bridge_decision_hash(resp.decision),
+        permission_tier="T1", forbidden_outputs_removed_hash="forbidden_hash",
+        rollback_marker=False, privacy_marker=True, c1_handoff_marker=True,
+    )
+    br = A1FactorBridgeResponse(response_id=resp.response_id, decision=resp.decision,
+        evidence=pre_built, forbidden_outputs_removed=resp.forbidden_outputs_removed,
+        degraded=resp.degraded)
+    h = build_a1_bridge_c1_handoff(br)
+    assert h["source_class"] == "factor_library_fixture"
+    assert h["fixture_source_commit"] == "P1_FIXTURE_ONLY"
+    assert h["request_hash"] == "abc123"
+    assert h["source_class"] != "factor_library_disabled_default"
+
+
+def test_c1_handoff_with_source_factor_response_overrides_placeholder():
+    """Passing source_factor_response to handoff must inherit P1_FIXTURE_ONLY fields."""
+    from skillos.capability_invocation_os.adapters.factor_library.models import (
+        FactorInvocationResponse, FactorAdapterDecision, FactorEvidenceEnvelopeView,
+    )
+    from skillos.capability_invocation_os.adapters.factor_library.constants import BLOCKED_OUTPUTS
+    import uuid
+    src_ev = FactorEvidenceEnvelopeView(source_commit="P1_FIXTURE_ONLY", source_class="factor_library_fixture")
+    src_resp = FactorInvocationResponse(response_id=str(uuid.uuid4()),
+        decision=FactorAdapterDecision.ALLOW_READONLY_CONTEXT,
+        evidence=src_ev, forbidden_outputs_removed=list(BLOCKED_OUTPUTS))
+    resp = allow_bridge_readonly_context()
+    h = build_a1_bridge_c1_handoff(resp, source_factor_response=src_resp)
+    assert h["source_class"] == "factor_library_fixture"
+    assert h["no_real_source_flag"] is True
+    assert h["fixture_source_commit"] == "P1_FIXTURE_ONLY"
+    assert h["factor_decision_hash"] != ""
+
+
+def test_c1_handoff_placeholder_only_when_no_source_or_evidence():
+    """DISABLED_DEFAULT placeholder only when no source and no evidence exist."""
+    resp = allow_bridge_readonly_context()
+    h = build_a1_bridge_c1_handoff(resp)
+    assert h["source_class"] == "factor_library_disabled_default"
+    assert h["fixture_source_commit"] == "DISABLED_DEFAULT"
+    assert h["no_real_source_flag"] is True
+    assert h["c1_handoff_marker"] is True

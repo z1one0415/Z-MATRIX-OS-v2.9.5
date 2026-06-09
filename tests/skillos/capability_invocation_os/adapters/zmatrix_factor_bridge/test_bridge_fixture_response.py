@@ -153,3 +153,40 @@ def test_output_unsafe_bridge_returns_outputs_unsafe(_mock):
     bridge = A1FactorLibraryBridge(factor_adapter=mock_adapter, fixture_mode=True)
     resp = bridge.bridge_factor_profile("FAKE_FACTOR_001")
     assert resp.decision == A1FactorBridgeDecision.DENY_BRIDGE_OUTPUTS_UNSAFE
+
+
+@patch.object(A1FactorLibraryBridge, "_should_bridge", return_value=True)
+def test_bridged_safe_fixture_c1_handoff_preserves_fixture_source(_mock):
+    """Full bridge flow: safe fixture → C1 handoff must preserve P1_FIXTURE_ONLY."""
+    from skillos.capability_invocation_os.adapters.zmatrix_factor_bridge.evidence import (
+        build_a1_bridge_c1_handoff,
+    )
+    provider = FactorLibraryFixtureProvider()
+    r = provider.get_fixture_profile("FAKE_FACTOR_001")
+    ma = MagicMock(); ma.get_factor_profile.return_value = r
+    bridge = A1FactorLibraryBridge(factor_adapter=ma, fixture_mode=True)
+    br = bridge.bridge_factor_profile("FAKE_FACTOR_001")
+    h = build_a1_bridge_c1_handoff(br)
+    assert h["source_class"] == "factor_library_fixture"
+    assert h["no_real_source_flag"] is True
+    assert h["fixture_source_commit"] == "P1_FIXTURE_ONLY"
+    assert h["factor_decision_hash"] != ""
+    assert h["bridge_decision_hash"] != ""
+
+
+@patch.object(A1FactorLibraryBridge, "_should_bridge", return_value=True)
+def test_bridged_denied_fixture_c1_handoff_does_not_become_valid(_mock):
+    """DENY fixture → C1 handoff must keep deny, not become valid."""
+    from skillos.capability_invocation_os.adapters.zmatrix_factor_bridge.evidence import (
+        build_a1_bridge_c1_handoff,
+    )
+    provider = FactorLibraryFixtureProvider()
+    r = provider.get_fixture_profile("FAKE_FACTOR_002")
+    ma = MagicMock(); ma.get_factor_profile.return_value = r
+    bridge = A1FactorLibraryBridge(factor_adapter=ma, fixture_mode=True)
+    br = bridge.bridge_factor_profile("FAKE_FACTOR_002")
+    h = build_a1_bridge_c1_handoff(br)
+    assert h["no_real_source_flag"] is True
+    assert h["source_class"] in ("factor_library_fixture", "factor_library_disabled_default")
+    assert "DENY" in br.decision.value
+    assert "ALLOW" not in br.decision.value

@@ -82,9 +82,21 @@ def build_a1_bridge_evidence(response, source_factor_response=None) -> A1FactorB
     )
 
 
-def build_a1_bridge_c1_handoff(response) -> dict:
-    """Build C1 handoff dict from a bridge response."""
-    evidence = build_a1_bridge_evidence(response)
+def build_a1_bridge_c1_handoff(response, source_factor_response=None) -> dict:
+    """Build C1 handoff dict from a bridge response.
+
+    Priority:
+    1. If response.evidence is A1FactorBridgeEvidence (pre-built), use directly.
+    2. If source_factor_response provided, build evidence inheriting from it.
+    3. Only fall back to disabled-default placeholder otherwise.
+    """
+    if isinstance(response.evidence, A1FactorBridgeEvidence):
+        evidence = response.evidence
+    elif source_factor_response is not None:
+        evidence = build_a1_bridge_evidence(response, source_factor_response=source_factor_response)
+    else:
+        evidence = build_a1_bridge_evidence(response)
+
     return {
         "source_class": evidence.source_class,
         "no_real_source_flag": evidence.no_real_source_flag,

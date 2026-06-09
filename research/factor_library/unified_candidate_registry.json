@@ -107,5 +107,9 @@
   "p0_implementation_branch_allowed": true,
   "noop_runner_implemented": false,
   "dry_run_execution_started": false,
-  "next_legal_entry": "CREATE_CONTROLLED_NOOP_DRY_RUN_P0_IMPLEMENTATION_BRANCH_ONLY"
+  "p0_implementation_branch_created": true,
+  "p0_implementation_branch_ref": "impl/research-batch3-controlled-noop-dry-run-p0-implementation-clean",
+  "p0_implementation_branch_source_commit": "5a5701441358fac30b726f828340fb70f5a07c67",
+  "implementation_started": false,
+  "next_legal_entry": "CONTROLLED_NOOP_DRY_RUN_P0_DISABLED_DEFAULT_IMPLEMENTATION_ONLY"
 }

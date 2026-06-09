@@ -1,0 +1,22 @@
+{
+  "pipeline_signature": "V13-F5-1-15-CREATE-CONTROLLED-NOOP-DRY-RUN-P0-IMPLEMENTATION-BRANCH",
+  "base_commit": "5a5701441358fac30b726f828340fb70f5a07c67",
+  "branch": "impl/research-batch3-controlled-noop-dry-run-p0-implementation-clean",
+  "source_decision_commit": "5a5701441358fac30b726f828340fb70f5a07c67",
+  "trusted_chain": [
+    "4dd8e86",
+    "61503b9",
+    "3c49f07",
+    "e1c1d0a",
+    "5389759",
+    "5a57014"
+  ],
+  "old_polluted_commits": [
+    "0c2e655",
+    "a6c3ff2",
+    "a622b3d"
+  ],
+  "lineage_verified": true,
+  "branch_created_from_trusted_chain": true,
+  "no_polluted_ancestry": true
+}

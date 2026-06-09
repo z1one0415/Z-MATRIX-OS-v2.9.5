@@ -77,7 +77,7 @@
   "controlled_noop_dry_run_branch_allowed": true,
   "controlled_noop_dry_run_branch_created": false,
   "noop_runner_implemented": false,
-  "next_legal_entry": "CREATE_CONTROLLED_NOOP_DRY_RUN_P0_IMPLEMENTATION_BRANCH_ONLY",
+  "next_legal_entry": "CONTROLLED_NOOP_DRY_RUN_P0_DISABLED_DEFAULT_IMPLEMENTATION_ONLY",
   "clean_controlled_noop_dry_run_branch_created": true,
   "clean_controlled_noop_dry_run_branch_ref": "impl/research-batch3-controlled-noop-dry-run-execution-p0-clean",
   "clean_controlled_noop_dry_run_branch_source_commit": "61503b90a255aed788ba19354dab0ef50e276d3b",
@@ -86,5 +86,9 @@
   "controlled_noop_p0_implementation_planning_ref": "research/factor_library/reviews/batch_003/f5_1_13_p0_implementation_planning/batch3_p0_implementation_planning_closeout.json",
   "p0_implementation_planning_decision_status": "APPROVED_BY_HUMAN",
   "p0_implementation_branch_allowed": true,
-  "p0_implementation_planning_decision_ref": "research/factor_library/reviews/batch_003/f5_1_14_p0_implementation_planning_decision/batch3_p0_implementation_planning_decision_closeout.json"
+  "p0_implementation_planning_decision_ref": "research/factor_library/reviews/batch_003/f5_1_14_p0_implementation_planning_decision/batch3_p0_implementation_planning_decision_closeout.json",
+  "p0_implementation_branch_created": true,
+  "p0_implementation_branch_ref": "impl/research-batch3-controlled-noop-dry-run-p0-implementation-clean",
+  "p0_implementation_branch_source_commit": "5a5701441358fac30b726f828340fb70f5a07c67",
+  "implementation_started": false
 }

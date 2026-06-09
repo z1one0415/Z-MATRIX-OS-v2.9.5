@@ -1,0 +1,26 @@
+{
+  "pipeline_signature": "V13-F5-1-13-CONTROLLED-NOOP-DRY-RUN-EXECUTION-P0-IMPLEMENTATION-PLANNING",
+  "base_commit": "3c49f076a39a5d93c1c23a029c8bfb4018a06f69",
+  "allowed_hashes": [
+    "input_snapshot_hash",
+    "contract_validation_hash",
+    "guardrail_state_hash",
+    "evidence_state_hash",
+    "noop_output_hash",
+    "rollback_marker_hash"
+  ],
+  "forbidden_evidence": [
+    "alpha_score",
+    "expected_return",
+    "trade_signal",
+    "position_weight",
+    "broker_payload",
+    "real_trade_payload",
+    "runtime_report",
+    "runtime_audit"
+  ],
+  "hash_computation_only": true,
+  "persistent_write_allowed": false,
+  "runtime_reports_write_allowed": false,
+  "runtime_audit_write_allowed": false
+}

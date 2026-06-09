@@ -1,0 +1,105 @@
+{
+  "pipeline_signature": "V13-F5-1-17-HUMAN-CONTROLLED-NOOP-P0-DISABLED-DEFAULT-REVIEW-DECISION",
+  "base_commit": "f43fa22f99da567ee74526a99d3bdf7286ac5c3b",
+  "source_files": [
+    {
+      "file": "research/factor_library/dry_run/__init__.py",
+      "reviewed": true,
+      "disabled_default_safe": true,
+      "side_effects_allowed": false,
+      "network_allowed": false,
+      "file_write_allowed": false,
+      "execution_allowed": false
+    },
+    {
+      "file": "research/factor_library/dry_run/config.py",
+      "reviewed": true,
+      "disabled_default_safe": true,
+      "side_effects_allowed": false,
+      "network_allowed": false,
+      "file_write_allowed": false,
+      "execution_allowed": false,
+      "description": "All runtime flags hard-coded False. No env reads. No config file reads."
+    },
+    {
+      "file": "research/factor_library/dry_run/models.py",
+      "reviewed": true,
+      "disabled_default_safe": true,
+      "side_effects_allowed": false,
+      "network_allowed": false,
+      "file_write_allowed": false,
+      "execution_allowed": false,
+      "description": "Pure dataclass types. DryRunDecision enum. NoopDryRunRequest/Response."
+    },
+    {
+      "file": "research/factor_library/dry_run/safety_guard.py",
+      "reviewed": true,
+      "disabled_default_safe": true,
+      "side_effects_allowed": false,
+      "network_allowed": false,
+      "file_write_allowed": false,
+      "execution_allowed": false,
+      "description": "Evaluates requests. Denies all forbidden ops. Returns DENY_DISABLED_DEFAULT."
+    },
+    {
+      "file": "research/factor_library/dry_run/noop_runner.py",
+      "reviewed": true,
+      "disabled_default_safe": true,
+      "side_effects_allowed": false,
+      "network_allowed": false,
+      "file_write_allowed": false,
+      "execution_allowed": false,
+      "description": "ControlledNoopDryRunRunner.run() always returns denied. No execute/call/invoke."
+    },
+    {
+      "file": "research/factor_library/dry_run/static_input_snapshot.py",
+      "reviewed": true,
+      "disabled_default_safe": true,
+      "side_effects_allowed": false,
+      "network_allowed": false,
+      "file_write_allowed": false,
+      "execution_allowed": false,
+      "description": "In-memory placeholder only. No file reads. No external data."
+    },
+    {
+      "file": "research/factor_library/dry_run/hash_evidence.py",
+      "reviewed": true,
+      "disabled_default_safe": true,
+      "side_effects_allowed": false,
+      "network_allowed": false,
+      "file_write_allowed": false,
+      "execution_allowed": false,
+      "description": "SHA-256 computation only. No persistence. No file writes."
+    },
+    {
+      "file": "research/factor_library/dry_run/noop_output.py",
+      "reviewed": true,
+      "disabled_default_safe": true,
+      "side_effects_allowed": false,
+      "network_allowed": false,
+      "file_write_allowed": false,
+      "execution_allowed": false,
+      "description": "NOOP_REVIEW_ONLY output. Zero trade signals, alpha claims, broker payloads."
+    },
+    {
+      "file": "research/factor_library/dry_run/rollback.py",
+      "reviewed": true,
+      "disabled_default_safe": true,
+      "side_effects_allowed": false,
+      "network_allowed": false,
+      "file_write_allowed": false,
+      "execution_allowed": false,
+      "description": "cleanup_required=False. No execution occurred."
+    }
+  ],
+  "special_confirmations": {
+    "runner_enabled": false,
+    "execution_allowed": false,
+    "side_effects_allowed": false,
+    "no_forbidden_imports": true,
+    "no_execute_call_invoke_methods": true,
+    "run_only_returns_denied_noop": true,
+    "no_runtime_write": true,
+    "no_external_data_fetch": true
+  }
+}

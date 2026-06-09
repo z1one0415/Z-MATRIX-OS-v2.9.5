@@ -1,0 +1,131 @@
+{
+  "pipeline_signature": "V13-F5-1-13-CONTROLLED-NOOP-DRY-RUN-EXECUTION-P0-IMPLEMENTATION-PLANNING",
+  "base_commit": "3c49f076a39a5d93c1c23a029c8bfb4018a06f69",
+  "proof_count": 31,
+  "proofs": [
+    {
+      "id": "PF01",
+      "proof": "no_code_change"
+    },
+    {
+      "id": "PF02",
+      "proof": "no_runner_implementation"
+    },
+    {
+      "id": "PF03",
+      "proof": "no_dry_run_execution"
+    },
+    {
+      "id": "PF04",
+      "proof": "no_monitoring_execution"
+    },
+    {
+      "id": "PF05",
+      "proof": "no_candidate_review_execution"
+    },
+    {
+      "id": "PF06",
+      "proof": "no_factor_calculation"
+    },
+    {
+      "id": "PF07",
+      "proof": "no_factor_result_update"
+    },
+    {
+      "id": "PF08",
+      "proof": "no_external_data_fetch"
+    },
+    {
+      "id": "PF09",
+      "proof": "no_runtime_reports_write"
+    },
+    {
+      "id": "PF10",
+      "proof": "no_runtime_audit_write"
+    },
+    {
+      "id": "PF11",
+      "proof": "no_candidate_promotion"
+    },
+    {
+      "id": "PF12",
+      "proof": "no_alpha_claim"
+    },
+    {
+      "id": "PF13",
+      "proof": "no_buy_signal"
+    },
+    {
+      "id": "PF14",
+      "proof": "no_sell_signal"
+    },
+    {
+      "id": "PF15",
+      "proof": "no_order_signal"
+    },
+    {
+      "id": "PF16",
+      "proof": "no_position_weight"
+    },
+    {
+      "id": "PF17",
+      "proof": "no_multi_factor_composite"
+    },
+    {
+      "id": "PF18",
+      "proof": "no_weight_optimization"
+    },
+    {
+      "id": "PF19",
+      "proof": "no_paper_trading"
+    },
+    {
+      "id": "PF20",
+      "proof": "no_production"
+    },
+    {
+      "id": "PF21",
+      "proof": "no_broker_runtime"
+    },
+    {
+      "id": "PF22",
+      "proof": "no_real_trade"
+    },
+    {
+      "id": "PF23",
+      "proof": "no_skillos_modification"
+    },
+    {
+      "id": "PF24",
+      "proof": "no_docs_skillos"
+    },
+    {
+      "id": "PF25",
+      "proof": "no_tests_skillos"
+    },
+    {
+      "id": "PF26",
+      "proof": "no_pycache"
+    },
+    {
+      "id": "PF27",
+      "proof": "no_v13_6"
+    },
+    {
+      "id": "PF28",
+      "proof": "no_tag"
+    },
+    {
+      "id": "PF29",
+      "proof": "f26_f27_no_auto_unlock"
+    },
+    {
+      "id": "PF30",
+      "proof": "docs_only_planning"
+    },
+    {
+      "id": "PF31",
+      "proof": "next_entry_correct"
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "pipeline_signature": "V13-F5-1-17-HUMAN-CONTROLLED-NOOP-P0-DISABLED-DEFAULT-REVIEW-DECISION",
+  "base_commit": "f43fa22f99da567ee74526a99d3bdf7286ac5c3b",
+  "risks": [
+    {
+      "risk_id": "RR-01",
+      "title": "disabled-default mistaken for enabled",
+      "severity": "CRITICAL",
+      "review_result": "ACCEPTED",
+      "mitigation": "config.py hard-codes all flags to False; No env/config override capability",
+      "next_control": "Post-merge hardening: add runtime assertion on import"
+    },
+    {
+      "risk_id": "RR-02",
+      "title": "run() mistaken as execution entry point",
+      "severity": "HIGH",
+      "review_result": "ACCEPTED",
+      "mitigation": "run() always returns denied; no execute/call/invoke methods exist",
+      "next_control": "Rename to _disabled_noop_review() post-merge for clarity"
+    },
+    {
+      "risk_id": "RR-03",
+      "title": "noop runner subsequently enabled",
+      "severity": "CRITICAL",
+      "review_result": "ACCEPTED",
+      "mitigation": "Any enablement requires human decision at next phase; registry tracks runner_enabled=false",
+      "next_control": "Merge gate must confirm runner_enabled=false before PR approval"
+    },
+    {
+      "risk_id": "RR-04",
+      "title": "hash evidence mistaken for persistent evidence",
+      "severity": "MEDIUM",
+      "review_result": "ACCEPTED",
+      "mitigation": "hash_evidence.py has no file write capability; returns string only",
+      "next_control": "Post-merge audit: verify no disk writes from hash module"
+    },
+    {
+      "risk_id": "RR-05",
+      "title": "static snapshot later reads real data",
+      "severity": "HIGH",
+      "review_result": "ACCEPTED",
+      "mitigation": "build_static_input_snapshot() returns placeholder only; no file reads",
+      "next_control": "Any snapshot upgrade requires human decision"
+    },
+    {
+      "risk_id": "RR-06",
+      "title": "runtime_reports write pre-run",
+      "severity": "HIGH",
+      "review_result": "ACCEPTED",
+      "mitigation": "RUNTIME_REPORTS_WRITE_ALLOWED=False; no file write capability in any module",
+      "next_control": "Grep audit on merge to confirm no runtime_reports path usage"
+    },
+    {
+      "risk_id": "RR-07",
+      "title": "runtime_audit write pre-run",
+      "severity": "HIGH",
+      "review_result": "ACCEPTED",
+      "mitigation": "RUNTIME_AUDIT_WRITE_ALLOWED=False; no file write capability",
+      "next_control": "Grep audit on merge to confirm no runtime_audit path usage"
+    },
+    {
+      "risk_id": "RR-08",
+      "title": "external data fetch pre-run",
+      "severity": "HIGH",
+      "review_result": "ACCEPTED",
+      "mitigation": "EXTERNAL_DATA_FETCH_ALLOWED=False; no network import in any module",
+      "next_control": "Import audit on merge: verify no requests/urllib/httpx/socket"
+    },
+    {
+      "risk_id": "RR-09",
+      "title": "factor calculation pre-run",
+      "severity": "CRITICAL",
+      "review_result": "ACCEPTED",
+      "mitigation": "FACTOR_CALCULATION_ALLOWED=False; no calc logic in any module",
+      "next_control": "Post-merge verification: no factor calc imports"
+    },
+    {
+      "risk_id": "RR-10",
+      "title": "trade signal leakage",
+      "severity": "CRITICAL",
+      "review_result": "ACCEPTED",
+      "mitigation": "noop_output.py structurally excludes buy/sell/order/position fields; trade_signal_allowed=false",
+      "next_control": "Schema validation on any output upgrade"
+    },
+    {
+      "risk_id": "RR-11",
+      "title": "SkillOS adapter pre-run",
+      "severity": "CRITICAL",
+      "review_result": "ACCEPTED",
+      "mitigation": "No skillos import in any dry_run module; tests verify via forbidden imports check",
+      "next_control": "Boundary audit on merge: git diff must not include skillos/ paths"
+    },
+    {
+      "risk_id": "RR-12",
+      "title": "implementation accidentally executed after merge",
+      "severity": "CRITICAL",
+      "review_result": "ACCEPTED",
+      "mitigation": "runner_enabled=false persists after merge; registry tracks execution_started=false",
+      "next_control": "Post-merge seal must confirm no execution occurred; gate before any enablement"
+    }
+  ],
+  "risk_count": 12
+}

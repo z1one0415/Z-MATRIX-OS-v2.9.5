@@ -1,0 +1,32 @@
+{
+  "pipeline_signature": "V13-F5-1-13-CONTROLLED-NOOP-DRY-RUN-EXECUTION-P0-IMPLEMENTATION-PLANNING",
+  "base_commit": "3c49f076a39a5d93c1c23a029c8bfb4018a06f69",
+  "allowed_outputs": [
+    "noop_status",
+    "factor_id",
+    "queue_status",
+    "contract_validation_state",
+    "guardrail_state",
+    "evidence_state",
+    "blocked_output_filter_state",
+    "noop_output_hash",
+    "denial_reason_if_any",
+    "rollback_marker"
+  ],
+  "forbidden_outputs": [
+    "alpha_signal",
+    "buy_signal",
+    "sell_signal",
+    "order_signal",
+    "position_weight",
+    "portfolio_weight",
+    "expected_return_claim",
+    "broker_payload",
+    "real_trade_payload",
+    "production_signal"
+  ],
+  "trade_signal_allowed": false,
+  "alpha_claim_allowed": false,
+  "broker_runtime_allowed": false,
+  "real_trade_allowed": false
+}

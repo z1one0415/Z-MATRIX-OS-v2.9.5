@@ -1,0 +1,20 @@
+{
+  "pipeline_signature": "V13-F5-1-18-CLEAN-REBUILD-P0-DISABLED-DEFAULT-MERGE-DECISION",
+  "base_commit": "33dfe733e383223fe91c461ac005e7a107c5f010",
+  "risks": [
+    {"id":"MR-01","title":"merge into polluted target (target HEAD IS 0c2e655)","severity":"CRITICAL","status":"ACTIVE_BLOCKING","mitigation":"Target lineage repair required before merge."},
+    {"id":"MR-02","title":"disabled-default mistaken as enabled post-merge","severity":"CRITICAL","status":"MONITOR","mitigation":"config.py hard-codes all flags false"},
+    {"id":"MR-03","title":"runner enabled after merge","severity":"CRITICAL","status":"MONITOR","mitigation":"Any enablement requires human decision"},
+    {"id":"MR-04","title":"run method mistaken as execution","severity":"HIGH","status":"MONITOR","mitigation":"run() always returns denied; no execute/call/invoke"},
+    {"id":"MR-05","title":"runtime_reports write after merge","severity":"HIGH","status":"MONITOR","mitigation":"RUNTIME_REPORTS_WRITE_ALLOWED=False"},
+    {"id":"MR-06","title":"runtime_audit write after merge","severity":"HIGH","status":"MONITOR","mitigation":"RUNTIME_AUDIT_WRITE_ALLOWED=False"},
+    {"id":"MR-07","title":"external data fetch after merge","severity":"HIGH","status":"MONITOR","mitigation":"No network imports in any module"},
+    {"id":"MR-08","title":"factor calculation after merge","severity":"CRITICAL","status":"MONITOR","mitigation":"FACTOR_CALCULATION_ALLOWED=False"},
+    {"id":"MR-09","title":"factor result update after merge","severity":"CRITICAL","status":"MONITOR","mitigation":"FACTOR_RESULT_UPDATE_ALLOWED=False"},
+    {"id":"MR-10","title":"dry-run execution after merge","severity":"CRITICAL","status":"MONITOR","mitigation":"EXECUTION_ALLOWED=False"},
+    {"id":"MR-11","title":"SkillOS adapter accidental dependency","severity":"CRITICAL","status":"MONITOR","mitigation":"No skillos import; merge scope blocks skillos/"},
+    {"id":"MR-12","title":"broker/real_trade downstream misuse","severity":"CRITICAL","status":"MONITOR","mitigation":"Structurally blocked; no imports"},
+    {"id":"MR-13","title":"registry next_legal_entry mutation fragility","severity":"MEDIUM","status":"MONITOR","mitigation":"Historical tests use phase-local closeout (F5.1.16.1)"},
+    {"id":"MR-14","title":"pycache / generated file pollution","severity":"LOW","status":"MONITOR","mitigation":"merge scope blocks __pycache__/ and *.pyc"}
+  ]
+}

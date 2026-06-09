@@ -102,5 +102,26 @@
   "dry_run_execution_planning_refs": {
     "planning_directory": "research/factor_library/reviews/batch_003/f5_1_9_dry_run_execution_planning/",
     "closeout": "research/factor_library/reviews/batch_003/f5_1_9_dry_run_execution_planning/batch3_dry_run_execution_planning_closeout.json"
-  }
+  },
+  "p0_implementation_planning_decision_status": "APPROVED_BY_HUMAN",
+  "p0_implementation_branch_allowed": true,
+  "noop_runner_implemented": false,
+  "dry_run_execution_started": false,
+  "p0_implementation_branch_created": true,
+  "p0_implementation_branch_ref": "impl/research-batch3-controlled-noop-dry-run-p0-implementation-clean",
+  "p0_implementation_branch_source_commit": "5a5701441358fac30b726f828340fb70f5a07c67",
+  "implementation_started": false,
+  "p0_disabled_default_implementation_status": "READY_FOR_REVIEW",
+  "noop_runner_implemented": true,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "dry_run_execution_started": false,
+  "p0_disabled_default_review_status": "APPROVED_BY_HUMAN",
+  "p0_disabled_default_merge_decision_allowed": true,
+  "merge_allowed_now": false,
+  "p0_disabled_default_merge_decision_status": "HOLD_MERGE_FOR_TARGET_LINEAGE_REPAIR",
+  "merge_approval_granted": false,
+  "target_lineage_repair_required": true,
+  "merge_executed": false,
+  "next_legal_entry": "RESTORE_CLEAN_TARGET_LINEAGE_BEFORE_MERGE_ONLY"
 }

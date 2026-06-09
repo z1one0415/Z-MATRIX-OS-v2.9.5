@@ -1,0 +1,23 @@
+{
+  "pipeline_signature": "V13-F5-1-14-HUMAN-CONTROLLED-NOOP-P0-IMPLEMENTATION-PLANNING-DECISION",
+  "base_commit": "53897592e70ea1ed28c37235611dfd9a5e8e17be",
+  "decision_status": "APPROVED_BY_HUMAN",
+  "decision": "GO_FOR_CONTROLLED_NOOP_DRY_RUN_P0_IMPLEMENTATION_BRANCH",
+  "approved_scope": "P0_IMPLEMENTATION_BRANCH_CREATION_ONLY",
+  "implementation_branch_allowed": true,
+  "noop_runner_implemented": false,
+  "dry_run_execution_started": false,
+  "monitoring_execution_started": false,
+  "candidate_review_executed": false,
+  "factor_calculation_executed": false,
+  "factor_results_modified": false,
+  "runtime_reports_modified": false,
+  "runtime_audit_modified": false,
+  "external_data_fetch_started": false,
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "paper_trading_started": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,6 @@
+factor_id,ticker,rebalance_date,score,rank,bucket,score_available_at,source_artifact_ref,signal_role
+F60,000977,2026-05-06,-0.10118,4,4,2026-05-06,lane_formula_contract,FACTOR_SIGNAL_ONLY
+F60,002050,2026-05-06,0.120317,3,3,2026-05-06,lane_formula_contract,FACTOR_SIGNAL_ONLY
+F60,002472,2026-05-06,0.153161,1,1,2026-05-06,lane_formula_contract,FACTOR_SIGNAL_ONLY
+F60,588000,2026-05-06,0.150528,2,2,2026-05-06,lane_formula_contract,FACTOR_SIGNAL_ONLY
+F60,601899,2026-05-06,-0.685408,5,5,2026-05-06,lane_formula_contract,FACTOR_SIGNAL_ONLY

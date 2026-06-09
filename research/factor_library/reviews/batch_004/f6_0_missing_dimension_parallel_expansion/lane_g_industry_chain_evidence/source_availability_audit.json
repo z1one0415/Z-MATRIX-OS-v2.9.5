@@ -1,0 +1,8 @@
+{
+  "pipeline_signature": "Z2-V13-F6-0-LANE-G-SOURCE-AUDIT",
+  "status": "SOURCE_AUDIT_COMPLETE",
+  "base_commit": "20fba19",
+  "dimension": "industry_chain_evidence",
+  "result": "NONE_AVAILABLE",
+  "blocked_reason": "no_structured_chain_data_committed"
+}

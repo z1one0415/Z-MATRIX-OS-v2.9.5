@@ -1,0 +1,21 @@
+{
+  "pipeline_signature": "Z2-V13-F6-0-LANE-C-CONTRACT",
+  "status": "V13_F6_0_LANE_C_BLOCKED_BY_PIT_SOURCE",
+  "base_commit": "20fba19",
+  "dimension": "cash_flow_quality",
+  "factors": [
+    "F08",
+    "F15"
+  ],
+  "materialized_factors": [],
+  "blocked_factors": [
+    "F08",
+    "F15"
+  ],
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

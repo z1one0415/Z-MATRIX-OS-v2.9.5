@@ -1,0 +1,26 @@
+{
+  "pipeline_signature": "Z2-V13-F6-0-LANE-K-CONTRACT",
+  "status": "V13_F6_0_LANE_K_PARTIAL_MATERIALIZED",
+  "base_commit": "20fba19",
+  "dimension": "sentiment_attention_crowding",
+  "factors": [
+    "F16",
+    "F53",
+    "F54",
+    "F55"
+  ],
+  "materialized_factors": [
+    "F53",
+    "F54",
+    "F55"
+  ],
+  "blocked_factors": [
+    "F16"
+  ],
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,12 @@
+{
+  "pipeline_signature": "Z2-V13-F6-0-LANE-F-SAFETY-AUDIT",
+  "status": "SAFETY_AUDIT_PASS",
+  "violation_count": 0,
+  "signal_materialization_executed": false,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

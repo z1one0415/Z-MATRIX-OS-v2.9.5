@@ -1,0 +1,106 @@
+{
+  "pipeline_signature": "Z2-V13-F6-0-LANE-MANIFEST",
+  "lanes": {
+    "A": {
+      "dimension": "fundamental_quality",
+      "factors": [
+        "F06",
+        "F14"
+      ],
+      "branch": "feat/f6-lane-a-fundamental-quality"
+    },
+    "B": {
+      "dimension": "profitability_momentum",
+      "factors": [
+        "F07"
+      ],
+      "branch": "feat/f6-lane-b-profitability-momentum"
+    },
+    "C": {
+      "dimension": "cash_flow_quality",
+      "factors": [
+        "F08",
+        "F15"
+      ],
+      "branch": "feat/f6-lane-c-cash-flow-quality"
+    },
+    "D": {
+      "dimension": "value_composite",
+      "factors": [
+        "F12"
+      ],
+      "branch": "feat/f6-lane-d-value-composite"
+    },
+    "E": {
+      "dimension": "shareholder_yield",
+      "factors": [
+        "F13"
+      ],
+      "branch": "feat/f6-lane-e-shareholder-yield"
+    },
+    "F": {
+      "dimension": "earnings_revision",
+      "factors": [
+        "F09"
+      ],
+      "branch": "feat/f6-lane-f-earnings-revision"
+    },
+    "G": {
+      "dimension": "industry_chain_evidence",
+      "factors": [
+        "F41",
+        "F42"
+      ],
+      "branch": "feat/f6-lane-g-industry-chain-evidence"
+    },
+    "H": {
+      "dimension": "operating_cycle",
+      "factors": [
+        "F43",
+        "F44",
+        "F45",
+        "F46"
+      ],
+      "branch": "feat/f6-lane-h-operating-cycle"
+    },
+    "I": {
+      "dimension": "event_catalyst",
+      "factors": [
+        "F47",
+        "F48",
+        "F49"
+      ],
+      "branch": "feat/f6-lane-i-event-catalyst-decay"
+    },
+    "J": {
+      "dimension": "policy_macro_risk",
+      "factors": [
+        "F50",
+        "F51",
+        "F52"
+      ],
+      "branch": "feat/f6-lane-j-policy-macro-risk"
+    },
+    "K": {
+      "dimension": "sentiment_crowding",
+      "factors": [
+        "F16",
+        "F53",
+        "F54",
+        "F55"
+      ],
+      "branch": "feat/f6-lane-k-sentiment-crowding"
+    },
+    "L": {
+      "dimension": "money_flow_microstructure",
+      "factors": [
+        "F56",
+        "F57",
+        "F58",
+        "F59",
+        "F60"
+      ],
+      "branch": "feat/f6-lane-l-money-flow-microstructure"
+    }
+  }
+}

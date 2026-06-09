@@ -1,0 +1,9 @@
+{
+  "pipeline_signature": "Z2-V13-F6-0-LANE-F-FORMULA-CONTRACT",
+  "factors": [
+    "F09"
+  ],
+  "output_role": "FACTOR_SIGNAL_ONLY",
+  "source_data_required": true,
+  "blocked_reason": "no_analyst_consensus_data_committed"
+}

@@ -1,0 +1,19 @@
+{
+  "pipeline_signature": "Z2-V13-F6-0-LANE-E-CONTRACT",
+  "status": "V13_F6_0_LANE_E_BLOCKED_BY_SOURCE_DATA",
+  "base_commit": "20fba19",
+  "dimension": "shareholder_yield",
+  "factors": [
+    "F13"
+  ],
+  "materialized_factors": [],
+  "blocked_factors": [
+    "F13"
+  ],
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

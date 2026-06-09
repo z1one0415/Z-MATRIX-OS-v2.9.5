@@ -1,0 +1,15 @@
+{
+  "pipeline_signature": "Z2-V13-F6-0-LANE-K-COVERAGE",
+  "F53": {
+    "covered": 5,
+    "status": "PASS"
+  },
+  "F54": {
+    "covered": 5,
+    "status": "PASS"
+  },
+  "F55": {
+    "covered": 5,
+    "status": "PASS"
+  }
+}

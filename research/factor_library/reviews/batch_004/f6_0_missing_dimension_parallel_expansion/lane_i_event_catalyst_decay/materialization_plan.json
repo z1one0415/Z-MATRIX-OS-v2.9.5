@@ -1,0 +1,10 @@
+{
+  "pipeline_signature": "Z2-V13-F6-0-LANE-I-MATERIALIZATION-PLAN",
+  "materializable": [],
+  "blocked": [
+    "F47",
+    "F48",
+    "F49"
+  ],
+  "blocked_reason": "no_structured_event_calendar_committed"
+}

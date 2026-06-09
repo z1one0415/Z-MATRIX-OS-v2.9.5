@@ -1,0 +1,14 @@
+{
+  "pipeline_signature": "Z2-V13-F6-0-LANE-G-PIT-POLICY",
+  "rebalance_date": "2026-05-06",
+  "pit_rules": {
+    "known_at_lte_rebalance": true,
+    "no_future_data": true,
+    "no_forward_fill": true
+  },
+  "pit_satisfied": false,
+  "blocked_factors": [
+    "F41",
+    "F42"
+  ]
+}

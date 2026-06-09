@@ -1,0 +1,12 @@
+{
+  "pipeline_signature": "Z2-V13-F6-0-LANE-K-FORMULA-CONTRACT",
+  "factors": [
+    "F16",
+    "F53",
+    "F54",
+    "F55"
+  ],
+  "output_role": "FACTOR_SIGNAL_ONLY",
+  "source_data_required": true,
+  "blocked_reason": "F16_taxonomy_review_required"
+}

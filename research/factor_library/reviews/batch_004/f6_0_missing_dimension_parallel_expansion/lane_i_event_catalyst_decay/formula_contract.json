@@ -1,0 +1,11 @@
+{
+  "pipeline_signature": "Z2-V13-F6-0-LANE-I-FORMULA-CONTRACT",
+  "factors": [
+    "F47",
+    "F48",
+    "F49"
+  ],
+  "output_role": "FACTOR_SIGNAL_ONLY",
+  "source_data_required": true,
+  "blocked_reason": "no_structured_event_calendar_committed"
+}

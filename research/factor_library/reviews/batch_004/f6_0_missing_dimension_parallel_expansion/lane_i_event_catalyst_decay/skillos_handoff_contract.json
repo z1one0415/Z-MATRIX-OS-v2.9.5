@@ -1,0 +1,6 @@
+{
+  "pipeline_signature": "Z2-V13-F6-0-LANE-I-SKILLOS-HANDOFF",
+  "access_level": "READ_ONLY_OBSERVATION",
+  "execution_allowed": false,
+  "deployment_allowed": false
+}

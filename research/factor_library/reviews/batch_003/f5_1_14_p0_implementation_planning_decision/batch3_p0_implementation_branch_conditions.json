@@ -1,0 +1,28 @@
+{
+  "pipeline_signature": "V13-F5-1-14-HUMAN-CONTROLLED-NOOP-P0-IMPLEMENTATION-PLANNING-DECISION",
+  "base_commit": "53897592e70ea1ed28c37235611dfd9a5e8e17be",
+  "conditions": [
+    "branch creation only after this decision",
+    "P0 code must be disabled-default",
+    "runner_enabled=false",
+    "execution_allowed=false",
+    "side_effects_allowed=false",
+    "no runtime_reports write",
+    "no runtime_audit write",
+    "no external data fetch",
+    "no factor calculation",
+    "no factor result update",
+    "no candidate review execution",
+    "no promotion",
+    "no alpha claim",
+    "no broker downstream",
+    "hash-only evidence",
+    "noop output only",
+    "F26/F27 remain locked"
+  ],
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "side_effects_allowed": false,
+  "f26_locked": true,
+  "f27_locked": true
+}

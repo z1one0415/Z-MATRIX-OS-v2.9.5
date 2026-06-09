@@ -1,0 +1,33 @@
+{
+  "pipeline_signature": "V13-F5-1-14-HUMAN-CONTROLLED-NOOP-P0-IMPLEMENTATION-PLANNING-DECISION",
+  "base_commit": "53897592e70ea1ed28c37235611dfd9a5e8e17be",
+  "allowed_next_scope": [
+    "create_p0_implementation_branch",
+    "implement_disabled_default_noop_runner_skeleton",
+    "implement_static_input_snapshot_reader_skeleton",
+    "implement_hash_only_evidence_skeleton",
+    "implement_noop_output_contract_skeleton",
+    "implement_safety_guard_skeleton",
+    "implement_rollback_skeleton",
+    "tests_for_disabled_default_no_side_effects"
+  ],
+  "blocked_next_scope": [
+    "enable_runner",
+    "dry_run_execution",
+    "monitoring_execution",
+    "candidate_review_execution",
+    "factor_calculation",
+    "factor_result_update",
+    "runtime_reports_write",
+    "runtime_audit_write",
+    "external_data_fetch",
+    "candidate_promotion",
+    "alpha_claim",
+    "paper_trading",
+    "production",
+    "broker_runtime",
+    "real_trade",
+    "SkillOS_adapter_implementation",
+    "V13_6"
+  ]
+}

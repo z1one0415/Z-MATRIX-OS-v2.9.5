@@ -1,0 +1,6 @@
+{
+  "pipeline_signature": "Z2-V13-F6-5-FORMULA-CONTRACT-AUDIT",
+  "factors_with_formula_contract_or_ref": 40,
+  "factors_missing_formula": 21,
+  "reproducible_formula_count": 23
+}

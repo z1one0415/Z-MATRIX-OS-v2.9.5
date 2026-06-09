@@ -1,0 +1,20 @@
+{
+  "pipeline_signature": "Z2-V13-F6-5-FORMULA-SOURCE-SIGNAL-TRIANGULATION-CONTRACT",
+  "status": "V13_F6_5_TRIANGULATION_CONTRACT_BUILT",
+  "base_commit": "1776560",
+  "audit_scope": "F01-F60 + F03R sidecar",
+  "classification_rules": {
+    "A": "has signal CSV + executable formula \u2192 reproducible signal",
+    "B": "has signal CSV + formula_ref (but formula spread across scripts) \u2192 signal with formula ref",
+    "C": "has contracts but no signal CSV \u2192 contract only",
+    "D": "defined but missing data source \u2192 blocked by source",
+    "E": "has signal but zero cross-sectional variance \u2192 non-informative",
+    "F": "rejected/watch/reserved/orange/hypothesis \u2192 excluded"
+  },
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

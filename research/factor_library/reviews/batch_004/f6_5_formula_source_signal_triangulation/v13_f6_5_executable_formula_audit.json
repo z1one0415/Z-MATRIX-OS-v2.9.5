@@ -1,0 +1,30 @@
+{
+  "pipeline_signature": "Z2-V13-F6-5-EXECUTABLE-FORMULA-AUDIT",
+  "factors_with_executable_formula": 40,
+  "factors_without_executable_formula": 21,
+  "executable_factors": [
+    "F04",
+    "F06",
+    "F07",
+    "F08",
+    "F09",
+    "F10",
+    "F11",
+    "F12",
+    "F14",
+    "F15",
+    "F21",
+    "F24",
+    "F30",
+    "F31",
+    "F44",
+    "F45",
+    "F51",
+    "F53",
+    "F54",
+    "F55",
+    "F56",
+    "F58",
+    "F60"
+  ]
+}

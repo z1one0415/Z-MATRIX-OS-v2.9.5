@@ -1,0 +1,19 @@
+{
+  "pipeline_signature": "Z2-V13-F6-5-SAFETY-AUDIT",
+  "status": "V13_F6_5_SAFETY_AUDIT_PASS",
+  "violation_count": 0,
+  "checks": {
+    "no_signal_csv_pollution": true,
+    "no_rejected_in_f7_eligible": true,
+    "no_reserved_in_f7_eligible": true,
+    "no_monitoring_rerun": true,
+    "no_promotion": true,
+    "no_alpha": true,
+    "alpha_claim_allowed": false,
+    "runner_enabled": false,
+    "execution_allowed": false,
+    "production": "BLOCKED",
+    "broker_runtime": "BLOCKED",
+    "real_trade": "BLOCKED"
+  }
+}

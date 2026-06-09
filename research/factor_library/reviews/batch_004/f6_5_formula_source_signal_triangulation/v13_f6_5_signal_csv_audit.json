@@ -1,0 +1,7 @@
+{
+  "pipeline_signature": "Z2-V13-F6-5-SIGNAL-CSV-AUDIT",
+  "factors_with_signal_csv": 24,
+  "factors_with_forbidden_fields": 0,
+  "total_signal_rows": 109,
+  "note": "0 violations expected for F7.0 readiness"
+}

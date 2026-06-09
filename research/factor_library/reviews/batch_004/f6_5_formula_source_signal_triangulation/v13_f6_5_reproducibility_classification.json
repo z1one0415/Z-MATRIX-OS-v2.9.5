@@ -1,0 +1,93 @@
+{
+  "pipeline_signature": "Z2-V13-F6-5-REPRODUCIBILITY-CLASSIFICATION",
+  "base_commit": "1776560",
+  "classification": {
+    "A_REPRODUCIBLE_SIGNAL_READY": [
+      "F04",
+      "F06",
+      "F07",
+      "F08",
+      "F09",
+      "F10",
+      "F11",
+      "F12",
+      "F14",
+      "F15",
+      "F21",
+      "F24",
+      "F30",
+      "F31",
+      "F44",
+      "F45",
+      "F51",
+      "F53",
+      "F54",
+      "F55",
+      "F56",
+      "F58",
+      "F60"
+    ],
+    "B_SIGNAL_READY_WITH_FORMULA_REF": [],
+    "C_CONTRACT_ONLY": [],
+    "D_BLOCKED_BY_SOURCE_DATA": [
+      "F16",
+      "F41",
+      "F42",
+      "F43",
+      "F46",
+      "F47",
+      "F48",
+      "F49",
+      "F50",
+      "F52",
+      "F57",
+      "F59"
+    ],
+    "E_NON_INFORMATIVE_SIGNAL": [
+      "F13"
+    ],
+    "F_RESERVED_OR_REJECTED_OR_WATCH": [
+      "F01",
+      "F02",
+      "F03",
+      "F05",
+      "F17",
+      "F18",
+      "F19",
+      "F20",
+      "F22",
+      "F23",
+      "F25",
+      "F26",
+      "F27",
+      "F28",
+      "F29",
+      "F32",
+      "F33",
+      "F34",
+      "F35",
+      "F36",
+      "F37",
+      "F38",
+      "F39",
+      "F40",
+      "F03R"
+    ]
+  },
+  "class_counts": {
+    "A": 23,
+    "B": 0,
+    "C": 0,
+    "D": 12,
+    "E": 1,
+    "F": 25
+  },
+  "class_descriptions": {
+    "A": "REPRODUCIBLE_SIGNAL_READY \u2014 has source+executable+signal, can be reproduced",
+    "B": "SIGNAL_READY_WITH_FORMULA_REF \u2014 has signal+formula_ref but spread across scripts",
+    "C": "CONTRACT_ONLY \u2014 has contracts but not materialized",
+    "D": "BLOCKED_BY_SOURCE_DATA \u2014 defined but missing data source",
+    "E": "NON_INFORMATIVE_SIGNAL \u2014 has signal but zero cross-sectional variance",
+    "F": "RESERVED_OR_REJECTED_OR_WATCH \u2014 excluded from F7.0"
+  }
+}

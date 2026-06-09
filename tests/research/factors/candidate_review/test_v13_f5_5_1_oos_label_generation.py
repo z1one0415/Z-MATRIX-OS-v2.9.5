@@ -48,19 +48,31 @@ def test_horizon_completeness():
 def test_safety():
     s = _l("v13_f5_5_1_oos_label_generation_safety_audit.json")
     assert s["violation_count"] == 0
-    assert s["checks"]["oos_label_generation_executed"] is True
+    assert s["checks"]["oos_label_generation_executed"] is False
     assert s["checks"]["monitoring_execution_executed"] is False
+    assert s["checks"]["runner_enabled"] is False
+    assert s["checks"]["execution_allowed"] is False
+    assert s["checks"]["alpha_claim_allowed"] is False
     assert s["checks"]["production_blocked"] is True
+    assert s["checks"]["broker_runtime_blocked"] is True
+    assert s["checks"]["real_trade_blocked"] is True
 
 def test_closeout():
     co = _l("v13_f5_5_1_oos_label_generation_closeout.json")
+    assert co["status"] == "V13_F5_5_1_OOS_LABEL_SCHEMA_PLACEHOLDER_ONLY"
     assert co["oos_label_generation_executed"] is False
-    assert co["generated_horizons"] == ["5D", "20D"]
+    assert co["label_schema_generated"] is True
+    assert co["actual_forward_returns_generated"] is False
+    assert co["label_data_row_count"] == 0
     assert co["ready_for_first_monitoring_execution"] is False
     assert co["monitoring_execution_executed"] is False
-    assert co["promotion_allowed"] is False
+    assert co["runner_enabled"] is False
+    assert co["execution_allowed"] is False
+    assert co["alpha_claim_allowed"] is False
     assert co["production"] == "BLOCKED"
-    assert "F5_5_1_2" in co["recommended_next_action"]
+    assert co["broker_runtime"] == "BLOCKED"
+    assert co["real_trade"] == "BLOCKED"
+    assert co["recommended_next_action"] == "PREPARE_V13_F5_5_1_2_OOS_LABEL_DATA_ACCESS_AND_ACTUAL_LABEL_MATERIALIZATION"
 
 def test_csv_schema():
     csv_path = D / "v13_f5_5_1_oos_label_panel.csv"

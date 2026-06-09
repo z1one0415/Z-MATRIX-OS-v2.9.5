@@ -1,0 +1,13 @@
+{
+  "pipeline_signature": "Z2-V13-F5-3-BATCH3-WATCH-ONLY-PRESERVATION",
+  "status": "V13_F5_3_WATCH_ONLY_PRESERVATION_PASS",
+  "watch_only_preserved": ["F22", "F26", "F27", "F34"],
+  "watch_only_not_frozen": true,
+  "watch_only_not_promoted": true,
+  "watch_only_reasons": {
+    "F22": "overlaps F24 breakout mechanism",
+    "F26": "high overlap with F11 / needs more evidence",
+    "F27": "high overlap with F11 / needs more evidence",
+    "F34": "overlaps F10 regime angle"
+  }
+}

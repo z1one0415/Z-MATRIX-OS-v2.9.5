@@ -1,0 +1,10 @@
+{
+  "pipeline_signature": "Z2-V13-F5-3-BATCH3-FREEZE-HANDOFF-CANONICALIZATION",
+  "status": "V13_F5_3_HANDOFF_CANONICALIZATION_PASS",
+  "handoff_canonicalization_executed": true,
+  "source_f5_2_closeout": "v13_f5_2_batch3_candidate_review_closeout.json",
+  "freeze_review_ready_source_field": "ready_for_f5_3_candidate_freeze_review",
+  "freeze_review_scope": ["F21", "F24", "F30", "F31"],
+  "semantic_conflict_blocking": false,
+  "watch_only_preserved": ["F22", "F26", "F27", "F34"]
+}

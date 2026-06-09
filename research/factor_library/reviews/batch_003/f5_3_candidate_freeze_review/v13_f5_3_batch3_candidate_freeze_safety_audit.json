@@ -1,0 +1,30 @@
+{
+  "pipeline_signature": "Z2-V13-F5-3-BATCH3-CANDIDATE-FREEZE-SAFETY-AUDIT",
+  "status": "V13_F5_3_SAFETY_AUDIT_PASS",
+  "checks": {
+    "candidate_freeze_executed_f21": true,
+    "candidate_freeze_executed_f24": true,
+    "candidate_freeze_executed_f30": true,
+    "candidate_freeze_executed_f31": true,
+    "watch_only_not_frozen": true,
+    "promotion_allowed": false,
+    "ready_for_promotion_review_empty": true,
+    "multi_factor_composite_built": false,
+    "weight_optimization_executed": false,
+    "runner_enabled": false,
+    "execution_allowed": false,
+    "factor_calculation_executed": false,
+    "materialization_executed": false,
+    "oos_label_generation_executed": false,
+    "true_oos_validation_executed": false,
+    "skillos_adapter_implemented": false,
+    "frontend_modified": false,
+    "v13_6_allowed": false,
+    "paper_trading_allowed": false,
+    "alpha_claim_allowed": false,
+    "production_blocked": true,
+    "broker_runtime_blocked": true,
+    "real_trade_blocked": true
+  },
+  "violation_count": 0
+}

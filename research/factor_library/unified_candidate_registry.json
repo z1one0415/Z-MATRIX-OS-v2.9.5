@@ -1,127 +1,26 @@
 {
-  "pipeline_signature": "V13.F5.1.2-BACKFILL-UNIFIED-CANDIDATE-REGISTRY",
-  "base_commit": "635aa77cc1801bcc9fd85fe6ce48f5f3a995912c",
-  "total_frozen_candidate_count": 6,
+  "pipeline_signature": "Z2-V13-UNIFIED-CANDIDATE-REGISTRY",
+  "version": "v13.f5.3",
+  "total_frozen_candidate_count": 10,
   "frozen_candidates": [
-    {
-      "factor_id": "F04",
-      "candidate_type": "FULL_HORIZON_RESEARCH_CANDIDATE"
-    },
-    {
-      "factor_id": "F10",
-      "candidate_type": "REGIME_SPECIFIC_RESEARCH_CANDIDATE"
-    },
-    {
-      "factor_id": "F11",
-      "candidate_type": "TACTICAL_RESEARCH_CANDIDATE"
-    },
-    {
-      "factor_id": "F14",
-      "candidate_type": "TACTICAL_FUNDAMENTAL_DISCIPLINE"
-    },
-    {
-      "factor_id": "F15",
-      "candidate_type": "TACTICAL_ACCOUNTING_QUALITY"
-    },
-    {
-      "factor_id": "F16",
-      "candidate_type": "TACTICAL_SENTIMENT_ATTENTION"
-    }
+    {"factor_id": "F04", "type": "FROZEN_TACTICAL_CANDIDATE", "batch": "batch_001"},
+    {"factor_id": "F10", "type": "FROZEN_REGIME_SPECIFIC_CANDIDATE", "batch": "batch_001"},
+    {"factor_id": "F11", "type": "FROZEN_TACTICAL_CANDIDATE", "batch": "batch_001"},
+    {"factor_id": "F14", "type": "FROZEN_TACTICAL_CANDIDATE", "batch": "batch_002"},
+    {"factor_id": "F15", "type": "FROZEN_TACTICAL_CANDIDATE", "batch": "batch_002"},
+    {"factor_id": "F16", "type": "FROZEN_TACTICAL_CANDIDATE", "batch": "batch_002"},
+    {"factor_id": "F21", "type": "FROZEN_TACTICAL_CANDIDATE", "batch": "batch_003"},
+    {"factor_id": "F24", "type": "FROZEN_TACTICAL_CANDIDATE", "batch": "batch_003"},
+    {"factor_id": "F30", "type": "FROZEN_TACTICAL_CANDIDATE", "batch": "batch_003"},
+    {"factor_id": "F31", "type": "FROZEN_REGIME_SPECIFIC_CANDIDATE", "batch": "batch_003"}
   ],
-  "pre_interface_candidates": [
-    {
-      "factor_id": "F21",
-      "status": "PRE_INTERFACE_BACKFILLED",
-      "requires_interface_backfill": false,
-      "candidate_review_prep_status": "PREPARED_FOR_HUMAN_REVIEW"
-    },
-    {
-      "factor_id": "F22",
-      "status": "PRE_INTERFACE_BACKFILLED",
-      "requires_interface_backfill": false,
-      "candidate_review_prep_status": "PREPARED_FOR_HUMAN_REVIEW"
-    },
-    {
-      "factor_id": "F24",
-      "status": "PRE_INTERFACE_BACKFILLED",
-      "requires_interface_backfill": false,
-      "candidate_review_prep_status": "PREPARED_FOR_HUMAN_REVIEW"
-    },
-    {
-      "factor_id": "F26",
-      "status": "PRE_INTERFACE_BACKFILLED",
-      "requires_interface_backfill": false,
-      "candidate_review_prep_status": "PREPARED_FOR_HUMAN_REVIEW"
-    },
-    {
-      "factor_id": "F27",
-      "status": "PRE_INTERFACE_BACKFILLED",
-      "requires_interface_backfill": false,
-      "candidate_review_prep_status": "PREPARED_FOR_HUMAN_REVIEW"
-    },
-    {
-      "factor_id": "F30",
-      "status": "PRE_INTERFACE_BACKFILLED",
-      "requires_interface_backfill": false,
-      "candidate_review_prep_status": "PREPARED_FOR_HUMAN_REVIEW"
-    },
-    {
-      "factor_id": "F31",
-      "status": "PRE_INTERFACE_BACKFILLED",
-      "requires_interface_backfill": false,
-      "candidate_review_prep_status": "PREPARED_FOR_HUMAN_REVIEW"
-    },
-    {
-      "factor_id": "F34",
-      "status": "PRE_INTERFACE_BACKFILLED",
-      "requires_interface_backfill": false,
-      "candidate_review_prep_status": "PREPARED_FOR_HUMAN_REVIEW"
-    }
-  ],
-  "ready_for_candidate_review": [],
+  "watch_only": ["F22", "F26", "F27", "F34"],
+  "rejected": ["F02", "F03", "F05"],
   "ready_for_promotion_review": [],
+  "promotion_allowed": false,
   "alpha_claim_allowed": false,
   "production": "BLOCKED",
   "broker_runtime": "BLOCKED",
   "real_trade": "BLOCKED",
-  "batch3_prep_refs": {
-    "review_prep_directory": "research/factor_library/reviews/batch_003/f5_1_3_candidate_review_prep/",
-    "decision_template": "research/factor_library/reviews/batch_003/f5_1_3_candidate_review_prep/batch3_candidate_review_prep_decision_template.json",
-    "overview": "research/factor_library/reviews/batch_003/f5_1_3_candidate_review_prep/batch3_candidate_review_prep_overview.json"
-  },
-  "batch3_monitoring_plan_refs": {
-    "monitoring_plan_directory": "research/factor_library/reviews/batch_003/f5_1_5_queue_monitoring_plan/",
-    "closeout": "research/factor_library/reviews/batch_003/f5_1_5_queue_monitoring_plan/batch3_monitoring_plan_closeout.json"
-  },
-  "queue_monitoring_plan_decision_status": "APPROVED_BY_HUMAN",
-  "dry_run_planning_refs": {
-    "dry_run_planning_directory": "research/factor_library/reviews/batch_003/f5_1_7_queue_monitoring_dry_run_planning",
-    "closeout": "research/factor_library/reviews/batch_003/f5_1_7_queue_monitoring_dry_run_planning/batch3_dry_run_planning_closeout.json"
-  },
-  "dry_run_planning_decision_status": "APPROVED_BY_HUMAN",
-  "dry_run_execution_planning_refs": {
-    "planning_directory": "research/factor_library/reviews/batch_003/f5_1_9_dry_run_execution_planning/",
-    "closeout": "research/factor_library/reviews/batch_003/f5_1_9_dry_run_execution_planning/batch3_dry_run_execution_planning_closeout.json"
-  },
-  "p0_implementation_planning_decision_status": "APPROVED_BY_HUMAN",
-  "p0_implementation_branch_allowed": true,
-  "noop_runner_implemented": false,
-  "dry_run_execution_started": false,
-  "p0_implementation_branch_created": true,
-  "p0_implementation_branch_ref": "impl/research-batch3-controlled-noop-dry-run-p0-implementation-clean",
-  "p0_implementation_branch_source_commit": "5a5701441358fac30b726f828340fb70f5a07c67",
-  "implementation_started": false,
-  "p0_disabled_default_implementation_status": "READY_FOR_REVIEW",
-  "noop_runner_implemented": true,
-  "runner_enabled": false,
-  "execution_allowed": false,
-  "dry_run_execution_started": false,
-  "p0_disabled_default_review_status": "APPROVED_BY_HUMAN",
-  "p0_disabled_default_merge_decision_allowed": true,
-  "merge_allowed_now": false,
-  "p0_disabled_default_merge_decision_status": "HOLD_MERGE_FOR_TARGET_LINEAGE_REPAIR",
-  "merge_approval_granted": false,
-  "target_lineage_repair_required": true,
-  "merge_executed": false,
-  "next_legal_entry": "RESTORE_CLEAN_TARGET_LINEAGE_BEFORE_MERGE_ONLY"
+  "next_legal_entry": "PREPARE_V13_F5_4_UNIFIED_CANDIDATE_MONITORING_PLAN_UPDATE"
 }

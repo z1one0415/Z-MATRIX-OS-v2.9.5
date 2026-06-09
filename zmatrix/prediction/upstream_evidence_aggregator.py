@@ -13,7 +13,9 @@ Z16_DEFAULT = {"source": "Z16_PRICE_GATE", "available": False, "required": True,
                "status": "PLACEHOLDER_NOT_CONNECTED", "warnings": ["Z16_NOT_CONNECTED"]}
 G17_DEFAULT = {"source": "G17_ACCOUNT_CONFIRMATION", "available": False, "required": True,
                "status": "PLACEHOLDER_NOT_CONNECTED", "warnings": ["G17_NOT_CONNECTED"]}
-ALL_SOURCES = ["g09", "g08", "g11", "g14", "z16", "g17"]
+CAPITAL_FLOW_DEFAULT = {"source": "CAPITAL_FLOW_9WAY", "available": False,
+                        "reason": "NOT_CONNECTED", "verdict": "unknown", "warnings": ["CAPITAL_FLOW_NOT_CONNECTED"]}
+ALL_SOURCES = ["g09", "g08", "g11", "g14", "z16", "g17", "capital_flow"]
 
 
 def build_upstream_evidence(
@@ -25,6 +27,7 @@ def build_upstream_evidence(
     g14_signal: dict | None = None,
     z16_signal: dict | None = None,
     g17_signal: dict | None = None,
+    capital_flow_signal: dict | None = None,
 ) -> dict:
     """Assemble all upstream pipeline evidence. Never raises, never blocks G18."""
     evidence = {}
@@ -38,6 +41,7 @@ def build_upstream_evidence(
         "g14": (g14_signal, G14_DEFAULT),
         "z16": (z16_signal, Z16_DEFAULT),
         "g17": (g17_signal, G17_DEFAULT),
+        "capital_flow": (capital_flow_signal, CAPITAL_FLOW_DEFAULT),
     }
 
     for key, (sig, default) in named.items():
@@ -59,9 +63,10 @@ def build_upstream_evidence(
 
     return {
         "ticker": ticker,
-        "evidence_version": "v1.0",
+        "evidence_version": "v1.1",
         "evidence_available": available,
         "missing_sources": missing,
         "warnings": [f"missing: {s}" for s in missing] if missing else [],
+        "capital_flow_verdict": evidence.get("capital_flow", {}).get("verdict", "unknown"),
         **evidence,
     }

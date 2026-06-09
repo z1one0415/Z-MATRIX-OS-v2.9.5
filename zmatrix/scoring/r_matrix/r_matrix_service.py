@@ -112,9 +112,15 @@ def evaluate_r_matrix_cycle(
     if position and king_count >= 2:
         try:
             from zmatrix.scoring.r_matrix.position_sell_decision import evaluate_position_sell_decision
-            price = position.get("price", position.get("cost", 0))
+            # Defensive: coerce position values that may arrive as strings from JSON
+            _shares = position.get("shares", 0)
+            _shares = int(float(_shares)) if isinstance(_shares, str) else _shares
+            _cost = position.get("cost", 0)
+            _cost = float(_cost) if isinstance(_cost, str) else _cost
+            _price = position.get("price", position.get("cost", 0))
+            _price = float(_price) if isinstance(_price, str) else _price
             result["sell_decision"] = evaluate_position_sell_decision(
-                ticker, position.get("shares", 0), position.get("cost", 0), price,
+                ticker, _shares, _cost, _price,
                 {"hard_blocks": result["hard_blocks"], "exit_alert": result["exit_alert"],
                  "kings": result["kings"]})
         except Exception as e:

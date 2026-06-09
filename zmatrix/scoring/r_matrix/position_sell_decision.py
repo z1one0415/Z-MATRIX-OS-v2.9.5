@@ -102,7 +102,9 @@ def evaluate_position_sell_decision(
         reason_codes.append("PROFIT_20_PLUS_PROTECT")
     
     elif profit_pct >= 10:
-        if oscillation and oscillation.get("position", 0) > 0.75:
+        _osc_pos = oscillation.get("position", 0) if oscillation else 0
+        _osc_pos = float(_osc_pos) if isinstance(_osc_pos, str) else _osc_pos
+        if oscillation and _osc_pos > 0.75:
             position_action = "LIGHTEN_TRADING"
             sell_ratio = 0.17
             reason_codes.append("PROFIT_10_PLUS_POSITION_HIGH")

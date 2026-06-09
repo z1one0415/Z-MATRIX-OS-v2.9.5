@@ -1,9 +1,9 @@
 {
   "pipeline_signature": "Z2-V13-FACTOR-LIBRARY-REGISTRY",
-  "version": "v13.f5.3.1",
+  "version": "v13.f5.4.1",
   "clean_target_head": "b9dd7b5",
-  "current_head": "e89b78c",
-  "last_accepted_commit": "e89b78c",
+  "current_head": "54b8fef",
+  "last_accepted_commit": "54b8fef",
   "merge_commit": "9d63225",
   "post_merge_seal_commit": "b9dd7b5",
   "human_acceptance_commit": "061b633",
@@ -81,5 +81,6 @@
     "F31"
   ],
   "monitoring_plan_updated": true,
-  "monitoring_execution_executed": false
+  "monitoring_execution_executed": false,
+  "f5_4_monitoring_plan_commit": "54b8fef"
 }

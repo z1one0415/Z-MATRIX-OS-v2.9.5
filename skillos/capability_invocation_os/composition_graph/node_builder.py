@@ -23,9 +23,10 @@ def build_a1_bridge_response_node(response) -> CompositionGraphNode:
     }
     return CompositionGraphNode(
         node_id=node_id,
-        node_type="a1_bridge_response",
+        node_type="a1_factor_bridge_response_node",
         payload=payload,
         hash_value=_hash(str(payload)),
+        valid=True,
     )
 
 
@@ -46,42 +47,52 @@ def build_a1_bridge_denied_context_node(response, reason: str = "") -> Compositi
     }
     return CompositionGraphNode(
         node_id=node_id,
-        node_type="a1_bridge_denied_context",
+        node_type="a1_factor_bridge_denied_context_node",
         payload=payload,
         hash_value=_hash(str(payload)),
+        valid=False,
     )
 
 
-def build_graph_evidence_node(evidence) -> CompositionGraphNode:
-    """Build a graph evidence node."""
+def build_factor_evidence_summary_node(evidence) -> CompositionGraphNode:
+    """Build a factor evidence summary node."""
     node_id = f"node_evidence_{uuid.uuid4().hex[:8]}"
     payload = {"evidence": evidence}
     return CompositionGraphNode(
         node_id=node_id,
-        node_type="graph_evidence",
+        node_type="factor_evidence_summary_node",
         payload=payload,
         hash_value=_hash(str(payload)),
+        valid=True,
     )
 
 
-def build_graph_noop_node() -> CompositionGraphNode:
-    """Build a NOOP placeholder node."""
-    node_id = f"node_noop_{uuid.uuid4().hex[:8]}"
-    return CompositionGraphNode(
-        node_id=node_id,
-        node_type="graph_noop",
-        payload={"reason": "DISABLED_DEFAULT_P0"},
-        hash_value=_hash("noop"),
-    )
-
-
-def build_graph_summary_node(summary) -> CompositionGraphNode:
-    """Build a graph source summary node."""
+def build_composition_summary_node(summary) -> CompositionGraphNode:
+    """Build a composition summary node."""
     node_id = f"node_summary_{uuid.uuid4().hex[:8]}"
     payload = {"summary": summary}
     return CompositionGraphNode(
         node_id=node_id,
-        node_type="graph_source_summary",
+        node_type="composition_summary_node",
         payload=payload,
         hash_value=_hash(str(payload)),
+        valid=True,
     )
+
+
+def build_static_input_node(reason: str = "DISABLED_DEFAULT_P0") -> CompositionGraphNode:
+    """Build a static input placeholder node (noop equivalent)."""
+    node_id = f"node_static_{uuid.uuid4().hex[:8]}"
+    return CompositionGraphNode(
+        node_id=node_id,
+        node_type="static_input_node",
+        payload={"reason": reason},
+        hash_value=_hash(reason),
+        valid=True,
+    )
+
+
+# Legacy aliases for backwards compatibility
+build_graph_evidence_node = build_factor_evidence_summary_node
+build_graph_summary_node = build_composition_summary_node
+build_graph_noop_node = build_static_input_node

@@ -13,7 +13,7 @@ from skillos.capability_invocation_os.composition_graph.models import (
 
 
 def validate_dag_no_cycles(nodes: list[CompositionGraphNode], edges: list[CompositionGraphEdge]) -> bool:
-    """Validate that the DAG has no cycles. In P0, always True (no execution paths)."""
+    """Validate that the DAG has no cycles."""
     if not edges:
         return True
     adjacency: dict[str, list[str]] = {}
@@ -24,7 +24,7 @@ def validate_dag_no_cycles(nodes: list[CompositionGraphNode], edges: list[Compos
 
     def _dfs(node_id: str) -> bool:
         if node_id in in_stack:
-            return False  # cycle
+            return False
         if node_id in visited:
             return True
         visited.add(node_id)
@@ -74,6 +74,31 @@ def validate_dag_edge_connectivity(nodes: list[CompositionGraphNode], edges: lis
     return True
 
 
+def validate_denied_context_terminal(nodes: list[CompositionGraphNode], edges: list[CompositionGraphEdge]) -> bool:
+    """Denied context nodes can only have outgoing edges to denied_context_edge/evidence_hash_edge/c1_handoff_edge/degradation_edge. They cannot feed composition_summary_node via any edge."""
+    denied_node_ids = {n.node_id for n in nodes if n.node_type == "a1_factor_bridge_denied_context_node"}
+    summary_node_ids = {n.node_id for n in nodes if n.node_type == "composition_summary_node"}
+    allowed_outgoing = {"denied_context_edge", "evidence_hash_edge", "c1_handoff_edge", "degradation_edge"}
+
+    for edge in edges:
+        if edge.source_node_id in denied_node_ids:
+            if edge.edge_type not in allowed_outgoing:
+                return False
+            if edge.target_node_id in summary_node_ids:
+                return False
+    return True
+
+
+def validate_denied_context_cannot_feed_valid_summary(nodes: list[CompositionGraphNode], edges: list[CompositionGraphEdge]) -> bool:
+    """Denied context node must never directly connect to composition_summary_node."""
+    denied_ids = {n.node_id for n in nodes if n.node_type == "a1_factor_bridge_denied_context_node"}
+    summary_ids = {n.node_id for n in nodes if n.node_type == "composition_summary_node"}
+    for edge in edges:
+        if edge.source_node_id in denied_ids and edge.target_node_id in summary_ids:
+            return False
+    return True
+
+
 def validate_dag_integrity(nodes: list[CompositionGraphNode], edges: list[CompositionGraphEdge]) -> bool:
     """Run all DAG validations."""
     return (
@@ -81,4 +106,6 @@ def validate_dag_integrity(nodes: list[CompositionGraphNode], edges: list[Compos
         and validate_dag_edge_types(edges)
         and validate_dag_edge_connectivity(nodes, edges)
         and validate_dag_no_cycles(nodes, edges)
+        and validate_denied_context_terminal(nodes, edges)
+        and validate_denied_context_cannot_feed_valid_summary(nodes, edges)
     )

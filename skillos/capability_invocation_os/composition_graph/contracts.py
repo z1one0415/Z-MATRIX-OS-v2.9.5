@@ -48,6 +48,32 @@ def validate_a1_bridge_response(response) -> CompositionGraphDecision:
     if response.decision.value.startswith("DENY_BRIDGE_"):
         return CompositionGraphDecision.DENY_GRAPH_BRIDGE_DENIED
 
+    # Step 6: Payload scanning for forbidden outputs
+    payload = getattr(response, "payload", None)
+    if payload is not None:
+        payload_result = validate_graph_payload_no_forbidden_outputs(payload)
+        if payload_result != CompositionGraphDecision.ALLOW_GRAPH_READONLY_SUMMARY:
+            return payload_result
+
+    return CompositionGraphDecision.ALLOW_GRAPH_READONLY_SUMMARY
+
+
+def validate_graph_payload_no_forbidden_outputs(payload) -> CompositionGraphDecision:
+    """Scan payload (dict/object) for forbidden output keys. Never raise."""
+    from .constants import FORBIDDEN_GRAPH_OUTPUTS
+    if isinstance(payload, dict):
+        for key in payload:
+            if key in FORBIDDEN_GRAPH_OUTPUTS:
+                return CompositionGraphDecision.DENY_GRAPH_OUTPUTS_UNSAFE
+            # Recurse into nested dicts
+            if isinstance(payload[key], dict):
+                result = validate_graph_payload_no_forbidden_outputs(payload[key])
+                if result != CompositionGraphDecision.ALLOW_GRAPH_READONLY_SUMMARY:
+                    return result
+    elif hasattr(payload, '__dict__'):
+        for key in payload.__dict__:
+            if key in FORBIDDEN_GRAPH_OUTPUTS:
+                return CompositionGraphDecision.DENY_GRAPH_OUTPUTS_UNSAFE
     return CompositionGraphDecision.ALLOW_GRAPH_READONLY_SUMMARY
 
 

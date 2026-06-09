@@ -1,17 +1,12 @@
-"""Composition Graph kill switches — all active (killed) for P0."""
+"""Composition Graph kill switch — P0 always force-disabled."""
+
+_FORCE_DISABLED = True
 
 
 def should_force_disabled() -> bool:
-    return True
+    return _FORCE_DISABLED
 
 
-def should_block_execution() -> bool:
-    return True
-
-
-def should_block_mutable_state() -> bool:
-    return True
-
-
-def should_block_real_source() -> bool:
-    return True
+def set_force_disabled(value: bool) -> None:
+    global _FORCE_DISABLED
+    _FORCE_DISABLED = value

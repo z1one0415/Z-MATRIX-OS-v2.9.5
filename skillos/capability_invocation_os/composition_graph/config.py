@@ -1,29 +1,12 @@
-"""Composition Graph configuration — all disabled for P0."""
+"""Composition Graph configuration — P0 disabled by default."""
+
+_GRAPH_ENABLED = False
 
 
 def is_composition_graph_enabled() -> bool:
-    return False
+    return _GRAPH_ENABLED
 
 
-def is_graph_execution_enabled() -> bool:
-    return False
-
-
-def is_graph_mutable_state_enabled() -> bool:
-    return False
-
-
-def is_graph_real_source_enabled() -> bool:
-    return False
-
-
-def is_graph_production_enabled() -> bool:
-    return False
-
-
-def is_graph_alpha_enabled() -> bool:
-    return False
-
-
-def is_graph_signal_enabled() -> bool:
-    return False
+def set_composition_graph_enabled(value: bool) -> None:
+    global _GRAPH_ENABLED
+    _GRAPH_ENABLED = value

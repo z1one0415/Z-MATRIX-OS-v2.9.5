@@ -11,6 +11,9 @@ from skillos.capability_invocation_os.composition_graph.config import (
 from skillos.capability_invocation_os.composition_graph.contracts import (
     validate_a1_bridge_response,
 )
+from skillos.capability_invocation_os.composition_graph.dag_validator import (
+    validate_dag_integrity,
+)
 from skillos.capability_invocation_os.composition_graph.models import (
     CompositionGraphDecision,
     CompositionGraphResponse,
@@ -21,18 +24,19 @@ from skillos.capability_invocation_os.composition_graph.degradation import (
     build_denied_real_source_response,
     build_denied_outputs_unsafe_response,
     build_denied_bridge_response,
+    build_denied_dag_invalid_response,
     build_allowed_readonly_response,
 )
 from skillos.capability_invocation_os.composition_graph.node_builder import (
     build_a1_bridge_response_node,
     build_a1_bridge_denied_context_node,
-    build_graph_evidence_node,
-    build_graph_noop_node,
+    build_factor_evidence_summary_node,
+    build_static_input_node,
 )
 from skillos.capability_invocation_os.composition_graph.edge_builder import (
-    build_bridge_to_graph_edge,
-    build_graph_to_evidence_edge,
-    build_graph_to_noop_edge,
+    build_a1_bridge_source_edge,
+    build_evidence_hash_edge,
+    build_readonly_context_edge,
 )
 from skillos.capability_invocation_os.composition_graph.evidence import (
     build_graph_evidence_from_a1_response,
@@ -47,14 +51,7 @@ class CompositionGraphFactorBridge:
         self._fixture_mode = fixture_mode
 
     def _should_build_graph(self, a1_bridge_response=None) -> bool:
-        """Determine if the graph should be built.
-
-        Returns False (no graph) when:
-        - kill switch is active (force disabled)
-        - graph is not enabled
-        - not in fixture mode
-        - a1_bridge_response is None
-        """
+        """Determine if the graph should be built."""
         if should_force_disabled():
             return False
         if not is_composition_graph_enabled():
@@ -66,16 +63,12 @@ class CompositionGraphFactorBridge:
         return True
 
     def process(self, a1_bridge_response=None) -> CompositionGraphResponse:
-        """Process an A1 bridge response through the composition graph.
-
-        Returns a CompositionGraphResponse with the appropriate decision.
-        """
+        """Process an A1 bridge response through the composition graph."""
         response_id = f"graph_{uuid.uuid4().hex[:12]}"
 
         if not self._should_build_graph(a1_bridge_response):
             return build_disabled_default_response(response_id=response_id)
 
-        # Validate the A1 bridge response
         decision = validate_a1_bridge_response(a1_bridge_response)
 
         if decision == CompositionGraphDecision.DENY_GRAPH_SOURCE_FORBIDDEN:
@@ -95,15 +88,19 @@ class CompositionGraphFactorBridge:
         # ALLOW path — build readonly graph
         bridge_node = build_a1_bridge_response_node(a1_bridge_response)
         graph_evidence = build_graph_evidence_from_a1_response(a1_bridge_response)
-        evidence_node = build_graph_evidence_node(graph_evidence)
+        evidence_node = build_factor_evidence_summary_node(graph_evidence)
 
-        edge = build_bridge_to_graph_edge(bridge_node.node_id, evidence_node.node_id)
-        evidence_edge = build_graph_to_evidence_edge(
+        edge = build_a1_bridge_source_edge(bridge_node.node_id, evidence_node.node_id)
+        evidence_edge = build_evidence_hash_edge(
             bridge_node.node_id, evidence_node.node_id
         )
 
         nodes = [bridge_node, evidence_node]
         edges = [edge, evidence_edge]
+
+        # Validate DAG integrity before returning allowed graph
+        if not validate_dag_integrity(nodes, edges):
+            return build_denied_dag_invalid_response(response_id=response_id)
 
         return build_allowed_readonly_response(
             response_id=response_id,

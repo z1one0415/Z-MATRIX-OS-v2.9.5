@@ -13,21 +13,23 @@ class CompositionGraphDecision(Enum):
     DENY_GRAPH_BRIDGE_DENIED = "DENY_GRAPH_BRIDGE_DENIED"
     DENY_GRAPH_EXECUTION_FORBIDDEN = "DENY_GRAPH_EXECUTION_FORBIDDEN"
     DENY_GRAPH_FACTOR_DENIED = "DENY_GRAPH_FACTOR_DENIED"
+    DENY_GRAPH_DAG_INVALID = "DENY_GRAPH_DAG_INVALID"
     DISABLED_DEFAULT_NOOP = "DISABLED_DEFAULT_NOOP"
 
 
 @dataclass(frozen=True)
 class CompositionGraphNode:
     node_id: str = ""
-    node_type: str = "graph_noop"
+    node_type: str = "static_input_node"
     payload: Any = field(default_factory=dict)
     hash_value: str = ""
+    valid: bool = True
 
 
 @dataclass(frozen=True)
 class CompositionGraphEdge:
     edge_id: str = ""
-    edge_type: str = "graph_to_noop"
+    edge_type: str = "readonly_context_edge"
     source_node_id: str = ""
     target_node_id: str = ""
     hash_value: str = ""

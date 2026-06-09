@@ -1,0 +1,36 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-4-1-BATCH1-BATCH2-SIGNAL-MATERIALIZATION-CONTRACT",
+  "status": "V13_F5_5_4_1_SIGNAL_MATERIALIZATION_CONTRACT_BUILT",
+  "base_commit": "7384266",
+  "materialization_scope": "MINIMAL_LABEL_TICKERS_ONLY",
+  "target_factors": [
+    "F04",
+    "F10",
+    "F11",
+    "F14",
+    "F15",
+    "F16"
+  ],
+  "already_signal_ready": [
+    "F21",
+    "F24",
+    "F30",
+    "F31"
+  ],
+  "rebalance_date": "2026-05-06",
+  "label_tickers_only": true,
+  "full_universe_computation_allowed": false,
+  "feature_store_write_allowed": false,
+  "runtime_reports_write_allowed": false,
+  "monitoring_rerun_allowed": false,
+  "candidate_state_update_allowed": false,
+  "promotion_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "v13_6_allowed": false,
+  "paper_trading_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

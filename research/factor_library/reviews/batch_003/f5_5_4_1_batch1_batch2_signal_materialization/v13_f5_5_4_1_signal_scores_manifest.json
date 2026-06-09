@@ -1,0 +1,77 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-4-1-BATCH1-BATCH2-SIGNAL-SCORES-MANIFEST",
+  "status": "V13_F5_5_4_1_SIGNAL_SCORES_PARTIAL",
+  "base_commit": "7384266",
+  "rebalance_date": "2026-05-06",
+  "materialized_factors": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "blocked_factors": [
+    "F14",
+    "F15",
+    "F16"
+  ],
+  "blocked_reasons": {
+    "F14": "BLOCKED_BY_SOURCE_DATA",
+    "F15": "BLOCKED_BY_SOURCE_DATA",
+    "F16": "BLOCKED_BY_SOURCE_DATA"
+  },
+  "ticker_count": 5,
+  "tickers": [
+    "000977",
+    "002050",
+    "002472",
+    "588000",
+    "601899"
+  ],
+  "rows_per_materializable_factor": 5,
+  "total_signal_rows": 15,
+  "signal_role": "FACTOR_SIGNAL_ONLY",
+  "source_data": "data/price_bars (pre-rebalance only)",
+  "forward_return_used_for_signal": false,
+  "outcome_label_used_for_signal": false,
+  "written_to_feature_store": false,
+  "factor_summaries": [
+    {
+      "factor_id": "F04",
+      "status": "MATERIALIZED",
+      "rows_generated": 5,
+      "tickers_covered": 5
+    },
+    {
+      "factor_id": "F10",
+      "status": "MATERIALIZED",
+      "rows_generated": 5,
+      "tickers_covered": 5
+    },
+    {
+      "factor_id": "F11",
+      "status": "MATERIALIZED",
+      "rows_generated": 5,
+      "tickers_covered": 5
+    },
+    {
+      "factor_id": "F14",
+      "status": "BLOCKED_BY_SOURCE_DATA",
+      "rows_generated": 0,
+      "tickers_covered": 0,
+      "blocked_reason": "BLOCKED_BY_SOURCE_DATA"
+    },
+    {
+      "factor_id": "F15",
+      "status": "BLOCKED_BY_SOURCE_DATA",
+      "rows_generated": 0,
+      "tickers_covered": 0,
+      "blocked_reason": "BLOCKED_BY_SOURCE_DATA"
+    },
+    {
+      "factor_id": "F16",
+      "status": "BLOCKED_BY_SOURCE_DATA",
+      "rows_generated": 0,
+      "tickers_covered": 0,
+      "blocked_reason": "BLOCKED_BY_SOURCE_DATA"
+    }
+  ]
+}

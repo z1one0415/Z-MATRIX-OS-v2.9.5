@@ -1,0 +1,21 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-4-1-SIGNAL-ISOLATION-AUDIT",
+  "status": "V13_F5_5_4_1_SIGNAL_ISOLATION_PASS",
+  "base_commit": "7384266",
+  "checks": {
+    "no_forward_return_in_signal_files": true,
+    "no_outcome_label_in_signal_files": true,
+    "no_alpha_trade_position_order": true,
+    "no_feature_store_write": true,
+    "no_monitoring_rerun_triggered": true,
+    "no_candidate_state_update": true,
+    "all_signal_roles_correct": true
+  },
+  "factors_audited": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "violations": [],
+  "violation_count": 0
+}

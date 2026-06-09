@@ -1,0 +1,109 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-4-1-SIGNAL-MATERIALIZATION-INPUT-AUDIT",
+  "status": "V13_F5_5_4_1_INPUT_AUDIT_PASS",
+  "base_commit": "7384266",
+  "checks": {
+    "label_panel_exists": true,
+    "label_ticker_count": 5,
+    "rebalance_date": "2026-05-06",
+    "forward_return_not_used_for_signal": true,
+    "price_bars_available": true,
+    "F21_F24_F30_F31_excluded_from_this_round": true
+  },
+  "source_package_checks": {
+    "F04": {
+      "manifest_exists": true,
+      "formula_contract_exists": true,
+      "requirements_exists": true,
+      "provenance_exists": true,
+      "all_source_files_present": true
+    },
+    "F10": {
+      "manifest_exists": true,
+      "formula_contract_exists": true,
+      "requirements_exists": true,
+      "provenance_exists": true,
+      "all_source_files_present": true
+    },
+    "F11": {
+      "manifest_exists": true,
+      "formula_contract_exists": true,
+      "requirements_exists": true,
+      "provenance_exists": true,
+      "all_source_files_present": true
+    },
+    "F14": {
+      "manifest_exists": true,
+      "formula_contract_exists": true,
+      "requirements_exists": true,
+      "provenance_exists": true,
+      "all_source_files_present": true
+    },
+    "F15": {
+      "manifest_exists": true,
+      "formula_contract_exists": true,
+      "requirements_exists": true,
+      "provenance_exists": true,
+      "all_source_files_present": true
+    },
+    "F16": {
+      "manifest_exists": true,
+      "formula_contract_exists": true,
+      "requirements_exists": true,
+      "provenance_exists": true,
+      "all_source_files_present": true
+    }
+  },
+  "pit_source_checks": {
+    "F04": {
+      "available": true,
+      "reason": "price_bars_pit_compliant"
+    },
+    "F10": {
+      "available": true,
+      "reason": "price_bars_pit_compliant"
+    },
+    "F11": {
+      "available": true,
+      "reason": "price_bars_pit_compliant"
+    },
+    "F14": {
+      "available": false,
+      "reason": "BLOCKED_BY_SOURCE_DATA",
+      "detail": "No disclosed fundamental data (balance sheet/income statement) available at 2026-05-06 in committed artifacts. Cannot use synthetic or forward-filled fundamentals."
+    },
+    "F15": {
+      "available": false,
+      "reason": "BLOCKED_BY_SOURCE_DATA",
+      "detail": "No disclosed fundamental data (balance sheet/income statement) available at 2026-05-06 in committed artifacts. Cannot use synthetic or forward-filled fundamentals."
+    },
+    "F16": {
+      "available": false,
+      "reason": "BLOCKED_BY_SOURCE_DATA",
+      "detail": "No committed sentiment/attention data source. Cannot use price changes as sentiment proxy per PIT rules."
+    }
+  },
+  "materializable_factors": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "blocked_factors": [
+    "F14",
+    "F15",
+    "F16"
+  ],
+  "blocked_reasons": {
+    "F14": "No disclosed fundamental data (balance sheet/income statement) available at 2026-05-06 in committed artifacts. Cannot use synthetic or forward-filled fundamentals.",
+    "F15": "No disclosed fundamental data (balance sheet/income statement) available at 2026-05-06 in committed artifacts. Cannot use synthetic or forward-filled fundamentals.",
+    "F16": "No committed sentiment/attention data source. Cannot use price changes as sentiment proxy per PIT rules."
+  },
+  "label_tickers": [
+    "000977",
+    "002050",
+    "002472",
+    "588000",
+    "601899"
+  ],
+  "violation_count": 0
+}

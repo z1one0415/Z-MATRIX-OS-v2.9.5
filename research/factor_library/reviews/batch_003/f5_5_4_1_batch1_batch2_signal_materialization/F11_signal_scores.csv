@@ -1,0 +1,6 @@
+factor_id,ticker,rebalance_date,score,rank,bucket,score_available_at,source_artifact_ref,signal_role
+F11,000977,2026-05-06,-0.009369,2,2,2026-05-06,research/factor_library/sources/F11/formula_contract.json,FACTOR_SIGNAL_ONLY
+F11,002050,2026-05-06,-0.010897,3,3,2026-05-06,research/factor_library/sources/F11/formula_contract.json,FACTOR_SIGNAL_ONLY
+F11,002472,2026-05-06,0.045381,1,1,2026-05-06,research/factor_library/sources/F11/formula_contract.json,FACTOR_SIGNAL_ONLY
+F11,588000,2026-05-06,-0.01154,4,4,2026-05-06,research/factor_library/sources/F11/formula_contract.json,FACTOR_SIGNAL_ONLY
+F11,601899,2026-05-06,-0.099934,5,5,2026-05-06,research/factor_library/sources/F11/formula_contract.json,FACTOR_SIGNAL_ONLY

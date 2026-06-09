@@ -1,0 +1,49 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-4-1-SIGNAL-COVERAGE-VALIDATION",
+  "status": "V13_F5_5_4_1_SIGNAL_COVERAGE_PARTIAL",
+  "base_commit": "7384266",
+  "factor_coverage": {
+    "F04": {
+      "status": "PASS",
+      "covered_ticker_count": 5,
+      "rows": 5,
+      "blocked_reason": null
+    },
+    "F10": {
+      "status": "PASS",
+      "covered_ticker_count": 5,
+      "rows": 5,
+      "blocked_reason": null
+    },
+    "F11": {
+      "status": "PASS",
+      "covered_ticker_count": 5,
+      "rows": 5,
+      "blocked_reason": null
+    },
+    "F14": {
+      "status": "BLOCKED_BY_SOURCE_DATA",
+      "covered_ticker_count": 0,
+      "rows": 0,
+      "blocked_reason": "BLOCKED_BY_SOURCE_DATA"
+    },
+    "F15": {
+      "status": "BLOCKED_BY_SOURCE_DATA",
+      "covered_ticker_count": 0,
+      "rows": 0,
+      "blocked_reason": "BLOCKED_BY_SOURCE_DATA"
+    },
+    "F16": {
+      "status": "BLOCKED_BY_SOURCE_DATA",
+      "covered_ticker_count": 0,
+      "rows": 0,
+      "blocked_reason": "BLOCKED_BY_SOURCE_DATA"
+    }
+  },
+  "summary": {
+    "total_target_factors": 6,
+    "factors_materialized": 3,
+    "factors_blocked": 3,
+    "price_based_all_pass": true
+  }
+}

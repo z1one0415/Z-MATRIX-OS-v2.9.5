@@ -1,16 +1,35 @@
 {
   "pipeline_signature": "Z2-V13-FACTOR-LIBRARY-REGISTRY",
-  "version": "v13.f5.3",
+  "version": "v13.f5.3.1",
+  "clean_target_head": "b9dd7b5",
+  "current_head": "e89b78c",
+  "last_accepted_commit": "e89b78c",
+  "merge_commit": "9d63225",
+  "post_merge_seal_commit": "b9dd7b5",
+  "human_acceptance_commit": "061b633",
+  "full_regression_confirmation_commit": "0d79dcc",
+  "f5_2_candidate_review_commit": "1525e6b",
+  "f5_3_candidate_freeze_commit": "e89b78c",
+
   "frozen_candidates": ["F04", "F10", "F11", "F14", "F15", "F16", "F21", "F24", "F30", "F31"],
-  "candidate_freeze_executed": true,
   "new_batch3_frozen_candidates": ["F21", "F24", "F30", "F31"],
-  "all_frozen_candidates": ["F04", "F10", "F11", "F14", "F15", "F16", "F21", "F24", "F30", "F31"],
   "watch_only": ["F22", "F26", "F27", "F34"],
   "rejected": ["F02", "F03", "F05"],
+  "hypothesis_only": ["F03R"],
+  "blocked_by_sample": ["F06", "F07", "F08", "F12", "F13"],
+  "source_audit": ["F09", "F17", "F18", "F19", "F20"],
+
+  "candidate_freeze_executed": true,
   "promotion_allowed": false,
+  "ready_for_promotion_review": [],
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "v13_6_allowed": false,
+  "paper_trading_allowed": false,
   "alpha_claim_allowed": false,
   "production": "BLOCKED",
   "broker_runtime": "BLOCKED",
   "real_trade": "BLOCKED",
+
   "next_legal_entry": "PREPARE_V13_F5_4_UNIFIED_CANDIDATE_MONITORING_PLAN_UPDATE"
 }

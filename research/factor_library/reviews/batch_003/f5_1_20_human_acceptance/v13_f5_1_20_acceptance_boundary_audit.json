@@ -1,0 +1,18 @@
+{
+  "pipeline_signature": "Z2-V13-F5-1-20-ACCEPTANCE-BOUNDARY-AUDIT",
+  "status": "V13_F5_1_20_ACCEPTANCE_BOUNDARY_AUDIT_PASS",
+  "checks": {
+    "human_review_decision_accepted": true,
+    "registry_canonicalization_pass": true,
+    "registry_next_legal_entry_updated": true,
+    "unified_candidate_registry_no_promotion": true,
+    "no_runner_enabled": true,
+    "no_execution_allowed": true,
+    "no_runtime_reports": true,
+    "no_broker_trading_execution_real_trade": true,
+    "no_skillos_adapter": true,
+    "no_v13_6": true,
+    "no_alpha": true
+  },
+  "violation_count": 0
+}

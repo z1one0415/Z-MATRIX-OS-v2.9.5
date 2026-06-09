@@ -1,0 +1,21 @@
+{
+  "pipeline_signature": "Z2-V13-F5-1-20-HUMAN-REVIEW-CLEAN-TARGET-CONTRACT",
+  "status": "V13_F5_1_20_HUMAN_REVIEW_CONTRACT_BUILT",
+  "base_clean_target_head": "b9dd7b5",
+  "review_only": true,
+  "human_review_required": true,
+  "merge_commit": "9d63225",
+  "post_merge_seal_commit": "b9dd7b5",
+  "polluted_target_preserved_for_audit": true,
+  "invalid_commits_excluded": ["0c2e655", "a6c3ff2", "a622b3d", "9f5f3f4"],
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "candidate_review_allowed": false,
+  "promotion_allowed": false,
+  "v13_6_allowed": false,
+  "paper_trading_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

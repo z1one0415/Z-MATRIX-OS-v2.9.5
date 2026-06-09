@@ -1,0 +1,32 @@
+{
+  "pipeline_signature": "Z2-V13-F5-1-20-CLEAN-TARGET-POST-MERGE-AUDIT",
+  "status": "V13_F5_1_20_CLEAN_TARGET_POST_MERGE_AUDIT_PASS",
+  "checks": {
+    "head_is_b9dd7b5": true,
+    "branch_is_clean_target": true,
+    "post_merge_seal_exists": true,
+    "merge_commit_is_9d63225": true,
+    "source_branch_correct": true,
+    "source_head_is_1b291cc": true,
+    "polluted_target_0c2e655_preserved_audit_only": true,
+    "invalid_commits_not_in_clean_target": true,
+    "no_pycache": true,
+    "no_pyc": true,
+    "no_docs_skillos": true,
+    "no_runtime_reports": true,
+    "no_runtime_audit": true,
+    "no_broker": true,
+    "no_trading": true,
+    "no_real_trade": true,
+    "no_execution_path": true,
+    "runner_enabled_false": true,
+    "execution_allowed_false": true,
+    "v13_6_blocked": true,
+    "paper_blocked": true,
+    "alpha_blocked": true,
+    "production_blocked": true,
+    "broker_runtime_blocked": true,
+    "real_trade_blocked": true
+  },
+  "violation_count": 0
+}

@@ -1,0 +1,30 @@
+{
+  "pipeline_signature": "Z2-V13-F5-2-BATCH3-CANDIDATE-REVIEW-INPUT-AUDIT",
+  "status": "V13_F5_2_BATCH3_CANDIDATE_REVIEW_INPUT_AUDIT_PASS",
+  "checks": {
+    "f5_1_20_acceptance_seal_exists": true,
+    "f5_1_20_acceptance_seal_status": "V13_F5_1_20_CLEAN_TARGET_HUMAN_ACCEPTANCE_SEALED",
+    "registry_canonicalization_pass": true,
+    "f21_artifacts_complete": true,
+    "f22_artifacts_complete": true,
+    "f24_artifacts_complete": true,
+    "f26_artifacts_complete": true,
+    "f27_artifacts_complete": true,
+    "f30_artifacts_complete": true,
+    "f31_artifacts_complete": true,
+    "f34_artifacts_complete": true,
+    "all_application_contracts_block_alpha": true,
+    "all_application_contracts_block_portfolio_weight": true,
+    "all_application_contracts_block_order_signal": true,
+    "all_application_contracts_block_paper_trading": true,
+    "all_application_contracts_block_broker_runtime": true,
+    "all_application_contracts_block_real_trade": true,
+    "all_application_contracts_block_production": true,
+    "no_runtime_reports_read": true,
+    "no_dry_run_runner_executed": true,
+    "no_skillos_adapter": true,
+    "no_promotion": true,
+    "no_weights_composite_alpha": true
+  },
+  "violation_count": 0
+}

@@ -1,0 +1,19 @@
+{
+  "pipeline_signature": "Z2-V13-F5-1-20-HUMAN-REVIEW-DECISION",
+  "status": "V13_F5_1_20_HUMAN_REVIEW_CLEAN_TARGET_ACCEPTED",
+  "human_review_executed": true,
+  "clean_target_accepted": true,
+  "accepted_clean_target_head": "b9dd7b5",
+  "accepted_merge_commit": "9d63225",
+  "accepted_post_merge_seal": true,
+  "blocked_reasons": [],
+  "next_required_step": "V13_F5_1_19_1_REGISTRY_POST_MERGE_STATE_CANONICALIZATION",
+  "candidate_review_allowed": false,
+  "promotion_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

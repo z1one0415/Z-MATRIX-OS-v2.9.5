@@ -77,7 +77,7 @@
   "controlled_noop_dry_run_branch_allowed": true,
   "controlled_noop_dry_run_branch_created": false,
   "noop_runner_implemented": false,
-  "next_legal_entry": "RESTORE_CLEAN_TARGET_LINEAGE_BEFORE_MERGE_ONLY",
+  "next_legal_entry": "PREPARE_V13_F5_2_BATCH3_CANDIDATE_REVIEW_DECISION",
   "clean_controlled_noop_dry_run_branch_created": true,
   "clean_controlled_noop_dry_run_branch_ref": "impl/research-batch3-controlled-noop-dry-run-execution-p0-clean",
   "clean_controlled_noop_dry_run_branch_source_commit": "61503b90a255aed788ba19354dab0ef50e276d3b",
@@ -101,7 +101,14 @@
   "merge_allowed_now": false,
   "p0_disabled_default_merge_decision_status": "HOLD_MERGE_FOR_TARGET_LINEAGE_REPAIR",
   "p0_disabled_default_merge_decision_ref": "research/factor_library/reviews/batch_003/f5_1_18_p0_disabled_default_merge_decision/batch3_p0_disabled_default_merge_closeout.json",
-  "merge_approval_granted": false,
-  "target_lineage_repair_required": true,
-  "merge_executed": false
+  "merge_approval_granted": true,
+  "target_lineage_repair_required": false,
+  "merge_executed": true,
+  "merge_verification_passed": true,
+  "clean_target_head": "b9dd7b5",
+  "merge_commit": "9d63225",
+  "post_merge_seal_commit": "b9dd7b5",
+  "post_merge_seal_ref": "research/factor_library/reviews/batch_003/f5_1_19_target_lineage_restoration/clean_target_post_merge_seal.json",
+  "clean_target_post_merge_sealed": true,
+  "human_review_required": true
 }

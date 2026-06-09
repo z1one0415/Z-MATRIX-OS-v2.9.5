@@ -1,0 +1,22 @@
+{
+  "pipeline_signature": "Z2-V13-F5-2-BATCH3-CANDIDATE-REVIEW-DECISION-CONTRACT",
+  "status": "V13_F5_2_BATCH3_CANDIDATE_REVIEW_DECISION_CONTRACT_BUILT",
+  "base_clean_target_head": "b9dd7b5",
+  "requires_human_acceptance_seal": true,
+  "human_acceptance_seal_required_status": "V13_F5_1_20_CLEAN_TARGET_HUMAN_ACCEPTANCE_SEALED",
+  "candidate_review_scope": ["F21", "F22", "F24", "F26", "F27", "F30", "F31", "F34"],
+  "candidate_review_execution_allowed_next": true,
+  "current_step_executes_candidate_review": false,
+  "candidate_freeze_allowed": false,
+  "promotion_allowed": false,
+  "multi_factor_composite_allowed": false,
+  "weight_optimization_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "v13_6_allowed": false,
+  "paper_trading_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

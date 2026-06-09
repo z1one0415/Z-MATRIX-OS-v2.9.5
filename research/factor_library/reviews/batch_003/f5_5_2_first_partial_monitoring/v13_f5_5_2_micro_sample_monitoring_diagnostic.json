@@ -1,0 +1,127 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-2-MICRO-SAMPLE-MONITORING-DIAGNOSTIC",
+  "status": "V13_F5_5_2_DIAGNOSTIC_EXECUTED_SIGNALS_BLOCKED",
+  "base_commit": "e7d7b1f",
+  "sample_scope": "MICRO_SAMPLE",
+  "formal_statistical_inference_allowed": false,
+  "rank_ic_reported_as_formal_evidence": false,
+  "candidate_state_change_allowed": false,
+  "label_coverage": {
+    "total_label_rows": 10,
+    "5D_rows": 5,
+    "20D_rows": 5,
+    "usable_ticker_count": 5,
+    "tickers": [
+      "000977",
+      "002050",
+      "002472",
+      "588000",
+      "601899"
+    ]
+  },
+  "label_statistics": {
+    "5D": {
+      "count": 5,
+      "positive_count": 4,
+      "negative_count": 1,
+      "sign_consistency": 0.8,
+      "mean_return": 0.02039,
+      "min_return": -0.037045,
+      "max_return": 0.061947
+    },
+    "20D": {
+      "count": 5,
+      "positive_count": 4,
+      "negative_count": 1,
+      "sign_consistency": 0.8,
+      "mean_return": 0.096147,
+      "min_return": -0.052876,
+      "max_return": 0.307132
+    }
+  },
+  "factor_signal_summary": {
+    "total_factors_checked": 10,
+    "factors_with_signal": 0,
+    "factors_blocked": 10,
+    "directional_spread_computable": false
+  },
+  "factor_diagnostics": [
+    {
+      "factor_id": "F04",
+      "signal_available": false,
+      "5D_directional_spread": null,
+      "20D_directional_spread": null,
+      "diagnostic_status": "SIGNAL_INPUT_BLOCKED_CANNOT_COMPUTE"
+    },
+    {
+      "factor_id": "F10",
+      "signal_available": false,
+      "5D_directional_spread": null,
+      "20D_directional_spread": null,
+      "diagnostic_status": "SIGNAL_INPUT_BLOCKED_CANNOT_COMPUTE"
+    },
+    {
+      "factor_id": "F11",
+      "signal_available": false,
+      "5D_directional_spread": null,
+      "20D_directional_spread": null,
+      "diagnostic_status": "SIGNAL_INPUT_BLOCKED_CANNOT_COMPUTE"
+    },
+    {
+      "factor_id": "F14",
+      "signal_available": false,
+      "5D_directional_spread": null,
+      "20D_directional_spread": null,
+      "diagnostic_status": "SIGNAL_INPUT_BLOCKED_CANNOT_COMPUTE"
+    },
+    {
+      "factor_id": "F15",
+      "signal_available": false,
+      "5D_directional_spread": null,
+      "20D_directional_spread": null,
+      "diagnostic_status": "SIGNAL_INPUT_BLOCKED_CANNOT_COMPUTE"
+    },
+    {
+      "factor_id": "F16",
+      "signal_available": false,
+      "5D_directional_spread": null,
+      "20D_directional_spread": null,
+      "diagnostic_status": "SIGNAL_INPUT_BLOCKED_CANNOT_COMPUTE"
+    },
+    {
+      "factor_id": "F21",
+      "signal_available": false,
+      "5D_directional_spread": null,
+      "20D_directional_spread": null,
+      "diagnostic_status": "SIGNAL_INPUT_BLOCKED_CANNOT_COMPUTE"
+    },
+    {
+      "factor_id": "F24",
+      "signal_available": false,
+      "5D_directional_spread": null,
+      "20D_directional_spread": null,
+      "diagnostic_status": "SIGNAL_INPUT_BLOCKED_CANNOT_COMPUTE"
+    },
+    {
+      "factor_id": "F30",
+      "signal_available": false,
+      "5D_directional_spread": null,
+      "20D_directional_spread": null,
+      "diagnostic_status": "SIGNAL_INPUT_BLOCKED_CANNOT_COMPUTE"
+    },
+    {
+      "factor_id": "F31",
+      "signal_available": false,
+      "5D_directional_spread": null,
+      "20D_directional_spread": null,
+      "diagnostic_status": "SIGNAL_INPUT_BLOCKED_CANNOT_COMPUTE"
+    }
+  ],
+  "limitations": [
+    "All 10 factor signals are BLOCKED (no pre-computed scores committed)",
+    "Directional spread cannot be computed without factor signal data",
+    "Sample size (5 tickers) insufficient for formal statistical inference",
+    "This diagnostic is INFRASTRUCTURE VALIDATION only"
+  ],
+  "violation_count": 0
+}

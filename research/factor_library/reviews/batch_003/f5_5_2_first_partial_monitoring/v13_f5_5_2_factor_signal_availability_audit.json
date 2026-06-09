@@ -1,0 +1,205 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-2-FACTOR-SIGNAL-AVAILABILITY-AUDIT",
+  "status": "V13_F5_5_2_FACTOR_SIGNAL_AVAILABILITY_ALL_BLOCKED",
+  "base_commit": "e7d7b1f",
+  "label_tickers": [
+    "000977",
+    "002050",
+    "002472",
+    "588000",
+    "601899"
+  ],
+  "label_ticker_count": 5,
+  "frozen_candidates_checked": 10,
+  "factors_with_signal_available": 0,
+  "factors_with_signal_blocked": 10,
+  "data_source_restrictions": {
+    "runtime_reports_read": false,
+    "feature_store_read": false,
+    "external_data_call": false,
+    "factor_recalculation_executed": false
+  },
+  "factor_results": [
+    {
+      "factor_id": "F04",
+      "factor_directory_exists": false,
+      "manifest_exists": false,
+      "signal_data_files_found": false,
+      "signal_available_for_label_tickers": false,
+      "covered_label_tickers": 0,
+      "missing_label_tickers": [
+        "000977",
+        "002050",
+        "002472",
+        "588000",
+        "601899"
+      ],
+      "allowed_for_partial_monitoring": false,
+      "factor_status": "SIGNAL_INPUT_BLOCKED",
+      "blocked_reason": "no_pre_computed_signal_scores_committed"
+    },
+    {
+      "factor_id": "F10",
+      "factor_directory_exists": false,
+      "manifest_exists": false,
+      "signal_data_files_found": false,
+      "signal_available_for_label_tickers": false,
+      "covered_label_tickers": 0,
+      "missing_label_tickers": [
+        "000977",
+        "002050",
+        "002472",
+        "588000",
+        "601899"
+      ],
+      "allowed_for_partial_monitoring": false,
+      "factor_status": "SIGNAL_INPUT_BLOCKED",
+      "blocked_reason": "no_pre_computed_signal_scores_committed"
+    },
+    {
+      "factor_id": "F11",
+      "factor_directory_exists": false,
+      "manifest_exists": false,
+      "signal_data_files_found": false,
+      "signal_available_for_label_tickers": false,
+      "covered_label_tickers": 0,
+      "missing_label_tickers": [
+        "000977",
+        "002050",
+        "002472",
+        "588000",
+        "601899"
+      ],
+      "allowed_for_partial_monitoring": false,
+      "factor_status": "SIGNAL_INPUT_BLOCKED",
+      "blocked_reason": "no_pre_computed_signal_scores_committed"
+    },
+    {
+      "factor_id": "F14",
+      "factor_directory_exists": false,
+      "manifest_exists": false,
+      "signal_data_files_found": false,
+      "signal_available_for_label_tickers": false,
+      "covered_label_tickers": 0,
+      "missing_label_tickers": [
+        "000977",
+        "002050",
+        "002472",
+        "588000",
+        "601899"
+      ],
+      "allowed_for_partial_monitoring": false,
+      "factor_status": "SIGNAL_INPUT_BLOCKED",
+      "blocked_reason": "no_pre_computed_signal_scores_committed"
+    },
+    {
+      "factor_id": "F15",
+      "factor_directory_exists": false,
+      "manifest_exists": false,
+      "signal_data_files_found": false,
+      "signal_available_for_label_tickers": false,
+      "covered_label_tickers": 0,
+      "missing_label_tickers": [
+        "000977",
+        "002050",
+        "002472",
+        "588000",
+        "601899"
+      ],
+      "allowed_for_partial_monitoring": false,
+      "factor_status": "SIGNAL_INPUT_BLOCKED",
+      "blocked_reason": "no_pre_computed_signal_scores_committed"
+    },
+    {
+      "factor_id": "F16",
+      "factor_directory_exists": false,
+      "manifest_exists": false,
+      "signal_data_files_found": false,
+      "signal_available_for_label_tickers": false,
+      "covered_label_tickers": 0,
+      "missing_label_tickers": [
+        "000977",
+        "002050",
+        "002472",
+        "588000",
+        "601899"
+      ],
+      "allowed_for_partial_monitoring": false,
+      "factor_status": "SIGNAL_INPUT_BLOCKED",
+      "blocked_reason": "no_pre_computed_signal_scores_committed"
+    },
+    {
+      "factor_id": "F21",
+      "factor_directory_exists": true,
+      "manifest_exists": true,
+      "signal_data_files_found": false,
+      "signal_available_for_label_tickers": false,
+      "covered_label_tickers": 0,
+      "missing_label_tickers": [
+        "000977",
+        "002050",
+        "002472",
+        "588000",
+        "601899"
+      ],
+      "allowed_for_partial_monitoring": false,
+      "factor_status": "SIGNAL_INPUT_BLOCKED",
+      "blocked_reason": "no_pre_computed_signal_scores_committed"
+    },
+    {
+      "factor_id": "F24",
+      "factor_directory_exists": true,
+      "manifest_exists": true,
+      "signal_data_files_found": false,
+      "signal_available_for_label_tickers": false,
+      "covered_label_tickers": 0,
+      "missing_label_tickers": [
+        "000977",
+        "002050",
+        "002472",
+        "588000",
+        "601899"
+      ],
+      "allowed_for_partial_monitoring": false,
+      "factor_status": "SIGNAL_INPUT_BLOCKED",
+      "blocked_reason": "no_pre_computed_signal_scores_committed"
+    },
+    {
+      "factor_id": "F30",
+      "factor_directory_exists": true,
+      "manifest_exists": true,
+      "signal_data_files_found": false,
+      "signal_available_for_label_tickers": false,
+      "covered_label_tickers": 0,
+      "missing_label_tickers": [
+        "000977",
+        "002050",
+        "002472",
+        "588000",
+        "601899"
+      ],
+      "allowed_for_partial_monitoring": false,
+      "factor_status": "SIGNAL_INPUT_BLOCKED",
+      "blocked_reason": "no_pre_computed_signal_scores_committed"
+    },
+    {
+      "factor_id": "F31",
+      "factor_directory_exists": true,
+      "manifest_exists": true,
+      "signal_data_files_found": false,
+      "signal_available_for_label_tickers": false,
+      "covered_label_tickers": 0,
+      "missing_label_tickers": [
+        "000977",
+        "002050",
+        "002472",
+        "588000",
+        "601899"
+      ],
+      "allowed_for_partial_monitoring": false,
+      "factor_status": "SIGNAL_INPUT_BLOCKED",
+      "blocked_reason": "no_pre_computed_signal_scores_committed"
+    }
+  ],
+  "violation_count": 0
+}

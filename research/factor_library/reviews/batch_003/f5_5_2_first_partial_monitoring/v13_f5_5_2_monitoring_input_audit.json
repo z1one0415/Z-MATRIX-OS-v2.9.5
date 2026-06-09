@@ -1,0 +1,32 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-2-MONITORING-INPUT-AUDIT",
+  "status": "V13_F5_5_2_MONITORING_INPUT_AUDIT_PASS",
+  "base_commit": "e7d7b1f",
+  "checks": {
+    "f5_5_1_2_closeout_pass": true,
+    "label_data_row_count": 10,
+    "label_data_row_count_gte_1": true,
+    "horizon_only_5d_20d": true,
+    "60D_not_present": true,
+    "label_role_outcome_only": true,
+    "no_forbidden_columns": true,
+    "monitoring_scope_count": 10,
+    "monitoring_scope_matches_10_frozen": true,
+    "registry_promotion_allowed_false": true,
+    "runner_enabled_false": true,
+    "execution_allowed_false": true
+  },
+  "monitoring_scope": [
+    "F04",
+    "F10",
+    "F11",
+    "F14",
+    "F15",
+    "F16",
+    "F21",
+    "F24",
+    "F30",
+    "F31"
+  ],
+  "violation_count": 0
+}

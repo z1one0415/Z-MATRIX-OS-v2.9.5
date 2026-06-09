@@ -1,0 +1,36 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-2-FIRST-PARTIAL-MONITORING-CLOSEOUT",
+  "status": "V13_F5_5_2_FIRST_PARTIAL_MONITORING_PASS",
+  "base_commit": "e7d7b1f",
+  "monitoring_execution_executed": true,
+  "monitoring_execution_scope": "MICRO_SAMPLE_PARTIAL_DIAGNOSTIC_ONLY",
+  "label_month": "2026-05",
+  "label_data_row_count": 10,
+  "ticker_count": 5,
+  "generated_horizons_used": [
+    "5D",
+    "20D"
+  ],
+  "blocked_horizons": [
+    "60D"
+  ],
+  "factor_signals_available": 0,
+  "factor_signals_blocked": 10,
+  "directional_spread_computed": false,
+  "formal_oos_validation_executed": false,
+  "formal_statistical_inference_allowed": false,
+  "candidate_state_update_executed": false,
+  "suspension_decision_executed": false,
+  "rejection_decision_executed": false,
+  "promotion_allowed": false,
+  "ready_for_promotion_review": [],
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "v13_6_allowed": false,
+  "paper_trading_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "recommended_next_action": "PREPARE_V13_F5_5_3_MONITORING_SAMPLE_EXPANSION_OR_NEXT_OOS_MONTH_PLAN"
+}

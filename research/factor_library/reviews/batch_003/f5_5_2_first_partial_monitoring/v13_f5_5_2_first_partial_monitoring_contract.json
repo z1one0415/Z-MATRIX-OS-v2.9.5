@@ -1,0 +1,41 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-2-FIRST-PARTIAL-MONITORING-CONTRACT",
+  "status": "V13_F5_5_2_FIRST_PARTIAL_MONITORING_CONTRACT_BUILT",
+  "base_commit": "e7d7b1f",
+  "monitoring_execution_scope": "MICRO_SAMPLE_PARTIAL_DIAGNOSTIC_ONLY",
+  "label_month": "2026-05",
+  "rebalance_date": "2026-05-06",
+  "allowed_horizons": [
+    "5D",
+    "20D"
+  ],
+  "blocked_horizons": [
+    "60D"
+  ],
+  "monitoring_scope": [
+    "F04",
+    "F10",
+    "F11",
+    "F14",
+    "F15",
+    "F16",
+    "F21",
+    "F24",
+    "F30",
+    "F31"
+  ],
+  "minimum_label_rows_required": 1,
+  "formal_oos_validation_allowed": false,
+  "candidate_state_update_allowed": false,
+  "suspension_decision_allowed": false,
+  "rejection_decision_allowed": false,
+  "promotion_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "v13_6_allowed": false,
+  "paper_trading_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

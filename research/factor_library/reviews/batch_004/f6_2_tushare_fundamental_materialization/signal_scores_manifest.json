@@ -1,0 +1,25 @@
+{
+  "pipeline_signature": "Z2-V13-F6-2-TUSHARE-FUNDAMENTAL-SIGNAL-SCORES-MANIFEST",
+  "status": "V13_F6_2_FUNDAMENTAL_SIGNALS_MATERIALIZED",
+  "base_commit": "ed22be7",
+  "rebalance_date": "2026-05-06",
+  "materialized_factors": [
+    "F06",
+    "F07",
+    "F08",
+    "F12",
+    "F13",
+    "F14",
+    "F15"
+  ],
+  "ticker_count": 4,
+  "total_signal_rows": 28,
+  "signal_role": "FACTOR_SIGNAL_ONLY",
+  "data_source": "tushare pro_api (PIT: ann_date <= 2026-05-06)",
+  "forward_return_used": false,
+  "written_to_feature_store": false,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED"
+}

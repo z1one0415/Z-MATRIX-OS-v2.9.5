@@ -1,0 +1,13 @@
+{
+  "factors_materialized": [
+    "F06",
+    "F07",
+    "F08",
+    "F12",
+    "F13",
+    "F14",
+    "F15"
+  ],
+  "ticker_count": 4,
+  "note_588000": "ETF excluded from fundamentals"
+}

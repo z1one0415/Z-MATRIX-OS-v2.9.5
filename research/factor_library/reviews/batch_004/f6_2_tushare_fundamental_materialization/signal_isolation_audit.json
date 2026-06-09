@@ -1,0 +1,5 @@
+{
+  "violation_count": 0,
+  "no_forward_return": true,
+  "no_alpha_trade_order": true
+}

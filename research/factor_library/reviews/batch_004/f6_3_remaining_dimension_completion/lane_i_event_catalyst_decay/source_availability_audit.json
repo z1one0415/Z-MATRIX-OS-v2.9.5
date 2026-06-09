@@ -1,0 +1,11 @@
+{
+  "sources": {
+    "event_calendar": "AVAILABLE_IN_SYSTEM",
+    "event_impact_scores": "NOT_AVAILABLE",
+    "decay_model": "NOT_AVAILABLE"
+  },
+  "available": true,
+  "blocked": false,
+  "reason": "Event calendar (earnings dates, AGM, ex-dividend) exists; impact scoring and decay modeling need implementation.",
+  "timestamp": "2026-06-10T03:01:20.583504+08:00"
+}

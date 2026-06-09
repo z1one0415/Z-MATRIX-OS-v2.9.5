@@ -1,0 +1,10 @@
+{
+  "factor_id": "F16",
+  "formula_components": {
+    "TBD": "pending_taxonomy_review"
+  },
+  "weights": {},
+  "normalization": "TBD",
+  "taxonomy_review": true,
+  "timestamp": "2026-06-10T03:01:20.629929+08:00"
+}

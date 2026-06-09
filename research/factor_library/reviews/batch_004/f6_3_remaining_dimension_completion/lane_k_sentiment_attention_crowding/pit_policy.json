@@ -1,0 +1,8 @@
+{
+  "factor_id": "F16",
+  "pit_safe": true,
+  "known_at_strategy": "daily_close",
+  "staleness_boundary": "next_trading_day",
+  "taxonomy_review": true,
+  "timestamp": "2026-06-10T03:01:20.629929+08:00"
+}

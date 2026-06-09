@@ -1,0 +1,8 @@
+{
+  "factor_id": "F41",
+  "name": "chain_position_score",
+  "category": "industry_chain",
+  "dimension": "supply_chain",
+  "formula_description": "Weighted sum of upstream dominance, downstream brand power, midstream pricing power from G15 evidence",
+  "timestamp": "2026-06-10T03:01:20.538768+08:00"
+}

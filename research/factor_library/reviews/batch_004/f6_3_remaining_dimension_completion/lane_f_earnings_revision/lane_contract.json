@@ -1,0 +1,13 @@
+{
+  "lane_id": "F",
+  "target_factors": [
+    "F09"
+  ],
+  "goal": "earnings_revision_or_proxy",
+  "allowed_outcomes": [
+    "MATERIALIZED",
+    "SOURCE_CONTRACT_ONLY",
+    "BLOCKED_BY_SOURCE_DATA"
+  ],
+  "timestamp": "2026-06-10T03:01:20.515722+08:00"
+}

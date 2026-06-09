@@ -1,0 +1,7 @@
+{
+  "status": "V13_F6_3_LANE_L_CLOSE",
+  "outcome": "BLOCKED_BY_SOURCE_DATA",
+  "reason": "Microstructure factors require tick-level order book data. Daily OHLCV can compute MFI (F56) as low-quality proxy; F57-F60 are completely blocked. Unified block decision: BLOCKED_BY_SOURCE_DATA.",
+  "next": "INTEGRATE_TICK_LEVEL_DATA_FEED",
+  "timestamp": "2026-06-10T03:01:20.652012+08:00"
+}

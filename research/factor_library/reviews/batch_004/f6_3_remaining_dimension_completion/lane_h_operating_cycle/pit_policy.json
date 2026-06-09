@@ -1,0 +1,8 @@
+{
+  "factor_id": "F43",
+  "pit_safe": true,
+  "known_at_strategy": "T+1 after quarterly statement",
+  "staleness_boundary": "next_report_date",
+  "blocked": true,
+  "timestamp": "2026-06-10T03:01:20.560675+08:00"
+}

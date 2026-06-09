@@ -1,0 +1,15 @@
+{
+  "factor_id": "F41",
+  "formula_components": {
+    "upstream_dominance": "G15_level_A",
+    "downstream_brand": "G15_level_B",
+    "midstream_pricing": "G15_level_C"
+  },
+  "weights": {
+    "upstream": 0.4,
+    "downstream": 0.35,
+    "midstream": 0.25
+  },
+  "normalization": "min_max_0_1",
+  "timestamp": "2026-06-10T03:01:20.538768+08:00"
+}

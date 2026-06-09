@@ -1,0 +1,13 @@
+{
+  "lane_id": "E",
+  "target_factors": [
+    "F13"
+  ],
+  "goal": "shareholder_yield_variance_repair",
+  "allowed_outcomes": [
+    "MATERIALIZED",
+    "SOURCE_CONTRACT_ONLY",
+    "BLOCKED_BY_SOURCE_DATA"
+  ],
+  "timestamp": "2026-06-10T03:01:20.492733+08:00"
+}

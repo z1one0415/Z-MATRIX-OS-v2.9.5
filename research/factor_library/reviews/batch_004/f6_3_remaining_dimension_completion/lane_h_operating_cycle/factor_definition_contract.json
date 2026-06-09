@@ -1,0 +1,8 @@
+{
+  "factor_id": "F43",
+  "name": "cash_conversion_cycle",
+  "category": "efficiency",
+  "dimension": "operating_cycle",
+  "formula_description": "DIO + DSO - DPO; days inventory outstanding + days sales outstanding - days payable outstanding",
+  "timestamp": "2026-06-10T03:01:20.560675+08:00"
+}

@@ -1,0 +1,17 @@
+{
+  "factor_id": "F50",
+  "formula_components": {
+    "vix": "market_data",
+    "us10y": "market_data",
+    "cnh": "market_data",
+    "copper_gold_ratio": "market_data"
+  },
+  "weights": {
+    "vix": 0.25,
+    "us10y": 0.25,
+    "cnh": 0.25,
+    "copper_gold": 0.25
+  },
+  "normalization": "zscore_rolling_252d",
+  "timestamp": "2026-06-10T03:01:20.606116+08:00"
+}

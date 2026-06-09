@@ -1,0 +1,14 @@
+{
+  "sources": {
+    "tick_data": "NOT_AVAILABLE",
+    "order_book": "NOT_AVAILABLE",
+    "northbound_flow": "PARTIALLY_AVAILABLE_DAILY",
+    "large_order": "NOT_AVAILABLE",
+    "block_trade": "NOT_AVAILABLE",
+    "dde": "NOT_AVAILABLE"
+  },
+  "available": false,
+  "blocked": true,
+  "reason": "Money flow/microstructure factors (F56-F60) require tick-level order book data, large order detection, DDE (big/small order flow), or block trade data. Current pipeline only has daily OHLCV. Northbound connect daily flow available but insufficient for microstructure.",
+  "timestamp": "2026-06-10T03:01:20.652012+08:00"
+}

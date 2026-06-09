@@ -1,0 +1,12 @@
+{
+  "sources": {
+    "order_backlog": "NOT_AVAILABLE",
+    "inventory_turnover": "NOT_AVAILABLE",
+    "capacity_utilization": "NOT_AVAILABLE",
+    "cash_conversion_cycle": "PARTIAL_VIA_STATEMENTS"
+  },
+  "available": false,
+  "blocked": true,
+  "reason": "Operating cycle data (order backlog, real-time inventory, capacity utilization) require order-level or industrial data feeds not in current pipeline.",
+  "timestamp": "2026-06-10T03:01:20.560675+08:00"
+}

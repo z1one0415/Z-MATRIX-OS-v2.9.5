@@ -1,0 +1,9 @@
+{
+  "materialized": false,
+  "source_contract_only": true,
+  "blocked": false,
+  "ticker_universe": "all_a_shares",
+  "rebalance_date": "daily",
+  "reason": "Macro data sources exist in Flow S; factor composable from existing feeds. Sector-level regulation mapping pending.",
+  "timestamp": "2026-06-10T03:01:20.606116+08:00"
+}

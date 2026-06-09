@@ -1,0 +1,11 @@
+{
+  "sources": {
+    "macro_veto": "AVAILABLE",
+    "policy_news": "AVAILABLE_AS_TEXT",
+    "sector_regulation": "PARTIALLY_AVAILABLE"
+  },
+  "available": true,
+  "blocked": false,
+  "reason": "Flow S MacroVeto provides global macro signals; policy/news text available but unstructured.",
+  "timestamp": "2026-06-10T03:01:20.606116+08:00"
+}

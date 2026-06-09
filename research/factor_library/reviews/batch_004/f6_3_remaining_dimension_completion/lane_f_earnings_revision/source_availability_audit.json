@@ -1,0 +1,10 @@
+{
+  "sources": {
+    "analyst_earnings_forecast": "NOT_AVAILABLE",
+    "analyst_revision": "NOT_AVAILABLE"
+  },
+  "available": false,
+  "blocked": true,
+  "reason": "No sell-side analyst consensus/revision data feed in current pipeline. Would need external API (Wind, Bloomberg, Refinitiv).",
+  "timestamp": "2026-06-10T03:01:20.515722+08:00"
+}

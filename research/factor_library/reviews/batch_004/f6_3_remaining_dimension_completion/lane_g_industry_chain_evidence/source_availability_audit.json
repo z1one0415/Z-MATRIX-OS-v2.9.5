@@ -1,0 +1,10 @@
+{
+  "sources": {
+    "G15_evidence_layering": "AVAILABLE",
+    "industry_chain_map": "NOT_AVAILABLE_DETAILED"
+  },
+  "available": true,
+  "blocked": false,
+  "reason": "G15 provides upstream/downstream evidence layering; detailed chain position map not yet available.",
+  "timestamp": "2026-06-10T03:01:20.538768+08:00"
+}

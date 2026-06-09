@@ -1,0 +1,10 @@
+{
+  "factor_id": "F16",
+  "name": "price_volume_attention",
+  "category": "attention",
+  "dimension": "crowding",
+  "formula_description": "TBD: F16 needs redefinition from sentiment to PRICE_VOLUME_ATTENTION. Proposed: abnormal_volume / average_volume + relative_strength_zscore composite.",
+  "taxonomy_review": true,
+  "review_reason": "F16 label 'sentiment' conflicts with actual computable data (price/volume). Must be reclassified as PRICE_VOLUME_ATTENTION in factor taxonomy before formula can be finalized.",
+  "timestamp": "2026-06-10T03:01:20.629929+08:00"
+}

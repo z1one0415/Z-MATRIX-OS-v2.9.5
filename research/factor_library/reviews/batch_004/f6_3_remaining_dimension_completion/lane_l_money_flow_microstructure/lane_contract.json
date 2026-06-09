@@ -1,0 +1,17 @@
+{
+  "lane_id": "L",
+  "target_factors": [
+    "F56",
+    "F57",
+    "F58",
+    "F59",
+    "F60"
+  ],
+  "goal": "money_flow_microstructure",
+  "allowed_outcomes": [
+    "MATERIALIZED",
+    "SOURCE_CONTRACT_ONLY",
+    "BLOCKED_BY_SOURCE_DATA"
+  ],
+  "timestamp": "2026-06-10T03:01:20.652012+08:00"
+}

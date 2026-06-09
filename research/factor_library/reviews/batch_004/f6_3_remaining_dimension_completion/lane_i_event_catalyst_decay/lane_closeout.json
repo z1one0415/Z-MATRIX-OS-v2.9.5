@@ -1,0 +1,7 @@
+{
+  "status": "V13_F6_3_LANE_I_CLOSE",
+  "outcome": "SOURCE_CONTRACT_ONLY",
+  "reason": "Event calendar source data available in system. Factor definitions, formulas, and PIT policies defined. Materialization requires decay model implementation.",
+  "next": "IMPLEMENT_EVENT_DECAY_MODEL",
+  "timestamp": "2026-06-10T03:01:20.583504+08:00"
+}

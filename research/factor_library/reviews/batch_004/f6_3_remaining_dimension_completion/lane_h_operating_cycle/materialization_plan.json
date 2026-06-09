@@ -1,0 +1,8 @@
+{
+  "materialized": false,
+  "source_contract_only": false,
+  "blocked": true,
+  "ticker_universe": "N/A",
+  "rebalance_date": "N/A",
+  "timestamp": "2026-06-10T03:01:20.560675+08:00"
+}

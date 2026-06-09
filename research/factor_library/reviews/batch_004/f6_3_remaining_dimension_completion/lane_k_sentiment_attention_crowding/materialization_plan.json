@@ -1,0 +1,9 @@
+{
+  "materialized": false,
+  "source_contract_only": false,
+  "blocked": false,
+  "ticker_universe": "all_a_shares",
+  "rebalance_date": "TBD",
+  "reason": "Blocked pending F16 taxonomy reclassification",
+  "timestamp": "2026-06-10T03:01:20.629929+08:00"
+}

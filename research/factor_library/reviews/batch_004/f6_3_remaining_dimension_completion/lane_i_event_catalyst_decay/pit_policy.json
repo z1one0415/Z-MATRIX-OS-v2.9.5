@@ -1,0 +1,7 @@
+{
+  "factor_id": "F47",
+  "pit_safe": true,
+  "known_at_strategy": "event_announcement_date",
+  "staleness_boundary": "event_date",
+  "timestamp": "2026-06-10T03:01:20.583504+08:00"
+}

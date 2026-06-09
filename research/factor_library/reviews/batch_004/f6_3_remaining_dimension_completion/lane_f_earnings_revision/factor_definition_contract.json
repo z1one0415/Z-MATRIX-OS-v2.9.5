@@ -1,0 +1,8 @@
+{
+  "factor_id": "F09",
+  "name": "earnings_revision_diffusion",
+  "category": "sentiment",
+  "dimension": "analyst_expectations",
+  "formula_description": "SUM(analyst_revision[up/down]) / NUM_COVERING; 4-week window; requires external data feed",
+  "timestamp": "2026-06-10T03:01:20.515722+08:00"
+}

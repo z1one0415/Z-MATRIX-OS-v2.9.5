@@ -1,0 +1,8 @@
+{
+  "factor_id": "F50",
+  "name": "macro_regime_score",
+  "category": "macro",
+  "dimension": "policy_risk",
+  "formula_description": "Composite of VIX, 10Y yield, CNH, copper/gold ratio; regime classification via MacroVeto",
+  "timestamp": "2026-06-10T03:01:20.606116+08:00"
+}

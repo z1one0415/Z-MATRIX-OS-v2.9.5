@@ -1,0 +1,13 @@
+{
+  "factor_id": "F47",
+  "formula_components": {
+    "days_to_earnings": "event_calendar",
+    "historical_surprise": "event_calendar"
+  },
+  "weights": {
+    "proximity": 0.7,
+    "surprise_magnitude": 0.3
+  },
+  "normalization": "min_max_0_1",
+  "timestamp": "2026-06-10T03:01:20.583504+08:00"
+}

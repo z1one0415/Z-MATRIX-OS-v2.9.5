@@ -1,0 +1,10 @@
+{
+  "sources": {
+    "shareholder_yield": "GENERAL_LEDGER_CASHFLOW"
+  },
+  "available": true,
+  "blocked": false,
+  "reason": "Cashflow statements provide dividend/buyback data but A-share coverage inconsistent",
+  "quality": "LOW_FILL",
+  "timestamp": "2026-06-10T03:01:20.492733+08:00"
+}

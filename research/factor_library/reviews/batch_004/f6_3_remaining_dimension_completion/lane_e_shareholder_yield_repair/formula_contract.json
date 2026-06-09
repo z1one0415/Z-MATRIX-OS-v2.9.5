@@ -1,0 +1,14 @@
+{
+  "factor_id": "F13",
+  "formula_components": {
+    "dividend_paid": "cashflow",
+    "buyback": "cashflow",
+    "market_cap": "daily"
+  },
+  "weights": {
+    "dividend": 0.6,
+    "buyback": 0.4
+  },
+  "normalization": "cross_sectional_zscore",
+  "timestamp": "2026-06-10T03:01:20.492733+08:00"
+}

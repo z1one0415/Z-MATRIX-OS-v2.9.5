@@ -1,0 +1,8 @@
+{
+  "factor_id": "F47",
+  "name": "earnings_event_proximity",
+  "category": "event",
+  "dimension": "catalyst_timing",
+  "formula_description": "Decay function: days_until_next_earnings mapped to [0,1]; closer = higher",
+  "timestamp": "2026-06-10T03:01:20.583504+08:00"
+}

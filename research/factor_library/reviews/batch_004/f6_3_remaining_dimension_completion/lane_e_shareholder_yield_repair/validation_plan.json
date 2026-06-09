@@ -1,0 +1,13 @@
+{
+  "unit_tests": [
+    "non_negative_yield",
+    "sum_dividend_buyback_matches_total"
+  ],
+  "smoke_tests": [
+    "yield_below_0.20"
+  ],
+  "data_gap_tests": [
+    "missing_buyback_treat_as_zero"
+  ],
+  "timestamp": "2026-06-10T03:01:20.492733+08:00"
+}

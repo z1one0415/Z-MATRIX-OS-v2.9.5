@@ -1,0 +1,13 @@
+{
+  "unit_tests": [
+    "score_in_range",
+    "regime_labels_valid"
+  ],
+  "smoke_tests": [
+    "macro_veto_consistency"
+  ],
+  "data_gap_tests": [
+    "holiday_forward_fill"
+  ],
+  "timestamp": "2026-06-10T03:01:20.606116+08:00"
+}

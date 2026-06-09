@@ -1,0 +1,13 @@
+{
+  "sources": {
+    "market_volume": "AVAILABLE",
+    "price_data": "AVAILABLE",
+    "social_sentiment": "NOT_AVAILABLE",
+    "news_sentiment": "PARTIALLY_AVAILABLE_AS_TEXT",
+    "crowding_metrics": "NOT_AVAILABLE"
+  },
+  "available": true,
+  "blocked": false,
+  "reason": "Price and volume data available. F16 currently defined as sentiment factor; redefinition to PRICE_VOLUME_ATTENTION required before proceeding. Social sentiment NLP pipeline not available.",
+  "timestamp": "2026-06-10T03:01:20.629929+08:00"
+}

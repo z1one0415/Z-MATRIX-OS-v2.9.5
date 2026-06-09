@@ -1,0 +1,10 @@
+{
+  "downstream_consumers": [
+    "G18",
+    "G17"
+  ],
+  "input_format": "TBD",
+  "output_format": "TBD",
+  "taxonomy_review": true,
+  "timestamp": "2026-06-10T03:01:20.629929+08:00"
+}

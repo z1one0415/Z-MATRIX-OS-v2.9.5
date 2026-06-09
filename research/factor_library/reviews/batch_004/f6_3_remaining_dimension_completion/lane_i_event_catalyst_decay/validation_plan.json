@@ -1,0 +1,13 @@
+{
+  "unit_tests": [
+    "proximity_in_0_1",
+    "decay_monotonic"
+  ],
+  "smoke_tests": [
+    "all_active_events_have_score"
+  ],
+  "data_gap_tests": [
+    "no_event_treat_as_0"
+  ],
+  "timestamp": "2026-06-10T03:01:20.583504+08:00"
+}

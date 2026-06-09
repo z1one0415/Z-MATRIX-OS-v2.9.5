@@ -1,0 +1,15 @@
+{
+  "lane_id": "G",
+  "target_factors": [
+    "F41",
+    "F42"
+  ],
+  "goal": "industry_chain_evidence",
+  "allowed_outcomes": [
+    "MATERIALIZED",
+    "SOURCE_CONTRACT_ONLY",
+    "BLOCKED_BY_SOURCE_DATA",
+    "TAXONOMY_REVIEW_REQUIRED"
+  ],
+  "timestamp": "2026-06-10T03:01:20.538768+08:00"
+}

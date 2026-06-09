@@ -1,0 +1,9 @@
+{
+  "materialized": false,
+  "source_contract_only": true,
+  "blocked": false,
+  "ticker_universe": "all_a_shares",
+  "rebalance_date": "daily",
+  "reason": "Event calendar source exists; impact scoring and decay model pending implementation.",
+  "timestamp": "2026-06-10T03:01:20.583504+08:00"
+}

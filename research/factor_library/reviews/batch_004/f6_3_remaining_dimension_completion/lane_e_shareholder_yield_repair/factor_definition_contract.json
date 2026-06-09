@@ -1,0 +1,8 @@
+{
+  "factor_id": "F13",
+  "name": "shareholder_yield_variance",
+  "category": "quality",
+  "dimension": "shareholder_return",
+  "formula_description": "(dividend_paid + buyback) / market_cap; YoY variance",
+  "timestamp": "2026-06-10T03:01:20.492733+08:00"
+}

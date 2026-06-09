@@ -1,0 +1,10 @@
+{
+  "downstream_consumers": [
+    "G18",
+    "G17",
+    "G05"
+  ],
+  "input_format": "daily_ticker_zscore",
+  "output_format": "factor_vector_parquet",
+  "timestamp": "2026-06-10T03:01:20.492733+08:00"
+}

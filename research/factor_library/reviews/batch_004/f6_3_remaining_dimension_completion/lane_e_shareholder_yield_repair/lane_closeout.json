@@ -1,0 +1,7 @@
+{
+  "status": "V13_F6_3_LANE_E_CLOSE",
+  "outcome": "MATERIALIZED_NON_INFORMATIVE",
+  "reason": "A-share buyback/dividend frequency too low for meaningful cross-section; factor deemed non-informative until <20 tickers",
+  "next": "MONITOR_BUYBACK_FREQUENCY_QUARTERLY",
+  "timestamp": "2026-06-10T03:01:20.492733+08:00"
+}

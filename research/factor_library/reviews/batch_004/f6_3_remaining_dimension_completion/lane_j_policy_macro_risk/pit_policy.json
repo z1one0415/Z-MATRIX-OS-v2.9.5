@@ -1,0 +1,7 @@
+{
+  "factor_id": "F50",
+  "pit_safe": true,
+  "known_at_strategy": "daily_close",
+  "staleness_boundary": "next_trading_day",
+  "timestamp": "2026-06-10T03:01:20.606116+08:00"
+}

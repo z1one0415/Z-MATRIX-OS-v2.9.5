@@ -1,0 +1,45 @@
+{
+  "pipeline_signature": "Z2-V13-F6-3-REMAINING-DIMENSION-LANE-COMPLETION-CLOSEOUT",
+  "status": "V13_F6_3_PARTIAL",
+  "base_commit": "9e7c083",
+  "timestamp": "2026-06-10T03:01:39.788856+08:00",
+  "lanes_executed": 8,
+  "excluded_completed_factors": [
+    "F06",
+    "F07",
+    "F08",
+    "F12",
+    "F14",
+    "F15"
+  ],
+  "materialized_lanes": [
+    "lane_e_shareholder_yield_repair"
+  ],
+  "materialized_details": {
+    "lane_e_shareholder_yield_repair": "MATERIALIZED_NON_INFORMATIVE"
+  },
+  "source_contract_only": [
+    "lane_g_industry_chain_evidence",
+    "lane_i_event_catalyst_decay",
+    "lane_j_policy_macro_risk"
+  ],
+  "blocked_lanes": [
+    "lane_f_earnings_revision",
+    "lane_h_operating_cycle",
+    "lane_l_money_flow_microstructure"
+  ],
+  "taxonomy_review_required": [
+    "lane_k_sentiment_attention_crowding"
+  ],
+  "monitoring_rerun_executed": false,
+  "formal_oos_validation_executed": false,
+  "candidate_state_update_executed": false,
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "recommended_next_action": "PREPARE_V13_F6_4_PARENT_MERGE_AND_STATUS_CANONICALIZATION"
+}

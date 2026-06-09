@@ -1,0 +1,13 @@
+{
+  "unit_tests": [
+    "score_in_0_1",
+    "weights_sum_to_1"
+  ],
+  "smoke_tests": [
+    "chain_position_valid_for_top100"
+  ],
+  "data_gap_tests": [
+    "missing_chain_treat_as_0"
+  ],
+  "timestamp": "2026-06-10T03:01:20.538768+08:00"
+}

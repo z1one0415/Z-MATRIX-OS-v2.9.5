@@ -1,0 +1,14 @@
+{
+  "factor_id": "F43",
+  "formula_components": {
+    "avr_inventory": "balance_sheet",
+    "cogs": "income",
+    "avr_receivables": "balance_sheet",
+    "revenue": "income",
+    "avr_payables": "balance_sheet"
+  },
+  "weights": {},
+  "normalization": "cross_sectional_zscore",
+  "blocked": true,
+  "timestamp": "2026-06-10T03:01:20.560675+08:00"
+}

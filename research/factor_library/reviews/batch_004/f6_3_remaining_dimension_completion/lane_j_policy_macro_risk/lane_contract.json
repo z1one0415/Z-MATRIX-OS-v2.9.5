@@ -1,0 +1,16 @@
+{
+  "lane_id": "J",
+  "target_factors": [
+    "F50",
+    "F51",
+    "F52"
+  ],
+  "goal": "policy_macro_risk",
+  "allowed_outcomes": [
+    "MATERIALIZED",
+    "SOURCE_CONTRACT_ONLY",
+    "BLOCKED_BY_SOURCE_DATA",
+    "TAXONOMY_REVIEW_REQUIRED"
+  ],
+  "timestamp": "2026-06-10T03:01:20.606116+08:00"
+}

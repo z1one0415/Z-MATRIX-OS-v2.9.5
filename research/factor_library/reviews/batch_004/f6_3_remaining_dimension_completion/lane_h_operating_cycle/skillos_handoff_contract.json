@@ -1,0 +1,10 @@
+{
+  "downstream_consumers": [
+    "G18",
+    "G17"
+  ],
+  "input_format": "N/A",
+  "output_format": "N/A",
+  "blocked": true,
+  "timestamp": "2026-06-10T03:01:20.560675+08:00"
+}

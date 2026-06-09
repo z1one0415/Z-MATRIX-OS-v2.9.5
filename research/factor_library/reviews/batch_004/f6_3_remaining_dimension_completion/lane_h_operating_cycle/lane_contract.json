@@ -1,0 +1,17 @@
+{
+  "lane_id": "H",
+  "target_factors": [
+    "F43",
+    "F44",
+    "F45",
+    "F46"
+  ],
+  "goal": "operating_cycle",
+  "allowed_outcomes": [
+    "MATERIALIZED",
+    "SOURCE_CONTRACT_ONLY",
+    "BLOCKED_BY_SOURCE_DATA",
+    "TAXONOMY_REVIEW_REQUIRED"
+  ],
+  "timestamp": "2026-06-10T03:01:20.560675+08:00"
+}

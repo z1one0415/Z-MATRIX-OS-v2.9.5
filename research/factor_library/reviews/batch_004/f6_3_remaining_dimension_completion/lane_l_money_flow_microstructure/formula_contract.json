@@ -1,0 +1,14 @@
+{
+  "factor_id": "F56",
+  "formula_components": {
+    "close": "daily_ohlcv",
+    "high": "daily_ohlcv",
+    "low": "daily_ohlcv",
+    "volume": "daily_ohlcv"
+  },
+  "weights": {},
+  "normalization": "cross_sectional_zscore",
+  "note": "MFI computable from daily OHLCV; F57-F60 (order flow imbalance, large order, DDE, northbound) require tick data.",
+  "blocked": true,
+  "timestamp": "2026-06-10T03:01:20.652012+08:00"
+}

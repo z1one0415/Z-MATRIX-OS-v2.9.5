@@ -1,0 +1,12 @@
+{
+  "factor_id": "F09",
+  "formula_components": {
+    "num_upgrades": "external",
+    "num_downgrades": "external",
+    "num_covering": "external"
+  },
+  "weights": {},
+  "normalization": "cross_sectional_zscore",
+  "blocked": true,
+  "timestamp": "2026-06-10T03:01:20.515722+08:00"
+}

@@ -1,0 +1,7 @@
+{
+  "status": "V13_F6_3_LANE_F_CLOSE",
+  "outcome": "BLOCKED_BY_SOURCE_DATA",
+  "reason": "No analyst EPS/revision data feed; factor cannot be computed. Unblock requires Wind/Bloomberg integration.",
+  "next": "INTEGRATE_ANALYST_DATA_FEED_THEN_RERUN",
+  "timestamp": "2026-06-10T03:01:20.515722+08:00"
+}

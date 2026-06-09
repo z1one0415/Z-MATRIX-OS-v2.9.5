@@ -1,0 +1,7 @@
+{
+  "status": "V13_F6_3_LANE_J_CLOSE",
+  "outcome": "SOURCE_CONTRACT_ONLY",
+  "reason": "Macro data (VIX, yields, CNH, copper/gold) available via Flow S. Factor definitions, formulas, PIT policies defined. Sector regulation mapping pending structured NLP pipeline.",
+  "next": "BUILD_SECTOR_REGULATION_MAPPING",
+  "timestamp": "2026-06-10T03:01:20.606116+08:00"
+}

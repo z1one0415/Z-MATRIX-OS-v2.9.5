@@ -1,0 +1,68 @@
+{
+  "pipeline_signature": "Z2-V13-F6-3-REMAINING-DIMENSION-LANE-COMPLETION-CONTRACT",
+  "status": "V13_F6_3_CONTRACT_BUILT",
+  "timestamp": "2026-06-10T02:59:14.087039+08:00",
+  "base_commit": "9e7c083",
+  "completed_upstream": [
+    "F6.2",
+    "F6.2.1",
+    "F6.2.2"
+  ],
+  "excluded_from_scope": [
+    "F06",
+    "F07",
+    "F08",
+    "F12",
+    "F14",
+    "F15"
+  ],
+  "target_lanes": {
+    "E": {
+      "factor": "F13",
+      "goal": "shareholder_yield_variance_repair"
+    },
+    "F": {
+      "factor": "F09",
+      "goal": "earnings_revision_or_proxy"
+    },
+    "G": {
+      "factor": "F41,F42",
+      "goal": "industry_chain_evidence"
+    },
+    "H": {
+      "factor": "F43-F46",
+      "goal": "operating_cycle"
+    },
+    "I": {
+      "factor": "F47-F49",
+      "goal": "event_catalyst_decay"
+    },
+    "J": {
+      "factor": "F50-F52",
+      "goal": "policy_macro_risk"
+    },
+    "K": {
+      "factor": "F16,F53-F55",
+      "goal": "sentiment_attention_crowding"
+    },
+    "L": {
+      "factor": "F56-F60",
+      "goal": "money_flow_microstructure"
+    }
+  },
+  "allowed_outcomes": [
+    "MATERIALIZED",
+    "SOURCE_CONTRACT_ONLY",
+    "BLOCKED_BY_SOURCE_DATA",
+    "TAXONOMY_REVIEW_REQUIRED"
+  ],
+  "formal_oos_validation_allowed": false,
+  "candidate_state_update_allowed": false,
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

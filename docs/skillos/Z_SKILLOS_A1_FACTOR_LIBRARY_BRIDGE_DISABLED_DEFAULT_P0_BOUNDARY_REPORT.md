@@ -26,3 +26,12 @@
 
 ### Conclusion
 All boundaries verified. No forbidden content. Level 5 remains BLOCKED.
+
+## Hardening v2 (2026-06-09)
+
+- Config disabled now blocks fixture bridge even when kill switch is off.
+- DENY source/output/real-source semantics are preserved independently.
+- Factor DENY maps to DENY_BRIDGE_FACTOR_DENIED only after source/output/no-real-source checks pass.
+- Bridge evidence now inherits source factor response evidence fields.
+- C1 handoff preserves source_class / no_real_source_flag / P1_FIXTURE_ONLY / decision hashes.
+- Bridge tests expanded from 48 to 60 (+12 new tests).

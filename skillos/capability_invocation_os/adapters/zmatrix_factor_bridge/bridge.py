@@ -19,6 +19,8 @@ class A1FactorLibraryBridge:
     def _should_bridge(self) -> bool:
         if self._killed:
             return False
+        if not self._enabled:
+            return False
         if not self._fixture_mode:
             return False
         if self._factor_adapter is None:
@@ -38,8 +40,15 @@ class A1FactorLibraryBridge:
         from skillos.capability_invocation_os.adapters.zmatrix_factor_bridge.contracts import (
             validate_factor_response_for_bridge,
         )
+        from skillos.capability_invocation_os.adapters.zmatrix_factor_bridge.models import (
+            A1FactorBridgeDecision,
+        )
         from skillos.capability_invocation_os.adapters.zmatrix_factor_bridge.degradation import (
             allow_bridge_readonly_context,
+            deny_bridge_source_forbidden,
+            deny_bridge_real_source_forbidden,
+            deny_bridge_outputs_unsafe,
+            deny_bridge_execution_forbidden,
             deny_bridge_factor_denied,
         )
         from skillos.capability_invocation_os.adapters.zmatrix_factor_bridge.evidence import (
@@ -47,11 +56,22 @@ class A1FactorLibraryBridge:
         )
 
         decision = validate_factor_response_for_bridge(response)
-        if decision.value.startswith("DENY_"):
-            return deny_bridge_factor_denied()
+
+        # Map each specific DENY to the correct degradation, preserving safety semantics
+        deny_map = {
+            A1FactorBridgeDecision.DENY_BRIDGE_SOURCE_FORBIDDEN: deny_bridge_source_forbidden,
+            A1FactorBridgeDecision.DENY_BRIDGE_REAL_SOURCE_FORBIDDEN: deny_bridge_real_source_forbidden,
+            A1FactorBridgeDecision.DENY_BRIDGE_OUTPUTS_UNSAFE: deny_bridge_outputs_unsafe,
+            A1FactorBridgeDecision.DENY_BRIDGE_EXECUTION_FORBIDDEN: deny_bridge_execution_forbidden,
+            A1FactorBridgeDecision.DENY_BRIDGE_FACTOR_DENIED: deny_bridge_factor_denied,
+        }
+
+        builder = deny_map.get(decision)
+        if builder is not None:
+            return builder()
 
         base = allow_bridge_readonly_context()
-        evidence = build_a1_bridge_evidence(base)
+        evidence = build_a1_bridge_evidence(base, source_factor_response=response)
         return A1FactorBridgeResponse(
             response_id=base.response_id,
             decision=base.decision,

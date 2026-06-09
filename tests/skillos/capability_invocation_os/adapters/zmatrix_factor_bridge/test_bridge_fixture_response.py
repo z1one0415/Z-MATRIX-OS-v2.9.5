@@ -98,3 +98,58 @@ class TestBridgeFixtureResponse:
         evidence_dict = resp.evidence.__dict__ if hasattr(resp.evidence, "__dict__") else {}
         for field_name in forbidden_fields:
             assert field_name not in evidence_dict,                 f"Evidence should not have {field_name}"
+
+
+@patch.object(A1FactorLibraryBridge, "_should_bridge", return_value=True)
+def test_source_forbidden_bridge_returns_source_forbidden(_mock):
+    """Bridge must return DENY_BRIDGE_SOURCE_FORBIDDEN when source_class is forbidden."""
+    provider = FactorLibraryFixtureProvider()
+    # Create a fixture response with invalid source_class
+    fixture_resp = provider.get_fixture_profile("FAKE_FACTOR_001")
+    # Build a mock with wrong source_class
+    invalid_resp = FactorInvocationResponse(
+        response_id=fixture_resp.response_id,
+        decision=FactorAdapterDecision.ALLOW_READONLY_CONTEXT,
+        evidence=FactorEvidenceEnvelopeView(
+            source_commit="P1_FIXTURE_ONLY",
+            request_hash="test",
+            decision_hash="test",
+            factor_manifest_hash="test",
+            validation_snapshot_hash="test",
+            permission_tier="T0",
+            source_class="research_live",
+        ),
+        forbidden_outputs_removed=list(BLOCKED_OUTPUTS),
+    )
+    mock_adapter = MagicMock()
+    mock_adapter.get_factor_profile.return_value = invalid_resp
+    bridge = A1FactorLibraryBridge(factor_adapter=mock_adapter, fixture_mode=True)
+    resp = bridge.bridge_factor_profile("FAKE_FACTOR_001")
+    assert resp.decision == A1FactorBridgeDecision.DENY_BRIDGE_SOURCE_FORBIDDEN
+
+
+@patch.object(A1FactorLibraryBridge, "_should_bridge", return_value=True)
+def test_output_unsafe_bridge_returns_outputs_unsafe(_mock):
+    """Bridge must return DENY_BRIDGE_OUTPUTS_UNSAFE when outputs are unsafe."""
+    provider = FactorLibraryFixtureProvider()
+    fixture_resp = provider.get_fixture_profile("FAKE_FACTOR_001")
+    # Build a response with incomplete forbidden_outputs_removed
+    unsafe_resp = FactorInvocationResponse(
+        response_id=fixture_resp.response_id,
+        decision=FactorAdapterDecision.ALLOW_READONLY_CONTEXT,
+        evidence=FactorEvidenceEnvelopeView(
+            source_commit="P1_FIXTURE_ONLY",
+            request_hash="test",
+            decision_hash="test",
+            factor_manifest_hash="test",
+            validation_snapshot_hash="test",
+            permission_tier="T0",
+            source_class="factor_library_fixture",
+        ),
+        forbidden_outputs_removed=["buy_signal"],  # incomplete - missing most
+    )
+    mock_adapter = MagicMock()
+    mock_adapter.get_factor_profile.return_value = unsafe_resp
+    bridge = A1FactorLibraryBridge(factor_adapter=mock_adapter, fixture_mode=True)
+    resp = bridge.bridge_factor_profile("FAKE_FACTOR_001")
+    assert resp.decision == A1FactorBridgeDecision.DENY_BRIDGE_OUTPUTS_UNSAFE

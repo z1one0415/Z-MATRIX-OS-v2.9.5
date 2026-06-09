@@ -21,36 +21,43 @@ def validate_bridge_request(request: A1FactorBridgeRequest) -> A1FactorBridgeDec
 def validate_factor_response_for_bridge(response) -> A1FactorBridgeDecision:
     """Validate a FactorInvocationResponse from the factor_library adapter.
 
+    Checks safety FIRST (source/output/no-real-source), then factor denial.
+    Preserves each denial semantic independently.
     Never raises. Never fail-closed.
     """
-    from skillos.capability_invocation_os.adapters.factor_library.models import (
-        FactorAdapterDecision,
-    )
+    # 1. Evidence existence check
+    if response.evidence is None:
+        return A1FactorBridgeDecision.DENY_BRIDGE_REAL_SOURCE_FORBIDDEN
 
-    # Check for denied factor decisions (any DENY_ prefix)
-    if response.decision.value.startswith("DENY_"):
-        return A1FactorBridgeDecision.DENY_BRIDGE_FACTOR_DENIED
-
-    # Check source_class on evidence
-    source_class = ""
-    if response.evidence is not None:
-        source_class = getattr(response.evidence, "source_class", "")
+    # 2. Source class check
+    source_class = getattr(response.evidence, "source_class", "")
     if source_class not in ALLOWED_BRIDGE_INPUT_SOURCE_CLASSES:
         return A1FactorBridgeDecision.DENY_BRIDGE_SOURCE_FORBIDDEN
 
-    # Check no_real_source_flag on evidence (only if attribute exists)
-    if response.evidence is not None:
-        if hasattr(response.evidence, "no_real_source_flag"):
-            if response.evidence.no_real_source_flag is not True:
-                return A1FactorBridgeDecision.DENY_BRIDGE_REAL_SOURCE_FORBIDDEN
+    # 3. No real source check
+    if hasattr(response.evidence, "no_real_source_flag"):
+        if response.evidence.no_real_source_flag is not True:
+            return A1FactorBridgeDecision.DENY_BRIDGE_REAL_SOURCE_FORBIDDEN
 
-    # Check forbidden_outputs_removed exists on response
+    # 4. Forbidden outputs removed existence check
     if not hasattr(response, "forbidden_outputs_removed"):
         return A1FactorBridgeDecision.DENY_BRIDGE_OUTPUTS_UNSAFE
 
+    # 5. Forbidden outputs coverage check
     removed = set(response.forbidden_outputs_removed)
     if not FORBIDDEN_BRIDGE_OUTPUTS.issubset(removed):
         return A1FactorBridgeDecision.DENY_BRIDGE_OUTPUTS_UNSAFE
+
+    # 6. Payload safety check (no forbidden fields present)
+    for field in FORBIDDEN_BRIDGE_OUTPUTS:
+        if hasattr(response, field):
+            val = getattr(response, field, None)
+            if val is not None and val != False and val != []:
+                return A1FactorBridgeDecision.DENY_BRIDGE_OUTPUTS_UNSAFE
+
+    # 7. Factor-level denial check (only after source/output/no-real-source all pass)
+    if response.decision.value.startswith("DENY_"):
+        return A1FactorBridgeDecision.DENY_BRIDGE_FACTOR_DENIED
 
     return A1FactorBridgeDecision.ALLOW_BRIDGE_READONLY_CONTEXT
 

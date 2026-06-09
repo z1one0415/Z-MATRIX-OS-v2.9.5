@@ -11,7 +11,7 @@ This implementation branch is sealed. All code, tests, docs complete. No further
 ## Branch: impl/skillos-zmatrix-module-adapter-factor-library-bridge-disabled-default-p0
 ## Base: postmerge/skillos-v0-baseline-freeze @ 12bf904
 
-## Test Evidence: 614 passed, 4 skipped, 0 failures
+## Test Evidence: 626 passed, 4 skipped, 0 failures
 
 ## Invariants
 - should_force_disabled() → True (kill switch active)
@@ -30,3 +30,12 @@ This implementation branch is sealed. All code, tests, docs complete. No further
 
 ## Next Legal Action
 Human merge review decision only.
+
+## Hardening v2 (2026-06-09)
+
+- Config disabled now blocks fixture bridge even when kill switch is off.
+- DENY source/output/real-source semantics are preserved independently.
+- Factor DENY maps to DENY_BRIDGE_FACTOR_DENIED only after source/output/no-real-source checks pass.
+- Bridge evidence now inherits source factor response evidence fields.
+- C1 handoff preserves source_class / no_real_source_flag / P1_FIXTURE_ONLY / decision hashes.
+- Bridge tests expanded from 48 to 60 (+12 new tests).

@@ -123,3 +123,125 @@ def test_build_report_evidence_refs():
     refs = build_report_evidence_refs(sections)
     assert len(refs) == 2
     assert all(isinstance(r, str) and len(r) == 64 for r in refs)
+
+
+
+def test_build_report_evidence_inherits_request_hash():
+    """Evidence inherits request_hash from B1 evidence dict."""
+    resp = CompositionGraphResponse(
+        response_id="rh-test",
+        decision=CompositionGraphDecision.ALLOW_GRAPH_READONLY_SUMMARY,
+        evidence={
+            "source_class": "fixture",
+            "no_real_source_flag": True,
+            "fixture_source_commit": "X",
+            "request_hash": "req_from_b1",
+            "response_hash_placeholder": "resp_from_b1",
+            "factor_decision_hash": "fdh",
+            "bridge_decision_hash": "bdh",
+            "graph_node_hash": "gnh",
+            "graph_edge_hash": "geh",
+        },
+        forbidden_outputs_removed=sorted(FORBIDDEN_REPORT_OUTPUTS),
+    )
+    ev = build_report_evidence_from_b1_graph(resp, "resp-rh")
+    assert ev.request_hash == "req_from_b1"
+
+
+def test_build_report_evidence_inherits_response_hash_placeholder():
+    """Evidence inherits response_hash_placeholder from B1 evidence dict."""
+    resp = CompositionGraphResponse(
+        response_id="rhp-test",
+        decision=CompositionGraphDecision.ALLOW_GRAPH_READONLY_SUMMARY,
+        evidence={
+            "source_class": "fixture",
+            "no_real_source_flag": True,
+            "response_hash_placeholder": "resp_placeholder_inherited",
+            "request_hash": "rh",
+            "factor_decision_hash": "fdh",
+            "bridge_decision_hash": "bdh",
+            "graph_node_hash": "gnh",
+            "graph_edge_hash": "geh",
+        },
+        forbidden_outputs_removed=sorted(FORBIDDEN_REPORT_OUTPUTS),
+    )
+    ev = build_report_evidence_from_b1_graph(resp, "resp-rhp")
+    assert ev.response_hash_placeholder == "resp_placeholder_inherited"
+
+
+def test_build_report_evidence_inherits_factor_decision_hash():
+    """Evidence inherits factor_decision_hash from B1 evidence dict."""
+    resp = CompositionGraphResponse(
+        response_id="fdh-test",
+        decision=CompositionGraphDecision.ALLOW_GRAPH_READONLY_SUMMARY,
+        evidence={
+            "source_class": "fixture",
+            "no_real_source_flag": True,
+            "request_hash": "rh",
+            "response_hash_placeholder": "rhp",
+            "factor_decision_hash": "factor_inherited_123",
+            "bridge_decision_hash": "bdh",
+            "graph_node_hash": "gnh",
+            "graph_edge_hash": "geh",
+        },
+        forbidden_outputs_removed=sorted(FORBIDDEN_REPORT_OUTPUTS),
+    )
+    ev = build_report_evidence_from_b1_graph(resp, "resp-fdh")
+    assert ev.factor_decision_hash == "factor_inherited_123"
+
+
+def test_build_report_evidence_inherits_bridge_decision_hash():
+    """Evidence inherits bridge_decision_hash from B1 evidence dict."""
+    resp = CompositionGraphResponse(
+        response_id="bdh-test",
+        decision=CompositionGraphDecision.ALLOW_GRAPH_READONLY_SUMMARY,
+        evidence={
+            "source_class": "fixture",
+            "no_real_source_flag": True,
+            "request_hash": "rh",
+            "response_hash_placeholder": "rhp",
+            "factor_decision_hash": "fdh",
+            "bridge_decision_hash": "bridge_inherited_456",
+            "graph_node_hash": "gnh",
+            "graph_edge_hash": "geh",
+        },
+        forbidden_outputs_removed=sorted(FORBIDDEN_REPORT_OUTPUTS),
+    )
+    ev = build_report_evidence_from_b1_graph(resp, "resp-bdh")
+    assert ev.bridge_decision_hash == "bridge_inherited_456"
+
+
+def test_build_report_evidence_missing_factor_decision_hash_computed():
+    """factor_decision_hash is computed (non-empty) when not in B1 evidence."""
+    resp = CompositionGraphResponse(
+        response_id="fdh-missing",
+        decision=CompositionGraphDecision.ALLOW_GRAPH_READONLY_SUMMARY,
+        evidence={
+            "source_class": "fixture",
+            "no_real_source_flag": True,
+            "graph_node_hash": "gnh",
+            "graph_edge_hash": "geh",
+        },
+        forbidden_outputs_removed=sorted(FORBIDDEN_REPORT_OUTPUTS),
+    )
+    ev = build_report_evidence_from_b1_graph(resp, "resp-fdh-m")
+    assert ev.factor_decision_hash != ""
+    assert len(ev.factor_decision_hash) == 64
+
+
+def test_build_report_evidence_missing_bridge_decision_hash_computed():
+    """bridge_decision_hash is computed (non-empty) when not in B1 evidence."""
+    resp = CompositionGraphResponse(
+        response_id="bdh-missing",
+        decision=CompositionGraphDecision.ALLOW_GRAPH_READONLY_SUMMARY,
+        evidence={
+            "source_class": "fixture",
+            "no_real_source_flag": True,
+            "graph_node_hash": "gnh",
+            "graph_edge_hash": "geh",
+        },
+        forbidden_outputs_removed=sorted(FORBIDDEN_REPORT_OUTPUTS),
+    )
+    ev = build_report_evidence_from_b1_graph(resp, "resp-bdh-m")
+    assert ev.bridge_decision_hash != ""
+    assert len(ev.bridge_decision_hash) == 64

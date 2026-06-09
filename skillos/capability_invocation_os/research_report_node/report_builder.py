@@ -20,6 +20,7 @@ from skillos.capability_invocation_os.research_report_node.models import (
 from skillos.capability_invocation_os.research_report_node.contracts import (
     validate_report_request,
     validate_b1_graph_response_for_report,
+    validate_report_response,
 )
 from skillos.capability_invocation_os.research_report_node.section_builder import (
     build_report_header_section,
@@ -40,6 +41,7 @@ from skillos.capability_invocation_os.research_report_node.evidence import (
 )
 from skillos.capability_invocation_os.research_report_node.z9_snapshot import (
     build_z9_review_snapshot_candidate,
+    build_z9_review_snapshot_candidate_from_report,
 )
 
 
@@ -124,6 +126,8 @@ class ResearchReportNode:
             return self.build_degraded_report(b1_decision)
         if b1_decision == ResearchReportDecision.DENY_Z2_OUTPUTS_UNSAFE:
             return self.build_degraded_report(b1_decision)
+        if b1_decision == ResearchReportDecision.DENY_Z2_EVIDENCE_INCOMPLETE:
+            return self.build_degraded_report(b1_decision)
 
         # Build sections
         response_id = str(uuid.uuid4())
@@ -144,17 +148,18 @@ class ResearchReportNode:
         # Build evidence
         evidence = build_report_evidence_from_b1_graph(b1_response, response_id)
 
-        # Build Z9 snapshot
+        # Build Z9 snapshot from report
         evidence_refs = build_report_evidence_refs(sections)
-        z9_candidate = build_z9_review_snapshot_candidate(
-            report_node_id=response_id,
-            confidence_level="LOW",
+        z9_candidate = build_z9_review_snapshot_candidate_from_report(
+            report_response=None,  # not yet built
+            sections=sections,
+            evidence=evidence,
         )
 
         # Determine final decision
         final_decision = b1_decision
 
-        return ResearchReportNodeResponse(
+        response = ResearchReportNodeResponse(
             response_id=response_id,
             decision=final_decision,
             evidence={"report_evidence": evidence, "z9_candidate": z9_candidate},
@@ -171,3 +176,10 @@ class ResearchReportNode:
             no_trade_signal=True,
             no_position_weight=True,
         )
+
+        # Validate response before return
+        validation_decision = validate_report_response(response)
+        if validation_decision.value.startswith("DENY_"):
+            return self.build_degraded_report(validation_decision)
+
+        return response

@@ -74,6 +74,11 @@ def build_report_evidence_from_b1_graph(
         rollback_marker = b1_evidence.rollback_marker
         privacy_marker = b1_evidence.privacy_marker
         c1_handoff_marker = b1_evidence.c1_handoff_marker
+        # Inherit chain hashes (may not exist on base dataclass)
+        request_hash = getattr(b1_evidence, "request_hash", "") or ""
+        response_hash_placeholder = getattr(b1_evidence, "response_hash_placeholder", "") or ""
+        factor_decision_hash = getattr(b1_evidence, "factor_decision_hash", "") or ""
+        bridge_decision_hash = getattr(b1_evidence, "bridge_decision_hash", "") or ""
     elif isinstance(b1_evidence, dict):
         source_class = b1_evidence.get("source_class", "")
         no_real_source_flag = b1_evidence.get("no_real_source_flag", True)
@@ -85,6 +90,11 @@ def build_report_evidence_from_b1_graph(
         rollback_marker = b1_evidence.get("rollback_marker", False)
         privacy_marker = b1_evidence.get("privacy_marker", True)
         c1_handoff_marker = b1_evidence.get("c1_handoff_marker", True)
+        # Inherit chain hashes from dict
+        request_hash = b1_evidence.get("request_hash", "") or ""
+        response_hash_placeholder = b1_evidence.get("response_hash_placeholder", "") or ""
+        factor_decision_hash = b1_evidence.get("factor_decision_hash", "") or ""
+        bridge_decision_hash = b1_evidence.get("bridge_decision_hash", "") or ""
     else:
         source_class = ""
         no_real_source_flag = True
@@ -96,6 +106,32 @@ def build_report_evidence_from_b1_graph(
         rollback_marker = False
         privacy_marker = True
         c1_handoff_marker = True
+        request_hash = ""
+        response_hash_placeholder = ""
+        factor_decision_hash = ""
+        bridge_decision_hash = ""
+
+    # Compute hashes from B1 response when not provided by evidence
+    if not request_hash:
+        request_hash = _stable_hash(json.dumps(
+            {"b1_response_id": b1_response.response_id, "mode": "request"},
+            sort_keys=True,
+        ))
+    if not response_hash_placeholder:
+        response_hash_placeholder = _stable_hash(json.dumps(
+            {"response_id": response_id, "b1_response_id": b1_response.response_id},
+            sort_keys=True,
+        ))
+    if not factor_decision_hash:
+        factor_decision_hash = _stable_hash(json.dumps(
+            {"b1_decision": b1_response.decision.value, "type": "factor"},
+            sort_keys=True,
+        ))
+    if not bridge_decision_hash:
+        bridge_decision_hash = _stable_hash(json.dumps(
+            {"b1_decision": b1_response.decision.value, "type": "bridge"},
+            sort_keys=True,
+        ))
 
     node_hash = build_z2_report_node_hash(response_id, "DISABLED_DEFAULT_P0")
     forbidden_hash = _stable_hash(json.dumps(sorted(FORBIDDEN_REPORT_OUTPUTS)))
@@ -104,10 +140,10 @@ def build_report_evidence_from_b1_graph(
         source_class=source_class,
         no_real_source_flag=no_real_source_flag,
         fixture_source_commit=fixture_source_commit,
-        request_hash="",
-        response_hash_placeholder="",
-        factor_decision_hash="",
-        bridge_decision_hash="",
+        request_hash=request_hash,
+        response_hash_placeholder=response_hash_placeholder,
+        factor_decision_hash=factor_decision_hash,
+        bridge_decision_hash=bridge_decision_hash,
         graph_node_hash=graph_node_hash,
         graph_edge_hash=graph_edge_hash,
         permission_tier=permission_tier,

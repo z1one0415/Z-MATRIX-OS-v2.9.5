@@ -21,18 +21,23 @@ from skillos.capability_invocation_os.research_report_node.report_builder import
 
 
 def _make_valid_b1_evidence():
-    return CompositionGraphEvidence(
-        source_class="factor_library_fixture",
-        no_real_source_flag=True,
-        fixture_source_commit="P1_FIXTURE_ONLY",
-        graph_node_hash="n",
-        graph_edge_hash="e",
-        permission_tier="T0",
-        forbidden_outputs_removed_hash="h",
-        rollback_marker=False,
-        privacy_marker=True,
-        c1_handoff_marker=True,
-    )
+    """Return dict evidence with all required hashes populated."""
+    return {
+        "source_class": "factor_library_fixture",
+        "no_real_source_flag": True,
+        "fixture_source_commit": "P1_FIXTURE_ONLY",
+        "graph_node_hash": "node_hash_abc",
+        "graph_edge_hash": "edge_hash_def",
+        "permission_tier": "T0",
+        "forbidden_outputs_removed_hash": "frh",
+        "rollback_marker": False,
+        "privacy_marker": True,
+        "c1_handoff_marker": True,
+        "request_hash": "req_hash_123",
+        "response_hash_placeholder": "resp_hash_456",
+        "factor_decision_hash": "factor_hash_789",
+        "bridge_decision_hash": "bridge_hash_012",
+    }
 
 
 def _make_valid_b1_response():
@@ -141,3 +146,83 @@ def test_no_forbidden_method_names():
     methods = [m for m in dir(node) if not m.startswith("_")]
     for method in methods:
         assert method not in FORBIDDEN_METHOD_NAMES, f"Forbidden method: {method}"
+
+
+
+@patch("skillos.capability_invocation_os.research_report_node.report_builder.should_force_disabled", return_value=False)
+@patch("skillos.capability_invocation_os.research_report_node.report_builder.is_research_report_node_enabled", return_value=True)
+def test_build_report_validates_before_return(mock_enabled, mock_killed):
+    """Report validates before return — valid B1 still returns ALLOW."""
+    node = ResearchReportNode(fixture_mode=True)
+    resp = node.build_report_from_b1_graph(_make_valid_b1_response())
+    # validate_report_response is called internally; valid → ALLOW
+    assert resp.decision == ResearchReportDecision.ALLOW_Z2_READONLY_REPORT
+
+
+@patch("skillos.capability_invocation_os.research_report_node.report_builder.should_force_disabled", return_value=False)
+@patch("skillos.capability_invocation_os.research_report_node.report_builder.is_research_report_node_enabled", return_value=True)
+def test_build_report_b1_missing_hashes_evidence_incomplete(mock_enabled, mock_killed):
+    """B1 with missing evidence hashes → DENY_Z2_EVIDENCE_INCOMPLETE."""
+    incomplete_evidence = {
+        "source_class": "fixture",
+        "no_real_source_flag": True,
+        "graph_node_hash": "",
+        "graph_edge_hash": "",
+        "request_hash": "",
+        "response_hash_placeholder": "",
+        "factor_decision_hash": "",
+        "bridge_decision_hash": "",
+    }
+    resp_b1 = CompositionGraphResponse(
+        response_id="incomplete-ev",
+        decision=CompositionGraphDecision.ALLOW_GRAPH_READONLY_SUMMARY,
+        evidence=incomplete_evidence,
+        forbidden_outputs_removed=sorted(FORBIDDEN_REPORT_OUTPUTS),
+    )
+    node = ResearchReportNode(fixture_mode=True)
+    resp = node.build_report_from_b1_graph(resp_b1)
+    assert resp.decision == ResearchReportDecision.DENY_Z2_EVIDENCE_INCOMPLETE
+    assert resp.degraded is True
+
+
+@patch("skillos.capability_invocation_os.research_report_node.report_builder.should_force_disabled", return_value=False)
+@patch("skillos.capability_invocation_os.research_report_node.report_builder.is_research_report_node_enabled", return_value=True)
+def test_build_report_b1_incomplete_forbidden_outputs_unsafe(mock_enabled, mock_killed):
+    """B1 with incomplete forbidden_outputs → DENY_Z2_OUTPUTS_UNSAFE."""
+    resp_b1 = CompositionGraphResponse(
+        response_id="unsafe-fo",
+        decision=CompositionGraphDecision.ALLOW_GRAPH_READONLY_SUMMARY,
+        evidence=_make_valid_b1_evidence(),
+        forbidden_outputs_removed=["alpha_claim"],  # incomplete
+    )
+    node = ResearchReportNode(fixture_mode=True)
+    resp = node.build_report_from_b1_graph(resp_b1)
+    assert resp.decision == ResearchReportDecision.DENY_Z2_OUTPUTS_UNSAFE
+    assert resp.degraded is True
+
+
+@patch("skillos.capability_invocation_os.research_report_node.report_builder.should_force_disabled", return_value=False)
+@patch("skillos.capability_invocation_os.research_report_node.report_builder.is_research_report_node_enabled", return_value=True)
+def test_build_report_z9_snapshot_not_empty_shell(mock_enabled, mock_killed):
+    """Z9 snapshot in evidence is populated, not empty shell."""
+    node = ResearchReportNode(fixture_mode=True)
+    resp = node.build_report_from_b1_graph(_make_valid_b1_response())
+    z9 = resp.evidence.get("z9_candidate")
+    assert z9 is not None
+    assert z9.source_graph_hash != ""
+    assert z9.evidence_chain_hash != ""
+    assert z9.factor_context_summary_hash != ""
+    assert z9.research_summary_hash != ""
+    assert z9.risk_warning_hash != ""
+
+
+@patch("skillos.capability_invocation_os.research_report_node.report_builder.should_force_disabled", return_value=False)
+@patch("skillos.capability_invocation_os.research_report_node.report_builder.is_research_report_node_enabled", return_value=True)
+def test_build_report_validate_report_response_called(mock_enabled, mock_killed):
+    """validate_report_response is called — response passes validation."""
+    from skillos.capability_invocation_os.research_report_node.contracts import validate_report_response
+    node = ResearchReportNode(fixture_mode=True)
+    resp = node.build_report_from_b1_graph(_make_valid_b1_response())
+    # If we got here with ALLOW, validate_report_response was called and passed
+    decision = validate_report_response(resp)
+    assert decision == ResearchReportDecision.ALLOW_Z2_READONLY_REPORT

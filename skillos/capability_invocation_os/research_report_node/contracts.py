@@ -4,6 +4,7 @@ from dataclasses import fields as dataclass_fields
 
 from skillos.capability_invocation_os.composition_graph.models import (
     CompositionGraphResponse,
+    CompositionGraphEvidence,
 )
 from skillos.capability_invocation_os.research_report_node.constants import (
     FORBIDDEN_REPORT_OUTPUTS,
@@ -18,6 +19,12 @@ from skillos.capability_invocation_os.research_report_node.models import (
     ResearchReportEvidence,
     Z9ReviewSnapshotCandidate,
 )
+
+
+def forbidden_outputs_removed_complete(values) -> bool:
+    """Check that FORBIDDEN_REPORT_OUTPUTS is a subset of values."""
+    from .constants import FORBIDDEN_REPORT_OUTPUTS
+    return FORBIDDEN_REPORT_OUTPUTS.issubset(set(values))
 
 
 def payload_contains_forbidden_outputs(payload) -> bool:
@@ -51,6 +58,29 @@ def validate_report_request(request: ResearchReportNodeRequest) -> ResearchRepor
     return ResearchReportDecision.ALLOW_Z2_READONLY_REPORT
 
 
+def _check_b1_evidence_hashes(evidence) -> bool:
+    """Check that required evidence hashes are present in B1 evidence."""
+    required = [
+        "factor_decision_hash",
+        "bridge_decision_hash",
+        "graph_node_hash",
+        "graph_edge_hash",
+        "request_hash",
+        "response_hash_placeholder",
+    ]
+    if isinstance(evidence, dict):
+        for key in required:
+            if not evidence.get(key):
+                return False
+    elif hasattr(evidence, "__dataclass_fields__"):
+        for key in required:
+            if not getattr(evidence, key, ""):
+                return False
+    else:
+        return False
+    return True
+
+
 def validate_b1_graph_response_for_report(
     b1_response,
 ) -> ResearchReportDecision:
@@ -67,17 +97,23 @@ def validate_b1_graph_response_for_report(
         if evidence.get("no_real_source_flag") is not True:
             return ResearchReportDecision.DENY_Z2_REAL_SOURCE_FORBIDDEN
 
-    # Check forbidden_outputs_removed
+    # Check forbidden_outputs_removed complete (not just non-empty)
     if not b1_response.forbidden_outputs_removed:
         return ResearchReportDecision.DENY_Z2_OUTPUTS_UNSAFE
-
-    # Check if decision is DENY
-    if b1_response.decision.value.startswith("DENY_"):
-        return ResearchReportDecision.ALLOW_Z2_DEGRADED_REPORT
+    if not forbidden_outputs_removed_complete(b1_response.forbidden_outputs_removed):
+        return ResearchReportDecision.DENY_Z2_OUTPUTS_UNSAFE
 
     # Check payload for forbidden outputs
     if payload_contains_forbidden_outputs(b1_response):
         return ResearchReportDecision.DENY_Z2_OUTPUTS_UNSAFE
+
+    # Check missing evidence hashes
+    if not _check_b1_evidence_hashes(evidence):
+        return ResearchReportDecision.DENY_Z2_EVIDENCE_INCOMPLETE
+
+    # Check if decision is DENY
+    if b1_response.decision.value.startswith("DENY_"):
+        return ResearchReportDecision.ALLOW_Z2_DEGRADED_REPORT
 
     return ResearchReportDecision.ALLOW_Z2_READONLY_REPORT
 
@@ -92,6 +128,12 @@ def validate_report_section(section: ResearchReportSection) -> ResearchReportDec
         return ResearchReportDecision.DENY_Z2_EVIDENCE_INCOMPLETE
     if not section.readonly_only:
         return ResearchReportDecision.DENY_Z2_EXECUTION_FORBIDDEN
+    # Check forbidden_outputs_removed complete
+    if section.blocked_outputs_removed and not forbidden_outputs_removed_complete(section.blocked_outputs_removed):
+        return ResearchReportDecision.DENY_Z2_OUTPUTS_UNSAFE
+    # Check payload for forbidden outputs
+    if payload_contains_forbidden_outputs(section):
+        return ResearchReportDecision.DENY_Z2_OUTPUTS_UNSAFE
     return ResearchReportDecision.ALLOW_Z2_READONLY_REPORT
 
 
@@ -109,6 +151,18 @@ def validate_report_response(response: ResearchReportNodeResponse) -> ResearchRe
         return ResearchReportDecision.DENY_Z2_OUTPUTS_UNSAFE
     if not response.forbidden_outputs_removed:
         return ResearchReportDecision.DENY_Z2_OUTPUTS_UNSAFE
+    # Check forbidden_outputs_removed complete
+    if not forbidden_outputs_removed_complete(response.forbidden_outputs_removed):
+        return ResearchReportDecision.DENY_Z2_OUTPUTS_UNSAFE
+    # Scan sections for forbidden outputs
+    for section in response.sections:
+        if payload_contains_forbidden_outputs(section):
+            return ResearchReportDecision.DENY_Z2_OUTPUTS_UNSAFE
+    # Scan z9 snapshot in evidence
+    if isinstance(response.evidence, dict):
+        z9 = response.evidence.get("z9_candidate")
+        if z9 is not None and payload_contains_forbidden_outputs(z9):
+            return ResearchReportDecision.DENY_Z2_OUTPUTS_UNSAFE
     return ResearchReportDecision.ALLOW_Z2_READONLY_REPORT
 
 
@@ -127,6 +181,12 @@ def validate_z9_snapshot_candidate(
     if not candidate.no_broker_action:
         return ResearchReportDecision.DENY_Z2_OUTPUTS_UNSAFE
     if not candidate.no_position_change:
+        return ResearchReportDecision.DENY_Z2_OUTPUTS_UNSAFE
+    # Check forbidden_outputs_removed complete
+    if candidate.blocked_outputs_removed and not forbidden_outputs_removed_complete(candidate.blocked_outputs_removed):
+        return ResearchReportDecision.DENY_Z2_OUTPUTS_UNSAFE
+    # Check payload for forbidden outputs
+    if payload_contains_forbidden_outputs(candidate):
         return ResearchReportDecision.DENY_Z2_OUTPUTS_UNSAFE
     return ResearchReportDecision.ALLOW_Z2_READONLY_REPORT
 

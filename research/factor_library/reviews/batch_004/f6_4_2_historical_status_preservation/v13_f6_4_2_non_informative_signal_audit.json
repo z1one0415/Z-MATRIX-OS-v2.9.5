@@ -1,0 +1,23 @@
+{
+  "pipeline_signature": "Z2-V13-F6-4-2-NON-INFORMATIVE-SIGNAL-AUDIT",
+  "status": "V13_F6_4_2_NON_INFORMATIVE_AUDIT_COMPLETE",
+  "base_commit": "e045d93",
+  "non_informative_factors": [
+    {
+      "factor_id": "F13",
+      "factor_name": "SHAREHOLDER_YIELD",
+      "status": "MATERIALIZED_NON_INFORMATIVE",
+      "reason": "All 4 tickers had zero dividend yield at 2026-05-06 ex_date cutoff",
+      "has_signal_scores": true,
+      "adds_cross_sectional_information": false,
+      "adds_zero_variance_column": true,
+      "remediation": "Re-evaluate in next OOS month when dividends may have gone ex-dividend",
+      "do_not_demote": "Keep as MATERIALIZED_NON_INFORMATIVE, not REJECTED, not RESERVED"
+    }
+  ],
+  "impact": {
+    "informative_signal_ready_count": 23,
+    "non_informative_count": 1,
+    "note": "Exclude F13 when counting useful signal-ready factors for monitoring"
+  }
+}

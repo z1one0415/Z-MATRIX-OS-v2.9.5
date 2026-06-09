@@ -1,0 +1,56 @@
+{
+  "pipeline_signature": "Z2-V13-F6-4-2-PREVIOUS-STATUS-SOURCE-AUDIT",
+  "status": "V13_F6_4_2_SOURCE_AUDIT_COMPLETE",
+  "base_commit": "e045d93",
+  "evidence": {
+    "rejected_factors": {
+      "factors": [
+        "F02",
+        "F03",
+        "F05"
+      ],
+      "source": "v13_f5_1_19_1 + v13_f5_3_1"
+    },
+    "hypothesis_only": {
+      "factors": [
+        "F03R"
+      ],
+      "source": "v13_f5_3_1_registry_preservation_closeout"
+    },
+    "source_audit": {
+      "factors": [
+        "F17",
+        "F18",
+        "F19",
+        "F20"
+      ],
+      "source": "v13_f5_3_1_registry_preservation_closeout"
+    },
+    "watch_only": {
+      "factors": [
+        "F22",
+        "F26",
+        "F27",
+        "F34"
+      ],
+      "source": "v13_f5_3_1_registry_preservation_closeout"
+    },
+    "orange_monitoring": {
+      "factors": [
+        "F01"
+      ],
+      "source": "factor_domain_registry_v1 + user instruction"
+    }
+  },
+  "flattening_detected": {
+    "in_f6_4_1_ledger": [
+      "F02/F03/F05 shown as RESERVED_NOT_IMPLEMENTED (should be REJECTED)",
+      "F01 shown as RESERVED (should be ORANGE_MONITORING)",
+      "F17-F20 shown as RESERVED (should be SOURCE_AUDIT_COMPLETED)",
+      "F13 shown as MATERIALIZED (should be MATERIALIZED_NON_INFORMATIVE)",
+      "F03R not shown (should be in HYPOTHESIS_SIDECAR)"
+    ],
+    "severity": "HISTORICAL_STATUS_LOSS",
+    "must_fix_before_f7_0": true
+  }
+}

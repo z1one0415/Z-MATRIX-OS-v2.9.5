@@ -1,0 +1,25 @@
+{
+  "pipeline_signature": "Z2-V13-F6-4-2-HYPOTHESIS-SIDECAR",
+  "status": "V13_F6_4_2_HYPOTHESIS_SIDECAR_PRESERVED",
+  "base_commit": "e045d93",
+  "sidecar_factors": [
+    {
+      "factor_id": "F03R",
+      "factor_name": "RESIDUAL_MOMENTUM_HYPOTHESIS",
+      "parent_factor": "F03",
+      "parent_status": "REJECTED",
+      "status": "HYPOTHESIS_ONLY",
+      "source": "v13_f5_3_1_registry_preservation_closeout",
+      "note": "F03R is a hypothesis-sidecar derived from rejected F03. Not in main F01-F60 ledger. Preserved for potential re-evaluation.",
+      "restrictions": {
+        "cannot_enter_frozen_registry": true,
+        "cannot_enter_signal_materialization": true,
+        "cannot_trigger_promotion": true,
+        "only_allowed_for": [
+          "academic_reference",
+          "future_reevaluation"
+        ]
+      }
+    }
+  ]
+}

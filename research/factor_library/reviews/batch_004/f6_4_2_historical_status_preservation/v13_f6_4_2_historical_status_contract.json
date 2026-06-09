@@ -1,0 +1,50 @@
+{
+  "pipeline_signature": "Z2-V13-F6-4-2-HISTORICAL-STATUS-CONTRACT",
+  "status": "V13_F6_4_2_HISTORICAL_STATUS_CONTRACT_BUILT",
+  "base_commit": "e045d93",
+  "purpose": "Preserve historical factor states from prior pipeline stages",
+  "sources": [
+    "v13_f5_3_1_registry_preservation_closeout.json",
+    "v13_f5_1_19_1_registry_canonicalization_closeout.json",
+    "batch3_candidate_review_decision_record.json"
+  ],
+  "preserved_statuses": {
+    "rejected": [
+      "F02",
+      "F03",
+      "F05"
+    ],
+    "hypothesis_only_sidecar": [
+      "F03R"
+    ],
+    "source_audit_completed": [
+      "F17",
+      "F18",
+      "F19",
+      "F20"
+    ],
+    "orange_monitoring_watchlist": [
+      "F01"
+    ],
+    "watch_only": [
+      "F22",
+      "F26",
+      "F27",
+      "F34"
+    ],
+    "historical_blocked_by_sample": [
+      "F06",
+      "F07",
+      "F08",
+      "F12",
+      "F13"
+    ]
+  },
+  "status_change_rule": "PROMOTE_ONLY: blocked\u2192materialized allowed. REJECTED\u2192RESERVED forbidden.",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

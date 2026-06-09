@@ -1,0 +1,52 @@
+{
+  "pipeline_signature": "Z2-V13-F6-4-2-HISTORICAL-STATUS-PRESERVATION-CLOSEOUT",
+  "status": "V13_F6_4_2_HISTORICAL_STATUS_PRESERVATION_PATCH_PASS",
+  "base_commit": "e045d93",
+  "patches_applied": 6,
+  "status_fixes": {
+    "rejected_restored": [
+      "F02",
+      "F03",
+      "F05"
+    ],
+    "orange_monitoring_restored": [
+      "F01"
+    ],
+    "source_audit_restored": [
+      "F17",
+      "F18",
+      "F19",
+      "F20"
+    ],
+    "non_informative_labeled": [
+      "F13"
+    ],
+    "watch_only_corrected": [
+      "F22",
+      "F26",
+      "F27",
+      "F34"
+    ],
+    "hypothesis_sidecar_added": [
+      "F03R"
+    ]
+  },
+  "corrected_tally": {
+    "materialized_informative": 23,
+    "materialized_non_informative": 1,
+    "defined_blocked": 16,
+    "watch_only": 4,
+    "rejected": 3,
+    "source_audit_completed": 4,
+    "orange_monitoring": 1,
+    "reserved_not_implemented": 12,
+    "hypothesis_sidecar": 1
+  },
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "recommended_next_action": "PREPARE_V13_F7_0_CANONICAL_REGISTRY_UPDATE_AFTER_STATUS_REPAIR"
+}

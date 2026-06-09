@@ -1,0 +1,33 @@
+{
+  "pipeline_signature": "Z2-V13-F6-4-2-COUNT-SEMANTICS-PATCH",
+  "status": "V13_F6_4_2_COUNT_SEMANTICS_PATCHED",
+  "base_commit": "e045d93",
+  "corrected_counts": {
+    "total_f01_f60_slots": 60,
+    "factors_with_any_defined_status": 52,
+    "materialized_signal_ready": 24,
+    "informative_signal_ready": 23,
+    "materialized_non_informative": [
+      "F13"
+    ],
+    "defined_blocked": 16,
+    "watch_only": 4,
+    "rejected": 3,
+    "source_audit_completed": 4,
+    "orange_monitoring": 1,
+    "reserved_not_implemented": 12,
+    "hypothesis_sidecar": [
+      "F03R"
+    ],
+    "formal_alpha_factor_count": 0,
+    "formal_oos_validated_count": 0
+  },
+  "patch_from_f6_4_1": {
+    "f02_f03_f05": "RESERVED_NOT_IMPLEMENTED \u2192 REJECTED",
+    "f01": "RESERVED_NOT_IMPLEMENTED \u2192 ORANGE_MONITORING",
+    "f17_f20": "RESERVED_NOT_IMPLEMENTED \u2192 SOURCE_AUDIT_COMPLETED",
+    "f13": "MATERIALIZED \u2192 MATERIALIZED_NON_INFORMATIVE",
+    "f22_f26_f27_f34": "DEFINED_BLOCKED \u2192 WATCH_ONLY",
+    "f03r": "not_in_ledger \u2192 HYPOTHESIS_SIDECAR"
+  }
+}

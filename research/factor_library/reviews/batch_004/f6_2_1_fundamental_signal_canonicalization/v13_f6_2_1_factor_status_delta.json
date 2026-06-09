@@ -1,0 +1,30 @@
+{
+  "pipeline_signature": "Z2-V13-F6-2-1-FACTOR-STATUS-DELTA",
+  "timestamp": "2026-06-10T02:39:27.702283+08:00",
+  "factors_audited": 7,
+  "materialized_count": 7,
+  "informative_count": 6,
+  "non_informative_count": 1,
+  "informative_factors": [
+    "F06",
+    "F07",
+    "F08",
+    "F12",
+    "F14",
+    "F15"
+  ],
+  "non_informative_factors": [
+    "F13"
+  ],
+  "delta": {
+    "F13": {
+      "status_before": "MATERIALIZED",
+      "status_after": "MATERIALIZED_NON_INFORMATIVE",
+      "reason": "all_equal_zero_shareholder_yield",
+      "monitoring_eligible": false,
+      "recommendation": "FREEZE_OR_REMOVE"
+    }
+  },
+  "registry_update_required": true,
+  "monitoring_rerun_executed": false
+}

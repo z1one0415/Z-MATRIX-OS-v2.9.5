@@ -1,0 +1,24 @@
+{
+  "pipeline_signature": "Z2-V13-F6-2-1-ETF-EXCLUSION-AUDIT",
+  "status": "PASS",
+  "etf_ticker": "588000",
+  "is_etf_by_prefix": true,
+  "found_in_fundamental_universe": false,
+  "present_in_price_universe": true,
+  "fundamental_tickers": [
+    "000977",
+    "002050",
+    "002472",
+    "601899"
+  ],
+  "price_label_tickers": [
+    "000977",
+    "002050",
+    "002472",
+    "588000",
+    "601899"
+  ],
+  "fundamental_ticker_count": 4,
+  "price_label_ticker_count": 5,
+  "conclusion": "ETF_588000_CORRECTLY_EXCLUDED_FROM_FUNDAMENTALS"
+}

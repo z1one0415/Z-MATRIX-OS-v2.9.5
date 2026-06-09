@@ -1,0 +1,42 @@
+{
+  "pipeline_signature": "Z2-V13-F6-2-1-SAFETY-AUDIT",
+  "status": "PASS",
+  "checks": {
+    "real_trade": {
+      "expected": "BLOCKED",
+      "actual": "BLOCKED",
+      "pass": true
+    },
+    "alpha_claim": {
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    "runner_enabled": {
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    "forward_return_used": {
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    "execution_allowed": {
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    "production": {
+      "expected": "BLOCKED",
+      "actual": "BLOCKED",
+      "pass": true
+    },
+    "broker_runtime": {
+      "expected": "BLOCKED",
+      "actual": "BLOCKED",
+      "pass": true
+    }
+  },
+  "verdict": "ALL_HARD_GATES_BLOCKED_AS_REQUIRED"
+}

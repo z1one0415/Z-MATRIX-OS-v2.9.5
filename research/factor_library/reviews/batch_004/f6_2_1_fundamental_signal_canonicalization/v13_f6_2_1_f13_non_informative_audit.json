@@ -1,0 +1,23 @@
+{
+  "pipeline_signature": "Z2-V13-F6-2-1-F13-NON-INFORMATIVE-SIGNAL-AUDIT",
+  "timestamp": "2026-06-10T02:39:27.658755+08:00",
+  "factor_id": "F13",
+  "factor_name": "shareholder_yield",
+  "ticker_count": 4,
+  "tickers": [
+    "000977",
+    "002050",
+    "002472",
+    "601899"
+  ],
+  "scores": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "all_equal_zero": true,
+  "classification": "MATERIALIZED_NON_INFORMATIVE",
+  "reason": "all_tickers_zero_shareholder_yield_A_share_market",
+  "action": "FREEZE_OR_REMOVE"
+}

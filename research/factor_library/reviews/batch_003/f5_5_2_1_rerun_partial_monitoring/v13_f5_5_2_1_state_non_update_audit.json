@@ -1,0 +1,36 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-2-1-STATE-NON-UPDATE-AUDIT",
+  "status": "V13_F5_5_2_1_STATE_NON_UPDATE_PASS",
+  "base_commit": "ecaf0a4",
+  "checks": {
+    "registry_frozen_count_unchanged": true,
+    "no_suspension_executed": true,
+    "no_rejection_executed": true,
+    "no_promotion_executed": true,
+    "no_candidate_state_transition": true,
+    "F21_not_upgraded": true,
+    "F24_not_upgraded": true,
+    "F30_not_upgraded": true,
+    "F31_not_upgraded": true,
+    "F21_not_downgraded": true,
+    "F24_not_downgraded": true,
+    "F30_not_downgraded": true,
+    "F31_not_downgraded": true,
+    "unified_registry_promotion_allowed_false": true,
+    "ready_for_promotion_review_empty": true
+  },
+  "frozen_candidates_verified": [
+    "F04",
+    "F10",
+    "F11",
+    "F14",
+    "F15",
+    "F16",
+    "F21",
+    "F24",
+    "F30",
+    "F31"
+  ],
+  "state_changes_detected": [],
+  "violation_count": 0
+}

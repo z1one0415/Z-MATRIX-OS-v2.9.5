@@ -1,0 +1,44 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-2-1-RERUN-INPUT-JOIN-AUDIT",
+  "status": "V13_F5_5_2_1_INPUT_JOIN_AUDIT_PASS",
+  "base_commit": "ecaf0a4",
+  "checks": {
+    "label_panel_exists": true,
+    "signal_scores_exist": true,
+    "only_f21_f24_f30_f31_joined": true,
+    "join_key_ticker_rebalance_date": true,
+    "per_factor_ticker_count_5": true,
+    "horizons_5d_20d": true,
+    "60D_not_present": true,
+    "signal_no_forward_return": true,
+    "label_no_score_rank_bucket": true,
+    "join_no_alpha_trade_order": true
+  },
+  "factor_join_results": {
+    "F21": {
+      "signal_file_exists": true,
+      "signal_ticker_count": 5,
+      "joined_ticker_count": 5,
+      "join_complete": true
+    },
+    "F24": {
+      "signal_file_exists": true,
+      "signal_ticker_count": 5,
+      "joined_ticker_count": 5,
+      "join_complete": true
+    },
+    "F30": {
+      "signal_file_exists": true,
+      "signal_ticker_count": 5,
+      "joined_ticker_count": 5,
+      "join_complete": true
+    },
+    "F31": {
+      "signal_file_exists": true,
+      "signal_ticker_count": 5,
+      "joined_ticker_count": 5,
+      "join_complete": true
+    }
+  },
+  "violation_count": 0
+}

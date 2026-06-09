@@ -1,0 +1,14 @@
+{
+  "pipeline_signature": "Z2-V13-G18-5-MERGE-CLOSEOUT",
+  "status": "V13_G18_5_CLEAN_MERGE_REVIEW_PASS",
+  "source": "4c02b18",
+  "target": "v4.0-batch-0-final-hardgates-scope-lock-clean",
+  "fast_risk_overlay": "IMPLEMENTED",
+  "action_gate": "IMPLEMENTED",
+  "market_snapshot_call_chain": "PASS",
+  "replay_tests": "PASS",
+  "g18_existing_tests": "PASS",
+  "real_trade": "BLOCKED",
+  "alpha_claim": "BLOCKED",
+  "next": "MERGE_G18_FAST_RISK_OVERLAY_TO_CLEAN"
+}

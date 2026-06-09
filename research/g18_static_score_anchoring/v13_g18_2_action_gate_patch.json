@@ -1,0 +1,69 @@
+{
+  "pipeline_signature": "Z2-V13-G18-2-ACTION-GATE-PATCH",
+  "status": "V13_G18_2_PATCH_IMPLEMENTED",
+  "timestamp": "2026-06-09T22:55:00+08:00",
+  "purpose": "Wire fast risk overlay into G18 final decision so that fast variables can veto PAPER_TRACK and dynamically cap the final score.",
+  "score_synthesis_formula": "final_score = min(base_score + fast_risk_delta, action_gate_score_cap)",
+  "base_score_definition": "probability * 100 from slow variables (lineage-capped, typically 75)",
+  "fast_risk_delta_definition": "Sum of penalties from triggered fast risk gates (always <= 0)",
+  "penalty_table": {
+    "R1_VOLUME_CLIMAX": -10,
+    "R2_LONG_UPPER_SHADOW": -15,
+    "R3_COST_LINE_BREAK": -15,
+    "R4_D1_SUPPORT_BREAK": -15,
+    "R5_CYCLE_ORIGIN_BREAK": -20,
+    "R6_MULTI_SUPPORT_BREAK": -35,
+    "R7_EVENT_RISK_WINDOW": -10,
+    "R8_SECTOR_ROTATION_FADE": -15,
+    "R9_MARKET_STYLE_HEADWIND": -10,
+    "R10_CATALYST_DECAY_EXPIRED": -10
+  },
+  "compound_dedup_rules": [
+    "When R6_MULTI_SUPPORT_BREAK triggers, R3/R4/R5 individual penalties are NOT added (R6 replaces them)",
+    "When R1+R2 both trigger, apply both penalties (-25 total) + compound cap=50"
+  ],
+  "action_gate_rules": {
+    "ANY_CRITICAL": {
+      "condition": "max_severity == CRITICAL",
+      "paper_track_allowed": false,
+      "final_score_cap": 40,
+      "action": "REDUCE_OR_WAIT"
+    },
+    "TWO_OR_MORE_HIGH": {
+      "condition": "count(HIGH) >= 2",
+      "paper_track_allowed": false,
+      "final_score_cap": 55,
+      "action": "WAIT"
+    },
+    "VOLUME_SHADOW_COMBO": {
+      "condition": "R1 + R2 both triggered",
+      "paper_track_allowed": false,
+      "final_score_cap": 50,
+      "action": "WAIT"
+    },
+    "COST_SUPPORT_COMBO": {
+      "condition": "R3 + (R4 or R5)",
+      "paper_track_allowed": false,
+      "final_score_cap": 40,
+      "action": "REDUCE_OR_WAIT"
+    },
+    "EVENT_WINDOW_BLOCK": {
+      "condition": "R7 triggered",
+      "paper_track_allowed": false,
+      "final_score_cap": 70,
+      "action": "WAIT"
+    }
+  },
+  "action_mapping": {
+    "75_100": "PAPER_TRACK (only if paper_track_allowed=true)",
+    "60_74": "CONDITIONAL_TRACK",
+    "45_59": "WAIT",
+    "30_44": "REDUCE_OR_WAIT",
+    "0_29": "AVOID",
+    "override": "If paper_track_allowed=false, score>=75 maps to CONDITIONAL_TRACK instead of PAPER_TRACK"
+  },
+  "implementation_files": {
+    "new": "zmatrix/prediction/fast_risk_overlay.py",
+    "modified": "zmatrix/prediction/final_decision_envelope.py"
+  }
+}

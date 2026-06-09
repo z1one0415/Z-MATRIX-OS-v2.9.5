@@ -1,0 +1,69 @@
+{
+  "pipeline_signature": "Z2-V13-G18-0-STATIC-SCORE-ANCHORING-AUDIT",
+  "status": "V13_G18_0_AUDIT_PASS",
+  "audit_timestamp": "2026-06-09T22:55:00+08:00",
+  "g18_code_found": true,
+  "default_75_detected": true,
+  "slow_factor_dominance_detected": true,
+  "fast_risk_overlay_exists": false,
+  "action_gate_exists": false,
+  "paper_track_override_exists": false,
+  "g09_rotation_path_valid": false,
+  "zc35_as_action_gate": false,
+  "root_cause_summary": "G18 outputs a static 75% because: (1) data_lineage.py enforces probability_cap=0.75 whenever M1/L2 are NOT_CONNECTED (always true in current deployment); (2) No fast risk overlay exists to dynamically reduce this cap based on price action; (3) PAPER_TRACK is auto-assigned whenever no upstream conflict blocks it; (4) The system has no mechanism for volume climax, long upper shadows, cost line breaks, or support failures to override the slow-variable base score.",
+  "evidence": {
+    "data_lineage_probability_cap": {
+      "file": "zmatrix/prediction/data_lineage.py",
+      "line": 61,
+      "code": "\"probability_cap\": 0.75",
+      "mechanism": "evaluate_lineage() returns probability_cap=0.75 whenever has_proxy=True or missing_m1_l2=True. Since M1 and L2 are never connected in current deployment, this cap is ALWAYS active.",
+      "impact": "Every G18 prediction is hard-capped at 0.75 regardless of market conditions"
+    },
+    "gate_pipeline_lineage_usage": {
+      "file": "pipelines/Z-G18_天机引擎/gate_pipeline.py",
+      "line_67": "cov = lin.get(\"probability_cap\",0.75)/0.95",
+      "line_140": "pred.data_lineage.get(\"probability_cap\", 0.75)",
+      "line_416": "lines.append(f\"- **Lineage Cap**: 概率上限0.75 (因proxy数据源)\")",
+      "mechanism": "G18 pipeline explicitly acknowledges and propagates the 0.75 cap"
+    },
+    "final_decision_envelope_no_fast_risk": {
+      "file": "zmatrix/prediction/final_decision_envelope.py",
+      "finding": "build_final_decision() only checks upstream pipeline signals (G09 sell, G09 hard_blocks, G11 warnings, Z16/G17 confirmations). No fast risk signals (volume, shadows, price vs cost line) are evaluated.",
+      "impact": "Without fast risk overlay, the only way to downgrade from PAPER_TRACK is G09 sell signal or hard_blocks"
+    },
+    "conflict_resolver_limited_scope": {
+      "file": "zmatrix/prediction/conflict_resolver.py",
+      "finding": "resolve_upstream_conflicts() only handles inter-pipeline conflicts (G09 vs G18, G08 decay, G11 warnings, Z16/G17 missing). No price-action-based risk signals.",
+      "impact": "Risk from adverse price action (volume climax, shadow reversals, support breaks) is invisible to the decision engine"
+    },
+    "paper_execution_record_no_gate": {
+      "file": "zmatrix/prediction/paper_execution_record.py",
+      "finding": "build_paper_execution_record() records whatever final_decision provides with no independent action gate. paper_execution.allowed is True whenever paper_action is not None.",
+      "impact": "PAPER_TRACK is allowed by default unless an upstream conflict explicitly blocks it"
+    },
+    "g09_rotation_path_incomplete": {
+      "file": "zmatrix/prediction/g09_signal_adapter.py",
+      "finding": "G09 adapter extracts rotation_type and rotation_action from kings, but apply_g09_constraints() only uses sell_decision, exit_alert, and hard_blocks. Rotation fade (sector_momentum_rank drop) is never evaluated as a constraint.",
+      "impact": "Sector rotation headwind does not reduce G18 score or block PAPER_TRACK"
+    },
+    "zc35_not_referenced_in_g18": {
+      "finding": "grep for 'ZC35\\|zc35\\|catalyst_decay' in zmatrix/prediction/ returns 0 results. ZC35 is not wired into the G18 decision engine as a risk gate.",
+      "impact": "Catalyst decay (ZC35) cannot override or cap the G18 probability or action"
+    },
+    "temporal_calibrator_0.75_threshold": {
+      "file": "zmatrix/prediction/temporal_calibrator.py",
+      "line_21": "high = [(h, s) for h, s in scores if s >= 0.75]",
+      "finding": "Temporal calibrator uses 0.75 as the HIGH threshold, meaning any prediction at the lineage cap (0.75) always registers as 'high' on all horizons, reinforcing PAPER_TRACK recommendation.",
+      "impact": "Self-reinforcing loop: lineage caps at 0.75 → temporal sees all horizons as 'high' → recommends PAPER_TRACK"
+    }
+  },
+  "structural_diagnosis": {
+    "primary_cause": "LINEAGE_CAP_AS_CEILING_BECOMES_FLOOR",
+    "explanation": "The probability_cap=0.75 was designed as a safety ceiling (never exceed 0.75 without real data). But because no downward pressure mechanism exists (no fast risk overlay), the ceiling effectively becomes the floor. Every prediction gravitates to exactly 0.75.",
+    "secondary_cause": "NO_FAST_VARIABLE_CHANNEL",
+    "explanation_2": "The system architecture has slow variables (lineage, horizons, cycle resonance) but no fast variable channel (volume spikes, shadows, intraday price action, support breaks). Slow variables set the base; nothing reduces it.",
+    "tertiary_cause": "PAPER_TRACK_DEFAULT_TRUE",
+    "explanation_3": "PAPER_TRACK is the default outcome when no conflict blocks it. Combined with the static 0.75 probability, G18 always outputs: probability=0.75, action=PAPER_TRACK."
+  },
+  "recommended_next_action": "Implement V13.G18.1 Fast Risk Overlay Contract + V13.G18.2 Action Gate Patch to break the static anchoring. Fast variables must have veto power over PAPER_TRACK regardless of the slow base_score."
+}

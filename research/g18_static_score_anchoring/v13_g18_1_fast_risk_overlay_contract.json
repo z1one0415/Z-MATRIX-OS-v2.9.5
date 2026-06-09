@@ -1,0 +1,167 @@
+{
+  "pipeline_signature": "Z2-V13-G18-1-FAST-RISK-OVERLAY-CONTRACT",
+  "status": "V13_G18_1_CONTRACT_DEFINED",
+  "contract_version": "1.0.0",
+  "timestamp": "2026-06-09T22:55:00+08:00",
+  "purpose": "Establish 10 fast-variable risk gates that can dynamically reduce G18 base_score and veto PAPER_TRACK. These gates evaluate real-time price action, volume behavior, and structural breakdowns that slow variables cannot capture.",
+  "design_principle": "Slow variables (lineage, cycle, horizon) provide base_score. Fast variables own action gate veto power. A single CRITICAL gate or multiple HIGH gates can force paper_track_allowed=false regardless of base_score.",
+  "risk_gates": [
+    {
+      "id": "R1_VOLUME_CLIMAX",
+      "name": "Volume Climax",
+      "condition": "volume >= 2.0 * avg_volume_20d",
+      "severity": "HIGH",
+      "score_penalty": -10,
+      "rationale": "Extreme volume often marks distribution tops or panic capitulation. Either way, conviction should decrease.",
+      "input_fields": ["volume", "avg_volume_20d"],
+      "trigger_logic": "volume / avg_volume_20d >= 2.0"
+    },
+    {
+      "id": "R2_LONG_UPPER_SHADOW",
+      "name": "Long Upper Shadow",
+      "condition": "(high - close) / high >= 0.03",
+      "severity": "HIGH",
+      "score_penalty": -15,
+      "rationale": "Long upper shadow indicates strong selling pressure at higher prices. Intraday rejection of upside.",
+      "input_fields": ["high", "close"],
+      "trigger_logic": "(high - close) / high >= 0.03"
+    },
+    {
+      "id": "R3_COST_LINE_BREAK",
+      "name": "Cost Line Break",
+      "condition": "close < user_cost_line",
+      "severity": "HIGH",
+      "score_penalty": -15,
+      "rationale": "Price below user's cost basis creates floating loss. Psychology shifts from profit-taking to loss-avoidance.",
+      "input_fields": ["close", "user_cost_line"],
+      "trigger_logic": "close < user_cost_line"
+    },
+    {
+      "id": "R4_D1_SUPPORT_BREAK",
+      "name": "D1 Support Break",
+      "condition": "close < d1_support",
+      "severity": "HIGH",
+      "score_penalty": -15,
+      "rationale": "Breaking daily chart support invalidates the prior structural thesis.",
+      "input_fields": ["close", "d1_support"],
+      "trigger_logic": "close < d1_support"
+    },
+    {
+      "id": "R5_CYCLE_ORIGIN_BREAK",
+      "name": "Cycle Origin Break",
+      "condition": "close < cycle_origin",
+      "severity": "HIGH",
+      "score_penalty": -20,
+      "rationale": "Price below cycle origin means the entire up-cycle thesis is invalidated. Most severe structural failure short of CRITICAL.",
+      "input_fields": ["close", "cycle_origin"],
+      "trigger_logic": "close < cycle_origin"
+    },
+    {
+      "id": "R6_MULTI_SUPPORT_BREAK",
+      "name": "Multi Support Break (Compound)",
+      "condition": "cost_line_break + d1_support_break + cycle_origin_break >= 2",
+      "severity": "CRITICAL",
+      "score_penalty": -35,
+      "rationale": "Two or more structural supports broken simultaneously = cascading failure. Highest severity — immediate action gate closure.",
+      "input_fields": ["cost_line_break", "d1_support_break", "cycle_origin_break"],
+      "trigger_logic": "sum([R3_triggered, R4_triggered, R5_triggered]) >= 2",
+      "note": "Compound gate — triggers only when underlying R3/R4/R5 conditions are met. Penalty is NOT additive with individual R3/R4/R5 penalties; it REPLACES them."
+    },
+    {
+      "id": "R7_EVENT_RISK_WINDOW",
+      "name": "Event Risk Window",
+      "condition": "event_window_active AND no_confirmation",
+      "severity": "MEDIUM",
+      "score_penalty": -10,
+      "rationale": "During known event windows (earnings, regulatory, macro announcements), absent confirmation signals mean elevated uncertainty.",
+      "input_fields": ["event_window_active", "event_confirmation_received"],
+      "trigger_logic": "event_window_active == true AND event_confirmation_received == false"
+    },
+    {
+      "id": "R8_SECTOR_ROTATION_FADE",
+      "name": "Sector Rotation Fade",
+      "condition": "sector_momentum_rank drop >= 5 positions",
+      "severity": "MEDIUM",
+      "score_penalty": -15,
+      "rationale": "Sector losing relative momentum. Capital rotating away. Even fundamentally sound stocks lose bid support.",
+      "input_fields": ["sector_momentum_rank_current", "sector_momentum_rank_prior"],
+      "trigger_logic": "sector_momentum_rank_current - sector_momentum_rank_prior >= 5"
+    },
+    {
+      "id": "R9_MARKET_STYLE_HEADWIND",
+      "name": "Market Style Headwind",
+      "condition": "style_mismatch_duration >= 5 trading days",
+      "severity": "MEDIUM",
+      "score_penalty": -10,
+      "rationale": "Stock's style factor (growth/value/small/large) in persistent headwind. Structural drag reduces probability of near-term outperformance.",
+      "input_fields": ["style_mismatch_duration_days"],
+      "trigger_logic": "style_mismatch_duration_days >= 5"
+    },
+    {
+      "id": "R10_CATALYST_DECAY_EXPIRED",
+      "name": "Catalyst Decay Expired",
+      "condition": "days_since_catalyst > threshold AND no catalyst refresh",
+      "severity": "MEDIUM",
+      "score_penalty": -10,
+      "rationale": "Original catalyst has expired without renewal. Stock is now trading on inertia, not thesis. Maps to ZC35 factor.",
+      "input_fields": ["days_since_catalyst", "catalyst_decay_threshold", "catalyst_refreshed"],
+      "trigger_logic": "days_since_catalyst > catalyst_decay_threshold AND catalyst_refreshed == false"
+    }
+  ],
+  "severity_hierarchy": {
+    "CRITICAL": "Immediate action gate closure. paper_track_allowed=false. final_score_cap=40.",
+    "HIGH": "Strong downward pressure. Two or more HIGH → action gate closure.",
+    "MEDIUM": "Moderate caution. Accumulates penalty but does not independently close gate."
+  },
+  "compound_rules": [
+    {
+      "rule": "ANY_CRITICAL",
+      "condition": "Any single gate at CRITICAL severity triggered",
+      "effect": "paper_track_allowed=false, action=REDUCE_OR_WAIT, final_score_cap=40"
+    },
+    {
+      "rule": "TWO_OR_MORE_HIGH",
+      "condition": "Two or more HIGH severity gates triggered",
+      "effect": "paper_track_allowed=false, action=WAIT, final_score_cap=55"
+    },
+    {
+      "rule": "VOLUME_CLIMAX_PLUS_SHADOW",
+      "condition": "R1_VOLUME_CLIMAX + R2_LONG_UPPER_SHADOW both triggered",
+      "effect": "paper_track_allowed=false, action=WAIT, final_score_cap=50"
+    },
+    {
+      "rule": "COST_LINE_PLUS_SUPPORT",
+      "condition": "R3_COST_LINE_BREAK + (R4_D1_SUPPORT_BREAK OR R5_CYCLE_ORIGIN_BREAK)",
+      "effect": "paper_track_allowed=false, action=REDUCE_OR_WAIT, final_score_cap=40"
+    },
+    {
+      "rule": "EVENT_WINDOW_UPGRADE_BLOCK",
+      "condition": "R7_EVENT_RISK_WINDOW triggered",
+      "effect": "Cannot upgrade to PAPER_TRACK. Maximum action=WAIT or OBSERVE."
+    }
+  ],
+  "input_contract": {
+    "required_fields": [
+      "close", "high", "volume", "avg_volume_20d",
+      "user_cost_line", "d1_support", "cycle_origin"
+    ],
+    "optional_fields": [
+      "event_window_active", "event_confirmation_received",
+      "sector_momentum_rank_current", "sector_momentum_rank_prior",
+      "style_mismatch_duration_days",
+      "days_since_catalyst", "catalyst_decay_threshold", "catalyst_refreshed"
+    ],
+    "missing_field_policy": "If a required field is None/missing, the corresponding gate is SKIPPED (not triggered). Optional fields default to non-triggering state."
+  },
+  "output_contract": {
+    "fields": {
+      "triggered_gates": "List of gate IDs that fired",
+      "max_severity": "Highest severity among triggered gates (CRITICAL > HIGH > MEDIUM > NONE)",
+      "total_penalty": "Sum of score penalties (with compound rule dedup)",
+      "paper_track_allowed": "Boolean — false if any compound rule or severity threshold fires",
+      "final_score_cap": "Maximum allowed final_score after overlay",
+      "recommended_action": "PAPER_TRACK | CONDITIONAL_TRACK | WAIT | REDUCE_OR_WAIT | AVOID",
+      "gate_details": "Per-gate trigger details for audit trail"
+    }
+  }
+}

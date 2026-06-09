@@ -1,0 +1,22 @@
+{
+  "pipeline_signature": "Z2-V13-G18-5-CLEAN-MERGE-REVIEW",
+  "source_branch": "fix/g18-static-score-anchoring-overlay",
+  "source_commit": "4c02b18",
+  "target_branch": "v4.0-batch-0-final-hardgates-scope-lock-clean",
+  "files_modified": [
+    "pipelines/Z-G18_天机引擎/gate_pipeline.py",
+    "zmatrix/prediction/g09_signal_adapter.py",
+    "zmatrix/prediction/market_snapshot_adapter.py",
+    "research/g18_static_score_anchoring/v13_g18_5_call_chain_audit.json",
+    "research/g18_static_score_anchoring/v13_g18_5_clean_merge_review.json",
+    "research/g18_static_score_anchoring/v13_g18_5_merge_closeout.json"
+  ],
+  "fast_risk_overlay_implemented": true,
+  "action_gate_implemented": true,
+  "market_snapshot_call_chain_pass": true,
+  "replay_tests_28_28": true,
+  "existing_g18_tests_pass": true,
+  "real_trade_blocked": true,
+  "alpha_claim_blocked": true,
+  "merge_recommendation": "APPROVE"
+}

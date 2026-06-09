@@ -1,0 +1,124 @@
+{
+  "pipeline_signature": "Z2-V13-G18-4-FACTOR-LIBRARY-HANDOFF-PLAN",
+  "status": "V13_G18_4_HANDOFF_PLAN_DEFINED",
+  "timestamp": "2026-06-09T22:55:00+08:00",
+  "purpose": "Map G18 fast risk overlay gates to the existing factor library for future integration. NOT auto-reweighting — requires separate IC validation cycle before any weight changes.",
+  "mapping": [
+    {
+      "fast_risk_gate": "R1_VOLUME_CLIMAX + R2_LONG_UPPER_SHADOW",
+      "combined_signal": "天量长上影 (Distribution Top / Exhaustion)",
+      "factor_mapping": ["F24 (Volume Profile)", "F30 (Intraday Volume Confirmation)"],
+      "future_factor": "F_EXHAUSTION_SIGNAL (proposed)",
+      "rationale": "High volume + rejection shadow = classic exhaustion pattern. Needs separate factor to capture reversal probability at extremes.",
+      "ic_validation_required": true,
+      "current_factor_weight_change": "NONE — do not modify F24/F30 weights based on this replay"
+    },
+    {
+      "fast_risk_gate": "R1_VOLUME_CLIMAX",
+      "combined_signal": "成交量确认/异常",
+      "factor_mapping": ["F30 (Volume Confirmation)"],
+      "future_factor": null,
+      "rationale": "F30 already captures volume confirmation. R1 gate provides real-time override when F30 signal is extreme (>= 2x). No new factor needed.",
+      "ic_validation_required": false,
+      "current_factor_weight_change": "NONE"
+    },
+    {
+      "fast_risk_gate": "R4_D1_SUPPORT_BREAK + R5_CYCLE_ORIGIN_BREAK",
+      "combined_signal": "短周期反转 / 结构破位",
+      "factor_mapping": ["F11 (Short-Cycle Reversal / Trend Break)"],
+      "future_factor": "F_FAST_REVERSAL (proposed — captures intra-cycle structure failure)",
+      "rationale": "F11 captures reversal momentum but not structural level breaks. A dedicated fast-reversal factor would distinguish between momentum fade and hard level failure.",
+      "ic_validation_required": true,
+      "current_factor_weight_change": "NONE"
+    },
+    {
+      "fast_risk_gate": "R6_MULTI_SUPPORT_BREAK",
+      "combined_signal": "下行尾部风险 (Cascading Failure)",
+      "factor_mapping": ["F31 (Downside Tail Risk)"],
+      "future_factor": null,
+      "rationale": "F31 already models tail risk but from a statistical distribution perspective. R6 provides rule-based structural confirmation that validates F31's statistical signal.",
+      "ic_validation_required": false,
+      "current_factor_weight_change": "NONE"
+    },
+    {
+      "fast_risk_gate": "R9_MARKET_STYLE_HEADWIND",
+      "combined_signal": "低波防御 / 风格轮动风险",
+      "factor_mapping": ["F10 (Low Volatility Defense)", "F31 (Tail Risk — regime component)"],
+      "future_factor": "F_RISK_REGIME (proposed — explicit style-regime interaction)",
+      "rationale": "Style headwind is a regime phenomenon. F10/F31 capture vol/tail aspects but not the interaction between stock style and market regime preference.",
+      "ic_validation_required": true,
+      "current_factor_weight_change": "NONE"
+    },
+    {
+      "fast_risk_gate": "R8_SECTOR_ROTATION_FADE",
+      "combined_signal": "趋势质量衰减 (Sector Momentum Drain)",
+      "factor_mapping": ["F21 (Trend Quality)"],
+      "future_factor": null,
+      "rationale": "F21 measures trend quality at stock level. R8 adds sector-level momentum context. Consider enhancing F21 with sector-relative momentum, but NOT via weight change.",
+      "ic_validation_required": true,
+      "current_factor_weight_change": "NONE"
+    },
+    {
+      "fast_risk_gate": "R10_CATALYST_DECAY_EXPIRED",
+      "combined_signal": "催化残值衰减 (Thesis Exhaustion)",
+      "factor_mapping": ["ZC35 (Catalyst Decay — currently 26th factor, not action gate)"],
+      "future_factor": "F_CATALYST_DECAY (proposed — promote ZC35 from factor #26 to risk gate)",
+      "rationale": "ZC35 currently contributes to aggregate score as one of many factors. This handoff proposes ALSO giving it action gate authority (not replacing its factor role). Dual role: (1) factor weight in aggregate, (2) independent gate veto when severely expired.",
+      "ic_validation_required": true,
+      "current_factor_weight_change": "NONE — ZC35 keeps current weight. Gate authority is additive."
+    }
+  ],
+  "prohibitions": [
+    {
+      "rule": "NO_AUTO_REWEIGHT_FROM_REPLAY",
+      "description": "Do not modify any factor's long-term weight based on the 4-scenario replay test. Replay proves the overlay works, NOT that factor weights should change.",
+      "rationale": "4 scenarios is micro-sample. Weight changes require full IC validation across 500+ samples minimum."
+    },
+    {
+      "rule": "NO_MICRO_SAMPLE_MONITORING_AS_ALPHA",
+      "description": "Do not use micro-sample monitoring results (N<30) to claim alpha discovery or factor importance.",
+      "rationale": "Statistical significance requires sample size. Monitoring is for anomaly detection, not alpha claims."
+    },
+    {
+      "rule": "NO_G18_FIX_AS_IC_VALIDATION",
+      "description": "Do not attribute the G18 overlay fix as evidence that factor IC is validated. The overlay is a risk-management mechanism, not an alpha signal.",
+      "rationale": "Risk overlay veto (fast variables) operates on a different plane than factor alpha (slow variables). Mixing them is a category error."
+    },
+    {
+      "rule": "NO_RETROACTIVE_WEIGHT_OPTIMIZATION",
+      "description": "Do not retrospectively optimize factor weights to 'predict' the scenarios that G18 failed on. This is overfitting to known failures.",
+      "rationale": "The goal is structural robustness, not curve-fitting to 4 known cases."
+    }
+  ],
+  "next_steps": [
+    {
+      "step": 1,
+      "action": "Run 6-month backtest of fast risk overlay on full watchlist",
+      "purpose": "Validate that overlay reduces false PAPER_TRACK without excessive false negatives",
+      "timeline": "Next monthly cycle (July 2026)",
+      "blocker": false
+    },
+    {
+      "step": 2,
+      "action": "Compute IC for proposed new factors (F_EXHAUSTION, F_FAST_REVERSAL, F_RISK_REGIME, F_CATALYST_DECAY)",
+      "purpose": "Determine if proposed factors carry independent information",
+      "timeline": "Q3 2026",
+      "blocker": false
+    },
+    {
+      "step": 3,
+      "action": "Promote ZC35 to dual-role (factor + gate) only after IC confirmation",
+      "purpose": "Give catalyst decay both scoring weight and veto authority",
+      "timeline": "After Step 2 completion",
+      "blocker": true
+    },
+    {
+      "step": 4,
+      "action": "Factor library weight re-optimization with new factors included",
+      "purpose": "Holistic re-optimization only after new factors validated independently",
+      "timeline": "Q4 2026 earliest",
+      "blocker": true
+    }
+  ],
+  "sign_off": "Factor library changes are research proposals only. No weight changes until full IC validation. The G18 fast risk overlay operates independently of factor weights — it is a structural safety mechanism, not an alpha signal."
+}

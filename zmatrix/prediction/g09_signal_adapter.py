@@ -133,7 +133,7 @@ def load_g09_signals_for_tickers(tickers: list[str], universe: str = "WATCHLIST"
     try:
         import importlib.util
         spec = importlib.util.spec_from_file_location("zg09_gate",
-            str(Path(__file__).resolve().parents[2] / "Z-G09_全局轮动筛选" / "gate_pipeline.py"))
+            str(Path(__file__).resolve().parents[2] / "pipelines" / "Z-G09_全局轮动筛选" / "gate_pipeline.py"))
         zg09 = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(zg09)
         # Targeted scan: only requested tickers, not full universe top20

@@ -1,0 +1,20 @@
+{
+  "pipeline_signature": "Z2-V13-F5-3-BATCH3-CANDIDATE-FREEZE-REVIEW-CONTRACT",
+  "status": "V13_F5_3_BATCH3_CANDIDATE_FREEZE_REVIEW_CONTRACT_BUILT",
+  "base_commit": "1525e6b",
+  "freeze_review_scope": ["F21", "F24", "F30", "F31"],
+  "watch_only_preserved": ["F22", "F26", "F27", "F34"],
+  "candidate_freeze_allowed": true,
+  "promotion_allowed": false,
+  "ready_for_promotion_review": [],
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "multi_factor_composite_allowed": false,
+  "weight_optimization_allowed": false,
+  "v13_6_allowed": false,
+  "paper_trading_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

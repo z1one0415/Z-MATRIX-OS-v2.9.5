@@ -1,0 +1,26 @@
+{
+  "pipeline_signature": "Z2-V13-UNIFIED-CANDIDATE-REGISTRY",
+  "version": "v13.f5.3",
+  "total_frozen_candidate_count": 10,
+  "frozen_candidates": [
+    {"factor_id": "F04", "type": "FROZEN_TACTICAL_CANDIDATE", "batch": "batch_001"},
+    {"factor_id": "F10", "type": "FROZEN_REGIME_SPECIFIC_CANDIDATE", "batch": "batch_001"},
+    {"factor_id": "F11", "type": "FROZEN_TACTICAL_CANDIDATE", "batch": "batch_001"},
+    {"factor_id": "F14", "type": "FROZEN_TACTICAL_CANDIDATE", "batch": "batch_002"},
+    {"factor_id": "F15", "type": "FROZEN_TACTICAL_CANDIDATE", "batch": "batch_002"},
+    {"factor_id": "F16", "type": "FROZEN_TACTICAL_CANDIDATE", "batch": "batch_002"},
+    {"factor_id": "F21", "type": "FROZEN_TACTICAL_CANDIDATE", "batch": "batch_003"},
+    {"factor_id": "F24", "type": "FROZEN_TACTICAL_CANDIDATE", "batch": "batch_003"},
+    {"factor_id": "F30", "type": "FROZEN_TACTICAL_CANDIDATE", "batch": "batch_003"},
+    {"factor_id": "F31", "type": "FROZEN_REGIME_SPECIFIC_CANDIDATE", "batch": "batch_003"}
+  ],
+  "watch_only": ["F22", "F26", "F27", "F34"],
+  "rejected": ["F02", "F03", "F05"],
+  "ready_for_promotion_review": [],
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "next_legal_entry": "PREPARE_V13_F5_4_UNIFIED_CANDIDATE_MONITORING_PLAN_UPDATE"
+}

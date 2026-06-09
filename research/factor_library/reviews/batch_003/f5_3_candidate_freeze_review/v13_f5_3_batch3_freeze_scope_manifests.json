@@ -1,0 +1,46 @@
+{
+  "pipeline_signature": "Z2-V13-F5-3-BATCH3-FREEZE-SCOPE-MANIFESTS",
+  "status": "V13_F5_3_FREEZE_SCOPE_MANIFESTS_BUILT",
+  "freeze_manifests": {
+    "F21": {
+      "freeze_status": "FROZEN_TACTICAL_CANDIDATE",
+      "candidate_type": "TREND_PERSISTENCE_TACTICAL_RESEARCH_CANDIDATE",
+      "factor_family_id": "TREND_STRUCTURE",
+      "allowed_horizons": ["20D", "60D"],
+      "required_gates": ["TREND_QUALITY_GATE", "OVERLAP_WITH_F04_GATE"],
+      "requires_true_oos_before_promotion": true,
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false
+    },
+    "F24": {
+      "freeze_status": "FROZEN_TACTICAL_CANDIDATE",
+      "candidate_type": "VOLATILITY_COMPRESSION_BREAKOUT_TACTICAL_RESEARCH_CANDIDATE",
+      "factor_family_id": "TREND_STRUCTURE",
+      "allowed_horizons": ["20D", "60D"],
+      "required_gates": ["BREAKOUT_VALIDATION_GATE", "VOLATILITY_COMPRESSION_GATE"],
+      "requires_true_oos_before_promotion": true,
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false
+    },
+    "F30": {
+      "freeze_status": "FROZEN_TACTICAL_CANDIDATE",
+      "candidate_type": "VOLUME_PRICE_CONFIRMATION_TACTICAL_RESEARCH_CANDIDATE",
+      "factor_family_id": "LIQUIDITY_VOLUME",
+      "allowed_horizons": ["20D", "60D"],
+      "required_gates": ["VOLUME_CONFIRMATION_GATE", "COST_TURNOVER_GATE"],
+      "requires_true_oos_before_promotion": true,
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false
+    },
+    "F31": {
+      "freeze_status": "FROZEN_REGIME_SPECIFIC_CANDIDATE",
+      "candidate_type": "DOWNSIDE_TAIL_RISK_REGIME_RESEARCH_CANDIDATE",
+      "factor_family_id": "TAIL_RISK",
+      "allowed_horizons": ["20D", "60D"],
+      "required_gates": ["REGIME_GATE", "TAIL_RISK_GATE", "OVERLAP_WITH_F10_GATE"],
+      "requires_true_oos_before_promotion": true,
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false
+    }
+  }
+}

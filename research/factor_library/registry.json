@@ -1,0 +1,16 @@
+{
+  "pipeline_signature": "Z2-V13-FACTOR-LIBRARY-REGISTRY",
+  "version": "v13.f5.3",
+  "frozen_candidates": ["F04", "F10", "F11", "F14", "F15", "F16", "F21", "F24", "F30", "F31"],
+  "candidate_freeze_executed": true,
+  "new_batch3_frozen_candidates": ["F21", "F24", "F30", "F31"],
+  "all_frozen_candidates": ["F04", "F10", "F11", "F14", "F15", "F16", "F21", "F24", "F30", "F31"],
+  "watch_only": ["F22", "F26", "F27", "F34"],
+  "rejected": ["F02", "F03", "F05"],
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "next_legal_entry": "PREPARE_V13_F5_4_UNIFIED_CANDIDATE_MONITORING_PLAN_UPDATE"
+}

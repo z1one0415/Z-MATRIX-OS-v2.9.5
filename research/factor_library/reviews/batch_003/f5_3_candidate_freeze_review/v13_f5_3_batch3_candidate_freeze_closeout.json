@@ -1,0 +1,23 @@
+{
+  "pipeline_signature": "Z2-V13-F5-3-BATCH3-CANDIDATE-FREEZE-CLOSEOUT",
+  "status": "V13_F5_3_BATCH3_CANDIDATE_FREEZE_PASS",
+  "base_commit": "1525e6b",
+  "candidate_freeze_executed": true,
+  "new_batch3_frozen_candidates": ["F21", "F24", "F30", "F31"],
+  "watch_only_preserved": ["F22", "F26", "F27", "F34"],
+  "all_frozen_candidates": ["F04", "F10", "F11", "F14", "F15", "F16", "F21", "F24", "F30", "F31"],
+  "ready_for_f5_4_unified_candidate_monitoring_plan_update": true,
+  "ready_for_promotion_review": [],
+  "promotion_allowed": false,
+  "multi_factor_composite_built": false,
+  "weight_optimization_executed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "v13_6_allowed": false,
+  "paper_trading_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "recommended_next_action": "PREPARE_V13_F5_4_UNIFIED_CANDIDATE_MONITORING_PLAN_UPDATE"
+}

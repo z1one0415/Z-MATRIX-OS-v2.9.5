@@ -1,0 +1,64 @@
+{
+  "pipeline_signature": "Z2-V13-F5-3-BATCH3-FREEZE-EVIDENCE-PROVENANCE-AUDIT",
+  "status": "V13_F5_3_EVIDENCE_PROVENANCE_AUDIT_PASS",
+  "per_factor": {
+    "F21": {
+      "f5_2_scorecard": "TACTICAL_CANDIDATE",
+      "evidence_audit_pass": true,
+      "manifest": true,
+      "validation_snapshot": true,
+      "guardrail_profile": true,
+      "application_contract": true,
+      "evidence_envelope": true,
+      "pit_pass": true,
+      "coverage_pass": true,
+      "blocks_alpha": true,
+      "blocks_production": true,
+      "ready_for_promotion_review": []
+    },
+    "F24": {
+      "f5_2_scorecard": "TACTICAL_CANDIDATE",
+      "evidence_audit_pass": true,
+      "manifest": true,
+      "validation_snapshot": true,
+      "guardrail_profile": true,
+      "application_contract": true,
+      "evidence_envelope": true,
+      "pit_pass": true,
+      "coverage_pass": true,
+      "blocks_alpha": true,
+      "blocks_production": true,
+      "ready_for_promotion_review": []
+    },
+    "F30": {
+      "f5_2_scorecard": "TACTICAL_CANDIDATE",
+      "evidence_audit_pass": true,
+      "manifest": true,
+      "validation_snapshot": true,
+      "guardrail_profile": true,
+      "application_contract": true,
+      "evidence_envelope": true,
+      "pit_pass": true,
+      "coverage_pass": true,
+      "blocks_alpha": true,
+      "blocks_production": true,
+      "ready_for_promotion_review": []
+    },
+    "F31": {
+      "f5_2_scorecard": "REGIME_SPECIFIC_CANDIDATE",
+      "evidence_audit_pass": true,
+      "manifest": true,
+      "validation_snapshot": true,
+      "guardrail_profile": true,
+      "application_contract": true,
+      "evidence_envelope": true,
+      "pit_pass": true,
+      "coverage_pass": true,
+      "blocks_alpha": true,
+      "blocks_production": true,
+      "ready_for_promotion_review": []
+    }
+  },
+  "all_pass": true,
+  "violation_count": 0
+}

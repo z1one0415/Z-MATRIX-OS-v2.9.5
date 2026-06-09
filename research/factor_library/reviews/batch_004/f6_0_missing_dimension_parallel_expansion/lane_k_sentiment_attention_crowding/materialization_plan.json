@@ -1,0 +1,12 @@
+{
+  "pipeline_signature": "Z2-V13-F6-0-LANE-K-MATERIALIZATION-PLAN",
+  "materializable": [
+    "F53",
+    "F54",
+    "F55"
+  ],
+  "blocked": [
+    "F16"
+  ],
+  "blocked_reason": "F16_taxonomy_review_required"
+}

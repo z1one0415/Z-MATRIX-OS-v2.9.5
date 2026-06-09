@@ -1,0 +1,8 @@
+{
+  "pipeline_signature": "Z2-V13-F6-0-LANE-E-MATERIALIZATION-PLAN",
+  "materializable": [],
+  "blocked": [
+    "F13"
+  ],
+  "blocked_reason": "no_dividend_buyback_data_committed"
+}

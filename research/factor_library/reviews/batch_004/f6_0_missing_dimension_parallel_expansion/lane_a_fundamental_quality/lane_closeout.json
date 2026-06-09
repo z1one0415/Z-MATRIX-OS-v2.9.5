@@ -1,0 +1,21 @@
+{
+  "pipeline_signature": "Z2-V13-F6-0-LANE-A-CLOSEOUT",
+  "status": "V13_F6_0_LANE_A_BLOCKED_BY_PIT_SOURCE",
+  "base_commit": "20fba19",
+  "factors_defined": [
+    "F06",
+    "F14"
+  ],
+  "materialized_factors": [],
+  "blocked_factors": [
+    "F06",
+    "F14"
+  ],
+  "blocked_reason": "no_pit_safe_fundamental_data_committed",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

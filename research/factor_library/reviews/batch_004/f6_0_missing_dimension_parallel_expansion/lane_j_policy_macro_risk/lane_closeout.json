@@ -1,0 +1,23 @@
+{
+  "pipeline_signature": "Z2-V13-F6-0-LANE-J-CLOSEOUT",
+  "status": "V13_F6_0_LANE_J_SOURCE_CONTRACT_ONLY",
+  "base_commit": "20fba19",
+  "factors_defined": [
+    "F50",
+    "F51",
+    "F52"
+  ],
+  "materialized_factors": [],
+  "blocked_factors": [
+    "F50",
+    "F51",
+    "F52"
+  ],
+  "blocked_reason": "no_structured_policy_macro_database_committed",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

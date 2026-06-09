@@ -1,0 +1,12 @@
+{
+  "pipeline_signature": "Z2-V13-F6-0-LANE-K-SIGNAL-SCORES-MANIFEST",
+  "materialized_factors": [
+    "F53",
+    "F54",
+    "F55"
+  ],
+  "total_rows": 15,
+  "signal_role": "FACTOR_SIGNAL_ONLY",
+  "forward_return_used": false,
+  "written_to_feature_store": false
+}

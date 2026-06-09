@@ -1,0 +1,17 @@
+{
+  "pipeline_signature": "Z2-V13-F6-0-LANE-H-FACTOR-DEFINITION",
+  "factors": [
+    "F43",
+    "F44",
+    "F45",
+    "F46"
+  ],
+  "output_role": "FACTOR_SIGNAL_ONLY",
+  "forbidden_outputs": [
+    "forward_return",
+    "trade_signal",
+    "alpha_signal",
+    "position",
+    "order"
+  ]
+}

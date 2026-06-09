@@ -1,0 +1,9 @@
+{
+  "pipeline_signature": "Z2-V13-F6-0-LANE-E-FORMULA-CONTRACT",
+  "factors": [
+    "F13"
+  ],
+  "output_role": "FACTOR_SIGNAL_ONLY",
+  "source_data_required": true,
+  "blocked_reason": "no_dividend_buyback_data_committed"
+}

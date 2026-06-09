@@ -1,0 +1,12 @@
+{
+  "pipeline_signature": "Z2-V13-F6-0-LANE-H-FORMULA-CONTRACT",
+  "factors": [
+    "F43",
+    "F44",
+    "F45",
+    "F46"
+  ],
+  "output_role": "FACTOR_SIGNAL_ONLY",
+  "source_data_required": true,
+  "blocked_reason": "no_operating_data_committed"
+}

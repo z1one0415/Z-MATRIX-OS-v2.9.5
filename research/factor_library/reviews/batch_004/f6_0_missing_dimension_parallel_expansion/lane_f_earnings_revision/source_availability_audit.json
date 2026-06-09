@@ -1,0 +1,8 @@
+{
+  "pipeline_signature": "Z2-V13-F6-0-LANE-F-SOURCE-AUDIT",
+  "status": "SOURCE_AUDIT_COMPLETE",
+  "base_commit": "20fba19",
+  "dimension": "earnings_revision",
+  "result": "NONE_AVAILABLE",
+  "blocked_reason": "no_analyst_consensus_data_committed"
+}

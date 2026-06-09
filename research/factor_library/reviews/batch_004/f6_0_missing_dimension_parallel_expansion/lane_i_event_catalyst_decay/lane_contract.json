@@ -1,0 +1,23 @@
+{
+  "pipeline_signature": "Z2-V13-F6-0-LANE-I-CONTRACT",
+  "status": "V13_F6_0_LANE_I_SOURCE_CONTRACT_ONLY",
+  "base_commit": "20fba19",
+  "dimension": "event_catalyst_decay",
+  "factors": [
+    "F47",
+    "F48",
+    "F49"
+  ],
+  "materialized_factors": [],
+  "blocked_factors": [
+    "F47",
+    "F48",
+    "F49"
+  ],
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

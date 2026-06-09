@@ -1,0 +1,24 @@
+{
+  "pipeline_signature": "Z2-V13-F6-0-PARENT-MERGE-POLICY",
+  "merge_rules": {
+    "only_read_lane_artifacts": true,
+    "no_trust_verbal_reports": true,
+    "unified_status_per_factor": [
+      "MATERIALIZED",
+      "SOURCE_CONTRACT_ONLY",
+      "BLOCKED_BY_PIT_SOURCE",
+      "BLOCKED_BY_SOURCE_DATA",
+      "TAXONOMY_REVIEW_REQUIRED"
+    ],
+    "cross_lane_file_modification_forbidden": true,
+    "registry_update_only_by_parent": true
+  },
+  "merge_sequence": [
+    "collect_closeouts",
+    "canonicalize_status",
+    "update_registry",
+    "coverage_matrix",
+    "safety_audit",
+    "parent_closeout"
+  ]
+}

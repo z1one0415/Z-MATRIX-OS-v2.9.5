@@ -1,0 +1,62 @@
+{
+  "pipeline_signature": "Z2-V13-F6-0-MISSING-DIMENSION-PARALLEL-EXPANSION-CONTRACT",
+  "status": "V13_F6_0_PARALLEL_EXPANSION_INITIATED",
+  "base_commit": "20fba19",
+  "execution_mode": "OPENCLAW_MULTI_AGENT_PARALLEL",
+  "lanes": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L"
+  ],
+  "lane_count": 12,
+  "current_signal_ready": [
+    "F04",
+    "F10",
+    "F11",
+    "F21",
+    "F24",
+    "F30",
+    "F31"
+  ],
+  "blocked_factors": [
+    "F14",
+    "F15",
+    "F16"
+  ],
+  "target_dimensions": [
+    "fundamental_quality",
+    "profitability_momentum",
+    "cash_flow_quality",
+    "value_composite",
+    "shareholder_yield",
+    "earnings_revision",
+    "industry_chain_evidence",
+    "operating_cycle",
+    "event_catalyst",
+    "policy_macro_risk",
+    "sentiment_crowding",
+    "money_flow_microstructure"
+  ],
+  "hard_boundaries": {
+    "alpha_claim_allowed": false,
+    "formal_oos_validation_allowed": false,
+    "candidate_promotion_allowed": false,
+    "runner_enabled": false,
+    "execution_allowed": false,
+    "production": "BLOCKED",
+    "broker_runtime": "BLOCKED",
+    "real_trade": "BLOCKED",
+    "no_data_fabrication": true,
+    "no_price_proxy_for_fundamentals": true,
+    "no_heat_proxy_for_chain_evidence": true
+  }
+}

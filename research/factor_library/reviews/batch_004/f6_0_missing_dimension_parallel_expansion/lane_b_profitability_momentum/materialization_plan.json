@@ -1,0 +1,8 @@
+{
+  "pipeline_signature": "Z2-V13-F6-0-LANE-B-MATERIALIZATION-PLAN",
+  "materializable": [],
+  "blocked": [
+    "F07"
+  ],
+  "blocked_reason": "no_consecutive_period_fundamental_data"
+}

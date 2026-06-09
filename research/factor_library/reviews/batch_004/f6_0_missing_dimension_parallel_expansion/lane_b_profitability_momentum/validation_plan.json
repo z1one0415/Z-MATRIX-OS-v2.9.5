@@ -1,0 +1,10 @@
+{
+  "pipeline_signature": "Z2-V13-F6-0-LANE-B-VALIDATION-PLAN",
+  "planned_tests": [
+    "IC_test",
+    "sector_neutral",
+    "persistence",
+    "decay_analysis"
+  ],
+  "executable_when": "source_data_available"
+}

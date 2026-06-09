@@ -1,0 +1,10 @@
+{
+  "pipeline_signature": "Z2-V13-F6-0-LANE-J-MATERIALIZATION-PLAN",
+  "materializable": [],
+  "blocked": [
+    "F50",
+    "F51",
+    "F52"
+  ],
+  "blocked_reason": "no_structured_policy_macro_database_committed"
+}

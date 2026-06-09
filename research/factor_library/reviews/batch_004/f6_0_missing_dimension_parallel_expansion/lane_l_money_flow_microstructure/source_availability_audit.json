@@ -1,0 +1,8 @@
+{
+  "pipeline_signature": "Z2-V13-F6-0-LANE-L-SOURCE-AUDIT",
+  "status": "SOURCE_AUDIT_COMPLETE",
+  "base_commit": "20fba19",
+  "dimension": "money_flow_microstructure",
+  "result": "PARTIAL",
+  "blocked_reason": "F57_F59_require_order_level_data"
+}

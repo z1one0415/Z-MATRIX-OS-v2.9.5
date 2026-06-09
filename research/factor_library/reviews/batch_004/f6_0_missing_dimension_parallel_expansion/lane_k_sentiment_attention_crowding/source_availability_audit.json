@@ -1,0 +1,8 @@
+{
+  "pipeline_signature": "Z2-V13-F6-0-LANE-K-SOURCE-AUDIT",
+  "status": "SOURCE_AUDIT_COMPLETE",
+  "base_commit": "20fba19",
+  "dimension": "sentiment_attention_crowding",
+  "result": "PARTIAL",
+  "blocked_reason": "F16_taxonomy_review_required"
+}

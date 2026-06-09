@@ -1,0 +1,81 @@
+{
+  "version": "1.0",
+  "description": "G17 Human Risk Rule Engine — threshold configuration",
+  "rules": {
+    "R01": {
+      "name": "成本线跌破",
+      "threshold_type": "cost_line_break",
+      "severity": "HIGH"
+    },
+    "R02": {
+      "name": "单日跌幅超阈值",
+      "threshold": -0.05,
+      "severity": "MEDIUM"
+    },
+    "R03": {
+      "name": "连续两日下跌",
+      "combined_threshold": -0.04,
+      "severity": "MEDIUM"
+    },
+    "R04": {
+      "name": "支撑位跌破",
+      "threshold_type": "support_break",
+      "severity": "HIGH"
+    },
+    "R05": {
+      "name": "三线共振破位",
+      "min_breaks": 2,
+      "severity": "CRITICAL"
+    },
+    "R06": {
+      "name": "天量长上影",
+      "volume_ratio": 2.0,
+      "shadow_ratio": 0.03,
+      "severity": "HIGH"
+    },
+    "R07": {
+      "name": "放量下跌",
+      "volume_ratio": 1.5,
+      "return_threshold": -0.02,
+      "severity": "MEDIUM"
+    },
+    "R08": {
+      "name": "缩量反弹",
+      "volume_ratio": 0.6,
+      "severity": "LOW"
+    },
+    "R09": {
+      "name": "板块逆风",
+      "sector_threshold": -0.03,
+      "severity": "MEDIUM"
+    },
+    "R10": {
+      "name": "大盘风险",
+      "index_threshold": -0.03,
+      "severity": "MEDIUM"
+    },
+    "R11": {
+      "name": "事件风险窗口",
+      "days_threshold": 3,
+      "severity": "MEDIUM"
+    },
+    "R12": {
+      "name": "持仓亏损阈值",
+      "loss_threshold": -0.15,
+      "severity": "HIGH"
+    }
+  },
+  "risk_level_thresholds": {
+    "BLACK": {"critical_count": 1, "loss_pct": -0.20},
+    "RED": {"critical_count": 1, "high_count": 3},
+    "ORANGE": {"high_count": 2, "high_plus_medium": [1, 2]},
+    "YELLOW": {"high_count": 1, "medium_count": 2}
+  },
+  "action_gate_map": {
+    "GREEN": "OBSERVE",
+    "YELLOW": "CONDITIONAL_TRACK",
+    "ORANGE": "WAIT",
+    "RED": "REDUCE_OR_WAIT",
+    "BLACK": "EXIT_REVIEW"
+  }
+}

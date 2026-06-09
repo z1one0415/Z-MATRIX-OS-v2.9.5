@@ -34,7 +34,7 @@
   "corrected_tally": {
     "materialized_informative": 23,
     "materialized_non_informative": 1,
-    "defined_blocked": 16,
+    "defined_blocked": 12,
     "watch_only": 4,
     "rejected": 3,
     "source_audit_completed": 4,

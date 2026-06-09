@@ -1,0 +1,13 @@
+{
+  "pipeline_signature": "Z2-V13-F6-4-3-COUNT-TALLY-CONSISTENCY-CONTRACT",
+  "status": "V13_F6_4_3_COUNT_TALLY_CONTRACT_BUILT",
+  "base_commit": "1a7386a",
+  "fix_target": "defined_blocked: 16\u219212 in closeout + semantics",
+  "single_source_of_truth": "v13_f6_4_2_corrected_full_factor_ledger.json status_counts",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

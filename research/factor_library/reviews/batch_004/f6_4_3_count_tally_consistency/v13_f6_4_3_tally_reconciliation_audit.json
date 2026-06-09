@@ -1,0 +1,41 @@
+{
+  "pipeline_signature": "Z2-V13-F6-4-3-TALLY-RECONCILIATION-AUDIT",
+  "status": "V13_F6_4_3_RECONCILIATION_COMPLETE",
+  "base_commit": "1a7386a",
+  "inconsistencies_found": [
+    {
+      "file": "v13_f6_4_2_closeout.json",
+      "field": "corrected_tally.defined_blocked",
+      "old_value": 16,
+      "new_value": 12,
+      "root_cause": "WATCH_ONLY (F22,F26,F27,F34) incorrectly included in defined_blocked count"
+    },
+    {
+      "file": "v13_f6_4_2_count_semantics_patch.json",
+      "field": "corrected_counts.defined_blocked",
+      "old_value": 16,
+      "new_value": 12,
+      "root_cause": "same as closeout"
+    }
+  ],
+  "canonical_defined_blocked_factors": [
+    "F16",
+    "F41",
+    "F42",
+    "F43",
+    "F46",
+    "F47",
+    "F48",
+    "F49",
+    "F50",
+    "F52",
+    "F57",
+    "F59"
+  ],
+  "watch_only_factors_not_in_defined_blocked": [
+    "F22",
+    "F26",
+    "F27",
+    "F34"
+  ]
+}

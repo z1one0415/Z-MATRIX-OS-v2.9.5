@@ -1,0 +1,74 @@
+{
+  "pipeline_signature": "Z2-V13-F6-4-3-CORRECTED-COUNT-SEMANTICS",
+  "status": "V13_F6_4_3_COUNT_SEMANTICS_CORRECTED",
+  "base_commit": "1a7386a",
+  "f01_f60_total_slots": 60,
+  "slot_status_counts": {
+    "MATERIALIZED": 23,
+    "MATERIALIZED_NON_INFORMATIVE": 1,
+    "DEFINED_BLOCKED": 12,
+    "WATCH_ONLY": 4,
+    "REJECTED": 3,
+    "SOURCE_AUDIT_COMPLETED": 4,
+    "ORANGE_MONITORING": 1,
+    "RESERVED_NOT_IMPLEMENTED": 12
+  },
+  "slot_status_count_sum": 60,
+  "hypothesis_sidecar_count": 1,
+  "hypothesis_sidecar_ids": [
+    "F03R"
+  ],
+  "formal_alpha_factor_count": 0,
+  "informative_signal_ready": 23,
+  "defined_blocked_factors": [
+    "F16",
+    "F41",
+    "F42",
+    "F43",
+    "F46",
+    "F47",
+    "F48",
+    "F49",
+    "F50",
+    "F52",
+    "F57",
+    "F59"
+  ],
+  "watch_only_factors": [
+    "F22",
+    "F26",
+    "F27",
+    "F34"
+  ],
+  "rejected_factors": [
+    "F02",
+    "F03",
+    "F05"
+  ],
+  "source_audit_factors": [
+    "F17",
+    "F18",
+    "F19",
+    "F20"
+  ],
+  "orange_monitoring_factors": [
+    "F01"
+  ],
+  "materialized_non_informative_factors": [
+    "F13"
+  ],
+  "reserved_factors": [
+    "F23",
+    "F25",
+    "F28",
+    "F29",
+    "F32",
+    "F33",
+    "F35",
+    "F36",
+    "F37",
+    "F38",
+    "F39",
+    "F40"
+  ]
+}

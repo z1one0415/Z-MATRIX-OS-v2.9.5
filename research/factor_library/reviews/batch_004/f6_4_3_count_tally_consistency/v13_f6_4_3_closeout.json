@@ -1,0 +1,42 @@
+{
+  "pipeline_signature": "Z2-V13-F6-4-3-COUNT-TALLY-CONSISTENCY-CLOSEOUT",
+  "status": "V13_F6_4_3_COUNT_TALLY_CONSISTENCY_PATCH_PASS",
+  "base_commit": "1a7386a",
+  "fixes_applied": {
+    "closeout_defined_blocked": "16 \u2192 12",
+    "semantics_defined_blocked": "16 \u2192 12",
+    "sum_verified": "60 = 60",
+    "defined_blocked_factors": [
+      "F16",
+      "F41",
+      "F42",
+      "F43",
+      "F46",
+      "F47",
+      "F48",
+      "F49",
+      "F50",
+      "F52",
+      "F57",
+      "F59"
+    ]
+  },
+  "canonical_tally": {
+    "MATERIALIZED": 23,
+    "MATERIALIZED_NON_INFORMATIVE": 1,
+    "DEFINED_BLOCKED": 12,
+    "WATCH_ONLY": 4,
+    "REJECTED": 3,
+    "SOURCE_AUDIT_COMPLETED": 4,
+    "ORANGE_MONITORING": 1,
+    "RESERVED_NOT_IMPLEMENTED": 12
+  },
+  "canonical_sum": 60,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "recommended_next_action": "PREPARE_V13_F7_0_CANONICAL_REGISTRY_UPDATE_AFTER_STATUS_AND_TALLY_REPAIR"
+}

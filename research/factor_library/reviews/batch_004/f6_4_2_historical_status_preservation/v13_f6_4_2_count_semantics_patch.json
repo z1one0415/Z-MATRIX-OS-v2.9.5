@@ -10,7 +10,7 @@
     "materialized_non_informative": [
       "F13"
     ],
-    "defined_blocked": 16,
+    "defined_blocked": 12,
     "watch_only": 4,
     "rejected": 3,
     "source_audit_completed": 4,

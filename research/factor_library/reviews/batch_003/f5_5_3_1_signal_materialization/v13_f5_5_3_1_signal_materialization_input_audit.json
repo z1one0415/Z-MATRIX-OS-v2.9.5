@@ -1,0 +1,49 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-3-1-SIGNAL-MATERIALIZATION-INPUT-AUDIT",
+  "status": "V13_F5_5_3_1_INPUT_AUDIT_PASS",
+  "base_commit": "d9895da",
+  "checks": {
+    "label_panel_exists": true,
+    "label_ticker_count": 5,
+    "rebalance_date": "2026-05-06",
+    "forward_return_not_used_for_signal": true,
+    "F21_manifest_exists": true,
+    "F24_manifest_exists": true,
+    "F30_manifest_exists": true,
+    "F31_manifest_exists": true,
+    "F21_formula_ref_exists": true,
+    "F24_formula_ref_exists": true,
+    "F30_formula_ref_exists": true,
+    "F31_formula_ref_exists": true,
+    "price_bars_readable": true,
+    "pre_rebalance_history_available": true,
+    "pre_rebalance_trading_days": 22,
+    "blocked_factors_excluded": true
+  },
+  "label_tickers": [
+    "000977",
+    "002050",
+    "002472",
+    "588000",
+    "601899"
+  ],
+  "eligible_factors": [
+    "F21",
+    "F24",
+    "F30",
+    "F31"
+  ],
+  "blocked_factors": [
+    "F04",
+    "F10",
+    "F11",
+    "F14",
+    "F15",
+    "F16",
+    "F22",
+    "F26",
+    "F27",
+    "F34"
+  ],
+  "violation_count": 0
+}

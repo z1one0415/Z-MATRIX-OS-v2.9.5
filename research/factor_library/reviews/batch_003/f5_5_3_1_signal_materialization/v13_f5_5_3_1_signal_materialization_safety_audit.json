@@ -1,0 +1,28 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-3-1-SIGNAL-MATERIALIZATION-SAFETY-AUDIT",
+  "status": "V13_F5_5_3_1_SAFETY_AUDIT_PASS",
+  "base_commit": "d9895da",
+  "checks": {
+    "signal_materialization_executed": true,
+    "factor_recalculation_scope": "MINIMAL_LABEL_TICKERS_ONLY",
+    "full_universe_computation_executed": false,
+    "feature_store_write_executed": false,
+    "runtime_reports_write_executed": false,
+    "monitoring_rerun_executed": false,
+    "candidate_state_update_executed": false,
+    "forward_return_used_for_signal": false,
+    "outcome_label_used_for_signal": false,
+    "signal_isolation_pass": true,
+    "promotion_allowed": false,
+    "ready_for_promotion_review_empty": true,
+    "runner_enabled": false,
+    "execution_allowed": false,
+    "v13_6_allowed": false,
+    "paper_trading_allowed": false,
+    "alpha_claim_allowed": false,
+    "production_blocked": true,
+    "broker_runtime_blocked": true,
+    "real_trade_blocked": true
+  },
+  "violation_count": 0
+}

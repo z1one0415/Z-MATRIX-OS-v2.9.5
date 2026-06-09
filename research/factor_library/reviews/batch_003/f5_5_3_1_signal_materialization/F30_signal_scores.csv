@@ -1,0 +1,6 @@
+factor_id,ticker,rebalance_date,score,rank,bucket,score_available_at,source_artifact_ref,signal_role
+F30,000977,2026-05-06,0.170735,2,2,2026-05-06,research/factor_library/factors/F30/factor_manifest.json,FACTOR_SIGNAL_ONLY
+F30,002050,2026-05-06,0.173495,1,1,2026-05-06,research/factor_library/factors/F30/factor_manifest.json,FACTOR_SIGNAL_ONLY
+F30,002472,2026-05-06,0.076504,3,3,2026-05-06,research/factor_library/factors/F30/factor_manifest.json,FACTOR_SIGNAL_ONLY
+F30,588000,2026-05-06,-0.105481,4,4,2026-05-06,research/factor_library/factors/F30/factor_manifest.json,FACTOR_SIGNAL_ONLY
+F30,601899,2026-05-06,-0.446606,5,5,2026-05-06,research/factor_library/factors/F30/factor_manifest.json,FACTOR_SIGNAL_ONLY

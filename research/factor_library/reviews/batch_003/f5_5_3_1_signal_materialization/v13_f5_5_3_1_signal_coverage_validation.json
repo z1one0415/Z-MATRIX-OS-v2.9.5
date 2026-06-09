@@ -1,0 +1,39 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-3-1-SIGNAL-COVERAGE-VALIDATION",
+  "status": "V13_F5_5_3_1_SIGNAL_COVERAGE_PASS",
+  "base_commit": "d9895da",
+  "label_ticker_count": 5,
+  "covered_factor_count": 4,
+  "blocked_factor_count": 10,
+  "factor_coverage": {
+    "F21": {
+      "signal_tickers": 5,
+      "label_tickers": 5,
+      "covered": 5,
+      "missing": [],
+      "coverage_complete": true
+    },
+    "F24": {
+      "signal_tickers": 5,
+      "label_tickers": 5,
+      "covered": 5,
+      "missing": [],
+      "coverage_complete": true
+    },
+    "F30": {
+      "signal_tickers": 5,
+      "label_tickers": 5,
+      "covered": 5,
+      "missing": [],
+      "coverage_complete": true
+    },
+    "F31": {
+      "signal_tickers": 5,
+      "label_tickers": 5,
+      "covered": 5,
+      "missing": [],
+      "coverage_complete": true
+    }
+  },
+  "all_eligible_factors_complete": true
+}

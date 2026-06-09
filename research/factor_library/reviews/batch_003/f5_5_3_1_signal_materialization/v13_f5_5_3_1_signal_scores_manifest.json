@@ -1,0 +1,65 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-3-1-SIGNAL-SCORES-MANIFEST",
+  "status": "V13_F5_5_3_1_SIGNAL_SCORES_GENERATED",
+  "base_commit": "d9895da",
+  "rebalance_date": "2026-05-06",
+  "materialized_factors": [
+    "F21",
+    "F24",
+    "F30",
+    "F31"
+  ],
+  "ticker_count": 5,
+  "tickers": [
+    "000977",
+    "002050",
+    "002472",
+    "588000",
+    "601899"
+  ],
+  "rows_per_factor": 5,
+  "total_signal_rows": 20,
+  "signal_role": "FACTOR_SIGNAL_ONLY",
+  "source_data": "data/price_bars (pre-rebalance only)",
+  "forward_return_used_for_signal": false,
+  "outcome_label_used_for_signal": false,
+  "written_to_feature_store": false,
+  "factor_summaries": [
+    {
+      "factor_id": "F21",
+      "rows_generated": 5,
+      "tickers_covered": 5,
+      "score_range": [
+        0.190476,
+        0.380952
+      ]
+    },
+    {
+      "factor_id": "F24",
+      "rows_generated": 5,
+      "tickers_covered": 5,
+      "score_range": [
+        -0.101378,
+        0.836621
+      ]
+    },
+    {
+      "factor_id": "F30",
+      "rows_generated": 5,
+      "tickers_covered": 5,
+      "score_range": [
+        -0.446606,
+        0.173495
+      ]
+    },
+    {
+      "factor_id": "F31",
+      "rows_generated": 5,
+      "tickers_covered": 5,
+      "score_range": [
+        0.026484,
+        0.110563
+      ]
+    }
+  ]
+}

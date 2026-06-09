@@ -1,0 +1,25 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-OOS-LABEL-AVAILABILITY-AUDIT",
+  "status": "V13_F5_5_OOS_LABEL_AVAILABILITY_AUDIT_PASS",
+  "audit_date": "2026-06-09",
+  "minimum_oos_start_exclusive": "20260501",
+  "first_eligible_oos_month": "2026-05",
+  "trading_days_in_may_2026": 21,
+  "horizon_availability": {
+    "5D": {
+      "available": true,
+      "reason": "21 trading days > 5 required"
+    },
+    "20D": {
+      "available": true,
+      "reason": "21 trading days >= 20 required"
+    },
+    "60D": {
+      "available": false,
+      "reason": "only ~25 trading days elapsed since 20260501; need 60 trading days (available ~late July 2026)"
+    }
+  },
+  "oos_label_generation_executed": false,
+  "labels_exist_on_disk": false,
+  "labels_require_generation_before_monitoring": true
+}

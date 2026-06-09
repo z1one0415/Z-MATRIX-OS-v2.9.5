@@ -1,0 +1,35 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-PARTIAL-MONITORING-POLICY",
+  "status": "V13_F5_5_PARTIAL_MONITORING_POLICY_BUILT",
+  "partial_monitoring_allowed": true,
+  "policy": "Allow 20D/5D horizon monitoring for all 10 factors. Defer 60D monitoring until sufficient OOS data available (~late July 2026).",
+  "minimum_sample_threshold": {
+    "5D": 4,
+    "20D": 1,
+    "60D": 1
+  },
+  "minimum_sample_threshold_unit": "completed_label_periods",
+  "first_eligible_20D_monitoring_month": "2026-06",
+  "first_eligible_60D_monitoring_month": "2026-08",
+  "eligible_for_first_partial_monitoring": [
+    "F04",
+    "F10",
+    "F11",
+    "F14",
+    "F15",
+    "F16",
+    "F21",
+    "F24",
+    "F30",
+    "F31"
+  ],
+  "deferred_60D_monitoring": [
+    "F04",
+    "F10",
+    "F21",
+    "F24",
+    "F30",
+    "F31"
+  ],
+  "full_monitoring_available_after": "2026-08"
+}

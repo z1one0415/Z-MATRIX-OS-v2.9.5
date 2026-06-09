@@ -1,0 +1,23 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-MONITORING-EXECUTION-SAFETY-AUDIT",
+  "status": "V13_F5_5_SAFETY_AUDIT_PASS",
+  "checks": {
+    "planning_only": true,
+    "monitoring_execution_executed": false,
+    "oos_label_generation_executed": false,
+    "true_oos_validation_executed": false,
+    "promotion_allowed": false,
+    "ready_for_promotion_review_empty": true,
+    "multi_factor_composite_built": false,
+    "weight_optimization_executed": false,
+    "runner_enabled": false,
+    "execution_allowed": false,
+    "v13_6_allowed": false,
+    "paper_trading_allowed": false,
+    "alpha_claim_allowed": false,
+    "production_blocked": true,
+    "broker_runtime_blocked": true,
+    "real_trade_blocked": true
+  },
+  "violation_count": 0
+}

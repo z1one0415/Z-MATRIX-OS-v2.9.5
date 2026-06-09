@@ -1,0 +1,42 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-MONITORING-EXECUTION-PLAN-CLOSEOUT",
+  "status": "V13_F5_5_MONITORING_EXECUTION_PLAN_PASS",
+  "base_commit": "fd68c74",
+  "monitoring_execution_plan_built": true,
+  "monitoring_execution_executed": false,
+  "oos_label_generation_executed": false,
+  "ready_for_first_monitoring_execution": true,
+  "partial_monitoring_allowed": true,
+  "eligible_factors_20D": [
+    "F04",
+    "F10",
+    "F11",
+    "F14",
+    "F15",
+    "F16",
+    "F21",
+    "F24",
+    "F30",
+    "F31"
+  ],
+  "deferred_60D": [
+    "F04",
+    "F10",
+    "F21",
+    "F24",
+    "F30",
+    "F31"
+  ],
+  "first_eligible_month": "2026-06",
+  "labels_require_generation_first": true,
+  "ready_for_promotion_review": [],
+  "promotion_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "v13_6_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "recommended_next_action": "EXECUTE_V13_F5_5_1_OOS_LABEL_GENERATION_FOR_FIRST_MONITORING_MONTH"
+}

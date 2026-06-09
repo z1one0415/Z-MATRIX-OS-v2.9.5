@@ -1,0 +1,110 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-FACTOR-HORIZON-READINESS-MATRIX",
+  "status": "V13_F5_5_READINESS_MATRIX_BUILT",
+  "readiness": {
+    "F04": {
+      "horizons_required": [
+        "20D",
+        "60D"
+      ],
+      "20D_ready": true,
+      "60D_ready": false,
+      "status": "PARTIAL_20D_ONLY"
+    },
+    "F10": {
+      "horizons_required": [
+        "20D",
+        "60D"
+      ],
+      "20D_ready": true,
+      "60D_ready": false,
+      "status": "PARTIAL_20D_ONLY"
+    },
+    "F11": {
+      "horizons_required": [
+        "5D",
+        "20D"
+      ],
+      "5D_ready": true,
+      "20D_ready": true,
+      "status": "READY"
+    },
+    "F14": {
+      "horizons_required": [
+        "20D"
+      ],
+      "20D_ready": true,
+      "status": "READY"
+    },
+    "F15": {
+      "horizons_required": [
+        "20D"
+      ],
+      "20D_ready": true,
+      "status": "READY"
+    },
+    "F16": {
+      "horizons_required": [
+        "5D",
+        "20D"
+      ],
+      "5D_ready": true,
+      "20D_ready": true,
+      "status": "READY"
+    },
+    "F21": {
+      "horizons_required": [
+        "20D",
+        "60D"
+      ],
+      "20D_ready": true,
+      "60D_ready": false,
+      "status": "PARTIAL_20D_ONLY"
+    },
+    "F24": {
+      "horizons_required": [
+        "20D",
+        "60D"
+      ],
+      "20D_ready": true,
+      "60D_ready": false,
+      "status": "PARTIAL_20D_ONLY"
+    },
+    "F30": {
+      "horizons_required": [
+        "20D",
+        "60D"
+      ],
+      "20D_ready": true,
+      "60D_ready": false,
+      "status": "PARTIAL_20D_ONLY"
+    },
+    "F31": {
+      "horizons_required": [
+        "20D",
+        "60D"
+      ],
+      "20D_ready": true,
+      "60D_ready": false,
+      "status": "PARTIAL_20D_ONLY"
+    }
+  },
+  "fully_ready_count": 4,
+  "partial_ready_count": 6,
+  "blocked_count": 0,
+  "fully_ready_factors": [
+    "F11",
+    "F14",
+    "F15",
+    "F16"
+  ],
+  "partial_ready_factors": [
+    "F04",
+    "F10",
+    "F21",
+    "F24",
+    "F30",
+    "F31"
+  ],
+  "blocked_factors": []
+}

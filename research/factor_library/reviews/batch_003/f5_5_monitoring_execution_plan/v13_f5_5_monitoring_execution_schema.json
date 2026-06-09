@@ -1,0 +1,42 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-MONITORING-EXECUTION-SCHEMA",
+  "status": "V13_F5_5_MONITORING_EXECUTION_SCHEMA_BUILT",
+  "report_fields": [
+    "factor_id",
+    "horizon",
+    "rebalance_date",
+    "rank_ic",
+    "bucket_spread",
+    "cost_adjusted_spread",
+    "bucket_monotonicity",
+    "win_rate",
+    "coverage_tier",
+    "factor_drift",
+    "correlation_shift",
+    "month_concentration",
+    "gate_status",
+    "state_transition",
+    "retention_decision"
+  ],
+  "gate_fields": [
+    "pit_passed",
+    "label_isolation_passed",
+    "cost_gate_passed",
+    "regime_gate_passed",
+    "overlap_gate_passed"
+  ],
+  "output_format": "JSON per-factor per-horizon per-month",
+  "aggregation": "monthly unified monitoring report",
+  "retention_decisions": [
+    "RETAINED",
+    "WATCH",
+    "ORANGE",
+    "SUSPENSION_REVIEW"
+  ],
+  "forbidden_decisions": [
+    "PROMOTED",
+    "LIVE",
+    "TRADE_READY",
+    "ALPHA_VALIDATED"
+  ]
+}

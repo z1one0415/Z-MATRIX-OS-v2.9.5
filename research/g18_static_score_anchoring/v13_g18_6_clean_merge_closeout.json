@@ -1,0 +1,42 @@
+{
+  "pipeline_signature": "Z2-V13-G18-6-CLEAN-MERGE-CLOSEOUT",
+  "status": "V13_G18_6_CLEAN_MERGE_PASS",
+  "source_commit": "c68fd40",
+  "target_base_commit": "7384266",
+  "merge_commit": "6967886dd715d03400cdcdb6ce5c06bdc8358281",
+  "fast_risk_overlay_merged": true,
+  "market_snapshot_call_chain_passed": true,
+  "replay_tests_passed": true,
+  "replay_tests_count": "28/28",
+  "existing_g18_tests_passed": true,
+  "existing_g18_tests_count": "46/46",
+  "factor_library_dry_run_passed": true,
+  "factor_library_dry_run_count": "117/117",
+  "f5_5_4_preserved": true,
+  "f5_5_4_closeout_count": "6/6",
+  "preexisting_failures": 35,
+  "preexisting_failures_note": "test_v13_f0_f1_factor_domain.py and related baseline tests - not introduced by this merge",
+  "real_trade": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "alpha_claim_allowed": false,
+  "files_added": [
+    "zmatrix/prediction/fast_risk_overlay.py",
+    "zmatrix/prediction/market_snapshot_adapter.py",
+    "tests/test_g18_replay_fast_risk.py",
+    "research/g18_static_score_anchoring/v13_g18_0_static_score_anchoring_audit.json",
+    "research/g18_static_score_anchoring/v13_g18_1_fast_risk_overlay_contract.json",
+    "research/g18_static_score_anchoring/v13_g18_2_action_gate_patch.json",
+    "research/g18_static_score_anchoring/v13_g18_3_replay_test_assertions.json",
+    "research/g18_static_score_anchoring/v13_g18_4_factor_library_handoff_plan.json",
+    "research/g18_static_score_anchoring/v13_g18_5_call_chain_audit.json",
+    "research/g18_static_score_anchoring/v13_g18_5_clean_merge_review.json",
+    "research/g18_static_score_anchoring/v13_g18_5_merge_closeout.json",
+    "research/g18_static_score_anchoring/v13_g18_6_clean_merge_closeout.json"
+  ],
+  "files_modified": [
+    "zmatrix/prediction/final_decision_envelope.py",
+    "zmatrix/prediction/g09_signal_adapter.py",
+    "pipelines/Z-G18_天机引擎/gate_pipeline.py"
+  ],
+  "recommended_next_action": "CONTINUE_V13_F5_5_4_1_SIGNAL_SCORE_MATERIALIZATION_FOR_RESTORED_BATCH1_BATCH2_FACTORS"
+}

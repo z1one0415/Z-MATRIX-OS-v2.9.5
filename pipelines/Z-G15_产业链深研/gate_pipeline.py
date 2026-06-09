@@ -173,7 +173,29 @@ def run(tickers=None):
             if items:
                 print(f"    {level}: {', '.join(items[:4])}")
         analysis["evidence"] = evidence
-        
+
+        # ── 7. 产业链深度分析 (L1-L5 + 拓扑 + 手工) ──
+        try:
+            from zmatrix.research.industry_chain_analyzer import analyze_industry_chain
+            chain_analysis = analyze_industry_chain(
+                ticker=t, name=name, industry=industry,
+                financials=fin_data, peers=peer_data if peers else [],
+                catalysts=catalysts, existing_evidence=evidence,
+                chain_detail=chain,
+            )
+            ca = chain_analysis.to_dict()
+            analysis["chain_analysis"] = ca
+            print(f"\n  🔗 产业链深度:")
+            print(f"    链位置: {ca['chain_position']} | 利润捕获: {ca['profit_capture_point']}")
+            print(f"    研究置信: {ca['research_confidence']} | 瓶颈: {ca['bottleneck_status']}")
+            print(f"    G18交接: 论点{ca['g18_handoff']['thesis_strength']} "
+                  f"证据{ca['g18_handoff']['evidence_level']} "
+                  f"催化{ca['g18_handoff']['catalyst_distance']} "
+                  f"链风险{ca['g18_handoff']['chain_risk_score']}")
+        except Exception as e:
+            analysis["chain_analysis"] = {"error": str(e)[:120]}
+            print(f"\n  ⚠️ 产业链深度分析失败: {e}")
+
         result["analyses"].append(analysis)
     
     return result

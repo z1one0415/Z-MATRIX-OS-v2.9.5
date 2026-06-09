@@ -1,0 +1,40 @@
+{
+  "pipeline_signature": "V13-F5-1-19-CLEAN-TARGET-MERGE-REVIEW-DECISION",
+  "status": "V13_F5_1_19_CLEAN_TARGET_MERGE_REVIEW_DECISION_APPROVED",
+  "decision": "GO_FOR_MERGE_SOURCE_INTO_RESTORED_CLEAN_TARGET",
+  "target_branch": "v4.0-batch-0-final-hardgates-scope-lock-clean",
+  "target_head": "22acd92a8dc49e7d82c59f57db17d5c864eaf0bd",
+  "source_branch": "fix/research-f5-1-18-clean-merge-decision",
+  "source_head": "1b291cc2b22256e3577fd2bd8256c26e5342244d",
+  "clean_base": "4dd8e86ff391e0af9e55de46ae3c93545798336c",
+  "polluted_target_rejected": "v4.0-batch-0-final-hardgates-scope-lock",
+  "invalidated_commits": [
+    "0c2e6553d819d790a4c10e90acc111d3e8eb9da6",
+    "a6c3ff25b943277aa70a104373ead26e29e2199d",
+    "a622b3d921aebc513bcde98d1ade1be09120c131",
+    "9f5f3f4"
+  ],
+  "conditions": [
+    "merge only into restored clean target",
+    "no polluted target reuse",
+    "no __pycache__",
+    "no docs/skillos",
+    "no runtime_reports",
+    "no runtime_audit",
+    "no broker/trading/real_trade/execution",
+    "no V13.6",
+    "no paper trading",
+    "no alpha claim",
+    "no production",
+    "no broker_runtime",
+    "no real_trade"
+  ],
+  "merge_allowed": true,
+  "test_results": {
+    "dry_run": "117 passed",
+    "candidate_review": "291 passed",
+    "interface": "65 passed",
+    "total": "473 passed, 0 failed"
+  },
+  "next_allowed_action": "MERGE_SOURCE_INTO_RESTORED_CLEAN_TARGET_ONLY"
+}

@@ -1,0 +1,4 @@
+# Z2 Research Report Node Planning Clean Merge Decision Seal
+## Status: Z_SKILLOS_Z2_RESEARCH_REPORT_NODE_PLANNING_CLEAN_MERGE_DECISION_SEALED
+## Decision: GO_FOR_Z2_RESEARCH_REPORT_NODE_PLANNING_CLEAN_DOCS_ONLY_MERGE_APPROVAL
+## Date: 2026-06-09 | head=054703c | base=74c27fa | invalidated=b276cd3

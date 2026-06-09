@@ -1,11 +1,11 @@
 {
-  "pipeline_signature": "V13-F5-5-4-RESTORED-FORMULA-F15",
+  "pipeline_signature": "Z2-V13-F6-5-1-FORMULA-CONTRACT-F15",
   "factor_id": "F15",
   "factor_name": "ACCRUALS_QUALITY",
-  "formula_summary": "proxy: volume_stability_ratio as quality indicator",
-  "lookback_days": 20,
+  "factor_type": "FUNDAMENTAL_QUALITY",
+  "formula_summary": "-abs(n_income-n_cashflow_act)/total_assets",
   "source_data_required": [
-    "data/price_bars"
+    "tushare income+cashflow+balancesheet"
   ],
   "output_fields": [
     "score",
@@ -20,7 +20,16 @@
     "position",
     "order",
     "buy_signal",
-    "sell_signal"
+    "sell_signal",
+    "portfolio_weight",
+    "expected_return_claim"
   ],
-  "note": "Fundamental data unavailable; using volume-proxy for micro-sample diagnostic only"
+  "rebalance_date_constraint": "uses only data available BEFORE rebalance_date",
+  "signal_role": "FACTOR_SIGNAL_ONLY",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
 }

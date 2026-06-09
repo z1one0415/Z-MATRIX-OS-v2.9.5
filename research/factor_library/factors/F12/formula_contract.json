@@ -1,11 +1,11 @@
 {
-  "pipeline_signature": "Z2-V13-F6-5-1-FORMULA-CONTRACT-F14",
-  "factor_id": "F14",
-  "factor_name": "ASSET_GROWTH_DISCIPLINE",
+  "pipeline_signature": "Z2-V13-F6-5-1-FORMULA-CONTRACT-F12",
+  "factor_id": "F12",
+  "factor_name": "VALUE_COMPOSITE",
   "factor_type": "FUNDAMENTAL_QUALITY",
-  "formula_summary": "-or_yoy (lower revenue growth = more disciplined)",
+  "formula_summary": "-pe_ttm (lower PE = higher score)",
   "source_data_required": [
-    "tushare fina_indicator"
+    "tushare daily_basic"
   ],
   "output_fields": [
     "score",

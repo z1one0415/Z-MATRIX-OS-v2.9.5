@@ -1,0 +1,26 @@
+{
+  "pipeline_signature": "V13-F6-5-1-MANIFEST-F12",
+  "interface_version": "factor.application.v1",
+  "factor_id": "F12",
+  "factor_name": "VALUE_COMPOSITE",
+  "factor_type": "FUNDAMENTAL_QUALITY",
+  "factor_status": "FROZEN_TACTICAL_CANDIDATE",
+  "source_data_refs": [
+    "tushare daily_basic"
+  ],
+  "universe_policy": "LABEL_TICKERS_ONLY_FOR_MICRO_SAMPLE",
+  "horizon_policy": {
+    "allowed_horizons": [
+      "5D",
+      "20D"
+    ],
+    "blocked_horizons": [
+      "60D"
+    ]
+  },
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

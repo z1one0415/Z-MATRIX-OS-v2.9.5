@@ -1,9 +1,9 @@
 {
-  "pipeline_signature": "Z2-V13-F6-5-1-FORMULA-CONTRACT-F14",
-  "factor_id": "F14",
-  "factor_name": "ASSET_GROWTH_DISCIPLINE",
+  "pipeline_signature": "Z2-V13-F6-5-1-FORMULA-CONTRACT-F07",
+  "factor_id": "F07",
+  "factor_name": "PROFITABILITY_MOMENTUM",
   "factor_type": "FUNDAMENTAL_QUALITY",
-  "formula_summary": "-or_yoy (lower revenue growth = more disciplined)",
+  "formula_summary": "z(netprofit_yoy)+z(or_yoy)+z(delta_roe)",
   "source_data_required": [
     "tushare fina_indicator"
   ],

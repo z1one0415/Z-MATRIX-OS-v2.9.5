@@ -1,0 +1,30 @@
+{
+  "pipeline_signature": "Z2-V13-F6-5-1-EXECUTABLE-INVENTORY",
+  "factors_with_executable_formula": 23,
+  "factors_without_executable_formula": 37,
+  "executable_paths": {
+    "F04": "research/factor_library/sources/F04/executable_formula.py",
+    "F06": "research/factor_library/factors/F06/executable_formula.py",
+    "F07": "research/factor_library/factors/F07/executable_formula.py",
+    "F08": "research/factor_library/factors/F08/executable_formula.py",
+    "F09": "research/factor_library/factors/F09/executable_formula.py",
+    "F10": "research/factor_library/sources/F10/executable_formula.py",
+    "F11": "research/factor_library/sources/F11/executable_formula.py",
+    "F12": "research/factor_library/factors/F12/executable_formula.py",
+    "F14": "research/factor_library/sources/F14/executable_formula.py",
+    "F15": "research/factor_library/sources/F15/executable_formula.py",
+    "F21": "research/factor_library/factors/F21/executable_formula.py",
+    "F24": "research/factor_library/factors/F24/executable_formula.py",
+    "F30": "research/factor_library/factors/F30/executable_formula.py",
+    "F31": "research/factor_library/factors/F31/executable_formula.py",
+    "F44": "research/factor_library/factors/F44/executable_formula.py",
+    "F45": "research/factor_library/factors/F45/executable_formula.py",
+    "F51": "research/factor_library/factors/F51/executable_formula.py",
+    "F53": "research/factor_library/factors/F53/executable_formula.py",
+    "F54": "research/factor_library/factors/F54/executable_formula.py",
+    "F55": "research/factor_library/factors/F55/executable_formula.py",
+    "F56": "research/factor_library/factors/F56/executable_formula.py",
+    "F58": "research/factor_library/factors/F58/executable_formula.py",
+    "F60": "research/factor_library/factors/F60/executable_formula.py"
+  }
+}

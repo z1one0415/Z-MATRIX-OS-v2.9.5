@@ -1,11 +1,11 @@
 {
-  "pipeline_signature": "Z2-V13-F6-5-1-FORMULA-CONTRACT-F14",
-  "factor_id": "F14",
-  "factor_name": "ASSET_GROWTH_DISCIPLINE",
-  "factor_type": "FUNDAMENTAL_QUALITY",
-  "formula_summary": "-or_yoy (lower revenue growth = more disciplined)",
+  "pipeline_signature": "Z2-V13-F6-5-1-FORMULA-CONTRACT-F51",
+  "factor_id": "F51",
+  "factor_name": "MACRO_HEADWIND_RISK",
+  "factor_type": "POLICY_MACRO",
+  "formula_summary": "rate_change+m2_deceleration",
   "source_data_required": [
-    "tushare fina_indicator"
+    "tushare cn_m+shibor_lpr"
   ],
   "output_fields": [
     "score",

@@ -1,11 +1,11 @@
 {
-  "pipeline_signature": "Z2-V13-F6-5-1-FORMULA-CONTRACT-F14",
-  "factor_id": "F14",
-  "factor_name": "ASSET_GROWTH_DISCIPLINE",
+  "pipeline_signature": "Z2-V13-F6-5-1-FORMULA-CONTRACT-F08",
+  "factor_id": "F08",
+  "factor_name": "CASH_FLOW_YIELD",
   "factor_type": "FUNDAMENTAL_QUALITY",
-  "formula_summary": "-or_yoy (lower revenue growth = more disciplined)",
+  "formula_summary": "n_cashflow_act/total_mv",
   "source_data_required": [
-    "tushare fina_indicator"
+    "tushare cashflow+daily_basic"
   ],
   "output_fields": [
     "score",

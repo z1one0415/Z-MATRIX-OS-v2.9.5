@@ -1,11 +1,11 @@
 {
-  "pipeline_signature": "Z2-V13-F6-5-1-FORMULA-CONTRACT-F14",
-  "factor_id": "F14",
-  "factor_name": "ASSET_GROWTH_DISCIPLINE",
+  "pipeline_signature": "Z2-V13-F6-5-1-FORMULA-CONTRACT-F09",
+  "factor_id": "F09",
+  "factor_name": "EARNINGS_REVISION",
   "factor_type": "FUNDAMENTAL_QUALITY",
-  "formula_summary": "-or_yoy (lower revenue growth = more disciplined)",
+  "formula_summary": "guidance_direction*0.7+guidance_conservatism*0.3",
   "source_data_required": [
-    "tushare fina_indicator"
+    "tushare forecast"
   ],
   "output_fields": [
     "score",

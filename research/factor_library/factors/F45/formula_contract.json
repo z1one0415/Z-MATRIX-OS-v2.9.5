@@ -1,11 +1,11 @@
 {
-  "pipeline_signature": "Z2-V13-F6-5-1-FORMULA-CONTRACT-F14",
-  "factor_id": "F14",
-  "factor_name": "ASSET_GROWTH_DISCIPLINE",
-  "factor_type": "FUNDAMENTAL_QUALITY",
-  "formula_summary": "-or_yoy (lower revenue growth = more disciplined)",
+  "pipeline_signature": "Z2-V13-F6-5-1-FORMULA-CONTRACT-F45",
+  "factor_id": "F45",
+  "factor_name": "CAPACITY_UTILIZATION_PRESSURE",
+  "factor_type": "OPERATING_CYCLE",
+  "formula_summary": "z(asset_turnover)-z(fix_assets_growth)",
   "source_data_required": [
-    "tushare fina_indicator"
+    "tushare balancesheet+income"
   ],
   "output_fields": [
     "score",

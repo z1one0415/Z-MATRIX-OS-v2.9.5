@@ -1,0 +1,26 @@
+{
+  "pipeline_signature": "V13-F6-5-1-MANIFEST-F60",
+  "interface_version": "factor.application.v1",
+  "factor_id": "F60",
+  "factor_name": "INTRADAY_REVERSAL_PRESSURE",
+  "factor_type": "MONEY_FLOW_MICRO",
+  "factor_status": "FROZEN_TACTICAL_CANDIDATE",
+  "source_data_refs": [
+    "data/price_bars"
+  ],
+  "universe_policy": "LABEL_TICKERS_ONLY_FOR_MICRO_SAMPLE",
+  "horizon_policy": {
+    "allowed_horizons": [
+      "5D",
+      "20D"
+    ],
+    "blocked_horizons": [
+      "60D"
+    ]
+  },
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

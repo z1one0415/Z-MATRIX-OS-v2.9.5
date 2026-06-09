@@ -1,9 +1,9 @@
 {
-  "pipeline_signature": "V13-F5-5-4-RESTORED-FORMULA-F04",
+  "pipeline_signature": "Z2-V13-F6-5-1-FORMULA-CONTRACT-F04",
   "factor_id": "F04",
   "factor_name": "RESIDUAL_MOMENTUM",
-  "formula_summary": "cumulative_return(t-60, t-5) - beta * market_return(t-60, t-5)",
-  "lookback_days": 60,
+  "factor_type": "PRICE_VOLUME_RISK",
+  "formula_summary": "cumulative_return(t-20,t-5)",
   "source_data_required": [
     "data/price_bars"
   ],
@@ -20,7 +20,16 @@
     "position",
     "order",
     "buy_signal",
-    "sell_signal"
+    "sell_signal",
+    "portfolio_weight",
+    "expected_return_claim"
   ],
-  "note": null
+  "rebalance_date_constraint": "uses only data available BEFORE rebalance_date",
+  "signal_role": "FACTOR_SIGNAL_ONLY",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
 }

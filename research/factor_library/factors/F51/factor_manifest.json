@@ -1,0 +1,26 @@
+{
+  "pipeline_signature": "V13-F6-5-1-MANIFEST-F51",
+  "interface_version": "factor.application.v1",
+  "factor_id": "F51",
+  "factor_name": "MACRO_HEADWIND_RISK",
+  "factor_type": "POLICY_MACRO",
+  "factor_status": "FROZEN_TACTICAL_CANDIDATE",
+  "source_data_refs": [
+    "tushare cn_m+shibor_lpr"
+  ],
+  "universe_policy": "LABEL_TICKERS_ONLY_FOR_MICRO_SAMPLE",
+  "horizon_policy": {
+    "allowed_horizons": [
+      "5D",
+      "20D"
+    ],
+    "blocked_horizons": [
+      "60D"
+    ]
+  },
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

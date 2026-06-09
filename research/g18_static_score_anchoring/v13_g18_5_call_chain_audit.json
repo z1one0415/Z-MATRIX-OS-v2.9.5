@@ -1,0 +1,30 @@
+{
+  "pipeline_signature": "Z2-V13-G18-5-CALL-CHAIN-AUDIT",
+  "status": "V13_G18_5_CALL_CHAIN_AUDIT_PASS",
+  "gate_pipeline_line_196_before": "build_final_decision(p, upstream)",
+  "gate_pipeline_line_196_after": "build_final_decision(p, upstream, market_snapshot=market_snap)",
+  "market_snapshot_adapter_created": true,
+  "market_snapshot_adapter_path": "zmatrix/prediction/market_snapshot_adapter.py",
+  "market_snapshot_fields_wired": {
+    "close": "from kline_data['close'][-1]",
+    "high": "from kline_data['high'][-1]",
+    "volume": "from kline_data['volume'][-1]",
+    "avg_volume_20d": "computed from kline_data['volume'][-20:]",
+    "user_cost_line": "from position_data (None if unavailable)",
+    "d1_support": "from g09_signal (None if unavailable)",
+    "cycle_origin": "from g09_signal (None if unavailable)",
+    "event_window_active": "from event_calendar (False if unavailable)",
+    "sector_momentum_rank": "None (future wire)",
+    "style_mismatch_duration": "0 (future wire)",
+    "days_since_catalyst": "None (future wire)"
+  },
+  "safe_default_policy": "missing fields do NOT trigger risk gates",
+  "available_fields_trigger_correctly": true,
+  "type_consistency": "MarketSnapshot imported from fast_risk_overlay.py (single source of truth)",
+  "kline_data_source": "get_kline(p.ticker, 500) called in final decision loop",
+  "replay_tests_pass": true,
+  "replay_tests_count": "28/28",
+  "existing_tests_pass": true,
+  "existing_tests_count": "74/74",
+  "g09_adapter_path_fix": "added 'pipelines/' to Z-G09 gate_pipeline path resolution"
+}

@@ -176,6 +176,7 @@ def run(tickers=None, mode="daily", universe="WATCHLIST"):
     from zmatrix.prediction.adapters.z16_price_gate_adapter import load_z16_signal
     from zmatrix.prediction.adapters.g17_account_confirm_adapter import load_g17_signal
     from zmatrix.prediction.final_decision_envelope import build_final_decision
+    from zmatrix.prediction.market_snapshot_adapter import build_market_snapshot
     from zmatrix.prediction.paper_execution_record import build_paper_execution_record
     from zmatrix.calibration.z9_calibration_sample import build_z9_calibration_sample
     from zmatrix.calibration.z9_ingestion_queue import build_z9_ingestion_queue_item
@@ -193,7 +194,18 @@ def run(tickers=None, mode="daily", universe="WATCHLIST"):
             g17_signal=load_g17_signal(p.ticker),
         )
         p.upstream_evidence = upstream
-        p.final_decision = build_final_decision(p, upstream)
+
+        # ── Assemble market snapshot for fast risk overlay ──
+        kl_snap = get_kline(p.ticker, 500) if _HAS_Z01 else {"prices": [], "count": 0}
+        market_snap = build_market_snapshot(
+            prediction=p,
+            kline_data=kl_snap,
+            g09_signal=g09_signal_map.get(p.ticker),
+            position_data=None,  # TODO: wire position_provider
+            event_calendar=None,  # TODO: wire event_calendar
+        )
+
+        p.final_decision = build_final_decision(p, upstream, market_snapshot=market_snap)
         p.paper_execution_record = build_paper_execution_record(p, run_id=run_id)
         p.z9_calibration_sample_preview = build_z9_calibration_sample(p.paper_execution_record, run_id=run_id)
         p.z9_ingestion_queue_preview = build_z9_ingestion_queue_item(p.z9_calibration_sample_preview, enqueue_run_id=run_id)

@@ -1,0 +1,26 @@
+{
+  "pipeline_signature": "V13-F5-5-4-RESTORED-FORMULA-F14",
+  "factor_id": "F14",
+  "factor_name": "ASSET_GROWTH_DISCIPLINE",
+  "formula_summary": "proxy: -abs(price_change_20d) as discipline indicator",
+  "lookback_days": 20,
+  "source_data_required": [
+    "data/price_bars"
+  ],
+  "output_fields": [
+    "score",
+    "rank",
+    "bucket"
+  ],
+  "output_role": "FACTOR_SIGNAL_ONLY",
+  "forbidden_outputs": [
+    "forward_return",
+    "trade_signal",
+    "alpha_signal",
+    "position",
+    "order",
+    "buy_signal",
+    "sell_signal"
+  ],
+  "note": "Fundamental data unavailable; using price-proxy for micro-sample diagnostic only"
+}

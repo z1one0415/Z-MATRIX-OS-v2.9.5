@@ -1,0 +1,11 @@
+{
+  "pipeline_signature": "V13-F5-5-4-RESTORED-PROVENANCE-F04",
+  "factor_id": "F04",
+  "restoration_source": "configs/research/factors/factor_domain_registry_v1.json",
+  "restoration_commit": "3f9f5ca",
+  "original_batch": "batch_001",
+  "restoration_reason": "signal_source_recovery_for_monitoring_rerun",
+  "restoration_scope": "minimal_source_package_only",
+  "no_signal_scores_included": true,
+  "no_bucket_assignments_included": true
+}

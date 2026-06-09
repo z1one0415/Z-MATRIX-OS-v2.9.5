@@ -1,0 +1,26 @@
+{
+  "pipeline_signature": "V13-F5-5-4-RESTORED-FORMULA-F16",
+  "factor_id": "F16",
+  "factor_name": "SENTIMENT_ATTENTION",
+  "formula_summary": "volume_ratio(recent_5d / trailing_20d) * abs(return_5d)",
+  "lookback_days": 10,
+  "source_data_required": [
+    "data/price_bars"
+  ],
+  "output_fields": [
+    "score",
+    "rank",
+    "bucket"
+  ],
+  "output_role": "FACTOR_SIGNAL_ONLY",
+  "forbidden_outputs": [
+    "forward_return",
+    "trade_signal",
+    "alpha_signal",
+    "position",
+    "order",
+    "buy_signal",
+    "sell_signal"
+  ],
+  "note": null
+}

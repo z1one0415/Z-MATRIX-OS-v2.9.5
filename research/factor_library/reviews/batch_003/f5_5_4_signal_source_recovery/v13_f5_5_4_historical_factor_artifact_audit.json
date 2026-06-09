@@ -1,0 +1,109 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-4-HISTORICAL-FACTOR-ARTIFACT-AUDIT",
+  "status": "V13_F5_5_4_HISTORICAL_ARTIFACT_AUDIT_COMPLETE",
+  "base_commit": "3f9f5ca",
+  "data_source_restrictions": {
+    "forbidden_paths_checked": [
+      "runtime_reports",
+      "runtime_audit",
+      "docs/skillos",
+      "broker",
+      "trading",
+      "execution",
+      "real_trade"
+    ],
+    "runtime_reports_read": false,
+    "broker_read": false,
+    "execution_read": false
+  },
+  "factors_audited": 6,
+  "restorable_count": 6,
+  "blocked_count": 0,
+  "factor_results": [
+    {
+      "factor_id": "F04",
+      "factor_name": "RESIDUAL_MOMENTUM",
+      "factor_type": "PRICE_VOLUME_RISK",
+      "batch": "batch_001",
+      "historical_manifest_found": true,
+      "historical_formula_contract_found": true,
+      "in_unified_candidate_registry": true,
+      "current_factor_directory_exists": false,
+      "safe_to_restore": true,
+      "source_commit": "3f9f5ca",
+      "source_reference": "configs/research/factors/factor_domain_registry_v1.json",
+      "blocked_reasons": []
+    },
+    {
+      "factor_id": "F10",
+      "factor_name": "LOW_VOLATILITY",
+      "factor_type": "PRICE_VOLUME_RISK",
+      "batch": "batch_001",
+      "historical_manifest_found": true,
+      "historical_formula_contract_found": true,
+      "in_unified_candidate_registry": true,
+      "current_factor_directory_exists": false,
+      "safe_to_restore": true,
+      "source_commit": "3f9f5ca",
+      "source_reference": "configs/research/factors/factor_domain_registry_v1.json",
+      "blocked_reasons": []
+    },
+    {
+      "factor_id": "F11",
+      "factor_name": "SHORT_TERM_REVERSAL",
+      "factor_type": "PRICE_VOLUME_RISK",
+      "batch": "batch_001",
+      "historical_manifest_found": true,
+      "historical_formula_contract_found": true,
+      "in_unified_candidate_registry": true,
+      "current_factor_directory_exists": false,
+      "safe_to_restore": true,
+      "source_commit": "3f9f5ca",
+      "source_reference": "configs/research/factors/factor_domain_registry_v1.json",
+      "blocked_reasons": []
+    },
+    {
+      "factor_id": "F14",
+      "factor_name": "ASSET_GROWTH_DISCIPLINE",
+      "factor_type": "FUNDAMENTAL_QUALITY",
+      "batch": "batch_002",
+      "historical_manifest_found": true,
+      "historical_formula_contract_found": true,
+      "in_unified_candidate_registry": true,
+      "current_factor_directory_exists": false,
+      "safe_to_restore": true,
+      "source_commit": "3f9f5ca",
+      "source_reference": "configs/research/factors/factor_domain_registry_v1.json",
+      "blocked_reasons": []
+    },
+    {
+      "factor_id": "F15",
+      "factor_name": "ACCRUALS_QUALITY",
+      "factor_type": "FUNDAMENTAL_QUALITY",
+      "batch": "batch_002",
+      "historical_manifest_found": true,
+      "historical_formula_contract_found": true,
+      "in_unified_candidate_registry": true,
+      "current_factor_directory_exists": false,
+      "safe_to_restore": true,
+      "source_commit": "3f9f5ca",
+      "source_reference": "configs/research/factors/factor_domain_registry_v1.json",
+      "blocked_reasons": []
+    },
+    {
+      "factor_id": "F16",
+      "factor_name": "SENTIMENT_ATTENTION",
+      "factor_type": "PRICE_VOLUME_SENTIMENT",
+      "batch": "batch_002",
+      "historical_manifest_found": true,
+      "historical_formula_contract_found": true,
+      "in_unified_candidate_registry": true,
+      "current_factor_directory_exists": false,
+      "safe_to_restore": true,
+      "source_commit": "3f9f5ca",
+      "source_reference": "configs/research/factors/factor_domain_registry_v1.json",
+      "blocked_reasons": []
+    }
+  ],
+  "violation_count": 0
+}

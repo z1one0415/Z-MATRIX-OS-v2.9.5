@@ -1,0 +1,31 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-4-SIGNAL-SOURCE-RECOVERY-CONTRACT",
+  "status": "V13_F5_5_4_SIGNAL_SOURCE_RECOVERY_CONTRACT_BUILT",
+  "base_commit": "3f9f5ca",
+  "planning_and_restoration_only": true,
+  "target_factors": [
+    "F04",
+    "F10",
+    "F11",
+    "F14",
+    "F15",
+    "F16"
+  ],
+  "already_signal_ready": [
+    "F21",
+    "F24",
+    "F30",
+    "F31"
+  ],
+  "signal_score_generation_allowed": false,
+  "monitoring_rerun_allowed": false,
+  "candidate_state_update_allowed": false,
+  "promotion_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "v13_6_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

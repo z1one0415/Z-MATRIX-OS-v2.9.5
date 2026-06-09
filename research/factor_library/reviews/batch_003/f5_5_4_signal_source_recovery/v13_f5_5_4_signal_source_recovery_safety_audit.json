@@ -1,0 +1,23 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-4-SIGNAL-SOURCE-RECOVERY-SAFETY-AUDIT",
+  "status": "V13_F5_5_4_SAFETY_AUDIT_PASS",
+  "base_commit": "3f9f5ca",
+  "checks": {
+    "signal_score_generation_executed": false,
+    "monitoring_rerun_executed": false,
+    "candidate_state_update_executed": false,
+    "no_signal_scores_csv_in_sources": true,
+    "no_bucket_assignments_csv_in_sources": true,
+    "promotion_allowed": false,
+    "ready_for_promotion_review_empty": true,
+    "runner_enabled": false,
+    "execution_allowed": false,
+    "v13_6_allowed": false,
+    "alpha_claim_allowed": false,
+    "production_blocked": true,
+    "broker_runtime_blocked": true,
+    "real_trade_blocked": true
+  },
+  "violations": [],
+  "violation_count": 0
+}

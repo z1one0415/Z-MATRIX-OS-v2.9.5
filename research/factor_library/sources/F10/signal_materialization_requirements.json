@@ -1,0 +1,17 @@
+{
+  "pipeline_signature": "V13-F5-5-4-RESTORED-MATREQ-F10",
+  "factor_id": "F10",
+  "requirements": {
+    "price_bars_available": true,
+    "lookback_days_minimum": 20,
+    "tickers_from_label_panel": true,
+    "rebalance_date_required": true,
+    "full_universe_required": false
+  },
+  "constraints": {
+    "signal_role": "FACTOR_SIGNAL_ONLY",
+    "no_forward_return_input": true,
+    "no_feature_store_write": true,
+    "no_runtime_reports_write": true
+  }
+}

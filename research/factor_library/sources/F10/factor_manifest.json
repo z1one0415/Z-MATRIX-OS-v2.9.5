@@ -1,0 +1,29 @@
+{
+  "pipeline_signature": "V13-F5-5-4-RESTORED-MANIFEST-F10",
+  "interface_version": "factor.application.v1",
+  "factor_id": "F10",
+  "factor_name": "LOW_VOLATILITY",
+  "factor_family_id": "RISK",
+  "factor_type": "PRICE_VOLUME_RISK",
+  "factor_status": "RESTORED_FOR_SIGNAL_MATERIALIZATION",
+  "source_data_refs": [
+    "data/price_bars"
+  ],
+  "universe_policy": "LABEL_TICKERS_ONLY_FOR_MICRO_SAMPLE",
+  "horizon_policy": {
+    "allowed_horizons": [
+      "5D",
+      "20D"
+    ],
+    "blocked_horizons": [
+      "60D"
+    ]
+  },
+  "ready_for_candidate_review": false,
+  "ready_for_promotion_review": [],
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

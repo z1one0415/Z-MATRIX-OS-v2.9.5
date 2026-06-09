@@ -1,0 +1,11 @@
+{
+  "pipeline_signature": "V13-F5-1-18-CLEAN-REBUILD-P0-DISABLED-DEFAULT-MERGE-DECISION",
+  "base_commit": "33dfe733e383223fe91c461ac005e7a107c5f010",
+  "test_results": {
+    "interface": "65 passed, 0 failed, 0 skipped",
+    "candidate_review": "272 passed, 0 failed, 0 skipped",
+    "dry_run": "117 passed, 0 failed, 0 skipped",
+    "combined": "454 passed, 0 failed, 0 skipped"
+  },
+  "all_passed": true
+}

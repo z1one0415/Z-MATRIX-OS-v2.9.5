@@ -119,5 +119,9 @@
   "p0_disabled_default_review_status": "APPROVED_BY_HUMAN",
   "p0_disabled_default_merge_decision_allowed": true,
   "merge_allowed_now": false,
-  "next_legal_entry": "HUMAN_CONTROLLED_NOOP_DRY_RUN_P0_DISABLED_DEFAULT_MERGE_DECISION_ONLY"
+  "p0_disabled_default_merge_decision_status": "HOLD_MERGE_FOR_TARGET_LINEAGE_REPAIR",
+  "merge_approval_granted": false,
+  "target_lineage_repair_required": true,
+  "merge_executed": false,
+  "next_legal_entry": "RESTORE_CLEAN_TARGET_LINEAGE_BEFORE_MERGE_ONLY"
 }

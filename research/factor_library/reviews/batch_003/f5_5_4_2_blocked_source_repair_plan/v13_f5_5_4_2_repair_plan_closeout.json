@@ -1,0 +1,22 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-4-2-REPAIR-PLAN-CLOSEOUT",
+  "status": "V13_F5_5_4_2_REPAIR_PLAN_BUILT",
+  "base_commit": "ac96790",
+  "planning_only": true,
+  "factors_requiring_repair": [
+    "F14",
+    "F15",
+    "F16"
+  ],
+  "repair_executed": false,
+  "signal_scores_generated": false,
+  "monitoring_rerun_executed": false,
+  "candidate_state_update_executed": false,
+  "promotion_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "recommended_next_action": "ACQUIRE_PIT_FUNDAMENTAL_DATA_OR_REDEFINE_F16_FACTOR_TYPE"
+}

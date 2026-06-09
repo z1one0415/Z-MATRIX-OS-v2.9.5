@@ -1,0 +1,42 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-4-2-REQUIRED-DATA-CONTRACT",
+  "status": "V13_F5_5_4_2_REQUIRED_DATA_CONTRACT_BUILT",
+  "base_commit": "ac96790",
+  "F14_F15_requirements": {
+    "data_type": "PIT-safe fundamental financial statements",
+    "required_fields": [
+      "ticker",
+      "report_period",
+      "ann_date",
+      "known_at",
+      "total_assets",
+      "net_income",
+      "operating_cash_flow"
+    ],
+    "pit_rules": {
+      "must_use_ann_date_not_report_period": true,
+      "must_not_forward_fill_future_data": true,
+      "must_not_use_synthetic_fundamentals": true,
+      "disclosure_staleness_check_required": true
+    },
+    "minimum_coverage": "5 label tickers at rebalance_date 2026-05-06"
+  },
+  "F16_requirements": {
+    "option_A": {
+      "data_type": "External sentiment data with provenance",
+      "required_fields": [
+        "ticker",
+        "date",
+        "sentiment_score",
+        "source",
+        "available_at"
+      ]
+    },
+    "option_B": {
+      "data_type": "Redefine factor as PRICE_VOLUME_ATTENTION",
+      "requires": "New formula_contract with volume-attention proxy definition",
+      "factor_type_change": "SENTIMENT_ATTENTION -> PRICE_VOLUME_ATTENTION",
+      "must_update_manifest": true
+    }
+  }
+}

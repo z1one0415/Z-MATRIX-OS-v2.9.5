@@ -1,0 +1,21 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-4-2-BLOCKED-SOURCE-REPAIR-CONTRACT",
+  "status": "V13_F5_5_4_2_BLOCKED_SOURCE_REPAIR_CONTRACT_BUILT",
+  "base_commit": "ac96790",
+  "planning_only": true,
+  "target_factors": [
+    "F14",
+    "F15",
+    "F16"
+  ],
+  "signal_score_generation_allowed": false,
+  "monitoring_execution_allowed": false,
+  "candidate_state_update_allowed": false,
+  "price_proxy_substitution_allowed": false,
+  "promotion_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

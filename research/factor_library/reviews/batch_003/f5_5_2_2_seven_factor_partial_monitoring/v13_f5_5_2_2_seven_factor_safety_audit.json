@@ -1,0 +1,26 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-2-2-SEVEN-FACTOR-SAFETY-AUDIT",
+  "status": "V13_F5_5_2_2_SAFETY_AUDIT_PASS",
+  "base_commit": "ac96790",
+  "checks": {
+    "seven_factor_partial_monitoring_executed": true,
+    "formal_oos_validation_executed": false,
+    "formal_statistical_inference_allowed": false,
+    "candidate_state_update_executed": false,
+    "suspension_decision_executed": false,
+    "rejection_decision_executed": false,
+    "promotion_allowed": false,
+    "ready_for_promotion_review_empty": true,
+    "multi_factor_composite_built": false,
+    "weight_optimization_executed": false,
+    "runner_enabled": false,
+    "execution_allowed": false,
+    "v13_6_allowed": false,
+    "paper_trading_allowed": false,
+    "alpha_claim_allowed": false,
+    "production_blocked": true,
+    "broker_runtime_blocked": true,
+    "real_trade_blocked": true
+  },
+  "violation_count": 0
+}

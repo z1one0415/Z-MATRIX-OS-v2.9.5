@@ -1,0 +1,200 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-2-2-SEVEN-FACTOR-DIRECTIONAL-SPREAD-DIAGNOSTIC",
+  "status": "V13_F5_5_2_2_DIRECTIONAL_SPREAD_DIAGNOSTIC_COMPUTED",
+  "base_commit": "ac96790",
+  "sample_scope": "MICRO_SAMPLE_5_TICKERS",
+  "formal_oos_validation_executed": false,
+  "formal_statistical_inference_allowed": false,
+  "rank_ic_reported_as_formal_evidence": false,
+  "candidate_state_change_allowed": false,
+  "alpha_claim_allowed": false,
+  "monitoring_scope": [
+    "F04",
+    "F10",
+    "F11",
+    "F21",
+    "F24",
+    "F30",
+    "F31"
+  ],
+  "blocked_factors_excluded": [
+    "F14",
+    "F15",
+    "F16"
+  ],
+  "horizons_computed": [
+    "5D",
+    "20D"
+  ],
+  "ticker_count": 5,
+  "factor_diagnostics": [
+    {
+      "factor_id": "F04",
+      "5D_spread": {
+        "spread": -0.002824,
+        "top_mean_return": 0.033336,
+        "bottom_mean_return": 0.03616,
+        "top_count": 2,
+        "bottom_count": 2,
+        "sign_consistency": 0.4,
+        "usable_ticker_count": 5
+      },
+      "20D_spread": {
+        "spread": 0.092559,
+        "top_mean_return": 0.179682,
+        "bottom_mean_return": 0.087123,
+        "top_count": 2,
+        "bottom_count": 2,
+        "sign_consistency": 0.5,
+        "usable_ticker_count": 5
+      },
+      "signal_available": true,
+      "diagnostic_status": "COMPUTED"
+    },
+    {
+      "factor_id": "F10",
+      "5D_spread": {
+        "spread": 0.00993,
+        "top_mean_return": 0.039713,
+        "bottom_mean_return": 0.029783,
+        "top_count": 2,
+        "bottom_count": 2,
+        "sign_consistency": 0.7,
+        "usable_ticker_count": 5
+      },
+      "20D_spread": {
+        "spread": 0.055964,
+        "top_mean_return": 0.161385,
+        "bottom_mean_return": 0.105421,
+        "top_count": 2,
+        "bottom_count": 2,
+        "sign_consistency": 0.6,
+        "usable_ticker_count": 5
+      },
+      "signal_available": true,
+      "diagnostic_status": "COMPUTED"
+    },
+    {
+      "factor_id": "F11",
+      "5D_spread": {
+        "spread": -0.043119,
+        "top_mean_return": -0.009783,
+        "bottom_mean_return": 0.033336,
+        "top_count": 2,
+        "bottom_count": 2,
+        "sign_consistency": 0.4,
+        "usable_ticker_count": 5
+      },
+      "20D_spread": {
+        "spread": -0.198302,
+        "top_mean_return": -0.018619,
+        "bottom_mean_return": 0.179682,
+        "top_count": 2,
+        "bottom_count": 2,
+        "sign_consistency": 0.3,
+        "usable_ticker_count": 5
+      },
+      "signal_available": true,
+      "diagnostic_status": "COMPUTED"
+    },
+    {
+      "factor_id": "F21",
+      "5D_spread": {
+        "spread": -0.05232,
+        "top_mean_return": -0.01616,
+        "bottom_mean_return": 0.03616,
+        "top_count": 2,
+        "bottom_count": 2,
+        "sign_consistency": 0.4,
+        "usable_ticker_count": 5
+      },
+      "20D_spread": {
+        "spread": -0.087445,
+        "top_mean_return": -0.000322,
+        "bottom_mean_return": 0.087123,
+        "top_count": 2,
+        "bottom_count": 2,
+        "sign_consistency": 0.5,
+        "usable_ticker_count": 5
+      },
+      "signal_available": true,
+      "diagnostic_status": "COMPUTED"
+    },
+    {
+      "factor_id": "F24",
+      "5D_spread": {
+        "spread": -0.074554,
+        "top_mean_return": -0.01616,
+        "bottom_mean_return": 0.058394,
+        "top_count": 2,
+        "bottom_count": 2,
+        "sign_consistency": 0.2,
+        "usable_ticker_count": 5
+      },
+      "20D_spread": {
+        "spread": -0.233192,
+        "top_mean_return": -0.000322,
+        "bottom_mean_return": 0.232871,
+        "top_count": 2,
+        "bottom_count": 2,
+        "sign_consistency": 0.3,
+        "usable_ticker_count": 5
+      },
+      "signal_available": true,
+      "diagnostic_status": "COMPUTED"
+    },
+    {
+      "factor_id": "F30",
+      "5D_spread": {
+        "spread": -0.024438,
+        "top_mean_return": 0.008898,
+        "bottom_mean_return": 0.033336,
+        "top_count": 2,
+        "bottom_count": 2,
+        "sign_consistency": 0.5,
+        "usable_ticker_count": 5
+      },
+      "20D_spread": {
+        "spread": -0.126816,
+        "top_mean_return": 0.052866,
+        "bottom_mean_return": 0.179682,
+        "top_count": 2,
+        "bottom_count": 2,
+        "sign_consistency": 0.4,
+        "usable_ticker_count": 5
+      },
+      "signal_available": true,
+      "diagnostic_status": "COMPUTED"
+    },
+    {
+      "factor_id": "F31",
+      "5D_spread": {
+        "spread": 0.002824,
+        "top_mean_return": 0.03616,
+        "bottom_mean_return": 0.033336,
+        "top_count": 2,
+        "bottom_count": 2,
+        "sign_consistency": 0.5,
+        "usable_ticker_count": 5
+      },
+      "20D_spread": {
+        "spread": -0.092559,
+        "top_mean_return": 0.087123,
+        "bottom_mean_return": 0.179682,
+        "top_count": 2,
+        "bottom_count": 2,
+        "sign_consistency": 0.4,
+        "usable_ticker_count": 5
+      },
+      "signal_available": true,
+      "diagnostic_status": "COMPUTED"
+    }
+  ],
+  "summary": {
+    "factors_with_spread_computed": 7,
+    "factors_with_positive_5D_spread": 2,
+    "factors_with_positive_20D_spread": 2
+  },
+  "sample_warning": "5 tickers is FAR below minimum for formal inference (>=475 tickers, >=6 OOS months)",
+  "violation_count": 0
+}

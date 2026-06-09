@@ -1,0 +1,58 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-4-2-F14-F15-F16-SOURCE-GAP-AUDIT",
+  "status": "V13_F5_5_4_2_SOURCE_GAP_AUDIT_COMPLETE",
+  "base_commit": "ac96790",
+  "factor_gaps": {
+    "F14": {
+      "factor_name": "ASSET_GROWTH_DISCIPLINE",
+      "factor_type": "FUNDAMENTAL_QUALITY",
+      "required_data": [
+        "total_assets",
+        "ann_date",
+        "known_at"
+      ],
+      "available_data": [],
+      "gap": "No PIT-safe fundamental/accounting data committed at 2026-05-06",
+      "repair_options": [
+        "Commit historical financial statements with ann_date/known_at fields",
+        "Use tushare PIT financial data with available_at audit"
+      ],
+      "price_proxy_allowed": false,
+      "synthetic_fundamentals_allowed": false
+    },
+    "F15": {
+      "factor_name": "ACCRUALS_QUALITY",
+      "factor_type": "FUNDAMENTAL_QUALITY",
+      "required_data": [
+        "operating_cash_flow",
+        "net_income",
+        "total_assets",
+        "ann_date",
+        "known_at"
+      ],
+      "available_data": [],
+      "gap": "No PIT-safe fundamental/accounting data committed at 2026-05-06",
+      "repair_options": [
+        "Commit historical financial statements with ann_date/known_at fields",
+        "Use tushare PIT financial data with available_at audit"
+      ],
+      "price_proxy_allowed": false,
+      "synthetic_fundamentals_allowed": false
+    },
+    "F16": {
+      "factor_name": "SENTIMENT_ATTENTION",
+      "factor_type": "PRICE_VOLUME_SENTIMENT",
+      "required_data": [
+        "sentiment_score OR attention_proxy_contract"
+      ],
+      "available_data": [],
+      "gap": "No committed sentiment/attention data source",
+      "repair_options": [
+        "Redefine as PRICE_VOLUME_ATTENTION with explicit volume-attention proxy contract",
+        "Commit external sentiment data source with provenance"
+      ],
+      "price_proxy_allowed": false,
+      "note": "If redefined as PRICE_VOLUME_ATTENTION, factor_type must change and formula must be re-contracted"
+    }
+  }
+}

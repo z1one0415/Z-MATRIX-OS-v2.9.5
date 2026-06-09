@@ -1,0 +1,19 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-2-2-BLOCKED-FACTOR-PRESERVATION",
+  "status": "V13_F5_5_2_2_BLOCKED_FACTORS_PRESERVED",
+  "base_commit": "ac96790",
+  "blocked_factors": [
+    "F14",
+    "F15",
+    "F16"
+  ],
+  "blocked_reason": {
+    "F14": "BLOCKED_BY_SOURCE_DATA",
+    "F15": "BLOCKED_BY_SOURCE_DATA",
+    "F16": "BLOCKED_BY_SOURCE_DATA"
+  },
+  "blocked_factors_not_used_in_monitoring": true,
+  "blocked_factors_not_downgraded": true,
+  "blocked_factors_not_rejected": true,
+  "requires_separate_source_repair_plan": true
+}

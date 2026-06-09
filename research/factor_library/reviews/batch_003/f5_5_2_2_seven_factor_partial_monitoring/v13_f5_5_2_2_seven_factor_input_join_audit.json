@@ -1,0 +1,52 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-2-2-SEVEN-FACTOR-INPUT-JOIN-AUDIT",
+  "status": "V13_F5_5_2_2_INPUT_JOIN_AUDIT_PASS",
+  "base_commit": "ac96790",
+  "checks": {
+    "label_panel_exists": true,
+    "label_row_count": 10,
+    "signal_rows_total": 35,
+    "per_factor_ticker_count_5": true,
+    "blocked_factors_excluded": true,
+    "join_key_ticker_rebalance_date": true,
+    "signal_no_forward_return": true,
+    "label_no_score_rank_bucket": true,
+    "join_no_alpha_trade_order": true
+  },
+  "factor_joins": {
+    "F21": {
+      "ticker_count": 5,
+      "rows": 5
+    },
+    "F24": {
+      "ticker_count": 5,
+      "rows": 5
+    },
+    "F30": {
+      "ticker_count": 5,
+      "rows": 5
+    },
+    "F31": {
+      "ticker_count": 5,
+      "rows": 5
+    },
+    "F04": {
+      "ticker_count": 5,
+      "rows": 5
+    },
+    "F10": {
+      "ticker_count": 5,
+      "rows": 5
+    },
+    "F11": {
+      "ticker_count": 5,
+      "rows": 5
+    }
+  },
+  "blocked_factors_not_joined": [
+    "F14",
+    "F15",
+    "F16"
+  ],
+  "violation_count": 0
+}

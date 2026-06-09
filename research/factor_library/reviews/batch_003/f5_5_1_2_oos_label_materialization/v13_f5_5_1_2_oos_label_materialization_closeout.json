@@ -1,0 +1,37 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-1-2-OOS-LABEL-MATERIALIZATION-CLOSEOUT",
+  "status": "V13_F5_5_1_2_OOS_LABEL_MATERIALIZATION_PASS",
+  "base_commit": "db190ff",
+  "read_only_price_data_access_used": true,
+  "label_month": "2026-05",
+  "rebalance_date": "2026-05-06",
+  "generated_horizons": [
+    "5D",
+    "20D"
+  ],
+  "blocked_horizons": [
+    "60D"
+  ],
+  "actual_forward_returns_generated": true,
+  "label_data_row_count": 10,
+  "label_role": "OUTCOME_LABEL_ONLY",
+  "written_to_feature_store": false,
+  "used_for_factor_calculation": false,
+  "used_for_candidate_decision": false,
+  "used_for_monitoring_execution": false,
+  "monitoring_execution_executed": false,
+  "true_oos_validation_executed": false,
+  "candidate_decision_update_executed": false,
+  "ready_for_first_monitoring_execution": true,
+  "ready_for_promotion_review": [],
+  "promotion_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "v13_6_allowed": false,
+  "paper_trading_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "recommended_next_action": "EXECUTE_V13_F5_5_2_FIRST_PARTIAL_MONITORING_EXECUTION"
+}

@@ -1,0 +1,16 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-1-2-ACTUAL-LABEL-HORIZON-COMPLETENESS",
+  "status": "V13_F5_5_1_2_HORIZON_COMPLETENESS_PASS",
+  "base_commit": "db190ff",
+  "results": {
+    "5D": "PASS",
+    "20D": "PASS",
+    "60D": "BLOCKED_NOT_GENERATED"
+  },
+  "counts": {
+    "5D": 5,
+    "20D": 5,
+    "60D": 0
+  },
+  "blocked_reason_60D": "insufficient_forward_window_data"
+}

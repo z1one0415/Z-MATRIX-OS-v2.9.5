@@ -1,0 +1,25 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-1-2-ACTUAL-LABEL-DATA-INTEGRITY-AUDIT",
+  "status": "V13_F5_5_1_2_LABEL_DATA_INTEGRITY_PASS",
+  "base_commit": "db190ff",
+  "label_data_row_count": 10,
+  "checks": {
+    "label_data_row_count_gt_zero": true,
+    "5D_row_count_gt_zero": true,
+    "20D_row_count_gt_zero": true,
+    "60D_row_count_zero": true,
+    "forward_return_non_empty": true,
+    "ticker_rebalance_horizon_unique": true,
+    "label_available_at_gte_source_end_date": true,
+    "no_factor_score_rank_bucket": true,
+    "no_alpha_trade_position_order": true
+  },
+  "counts": {
+    "total_rows": 10,
+    "5D": 5,
+    "20D": 5,
+    "60D": 0,
+    "empty_forward_return": 0
+  },
+  "violation_count": 0
+}

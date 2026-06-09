@@ -1,0 +1,25 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-1-2-PRICE-BARS-SOURCE-AUDIT",
+  "status": "V13_F5_5_1_2_PRICE_BARS_SOURCE_AUDIT_PASS",
+  "base_commit": "db190ff",
+  "source_path": "data/price_bars",
+  "source_type": "LOCAL_READ_ONLY",
+  "label_month": "2026-05",
+  "rebalance_date": "2026-05-06",
+  "tickers_found": 5,
+  "dates_available": 26,
+  "max_date": "2026-06-10",
+  "checks": {
+    "price_bars_exists": true,
+    "source_is_local_read_only": true,
+    "covers_rebalance_date": true,
+    "5D_forward_window_complete": true,
+    "20D_forward_window_complete": true,
+    "60D_forward_window_complete": false,
+    "no_factor_score_read": true,
+    "no_rank_bucket_read": true,
+    "no_feature_store_read": true,
+    "no_external_data_source_call": true
+  },
+  "violation_count": 0
+}

@@ -1,0 +1,25 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-1-2-ACTUAL-OOS-LABEL-PANEL-MANIFEST",
+  "status": "V13_F5_5_1_2_ACTUAL_LABEL_PANEL_GENERATED",
+  "base_commit": "db190ff",
+  "label_month": "2026-05",
+  "rebalance_date": "2026-05-06",
+  "generated_horizons": [
+    "5D",
+    "20D"
+  ],
+  "blocked_horizons": [
+    "60D"
+  ],
+  "total_rows": 10,
+  "rows_5D": 5,
+  "rows_20D": 5,
+  "rows_60D": 0,
+  "tickers_count": 5,
+  "label_role": "OUTCOME_LABEL_ONLY",
+  "written_to_feature_store": false,
+  "used_for_factor_calculation": false,
+  "used_for_candidate_decision": false,
+  "used_for_monitoring_execution": false,
+  "source_path": "data/price_bars/daily_bars.csv"
+}

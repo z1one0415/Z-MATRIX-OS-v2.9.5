@@ -1,0 +1,28 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-1-2-DATA-ACCESS-AUTHORIZATION-CONTRACT",
+  "status": "V13_F5_5_1_2_DATA_ACCESS_AUTHORIZATION_CONTRACT_BUILT",
+  "base_commit": "db190ff",
+  "read_only_price_data_access_requested": true,
+  "read_only_price_data_access_allowed": true,
+  "allowed_source": "data/price_bars",
+  "allowed_label_month": "2026-05",
+  "allowed_horizons": [
+    "5D",
+    "20D"
+  ],
+  "blocked_horizons": [
+    "60D"
+  ],
+  "feature_store_write_allowed": false,
+  "monitoring_execution_allowed": false,
+  "candidate_decision_update_allowed": false,
+  "promotion_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "v13_6_allowed": false,
+  "paper_trading_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

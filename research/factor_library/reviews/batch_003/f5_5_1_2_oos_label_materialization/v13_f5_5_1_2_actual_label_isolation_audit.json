@@ -1,0 +1,16 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-1-2-ACTUAL-LABEL-ISOLATION-AUDIT",
+  "status": "V13_F5_5_1_2_LABEL_ISOLATION_PASS",
+  "base_commit": "db190ff",
+  "checks": {
+    "written_to_feature_store": false,
+    "used_for_factor_calculation": false,
+    "used_for_candidate_decision": false,
+    "used_for_monitoring_execution": false,
+    "monitoring_execution_executed": false,
+    "true_oos_validation_executed": false,
+    "no_factor_score_in_panel": true,
+    "no_alpha_signal_in_panel": true
+  },
+  "violation_count": 0
+}

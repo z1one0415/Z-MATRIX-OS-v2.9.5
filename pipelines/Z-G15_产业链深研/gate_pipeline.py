@@ -14,9 +14,13 @@ try:
     from pipelines.chain_taxonomy_provider import match_chain_detail
     _HAS_ALL = True
 except ImportError as e:
-    market_truth = lambda t: {"status":"stub","name":"?"}; get_financials = lambda t: {}
-    get_kline = lambda t,d: {"prices":[],"count":0}; dq_score = lambda t: {"total":0}
-    l4_health = lambda t: {"status":"stub"}; _HAS_ALL = False
+    from zmatrix.core.degraded_contract import dependency_unavailable
+    market_truth = lambda t: dependency_unavailable("z17_loader.market_truth", "z17_loader unavailable")
+    get_financials = lambda t: dependency_unavailable("z17_loader.get_financials", "z17_loader unavailable")
+    get_kline = lambda t, d: dependency_unavailable("z17_loader.get_kline", "z17_loader unavailable")
+    dq_score = lambda t: dependency_unavailable("z17_loader.dq_score", "z17_loader unavailable")
+    l4_health = lambda t: dependency_unavailable("z17_loader.l4_health", "z17_loader unavailable")
+    _HAS_ALL = False
 
 
 def _get_sector_peers(industry):
@@ -72,7 +76,7 @@ def run(tickers=None):
               "data_available": _HAS_ALL, "analyses":[], "sections":{}}
 
     print(f"\n☯️ Z-G15 产业链深研 — {', '.join(tickers)}")
-    print(f"   数据源: {'B/R/D矩阵+同行比对+催化剂' if _HAS_ALL else '⚠️ stub'}")
+    print(f"   数据源: {'B/R/D矩阵+同行比对+催化剂' if _HAS_ALL else '⚠️ DEGRADED (dependency unavailable)'}")
     print("=" * 60)
     
     for t in tickers:

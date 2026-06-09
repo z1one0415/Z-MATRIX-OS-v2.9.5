@@ -60,7 +60,7 @@ def collect_g18_decisions(tickers: list[str]) -> dict:
                         "risk_flags": d.get("risk_flags", []),
                     }
         except ImportError:
-            pass
+            results["_data_gap"] = {"g18_decision_store": "unavailable", "fallback": "json_state_file"}
 
         # Fallback: check JSON state files from G18 pipeline output
         if not results:

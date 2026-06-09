@@ -12,8 +12,9 @@ try:
     from pipelines.z17_loader import market_truth, l25_macro
     _HAS_Z01 = True
 except ImportError:
-    market_truth = lambda t: {"status":"stub","price":0,"name":"?"}
-    l25_macro = lambda: {"status":"stub","filled":0}
+    from zmatrix.core.degraded_contract import risk_data_degraded
+    market_truth = lambda t: risk_data_degraded("z17_loader.market_truth", "z17_loader unavailable")
+    l25_macro = lambda: risk_data_degraded("z17_loader.l25_macro", "z17_loader unavailable")
     _HAS_Z01 = False
 
 
@@ -77,14 +78,14 @@ def run(override=None):
               "data_sources": _HAS_Z01, "sections":{}}
     
     print(f"\n☯️ Z-G17 人类风控 — HumanOverride检测 v1.1")
-    print(f"   数据源: {'Z-G01实时' if _HAS_Z01 else '⚠️ stub模式'}")
+    print(f"   数据源: {'Z-G01实时' if _HAS_Z01 else '⚠️ DEGRADED (risk data unavailable)'}")
     print("=" * 60)
     
     # ── 1. 实时上下文采集 ──
     print("\n📡 [1/4] 实时上下文采集:")
     
-    g1 = market_truth(ticker) if _HAS_Z01 else {"status":"stub","price":0,"name":"?"}
-    macro = l25_macro() if _HAS_Z01 else {"status":"stub","filled":0}
+    g1 = market_truth(ticker)
+    macro = l25_macro()
     market = _get_market_snapshot()
     portfolio = _get_portfolio_context(ticker)
     

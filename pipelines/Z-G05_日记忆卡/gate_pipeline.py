@@ -43,12 +43,13 @@ REPORT_ROOT = Path(os.path.expanduser(
 try:
     from pipelines.z17_loader import market_truth, dq_score, l4_health
 except ImportError:
+    from zmatrix.core.degraded_contract import dependency_unavailable
     def market_truth(tickers: list[str] | None = None) -> dict:
-        return {"status": "stub", "note": "z17_loader.market_truth not available"}
+        return dependency_unavailable("z17_loader.market_truth", "z17_loader unavailable", "RESTORE_Z01_DATA_PIPELINE")
     def dq_score() -> dict:
-        return {"status": "stub"}
+        return dependency_unavailable("z17_loader.dq_score", "z17_loader unavailable", "RESTORE_Z01_DATA_PIPELINE")
     def l4_health() -> dict:
-        return {"status": "stub"}
+        return dependency_unavailable("z17_loader.l4_health", "z17_loader unavailable", "RESTORE_Z01_DATA_PIPELINE")
 
 
 # ═══ 持仓解析 ═══

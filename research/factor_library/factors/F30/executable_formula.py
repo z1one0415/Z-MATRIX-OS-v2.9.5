@@ -47,34 +47,26 @@ def compute_signal(input_prices, rebalance_date):
 
     Returns: dict of ticker -> signal_score (float)
     """
-    # This is a placeholder - actual factor formula implementation
     # should use the pre-rebalance price data to compute scores.
     # For reproducible signal-ready classification, this function
     # must be able to reproduce the signal_scores.csv from source data.
-    scores = {}
-    for ticker, bars in input_prices.items():
-        if len(bars) < 5:
-            scores[ticker] = 0.0
-            continue
-        # Factor-specific computation goes here
         scores = {}
     for ticker, bars in input_prices.items():
-        if len(bars) < 5:
-            scores[ticker] = 0.0; continue
-        returns = [(bars[i]["close"] - bars[i-1]["close"]) / max(bars[i-1]["close"], 0.001)
-                   for i in range(1, len(bars))]
-        vc = [(bars[i]["volume"] - bars[i-1]["volume"]) / max(bars[i-1]["volume"], 1)
-              for i in range(1, len(bars))]
-        n = min(len(returns), len(vc))
-        if n < 3:
-            scores[ticker] = 0.0; continue
-        r, v = returns[:n], vc[:n]
-        mr = sum(r)/n; mv_ = sum(v)/n
-        cov = sum((r[i]-mr)*(v[i]-mv_) for i in range(n))/n
-        sr = (sum((x-mr)**2 for x in r)/n)**0.5
-        sv = (sum((x-mv_)**2 for x in v)/n)**0.5
-        scores[ticker] = round(cov / max(sr*sv, 0.0001), 6)
+        if len(bars) < 5: scores[ticker]=0.0; continue
+        rets = [(bars[i]["close"]-bars[i-1]["close"])/max(bars[i-1]["close"],0.0001)
+                for i in range(1,len(bars))]
+        vc = [(bars[i]["volume"]-bars[i-1]["volume"])/max(bars[i-1]["volume"],1)
+              for i in range(1,len(bars))]
+        n=min(len(rets),len(vc))
+        if n<3: scores[ticker]=0.0; continue
+        r,v_=rets[:n],vc[:n]
+        mr=sum(r)/n; mv_=sum(v_)/n
+        cov=sum((r[i]-mr)*(v_[i]-mv_) for i in range(n))/n
+        sr=(sum((x-mr)**2 for x in r)/n)**0.5
+        sv=(sum((x-mv_)**2 for x in v_)/n)**0.5
+        scores[ticker]=round(cov/max(sr*sv,0.0001),6) if sr>0.0001 and sv>0.0001 else 0.0
     return scores
+
 
 def rank_and_bucket(scores):
     """Rank scores descending (1=best) and assign bucket 1-5."""

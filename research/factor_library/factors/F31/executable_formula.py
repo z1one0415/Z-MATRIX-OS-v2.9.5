@@ -47,28 +47,20 @@ def compute_signal(input_prices, rebalance_date):
 
     Returns: dict of ticker -> signal_score (float)
     """
-    # This is a placeholder - actual factor formula implementation
     # should use the pre-rebalance price data to compute scores.
     # For reproducible signal-ready classification, this function
     # must be able to reproduce the signal_scores.csv from source data.
-    scores = {}
-    for ticker, bars in input_prices.items():
-        if len(bars) < 5:
-            scores[ticker] = 0.0
-            continue
-        # Factor-specific computation goes here
         scores = {}
     for ticker, bars in input_prices.items():
-        if len(bars) < 5:
-            scores[ticker] = 0.0; continue
-        prices = [b["close"] for b in bars]
-        peak = prices[0]; max_dd = 0.0
+        if len(bars) < 5: scores[ticker]=0.0; continue
+        prices=[b["close"] for b in bars]; peak=prices[0]; max_dd=0.0
         for p in prices:
-            if p > peak: peak = p
-            dd = (p - peak) / max(peak, 0.001)
-            if dd < max_dd: max_dd = dd
-        scores[ticker] = round(-max_dd, 6)
+            if p>peak: peak=p
+            dd=(p-peak)/max(peak,0.0001)
+            if dd<max_dd: max_dd=dd
+        scores[ticker]=round(-max_dd,6)
     return scores
+
 
 def rank_and_bucket(scores):
     """Rank scores descending (1=best) and assign bucket 1-5."""

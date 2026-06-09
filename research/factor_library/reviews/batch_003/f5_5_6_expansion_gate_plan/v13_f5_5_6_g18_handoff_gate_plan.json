@@ -1,0 +1,17 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-6-G18-HANDOFF-GATE-PLAN",
+  "status": "V13_F5_5_6_G18_HANDOFF_GATE_PLAN_BUILT",
+  "base_commit": "7cc8a76",
+  "g18_fast_risk_overlay_merged": true,
+  "current_factor_monitoring_use_for_g18": "OBSERVATION_ONLY",
+  "auto_weight_update_allowed": false,
+  "action_gate_parameter_update_allowed": false,
+  "minimum_requirement_for_g18_reweighting": {
+    "ticker_count": 475,
+    "oos_months": 6,
+    "preferred_oos_months": 12,
+    "formal_oos_validation_passed": true
+  },
+  "micro_sample_result_not_allowed_for_g18_reweighting": true,
+  "current_g18_status": "OBSERVATION_MODE_ONLY"
+}

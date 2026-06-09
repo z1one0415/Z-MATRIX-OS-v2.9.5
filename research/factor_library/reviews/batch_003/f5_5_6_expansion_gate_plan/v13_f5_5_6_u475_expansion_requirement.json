@@ -1,0 +1,54 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-6-U475-EXPANSION-REQUIREMENT",
+  "status": "V13_F5_5_6_U475_REQUIREMENT_DEFINED",
+  "base_commit": "7cc8a76",
+  "price_bars_requirements": {
+    "minimum_ticker_coverage": 475,
+    "preferred_ticker_coverage": 1000,
+    "forward_window_5D": true,
+    "forward_window_20D": true,
+    "forward_window_60D": true,
+    "signal_lookback_minimum_days": 60,
+    "source": "data/price_bars or equivalent PIT-safe market data"
+  },
+  "factor_signal_requirements": {
+    "seven_factor_minimum_path": [
+      "F04",
+      "F10",
+      "F11",
+      "F21",
+      "F24",
+      "F30",
+      "F31"
+    ],
+    "ten_factor_full_path": [
+      "F04",
+      "F10",
+      "F11",
+      "F14",
+      "F15",
+      "F16",
+      "F21",
+      "F24",
+      "F30",
+      "F31"
+    ],
+    "ten_factor_requires": "F14/F15/F16 data source repair completed"
+  },
+  "label_requirements": {
+    "label_role": "OUTCOME_LABEL_ONLY",
+    "written_to_feature_store": false,
+    "used_for_signal_calculation": false,
+    "horizons": [
+      "5D",
+      "20D",
+      "60D"
+    ]
+  },
+  "minimum_for_formal_oos_gate": {
+    "ticker_count": 475,
+    "oos_months": 6,
+    "all_horizons_including_60D": true,
+    "signal_coverage_per_factor_gte_90pct": true
+  }
+}

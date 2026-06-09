@@ -1,0 +1,33 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-6-CURRENT-EVIDENCE-LIMITATION-AUDIT",
+  "status": "V13_F5_5_6_EVIDENCE_LIMITATION_AUDIT_COMPLETE",
+  "base_commit": "7cc8a76",
+  "current_evidence": {
+    "ticker_count": 5,
+    "label_month_count": 1,
+    "label_months": [
+      "2026-05"
+    ],
+    "horizons_available": [
+      "5D",
+      "20D"
+    ],
+    "60D_available": false,
+    "signal_ready_factors": 7,
+    "blocked_factors": 3
+  },
+  "formal_gates": {
+    "formal_oos_validation_allowed": false,
+    "formal_statistical_inference_allowed": false,
+    "reason": "5 tickers and 1 month FAR below minimum (475 tickers, 6 months)"
+  },
+  "prohibitions": {
+    "F10_positive_spread_is_NOT_alpha_claim": true,
+    "negative_spread_is_NOT_rejection_signal": true,
+    "no_suspension_from_micro_sample": true,
+    "no_rejection_from_micro_sample": true,
+    "no_promotion_from_micro_sample": true,
+    "no_candidate_state_change_from_micro_sample": true
+  },
+  "violation_count": 0
+}

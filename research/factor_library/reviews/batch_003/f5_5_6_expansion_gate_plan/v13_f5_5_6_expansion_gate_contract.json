@@ -1,0 +1,37 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-6-MONITORING-SAMPLE-EXPANSION-GATE-CONTRACT",
+  "status": "V13_F5_5_6_EXPANSION_GATE_CONTRACT_BUILT",
+  "base_commit": "7cc8a76",
+  "planning_only": true,
+  "current_sample_scope": "MICRO_SAMPLE_5_TICKERS_1_MONTH",
+  "current_signal_ready_factors": [
+    "F04",
+    "F10",
+    "F11",
+    "F21",
+    "F24",
+    "F30",
+    "F31"
+  ],
+  "blocked_factors": [
+    "F14",
+    "F15",
+    "F16"
+  ],
+  "minimum_formal_ticker_count": 475,
+  "minimum_formal_oos_months": 6,
+  "preferred_formal_oos_months": 12,
+  "formal_oos_validation_allowed": false,
+  "sample_expansion_execution_allowed": false,
+  "new_label_generation_allowed": false,
+  "new_signal_generation_allowed": false,
+  "monitoring_execution_allowed": false,
+  "candidate_state_update_allowed": false,
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

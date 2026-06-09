@@ -14,9 +14,13 @@ try:
     from pipelines.chain_taxonomy_provider import match_chain_detail
     _HAS_ALL = True
 except ImportError as e:
-    market_truth = lambda t: {"status":"stub","name":"?"}; get_financials = lambda t: {}
-    get_kline = lambda t,d: {"prices":[],"count":0}; dq_score = lambda t: {"total":0}
-    l4_health = lambda t: {"status":"stub"}; _HAS_ALL = False
+    from zmatrix.core.degraded_contract import dependency_unavailable
+    market_truth = lambda t: dependency_unavailable("z17_loader.market_truth", "z17_loader unavailable")
+    get_financials = lambda t: dependency_unavailable("z17_loader.get_financials", "z17_loader unavailable")
+    get_kline = lambda t, d: dependency_unavailable("z17_loader.get_kline", "z17_loader unavailable")
+    dq_score = lambda t: dependency_unavailable("z17_loader.dq_score", "z17_loader unavailable")
+    l4_health = lambda t: dependency_unavailable("z17_loader.l4_health", "z17_loader unavailable")
+    _HAS_ALL = False
 
 
 def _get_sector_peers(industry):
@@ -72,7 +76,7 @@ def run(tickers=None):
               "data_available": _HAS_ALL, "analyses":[], "sections":{}}
 
     print(f"\n☯️ Z-G15 产业链深研 — {', '.join(tickers)}")
-    print(f"   数据源: {'B/R/D矩阵+同行比对+催化剂' if _HAS_ALL else '⚠️ stub'}")
+    print(f"   数据源: {'B/R/D矩阵+同行比对+催化剂' if _HAS_ALL else '⚠️ DEGRADED (dependency unavailable)'}")
     print("=" * 60)
     
     for t in tickers:
@@ -173,7 +177,29 @@ def run(tickers=None):
             if items:
                 print(f"    {level}: {', '.join(items[:4])}")
         analysis["evidence"] = evidence
-        
+
+        # ── 7. 产业链深度分析 (L1-L5 + 拓扑 + 手工) ──
+        try:
+            from zmatrix.research.industry_chain_analyzer import analyze_industry_chain
+            chain_analysis = analyze_industry_chain(
+                ticker=t, name=name, industry=industry,
+                financials=fin_data, peers=peer_data if peers else [],
+                catalysts=catalysts, existing_evidence=evidence,
+                chain_detail=chain,
+            )
+            ca = chain_analysis.to_dict()
+            analysis["chain_analysis"] = ca
+            print(f"\n  🔗 产业链深度:")
+            print(f"    链位置: {ca['chain_position']} | 利润捕获: {ca['profit_capture_point']}")
+            print(f"    研究置信: {ca['research_confidence']} | 瓶颈: {ca['bottleneck_status']}")
+            print(f"    G18交接: 论点{ca['g18_handoff']['thesis_strength']} "
+                  f"证据{ca['g18_handoff']['evidence_level']} "
+                  f"催化{ca['g18_handoff']['catalyst_distance']} "
+                  f"链风险{ca['g18_handoff']['chain_risk_score']}")
+        except Exception as e:
+            analysis["chain_analysis"] = {"error": str(e)[:120]}
+            print(f"\n  ⚠️ 产业链深度分析失败: {e}")
+
         result["analyses"].append(analysis)
     
     return result

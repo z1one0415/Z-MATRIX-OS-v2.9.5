@@ -1,0 +1,110 @@
+{
+  "pipeline_signature": "Z2-V13-GCORE-0-SKELETON-AUDIT-G05-G15-G17",
+  "status": "V13_GCORE_0_AUDIT_PASS_SKELETON_CONFIRMED",
+  "timestamp": "2026-06-10T01:09:00+08:00",
+  "audit_results": {
+    "g05_daily_memory_card": {
+      "path": "pipelines/Z-G05_日记忆卡/gate_pipeline.py",
+      "lines": 503,
+      "skeleton_type": "PARTIAL_IMPLEMENTATION",
+      "has_production_logic": true,
+      "implemented_functions": [
+        "parse_positions_from_memory",
+        "fetch_live_prices_for_positions",
+        "get_market_snapshot",
+        "run",
+        "_extract_catalysts",
+        "_generate_daily_card_md",
+        "_save_daily_card",
+        "_auto_append_memory"
+      ],
+      "missing_capabilities": [
+        "G18_decision_tracking",
+        "G17_risk_event_integration",
+        "factor_monitoring_snapshot",
+        "Z9_posterior_review_entry",
+        "tomorrow_focus_list",
+        "market_regime_classification",
+        "validated_invalidated_thesis_tracking"
+      ],
+      "stub_count": 3,
+      "stub_locations": "import fallback lambdas only (lines 47,49,51)",
+      "production_pass_count": 0,
+      "verdict": "NOT_SKELETON_BUT_INCOMPLETE_5_OF_9_MODULES_MISSING"
+    },
+    "g15_industry_chain": {
+      "path": "pipelines/Z-G15_产业链深研/gate_pipeline.py",
+      "lines": 186,
+      "skeleton_type": "SHALLOW_IMPLEMENTATION",
+      "has_production_logic": true,
+      "implemented_capabilities": [
+        "b_matrix_evaluation",
+        "d_matrix_evaluation",
+        "r_matrix_oscillation_scoring",
+        "peer_comparison_5_sectors",
+        "catalyst_calendar_30d",
+        "evidence_4_layer_ABCD"
+      ],
+      "missing_capabilities": [
+        "industry_chain_topology_upstream_downstream",
+        "profit_capture_point_identification",
+        "L1_L5_five_layer_evidence_hierarchy",
+        "substitution_risk_analysis",
+        "bottleneck_identification",
+        "G18_factor_handoff_fields"
+      ],
+      "stub_count": 3,
+      "stub_locations": "import fallback lambdas only (lines 17,19,75)",
+      "production_pass_count": 0,
+      "verdict": "NOT_SKELETON_BUT_DEPTH_INSUFFICIENT"
+    },
+    "g17_human_risk": {
+      "pipeline_path": "pipelines/Z-G17_人类风控/gate_pipeline.py",
+      "veto_path": "zmatrix/investment/g17_human_veto.py",
+      "pipeline_lines": 197,
+      "veto_lines": 22,
+      "skeleton_type": "CRITICAL_CAPABILITY_GAP",
+      "has_production_logic": true,
+      "implemented_capabilities": [
+        "sina_market_snapshot_acquisition",
+        "portfolio_context_reading",
+        "L1_6_tilt_detection_behavioral",
+        "human_behavior_ledger_recording",
+        "historical_pattern_detection"
+      ],
+      "completely_missing_capabilities": [
+        "price_action_risk_rules_0_of_12",
+        "cost_line_break_detection",
+        "support_level_break_detection",
+        "volume_climax_detection",
+        "consecutive_decline_detection",
+        "sector_headwind_detection",
+        "position_loss_threshold",
+        "risk_level_classification_GREEN_TO_BLACK",
+        "action_gate_output_for_G18",
+        "paper_track_veto_power"
+      ],
+      "stub_count": 5,
+      "stub_locations": "import fallback lambdas (lines 15,16,80,86,87)",
+      "production_pass_count": 0,
+      "critical_issue": "BEHAVIORAL_TILT_DETECTION_EXISTS_BUT_ZERO_RISK_RULES_FOR_POSITION_DANGER",
+      "g17_human_veto_content": "22 lines - only returns {human_final_override_required: True, real_trade_allowed: False}",
+      "verdict": "P0_CONFIRMED_HAS_DATA_NO_RULES_EQUALS_FALSE_RISK_CONTROL"
+    }
+  },
+  "overall_verdict": {
+    "g05_skeleton_confirmed": false,
+    "g05_incomplete_confirmed": true,
+    "g15_skeleton_confirmed": false,
+    "g15_shallow_confirmed": true,
+    "g17_skeleton_confirmed": true,
+    "g17_risk_rules_missing": true,
+    "g17_critical_gap": "has_market_data_intake_but_zero_position_risk_assessment_rules",
+    "production_placeholder_count": 0,
+    "production_capability_gap_count": 3,
+    "alpha_claim_allowed": false,
+    "real_trade": "BLOCKED",
+    "recommended_priority": "G17_P0 > G05_P0_1 > G15_P1",
+    "recommended_next_action": "PREPARE_V13_G17_1_HUMAN_RISK_RULE_ENGINE"
+  }
+}

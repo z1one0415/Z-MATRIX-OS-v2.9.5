@@ -1,0 +1,19 @@
+{
+  "pipeline_signature": "V13-F5-1-19-RESTORE-CLEAN-TARGET-LINEAGE-BEFORE-MERGE",
+  "chosen_strategy": "CREATE_CLEAN_TARGET_BRANCH",
+  "clean_target_branch": "v4.0-batch-0-final-hardgates-scope-lock-clean",
+  "polluted_target_branch": "v4.0-batch-0-final-hardgates-scope-lock",
+  "polluted_target_head": "0c2e6553d819d790a4c10e90acc111d3e8eb9da6",
+  "clean_base": "4dd8e86ff391e0af9e55de46ae3c93545798336c",
+  "source_branch_ready_for_future_merge": "fix/research-f5-1-18-clean-merge-decision",
+  "source_commit_ready_for_future_merge": "1b291cc",
+  "restoration_complete": true,
+  "merge_executed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "dry_run_execution_started": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "strategy_rationale": "Strategy B (create clean branch) chosen to avoid force-pushing shared branch. Original polluted branch preserved for audit trail."
+}

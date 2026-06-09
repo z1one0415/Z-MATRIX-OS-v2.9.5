@@ -1,0 +1,15 @@
+{
+  "pipeline_signature": "V13-F5-1-19-RESTORE-CLEAN-TARGET-LINEAGE-BEFORE-MERGE",
+  "decision": "RESTORE_CLEAN_TARGET_LINEAGE_VIA_NEW_CLEAN_BRANCH",
+  "strategy": "CREATE_CLEAN_TARGET_BRANCH",
+  "clean_target_branch": "v4.0-batch-0-final-hardgates-scope-lock-clean",
+  "original_polluted_branch_preserved": true,
+  "clean_base": "4dd8e86ff391e0af9e55de46ae3c93545798336c",
+  "merge_executed": false,
+  "merge_allowed_after_human_review": true,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

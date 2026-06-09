@@ -1,0 +1,27 @@
+{
+  "pipeline_signature": "V13-F5-1-19-RESTORE-CLEAN-TARGET-LINEAGE-BEFORE-MERGE",
+  "restoration_scope": "Target lineage restoration only — no source merge, no execution, no enablement",
+  "allowed": [
+    "create_clean_target_branch_from_4dd8e86",
+    "record_polluted_commits",
+    "record_source_ready_for_future_merge",
+    "update_registry_with_restoration_status"
+  ],
+  "blocked": [
+    "merge_source_implementation",
+    "force_update_polluted_target",
+    "runner_enablement",
+    "dry_run_execution",
+    "monitoring_execution",
+    "candidate_review_execution",
+    "factor_calculation",
+    "runtime_reports_write",
+    "runtime_audit_write",
+    "external_data_fetch",
+    "production",
+    "broker_runtime",
+    "real_trade",
+    "SkillOS_implementation",
+    "V13_6"
+  ]
+}

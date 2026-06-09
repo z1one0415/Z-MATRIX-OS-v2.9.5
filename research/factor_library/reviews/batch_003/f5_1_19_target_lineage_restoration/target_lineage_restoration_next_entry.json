@@ -1,0 +1,27 @@
+{
+  "pipeline_signature": "V13-F5-1-19-RESTORE-CLEAN-TARGET-LINEAGE-BEFORE-MERGE",
+  "next_legal_entry": "HUMAN_REVIEW_RESTORED_TARGET_BEFORE_MERGE_ONLY",
+  "clean_target_branch": "v4.0-batch-0-final-hardgates-scope-lock-clean",
+  "allowed": [
+    "human_review_restored_target",
+    "merge_source_into_clean_target",
+    "post_merge_seal"
+  ],
+  "forbidden": [
+    "merge_now",
+    "merge_into_polluted_target",
+    "enable_runner",
+    "dry_run_execution",
+    "monitoring_execution",
+    "candidate_review_execution",
+    "factor_calculation",
+    "runtime_reports_write",
+    "runtime_audit_write",
+    "external_data_fetch",
+    "production",
+    "broker_runtime",
+    "real_trade",
+    "SkillOS_implementation",
+    "V13_6"
+  ]
+}

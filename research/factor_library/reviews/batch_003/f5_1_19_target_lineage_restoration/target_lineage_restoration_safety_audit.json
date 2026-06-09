@@ -1,0 +1,31 @@
+{
+  "pipeline_signature": "V13-F5-1-19-RESTORE-CLEAN-TARGET-LINEAGE-BEFORE-MERGE",
+  "violation_count": 0,
+  "violations": [],
+  "checks": {
+    "no_merge_executed": true,
+    "no_original_target_modified": true,
+    "no_runner_enablement": true,
+    "no_dry_run_execution": true,
+    "no_monitoring_execution": true,
+    "no_candidate_review_execution": true,
+    "no_factor_calculation": true,
+    "no_factor_result_modification": true,
+    "no_runtime_reports_write": true,
+    "no_runtime_audit_write": true,
+    "no_external_data_fetch": true,
+    "no_candidate_promotion": true,
+    "no_alpha_claim": true,
+    "no_production": true,
+    "no_broker_runtime": true,
+    "no_real_trade": true,
+    "no_skillos_modification": true,
+    "no_docs_skillos": true,
+    "no_tests_skillos": true,
+    "no_pycache": true,
+    "no_v13_6": true,
+    "no_tag": true,
+    "clean_branch_created_from_verified_clean_base": true,
+    "original_polluted_branch_preserved_for_audit": true
+  }
+}

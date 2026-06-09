@@ -1,0 +1,81 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-4-1-SIGNAL-MATERIALIZATION-BATCH1-BATCH2",
+  "status": "V13_F5_5_4_1_PASS",
+  "target_factors": [
+    "F04",
+    "F10",
+    "F11",
+    "F14",
+    "F15",
+    "F16"
+  ],
+  "materialized_factors": [
+    "F04",
+    "F10",
+    "F11",
+    "F14",
+    "F15",
+    "F16"
+  ],
+  "blocked_factors": [],
+  "blocked_reasons": {},
+  "tickers": [
+    "000977",
+    "002050",
+    "002472",
+    "588000",
+    "601899"
+  ],
+  "rebalance_date": "2026-05-06",
+  "total_rows_materialized": 30,
+  "total_rows_blocked": 0,
+  "signal_role": "FACTOR_SIGNAL_ONLY",
+  "pit_audit": {
+    "F14": {
+      "pit_safe": true,
+      "method": "price_proxy",
+      "known_at": "2026-05-06",
+      "disclosure_staleness_days": 0,
+      "note": "Uses -abs(price_change_20d) proxy; no actual fundamental data. Price data is PIT-safe (available at market close)."
+    },
+    "F15": {
+      "pit_safe": true,
+      "method": "volume_proxy",
+      "known_at": "2026-05-06",
+      "disclosure_staleness_days": 0,
+      "note": "Uses volume_stability_ratio proxy; no actual fundamental data. Volume data is PIT-safe (available at market close)."
+    }
+  },
+  "pit_audit_passed": true,
+  "f16_source_audit": {
+    "source_type": "PRICE_VOLUME_SENTIMENT",
+    "proxy_contract": "volume_ratio(recent_5d / trailing_20d) * abs(return_5d)",
+    "proxy_contract_defined_in": "research/factor_library/sources/F16/formula_contract.json",
+    "legitimate_proxy": true,
+    "note": "Volume ratio \u00d7 absolute return is a standard attention/sentiment proxy. Formula contract explicitly defined."
+  },
+  "f16_source_audit_passed": true,
+  "forward_return_included": false,
+  "alpha_claim": false,
+  "monitoring_rerun_executed": false,
+  "candidate_state_updated": false,
+  "promotion_allowed": false,
+  "runner_enabled": false,
+  "real_trade_blocked": true,
+  "ready_for_10_factor_monitoring": true,
+  "factor_score_ranges": {
+    "F14": {
+      "min": -0.345461,
+      "max": -0.01086
+    },
+    "F15": {
+      "min": 0.421592,
+      "max": 0.59851
+    },
+    "F16": {
+      "min": 0.004052,
+      "max": 0.112805
+    }
+  },
+  "recommended_next_action": "All 10 factors (F04/F10/F11/F14/F15/F16/F21/F24/F30/F31) now have signal scores materialized. Ready for unified 10-factor monitoring evaluation when scope-lock permits."
+}

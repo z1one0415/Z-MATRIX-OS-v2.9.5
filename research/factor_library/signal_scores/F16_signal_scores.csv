@@ -1,0 +1,6 @@
+factor_id,ticker,rebalance_date,signal_score,signal_role,rank,bucket,score_available_at,source_artifact_ref,pit_safe,known_at,disclosure_staleness_days,pit_note,forward_return,alpha_claim,monitoring_eligible
+F16,000977,2026-05-06,0.048701,FACTOR_SIGNAL_ONLY,2,2,2026-05-06,research/factor_library/sources/F16/formula_contract.json,true,2026-05-06,0,price_volume_sentiment_proxy_contract_defined,,false,false
+F16,002050,2026-05-06,0.006709,FACTOR_SIGNAL_ONLY,4,4,2026-05-06,research/factor_library/sources/F16/formula_contract.json,true,2026-05-06,0,price_volume_sentiment_proxy_contract_defined,,false,false
+F16,002472,2026-05-06,0.004052,FACTOR_SIGNAL_ONLY,5,5,2026-05-06,research/factor_library/sources/F16/formula_contract.json,true,2026-05-06,0,price_volume_sentiment_proxy_contract_defined,,false,false
+F16,588000,2026-05-06,0.02106,FACTOR_SIGNAL_ONLY,3,3,2026-05-06,research/factor_library/sources/F16/formula_contract.json,true,2026-05-06,0,price_volume_sentiment_proxy_contract_defined,,false,false
+F16,601899,2026-05-06,0.112805,FACTOR_SIGNAL_ONLY,1,1,2026-05-06,research/factor_library/sources/F16/formula_contract.json,true,2026-05-06,0,price_volume_sentiment_proxy_contract_defined,,false,false

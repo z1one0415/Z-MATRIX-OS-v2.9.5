@@ -1,0 +1,6 @@
+factor_id,ticker,rebalance_date,signal_score,signal_role,rank,bucket,score_available_at,source_artifact_ref,pit_safe,known_at,disclosure_staleness_days,pit_note,forward_return,alpha_claim,monitoring_eligible
+F14,000977,2026-05-06,-0.202222,FACTOR_SIGNAL_ONLY,3,3,2026-05-06,research/factor_library/sources/F14/formula_contract.json,true,2026-05-06,0,price_proxy_pit_safe_no_fundamental_data_used,,false,false
+F14,002050,2026-05-06,-0.01086,FACTOR_SIGNAL_ONLY,1,1,2026-05-06,research/factor_library/sources/F14/formula_contract.json,true,2026-05-06,0,price_proxy_pit_safe_no_fundamental_data_used,,false,false
+F14,002472,2026-05-06,-0.051613,FACTOR_SIGNAL_ONLY,2,2,2026-05-06,research/factor_library/sources/F14/formula_contract.json,true,2026-05-06,0,price_proxy_pit_safe_no_fundamental_data_used,,false,false
+F14,588000,2026-05-06,-0.219729,FACTOR_SIGNAL_ONLY,4,4,2026-05-06,research/factor_library/sources/F14/formula_contract.json,true,2026-05-06,0,price_proxy_pit_safe_no_fundamental_data_used,,false,false
+F14,601899,2026-05-06,-0.345461,FACTOR_SIGNAL_ONLY,5,5,2026-05-06,research/factor_library/sources/F14/formula_contract.json,true,2026-05-06,0,price_proxy_pit_safe_no_fundamental_data_used,,false,false

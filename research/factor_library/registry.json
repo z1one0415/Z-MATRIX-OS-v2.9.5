@@ -77,7 +77,7 @@
   "controlled_noop_dry_run_branch_allowed": true,
   "controlled_noop_dry_run_branch_created": false,
   "noop_runner_implemented": false,
-  "next_legal_entry": "HUMAN_CONTROLLED_NOOP_DRY_RUN_P0_DISABLED_DEFAULT_REVIEW_ONLY",
+  "next_legal_entry": "HUMAN_CONTROLLED_NOOP_DRY_RUN_P0_DISABLED_DEFAULT_MERGE_DECISION_ONLY",
   "clean_controlled_noop_dry_run_branch_created": true,
   "clean_controlled_noop_dry_run_branch_ref": "impl/research-batch3-controlled-noop-dry-run-execution-p0-clean",
   "clean_controlled_noop_dry_run_branch_source_commit": "61503b90a255aed788ba19354dab0ef50e276d3b",
@@ -94,5 +94,9 @@
   "p0_disabled_default_implementation_status": "READY_FOR_REVIEW",
   "noop_runner_implemented": true,
   "runner_enabled": false,
-  "execution_allowed": false
+  "execution_allowed": false,
+  "p0_disabled_default_review_status": "APPROVED_BY_HUMAN",
+  "p0_disabled_default_review_ref": "research/factor_library/reviews/batch_003/f5_1_17_p0_disabled_default_review_decision/batch3_p0_disabled_default_review_closeout.json",
+  "p0_disabled_default_merge_decision_allowed": true,
+  "merge_allowed_now": false
 }

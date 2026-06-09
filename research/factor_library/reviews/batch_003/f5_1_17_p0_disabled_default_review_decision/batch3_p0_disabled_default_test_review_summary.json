@@ -1,0 +1,31 @@
+{
+  "pipeline_signature": "V13-F5-1-17-HUMAN-CONTROLLED-NOOP-P0-DISABLED-DEFAULT-REVIEW-DECISION",
+  "base_commit": "f43fa22f99da567ee74526a99d3bdf7286ac5c3b",
+  "test_results": {
+    "interface": "65 passed, 0 failed, 0 skipped",
+    "candidate_review": "259 passed, 0 failed, 0 skipped",
+    "dry_run": "117 passed, 0 failed, 0 skipped",
+    "combined": "441 passed, 0 failed, 0 skipped"
+  },
+  "all_passed": true,
+  "skipped": 0,
+  "full_test_gate_closed": true,
+  "test_suites_verified": [
+    "tests/research/factors/interface",
+    "tests/research/factors/candidate_review",
+    "tests/research/factors/dry_run"
+  ],
+  "key_coverage": {
+    "config_disabled_default": true,
+    "models_contract": true,
+    "safety_guard_denies": true,
+    "noop_runner_disabled": true,
+    "static_snapshot_no_side_effects": true,
+    "hash_only_evidence": true,
+    "noop_output_contract": true,
+    "rollback_no_cleanup": true,
+    "forbidden_imports_and_methods": true,
+    "historical_phase_tests_stabilized": true,
+    "boundary_reconciled": true
+  }
+}

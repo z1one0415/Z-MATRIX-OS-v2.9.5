@@ -116,5 +116,8 @@
   "runner_enabled": false,
   "execution_allowed": false,
   "dry_run_execution_started": false,
-  "next_legal_entry": "HUMAN_CONTROLLED_NOOP_DRY_RUN_P0_DISABLED_DEFAULT_REVIEW_ONLY"
+  "p0_disabled_default_review_status": "APPROVED_BY_HUMAN",
+  "p0_disabled_default_merge_decision_allowed": true,
+  "merge_allowed_now": false,
+  "next_legal_entry": "HUMAN_CONTROLLED_NOOP_DRY_RUN_P0_DISABLED_DEFAULT_MERGE_DECISION_ONLY"
 }

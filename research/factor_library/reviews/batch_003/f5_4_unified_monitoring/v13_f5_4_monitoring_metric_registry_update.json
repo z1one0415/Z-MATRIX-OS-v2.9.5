@@ -1,0 +1,43 @@
+{
+  "pipeline_signature": "Z2-V13-F5-4-MONITORING-METRIC-REGISTRY-UPDATE",
+  "status": "V13_F5_4_METRIC_REGISTRY_UPDATED",
+  "global_metrics": [
+    "monthly_rank_ic",
+    "monthly_bucket_spread",
+    "cost_adjusted_spread",
+    "bucket_monotonicity",
+    "win_rate",
+    "coverage_tier",
+    "pit_passed",
+    "label_isolation_passed",
+    "factor_drift",
+    "correlation_shift",
+    "month_concentration"
+  ],
+  "batch3_specific_metrics": {
+    "F21": [
+      "trend_persistence_score",
+      "trend_quality_decay",
+      "f04_overlap_drift",
+      "trend_drawdown_penalty"
+    ],
+    "F24": [
+      "volatility_compression_state",
+      "breakout_confirmation_state",
+      "compression_breakout_decay",
+      "false_breakout_warning"
+    ],
+    "F30": [
+      "volume_price_confirmation_strength",
+      "volume_confirmation_decay",
+      "cost_turnover_gate_pass",
+      "liquidity_crowding_warning"
+    ],
+    "F31": [
+      "downside_tail_risk_state",
+      "tail_risk_spike",
+      "regime_gate_pass",
+      "f10_overlap_drift"
+    ]
+  }
+}

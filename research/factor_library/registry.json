@@ -10,15 +10,52 @@
   "full_regression_confirmation_commit": "0d79dcc",
   "f5_2_candidate_review_commit": "1525e6b",
   "f5_3_candidate_freeze_commit": "e89b78c",
-
-  "frozen_candidates": ["F04", "F10", "F11", "F14", "F15", "F16", "F21", "F24", "F30", "F31"],
-  "new_batch3_frozen_candidates": ["F21", "F24", "F30", "F31"],
-  "watch_only": ["F22", "F26", "F27", "F34"],
-  "rejected": ["F02", "F03", "F05"],
-  "hypothesis_only": ["F03R"],
-  "blocked_by_sample": ["F06", "F07", "F08", "F12", "F13"],
-  "source_audit": ["F09", "F17", "F18", "F19", "F20"],
-
+  "frozen_candidates": [
+    "F04",
+    "F10",
+    "F11",
+    "F14",
+    "F15",
+    "F16",
+    "F21",
+    "F24",
+    "F30",
+    "F31"
+  ],
+  "new_batch3_frozen_candidates": [
+    "F21",
+    "F24",
+    "F30",
+    "F31"
+  ],
+  "watch_only": [
+    "F22",
+    "F26",
+    "F27",
+    "F34"
+  ],
+  "rejected": [
+    "F02",
+    "F03",
+    "F05"
+  ],
+  "hypothesis_only": [
+    "F03R"
+  ],
+  "blocked_by_sample": [
+    "F06",
+    "F07",
+    "F08",
+    "F12",
+    "F13"
+  ],
+  "source_audit": [
+    "F09",
+    "F17",
+    "F18",
+    "F19",
+    "F20"
+  ],
   "candidate_freeze_executed": true,
   "promotion_allowed": false,
   "ready_for_promotion_review": [],
@@ -30,6 +67,19 @@
   "production": "BLOCKED",
   "broker_runtime": "BLOCKED",
   "real_trade": "BLOCKED",
-
-  "next_legal_entry": "PREPARE_V13_F5_4_UNIFIED_CANDIDATE_MONITORING_PLAN_UPDATE"
+  "next_legal_entry": "WAIT_FOR_FIRST_ELIGIBLE_OOS_MONITORING_MONTH_OR_PREPARE_V13_F5_5_MONITORING_EXECUTION_PLAN",
+  "monitoring_plan_scope": [
+    "F04",
+    "F10",
+    "F11",
+    "F14",
+    "F15",
+    "F16",
+    "F21",
+    "F24",
+    "F30",
+    "F31"
+  ],
+  "monitoring_plan_updated": true,
+  "monitoring_execution_executed": false
 }

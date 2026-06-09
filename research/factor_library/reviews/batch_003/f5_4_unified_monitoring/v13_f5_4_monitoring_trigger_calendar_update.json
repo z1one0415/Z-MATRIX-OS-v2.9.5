@@ -1,0 +1,47 @@
+{
+  "pipeline_signature": "Z2-V13-F5-4-MONITORING-TRIGGER-CALENDAR-UPDATE",
+  "status": "V13_F5_4_TRIGGER_CALENDAR_UPDATED",
+  "minimum_oos_start_exclusive": "20260501",
+  "label_requirements": {
+    "F04": [
+      "20D",
+      "60D"
+    ],
+    "F10": [
+      "20D",
+      "60D"
+    ],
+    "F11": [
+      "5D",
+      "20D"
+    ],
+    "F14": [
+      "20D"
+    ],
+    "F15": [
+      "20D"
+    ],
+    "F16": [
+      "5D",
+      "20D"
+    ],
+    "F21": [
+      "20D",
+      "60D"
+    ],
+    "F24": [
+      "20D",
+      "60D"
+    ],
+    "F30": [
+      "20D",
+      "60D"
+    ],
+    "F31": [
+      "20D",
+      "60D"
+    ]
+  },
+  "oos_label_generation_executed_this_round": false,
+  "monitoring_execution_executed_this_round": false
+}

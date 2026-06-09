@@ -1,0 +1,46 @@
+{
+  "pipeline_signature": "Z2-V13-F5-4-UNIFIED-MONITORING-UPDATE-CONTRACT",
+  "status": "V13_F5_4_UNIFIED_MONITORING_UPDATE_CONTRACT_BUILT",
+  "base_commit": "ca5fe6b",
+  "monitoring_plan_update_only": true,
+  "previous_frozen_candidate_count": 6,
+  "updated_frozen_candidate_count": 10,
+  "monitoring_scope": [
+    "F04",
+    "F10",
+    "F11",
+    "F14",
+    "F15",
+    "F16",
+    "F21",
+    "F24",
+    "F30",
+    "F31"
+  ],
+  "new_batch3_monitoring_scope": [
+    "F21",
+    "F24",
+    "F30",
+    "F31"
+  ],
+  "watch_only_preserved": [
+    "F22",
+    "F26",
+    "F27",
+    "F34"
+  ],
+  "monitoring_execution_allowed": false,
+  "oos_label_generation_allowed": false,
+  "true_oos_validation_allowed": false,
+  "promotion_allowed": false,
+  "multi_factor_composite_allowed": false,
+  "weight_optimization_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "v13_6_allowed": false,
+  "paper_trading_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

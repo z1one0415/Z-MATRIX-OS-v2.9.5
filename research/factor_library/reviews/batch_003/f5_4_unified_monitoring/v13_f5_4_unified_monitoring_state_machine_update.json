@@ -1,0 +1,31 @@
+{
+  "pipeline_signature": "Z2-V13-F5-4-UNIFIED-MONITORING-STATE-MACHINE-UPDATE",
+  "status": "V13_F5_4_STATE_MACHINE_UPDATED",
+  "allowed_states": [
+    "FROZEN",
+    "RETAINED",
+    "WATCH",
+    "ORANGE",
+    "SUSPENSION_REVIEW",
+    "SUSPENDED",
+    "REWORK_REQUIRED",
+    "REJECTED",
+    "DISCLOSURE_STALE",
+    "CROWDING_WARNING",
+    "COST_GATE_BLOCKED",
+    "REGIME_GATE_BLOCKED",
+    "OVERLAP_DRIFT_WARNING",
+    "FALSE_BREAKOUT_WARNING",
+    "TREND_DECAY_WARNING",
+    "TAIL_RISK_SPIKE_WARNING"
+  ],
+  "forbidden_states": [
+    "PROMOTED",
+    "LIVE",
+    "TRADE_READY",
+    "ALPHA_VALIDATED",
+    "PRODUCTION_READY",
+    "BROKER_READY",
+    "REAL_TRADE_READY"
+  ]
+}

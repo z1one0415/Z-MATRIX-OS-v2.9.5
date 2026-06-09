@@ -1,0 +1,26 @@
+{
+  "pipeline_signature": "Z2-V13-F5-4-PER-FACTOR-MONITORING-RULES-UPDATE",
+  "status": "V13_F5_4_RULES_UPDATED",
+  "rules": {
+    "F21": {
+      "retain": "trend_quality positive and overlap_with_F04 acceptable",
+      "warning": "two negative months or overlap drift > threshold",
+      "suspension_review": "trend_quality decay + negative cost-adjusted spread"
+    },
+    "F24": {
+      "retain": "compression breakout spread positive",
+      "warning": "false breakout warning or two negative months",
+      "suspension_review": "breakout validation fail + negative spread"
+    },
+    "F30": {
+      "retain": "volume-price confirmation positive after cost gate",
+      "warning": "cost_turnover_gate fail or confirmation decay",
+      "suspension_review": "repeated negative cost-adjusted spread"
+    },
+    "F31": {
+      "retain": "regime gate pass and downside tail risk protective spread positive",
+      "warning": "regime instability or overlap with F10 rising",
+      "suspension_review": "regime gate fail + tail risk spread negative"
+    }
+  }
+}

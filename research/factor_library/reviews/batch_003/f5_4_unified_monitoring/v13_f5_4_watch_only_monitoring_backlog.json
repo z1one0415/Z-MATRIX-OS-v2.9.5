@@ -1,0 +1,15 @@
+{
+  "pipeline_signature": "Z2-V13-F5-4-WATCH-ONLY-MONITORING-BACKLOG",
+  "status": "V13_F5_4_WATCH_ONLY_BACKLOG_BUILT",
+  "watch_only": [
+    "F22",
+    "F26",
+    "F27",
+    "F34"
+  ],
+  "watch_only_not_in_frozen_monitoring_scope": true,
+  "watch_only_review_future_allowed": true,
+  "watch_only_requires_separate_rework_or_monitoring_gate": true,
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false
+}

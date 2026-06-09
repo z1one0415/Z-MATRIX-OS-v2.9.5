@@ -1,0 +1,108 @@
+{
+  "pipeline_signature": "Z2-V13-F5-4-UNIFIED-MONITORING-SCOPE-REGISTRY",
+  "status": "V13_F5_4_SCOPE_REGISTRY_BUILT",
+  "monitored_candidates": {
+    "F04": {
+      "type": "FULL_HORIZON",
+      "horizons": [
+        "20D",
+        "60D"
+      ],
+      "gates": []
+    },
+    "F10": {
+      "type": "REGIME_SPECIFIC",
+      "horizons": [
+        "20D",
+        "60D"
+      ],
+      "gates": [
+        "REGIME_GATE"
+      ]
+    },
+    "F11": {
+      "type": "TACTICAL",
+      "horizons": [
+        "5D",
+        "20D"
+      ],
+      "gates": [
+        "COST_TURNOVER_GATE"
+      ]
+    },
+    "F14": {
+      "type": "TACTICAL_FUNDAMENTAL_DISCIPLINE",
+      "horizons": [
+        "20D"
+      ],
+      "gates": [
+        "DISCLOSURE_STALENESS_GATE"
+      ]
+    },
+    "F15": {
+      "type": "TACTICAL_ACCOUNTING_QUALITY",
+      "horizons": [
+        "20D"
+      ],
+      "gates": [
+        "DISCLOSURE_STALENESS_GATE"
+      ]
+    },
+    "F16": {
+      "type": "TACTICAL_SENTIMENT_ATTENTION",
+      "horizons": [
+        "5D",
+        "20D"
+      ],
+      "gates": [
+        "SENTIMENT_CROWDING_GATE",
+        "COST_TURNOVER_GATE"
+      ]
+    },
+    "F21": {
+      "type": "TREND_PERSISTENCE_TACTICAL",
+      "horizons": [
+        "20D",
+        "60D"
+      ],
+      "gates": [
+        "TREND_QUALITY_GATE",
+        "OVERLAP_WITH_F04_GATE"
+      ]
+    },
+    "F24": {
+      "type": "VOLATILITY_COMPRESSION_BREAKOUT_TACTICAL",
+      "horizons": [
+        "20D",
+        "60D"
+      ],
+      "gates": [
+        "VOLATILITY_COMPRESSION_GATE",
+        "BREAKOUT_VALIDATION_GATE"
+      ]
+    },
+    "F30": {
+      "type": "VOLUME_PRICE_CONFIRMATION_TACTICAL",
+      "horizons": [
+        "20D",
+        "60D"
+      ],
+      "gates": [
+        "VOLUME_CONFIRMATION_GATE",
+        "COST_TURNOVER_GATE"
+      ]
+    },
+    "F31": {
+      "type": "DOWNSIDE_TAIL_RISK_REGIME",
+      "horizons": [
+        "20D",
+        "60D"
+      ],
+      "gates": [
+        "REGIME_GATE",
+        "TAIL_RISK_GATE",
+        "OVERLAP_WITH_F10_GATE"
+      ]
+    }
+  }
+}

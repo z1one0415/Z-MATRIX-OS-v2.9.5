@@ -1,0 +1,21 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-1-1-1-TEST-REFERENCE-PATCH",
+  "status": "V13_F5_5_1_1_1_TEST_REFERENCE_PATCH_PASS",
+  "base_commit": "808b817",
+  "test_reference_patch_executed": true,
+  "old_f5_5_2_next_action_removed": true,
+  "canonical_next_action": "PREPARE_V13_F5_5_1_2_OOS_LABEL_DATA_ACCESS_AND_ACTUAL_LABEL_MATERIALIZATION",
+  "label_panel_schema_generated": true,
+  "actual_forward_returns_generated": false,
+  "label_data_row_count": 0,
+  "ready_for_first_monitoring_execution": false,
+  "monitoring_execution_executed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "v13_6_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "recommended_next_action": "PREPARE_V13_F5_5_1_2_OOS_LABEL_DATA_ACCESS_AND_ACTUAL_LABEL_MATERIALIZATION"
+}

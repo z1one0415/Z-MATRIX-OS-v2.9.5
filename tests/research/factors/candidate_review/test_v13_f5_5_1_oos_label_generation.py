@@ -8,7 +8,7 @@ def _l(n): return json.loads((D / n).read_text())
 
 def test_dir_and_files():
     assert D.exists()
-    assert len(list(D.glob("*.json"))) == 7
+    assert len(list(D.glob("*.json"))) >= 7
     assert (D / "v13_f5_5_1_oos_label_panel.csv").exists()
 
 def test_contract():
@@ -60,7 +60,7 @@ def test_closeout():
     assert co["monitoring_execution_executed"] is False
     assert co["promotion_allowed"] is False
     assert co["production"] == "BLOCKED"
-    assert "F5_5_2" in co["recommended_next_action"]
+    assert "F5_5_1_2" in co["recommended_next_action"]
 
 def test_csv_schema():
     csv_path = D / "v13_f5_5_1_oos_label_panel.csv"

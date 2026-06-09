@@ -1,0 +1,25 @@
+{
+  "pipeline_signature": "V13-F5-1-18-HUMAN-CONTROLLED-NOOP-P0-DISABLED-DEFAULT-MERGE-DECISION",
+  "base_commit": "33dfe733e383223fe91c461ac005e7a107c5f010",
+  "decision_status": "APPROVED_BY_HUMAN_WITH_TARGET_REPAIR_REQUIRED",
+  "decision": "HOLD_MERGE_FOR_TARGET_LINEAGE_REPAIR",
+  "merge_allowed_now": false,
+  "merge_approval_granted": false,
+  "clean_target_required": true,
+  "target_lineage_repair_required": true,
+  "polluted_commits_blocking_merge": [
+    "0c2e6553d819d790a4c10e90acc111d3e8eb9da6",
+    "a6c3ff25b943277aa70a104373ead26e29e2199d",
+    "a622b3d921aebc513bcde98d1ade1be09120c131"
+  ],
+  "target_head_is_polluted": true,
+  "target_head_equals_0c2e655": true,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "dry_run_execution_started": false,
+  "runtime_reports_modified": false,
+  "runtime_audit_modified": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

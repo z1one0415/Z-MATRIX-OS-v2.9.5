@@ -1,0 +1,20 @@
+{
+  "pipeline_signature": "V13-F5-1-18-HUMAN-CONTROLLED-NOOP-P0-DISABLED-DEFAULT-MERGE-DECISION",
+  "base_commit": "33dfe733e383223fe91c461ac005e7a107c5f010",
+  "risks": [
+    {"id": "MR-01", "title": "merge into polluted target (target HEAD IS 0c2e655)", "severity": "CRITICAL", "status": "ACTIVE_BLOCKING", "mitigation": "Target lineage repair required before merge. Cannot merge into commit that was invalidated as polluted."},
+    {"id": "MR-02", "title": "disabled-default mistaken as enabled post-merge", "severity": "CRITICAL", "status": "MONITOR", "mitigation": "config.py hard-codes all flags false; registry tracks runner_enabled=false"},
+    {"id": "MR-03", "title": "runner enabled after merge", "severity": "CRITICAL", "status": "MONITOR", "mitigation": "Any enablement requires human decision; post-merge seal must block auto-enable"},
+    {"id": "MR-04", "title": "run method mistaken as execution", "severity": "HIGH", "status": "MONITOR", "mitigation": "run() always returns denied; no execute/call/invoke methods"},
+    {"id": "MR-05", "title": "runtime_reports write after merge", "severity": "HIGH", "status": "MONITOR", "mitigation": "RUNTIME_REPORTS_WRITE_ALLOWED=False; no write capability"},
+    {"id": "MR-06", "title": "runtime_audit write after merge", "severity": "HIGH", "status": "MONITOR", "mitigation": "RUNTIME_AUDIT_WRITE_ALLOWED=False; no write capability"},
+    {"id": "MR-07", "title": "external data fetch after merge", "severity": "HIGH", "status": "MONITOR", "mitigation": "No network imports in any module; tests verify via forbidden imports check"},
+    {"id": "MR-08", "title": "factor calculation after merge", "severity": "CRITICAL", "status": "MONITOR", "mitigation": "FACTOR_CALCULATION_ALLOWED=False; no calc logic"},
+    {"id": "MR-09", "title": "factor result update after merge", "severity": "CRITICAL", "status": "MONITOR", "mitigation": "FACTOR_RESULT_UPDATE_ALLOWED=False"},
+    {"id": "MR-10", "title": "dry-run execution after merge", "severity": "CRITICAL", "status": "MONITOR", "mitigation": "EXECUTION_ALLOWED=False; dry_run_execution_started=false"},
+    {"id": "MR-11", "title": "SkillOS adapter accidental dependency", "severity": "CRITICAL", "status": "MONITOR", "mitigation": "No skillos import; merge scope blocks skillos/ paths"},
+    {"id": "MR-12", "title": "broker/real_trade downstream misuse", "severity": "CRITICAL", "status": "MONITOR", "mitigation": "No broker/real_trade imports; structurally blocked"},
+    {"id": "MR-13", "title": "registry next_legal_entry mutation causing historical test fragility", "severity": "MEDIUM", "status": "MONITOR", "mitigation": "Historical tests use phase-local closeout; boundary reconciled in F5.1.16.1"},
+    {"id": "MR-14", "title": "pycache / generated file pollution", "severity": "LOW", "status": "MONITOR", "mitigation": "merge scope blocks __pycache__/ and *.pyc; safety audit confirms no pycache"}
+  ]
+}

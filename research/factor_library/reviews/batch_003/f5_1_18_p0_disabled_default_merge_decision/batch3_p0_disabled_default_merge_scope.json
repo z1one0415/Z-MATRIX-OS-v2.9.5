@@ -1,0 +1,27 @@
+{
+  "pipeline_signature": "V13-F5-1-18-HUMAN-CONTROLLED-NOOP-P0-DISABLED-DEFAULT-MERGE-DECISION",
+  "base_commit": "33dfe733e383223fe91c461ac005e7a107c5f010",
+  "allowed_merge_content": [
+    "research/factor_library/dry_run/**",
+    "tests/research/factors/dry_run/**",
+    "research/factor_library/reviews/batch_003/f5_1_10 through f5_1_18 clean artifacts",
+    "research/factor_library/registry.json",
+    "research/factor_library/unified_candidate_registry.json",
+    "tests/research/factors/candidate_review/test_v13_f5_1_10 through test_v13_f5_1_18 clean tests"
+  ],
+  "blocked_merge_content": [
+    "docs/skillos/**",
+    "skillos/**",
+    "tests/skillos/**",
+    "runtime_reports/**",
+    "runtime_audit/**",
+    "broker/**",
+    "trading/**",
+    "execution/**",
+    "production/**",
+    "portfolio/**",
+    "data/live/**",
+    "__pycache__/**",
+    "*.pyc"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "pipeline_signature": "V13-F5-1-18-HUMAN-CONTROLLED-NOOP-P0-DISABLED-DEFAULT-MERGE-DECISION",
+  "base_commit": "33dfe733e383223fe91c461ac005e7a107c5f010",
+  "items": [
+    {"item": "f5_1_16_implementation_complete", "status": "PASS"},
+    {"item": "f5_1_16_1_boundary_reconciled", "status": "PASS"},
+    {"item": "f5_1_16_2_full_test_gate_closed", "status": "PASS"},
+    {"item": "f5_1_17_review_decision_complete", "status": "PASS"},
+    {"item": "full_tests_passed", "status": "PASS"},
+    {"item": "runner_enabled_false", "status": "PASS"},
+    {"item": "execution_allowed_false", "status": "PASS"},
+    {"item": "dry_run_execution_false", "status": "PASS"},
+    {"item": "runtime_reports_false", "status": "PASS"},
+    {"item": "runtime_audit_false", "status": "PASS"},
+    {"item": "external_data_fetch_false", "status": "PASS"},
+    {"item": "no_skillos", "status": "PASS"},
+    {"item": "no_docs_skillos", "status": "PASS"},
+    {"item": "no_tests_skillos", "status": "PASS"},
+    {"item": "no_pycache", "status": "PASS"},
+    {"item": "no_broker", "status": "PASS"},
+    {"item": "no_real_trade", "status": "PASS"},
+    {"item": "no_production", "status": "PASS"},
+    {"item": "target_lineage_checked", "status": "PASS"},
+    {"item": "clean_target_required", "status": "BLOCKED_BY_TARGET_LINEAGE"},
+    {"item": "target_head_not_polluted", "status": "BLOCKED_BY_TARGET_LINEAGE"}
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "pipeline_signature": "V13-F5-1-18-HUMAN-CONTROLLED-NOOP-P0-DISABLED-DEFAULT-MERGE-DECISION",
+  "base_commit": "33dfe733e383223fe91c461ac005e7a107c5f010",
+  "source_branch": "impl/research-batch3-controlled-noop-dry-run-p0-implementation-clean",
+  "source_head": "33dfe733e383223fe91c461ac005e7a107c5f010",
+  "target_branch": "v4.0-batch-0-final-hardgates-scope-lock",
+  "target_head": "0c2e6553d819d790a4c10e90acc111d3e8eb9da6",
+  "merge_base": "81aa688bcc9848d6c7377be248dc2e98322e9600",
+  "target_contains_polluted_commits": true,
+  "target_head_is_polluted_commit": true,
+  "source_contains_polluted_commits": false,
+  "clean_rebuild_chain": [
+    "4dd8e86",
+    "61503b9",
+    "3c49f07",
+    "e1c1d0a",
+    "5389759",
+    "5a570144",
+    "bf4f023",
+    "eb9f571",
+    "b0b4fa2",
+    "f43fa22",
+    "33dfe73"
+  ],
+  "polluted_commits_invalidated": [
+    {"sha": "0c2e655", "status": "INVALIDATED_F5_1_10_REBUILD", "in_target": true, "in_source": false},
+    {"sha": "a6c3ff2", "status": "INVALIDATED_F5_1_11_REBUILD", "in_target": false, "in_source": false},
+    {"sha": "a622b3d", "status": "INVALIDATED_LINEAGE_CLEAN_REBUILD", "in_target": false, "in_source": false}
+  ],
+  "lineage_decision": "TARGET_LINEAGE_REPAIR_REQUIRED",
+  "lineage_decision_detail": "Target HEAD is 0c2e655 (an invalidated polluted commit). Source branch has clean lineage. Cannot merge into polluted target. Target must be repaired first."
+}

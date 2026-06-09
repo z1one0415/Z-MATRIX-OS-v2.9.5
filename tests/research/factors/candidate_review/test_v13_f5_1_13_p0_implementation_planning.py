@@ -63,7 +63,9 @@ def test_noop_output():
 def test_registry():
     reg = json.loads(Path("research/factor_library/registry.json").read_text())
     assert reg.get("controlled_noop_p0_implementation_planning_status") == "PLANNED_ONLY"
-    assert reg.get("noop_runner_implemented") is False
+    # After F5.1.16 implementation, runner is implemented (disabled-default)
+    # runner_enabled must still be false
+    assert reg.get("runner_enabled") is False
 def test_skillos():
     r = subprocess.run("git diff --name-only -- skillos",shell=True,capture_output=True,text=True)
     assert r.stdout.strip() == ""

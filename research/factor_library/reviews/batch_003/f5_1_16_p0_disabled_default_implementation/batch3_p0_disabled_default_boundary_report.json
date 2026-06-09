@@ -14,5 +14,13 @@
   "no_execution_imports": true,
   "no_skillos_imports": true,
   "no_v13_6": true,
-  "no_pycache": true
+  "no_pycache": true,
+  "boundary_reconciliation_required": true,
+  "boundary_reconciliation_status": "V13_F5_1_16_1_BOUNDARY_RECONCILED",
+  "extra_candidate_review_test_files_reviewed": [
+    "tests/research/factors/candidate_review/test_v13_f5_1_12_clean_controlled_noop_branch_creation.py",
+    "tests/research/factors/candidate_review/test_v13_f5_1_13_p0_implementation_planning.py"
+  ],
+  "historical_phase_tests_use_phase_local_closeout": true,
+  "registry_mutability_acknowledged": true
 }

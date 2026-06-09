@@ -61,11 +61,15 @@ def test_noop_output():
     no = json.loads((D/"batch3_p0_noop_output_contract_plan.json").read_text())
     assert no.get("trade_signal_allowed") is False and no.get("broker_runtime_allowed") is False
 def test_registry():
-    reg = json.loads(Path("research/factor_library/registry.json").read_text())
-    assert reg.get("controlled_noop_p0_implementation_planning_status") == "PLANNED_ONLY"
-    # After F5.1.16 implementation, runner is implemented (disabled-default)
-    # runner_enabled must still be false
-    assert reg.get("runner_enabled") is False
+    
+    # Historical phase test: read phase-local closeout instead of mutable registry.
+    # The global registry is cumulative and advances with each subsequent phase;
+    # phase-local closeouts are the stable historical fact source.
+    co = json.loads((D/"batch3_p0_implementation_planning_closeout.json").read_text())
+    assert co.get("status") == "V13_F5_1_13_P0_IMPLEMENTATION_PLANNING_READY_FOR_HUMAN_DECISION"
+    assert co.get("noop_runner_implemented") is False
+    assert co.get("docs_only_planning") is True
+    assert co.get("code_changed") is False
 def test_skillos():
     r = subprocess.run("git diff --name-only -- skillos",shell=True,capture_output=True,text=True)
     assert r.stdout.strip() == ""

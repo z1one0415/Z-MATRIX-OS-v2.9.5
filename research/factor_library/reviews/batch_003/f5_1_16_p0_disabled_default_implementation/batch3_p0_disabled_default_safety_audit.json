@@ -38,5 +38,8 @@
     "hold_queue_not_modified": true,
     "frozen_candidates_not_modified": true,
     "rejected_factors_not_modified": true
-  }
+  },
+  "boundary_reconciliation_checked": true,
+  "historical_tests_do_not_require_current_registry_next_entry": true,
+  "no_new_scope_added_by_reconciliation": true
 }

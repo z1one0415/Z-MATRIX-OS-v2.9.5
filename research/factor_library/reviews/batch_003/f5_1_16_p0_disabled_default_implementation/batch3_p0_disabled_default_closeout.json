@@ -20,6 +20,8 @@
   "broker_runtime": "BLOCKED",
   "real_trade": "BLOCKED",
   "skillos_modified": false,
+  "boundary_reconciliation_status": "V13_F5_1_16_1_BOUNDARY_RECONCILED",
+  "test_boundary_status": "HISTORICAL_PHASE_TESTS_STABILIZED",
   "status": "V13_F5_1_16_P0_DISABLED_DEFAULT_IMPLEMENTATION_READY_FOR_REVIEW",
   "next_legal_entry": "HUMAN_CONTROLLED_NOOP_DRY_RUN_P0_DISABLED_DEFAULT_REVIEW_ONLY"
 }

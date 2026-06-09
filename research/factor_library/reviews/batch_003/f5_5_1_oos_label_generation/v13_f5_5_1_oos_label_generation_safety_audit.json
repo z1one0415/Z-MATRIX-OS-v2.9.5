@@ -2,7 +2,7 @@
   "pipeline_signature": "Z2-V13-F5-5-1-OOS-LABEL-GENERATION-SAFETY-AUDIT",
   "status": "V13_F5_5_1_SAFETY_AUDIT_PASS",
   "checks": {
-    "oos_label_generation_executed": true,
+    "oos_label_generation_executed": false,
     "monitoring_execution_executed": false,
     "true_oos_validation_executed": false,
     "candidate_decision_update_executed": false,
@@ -18,7 +18,9 @@
     "alpha_claim_allowed": false,
     "production_blocked": true,
     "broker_runtime_blocked": true,
-    "real_trade_blocked": true
+    "real_trade_blocked": true,
+    "label_schema_generated": true,
+    "actual_forward_returns_generated": false
   },
   "violation_count": 0
 }

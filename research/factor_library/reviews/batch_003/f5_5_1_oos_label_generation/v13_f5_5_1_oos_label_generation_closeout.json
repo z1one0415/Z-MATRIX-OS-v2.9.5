@@ -1,8 +1,12 @@
 {
   "pipeline_signature": "Z2-V13-F5-5-1-OOS-LABEL-GENERATION-CLOSEOUT",
-  "status": "V13_F5_5_1_OOS_LABEL_GENERATION_PASS",
+  "status": "V13_F5_5_1_OOS_LABEL_SCHEMA_PLACEHOLDER_ONLY",
   "base_commit": "3f09071",
-  "oos_label_generation_executed": true,
+  "oos_label_generation_executed": false,
+  "label_schema_generated": true,
+  "label_panel_status": "SCHEMA_HEADER_GENERATED_AWAITING_RUNTIME_DATA_ACCESS",
+  "actual_forward_returns_generated": false,
+  "label_data_row_count": 0,
   "label_month": "2026-05",
   "generated_horizons": [
     "5D",
@@ -25,19 +29,14 @@
   ],
   "label_role": "OUTCOME_LABEL_ONLY",
   "written_to_feature_store": false,
+  "ready_for_first_monitoring_execution": false,
   "monitoring_execution_executed": false,
-  "true_oos_validation_executed": false,
-  "candidate_decision_update_executed": false,
-  "ready_for_first_monitoring_execution": true,
-  "ready_for_promotion_review": [],
-  "promotion_allowed": false,
   "runner_enabled": false,
   "execution_allowed": false,
   "v13_6_allowed": false,
-  "paper_trading_allowed": false,
   "alpha_claim_allowed": false,
   "production": "BLOCKED",
   "broker_runtime": "BLOCKED",
   "real_trade": "BLOCKED",
-  "recommended_next_action": "EXECUTE_V13_F5_5_2_FIRST_PARTIAL_MONITORING_EXECUTION"
+  "recommended_next_action": "PREPARE_V13_F5_5_1_2_OOS_LABEL_DATA_ACCESS_AND_ACTUAL_LABEL_MATERIALIZATION"
 }

@@ -54,9 +54,9 @@ def test_safety():
 
 def test_closeout():
     co = _l("v13_f5_5_1_oos_label_generation_closeout.json")
-    assert co["oos_label_generation_executed"] is True
+    assert co["oos_label_generation_executed"] is False
     assert co["generated_horizons"] == ["5D", "20D"]
-    assert co["ready_for_first_monitoring_execution"] is True
+    assert co["ready_for_first_monitoring_execution"] is False
     assert co["monitoring_execution_executed"] is False
     assert co["promotion_allowed"] is False
     assert co["production"] == "BLOCKED"

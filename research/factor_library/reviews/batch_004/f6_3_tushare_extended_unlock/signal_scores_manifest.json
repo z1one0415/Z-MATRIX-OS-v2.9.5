@@ -1,0 +1,31 @@
+{
+  "pipeline_signature": "Z2-V13-F6-3-TUSHARE-EXTENDED-SIGNAL-SCORES-MANIFEST",
+  "status": "V13_F6_3_EXTENDED_SIGNALS_MATERIALIZED",
+  "base_commit": "3df60ce",
+  "rebalance_date": "2026-05-06",
+  "materialized_factors": [
+    "F09",
+    "F44",
+    "F45",
+    "F51"
+  ],
+  "ticker_count": 4,
+  "total_signal_rows": 16,
+  "signal_role": "FACTOR_SIGNAL_ONLY",
+  "data_source": "tushare pro_api",
+  "unlocked_by": {
+    "F09": "forecast (earnings guidance)",
+    "F44": "balancesheet (inventories)",
+    "F45": "balancesheet (fix_assets)",
+    "F51": "cn_m + shibor_lpr (macro)"
+  },
+  "notes": {
+    "F51": "Macro factor \u2014 all tickers have same value at single rebalance date. Differentiates across time in multi-month OOS pipeline."
+  },
+  "forward_return_used": false,
+  "written_to_feature_store": false,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED"
+}

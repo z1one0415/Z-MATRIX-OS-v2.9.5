@@ -1,0 +1,5 @@
+factor_id,ticker,rebalance_date,score,rank,bucket,score_available_at,source_artifact_ref,signal_role
+F44,002472,2026-05-06,0.9032,1,2,2026-05-06,data/tushare/fundamentals,FACTOR_SIGNAL_ONLY
+F44,601899,2026-05-06,-1.6687,4,5,2026-05-06,data/tushare/fundamentals,FACTOR_SIGNAL_ONLY
+F44,000977,2026-05-06,0.6136,2,3,2026-05-06,data/tushare/fundamentals,FACTOR_SIGNAL_ONLY
+F44,002050,2026-05-06,0.1519,3,4,2026-05-06,data/tushare/fundamentals,FACTOR_SIGNAL_ONLY

@@ -1,0 +1,42 @@
+#!/usr/bin/env python3
+"""Build V13.F6.2.2 CSV Recovery Contract."""
+import json
+from pathlib import Path
+
+CONTRACT = {
+    "pipeline_signature": "Z2-V13-F6-2-2-CSV-RECOVERY-CONTRACT",
+    "base_commit": "3979f1d",
+    "trigger_commit": "3df60ce",
+    "problem": "F6_2_CSV_MATERIALIZATION_FILES_MISSING_FROM_WORKTREE",
+    "problem_detail": "Per-factor CSV files exist in git commit 3df60ce but were not present in working tree for re-audit",
+    "resolution": "MERGE_PER_FACTOR_CSV_INTO_SINGLE_28_ROW_CANONICAL_CSV",
+    "merged_csv_path": "research/factor_library/reviews/batch_004/f6_2_tushare_pit_fundamental_ingestion/f6_2_fundamental_signal_scores.csv",
+    "total_rows": 28,
+    "factors": ["F06", "F07", "F08", "F12", "F13", "F14", "F15"],
+    "tickers": ["000977", "002050", "002472", "601899"],
+    "rebalance_date": "2026-05-06",
+    "signal_role": "FACTOR_SIGNAL_ONLY",
+    "source_artifact_ref": "tushare_fundamentals_2026Q1",
+    "forbidden_columns": [
+        "forward_return", "alpha_signal", "trade_signal",
+        "buy_signal", "sell_signal", "position", "position_weight",
+        "order", "expected_return_claim"
+    ],
+    "audit_scripts_produced": [
+        "audit_v13_f6_2_2_file_based_etf_exclusion.py",
+        "audit_v13_f6_2_2_file_based_f13_non_informative.py",
+        "audit_v13_f6_2_2_file_based_row_count_and_coverage.py",
+        "audit_v13_f6_2_2_no_hardcoded_ground_truth.py",
+        "audit_v13_f6_2_2_safety.py"
+    ],
+    "closeout_script": "build_v13_f6_2_2_csv_recovery_closeout.py"
+}
+
+OUTDIR = Path("research/factor_library/reviews/batch_004/f6_2_2_csv_recovery_and_file_reaudit")
+OUTDIR.mkdir(parents=True, exist_ok=True)
+OUTFILE = OUTDIR / "v13_f6_2_2_csv_recovery_contract.json"
+OUTFILE.write_text(json.dumps(CONTRACT, indent=2, ensure_ascii=False))
+print(f"✅ Contract written: {OUTFILE}")
+
+if __name__ == "__main__":
+    pass

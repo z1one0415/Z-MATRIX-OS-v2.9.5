@@ -1,0 +1,48 @@
+{
+  "total_rows": 28,
+  "expected_rows": 28,
+  "row_count_match": true,
+  "factors_found": [
+    "F06",
+    "F07",
+    "F08",
+    "F12",
+    "F13",
+    "F14",
+    "F15"
+  ],
+  "factors_expected": [
+    "F06",
+    "F07",
+    "F08",
+    "F12",
+    "F13",
+    "F14",
+    "F15"
+  ],
+  "factors_match": true,
+  "tickers_found": [
+    "000977",
+    "002050",
+    "002472",
+    "601899"
+  ],
+  "tickers_expected": [
+    "000977",
+    "002050",
+    "002472",
+    "601899"
+  ],
+  "tickers_match": true,
+  "etf_588000_present": false,
+  "etf_588000_correctly_absent": true,
+  "rebalance_dates": [
+    "2026-05-06"
+  ],
+  "all_rebalance_date_2026_05_06": true,
+  "signal_roles": [
+    "FACTOR_SIGNAL_ONLY"
+  ],
+  "all_signal_role_factors_only": true,
+  "verdict": "PASS"
+}

@@ -1,0 +1,26 @@
+{
+  "audit_type": "SAFETY_BLOCK_CHECK",
+  "files_scanned": [
+    "research/factor_library/reviews/batch_004/f6_2_tushare_pit_fundamental_ingestion/f6_2_fundamental_signal_scores.csv",
+    "research/factor_library/reviews/batch_004/f6_2_tushare_pit_fundamental_ingestion/f6_2_tushare_source_manifest.json",
+    "scripts/research/factors/reviews/audit_v13_f6_2_2_file_based_etf_exclusion.py",
+    "scripts/research/factors/reviews/audit_v13_f6_2_2_file_based_f13_non_informative.py",
+    "scripts/research/factors/reviews/audit_v13_f6_2_2_file_based_row_count_and_coverage.py",
+    "scripts/research/factors/reviews/audit_v13_f6_2_2_no_hardcoded_ground_truth.py",
+    "scripts/research/factors/reviews/audit_v13_f6_2_2_safety.py",
+    "scripts/research/factors/reviews/build_v13_f6_2_2_csv_recovery_closeout.py",
+    "scripts/research/factors/reviews/build_v13_f6_2_2_csv_recovery_contract.py"
+  ],
+  "files_scanned_count": 9,
+  "forbidden_patterns_checked": [
+    "FORWARD_RETURN",
+    "ALPHA_SIGNAL",
+    "TRADE_SIGNAL",
+    "RUNNER_ENABLED_TRUE",
+    "EXECUTION_ALLOWED_TRUE",
+    "ALPHA_CLAIM_ALLOWED_TRUE"
+  ],
+  "violations": [],
+  "violation_count": 0,
+  "verdict": "PASS"
+}

@@ -1,0 +1,13 @@
+{
+  "pipeline_signature": "Z2-V13-F6-2-TUSHARE-PIT",
+  "source": "tushare_fundamentals",
+  "data_date": "2026-06-09",
+  "rebalance_date": "2026-05-06",
+  "report_period": "2025Q4",
+  "known_at": "2026-04-30",
+  "pit_safe": true,
+  "tickers": ["000977","002050","002472","601899"],
+  "factors": ["F06","F07","F08","F12","F13","F14","F15"],
+  "total_rows": 28,
+  "signal_role": "FACTOR_SIGNAL_ONLY"
+}

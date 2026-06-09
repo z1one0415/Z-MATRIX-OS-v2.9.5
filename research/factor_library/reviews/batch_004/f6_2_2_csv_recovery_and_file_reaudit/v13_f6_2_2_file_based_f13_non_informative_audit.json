@@ -1,0 +1,60 @@
+{
+  "factor_id": "F13",
+  "classification": "MATERIALIZED_NON_INFORMATIVE",
+  "num_rows": 4,
+  "num_distinct_tickers": 4,
+  "tickers": [
+    "000977",
+    "002050",
+    "002472",
+    "601899"
+  ],
+  "all_scores_zero": true,
+  "details": [
+    {
+      "factor_id": "F13",
+      "ticker": "002472",
+      "rebalance_date": "2026-05-06",
+      "score": "0",
+      "rank": "1",
+      "bucket": "2",
+      "score_available_at": "2026-05-06",
+      "source_artifact_ref": "tushare_fundamentals_2026Q1",
+      "signal_role": "FACTOR_SIGNAL_ONLY"
+    },
+    {
+      "factor_id": "F13",
+      "ticker": "601899",
+      "rebalance_date": "2026-05-06",
+      "score": "0",
+      "rank": "2",
+      "bucket": "3",
+      "score_available_at": "2026-05-06",
+      "source_artifact_ref": "tushare_fundamentals_2026Q1",
+      "signal_role": "FACTOR_SIGNAL_ONLY"
+    },
+    {
+      "factor_id": "F13",
+      "ticker": "000977",
+      "rebalance_date": "2026-05-06",
+      "score": "0",
+      "rank": "3",
+      "bucket": "4",
+      "score_available_at": "2026-05-06",
+      "source_artifact_ref": "tushare_fundamentals_2026Q1",
+      "signal_role": "FACTOR_SIGNAL_ONLY"
+    },
+    {
+      "factor_id": "F13",
+      "ticker": "002050",
+      "rebalance_date": "2026-05-06",
+      "score": "0",
+      "rank": "4",
+      "bucket": "5",
+      "score_available_at": "2026-05-06",
+      "source_artifact_ref": "tushare_fundamentals_2026Q1",
+      "signal_role": "FACTOR_SIGNAL_ONLY"
+    }
+  ],
+  "verdict": "PASS"
+}

@@ -1,0 +1,28 @@
+{
+  "tickers_in_fundamental": [
+    "000977",
+    "002050",
+    "002472",
+    "601899"
+  ],
+  "tickers_in_price_label": [
+    "000977",
+    "002050",
+    "002472",
+    "588000",
+    "601899"
+  ],
+  "etf_tickers": [
+    "588000"
+  ],
+  "etf_excluded_from_fundamental": true,
+  "exclusion_verified": [
+    {
+      "ticker": "588000",
+      "in_price_universe": true,
+      "in_fundamental_universe": false,
+      "status": "CORRECTLY_EXCLUDED",
+      "reason": "ETF_NO_CORPORATE_FUNDAMENTALS"
+    }
+  ]
+}

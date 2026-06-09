@@ -1,0 +1,61 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-3-SIGNAL-MATERIALIZATION-PLAN",
+  "status": "V13_F5_5_3_SIGNAL_MATERIALIZATION_PLAN_BUILT",
+  "base_commit": "bfb48a7",
+  "plan_structure": {
+    "F5_5_3": "PLANNING_ONLY (current step - no materialization)",
+    "F5_5_3_1": "MINIMAL_SIGNAL_SCORE_MATERIALIZATION (after human review)"
+  },
+  "f5_5_3_scope": "PLAN_AND_AUDIT_ONLY",
+  "f5_5_3_1_scope": "MATERIALIZE_SIGNAL_SCORES_FOR_LABEL_TICKERS_ONLY",
+  "f5_5_3_1_eligible_factors": [
+    "F21",
+    "F24",
+    "F30",
+    "F31"
+  ],
+  "f5_5_3_1_blocked_factors": [
+    "F04",
+    "F10",
+    "F11",
+    "F14",
+    "F15",
+    "F16"
+  ],
+  "f5_5_3_1_requirements": {
+    "label_tickers_only": true,
+    "rebalance_date": "2026-05-06",
+    "signal_role": "FACTOR_SIGNAL_ONLY",
+    "schema_ref": "v13_f5_5_3_signal_score_schema.json",
+    "output_format": "one_csv_per_factor",
+    "output_path_pattern": "research/factor_library/reviews/batch_003/f5_5_3_1_signal_materialization/{factor_id}_signal_scores.csv",
+    "source_data_allowed": "data/price_bars (read-only)",
+    "formula_source": "factor_manifest.formula_ref"
+  },
+  "f5_5_3_1_constraints": {
+    "only_for_label_tickers": true,
+    "only_for_rebalance_date": true,
+    "no_full_universe_computation": true,
+    "no_feature_store_write": true,
+    "no_runtime_reports_write": true,
+    "no_candidate_state_update": true,
+    "no_trade_signal_output": true,
+    "no_alpha_claim": true
+  },
+  "expected_output_after_f5_5_3_1": {
+    "signal_scores_generated": 4,
+    "monitoring_rerun_eligible": true,
+    "full_monitoring_eligible": false,
+    "note": "Only 4/10 factors can be materialized; 6 require prior batch artifact work"
+  },
+  "signal_materialization_executed_in_f5_5_3": false,
+  "factor_recalculation_executed": false,
+  "monitoring_rerun_executed": false,
+  "candidate_state_update_executed": false,
+  "promotion_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

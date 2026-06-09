@@ -1,0 +1,33 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-3-SIGNAL-SCORE-RESTORATION-CLOSEOUT",
+  "status": "V13_F5_5_3_SIGNAL_SCORE_RESTORATION_PLAN_PASS",
+  "base_commit": "bfb48a7",
+  "planning_only": true,
+  "current_signal_available_count": 0,
+  "current_signal_blocked_count": 10,
+  "factors_actionable_for_materialization": 4,
+  "factors_blocked_no_source": 6,
+  "f5_5_3_1_eligible_factors": [
+    "F21",
+    "F24",
+    "F30",
+    "F31"
+  ],
+  "restoration_plan_built": true,
+  "signal_materialization_executed": false,
+  "factor_recalculation_executed": false,
+  "monitoring_rerun_executed": false,
+  "candidate_state_update_executed": false,
+  "ready_for_f5_5_3_1_signal_score_materialization": true,
+  "ready_for_f5_5_2_rerun": false,
+  "ready_for_promotion_review": [],
+  "promotion_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "v13_6_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "recommended_next_action": "PREPARE_V13_F5_5_3_1_MINIMAL_SIGNAL_SCORE_MATERIALIZATION_FOR_EXISTING_LABEL_TICKERS"
+}

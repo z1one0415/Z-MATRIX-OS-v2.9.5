@@ -1,0 +1,122 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-3-SIGNAL-SOURCE-CLASSIFICATION",
+  "status": "V13_F5_5_3_SIGNAL_SOURCE_CLASSIFICATION_COMPLETE",
+  "base_commit": "bfb48a7",
+  "summary": {
+    "total_frozen_candidates": 10,
+    "actionable_for_f5_5_3_1": 4,
+    "blocked_requires_prior_work": 6
+  },
+  "class_distribution": {
+    "REQUIRES_SIGNAL_SCORE_MATERIALIZATION": [
+      "F21",
+      "F24",
+      "F30",
+      "F31"
+    ],
+    "BLOCKED_NO_SOURCE": [
+      "F04",
+      "F10",
+      "F11",
+      "F14",
+      "F15",
+      "F16"
+    ]
+  },
+  "factor_restoration_paths": [
+    {
+      "factor_id": "F04",
+      "restoration_class": "BLOCKED_NO_SOURCE",
+      "has_formula_ref": false,
+      "has_manifest": false,
+      "actionable_in_f5_5_3_1": false,
+      "blocked_reason": "no_factor_directory_or_manifest_in_clean_branch"
+    },
+    {
+      "factor_id": "F10",
+      "restoration_class": "BLOCKED_NO_SOURCE",
+      "has_formula_ref": false,
+      "has_manifest": false,
+      "actionable_in_f5_5_3_1": false,
+      "blocked_reason": "no_factor_directory_or_manifest_in_clean_branch"
+    },
+    {
+      "factor_id": "F11",
+      "restoration_class": "BLOCKED_NO_SOURCE",
+      "has_formula_ref": false,
+      "has_manifest": false,
+      "actionable_in_f5_5_3_1": false,
+      "blocked_reason": "no_factor_directory_or_manifest_in_clean_branch"
+    },
+    {
+      "factor_id": "F14",
+      "restoration_class": "BLOCKED_NO_SOURCE",
+      "has_formula_ref": false,
+      "has_manifest": false,
+      "actionable_in_f5_5_3_1": false,
+      "blocked_reason": "no_factor_directory_or_manifest_in_clean_branch"
+    },
+    {
+      "factor_id": "F15",
+      "restoration_class": "BLOCKED_NO_SOURCE",
+      "has_formula_ref": false,
+      "has_manifest": false,
+      "actionable_in_f5_5_3_1": false,
+      "blocked_reason": "no_factor_directory_or_manifest_in_clean_branch"
+    },
+    {
+      "factor_id": "F16",
+      "restoration_class": "BLOCKED_NO_SOURCE",
+      "has_formula_ref": false,
+      "has_manifest": false,
+      "actionable_in_f5_5_3_1": false,
+      "blocked_reason": "no_factor_directory_or_manifest_in_clean_branch"
+    },
+    {
+      "factor_id": "F21",
+      "restoration_class": "REQUIRES_SIGNAL_SCORE_MATERIALIZATION",
+      "has_formula_ref": true,
+      "has_manifest": true,
+      "actionable_in_f5_5_3_1": true,
+      "blocked_reason": null
+    },
+    {
+      "factor_id": "F24",
+      "restoration_class": "REQUIRES_SIGNAL_SCORE_MATERIALIZATION",
+      "has_formula_ref": true,
+      "has_manifest": true,
+      "actionable_in_f5_5_3_1": true,
+      "blocked_reason": null
+    },
+    {
+      "factor_id": "F30",
+      "restoration_class": "REQUIRES_SIGNAL_SCORE_MATERIALIZATION",
+      "has_formula_ref": true,
+      "has_manifest": true,
+      "actionable_in_f5_5_3_1": true,
+      "blocked_reason": null
+    },
+    {
+      "factor_id": "F31",
+      "restoration_class": "REQUIRES_SIGNAL_SCORE_MATERIALIZATION",
+      "has_formula_ref": true,
+      "has_manifest": true,
+      "actionable_in_f5_5_3_1": true,
+      "blocked_reason": null
+    }
+  ],
+  "f5_5_3_1_eligible_factors": [
+    "F21",
+    "F24",
+    "F30",
+    "F31"
+  ],
+  "blocked_factors_requiring_prior_batch_work": [
+    "F04",
+    "F10",
+    "F11",
+    "F14",
+    "F15",
+    "F16"
+  ]
+}

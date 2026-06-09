@@ -1,0 +1,22 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-3-SIGNAL-RESTORATION-SAFETY-AUDIT",
+  "status": "V13_F5_5_3_SAFETY_AUDIT_PASS",
+  "base_commit": "bfb48a7",
+  "checks": {
+    "signal_materialization_executed": false,
+    "factor_recalculation_executed": false,
+    "monitoring_rerun_executed": false,
+    "candidate_state_update_executed": false,
+    "promotion_allowed": false,
+    "ready_for_promotion_review_empty": true,
+    "runner_enabled": false,
+    "execution_allowed": false,
+    "v13_6_allowed": false,
+    "alpha_claim_allowed": false,
+    "production_blocked": true,
+    "broker_runtime_blocked": true,
+    "real_trade_blocked": true
+  },
+  "planning_only_verified": true,
+  "violation_count": 0
+}

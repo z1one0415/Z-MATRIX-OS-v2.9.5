@@ -1,0 +1,77 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-3-SIGNAL-SCORE-SCHEMA",
+  "status": "V13_F5_5_3_SIGNAL_SCORE_SCHEMA_DEFINED",
+  "base_commit": "bfb48a7",
+  "schema_version": "1.0",
+  "required_fields": [
+    {
+      "name": "factor_id",
+      "type": "string",
+      "description": "Factor identifier"
+    },
+    {
+      "name": "ticker",
+      "type": "string",
+      "description": "Stock ticker"
+    },
+    {
+      "name": "rebalance_date",
+      "type": "date",
+      "description": "Signal evaluation date"
+    },
+    {
+      "name": "score",
+      "type": "float",
+      "description": "Raw factor score"
+    },
+    {
+      "name": "rank",
+      "type": "int",
+      "description": "Cross-sectional rank (1=best)"
+    },
+    {
+      "name": "bucket",
+      "type": "int",
+      "description": "Quintile bucket (1-5)"
+    },
+    {
+      "name": "score_available_at",
+      "type": "date",
+      "description": "Point-in-time availability date"
+    },
+    {
+      "name": "source_artifact_ref",
+      "type": "string",
+      "description": "Path to source artifact"
+    },
+    {
+      "name": "signal_role",
+      "type": "string",
+      "description": "Must be FACTOR_SIGNAL_ONLY"
+    }
+  ],
+  "csv_header": "factor_id,ticker,rebalance_date,score,rank,bucket,score_available_at,source_artifact_ref,signal_role",
+  "constraints": {
+    "signal_role": "FACTOR_SIGNAL_ONLY",
+    "not_outcome_label": true,
+    "not_trade_signal": true,
+    "not_alpha_signal": true,
+    "not_position_weight": true,
+    "not_buy_sell_signal": true,
+    "not_order_signal": true
+  },
+  "usage_restrictions": {
+    "allowed_for": [
+      "partial_monitoring_diagnostic",
+      "directional_spread_calculation"
+    ],
+    "blocked_for": [
+      "trade_execution",
+      "alpha_claim",
+      "position_sizing",
+      "order_generation",
+      "production",
+      "broker"
+    ]
+  }
+}

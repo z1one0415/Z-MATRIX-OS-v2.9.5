@@ -57,7 +57,21 @@ def compute_signal(input_prices, rebalance_date):
             scores[ticker] = 0.0
             continue
         # Factor-specific computation goes here
-        scores[ticker] = 0.0  # Replace with actual formula
+        scores = {}
+    for ticker, bars in input_prices.items():
+        if len(bars) < 5:
+            scores[ticker] = 0.0; continue
+        returns = [(bars[i]["close"] - bars[i-1]["close"]) / max(bars[i-1]["close"], 0.001)
+                   for i in range(1, len(bars))]
+        if not returns:
+            scores[ticker] = 0.0; continue
+        max_streak, cur = 1, 1
+        for i in range(1, len(returns)):
+            if (returns[i] >= 0) == (returns[i-1] >= 0):
+                cur += 1; max_streak = max(max_streak, cur)
+            else:
+                cur = 1
+        scores[ticker] = round(max_streak / max(len(returns), 1), 6)
     return scores
 
 def rank_and_bucket(scores):

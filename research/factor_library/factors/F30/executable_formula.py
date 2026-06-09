@@ -57,7 +57,23 @@ def compute_signal(input_prices, rebalance_date):
             scores[ticker] = 0.0
             continue
         # Factor-specific computation goes here
-        scores[ticker] = 0.0  # Replace with actual formula
+        scores = {}
+    for ticker, bars in input_prices.items():
+        if len(bars) < 5:
+            scores[ticker] = 0.0; continue
+        returns = [(bars[i]["close"] - bars[i-1]["close"]) / max(bars[i-1]["close"], 0.001)
+                   for i in range(1, len(bars))]
+        vc = [(bars[i]["volume"] - bars[i-1]["volume"]) / max(bars[i-1]["volume"], 1)
+              for i in range(1, len(bars))]
+        n = min(len(returns), len(vc))
+        if n < 3:
+            scores[ticker] = 0.0; continue
+        r, v = returns[:n], vc[:n]
+        mr = sum(r)/n; mv_ = sum(v)/n
+        cov = sum((r[i]-mr)*(v[i]-mv_) for i in range(n))/n
+        sr = (sum((x-mr)**2 for x in r)/n)**0.5
+        sv = (sum((x-mv_)**2 for x in v)/n)**0.5
+        scores[ticker] = round(cov / max(sr*sv, 0.0001), 6)
     return scores
 
 def rank_and_bucket(scores):

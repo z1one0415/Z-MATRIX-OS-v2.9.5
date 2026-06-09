@@ -57,7 +57,14 @@ def compute_signal(input_prices, rebalance_date):
             scores[ticker] = 0.0
             continue
         # Factor-specific computation goes here
-        scores[ticker] = 0.0  # Replace with actual formula
+        scores = {}
+    for ticker, bars in input_prices.items():
+        if len(bars) < 20:
+            scores[ticker] = 0.0; continue
+        vol_5d = sum(b["volume"] for b in bars[-5:]) / 5
+        vol_20d = sum(b["volume"] for b in bars[-20:]) / 20
+        ret_5d = (bars[-1]["close"] - bars[-5]["close"]) / max(bars[-5]["close"], 0.001)
+        scores[ticker] = round((vol_5d / max(vol_20d, 1)) * abs(ret_5d), 6)
     return scores
 
 def rank_and_bucket(scores):

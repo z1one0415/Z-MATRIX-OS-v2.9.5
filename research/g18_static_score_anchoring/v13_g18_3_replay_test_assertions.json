@@ -1,0 +1,148 @@
+{
+  "pipeline_signature": "Z2-V13-G18-3-REPLAY-TEST-ASSERTIONS",
+  "status": "V13_G18_3_ALL_TESTS_PASSED",
+  "timestamp": "2026-06-09T22:55:00+08:00",
+  "test_file": "tests/test_g18_replay_fast_risk.py",
+  "test_framework": "pytest",
+  "total_tests": 28,
+  "passed": 28,
+  "failed": 0,
+  "execution_time_seconds": 0.04,
+  "scenarios": [
+    {
+      "name": "双环 5/26 (Volume Climax + Long Upper Shadow)",
+      "ticker": "002472",
+      "date": "2026-05-26",
+      "input": {
+        "close": 44.72,
+        "high": 46.20,
+        "volume": 200000000,
+        "avg_volume_20d": 100000000,
+        "volume_ratio": 2.0,
+        "upper_shadow_ratio": 0.032,
+        "user_cost_line": 43.00,
+        "d1_support": 43.50,
+        "cycle_origin": 40.00
+      },
+      "expected": {
+        "paper_track_allowed": false,
+        "recommended_action": "WAIT",
+        "final_score_max": 50
+      },
+      "actual": {
+        "paper_track_allowed": false,
+        "recommended_action": "WAIT",
+        "final_score": 50,
+        "triggered_gates": ["R1_VOLUME_CLIMAX", "R2_LONG_UPPER_SHADOW"],
+        "max_severity": "HIGH",
+        "action_gate_reason": "VOLUME_SHADOW_COMBO"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "name": "双环 5/29 (Multi Support Break - Cascading Failure)",
+      "ticker": "002472",
+      "date": "2026-05-29",
+      "input": {
+        "close": 39.23,
+        "high": 40.50,
+        "user_cost_line": 43.00,
+        "d1_support": 41.00,
+        "cycle_origin": 40.00,
+        "cost_line_break": true,
+        "d1_support_break": true,
+        "cycle_origin_break": true
+      },
+      "expected": {
+        "paper_track_allowed": false,
+        "recommended_action": "REDUCE_OR_WAIT",
+        "final_score_max": 40
+      },
+      "actual": {
+        "paper_track_allowed": false,
+        "recommended_action": "REDUCE_OR_WAIT",
+        "final_score": 40,
+        "triggered_gates": ["R3_COST_LINE_BREAK", "R4_D1_SUPPORT_BREAK", "R5_CYCLE_ORIGIN_BREAK", "R6_MULTI_SUPPORT_BREAK"],
+        "max_severity": "CRITICAL",
+        "action_gate_reason": "CRITICAL_GATE_TRIGGERED"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "name": "双环 6/9 (Rebound but Prior Breakdown Not Repaired)",
+      "ticker": "002472",
+      "date": "2026-06-09",
+      "input": {
+        "close": 44.87,
+        "high": 45.50,
+        "user_cost_line": 46.50,
+        "d1_support": 44.00,
+        "cycle_origin": 40.00,
+        "sector_momentum_rank_drop": 6,
+        "cost_line_still_broken": true,
+        "sector_rotation_faded": true
+      },
+      "expected": {
+        "paper_track_allowed": false,
+        "recommended_action_in": ["CONDITIONAL_TRACK", "WAIT"],
+        "final_score_max": 65
+      },
+      "actual": {
+        "paper_track_allowed": false,
+        "recommended_action": "WAIT",
+        "final_score": 45,
+        "triggered_gates": ["R3_COST_LINE_BREAK", "R8_SECTOR_ROTATION_FADE"],
+        "max_severity": "HIGH",
+        "action_gate_reason": "COST_LINE_BREAK_FLOATING_LOSS"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "name": "紫金 (Deep Floating Loss + Key Level Break)",
+      "ticker": "601899",
+      "date": "2026-06-09",
+      "input": {
+        "close": 28.05,
+        "high": 28.80,
+        "user_cost_line": 33.95,
+        "d1_support": 29.50,
+        "cycle_origin": 30.00,
+        "floating_loss_pct": -17.4,
+        "style_mismatch_days": 7,
+        "gold_weakening": true
+      },
+      "expected": {
+        "paper_track_allowed": false,
+        "recommended_action_in": ["WAIT", "REDUCE_OR_WAIT", "AVOID"],
+        "final_score_max": 45
+      },
+      "actual": {
+        "paper_track_allowed": false,
+        "recommended_action": "REDUCE_OR_WAIT",
+        "final_score": 40,
+        "triggered_gates": ["R3_COST_LINE_BREAK", "R4_D1_SUPPORT_BREAK", "R5_CYCLE_ORIGIN_BREAK", "R6_MULTI_SUPPORT_BREAK", "R9_MARKET_STYLE_HEADWIND"],
+        "max_severity": "CRITICAL",
+        "action_gate_reason": "CRITICAL_GATE_TRIGGERED"
+      },
+      "verdict": "PASS"
+    }
+  ],
+  "baseline_control": {
+    "name": "No Risk Gates (Healthy Stock)",
+    "expected": {
+      "paper_track_allowed": true,
+      "recommended_action": "PAPER_TRACK",
+      "final_score": 75
+    },
+    "actual": {
+      "paper_track_allowed": true,
+      "recommended_action": "PAPER_TRACK",
+      "final_score": 75,
+      "triggered_gates": []
+    },
+    "verdict": "PASS",
+    "note": "Confirms that when no risk conditions are present, G18 still outputs the base 75/PAPER_TRACK — the overlay is purely subtractive."
+  },
+  "minimum_pass_criteria_met": true,
+  "criteria_statement": "G18 does NOT output 75% / PAPER_TRACK / paper_track_allowed=true in ANY of the 4 failure scenarios. All 28 assertions pass."
+}

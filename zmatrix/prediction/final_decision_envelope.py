@@ -1,12 +1,18 @@
-"""Final Decision Envelope v1.1 — G18 output with enforced priority rules.
+"""Final Decision Envelope v1.2 — G18 output with enforced priority rules + fast risk overlay.
 
-Priority: G09 sell > G09 hard_blocks > G18 probability > G11 warn > G14 provenance
+Priority: G09 sell > G09 hard_blocks > FAST_RISK_OVERLAY > G18 probability > G11 warn > G14 provenance
 G11: STRONG_WARNING_ONLY, never hard veto
 Z16/G17: required confirmations for any paper action
+Fast risk overlay: veto power over PAPER_TRACK regardless of base_score
 No BUY/SELL/AUTO_TRADE/MARKET_ORDER ever
 """
 from __future__ import annotations
 from zmatrix.action.action_contracts import assert_no_real_trade
+from zmatrix.prediction.fast_risk_overlay import (
+    evaluate_fast_risk_overlay,
+    MarketSnapshot,
+    FastRiskResult,
+)
 
 
 _ORDER = ["AVOID", "BLOCKED", "WAIT", "WATCH", "PAPER_PROBE_ELIGIBLE_PENDING_Z16_Z17", "PAPER_TRACK", "PAPER_PROBE_ELIGIBLE"]
@@ -18,7 +24,8 @@ def _lowest_cap(lhs, rhs):
     return lhs
 
 
-def build_final_decision(prediction, upstream_evidence: dict | None = None) -> dict:
+def build_final_decision(prediction, upstream_evidence: dict | None = None,
+                         market_snapshot: "MarketSnapshot | None" = None) -> dict:
     up = upstream_evidence or {}
     g09 = up.get("g09", {})
     g11 = up.get("g11", {})
@@ -35,6 +42,7 @@ def build_final_decision(prediction, upstream_evidence: dict | None = None) -> d
     required_confirmations = []
 
     # ── Rule 1: G09 sell_decision overrides G18 buy ──
+    pos_action = ""
     g09_avail = g09.get("available") is True or g09.get("status") in ("PASS", "DEGRADED")
     if g09 and g09_avail:
         sell = g09.get("sell_decision") or {}
@@ -67,14 +75,29 @@ def build_final_decision(prediction, upstream_evidence: dict | None = None) -> d
         entry = conflict["suggested_action_cap"]
     entry = _lowest_cap(entry, conflict["suggested_action_cap"])
 
+    # ── Rule 5b: Fast Risk Overlay (v1.2) ──
+    fast_risk = None
+    if market_snapshot is not None:
+        base_score = int(prediction.probability * 100)
+        fast_risk = evaluate_fast_risk_overlay(market_snapshot, base_score=base_score)
+        if not fast_risk.paper_track_allowed:
+            if paper_action == "PAPER_TRACK":
+                paper_action = None
+            if entry in ("PAPER_TRACK", "PAPER_PROBE_ELIGIBLE"):
+                entry = _lowest_cap(entry, "WAIT")
+        # Apply action from fast risk if more conservative
+        fr_action = fast_risk.recommended_action
+        if fr_action in ("WAIT", "REDUCE_OR_WAIT", "AVOID"):
+            entry = _lowest_cap(entry, "WAIT")
+
     # ── Rule 6: Forbidden real trade ──
     assert_no_real_trade(entry)
     if exit_intent:
         assert_no_real_trade(exit_intent)
 
     return {
-        "decision_version": "v1.1",
-        "version": "v1.1",
+        "decision_version": "v1.2",
+        "version": "v1.2",
         "ticker": prediction.ticker,
         "conflict_resolution": conflict,
         "conflicts": conflict["conflicts"],
@@ -113,4 +136,14 @@ def build_final_decision(prediction, upstream_evidence: dict | None = None) -> d
             },
         },
         "forbidden_real_trade_checked": True,
+        "fast_risk_overlay": {
+            "evaluated": fast_risk is not None,
+            "triggered_gates": fast_risk.triggered_gates if fast_risk else [],
+            "total_penalty": fast_risk.total_penalty if fast_risk else 0,
+            "final_score": fast_risk.final_score if fast_risk else None,
+            "final_score_cap": fast_risk.final_score_cap if fast_risk else None,
+            "paper_track_allowed": fast_risk.paper_track_allowed if fast_risk else True,
+            "recommended_action": fast_risk.recommended_action if fast_risk else None,
+            "action_gate_reason": fast_risk.action_gate_reason if fast_risk else "",
+        },
     }

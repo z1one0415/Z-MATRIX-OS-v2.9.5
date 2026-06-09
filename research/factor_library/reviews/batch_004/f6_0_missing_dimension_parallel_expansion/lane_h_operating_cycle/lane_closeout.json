@@ -1,21 +1,22 @@
 {
   "pipeline_signature": "Z2-V13-F6-0-LANE-H-CLOSEOUT",
-  "status": "V13_F6_0_LANE_H_BLOCKED_BY_SOURCE_DATA",
-  "base_commit": "20fba19",
+  "status": "V13_F6_3_LANE_H_PARTIAL_MATERIALIZED",
+  "base_commit": "dda8946",
   "factors_defined": [
     "F43",
     "F44",
     "F45",
     "F46"
   ],
-  "materialized_factors": [],
+  "materialized_factors": [
+    "F44",
+    "F45"
+  ],
   "blocked_factors": [
     "F43",
-    "F44",
-    "F45",
     "F46"
   ],
-  "blocked_reason": "no_operating_data_committed",
+  "note": "F44 (inventory): unlocked via balancesheet.inventories. F45 (capacity): unlocked via balancesheet.fix_assets proxy. F43 (order backlog): no order data. F46: gross_margin proxy only.",
   "alpha_claim_allowed": false,
   "runner_enabled": false,
   "execution_allowed": false,

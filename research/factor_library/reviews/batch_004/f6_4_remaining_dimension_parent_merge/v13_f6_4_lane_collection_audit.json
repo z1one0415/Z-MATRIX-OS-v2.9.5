@@ -1,0 +1,68 @@
+{
+  "pipeline_signature": "Z2-V13-F6-4-LANE-COLLECTION-AUDIT",
+  "base_commit": "dda8946",
+  "lanes_audited": 12,
+  "lanes_with_signals": 10,
+  "lane_statuses": {
+    "lane_a_fundamental_quality": {
+      "status": "V13_F6_3_LANE_A_MATERIALIZED_VIA_TUSHARE",
+      "materialized_count": 2,
+      "blocked_count": 0
+    },
+    "lane_b_profitability_momentum": {
+      "status": "V13_F6_3_LANE_B_MATERIALIZED_VIA_TUSHARE",
+      "materialized_count": 1,
+      "blocked_count": 0
+    },
+    "lane_c_cash_flow_quality": {
+      "status": "V13_F6_3_LANE_C_MATERIALIZED_VIA_TUSHARE",
+      "materialized_count": 2,
+      "blocked_count": 0
+    },
+    "lane_d_value_composite": {
+      "status": "V13_F6_3_LANE_D_MATERIALIZED_VIA_TUSHARE",
+      "materialized_count": 1,
+      "blocked_count": 0
+    },
+    "lane_e_shareholder_yield": {
+      "status": "V13_F6_3_LANE_E_NON_INFORMATIVE",
+      "materialized_count": 1,
+      "blocked_count": 0
+    },
+    "lane_f_earnings_revision": {
+      "status": "V13_F6_3_LANE_F_MATERIALIZED_VIA_TUSHARE_FORECAST",
+      "materialized_count": 1,
+      "blocked_count": 0
+    },
+    "lane_g_industry_chain_evidence": {
+      "status": "V13_F6_3_LANE_G_SOURCE_CONTRACT_ONLY",
+      "materialized_count": 0,
+      "blocked_count": 2
+    },
+    "lane_h_operating_cycle": {
+      "status": "V13_F6_3_LANE_H_PARTIAL_MATERIALIZED",
+      "materialized_count": 2,
+      "blocked_count": 2
+    },
+    "lane_i_event_catalyst_decay": {
+      "status": "V13_F6_3_LANE_I_SOURCE_CONTRACT_ONLY",
+      "materialized_count": 0,
+      "blocked_count": 3
+    },
+    "lane_j_policy_macro_risk": {
+      "status": "V13_F6_3_LANE_J_PARTIAL_MATERIALIZED",
+      "materialized_count": 1,
+      "blocked_count": 2
+    },
+    "lane_k_sentiment_attention_crowding": {
+      "status": "V13_F6_3_LANE_K_PARTIAL_MATERIALIZED",
+      "materialized_count": 3,
+      "blocked_count": 1
+    },
+    "lane_l_money_flow_microstructure": {
+      "status": "V13_F6_3_LANE_L_PARTIAL_MATERIALIZED",
+      "materialized_count": 3,
+      "blocked_count": 2
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "pipeline_signature": "Z2-V13-F6-4-SAFETY-AUDIT",
+  "status": "V13_F6_4_SAFETY_AUDIT_PASS",
+  "violation_count": 0,
+  "checks": {
+    "all_lanes_canonicalized": true,
+    "no_data_fabrication": true,
+    "no_price_proxy_for_fundamentals": true,
+    "no_heat_proxy_for_chain_evidence": true,
+    "formal_oos_validation_executed": false,
+    "candidate_state_update_executed": false,
+    "promotion_allowed": false,
+    "alpha_claim_allowed": false,
+    "runner_enabled": false,
+    "execution_allowed": false,
+    "production": "BLOCKED",
+    "broker_runtime": "BLOCKED",
+    "real_trade": "BLOCKED"
+  }
+}

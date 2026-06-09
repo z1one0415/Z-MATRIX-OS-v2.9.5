@@ -1,15 +1,15 @@
 {
   "pipeline_signature": "Z2-V13-F6-0-LANE-E-CLOSEOUT",
-  "status": "V13_F6_0_LANE_E_BLOCKED_BY_SOURCE_DATA",
-  "base_commit": "20fba19",
+  "status": "V13_F6_3_LANE_E_NON_INFORMATIVE",
+  "base_commit": "dda8946",
   "factors_defined": [
     "F13"
   ],
-  "materialized_factors": [],
-  "blocked_factors": [
+  "materialized_factors": [
     "F13"
   ],
-  "blocked_reason": "no_dividend_buyback_data_committed",
+  "blocked_factors": [],
+  "note": "F6.2 tushare dividend data pulled but 0 yield at 2026-05-06 for all 4 tickers. MATERIALIZED_NON_INFORMATIVE \u2014 factor exists but adds no cross-sectional information at this rebalance.",
   "alpha_claim_allowed": false,
   "runner_enabled": false,
   "execution_allowed": false,

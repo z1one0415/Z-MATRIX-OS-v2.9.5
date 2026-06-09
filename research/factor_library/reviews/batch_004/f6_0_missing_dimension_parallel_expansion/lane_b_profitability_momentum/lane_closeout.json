@@ -1,15 +1,15 @@
 {
   "pipeline_signature": "Z2-V13-F6-0-LANE-B-CLOSEOUT",
-  "status": "V13_F6_0_LANE_B_BLOCKED_BY_PIT_SOURCE",
-  "base_commit": "20fba19",
+  "status": "V13_F6_3_LANE_B_MATERIALIZED_VIA_TUSHARE",
+  "base_commit": "dda8946",
   "factors_defined": [
     "F07"
   ],
-  "materialized_factors": [],
-  "blocked_factors": [
+  "materialized_factors": [
     "F07"
   ],
-  "blocked_reason": "no_consecutive_period_fundamental_data",
+  "blocked_factors": [],
+  "note": "F6.2 tushare fina_indicator (consecutive quarters) unlocked momentum",
   "alpha_claim_allowed": false,
   "runner_enabled": false,
   "execution_allowed": false,

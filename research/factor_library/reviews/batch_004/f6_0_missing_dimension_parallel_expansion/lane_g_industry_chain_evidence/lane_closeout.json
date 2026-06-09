@@ -1,7 +1,7 @@
 {
   "pipeline_signature": "Z2-V13-F6-0-LANE-G-CLOSEOUT",
-  "status": "V13_F6_0_LANE_G_SOURCE_CONTRACT_ONLY",
-  "base_commit": "20fba19",
+  "status": "V13_F6_3_LANE_G_SOURCE_CONTRACT_ONLY",
+  "base_commit": "dda8946",
   "factors_defined": [
     "F41",
     "F42"
@@ -11,7 +11,7 @@
     "F41",
     "F42"
   ],
-  "blocked_reason": "no_structured_chain_data_committed",
+  "note": "No structured industry chain map in tushare. Requires external data.",
   "alpha_claim_allowed": false,
   "runner_enabled": false,
   "execution_allowed": false,

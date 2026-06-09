@@ -1,15 +1,15 @@
 {
   "pipeline_signature": "Z2-V13-F6-0-LANE-F-CLOSEOUT",
-  "status": "V13_F6_0_LANE_F_BLOCKED_BY_SOURCE_DATA",
-  "base_commit": "20fba19",
+  "status": "V13_F6_3_LANE_F_MATERIALIZED_VIA_TUSHARE_FORECAST",
+  "base_commit": "dda8946",
   "factors_defined": [
     "F09"
   ],
-  "materialized_factors": [],
-  "blocked_factors": [
+  "materialized_factors": [
     "F09"
   ],
-  "blocked_reason": "no_analyst_consensus_data_committed",
+  "blocked_factors": [],
+  "note": "F6.3 tushare forecast (earnings guidance) unlocked revision proxy. NOTE: downgraded to guidance_revision, not full consensus revision.",
   "alpha_claim_allowed": false,
   "runner_enabled": false,
   "execution_allowed": false,

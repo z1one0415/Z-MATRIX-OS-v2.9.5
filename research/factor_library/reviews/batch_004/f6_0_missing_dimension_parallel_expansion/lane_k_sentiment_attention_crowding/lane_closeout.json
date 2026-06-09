@@ -1,7 +1,7 @@
 {
   "pipeline_signature": "Z2-V13-F6-0-LANE-K-CLOSEOUT",
-  "status": "V13_F6_0_LANE_K_PARTIAL_MATERIALIZED",
-  "base_commit": "20fba19",
+  "status": "V13_F6_3_LANE_K_PARTIAL_MATERIALIZED",
+  "base_commit": "dda8946",
   "factors_defined": [
     "F16",
     "F53",
@@ -16,14 +16,11 @@
   "blocked_factors": [
     "F16"
   ],
-  "blocked_reason": "F16_taxonomy_review_required",
+  "note": "F53/F54/F55: materialized from volume/price data. F16: TAXONOMY_REVIEW_REQUIRED (redefine as PRICE_VOLUME_ATTENTION).",
   "alpha_claim_allowed": false,
   "runner_enabled": false,
   "execution_allowed": false,
   "production": "BLOCKED",
   "broker_runtime": "BLOCKED",
-  "real_trade": "BLOCKED",
-  "taxonomy_review_required": [
-    "F16"
-  ]
+  "real_trade": "BLOCKED"
 }

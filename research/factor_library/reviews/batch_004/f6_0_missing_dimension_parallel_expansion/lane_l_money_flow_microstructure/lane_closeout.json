@@ -1,7 +1,7 @@
 {
   "pipeline_signature": "Z2-V13-F6-0-LANE-L-CLOSEOUT",
-  "status": "V13_F6_0_LANE_L_PARTIAL_MATERIALIZED",
-  "base_commit": "20fba19",
+  "status": "V13_F6_3_LANE_L_PARTIAL_MATERIALIZED",
+  "base_commit": "dda8946",
   "factors_defined": [
     "F56",
     "F57",
@@ -18,7 +18,7 @@
     "F57",
     "F59"
   ],
-  "blocked_reason": "F57_F59_require_order_level_data",
+  "note": "F56/F58/F60: materialized from daily OHLCV proxy. F57/F59: require L2 order-level / bid-ask data.",
   "alpha_claim_allowed": false,
   "runner_enabled": false,
   "execution_allowed": false,

@@ -1,0 +1,141 @@
+{
+  "pipeline_signature": "Z2-V13-F6-4-DIMENSION-COVERAGE-MATRIX",
+  "base_commit": "dda8946",
+  "dimensions_total": 16,
+  "dimensions_with_signal": 9,
+  "dimensions_partial": 4,
+  "dimensions_blocked": 2,
+  "dimensions": {
+    "trend_momentum": {
+      "factors": [
+        "F04",
+        "F21"
+      ],
+      "coverage": "PASS",
+      "source": "price_bars"
+    },
+    "low_vol_risk": {
+      "factors": [
+        "F10",
+        "F31"
+      ],
+      "coverage": "PASS",
+      "source": "price_bars"
+    },
+    "short_reversal": {
+      "factors": [
+        "F11"
+      ],
+      "coverage": "PASS",
+      "source": "price_bars"
+    },
+    "volume_price": {
+      "factors": [
+        "F30"
+      ],
+      "coverage": "PASS",
+      "source": "price_bars"
+    },
+    "fundamental_quality": {
+      "factors": [
+        "F06",
+        "F14"
+      ],
+      "coverage": "PASS",
+      "source": "tushare fina"
+    },
+    "profitability": {
+      "factors": [
+        "F07"
+      ],
+      "coverage": "PASS",
+      "source": "tushare fina"
+    },
+    "cash_flow": {
+      "factors": [
+        "F08",
+        "F15"
+      ],
+      "coverage": "PASS",
+      "source": "tushare cashflow"
+    },
+    "valuation": {
+      "factors": [
+        "F12"
+      ],
+      "coverage": "PASS",
+      "source": "tushare daily_basic"
+    },
+    "shareholder_yield": {
+      "factors": [
+        "F13"
+      ],
+      "coverage": "NON_INFORMATIVE",
+      "source": "tushare dividend"
+    },
+    "earnings_revision": {
+      "factors": [
+        "F09"
+      ],
+      "coverage": "PASS",
+      "source": "tushare forecast"
+    },
+    "industry_chain": {
+      "factors": [
+        "F41",
+        "F42"
+      ],
+      "coverage": "BLOCKED",
+      "source": "needs external"
+    },
+    "operating_cycle": {
+      "factors": [
+        "F43",
+        "F44",
+        "F45",
+        "F46"
+      ],
+      "coverage": "PARTIAL (F44,F45)",
+      "source": "tushare bs"
+    },
+    "event_catalyst": {
+      "factors": [
+        "F47",
+        "F48",
+        "F49"
+      ],
+      "coverage": "BLOCKED",
+      "source": "needs external"
+    },
+    "policy_macro": {
+      "factors": [
+        "F50",
+        "F51",
+        "F52"
+      ],
+      "coverage": "PARTIAL (F51)",
+      "source": "tushare cn_m"
+    },
+    "sentiment_crowding": {
+      "factors": [
+        "F16",
+        "F53",
+        "F54",
+        "F55"
+      ],
+      "coverage": "PARTIAL (F16 blocked)",
+      "source": "price_bars"
+    },
+    "money_flow_micro": {
+      "factors": [
+        "F56",
+        "F57",
+        "F58",
+        "F59",
+        "F60"
+      ],
+      "coverage": "PARTIAL (F57,F59 blocked)",
+      "source": "price_bars"
+    }
+  }
+}

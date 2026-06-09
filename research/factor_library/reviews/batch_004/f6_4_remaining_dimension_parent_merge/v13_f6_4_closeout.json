@@ -1,0 +1,20 @@
+{
+  "pipeline_signature": "Z2-V13-F6-4-REMAINING-DIMENSION-PARENT-MERGE-CLOSEOUT",
+  "status": "V13_F6_4_PARENT_MERGE_PASS",
+  "base_commit": "dda8946",
+  "total_factors_defined": 36,
+  "factors_materialized_count": 17,
+  "factors_blocked_count": 12,
+  "dimensions_complete": 9,
+  "dimensions_partial_or_blocked": 7,
+  "f16_taxonomy_review_required": true,
+  "external_data_required_for_7_factors": true,
+  "ready_for_23_factor_rerun_monitoring": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "recommended_next_action": "PREPARE_V13_F7_0_CANONICAL_REGISTRY_UPDATE_AND_23_FACTOR_RERUN_MONITORING"
+}

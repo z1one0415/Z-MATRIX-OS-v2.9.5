@@ -1,0 +1,56 @@
+{
+  "pipeline_signature": "Z2-V13-F6-4-REGISTRY-UPDATE-PLAN",
+  "base_commit": "dda8946",
+  "registry_updates_required": {
+    "add_to_frozen_candidates": [],
+    "update_status": [
+      {
+        "factor_id": "F06",
+        "new_status": "FROZEN_TACTICAL_CANDIDATE",
+        "batch": "batch_004"
+      },
+      {
+        "factor_id": "F07",
+        "new_status": "FROZEN_TACTICAL_CANDIDATE",
+        "batch": "batch_004"
+      },
+      {
+        "factor_id": "F08",
+        "new_status": "FROZEN_TACTICAL_CANDIDATE",
+        "batch": "batch_004"
+      },
+      {
+        "factor_id": "F09",
+        "new_status": "FROZEN_TACTICAL_CANDIDATE",
+        "batch": "batch_004"
+      },
+      {
+        "factor_id": "F12",
+        "new_status": "FROZEN_TACTICAL_CANDIDATE",
+        "batch": "batch_004"
+      },
+      {
+        "factor_id": "F13",
+        "new_status": "FROZEN_TACTICAL_CANDIDATE_NON_INFORMATIVE",
+        "batch": "batch_004"
+      }
+    ],
+    "pending_taxonomy_review": [
+      "F16"
+    ],
+    "pending_external_data": [
+      "F41",
+      "F42",
+      "F43",
+      "F46",
+      "F47",
+      "F48",
+      "F49",
+      "F50",
+      "F52",
+      "F57",
+      "F59"
+    ]
+  },
+  "human_review_required": true
+}

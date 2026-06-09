@@ -1,7 +1,7 @@
 {
   "pipeline_signature": "Z2-V13-F6-0-LANE-I-CLOSEOUT",
-  "status": "V13_F6_0_LANE_I_SOURCE_CONTRACT_ONLY",
-  "base_commit": "20fba19",
+  "status": "V13_F6_3_LANE_I_SOURCE_CONTRACT_ONLY",
+  "base_commit": "dda8946",
   "factors_defined": [
     "F47",
     "F48",
@@ -13,7 +13,7 @@
     "F48",
     "F49"
   ],
-  "blocked_reason": "no_structured_event_calendar_committed",
+  "note": "No structured event calendar in tushare. Earnings dates available but insufficient for full catalyst tracking.",
   "alpha_claim_allowed": false,
   "runner_enabled": false,
   "execution_allowed": false,

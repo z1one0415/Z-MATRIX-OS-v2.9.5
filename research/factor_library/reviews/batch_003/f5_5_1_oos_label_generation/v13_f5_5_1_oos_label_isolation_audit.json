@@ -1,0 +1,16 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-1-OOS-LABEL-ISOLATION-AUDIT",
+  "status": "V13_F5_5_1_LABEL_ISOLATION_AUDIT_PASS",
+  "checks": {
+    "no_factor_score_in_panel": true,
+    "no_rank_in_panel": true,
+    "no_bucket_in_panel": true,
+    "no_alpha_signal_in_panel": true,
+    "no_trade_signal_in_panel": true,
+    "no_position_in_panel": true,
+    "no_order_in_panel": true,
+    "no_feature_store_write": true,
+    "no_monitoring_execution_triggered": true
+  },
+  "violation_count": 0
+}

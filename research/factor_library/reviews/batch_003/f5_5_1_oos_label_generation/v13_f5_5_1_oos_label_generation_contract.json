@@ -1,0 +1,38 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-1-OOS-LABEL-GENERATION-CONTRACT",
+  "status": "V13_F5_5_1_OOS_LABEL_GENERATION_CONTRACT_BUILT",
+  "base_commit": "3f09071",
+  "label_generation_only": true,
+  "label_month": "2026-05",
+  "allowed_horizons": [
+    "5D",
+    "20D"
+  ],
+  "blocked_horizons": [
+    "60D"
+  ],
+  "eligible_factors": [
+    "F04",
+    "F10",
+    "F11",
+    "F14",
+    "F15",
+    "F16",
+    "F21",
+    "F24",
+    "F30",
+    "F31"
+  ],
+  "monitoring_execution_allowed": false,
+  "true_oos_validation_allowed": false,
+  "candidate_decision_update_allowed": false,
+  "promotion_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "v13_6_allowed": false,
+  "paper_trading_allowed": false,
+  "alpha_claim_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,12 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-1-OOS-LABEL-HORIZON-COMPLETENESS",
+  "status": "V13_F5_5_1_HORIZON_COMPLETENESS_PARTIAL",
+  "results": {
+    "5D": "PASS",
+    "20D": "PASS",
+    "60D": "BLOCKED_NOT_GENERATED"
+  },
+  "partial_pass": true,
+  "full_pass": false,
+  "reason": "60D requires ~60 trading days from 20260501; insufficient elapsed time as of 2026-06-09"
+}

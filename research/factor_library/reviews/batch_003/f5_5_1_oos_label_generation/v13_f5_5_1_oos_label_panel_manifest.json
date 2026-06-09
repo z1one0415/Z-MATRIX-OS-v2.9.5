@@ -1,0 +1,42 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-1-OOS-LABEL-PANEL-MANIFEST",
+  "status": "V13_F5_5_1_OOS_LABEL_PANEL_GENERATED",
+  "label_month": "2026-05",
+  "horizons_generated": [
+    "5D",
+    "20D"
+  ],
+  "horizons_blocked": [
+    "60D"
+  ],
+  "eligible_factors": [
+    "F04",
+    "F10",
+    "F11",
+    "F14",
+    "F15",
+    "F16",
+    "F21",
+    "F24",
+    "F30",
+    "F31"
+  ],
+  "panel_fields": [
+    "ticker",
+    "rebalance_date",
+    "label_month",
+    "horizon",
+    "forward_return",
+    "label_available_at",
+    "source_price_start_date",
+    "source_price_end_date",
+    "label_role"
+  ],
+  "label_role": "OUTCOME_LABEL_ONLY",
+  "written_to_feature_store": false,
+  "used_for_factor_calculation": false,
+  "used_for_candidate_decision": false,
+  "panel_file": "v13_f5_5_1_oos_label_panel.csv",
+  "panel_status": "SCHEMA_HEADER_GENERATED_AWAITING_RUNTIME_DATA_ACCESS",
+  "note": "Actual forward returns require runtime price data access (data/price_bars). Schema and contract are complete. Label computation deferred to first runtime-authorized execution."
+}

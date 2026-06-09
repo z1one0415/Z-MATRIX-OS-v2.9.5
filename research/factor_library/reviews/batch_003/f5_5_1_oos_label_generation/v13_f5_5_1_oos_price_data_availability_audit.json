@@ -1,0 +1,17 @@
+{
+  "pipeline_signature": "Z2-V13-F5-5-1-OOS-PRICE-DATA-AVAILABILITY-AUDIT",
+  "status": "V13_F5_5_1_PRICE_DATA_AVAILABILITY_PASS",
+  "audit_date": "2026-06-09",
+  "eligible_oos_month": "2026-05",
+  "checks": {
+    "may_2026_trading_days": 21,
+    "5D_forward_window_complete": true,
+    "20D_forward_window_complete": true,
+    "60D_forward_window_complete": false,
+    "label_reads_price_outcome_only": true,
+    "no_factor_score_read": true,
+    "no_future_beyond_horizon": true,
+    "no_feature_store_write": true
+  },
+  "violation_count": 0
+}

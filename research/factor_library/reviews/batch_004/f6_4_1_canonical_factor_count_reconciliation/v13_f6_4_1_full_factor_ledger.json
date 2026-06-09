@@ -1,0 +1,491 @@
+{
+  "pipeline_signature": "Z2-V13-F6-4-1-FULL-FACTOR-LEDGER",
+  "status": "V13_F6_4_1_LEDGER_COMPLETE",
+  "base_commit": "3979f1d",
+  "total_slots": 60,
+  "materialized": 24,
+  "defined_blocked": 16,
+  "reserved": 20,
+  "factors": [
+    {
+      "factor_id": "F01",
+      "factor_name": "RESERVED_F01",
+      "factor_type": "RESERVED",
+      "status": "RESERVED_NOT_IMPLEMENTED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F02",
+      "factor_name": "RESERVED_F02",
+      "factor_type": "RESERVED",
+      "status": "RESERVED_NOT_IMPLEMENTED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F03",
+      "factor_name": "RESERVED_F03",
+      "factor_type": "RESERVED",
+      "status": "RESERVED_NOT_IMPLEMENTED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F04",
+      "factor_name": "RESIDUAL_MOMENTUM",
+      "factor_type": "PRICE_VOLUME_RISK",
+      "status": "MATERIALIZED",
+      "has_signal_scores": true,
+      "batch": null
+    },
+    {
+      "factor_id": "F05",
+      "factor_name": "RESERVED_F05",
+      "factor_type": "RESERVED",
+      "status": "RESERVED_NOT_IMPLEMENTED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F06",
+      "factor_name": "FUNDAMENTAL_QUALITY",
+      "factor_type": "FUNDAMENTAL_QUALITY",
+      "status": "MATERIALIZED",
+      "has_signal_scores": true,
+      "batch": null
+    },
+    {
+      "factor_id": "F07",
+      "factor_name": "PROFITABILITY_MOMENTUM",
+      "factor_type": "FUNDAMENTAL_QUALITY",
+      "status": "MATERIALIZED",
+      "has_signal_scores": true,
+      "batch": null
+    },
+    {
+      "factor_id": "F08",
+      "factor_name": "CASH_FLOW_YIELD",
+      "factor_type": "FUNDAMENTAL_QUALITY",
+      "status": "MATERIALIZED",
+      "has_signal_scores": true,
+      "batch": null
+    },
+    {
+      "factor_id": "F09",
+      "factor_name": "EARNINGS_REVISION",
+      "factor_type": "FUNDAMENTAL_QUALITY",
+      "status": "MATERIALIZED",
+      "has_signal_scores": true,
+      "batch": null
+    },
+    {
+      "factor_id": "F10",
+      "factor_name": "LOW_VOLATILITY",
+      "factor_type": "PRICE_VOLUME_RISK",
+      "status": "MATERIALIZED",
+      "has_signal_scores": true,
+      "batch": null
+    },
+    {
+      "factor_id": "F11",
+      "factor_name": "SHORT_TERM_REVERSAL",
+      "factor_type": "PRICE_VOLUME_RISK",
+      "status": "MATERIALIZED",
+      "has_signal_scores": true,
+      "batch": null
+    },
+    {
+      "factor_id": "F12",
+      "factor_name": "VALUE_COMPOSITE",
+      "factor_type": "FUNDAMENTAL_QUALITY",
+      "status": "MATERIALIZED",
+      "has_signal_scores": true,
+      "batch": null
+    },
+    {
+      "factor_id": "F13",
+      "factor_name": "SHAREHOLDER_YIELD",
+      "factor_type": "FUNDAMENTAL_QUALITY",
+      "status": "MATERIALIZED",
+      "has_signal_scores": true,
+      "batch": null
+    },
+    {
+      "factor_id": "F14",
+      "factor_name": "ASSET_GROWTH_DISCIPLINE",
+      "factor_type": "FUNDAMENTAL_QUALITY",
+      "status": "MATERIALIZED",
+      "has_signal_scores": true,
+      "batch": null
+    },
+    {
+      "factor_id": "F15",
+      "factor_name": "ACCRUALS_QUALITY",
+      "factor_type": "FUNDAMENTAL_QUALITY",
+      "status": "MATERIALIZED",
+      "has_signal_scores": true,
+      "batch": null
+    },
+    {
+      "factor_id": "F16",
+      "factor_name": "SENTIMENT_ATTENTION",
+      "factor_type": "SENTIMENT_ATTENTION",
+      "status": "DEFINED_BLOCKED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F17",
+      "factor_name": "RESERVED_F17",
+      "factor_type": "RESERVED",
+      "status": "RESERVED_NOT_IMPLEMENTED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F18",
+      "factor_name": "RESERVED_F18",
+      "factor_type": "RESERVED",
+      "status": "RESERVED_NOT_IMPLEMENTED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F19",
+      "factor_name": "RESERVED_F19",
+      "factor_type": "RESERVED",
+      "status": "RESERVED_NOT_IMPLEMENTED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F20",
+      "factor_name": "RESERVED_F20",
+      "factor_type": "RESERVED",
+      "status": "RESERVED_NOT_IMPLEMENTED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F21",
+      "factor_name": "TREND_PERSISTENCE_QUALITY",
+      "factor_type": "PRICE_VOLUME_RISK",
+      "status": "MATERIALIZED",
+      "has_signal_scores": true,
+      "batch": null
+    },
+    {
+      "factor_id": "F22",
+      "factor_name": "LIQUIDITY_RISK_STRUCTURE",
+      "factor_type": "PRICE_VOLUME_RISK",
+      "status": "DEFINED_BLOCKED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F23",
+      "factor_name": "RESERVED_F23",
+      "factor_type": "RESERVED",
+      "status": "RESERVED_NOT_IMPLEMENTED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F24",
+      "factor_name": "VOLATILITY_COMPRESSION_BREAKOUT",
+      "factor_type": "PRICE_VOLUME_RISK",
+      "status": "MATERIALIZED",
+      "has_signal_scores": true,
+      "batch": null
+    },
+    {
+      "factor_id": "F25",
+      "factor_name": "RESERVED_F25",
+      "factor_type": "RESERVED",
+      "status": "RESERVED_NOT_IMPLEMENTED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F26",
+      "factor_name": "MOMENTUM_REGIME",
+      "factor_type": "PRICE_VOLUME_RISK",
+      "status": "DEFINED_BLOCKED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F27",
+      "factor_name": "TURNOVER_STRUCTURE",
+      "factor_type": "PRICE_VOLUME_RISK",
+      "status": "DEFINED_BLOCKED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F28",
+      "factor_name": "RESERVED_F28",
+      "factor_type": "RESERVED",
+      "status": "RESERVED_NOT_IMPLEMENTED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F29",
+      "factor_name": "RESERVED_F29",
+      "factor_type": "RESERVED",
+      "status": "RESERVED_NOT_IMPLEMENTED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F30",
+      "factor_name": "VOLUME_PRICE_CONFIRMATION",
+      "factor_type": "PRICE_VOLUME_RISK",
+      "status": "MATERIALIZED",
+      "has_signal_scores": true,
+      "batch": null
+    },
+    {
+      "factor_id": "F31",
+      "factor_name": "DOWNSIDE_TAIL_RISK",
+      "factor_type": "PRICE_VOLUME_RISK",
+      "status": "MATERIALIZED",
+      "has_signal_scores": true,
+      "batch": null
+    },
+    {
+      "factor_id": "F32",
+      "factor_name": "RESERVED_F32",
+      "factor_type": "RESERVED",
+      "status": "RESERVED_NOT_IMPLEMENTED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F33",
+      "factor_name": "RESERVED_F33",
+      "factor_type": "RESERVED",
+      "status": "RESERVED_NOT_IMPLEMENTED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F34",
+      "factor_name": "SENTIMENT_STRUCTURE",
+      "factor_type": "PRICE_VOLUME_RISK",
+      "status": "DEFINED_BLOCKED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F35",
+      "factor_name": "RESERVED_F35",
+      "factor_type": "RESERVED",
+      "status": "RESERVED_NOT_IMPLEMENTED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F36",
+      "factor_name": "RESERVED_F36",
+      "factor_type": "RESERVED",
+      "status": "RESERVED_NOT_IMPLEMENTED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F37",
+      "factor_name": "RESERVED_F37",
+      "factor_type": "RESERVED",
+      "status": "RESERVED_NOT_IMPLEMENTED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F38",
+      "factor_name": "RESERVED_F38",
+      "factor_type": "RESERVED",
+      "status": "RESERVED_NOT_IMPLEMENTED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F39",
+      "factor_name": "RESERVED_F39",
+      "factor_type": "RESERVED",
+      "status": "RESERVED_NOT_IMPLEMENTED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F40",
+      "factor_name": "RESERVED_F40",
+      "factor_type": "RESERVED",
+      "status": "RESERVED_NOT_IMPLEMENTED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F41",
+      "factor_name": "INDUSTRY_CHAIN_POSITION_STRENGTH",
+      "factor_type": "INDUSTRY_CHAIN",
+      "status": "DEFINED_BLOCKED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F42",
+      "factor_name": "SUPPLY_CHAIN_EVIDENCE_QUALITY",
+      "factor_type": "INDUSTRY_CHAIN",
+      "status": "DEFINED_BLOCKED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F43",
+      "factor_name": "ORDER_BACKLOG_MOMENTUM",
+      "factor_type": "OPERATING_CYCLE",
+      "status": "DEFINED_BLOCKED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F44",
+      "factor_name": "INVENTORY_CYCLE_HEALTH",
+      "factor_type": "OPERATING_CYCLE",
+      "status": "MATERIALIZED",
+      "has_signal_scores": true,
+      "batch": null
+    },
+    {
+      "factor_id": "F45",
+      "factor_name": "CAPACITY_UTILIZATION_PRESSURE",
+      "factor_type": "OPERATING_CYCLE",
+      "status": "MATERIALIZED",
+      "has_signal_scores": true,
+      "batch": null
+    },
+    {
+      "factor_id": "F46",
+      "factor_name": "PRICE_TRANSMISSION_POWER",
+      "factor_type": "OPERATING_CYCLE",
+      "status": "DEFINED_BLOCKED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F47",
+      "factor_name": "CATALYST_RESIDUAL_VALUE",
+      "factor_type": "EVENT_CATALYST",
+      "status": "DEFINED_BLOCKED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F48",
+      "factor_name": "EVENT_PROXIMITY_RISK",
+      "factor_type": "EVENT_CATALYST",
+      "status": "DEFINED_BLOCKED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F49",
+      "factor_name": "CATALYST_REALIZATION_PROGRESS",
+      "factor_type": "EVENT_CATALYST",
+      "status": "DEFINED_BLOCKED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F50",
+      "factor_name": "POLICY_SUPPORT_INTENSITY",
+      "factor_type": "POLICY_MACRO",
+      "status": "DEFINED_BLOCKED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F51",
+      "factor_name": "MACRO_HEADWIND_RISK",
+      "factor_type": "POLICY_MACRO",
+      "status": "MATERIALIZED",
+      "has_signal_scores": true,
+      "batch": null
+    },
+    {
+      "factor_id": "F52",
+      "factor_name": "EXTERNAL_EVENT_RISK",
+      "factor_type": "POLICY_MACRO",
+      "status": "DEFINED_BLOCKED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F53",
+      "factor_name": "ATTENTION_SPIKE",
+      "factor_type": "SENTIMENT_ATTENTION",
+      "status": "MATERIALIZED",
+      "has_signal_scores": true,
+      "batch": null
+    },
+    {
+      "factor_id": "F54",
+      "factor_name": "CROWDING_RISK",
+      "factor_type": "SENTIMENT_ATTENTION",
+      "status": "MATERIALIZED",
+      "has_signal_scores": true,
+      "batch": null
+    },
+    {
+      "factor_id": "F55",
+      "factor_name": "SENTIMENT_DECAY",
+      "factor_type": "SENTIMENT_ATTENTION",
+      "status": "MATERIALIZED",
+      "has_signal_scores": true,
+      "batch": null
+    },
+    {
+      "factor_id": "F56",
+      "factor_name": "MONEY_FLOW_STRENGTH",
+      "factor_type": "MONEY_FLOW_MICRO",
+      "status": "MATERIALIZED",
+      "has_signal_scores": true,
+      "batch": null
+    },
+    {
+      "factor_id": "F57",
+      "factor_name": "LARGE_ORDER_IMBALANCE",
+      "factor_type": "MONEY_FLOW_MICRO",
+      "status": "DEFINED_BLOCKED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F58",
+      "factor_name": "LIQUIDITY_SHOCK",
+      "factor_type": "MONEY_FLOW_MICRO",
+      "status": "MATERIALIZED",
+      "has_signal_scores": true,
+      "batch": null
+    },
+    {
+      "factor_id": "F59",
+      "factor_name": "SPREAD_COST_PRESSURE",
+      "factor_type": "MONEY_FLOW_MICRO",
+      "status": "DEFINED_BLOCKED",
+      "has_signal_scores": false,
+      "batch": null
+    },
+    {
+      "factor_id": "F60",
+      "factor_name": "INTRADAY_REVERSAL_PRESSURE",
+      "factor_type": "MONEY_FLOW_MICRO",
+      "status": "MATERIALIZED",
+      "has_signal_scores": true,
+      "batch": null
+    }
+  ]
+}

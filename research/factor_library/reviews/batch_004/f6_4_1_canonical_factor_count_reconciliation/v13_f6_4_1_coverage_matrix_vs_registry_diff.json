@@ -1,0 +1,7 @@
+{
+  "pipeline_signature": "Z2-V13-F6-4-1-COVERAGE-MATRIX-VS-REGISTRY-DIFF",
+  "diff": {
+    "f22_f26_f27_f34": "Present in factor_library/factors/ with manifests. Not in F6.0 parallel expansion. Not in previous F6.4 coverage matrix.",
+    "action_required": "Add F22/F26/F27/F34 to coverage matrix and registry as DEFINED_NOT_MATERIALIZED"
+  }
+}

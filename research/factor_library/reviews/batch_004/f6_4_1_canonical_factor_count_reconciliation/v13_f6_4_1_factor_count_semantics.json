@@ -1,0 +1,23 @@
+{
+  "pipeline_signature": "Z2-V13-F6-4-1-FACTOR-COUNT-SEMANTICS",
+  "correction": {
+    "previous_incorrect_count": 36,
+    "corrected_count": 40,
+    "missing_from_previous": [
+      "F22",
+      "F26",
+      "F27",
+      "F34"
+    ],
+    "missing_reason": "batch_003 factor directories with manifests but not in F6.0 expansion lanes",
+    "counting_rule": "COUNT all F01-F60 with any of: signal_scores.csv | factor_manifest.json | factor_definition_contract.json | source package"
+  },
+  "definitions": {
+    "total_f01_f60_slots": 60,
+    "factors_with_any_definition": 40,
+    "factors_with_signal_scores": 24,
+    "factors_defined_not_materialized": 16,
+    "factors_reserved_not_implemented": 20,
+    "signal_ready_percentage": "60% (24/40 with definitions, 40% (24/60 total slots))"
+  }
+}

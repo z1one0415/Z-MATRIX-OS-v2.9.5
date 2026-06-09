@@ -1,0 +1,19 @@
+{
+  "pipeline_signature": "Z2-V13-F6-4-1-F24-OMISSION-AUDIT",
+  "factor_id": "F24",
+  "factor_name": "VOLATILITY_COMPRESSION_BREAKOUT",
+  "factor_type": "PRICE_VOLUME_RISK",
+  "status": "MATERIALIZED",
+  "candidate_status": "FROZEN_TACTICAL_CANDIDATE",
+  "batch": "batch_003",
+  "signal_scores_csv": true,
+  "signal_rows": 5,
+  "manifest": true,
+  "materialized_via": "V13.F5.5.3.1 (batch_003 signal materialization)",
+  "in_f6_0_expansion": false,
+  "note": "F24 was correctly materialized in batch_003 pipeline before F6.0 expansion. It was not missing, just not included in F6.0 parallel expansion lanes because it was already signal-ready.",
+  "artifacts": [
+    "factors/F24",
+    "reviews/batch_003/f5_5_3_1_signal_materialization/F24_signal_scores.csv"
+  ]
+}

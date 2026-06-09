@@ -41,5 +41,9 @@
   },
   "boundary_reconciliation_checked": true,
   "historical_tests_do_not_require_current_registry_next_entry": true,
-  "no_new_scope_added_by_reconciliation": true
+  "no_new_scope_added_by_reconciliation": true,
+  "interface_test_gate_checked": true,
+  "candidate_review_test_gate_checked": true,
+  "dry_run_test_gate_checked": true,
+  "full_test_gate_checked": true
 }

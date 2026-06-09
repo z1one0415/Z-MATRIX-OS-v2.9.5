@@ -1,9 +1,14 @@
 {
   "pipeline_signature": "V13-F5-1-16-CONTROLLED-NOOP-DRY-RUN-P0-DISABLED-DEFAULT-IMPLEMENTATION",
   "base_commit": "bf4f0234f0e2d03eba5982d1bdef66b9a80466e0",
-  "dry_run": "117 passed, 0 failed",
-  "interface": "65 passed, 0 failed",
-  "candidate_review": "234 passed, 0 failed",
-  "total": "416 passed, 0 failed, 0 skipped",
-  "all_passed": true
+  "interface_tests_run": true,
+  "candidate_review_tests_run": true,
+  "dry_run_tests_run": true,
+  "full_test_gate_closed": true,
+  "full_test_result": {
+    "interface": "65 passed, 0 failed, 0 skipped",
+    "candidate_review": "259 passed, 0 failed, 0 skipped",
+    "dry_run": "117 passed, 0 failed, 0 skipped",
+    "combined": "441 passed, 0 failed, 0 skipped"
+  }
 }

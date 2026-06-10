@@ -1,9 +1,9 @@
 {
   "pipeline_signature": "Z2-V13-F7-2-FORMAL-VALIDATION-EXECUTION-PLAN-CLOSEOUT",
   "status": "V13_F7_2_FORMAL_VALIDATION_EXECUTION_PLAN_GATE_BUILT",
-  "base_commit": "PENDING_APPROVAL_COMMIT",
+  "base_commit": "6de8802",
   "planning_review_commit": "e137322",
-  "planning_approval_commit": "PENDING_APPROVAL_COMMIT",
+  "planning_approval_commit": "6de8802",
   "input_manifest_built": true,
   "dataset_contract_built": true,
   "factor_panel_contract_built": true,

@@ -1,9 +1,9 @@
 {
   "pipeline_signature": "Z2-V13-F7-2-FORMAL-VALIDATION-EXECUTION-PLAN-GATE",
   "status": "EXECUTION_PLAN_GATE_BUILT_NOT_EXECUTED",
-  "base_commit": "PENDING_APPROVAL_COMMIT",
+  "base_commit": "6de8802",
   "planning_review_commit": "e137322",
-  "planning_approval_commit": "PENDING_APPROVAL_COMMIT",
+  "planning_approval_commit": "6de8802",
   "execution_plan_scope": "U475 6-month formal validation execution design only",
   "formal_oos_validation_executed": false,
   "u475_6_month_validation_executed": false,

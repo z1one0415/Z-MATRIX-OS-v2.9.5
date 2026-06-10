@@ -1,0 +1,17 @@
+{
+  "pipeline_signature": "Z2-V13-F7-0-1-CONSISTENCY-AUDIT",
+  "status": "V13_F7_0_1_CONSISTENT",
+  "base_commit": "b3171bd",
+  "checks": {
+    "factor_level_rows": 23,
+    "factor_level_rows_equals_23": true,
+    "null_5D_count_equals_0": true,
+    "null_20D_count_equals_0": true,
+    "F7_A_count_matches": true,
+    "F7_B_count_matches": true,
+    "summary_matches_detail": true,
+    "positive_5D_from_detail": 10,
+    "positive_20D_from_detail": 5,
+    "closeout_consistent": true
+  }
+}

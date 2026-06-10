@@ -1,0 +1,18 @@
+{
+  "pipeline_signature": "Z2-V13-F7-0-1-NULL-SPREAD-REPAIR",
+  "status": "V13_F7_0_1_NULLS_REPAIRED",
+  "base_commit": "b3171bd",
+  "pre_repair_null_5D": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "pre_repair_null_20D": [
+    "F04",
+    "F10",
+    "F11"
+  ],
+  "post_repair_null_5D": [],
+  "post_repair_null_20D": [],
+  "repair_method": "regenerated F04/F10/F11 signal_scores.csv from local executable_formula.py"
+}

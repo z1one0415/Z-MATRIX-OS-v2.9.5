@@ -1,0 +1,16 @@
+{
+  "pipeline_signature": "Z2-V13-F7-0-1-SAFETY",
+  "status": "V13_F7_0_1_SAFETY_PASS",
+  "violation_count": 0,
+  "checks": {
+    "no_null_spreads": true,
+    "consistency_verified": true,
+    "no_signal_fabrication": true,
+    "formal_oos": false,
+    "promotion": false,
+    "alpha": false,
+    "runner": false,
+    "execution": false,
+    "production": "BLOCKED"
+  }
+}

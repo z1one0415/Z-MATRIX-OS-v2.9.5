@@ -1,0 +1,12 @@
+{
+  "pipeline_signature": "Z2-V13-F7-0-1-DETAIL-INTEGRITY-CONTRACT",
+  "status": "V13_F7_0_1_CONTRACT_BUILT",
+  "base_commit": "b3171bd",
+  "target": "fix F04/F10/F11 null spreads + ensure 23/23 complete",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

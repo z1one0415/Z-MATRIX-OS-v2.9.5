@@ -1,0 +1,12 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3-1",
+  "status": "V13_F7_3_1_INGESTION_EXECUTING",
+  "base_commit": "4f8d3f1",
+  "target": 475,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

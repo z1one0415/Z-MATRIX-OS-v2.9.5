@@ -1,0 +1,18 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3-1-UNIVERSE",
+  "status": "V13_F7_3_1_UNIVERSE_SELECTED",
+  "selected": 475,
+  "sample": [
+    "601398.SH",
+    "601939.SH",
+    "601288.SH",
+    "601857.SH",
+    "300750.SZ"
+  ],
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

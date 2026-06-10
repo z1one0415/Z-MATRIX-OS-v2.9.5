@@ -1,0 +1,13 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3-1-READINESS",
+  "status": "V13_F7_3_1_AUDIT_COMPLETE",
+  "base_commit": "4f8d3f1",
+  "u475_data_available": false,
+  "tickers": 428,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

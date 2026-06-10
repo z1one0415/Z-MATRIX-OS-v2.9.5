@@ -1,0 +1,17 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3-1-AUDIT",
+  "status": "V13_F7_3_1_AUDIT_COMPLETE",
+  "base_commit": "4f8d3f1",
+  "months_available": 2,
+  "target": 6,
+  "available_dates": [
+    "20260506",
+    "20260603"
+  ],
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

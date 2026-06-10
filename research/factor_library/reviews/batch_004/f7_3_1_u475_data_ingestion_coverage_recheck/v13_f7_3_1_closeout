@@ -1,0 +1,17 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3-1-CLOSEOUT",
+  "status": "V13_F7_3_1_INGESTION_PARTIAL",
+  "base_commit": "4f8d3f1",
+  "ingestion_executed": true,
+  "tickers": 428,
+  "rebalance_months": 2,
+  "60D": false,
+  "formal_oos_ready": false,
+  "recommended_next": "COMPLETE_DATA_INGESTION",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

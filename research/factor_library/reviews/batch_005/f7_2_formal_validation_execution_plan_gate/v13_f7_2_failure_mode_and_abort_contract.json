@@ -1,0 +1,146 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-FAILURE-MODE-ABORT-CONTRACT",
+  "status": "CONTRACT_BUILT_NOT_EXECUTED",
+  "triggers": [
+    {
+      "trigger_id": "ABORT_01",
+      "trigger_name": "missing U475 universe",
+      "condition": "Universe count != 475",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run"
+    },
+    {
+      "trigger_id": "ABORT_02",
+      "trigger_name": "universe count out of range",
+      "condition": "Count outside [450, 500]",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run"
+    },
+    {
+      "trigger_id": "ABORT_03",
+      "trigger_name": "missing price bars",
+      "condition": "Any ticker missing > TBD% observations",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run"
+    },
+    {
+      "trigger_id": "ABORT_04",
+      "trigger_name": "missing factor panel",
+      "condition": "Any factor panel incomplete",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run"
+    },
+    {
+      "trigger_id": "ABORT_05",
+      "trigger_name": "missing label panel",
+      "condition": "Any horizon label panel incomplete",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run"
+    },
+    {
+      "trigger_id": "ABORT_06",
+      "trigger_name": "lookahead risk detected",
+      "condition": "Future data leaked into input",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run"
+    },
+    {
+      "trigger_id": "ABORT_07",
+      "trigger_name": "PIT violation detected",
+      "condition": "Non-point-in-time data used",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run"
+    },
+    {
+      "trigger_id": "ABORT_08",
+      "trigger_name": "missing data rate exceeds threshold",
+      "condition": "> TBD% overall",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run"
+    },
+    {
+      "trigger_id": "ABORT_09",
+      "trigger_name": "industry coverage insufficient",
+      "condition": "Less than TBD industry groups",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run"
+    },
+    {
+      "trigger_id": "ABORT_10",
+      "trigger_name": "liquidity data insufficient",
+      "condition": "Liquidity panel missing > TBD%",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run"
+    },
+    {
+      "trigger_id": "ABORT_11",
+      "trigger_name": "duplicate security-date rows",
+      "condition": "Any non-unique ticker-date",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run"
+    },
+    {
+      "trigger_id": "ABORT_12",
+      "trigger_name": "invalid return calculation",
+      "condition": "Return outside [-TBD%, TBD%]",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run"
+    },
+    {
+      "trigger_id": "ABORT_13",
+      "trigger_name": "factor panel join failure",
+      "condition": "Factor panel merge mismatch",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run"
+    },
+    {
+      "trigger_id": "ABORT_14",
+      "trigger_name": "label panel join failure",
+      "condition": "Label panel merge mismatch",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run"
+    },
+    {
+      "trigger_id": "ABORT_15",
+      "trigger_name": "metric computation incomplete",
+      "condition": "Any metric computation aborted",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run"
+    },
+    {
+      "trigger_id": "ABORT_16",
+      "trigger_name": "accidental trade output detected",
+      "condition": "Trade signal generated",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run"
+    },
+    {
+      "trigger_id": "ABORT_17",
+      "trigger_name": "alpha claim detected",
+      "condition": "Alpha conclusion asserted",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run"
+    },
+    {
+      "trigger_id": "ABORT_18",
+      "trigger_name": "promotion flag true detected",
+      "condition": "promotion_allowed=true found",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run"
+    },
+    {
+      "trigger_id": "ABORT_19",
+      "trigger_name": "runner flag true detected",
+      "condition": "runner_enabled=true found",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run"
+    },
+    {
+      "trigger_id": "ABORT_20",
+      "trigger_name": "paper trading flag true detected",
+      "condition": "paper_trading_allowed=true found",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run"
+    }
+  ]
+}

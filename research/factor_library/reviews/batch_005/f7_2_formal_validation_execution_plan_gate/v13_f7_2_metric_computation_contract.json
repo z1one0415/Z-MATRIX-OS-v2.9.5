@@ -1,0 +1,188 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-METRIC-COMPUTATION-CONTRACT",
+  "status": "CONTRACT_BUILT_NOT_EXECUTED",
+  "metrics": [
+    {
+      "metric_name": "IC",
+      "formula_description": "Standard IC calculation",
+      "input_dependencies": [
+        "IC"
+      ],
+      "minimum_sample_requirement": "U475 6-month",
+      "pass_condition": "TBD",
+      "fail_condition": "TBD",
+      "diagnostic_only_or_gate_metric": "GATE_METRIC",
+      "promotion_dependency": "EXECUTION_PHASE",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "metric_name": "Rank IC",
+      "formula_description": "Standard Rank IC calculation",
+      "input_dependencies": [
+        "Rank IC"
+      ],
+      "minimum_sample_requirement": "U475 6-month",
+      "pass_condition": "TBD",
+      "fail_condition": "TBD",
+      "diagnostic_only_or_gate_metric": "GATE_METRIC",
+      "promotion_dependency": "EXECUTION_PHASE",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "metric_name": "hit rate",
+      "formula_description": "Standard hit rate calculation",
+      "input_dependencies": [
+        "hit rate"
+      ],
+      "minimum_sample_requirement": "U475 6-month",
+      "pass_condition": "TBD",
+      "fail_condition": "TBD",
+      "diagnostic_only_or_gate_metric": "GATE_METRIC",
+      "promotion_dependency": "EXECUTION_PHASE",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "metric_name": "monotonic bucket spread",
+      "formula_description": "Standard monotonic bucket spread calculation",
+      "input_dependencies": [
+        "monotonic bucket spread"
+      ],
+      "minimum_sample_requirement": "U475 6-month",
+      "pass_condition": "TBD",
+      "fail_condition": "TBD",
+      "diagnostic_only_or_gate_metric": "GATE_METRIC",
+      "promotion_dependency": "EXECUTION_PHASE",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "metric_name": "long-short spread",
+      "formula_description": "Standard long-short spread calculation",
+      "input_dependencies": [
+        "long-short spread"
+      ],
+      "minimum_sample_requirement": "U475 6-month",
+      "pass_condition": "TBD",
+      "fail_condition": "TBD",
+      "diagnostic_only_or_gate_metric": "GATE_METRIC",
+      "promotion_dependency": "EXECUTION_PHASE",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "metric_name": "turnover",
+      "formula_description": "Standard turnover calculation",
+      "input_dependencies": [
+        "turnover"
+      ],
+      "minimum_sample_requirement": "U475 6-month",
+      "pass_condition": "TBD",
+      "fail_condition": "TBD",
+      "diagnostic_only_or_gate_metric": "GATE_METRIC",
+      "promotion_dependency": "EXECUTION_PHASE",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "metric_name": "coverage",
+      "formula_description": "Standard coverage calculation",
+      "input_dependencies": [
+        "coverage"
+      ],
+      "minimum_sample_requirement": "U475 6-month",
+      "pass_condition": "TBD",
+      "fail_condition": "TBD",
+      "diagnostic_only_or_gate_metric": "GATE_METRIC",
+      "promotion_dependency": "EXECUTION_PHASE",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "metric_name": "missing data rate",
+      "formula_description": "Standard missing data rate calculation",
+      "input_dependencies": [
+        "missing data rate"
+      ],
+      "minimum_sample_requirement": "U475 6-month",
+      "pass_condition": "TBD",
+      "fail_condition": "TBD",
+      "diagnostic_only_or_gate_metric": "GATE_METRIC",
+      "promotion_dependency": "EXECUTION_PHASE",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "metric_name": "factor correlation",
+      "formula_description": "Standard factor correlation calculation",
+      "input_dependencies": [
+        "factor correlation"
+      ],
+      "minimum_sample_requirement": "U475 6-month",
+      "pass_condition": "TBD",
+      "fail_condition": "TBD",
+      "diagnostic_only_or_gate_metric": "GATE_METRIC",
+      "promotion_dependency": "EXECUTION_PHASE",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "metric_name": "industry bias",
+      "formula_description": "Standard industry bias calculation",
+      "input_dependencies": [
+        "industry bias"
+      ],
+      "minimum_sample_requirement": "U475 6-month",
+      "pass_condition": "TBD",
+      "fail_condition": "TBD",
+      "diagnostic_only_or_gate_metric": "GATE_METRIC",
+      "promotion_dependency": "EXECUTION_PHASE",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "metric_name": "liquidity sensitivity",
+      "formula_description": "Standard liquidity sensitivity calculation",
+      "input_dependencies": [
+        "liquidity sensitivity"
+      ],
+      "minimum_sample_requirement": "U475 6-month",
+      "pass_condition": "TBD",
+      "fail_condition": "TBD",
+      "diagnostic_only_or_gate_metric": "GATE_METRIC",
+      "promotion_dependency": "EXECUTION_PHASE",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "metric_name": "drawdown sensitivity",
+      "formula_description": "Standard drawdown sensitivity calculation",
+      "input_dependencies": [
+        "drawdown sensitivity"
+      ],
+      "minimum_sample_requirement": "U475 6-month",
+      "pass_condition": "TBD",
+      "fail_condition": "TBD",
+      "diagnostic_only_or_gate_metric": "DIAGNOSTIC",
+      "promotion_dependency": "EXECUTION_PHASE",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "metric_name": "regime split",
+      "formula_description": "Standard regime split calculation",
+      "input_dependencies": [
+        "regime split"
+      ],
+      "minimum_sample_requirement": "U475 6-month",
+      "pass_condition": "TBD",
+      "fail_condition": "TBD",
+      "diagnostic_only_or_gate_metric": "DIAGNOSTIC",
+      "promotion_dependency": "EXECUTION_PHASE",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "metric_name": "stability decay",
+      "formula_description": "Standard stability decay calculation",
+      "input_dependencies": [
+        "stability decay"
+      ],
+      "minimum_sample_requirement": "U475 6-month",
+      "pass_condition": "TBD",
+      "fail_condition": "TBD",
+      "diagnostic_only_or_gate_metric": "DIAGNOSTIC",
+      "promotion_dependency": "EXECUTION_PHASE",
+      "execution_status": "NOT_EXECUTED"
+    }
+  ]
+}

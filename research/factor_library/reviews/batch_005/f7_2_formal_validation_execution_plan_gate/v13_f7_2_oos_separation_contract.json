@@ -1,0 +1,14 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-OOS-SEPARATION-CONTRACT",
+  "status": "OOS_SEPARATION_CONTRACT_BUILT_NOT_EXECUTED",
+  "training_usage_policy": "NO_TRAINING_ON_VALIDATION_WINDOW",
+  "validation_usage_policy": "READONLY_VALIDATION_ONLY",
+  "forward_observation_policy": "NO_FUTURE_DATA_LEAKAGE",
+  "lookahead_controls": {
+    "pit_input": true,
+    "rebalance_date_signal_freeze": true,
+    "label_generation_after_signal": true,
+    "unavailable_future_fields_blocked": true,
+    "raw_future_returns_invisible": true
+  }
+}

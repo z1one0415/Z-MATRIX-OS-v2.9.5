@@ -1,0 +1,138 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-EXECUTION-INPUT-MANIFEST",
+  "status": "PLANNED_NOT_EXECUTED",
+  "required_inputs": [
+    {
+      "input_name": "U475 universe snapshot",
+      "expected_path_or_source": "TBD",
+      "required_columns": [
+        "TBD"
+      ],
+      "time_cutoff_rule": "T+1 after formal execution approval",
+      "lookahead_guard": "Point-in-time enforced",
+      "missing_data_policy": "Masked",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "input_name": "6-month price bar panel",
+      "expected_path_or_source": "TBD",
+      "required_columns": [
+        "TBD"
+      ],
+      "time_cutoff_rule": "T+1 after formal execution approval",
+      "lookahead_guard": "Point-in-time enforced",
+      "missing_data_policy": "Masked",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "input_name": "factor signal panel (23 factors)",
+      "expected_path_or_source": "TBD",
+      "required_columns": [
+        "TBD"
+      ],
+      "time_cutoff_rule": "T+1 after formal execution approval",
+      "lookahead_guard": "Point-in-time enforced",
+      "missing_data_policy": "Masked",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "input_name": "5D label panel",
+      "expected_path_or_source": "TBD",
+      "required_columns": [
+        "TBD"
+      ],
+      "time_cutoff_rule": "T+1 after formal execution approval",
+      "lookahead_guard": "Point-in-time enforced",
+      "missing_data_policy": "Masked",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "input_name": "20D label panel",
+      "expected_path_or_source": "TBD",
+      "required_columns": [
+        "TBD"
+      ],
+      "time_cutoff_rule": "T+1 after formal execution approval",
+      "lookahead_guard": "Point-in-time enforced",
+      "missing_data_policy": "Masked",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "input_name": "60D label panel (optional)",
+      "expected_path_or_source": "TBD",
+      "required_columns": [
+        "TBD"
+      ],
+      "time_cutoff_rule": "T+1 after formal execution approval",
+      "lookahead_guard": "Point-in-time enforced",
+      "missing_data_policy": "Masked",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "input_name": "industry classification panel",
+      "expected_path_or_source": "TBD",
+      "required_columns": [
+        "TBD"
+      ],
+      "time_cutoff_rule": "T+1 after formal execution approval",
+      "lookahead_guard": "Point-in-time enforced",
+      "missing_data_policy": "Masked",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "input_name": "liquidity/turnover panel",
+      "expected_path_or_source": "TBD",
+      "required_columns": [
+        "TBD"
+      ],
+      "time_cutoff_rule": "T+1 after formal execution approval",
+      "lookahead_guard": "Point-in-time enforced",
+      "missing_data_policy": "Masked",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "input_name": "rebalance calendar",
+      "expected_path_or_source": "TBD",
+      "required_columns": [
+        "TBD"
+      ],
+      "time_cutoff_rule": "T+1 after formal execution approval",
+      "lookahead_guard": "Point-in-time enforced",
+      "missing_data_policy": "Masked",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "input_name": "missing data mask",
+      "expected_path_or_source": "TBD",
+      "required_columns": [
+        "TBD"
+      ],
+      "time_cutoff_rule": "T+1 after formal execution approval",
+      "lookahead_guard": "Point-in-time enforced",
+      "missing_data_policy": "Masked",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "input_name": "label validation mask",
+      "expected_path_or_source": "TBD",
+      "required_columns": [
+        "TBD"
+      ],
+      "time_cutoff_rule": "T+1 after formal execution approval",
+      "lookahead_guard": "Point-in-time enforced",
+      "missing_data_policy": "Masked",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "input_name": "factor availability mask",
+      "expected_path_or_source": "TBD",
+      "required_columns": [
+        "TBD"
+      ],
+      "time_cutoff_rule": "T+1 after formal execution approval",
+      "lookahead_guard": "Point-in-time enforced",
+      "missing_data_policy": "Masked",
+      "status": "PLANNED_NOT_EXECUTED"
+    }
+  ]
+}

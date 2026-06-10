@@ -1,0 +1,25 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-EXECUTION-DATASET-CONTRACT",
+  "status": "CONTRACT_BUILT_NOT_EXECUTED",
+  "universe": {
+    "name": "U475",
+    "expected_count": 475,
+    "membership_policy": "TBD",
+    "survivorship_bias_policy": "Required",
+    "suspended_delisted_policy": "Required"
+  },
+  "window": {
+    "minimum": "6_MONTHS",
+    "rebalance_months": "MONTHLY",
+    "forward_label_cutoff": "TBD",
+    "calendar_alignment": "TRADING_DAY"
+  },
+  "data_quality": {
+    "missing_data_threshold": "TBD",
+    "invalid_price_threshold": "TBD",
+    "duplicate_row_policy": "REJECT",
+    "abnormal_return_policy": "TBD",
+    "industry_code_missing_policy": "TBD",
+    "liquidity_missing_policy": "TBD"
+  }
+}

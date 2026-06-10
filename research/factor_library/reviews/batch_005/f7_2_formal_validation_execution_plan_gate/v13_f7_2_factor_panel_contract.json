@@ -1,0 +1,351 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-FACTOR-PANEL-CONTRACT",
+  "status": "CONTRACT_BUILT_NOT_EXECUTED",
+  "factors": [
+    {
+      "factor_id": "F04",
+      "canonical_group": "F7_A_STANDALONE",
+      "panel_required": true,
+      "expected_panel_granularity": "TICKER-DATE",
+      "required_columns": [
+        "TICKER",
+        "DATE",
+        "SIGNAL"
+      ],
+      "pit_requirement": true,
+      "lookahead_guard": true,
+      "missing_signal_policy": "MASK",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "factor_id": "F10",
+      "canonical_group": "F7_A_STANDALONE",
+      "panel_required": true,
+      "expected_panel_granularity": "TICKER-DATE",
+      "required_columns": [
+        "TICKER",
+        "DATE",
+        "SIGNAL"
+      ],
+      "pit_requirement": true,
+      "lookahead_guard": true,
+      "missing_signal_policy": "MASK",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "factor_id": "F11",
+      "canonical_group": "F7_A_STANDALONE",
+      "panel_required": true,
+      "expected_panel_granularity": "TICKER-DATE",
+      "required_columns": [
+        "TICKER",
+        "DATE",
+        "SIGNAL"
+      ],
+      "pit_requirement": true,
+      "lookahead_guard": true,
+      "missing_signal_policy": "MASK",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "factor_id": "F21",
+      "canonical_group": "F7_A_STANDALONE",
+      "panel_required": true,
+      "expected_panel_granularity": "TICKER-DATE",
+      "required_columns": [
+        "TICKER",
+        "DATE",
+        "SIGNAL"
+      ],
+      "pit_requirement": true,
+      "lookahead_guard": true,
+      "missing_signal_policy": "MASK",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "factor_id": "F24",
+      "canonical_group": "F7_A_STANDALONE",
+      "panel_required": true,
+      "expected_panel_granularity": "TICKER-DATE",
+      "required_columns": [
+        "TICKER",
+        "DATE",
+        "SIGNAL"
+      ],
+      "pit_requirement": true,
+      "lookahead_guard": true,
+      "missing_signal_policy": "MASK",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "factor_id": "F30",
+      "canonical_group": "F7_A_STANDALONE",
+      "panel_required": true,
+      "expected_panel_granularity": "TICKER-DATE",
+      "required_columns": [
+        "TICKER",
+        "DATE",
+        "SIGNAL"
+      ],
+      "pit_requirement": true,
+      "lookahead_guard": true,
+      "missing_signal_policy": "MASK",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "factor_id": "F31",
+      "canonical_group": "F7_A_STANDALONE",
+      "panel_required": true,
+      "expected_panel_granularity": "TICKER-DATE",
+      "required_columns": [
+        "TICKER",
+        "DATE",
+        "SIGNAL"
+      ],
+      "pit_requirement": true,
+      "lookahead_guard": true,
+      "missing_signal_policy": "MASK",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "factor_id": "F53",
+      "canonical_group": "F7_A_STANDALONE",
+      "panel_required": true,
+      "expected_panel_granularity": "TICKER-DATE",
+      "required_columns": [
+        "TICKER",
+        "DATE",
+        "SIGNAL"
+      ],
+      "pit_requirement": true,
+      "lookahead_guard": true,
+      "missing_signal_policy": "MASK",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "factor_id": "F54",
+      "canonical_group": "F7_A_STANDALONE",
+      "panel_required": true,
+      "expected_panel_granularity": "TICKER-DATE",
+      "required_columns": [
+        "TICKER",
+        "DATE",
+        "SIGNAL"
+      ],
+      "pit_requirement": true,
+      "lookahead_guard": true,
+      "missing_signal_policy": "MASK",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "factor_id": "F55",
+      "canonical_group": "F7_A_STANDALONE",
+      "panel_required": true,
+      "expected_panel_granularity": "TICKER-DATE",
+      "required_columns": [
+        "TICKER",
+        "DATE",
+        "SIGNAL"
+      ],
+      "pit_requirement": true,
+      "lookahead_guard": true,
+      "missing_signal_policy": "MASK",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "factor_id": "F56",
+      "canonical_group": "F7_A_STANDALONE",
+      "panel_required": true,
+      "expected_panel_granularity": "TICKER-DATE",
+      "required_columns": [
+        "TICKER",
+        "DATE",
+        "SIGNAL"
+      ],
+      "pit_requirement": true,
+      "lookahead_guard": true,
+      "missing_signal_policy": "MASK",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "factor_id": "F58",
+      "canonical_group": "F7_A_STANDALONE",
+      "panel_required": true,
+      "expected_panel_granularity": "TICKER-DATE",
+      "required_columns": [
+        "TICKER",
+        "DATE",
+        "SIGNAL"
+      ],
+      "pit_requirement": true,
+      "lookahead_guard": true,
+      "missing_signal_policy": "MASK",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "factor_id": "F60",
+      "canonical_group": "F7_A_STANDALONE",
+      "panel_required": true,
+      "expected_panel_granularity": "TICKER-DATE",
+      "required_columns": [
+        "TICKER",
+        "DATE",
+        "SIGNAL"
+      ],
+      "pit_requirement": true,
+      "lookahead_guard": true,
+      "missing_signal_policy": "MASK",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "factor_id": "F06",
+      "canonical_group": "F7_B_PIPELINE_BOUND",
+      "panel_required": true,
+      "expected_panel_granularity": "TICKER-DATE",
+      "required_columns": [
+        "TICKER",
+        "DATE",
+        "SIGNAL"
+      ],
+      "pit_requirement": true,
+      "lookahead_guard": true,
+      "missing_signal_policy": "MASK",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "factor_id": "F07",
+      "canonical_group": "F7_B_PIPELINE_BOUND",
+      "panel_required": true,
+      "expected_panel_granularity": "TICKER-DATE",
+      "required_columns": [
+        "TICKER",
+        "DATE",
+        "SIGNAL"
+      ],
+      "pit_requirement": true,
+      "lookahead_guard": true,
+      "missing_signal_policy": "MASK",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "factor_id": "F08",
+      "canonical_group": "F7_B_PIPELINE_BOUND",
+      "panel_required": true,
+      "expected_panel_granularity": "TICKER-DATE",
+      "required_columns": [
+        "TICKER",
+        "DATE",
+        "SIGNAL"
+      ],
+      "pit_requirement": true,
+      "lookahead_guard": true,
+      "missing_signal_policy": "MASK",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "factor_id": "F09",
+      "canonical_group": "F7_B_PIPELINE_BOUND",
+      "panel_required": true,
+      "expected_panel_granularity": "TICKER-DATE",
+      "required_columns": [
+        "TICKER",
+        "DATE",
+        "SIGNAL"
+      ],
+      "pit_requirement": true,
+      "lookahead_guard": true,
+      "missing_signal_policy": "MASK",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "factor_id": "F12",
+      "canonical_group": "F7_B_PIPELINE_BOUND",
+      "panel_required": true,
+      "expected_panel_granularity": "TICKER-DATE",
+      "required_columns": [
+        "TICKER",
+        "DATE",
+        "SIGNAL"
+      ],
+      "pit_requirement": true,
+      "lookahead_guard": true,
+      "missing_signal_policy": "MASK",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "factor_id": "F14",
+      "canonical_group": "F7_B_PIPELINE_BOUND",
+      "panel_required": true,
+      "expected_panel_granularity": "TICKER-DATE",
+      "required_columns": [
+        "TICKER",
+        "DATE",
+        "SIGNAL"
+      ],
+      "pit_requirement": true,
+      "lookahead_guard": true,
+      "missing_signal_policy": "MASK",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "factor_id": "F15",
+      "canonical_group": "F7_B_PIPELINE_BOUND",
+      "panel_required": true,
+      "expected_panel_granularity": "TICKER-DATE",
+      "required_columns": [
+        "TICKER",
+        "DATE",
+        "SIGNAL"
+      ],
+      "pit_requirement": true,
+      "lookahead_guard": true,
+      "missing_signal_policy": "MASK",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "factor_id": "F44",
+      "canonical_group": "F7_B_PIPELINE_BOUND",
+      "panel_required": true,
+      "expected_panel_granularity": "TICKER-DATE",
+      "required_columns": [
+        "TICKER",
+        "DATE",
+        "SIGNAL"
+      ],
+      "pit_requirement": true,
+      "lookahead_guard": true,
+      "missing_signal_policy": "MASK",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "factor_id": "F45",
+      "canonical_group": "F7_B_PIPELINE_BOUND",
+      "panel_required": true,
+      "expected_panel_granularity": "TICKER-DATE",
+      "required_columns": [
+        "TICKER",
+        "DATE",
+        "SIGNAL"
+      ],
+      "pit_requirement": true,
+      "lookahead_guard": true,
+      "missing_signal_policy": "MASK",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "factor_id": "F51",
+      "canonical_group": "F7_B_PIPELINE_BOUND",
+      "panel_required": true,
+      "expected_panel_granularity": "TICKER-DATE",
+      "required_columns": [
+        "TICKER",
+        "DATE",
+        "SIGNAL"
+      ],
+      "pit_requirement": true,
+      "lookahead_guard": true,
+      "missing_signal_policy": "MASK",
+      "execution_status": "NOT_EXECUTED"
+    }
+  ]
+}

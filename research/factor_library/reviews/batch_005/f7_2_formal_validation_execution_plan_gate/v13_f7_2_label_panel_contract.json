@@ -1,0 +1,42 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-LABEL-PANEL-CONTRACT",
+  "status": "CONTRACT_BUILT_NOT_EXECUTED",
+  "horizons": [
+    {
+      "horizon": "5D",
+      "label_formula_description": "Forward 5D-trading-day return",
+      "forward_return_window": "5D",
+      "price_source_requirement": "ADJUSTED_CLOSE",
+      "suspension_handling": "EXCLUDE",
+      "limit_up_down_handling": "EXCLUDE",
+      "missing_label_policy": "MASK",
+      "label_mask_policy": "UNIVERSE_ONLY",
+      "cutoff_rule": "T+1 after signal date",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "horizon": "20D",
+      "label_formula_description": "Forward 20D-trading-day return",
+      "forward_return_window": "20D",
+      "price_source_requirement": "ADJUSTED_CLOSE",
+      "suspension_handling": "EXCLUDE",
+      "limit_up_down_handling": "EXCLUDE",
+      "missing_label_policy": "MASK",
+      "label_mask_policy": "UNIVERSE_ONLY",
+      "cutoff_rule": "T+1 after signal date",
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "horizon": "60D_optional",
+      "label_formula_description": "Forward 60D_optional-trading-day return",
+      "forward_return_window": "60D_optional",
+      "price_source_requirement": "ADJUSTED_CLOSE",
+      "suspension_handling": "EXCLUDE",
+      "limit_up_down_handling": "EXCLUDE",
+      "missing_label_policy": "MASK",
+      "label_mask_policy": "UNIVERSE_ONLY",
+      "cutoff_rule": "T+1 after signal date",
+      "execution_status": "NOT_EXECUTED"
+    }
+  ]
+}

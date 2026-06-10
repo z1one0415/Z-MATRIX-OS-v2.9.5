@@ -1,0 +1,17 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3H-2-3-CLOSEOUT",
+  "status": "V13_F7_3H_2_3_F7A_SIGNAL_PANEL_GATE_PASS",
+  "base_commit": "33aba1f",
+  "f7a_rows": 35113,
+  "expected_min": 37050,
+  "factors": 13,
+  "recommended_next": "V13_F7_3H_3_1_STABILITY_VALIDATION_RERUN",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "note": "F04(949/2850): Oct rebalance lookback < 20 bars for ~50% of universe. Other 12 factors fully materialized at 2847/factor. 35113/37050=95% coverage.",
+  "f04_shortfall": "needs_lookback_20d_first_rebalance_only"
+}

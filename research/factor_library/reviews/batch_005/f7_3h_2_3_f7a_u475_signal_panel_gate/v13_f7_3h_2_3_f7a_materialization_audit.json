@@ -1,0 +1,27 @@
+{
+  "factors_expected": 13,
+  "factors_materialized": 13,
+  "total_rows": 35113,
+  "rows_per_factor": {
+    "F04": 949,
+    "F10": 2847,
+    "F11": 2847,
+    "F21": 2847,
+    "F24": 2847,
+    "F30": 2847,
+    "F31": 2847,
+    "F53": 2847,
+    "F54": 2847,
+    "F55": 2847,
+    "F56": 2847,
+    "F58": 2847,
+    "F60": 2847
+  },
+  "meets_37050": false,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

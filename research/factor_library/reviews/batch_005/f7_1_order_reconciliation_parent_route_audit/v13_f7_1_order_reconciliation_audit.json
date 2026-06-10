@@ -1,0 +1,30 @@
+{
+  "pipeline_signature": "Z2-V13-F7-1-ORDER-RECONCILIATION-AUDIT",
+  "status": "PASS_WITH_ROUTE_ORDER_RECONCILED",
+  "finding": "F7.1 artifact is valid on actual base eb62c70, but not a direct child of logical F7.0 base b3171bd",
+  "artifact_status": "F7_1_MATRIX_VALID",
+  "route_status": "LOGICAL_DEPENDENCY_RECONCILED_WITH_ACTUAL_COMMIT_ORDER_DIFFERENCE",
+  "not_a_failure": true,
+  "requires_history_rewrite": false,
+  "requires_rebase": false,
+  "requires_cherry_pick": false,
+  "requires_rollback": false,
+  "requires_documented_reconciliation": true,
+  "approved_interpretation": "F7.1 is a logical dependency layer inserted after later-route artifacts. It does not approve those later-route artifacts for promotion, alpha, runner, paper trading, production, broker, or execution.",
+  "blocked_interpretations": [
+    "F8 advancement allowed",
+    "promotion allowed",
+    "alpha claim allowed",
+    "runner enabled",
+    "paper trading allowed",
+    "production allowed",
+    "broker allowed",
+    "real_trade allowed"
+  ],
+  "next_legal_entry": "F7.2_U475_6_MONTH_FORMAL_VALIDATION_PLANNING_REVIEW_AFTER_RECONCILIATION",
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "execution_allowed": false,
+  "runner_enabled": false,
+  "paper_trading_allowed": false
+}

@@ -1,0 +1,24 @@
+{
+  "pipeline_signature": "Z2-V13-F7-1-ACTUAL-COMMIT-ORDER-MANIFEST",
+  "status": "ACTUAL_ORDER_RECORDED",
+  "logical_base_commit": "b3171bd",
+  "actual_f7_1_base_commit": "eb62c70",
+  "f7_1_matrix_commit": "45c9e17",
+  "actual_order_summary": "b3171bd (F7.0) \u2192 ... F7.2/F7.3/F8 series \u2192 eb62c70 \u2192 45c9e17 (F7.1 matrix inserted after later-route artifacts)",
+  "must_record": "actual order differs from logical dependency order",
+  "actual_order_warning": "F7.1 being committed after later artifacts does not imply F8 advancement is approved",
+  "scope_confirmation": {
+    "diff_from_eb62c70": "batch_005/f7_1_factor_evaluation_matrix_v1 only",
+    "no_skillos": true,
+    "no_zmatrix": true,
+    "no_runtime": true,
+    "no_production": true,
+    "no_broker": true,
+    "no_real_trade": true
+  },
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "execution_allowed": false,
+  "runner_enabled": false,
+  "paper_trading_allowed": false
+}

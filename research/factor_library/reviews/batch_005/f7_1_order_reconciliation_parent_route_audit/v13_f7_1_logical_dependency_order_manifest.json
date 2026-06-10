@@ -1,0 +1,43 @@
+{
+  "pipeline_signature": "Z2-V13-F7-1-LOGICAL-DEPENDENCY-ORDER-MANIFEST",
+  "status": "LOGICAL_ORDER_RECONCILED",
+  "logical_order": [
+    {
+      "step": 1,
+      "name": "F7.0 canonical registry + monitoring rerun",
+      "commit": "b3171bd"
+    },
+    {
+      "step": 2,
+      "name": "F7.1 factor evaluation matrix v1",
+      "commit": "45c9e17"
+    },
+    {
+      "step": 3,
+      "name": "F7.2 U475 / 6-month formal validation planning"
+    },
+    {
+      "step": 4,
+      "name": "F7.3 U475 data / label / materialization gates"
+    },
+    {
+      "step": 5,
+      "name": "F7.3h historical OOS validation design / materialization"
+    },
+    {
+      "step": 6,
+      "name": "F8 reinforcement / primitive / enhanced variant work"
+    },
+    {
+      "step": 7,
+      "name": "F8+ only after formal validation gates"
+    }
+  ],
+  "must_state": "F7.1 is a prerequisite interpretation layer for F7.2/F7.3/F8 evaluation, even if committed later",
+  "logical_dependency_rule": "Later artifacts may exist in commit history but cannot be promoted unless F7.1 + formal validation + safety gates approve them",
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "execution_allowed": false,
+  "runner_enabled": false,
+  "paper_trading_allowed": false
+}

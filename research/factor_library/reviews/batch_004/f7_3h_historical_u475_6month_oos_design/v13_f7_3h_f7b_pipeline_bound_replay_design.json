@@ -1,0 +1,26 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3H-F7B-REPLAY",
+  "status": "V13_F7_3H_F7B_DESIGN_COMPLETE",
+  "base_commit": "94901da",
+  "factors": [
+    "F06",
+    "F07",
+    "F08",
+    "F09",
+    "F12",
+    "F14",
+    "F15",
+    "F44",
+    "F45",
+    "F51"
+  ],
+  "count": 10,
+  "signal_method": "Tushare PIT fundamental data at each historical rebalance date",
+  "note": "Fundamental data for 2025-10 through 2026-03 is available (all reports published by now)",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

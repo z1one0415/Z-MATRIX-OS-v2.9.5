@@ -1,0 +1,30 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3H-F7A-REPLAY",
+  "status": "V13_F7_3H_F7A_DESIGN_COMPLETE",
+  "base_commit": "94901da",
+  "factors": [
+    "F04",
+    "F10",
+    "F11",
+    "F21",
+    "F24",
+    "F30",
+    "F31",
+    "F53",
+    "F54",
+    "F55",
+    "F56",
+    "F58",
+    "F60"
+  ],
+  "count": 13,
+  "signal_method": "factor-local executable_formula.py on historical price_bars",
+  "rebalance_months": 6,
+  "expected_signal_rows": "13\u00d7475\u00d76 = 37050",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

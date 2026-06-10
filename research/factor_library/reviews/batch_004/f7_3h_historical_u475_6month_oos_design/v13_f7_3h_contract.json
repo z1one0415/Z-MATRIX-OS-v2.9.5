@@ -1,0 +1,21 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3H-HISTORICAL-OOS-CONTRACT",
+  "status": "V13_F7_3H_CONTRACT_BUILT",
+  "base_commit": "94901da",
+  "historical_oos": true,
+  "forward_oos": false,
+  "window_months": 6,
+  "window_start": "2025-10",
+  "window_end": "2026-03",
+  "purpose": "Historical OOS validation using 6 fully-available months to test factor stability at U475 scale",
+  "does_not_replace_forward_oos": true,
+  "forward_oos_waiting": true,
+  "f7a_track": 13,
+  "f7b_track": 10,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

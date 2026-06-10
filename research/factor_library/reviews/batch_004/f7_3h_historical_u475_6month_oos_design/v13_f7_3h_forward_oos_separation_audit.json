@@ -1,0 +1,27 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3H-SEPARATION-AUDIT",
+  "status": "V13_F7_3H_SEPARATION_CLEAR",
+  "base_commit": "94901da",
+  "historical_oos": {
+    "window": "2025-10 to 2026-03",
+    "60D_feasible": true,
+    "status": "DESIGN_PHASE"
+  },
+  "forward_oos": {
+    "window": "2026-05 to 2026-10",
+    "60D_feasible": false,
+    "status": "WAITING_FOR_TIME_WINDOW"
+  },
+  "rules": {
+    "do_not_merge_results": true,
+    "do_not_call_historical_forward": true,
+    "historical_results_not_forward_claims": true,
+    "forward_oos_still_required_for_final_gate": true
+  },
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

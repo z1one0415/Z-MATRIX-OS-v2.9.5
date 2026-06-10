@@ -1,0 +1,19 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3H-SAFETY",
+  "status": "V13_F7_3H_SAFETY_PASS",
+  "violation_count": 0,
+  "checks": {
+    "planning_only": true,
+    "no_execution": true,
+    "no_promotion": true,
+    "no_alpha": true,
+    "forward_oos_not_replaced": true,
+    "historical_not_claimed_as_forward": true,
+    "alpha_claim_allowed": false,
+    "runner_enabled": false,
+    "execution_allowed": false,
+    "production": "BLOCKED",
+    "broker_runtime": "BLOCKED",
+    "real_trade": "BLOCKED"
+  }
+}

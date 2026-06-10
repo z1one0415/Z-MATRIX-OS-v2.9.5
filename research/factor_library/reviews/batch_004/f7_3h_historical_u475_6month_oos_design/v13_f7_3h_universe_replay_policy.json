@@ -1,0 +1,15 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3H-UNIVERSE-REPLAY",
+  "status": "V13_F7_3H_UNIVERSE_POLICY_DEFINED",
+  "base_commit": "94901da",
+  "method": "Monthly rolling: select top N by market_cap at each rebalance date",
+  "min_tickers": 475,
+  "lookback_stale_ticker_handling": "exclude delisted with lookback grace period",
+  "pit_rule": "universe_membership known at rebalance_date \u2014 no future lookahead",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

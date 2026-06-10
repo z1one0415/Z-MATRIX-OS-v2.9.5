@@ -1,0 +1,15 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3-1-PRICE",
+  "tickers_pulled": 469,
+  "target": 475,
+  "coverage_pct": 98.7,
+  "trading_days": 82,
+  "date_range": "20260202 to 20260609",
+  "total_rows": 38195,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,16 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3-1-OOS-GATE",
+  "formal_oos_ready": false,
+  "formal_oos_executed": false,
+  "checks": {
+    "u475_tickers": false,
+    "rebalance_months": false,
+    "60D_labels": false
+  },
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

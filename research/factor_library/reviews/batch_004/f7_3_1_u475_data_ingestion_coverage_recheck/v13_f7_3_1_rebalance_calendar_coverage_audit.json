@@ -1,0 +1,21 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3-1-REBALANCE",
+  "available": [
+    "20260506",
+    "20260603"
+  ],
+  "missing": [
+    "20260701",
+    "20260803",
+    "20260901",
+    "20261006"
+  ],
+  "months_covered": 2,
+  "target": 6,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

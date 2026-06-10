@@ -1,0 +1,11 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3-1-F7B",
+  "pending": "Tushare fundamental data pull for U475",
+  "factors": 10,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

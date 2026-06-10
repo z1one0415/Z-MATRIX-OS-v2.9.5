@@ -1,0 +1,21 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3H-LABEL-MATRIX",
+  "status": "V13_F7_3H_LABEL_MATRIX_DEFINED",
+  "base_commit": "94901da",
+  "horizons": [
+    "5D",
+    "20D",
+    "60D"
+  ],
+  "label_role": "OUTCOME_LABEL_ONLY",
+  "expected_rows_per_month": "475\u00d73 = 1425",
+  "expected_total_rows": "475\u00d73\u00d76 = 8550",
+  "60D_available": true,
+  "note": "Historical window allows 60D labels \u2014 all forward returns are known",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

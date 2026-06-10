@@ -1,0 +1,12 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3-1-LABEL",
+  "60D_available": false,
+  "max_date": "20260609",
+  "min_date_60D": "20260725",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

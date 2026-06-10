@@ -1,10 +1,10 @@
 {
   "pipeline_signature": "Z2-V13-F6-5-6-PUSH-LOCK-AND-REMAT-GATE-CLOSEOUT",
-  "status": "V13_F6_5_6_LOCAL_COMPLETE_CLOUD_BLOCKED_BY_MMAP_LOCK",
+  "status": "V13_F6_5_6_CLOUD_SEALED_RUNTIME_GATE_PASS",
   "base_commit": "5006656",
   "local_changes_staged": true,
-  "cloud_push": "BLOCKED_BY_MMAP_LOCK",
-  "mmap_error": "Resource deadlock avoided — macOS APFS .git lock",
+  "cloud_push": "PASSED",
+  "mmap_error": "Resource deadlock avoided \u2014 macOS APFS .git lock",
   "runtime_gate_results": {
     "standalone_tested": 13,
     "recompute_full_pass": 13,
@@ -25,12 +25,32 @@
   },
   "f7_eligibility": {
     "F7_A_STANDALONE": [
-      "F04","F10","F11","F21","F24","F30","F31",
-      "F53","F54","F55","F56","F58","F60"
+      "F04",
+      "F10",
+      "F11",
+      "F21",
+      "F24",
+      "F30",
+      "F31",
+      "F53",
+      "F54",
+      "F55",
+      "F56",
+      "F58",
+      "F60"
     ],
     "F7_A_count": 13,
     "F7_B_PIPELINE_BOUND": [
-      "F06","F07","F08","F09","F12","F14","F15","F44","F45","F51"
+      "F06",
+      "F07",
+      "F08",
+      "F09",
+      "F12",
+      "F14",
+      "F15",
+      "F44",
+      "F45",
+      "F51"
     ],
     "F7_B_count": 10,
     "F7_total": 23
@@ -44,5 +64,6 @@
   "production": "BLOCKED",
   "broker_runtime": "BLOCKED",
   "real_trade": "BLOCKED",
-  "recommended_next_action": "RESOLVE_MMAP_LOCK_AND_PUSH_THEN_V13_F7_0"
+  "recommended_next_action": "PREPARE_V13_F7_0_CANONICAL_REGISTRY_UPDATE_AND_23_FACTOR_RERUN_MONITORING",
+  "cloud_commit": "f9f4f19"
 }

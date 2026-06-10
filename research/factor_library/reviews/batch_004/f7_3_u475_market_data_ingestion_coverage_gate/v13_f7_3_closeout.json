@@ -1,0 +1,23 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3-CLOSEOUT",
+  "status": "V13_F7_3_U475_INGESTION_AND_COVERAGE_GATE_PASS_WITH_DATA_GAP",
+  "base_commit": "13df8ba",
+  "ingestion_executed": false,
+  "coverage_audited": true,
+  "formal_oos_ready": false,
+  "formal_oos_executed": false,
+  "blockers": [
+    "U475 universe",
+    "6 monthly rebalances",
+    "60D labels",
+    "F7A U475 signals",
+    "F7B U475 coverage"
+  ],
+  "recommended_next": "EXECUTE_U475_INGESTION_THEN_F7_4_FORMAL_OOS",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,39 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3-FORMAL-OOS-READINESS",
+  "status": "V13_F7_3_READINESS_AUDIT_COMPLETE",
+  "base_commit": "13df8ba",
+  "formal_oos_ready": false,
+  "formal_oos_executed": false,
+  "blockers": [
+    {
+      "item": "U475 universe",
+      "status": "NOT_INGESTED",
+      "gap": 470
+    },
+    {
+      "item": "6 monthly rebalances",
+      "status": "NOT_INGESTED",
+      "gap": 5
+    },
+    {
+      "item": "60D forward labels",
+      "status": "BLOCKED",
+      "reason": "data window"
+    },
+    {
+      "item": "F7A U475-scale signal",
+      "status": "NOT_COMPUTED"
+    },
+    {
+      "item": "F7B U475-scale Tushare",
+      "status": "NOT_PULLED"
+    }
+  ],
+  "minimum_6_blockers": "ALL must be resolved before F7.4 (formal OOS execution)",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

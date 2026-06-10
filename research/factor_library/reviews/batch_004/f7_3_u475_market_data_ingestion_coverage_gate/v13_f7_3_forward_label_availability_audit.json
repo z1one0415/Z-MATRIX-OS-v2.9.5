@@ -1,0 +1,30 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3-FORWARD-LABEL-AUDIT",
+  "status": "V13_F7_3_LABEL_AUDIT_COMPLETE",
+  "base_commit": "13df8ba",
+  "5D": {
+    "available": true,
+    "rows_current": 5,
+    "rows_required": 2850,
+    "gap": 2845
+  },
+  "20D": {
+    "available": true,
+    "rows_current": 5,
+    "rows_required": 2850,
+    "gap": 2845
+  },
+  "60D": {
+    "available": false,
+    "blocked_reason": "price data only to 2026-06-10; need ~2026-07-25 for 60D forward from 2026-05-06 rebalance"
+  },
+  "total_label_rows_expected": 8550,
+  "current": 10,
+  "formal_oos_ready": false,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

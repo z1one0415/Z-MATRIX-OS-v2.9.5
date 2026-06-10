@@ -1,0 +1,18 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3-F7A-READINESS",
+  "status": "V13_F7_3_F7A_READINESS_AUDIT",
+  "base_commit": "13df8ba",
+  "factors": 13,
+  "executable_available": true,
+  "syntax_pass": true,
+  "micro_sample_pass": true,
+  "u475_scale_tested": false,
+  "u475_ready": false,
+  "action_required": "Run 13 executable_formula.py on U475 price_bars for 6 rebalance months",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

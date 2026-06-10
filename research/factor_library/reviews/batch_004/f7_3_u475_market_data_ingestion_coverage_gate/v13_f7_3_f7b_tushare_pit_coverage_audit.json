@@ -1,0 +1,24 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3-F7B-TUSHARE-COVERAGE",
+  "status": "V13_F7_3_F7B_AUDIT_COMPLETE",
+  "base_commit": "13df8ba",
+  "factors": 10,
+  "tushare_apis_required": [
+    "fina_indicator",
+    "daily_basic",
+    "cashflow",
+    "income",
+    "balancesheet",
+    "forecast",
+    "cn_m"
+  ],
+  "current_coverage": "4 tickers at batch_004 scale",
+  "required_coverage": "475 tickers PIT-safe",
+  "action_required": "Pull Tushare PIT fundamentals for U475 universe at each rebalance date",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

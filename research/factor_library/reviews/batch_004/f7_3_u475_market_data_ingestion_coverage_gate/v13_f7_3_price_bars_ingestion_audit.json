@@ -1,0 +1,31 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3-PRICE-BARS-AUDIT",
+  "status": "V13_F7_3_PRICE_BARS_AUDIT_COMPLETE",
+  "base_commit": "13df8ba",
+  "source": "tushare daily (OHLCV)",
+  "target_file": "data/price_bars/u475_daily_bars.csv",
+  "required_columns": [
+    "date",
+    "ticker",
+    "open",
+    "high",
+    "low",
+    "close",
+    "volume",
+    "adj_close"
+  ],
+  "lookback_required": "60 trading days before first rebalance (2026-05-06)",
+  "forward_required": "60 trading days after last rebalance (2026-10-06)",
+  "date_range_expected": "2026-02-01 through 2026-12-31 (~230 trading days)",
+  "current_date_range": "2026-04-06 through 2026-06-10",
+  "current_tickers": 5,
+  "required_tickers": 475,
+  "gap": 470,
+  "ingestion_executed": false,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

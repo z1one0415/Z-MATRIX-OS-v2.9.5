@@ -1,0 +1,22 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3-UNIVERSE-SELECTION-AUDIT",
+  "status": "V13_F7_3_UNIVERSE_AUDIT_COMPLETE",
+  "base_commit": "13df8ba",
+  "selection_method": "tushare stock_basic \u2192 filter L-share \u2192 exclude ST \u2192 exclude new_IPO_lt_60d \u2192 top N by market_cap",
+  "required_minimum": 475,
+  "preferred": 1000,
+  "current": 5,
+  "gap": 470,
+  "exclusions": {
+    "ST_suspended": true,
+    "new_IPO_lt_60d": true,
+    "duplicate": 0
+  },
+  "ingestion_executed": false,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

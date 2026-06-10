@@ -1,0 +1,20 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3-U475-INGESTION-CONTRACT",
+  "status": "V13_F7_3_CONTRACT_BUILT",
+  "base_commit": "13df8ba",
+  "scope": "U475 ingestion plan + coverage gate audit",
+  "ingestion_executed": false,
+  "target_ticker_count": 475,
+  "target_rebalance_months": 6,
+  "target_horizons": [
+    "5D",
+    "20D",
+    "60D"
+  ],
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

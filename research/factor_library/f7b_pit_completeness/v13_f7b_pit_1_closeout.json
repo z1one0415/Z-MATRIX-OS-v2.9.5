@@ -1,0 +1,13 @@
+{
+  "pipeline_signature": "Z2-V13-F7B-PIT-1-CLOSEOUT",
+  "status": "V13_F7B_PIT_1_PLAN_PASS",
+  "base_commit": "9c1d944",
+  "pit_plan_complete": true,
+  "recommended_next": "IMPLEMENT_PIT_FILTER_IN_F7B_REFRESH",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

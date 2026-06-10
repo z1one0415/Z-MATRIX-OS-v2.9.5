@@ -1,0 +1,10 @@
+{
+  "model": "financial_reports_have_up_to_45day_lag_after_quarter_end",
+  "pit_window": "ann_date_to_rebalance_date",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

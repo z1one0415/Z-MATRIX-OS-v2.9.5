@@ -1,0 +1,10 @@
+{
+  "check": "skip_if_price_reaches_limit",
+  "max_capacity_pct": 0.01,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

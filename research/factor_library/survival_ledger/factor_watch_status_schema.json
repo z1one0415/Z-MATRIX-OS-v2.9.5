@@ -1,0 +1,13 @@
+{
+  "factor_id": "str",
+  "current_state": "str",
+  "months_watched": 3,
+  "avg_IC": "float",
+  "trend": "str: improving|decaying|stable|unstable",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

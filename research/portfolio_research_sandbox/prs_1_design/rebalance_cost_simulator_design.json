@@ -1,0 +1,11 @@
+{
+  "cost_model": "percentage_fixed+variable",
+  "fixed_per_trade": 0.001,
+  "variable_rate": 0.0003,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

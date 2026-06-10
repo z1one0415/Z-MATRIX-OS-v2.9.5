@@ -1,0 +1,15 @@
+{
+  "filter_out": [
+    "ST",
+    "*ST",
+    "SST",
+    "delisted",
+    "suspended_more_than_30_days"
+  ],
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

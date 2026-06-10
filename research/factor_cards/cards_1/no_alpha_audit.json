@@ -1,0 +1,9 @@
+{
+  "alpha_claim_allowed": false,
+  "cards_are_research_only": true,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

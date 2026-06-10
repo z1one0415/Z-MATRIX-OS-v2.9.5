@@ -1,0 +1,10 @@
+{
+  "rule": "use_data_with_ann_date_lte_rebalance_date",
+  "if_no_ann_date": "use_available_from_previous_period",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

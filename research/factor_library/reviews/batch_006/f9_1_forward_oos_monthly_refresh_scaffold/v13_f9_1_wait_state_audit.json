@@ -1,0 +1,12 @@
+{
+  "forward_oos_executed": false,
+  "months_available": 2,
+  "months_waiting": 4,
+  "earliest_completion": "2026-10-06",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

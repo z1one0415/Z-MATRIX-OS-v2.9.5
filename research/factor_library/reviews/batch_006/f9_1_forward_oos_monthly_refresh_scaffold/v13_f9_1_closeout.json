@@ -1,0 +1,15 @@
+{
+  "pipeline_signature": "Z2-V13-F9-1-CLOSEOUT",
+  "status": "V13_F9_1_SCAFFOLD_PASS",
+  "base_commit": "9c1d944",
+  "scaffold_built": true,
+  "monthly_refresh_designed": true,
+  "forward_oos_executed": false,
+  "recommended_next": "WAIT_FOR_2026-07-01_FIRST_REFRESH",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

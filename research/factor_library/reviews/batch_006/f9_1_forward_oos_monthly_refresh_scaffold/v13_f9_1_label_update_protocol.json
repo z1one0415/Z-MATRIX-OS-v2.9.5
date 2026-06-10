@@ -1,0 +1,13 @@
+{
+  "protocol": "on_each_rebalance_completion",
+  "generate_5D": true,
+  "generate_20D": true,
+  "generate_60D": true,
+  "pit_rule": "forward_return_known_only_after_window_closes",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

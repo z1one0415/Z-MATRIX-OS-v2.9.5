@@ -1,0 +1,11 @@
+{
+  "protocol": "test_v2_vs_v1_in_forward_OOS",
+  "do_not_test_now": "forward_OOS_not_yet_available",
+  "estimated_start": "2026-10",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

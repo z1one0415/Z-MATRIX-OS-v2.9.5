@@ -1,0 +1,20 @@
+{
+  "name": "MONEY_FLOW_V2",
+  "primitives": [
+    "money_flow",
+    "turnover_layer",
+    "crowding_penalty"
+  ],
+  "design": "money_flow_strength + turnover_percentile - crowding_extreme",
+  "horizons": [
+    "5D",
+    "20D"
+  ],
+  "expected_improvement": "reduce_false_positives_in_crowded_stocks",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

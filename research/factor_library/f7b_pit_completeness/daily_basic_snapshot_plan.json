@@ -1,0 +1,16 @@
+{
+  "snapshot_frequency": "monthly_at_rebalance",
+  "fields": [
+    "pe_ttm",
+    "pb",
+    "ps_ttm",
+    "total_mv",
+    "circ_mv"
+  ],
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

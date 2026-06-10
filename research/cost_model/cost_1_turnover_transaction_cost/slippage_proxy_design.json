@@ -1,0 +1,11 @@
+{
+  "slippage_pct": "0.5*spread+0.5*impact",
+  "spread_source": "daily_basic",
+  "impact_proxy": "volume_participation_rate",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

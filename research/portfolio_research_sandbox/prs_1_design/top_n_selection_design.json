@@ -1,0 +1,16 @@
+{
+  "method": "rank_by_signal_strength",
+  "N_range": [
+    5,
+    10,
+    20,
+    50
+  ],
+  "sector_exposure_cap": 0.3,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,21 @@
+{
+  "name": "DOWNSIDE_TAIL_V2",
+  "primitives": [
+    "max_drawdown",
+    "upper_shadow",
+    "near_term_vol",
+    "vol_compression"
+  ],
+  "design": "-max_drawdown_20d+shadow_penalty+vol_compression_bonus",
+  "horizons": [
+    "5D",
+    "20D"
+  ],
+  "expected_improvement": "capture_near_term_vol_compression_breakouts",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

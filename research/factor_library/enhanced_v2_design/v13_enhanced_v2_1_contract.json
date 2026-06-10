@@ -1,0 +1,12 @@
+{
+  "pipeline_signature": "Z2-V13-ENHANCED-V2-1",
+  "status": "V13_ENHANCED_V2_1_DESIGNED",
+  "base_commit": "9c1d944",
+  "implementation_not_started": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

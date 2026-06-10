@@ -1,0 +1,19 @@
+{
+  "fields": [
+    "factor_id",
+    "factor_name",
+    "economic_meaning",
+    "valid_horizons",
+    "historical_behavior",
+    "failure_conditions",
+    "data_dependency",
+    "crowding_risk",
+    "forward_oos_status"
+  ],
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

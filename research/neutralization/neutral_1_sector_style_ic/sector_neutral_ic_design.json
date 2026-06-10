@@ -1,0 +1,11 @@
+{
+  "method": "demean_within_each_sector",
+  "sectors": "sw_industry_level_1",
+  "purpose": "remove_industry_bias_from_IC",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

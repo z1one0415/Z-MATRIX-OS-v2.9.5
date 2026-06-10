@@ -1,0 +1,12 @@
+{
+  "pipeline_signature": "Z2-V13-PRS-1",
+  "status": "V13_PRS_1_DESIGN_COMPLETE",
+  "base_commit": "9c1d944",
+  "research_only": true,
+  "execution_allowed": false,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

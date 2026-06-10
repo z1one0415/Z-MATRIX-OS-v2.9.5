@@ -1,0 +1,11 @@
+{
+  "method": "position_difference",
+  "inclusion_of_trading_cost": true,
+  "max_one_way_turnover": 0.5,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,10 @@
+{
+  "duplicates_allowed": false,
+  "dedup_key": "ticker+rebalance_date+horizon+factor_id",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

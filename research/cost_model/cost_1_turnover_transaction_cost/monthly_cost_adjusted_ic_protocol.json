@@ -1,0 +1,10 @@
+{
+  "protocol": "net_IC = gross_IC - estimated_turnover_cost/2",
+  "adjustment_frequency": "monthly",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

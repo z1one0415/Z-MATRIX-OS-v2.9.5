@@ -1,0 +1,15 @@
+{
+  "template": {
+    "rebalance_date": "YYYY-MM-DD",
+    "ticker_universe": 475,
+    "price_bars_source": "data/price_bars/u475_daily_bars.csv",
+    "labels_source": "auto_generated_from_price_data",
+    "signals_source": "executable_formula.py"
+  },
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

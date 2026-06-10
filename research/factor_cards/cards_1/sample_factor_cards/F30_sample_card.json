@@ -1,0 +1,16 @@
+{
+  "factor_id": "F30",
+  "factor_name": "VOLUME_PRICE_CONFIRMATION",
+  "economic_meaning": "Stocks where volume confirms price movement tend to sustain the trend",
+  "valid_horizons": [
+    "5D",
+    "20D",
+    "60D"
+  ],
+  "historical_5D_IC": 0.0309,
+  "historical_20D_IC": 0.0722,
+  "historical_60D_IC": -0.0044,
+  "crowding_risk": "medium",
+  "forward_oos_status": "WAITING_FOR_TIME",
+  "alpha_claim_allowed": false
+}

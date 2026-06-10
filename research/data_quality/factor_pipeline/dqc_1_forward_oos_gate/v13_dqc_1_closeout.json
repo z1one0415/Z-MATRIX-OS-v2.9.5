@@ -1,0 +1,16 @@
+{
+  "pipeline_signature": "Z2-V13-DQC-1-CLOSEOUT",
+  "status": "V13_DQC_1_GATE_DESIGNED_PASS",
+  "base_commit": "9c1d944",
+  "coverage_gate_defined": true,
+  "price_bar_gate_defined": true,
+  "label_gate_defined": true,
+  "pit_leakage_guard_defined": true,
+  "recommended_next": "IMPLEMENT_DQC_GATE_IN_REFRESH_RUNNER",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

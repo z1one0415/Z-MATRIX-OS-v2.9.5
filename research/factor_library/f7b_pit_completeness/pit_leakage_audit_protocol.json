@@ -1,0 +1,10 @@
+{
+  "check": "forward_return_not_in_fundamental_pull",
+  "violation": "exclude_observation",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

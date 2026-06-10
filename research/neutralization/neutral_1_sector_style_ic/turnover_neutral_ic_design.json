@@ -1,0 +1,11 @@
+{
+  "method": "turnover_demean",
+  "turnover_source": "daily_basic",
+  "purpose": "remove_liquidity_turnover_bias",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,14 @@
+{
+  "pipeline_signature": "Z2-V13-CARDS-1-CLOSEOUT",
+  "status": "V13_CARDS_1_DESIGN_PASS",
+  "base_commit": "9c1d944",
+  "card_schema_defined": true,
+  "sample_card_created": true,
+  "recommended_next": "GENERATE_ALL_23_FACTOR_CARDS",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

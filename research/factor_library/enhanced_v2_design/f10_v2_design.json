@@ -1,0 +1,20 @@
+{
+  "name": "LOW_VOLATILITY_V2",
+  "primitives": [
+    "vol_20d",
+    "downside_vol",
+    "liquidity_filter"
+  ],
+  "design": "-(total_vol_20d*0.6+downside_vol_20d*0.4)-liquidity_premium",
+  "horizons": [
+    "5D",
+    "20D"
+  ],
+  "expected_improvement": "cleaner_low_vol_signal_with_small_cap_filter",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

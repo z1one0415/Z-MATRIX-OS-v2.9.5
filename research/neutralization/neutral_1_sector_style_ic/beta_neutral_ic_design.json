@@ -1,0 +1,11 @@
+{
+  "method": "beta_demean",
+  "beta_source": "daily_basic_250d",
+  "purpose": "remove_market_beta_bias",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,11 @@
+{
+  "source": "F7.3H.3.1 historical OOS results",
+  "method": "auto_generate_from_IC_table",
+  "review": "human_review_before_release",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

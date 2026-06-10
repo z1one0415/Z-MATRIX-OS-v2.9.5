@@ -1,0 +1,10 @@
+{
+  "minimum_tickers": 475,
+  "gate": "reject_if_below_400",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

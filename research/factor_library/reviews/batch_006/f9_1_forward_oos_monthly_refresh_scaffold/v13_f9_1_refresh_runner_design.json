@@ -1,0 +1,11 @@
+{
+  "design": "monthly_refresh_runner",
+  "protocol": "pull_new_data\u2192update_labels\u2192recompute_signals\u2192rerun_IC\u2192update_watchlist",
+  "first_refresh": "2026-07-01",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

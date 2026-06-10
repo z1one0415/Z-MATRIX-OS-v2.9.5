@@ -1,0 +1,11 @@
+{
+  "5D_null_tolerance_pct": 1,
+  "20D_null_tolerance_pct": 1,
+  "60D_null_tolerance_pct": "oct_exclusion_rule",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

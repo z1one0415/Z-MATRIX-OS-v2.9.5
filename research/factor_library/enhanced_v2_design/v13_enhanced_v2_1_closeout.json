@@ -1,0 +1,14 @@
+{
+  "pipeline_signature": "Z2-V13-ENHANCED-V2-1-CLOSEOUT",
+  "status": "V13_ENHANCED_V2_1_DESIGN_PASS",
+  "base_commit": "9c1d944",
+  "designs_created": 3,
+  "enhanced_formula_created": 0,
+  "recommended_next": "IMPLEMENT_AFTER_FORWARD_OOS_BASELINE",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

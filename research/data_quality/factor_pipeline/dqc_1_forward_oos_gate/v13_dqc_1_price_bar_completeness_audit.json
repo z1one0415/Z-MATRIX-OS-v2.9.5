@@ -1,0 +1,10 @@
+{
+  "minimum_bars_before_rebalance": 5,
+  "gate": "exclude_tickers_with_insufficient_history",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

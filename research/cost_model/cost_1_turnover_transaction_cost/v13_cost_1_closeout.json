@@ -1,0 +1,13 @@
+{
+  "pipeline_signature": "Z2-V13-COST-1-CLOSEOUT",
+  "status": "V13_COST_1_DESIGN_PASS",
+  "base_commit": "9c1d944",
+  "cost_model_designed": true,
+  "recommended_next": "IMPLEMENT_COST_MODEL_IN_REFRESH_PIPELINE",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,15 @@
+{
+  "transition_rules": {
+    "WATCHING\u2192IMPROVING": "IC>0.02 for 2 consecutive months",
+    "WATCHING\u2192DECAYING": "IC<-0.02 for 2 consecutive months",
+    "IMPROVING\u2192WATCHING": "IC drops below 0.01",
+    "DECAYING\u2192UNSTABLE": "IC flips sign",
+    "UNSTABLE\u2192RETIRED_CANDIDATE": "6 months IC<0"
+  },
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

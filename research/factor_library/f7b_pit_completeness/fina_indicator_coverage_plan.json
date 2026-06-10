@@ -1,0 +1,20 @@
+{
+  "target_coverage": 475,
+  "current": 566,
+  "gap": 1,
+  "fina_endpoints": [
+    "roe",
+    "roa",
+    "gross_margin",
+    "debt",
+    "ocfps",
+    "netprofit_yoy",
+    "or_yoy"
+  ],
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,18 @@
+{
+  "ledger_version": "v1",
+  "description": "Tracks factor state through forward OOS monthly refreshes",
+  "states": [
+    "WATCHING",
+    "IMPROVING",
+    "DECAYING",
+    "UNSTABLE",
+    "DATA_BLOCKED",
+    "RETIRED_CANDIDATE"
+  ],
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

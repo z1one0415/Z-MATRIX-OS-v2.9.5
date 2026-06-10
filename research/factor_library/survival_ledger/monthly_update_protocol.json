@@ -1,0 +1,19 @@
+{
+  "frequency": "monthly",
+  "trigger": "rebalance_date_passes",
+  "inputs": [
+    "new_labels",
+    "new_signals",
+    "new_IC"
+  ],
+  "outputs": [
+    "updated_ledger",
+    "decay_alerts"
+  ],
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

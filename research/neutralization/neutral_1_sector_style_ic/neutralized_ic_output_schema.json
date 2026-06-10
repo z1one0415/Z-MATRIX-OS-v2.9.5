@@ -1,0 +1,18 @@
+{
+  "output_fields": [
+    "factor_id",
+    "horizon",
+    "rank_IC",
+    "sector_neutral_IC",
+    "size_neutral_IC",
+    "beta_neutral_IC",
+    "turnover_neutral_IC",
+    "valid_observations"
+  ],
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

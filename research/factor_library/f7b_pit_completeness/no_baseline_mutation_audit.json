@@ -1,0 +1,10 @@
+{
+  "baseline_unchanged": true,
+  "f7b_canonical_unchanged": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

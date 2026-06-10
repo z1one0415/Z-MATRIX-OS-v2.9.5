@@ -1,0 +1,9 @@
+{
+  "orders_generated": false,
+  "execution_allowed": false,
+  "broker_runtime": "BLOCKED",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "production": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

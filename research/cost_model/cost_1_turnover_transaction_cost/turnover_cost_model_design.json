@@ -1,0 +1,11 @@
+{
+  "model": "fixed_per_trade+market_impact",
+  "turnover_formula": "sum|weight_change|/2",
+  "cost_per_trade": "0.001-0.003 based on liquidity",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

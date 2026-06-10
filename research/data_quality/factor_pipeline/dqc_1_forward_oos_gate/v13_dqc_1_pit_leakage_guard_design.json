@@ -1,0 +1,10 @@
+{
+  "pit_rule": "known_at <= rebalance_date",
+  "guard": "fail_if_ann_date_gt_rebalance_date",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

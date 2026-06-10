@@ -1,0 +1,10 @@
+{
+  "max_drawdown_target": 0.15,
+  "var_95_target": 0.05,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

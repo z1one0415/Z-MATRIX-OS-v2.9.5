@@ -1,0 +1,11 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3H-1-UNIVERSE-CONSISTENCY-PATCH",
+  "status": "V13_F7_3H_1_CONSISTENCY_FIXED",
+  "fix": "20251008\u219220251009",
+  "oct_adjustment": {
+    "from": "2025-10-08",
+    "to": "2025-10-09",
+    "reason": "National Day holiday",
+    "tickers": 5419
+  }
+}

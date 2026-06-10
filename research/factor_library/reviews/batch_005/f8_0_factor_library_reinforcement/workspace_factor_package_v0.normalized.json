@@ -1,0 +1,198 @@
+{
+  "source": "workspace_factor_package_v0",
+  "package_name": "Z2\u5929\u5e08 Hermes Kernel workspace factor package v2.9.6",
+  "groups": {
+    "A_original": {
+      "count": 16,
+      "factors": [
+        {
+          "id": "F04",
+          "workspace_id": "F04",
+          "ic": 0.07,
+          "ic_status": "verified"
+        },
+        {
+          "id": "F05",
+          "workspace_id": "F05",
+          "ic": 0.08,
+          "ic_status": "verified"
+        },
+        {
+          "id": "F06",
+          "workspace_id": "F06",
+          "ic": 0.09,
+          "ic_status": "verified"
+        },
+        {
+          "id": "F10",
+          "ic": -0.041
+        },
+        {
+          "id": "F11",
+          "ic": -0.028
+        },
+        {
+          "id": "F21",
+          "ic": 0.045
+        },
+        {
+          "id": "F24",
+          "ic": 0.038
+        },
+        {
+          "id": "F30",
+          "ic": 0.029
+        },
+        {
+          "id": "F31",
+          "ic": -0.035
+        },
+        {
+          "id": "F53",
+          "ic": 0.042
+        },
+        {
+          "id": "F54",
+          "ic": -0.033
+        },
+        {
+          "id": "F55",
+          "ic": -0.026,
+          "status": "hypothesis"
+        },
+        {
+          "id": "F56",
+          "ic": 0.036
+        },
+        {
+          "id": "F58",
+          "ic": -0.031
+        },
+        {
+          "id": "F60",
+          "ic": 0.044
+        },
+        {
+          "id": "F06",
+          "ic": 0.051,
+          "status": "hypothesis"
+        },
+        {
+          "id": "F15",
+          "ic": 0.047,
+          "status": "hypothesis"
+        },
+        {
+          "id": "F12",
+          "ic": 0.039,
+          "status": "hypothesis"
+        }
+      ]
+    },
+    "B_phase1_cloud_migration": {
+      "count": 5,
+      "factors": [
+        "F07",
+        "F08",
+        "F09",
+        "F14",
+        "F44"
+      ]
+    },
+    "C_phase2_candidate": {
+      "count": 8,
+      "factors": [
+        "F34",
+        "F35",
+        "F57_NORTHBOUND",
+        "F22",
+        "F20_SECTOR",
+        "F41_CHAIN",
+        "F42_CHAIN",
+        "F46"
+      ]
+    }
+  },
+  "primitives": [
+    {
+      "name": "turnover_rate",
+      "group": "A",
+      "absorb_into": "F54,F56"
+    },
+    {
+      "name": "range_5d",
+      "group": "A",
+      "absorb_into": "F31,F58"
+    },
+    {
+      "name": "vol_20d",
+      "group": "A",
+      "absorb_into": "F10"
+    },
+    {
+      "name": "ma20_dev",
+      "group": "A",
+      "absorb_into": "F21"
+    },
+    {
+      "name": "ma60_dev",
+      "group": "A",
+      "absorb_into": "F04,F21"
+    },
+    {
+      "name": "vol_climax",
+      "group": "A",
+      "absorb_into": "F53"
+    },
+    {
+      "name": "upper_shadow",
+      "group": "A",
+      "absorb_into": "F31,F58"
+    },
+    {
+      "name": "vol_ratio",
+      "group": "A",
+      "absorb_into": "F53,F54,F56"
+    },
+    {
+      "name": "mom_5d",
+      "group": "A",
+      "absorb_into": "F11"
+    },
+    {
+      "name": "mom_10d",
+      "group": "A",
+      "absorb_into": "F11"
+    },
+    {
+      "name": "mom_20d",
+      "group": "A",
+      "absorb_into": "F04"
+    },
+    {
+      "name": "mom_60d",
+      "group": "A",
+      "absorb_into": "F04"
+    },
+    {
+      "name": "pb_inv",
+      "group": "A",
+      "absorb_into": "F12"
+    },
+    {
+      "name": "pe_inv",
+      "group": "A",
+      "absorb_into": "F12"
+    },
+    {
+      "name": "pos_20d",
+      "group": "A",
+      "absorb_into": "F21,F54"
+    },
+    {
+      "name": "northbound_net_flow",
+      "group": "A",
+      "absorb_into": "F57"
+    }
+  ]
+}

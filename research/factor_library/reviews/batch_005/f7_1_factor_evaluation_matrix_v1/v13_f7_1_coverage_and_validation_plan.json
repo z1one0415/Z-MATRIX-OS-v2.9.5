@@ -1,0 +1,45 @@
+{
+  "pipeline_signature": "Z2-V13-F7-1-COVERAGE-VALIDATION-PLAN",
+  "status": "FORMAL_VALIDATION_PLAN_READY",
+  "recommended_next_action": "EXPAND_TO_U475_6_MONTHS_FORMAL_VALIDATION",
+  "formal_validation_required": true,
+  "formal_validation_not_yet_executed": true,
+  "minimum_required_universe": "U475",
+  "minimum_required_window": "6_MONTHS",
+  "required_horizons": [
+    "5D",
+    "20D",
+    "60D"
+  ],
+  "required_metrics": [
+    "IC",
+    "Rank IC",
+    "hit rate",
+    "monotonic bucket spread",
+    "long-short spread diagnostic",
+    "turnover",
+    "coverage",
+    "missing data rate",
+    "factor correlation",
+    "industry bias",
+    "liquidity sensitivity",
+    "drawdown sensitivity",
+    "regime split",
+    "stability decay"
+  ],
+  "required_splits": [
+    "bull/bear/sideways",
+    "high volatility/low volatility",
+    "large cap/mid cap/small cap",
+    "industry groups",
+    "liquidity buckets"
+  ],
+  "hard_gates": [
+    "no alpha claim before formal validation",
+    "no promotion before formal validation",
+    "no runner before formal validation",
+    "no paper trading before formal validation",
+    "no execution before formal validation",
+    "no production before formal validation"
+  ]
+}

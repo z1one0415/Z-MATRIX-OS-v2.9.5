@@ -1,0 +1,26 @@
+{
+  "pipeline_signature": "Z2-V13-F7-1-SAFETY-AUDIT",
+  "status": "PASS_WITH_PROMOTION_BLOCKED",
+  "checks": {
+    "no_skillos_modified": true,
+    "no_zmatrix_modified": true,
+    "no_runtime_modified": true,
+    "no_execution_modified": true,
+    "no_broker_modified": true,
+    "no_trade_output": true,
+    "no_pnl_output": true,
+    "no_alpha_claim": true,
+    "no_paper_trading": true,
+    "no_runner_enablement": true,
+    "no_production_enablement": true,
+    "no_promotion_allowed_true": true,
+    "no_execution_allowed_true": true,
+    "no_formal_oos_claim": true,
+    "no_u475_claim": true,
+    "no_6month_claim": true,
+    "all_23_factors_present": true,
+    "excluded_groups_not_promoted": true,
+    "blocked_factors_not_promoted": true
+  },
+  "all_pass": true
+}

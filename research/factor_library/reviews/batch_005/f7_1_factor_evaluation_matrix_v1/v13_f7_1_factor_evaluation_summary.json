@@ -1,0 +1,17 @@
+{
+  "pipeline_signature": "Z2-V13-F7-1-FACTOR-EVALUATION-SUMMARY",
+  "status": "V13_F7_1_MATRIX_BUILT_READONLY",
+  "factor_count": 23,
+  "F7_A_count": 13,
+  "F7_B_count": 10,
+  "TIER_A": 15,
+  "TIER_B": 3,
+  "TIER_C": 5,
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "execution_allowed": false,
+  "runner_enabled": false,
+  "paper_trading_allowed": false,
+  "formal_oos_validation_executed": false,
+  "recommended_next_action": "EXPAND_TO_U475_6_MONTHS_FORMAL_VALIDATION"
+}

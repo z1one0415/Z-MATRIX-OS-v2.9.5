@@ -1,0 +1,1861 @@
+{
+  "pipeline_signature": "Z2-V13-F7-1-FACTOR-EVALUATION-MATRIX",
+  "status": "V13_F7_1_MATRIX_BUILT_READONLY",
+  "base_commit": "eb62c70",
+  "source_registry_commit": "b3171bd",
+  "source_registry_path": "research/factor_library/reviews/batch_004/f7_0_canonical_registry_update_23_factor_rerun/v13_f7_0_canonical_registry.json",
+  "source_monitoring_path": "research/factor_library/reviews/batch_004/f7_0_canonical_registry_update_23_factor_rerun/v13_f7_0_monitoring_rerun_results.json",
+  "matrix_version": "v1.0",
+  "evaluation_scope": "F7.1 Factor Evaluation Matrix for 23 F7.0 registry candidates",
+  "factor_count": 23,
+  "formal_oos_validation_executed": false,
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "execution_allowed": false,
+  "runner_enabled": false,
+  "paper_trading_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "rows": [
+    {
+      "identity": {
+        "factor_id": "F04",
+        "factor_name": "Factor_F04",
+        "canonical_group": "F7_A_STANDALONE",
+        "canonical_status": "CANONICAL_REGISTERED",
+        "signal_role": "STANDALONE_SIGNAL",
+        "standalone_or_pipeline_bound": "F7_A_STANDALONE",
+        "source_registry_status": "REGISTERED"
+      },
+      "data_scope": {
+        "sample_universe": "U475 (pre-OOS)",
+        "sample_size": 475,
+        "sample_window_start": "2025-11",
+        "sample_window_end": "2026-05",
+        "rebalance_date": "MONTHLY",
+        "horizons": [
+          "5D",
+          "20D"
+        ],
+        "formal_oos_validation_executed": false,
+        "formal_validation_status": "NOT_EXECUTED",
+        "measurement_status": "MICRO_SAMPLE_MONITORING_ONLY"
+      },
+      "performance_observation": {
+        "monitoring_positive_5D": "N/A",
+        "monitoring_positive_20D": "N/A",
+        "micro_sample_return_5D": "N/A",
+        "micro_sample_return_20D": "N/A",
+        "hit_direction_5D": "N/A",
+        "hit_direction_20D": "N/A"
+      },
+      "evaluation_metrics": {
+        "ic_5D": "N/A",
+        "rank_ic_5D": "N/A",
+        "ic_20D": "N/A",
+        "rank_ic_20D": "N/A",
+        "stability_score": "N/A",
+        "decay_score": "N/A",
+        "coverage_score": "N/A",
+        "sample_robustness_score": "N/A",
+        "correlation_redundancy_score": "N/A",
+        "industry_bias_score": "N/A",
+        "turnover_cost_score": "N/A",
+        "liquidity_sensitivity_score": "N/A",
+        "implementation_complexity_score": "N/A",
+        "explainability_score": "N/A",
+        "data_quality_score": "N/A"
+      },
+      "risk_flags": {
+        "small_sample_flag": true,
+        "missing_data_flag": true,
+        "lookahead_risk_flag": true,
+        "survivorship_risk_flag": true,
+        "industry_bias_flag": true,
+        "turnover_cost_flag": true,
+        "redundancy_flag": "N/A",
+        "overfit_risk_flag": true,
+        "execution_dependency_flag": false,
+        "pipeline_dependency_flag": false,
+        "blocked_for_promotion_reason": "NO_FORMAL_OOS_VALIDATION"
+      },
+      "decision_fields": {
+        "evaluation_tier": "TIER_A_READY_FOR_FORMAL_VALIDATION",
+        "confidence_tier": "LOW_MEDIUM",
+        "use_case_class": "STANDALONE_SIGNAL_CANDIDATE",
+        "promotion_allowed": false,
+        "alpha_claim_allowed": false,
+        "execution_allowed": false,
+        "runner_enabled": false,
+        "paper_trading_allowed": false,
+        "recommended_action": "EXPAND_TO_U475_6_MONTH_FORMAL_VALIDATION",
+        "next_required_validation": "U475_6_MONTH_FORMAL_VALIDATION"
+      },
+      "hash_fields": {
+        "factor_evaluation_row_hash": "c9d36903f38d97ef4c2e60ae0377c38c77c06406a8bd0b4b5b2d1456c1d56d0c",
+        "factor_evaluation_matrix_hash_placeholder": "46b591d466f3abbf531cf85edf29dd35c3ee6096fc64399a71d6c2eb2e1547ed"
+      }
+    },
+    {
+      "identity": {
+        "factor_id": "F10",
+        "factor_name": "Factor_F10",
+        "canonical_group": "F7_A_STANDALONE",
+        "canonical_status": "CANONICAL_REGISTERED",
+        "signal_role": "STANDALONE_SIGNAL",
+        "standalone_or_pipeline_bound": "F7_A_STANDALONE",
+        "source_registry_status": "REGISTERED"
+      },
+      "data_scope": {
+        "sample_universe": "U475 (pre-OOS)",
+        "sample_size": 475,
+        "sample_window_start": "2025-11",
+        "sample_window_end": "2026-05",
+        "rebalance_date": "MONTHLY",
+        "horizons": [
+          "5D",
+          "20D"
+        ],
+        "formal_oos_validation_executed": false,
+        "formal_validation_status": "NOT_EXECUTED",
+        "measurement_status": "MICRO_SAMPLE_MONITORING_ONLY"
+      },
+      "performance_observation": {
+        "monitoring_positive_5D": "N/A",
+        "monitoring_positive_20D": "N/A",
+        "micro_sample_return_5D": "N/A",
+        "micro_sample_return_20D": "N/A",
+        "hit_direction_5D": "N/A",
+        "hit_direction_20D": "N/A"
+      },
+      "evaluation_metrics": {
+        "ic_5D": "N/A",
+        "rank_ic_5D": "N/A",
+        "ic_20D": "N/A",
+        "rank_ic_20D": "N/A",
+        "stability_score": "N/A",
+        "decay_score": "N/A",
+        "coverage_score": "N/A",
+        "sample_robustness_score": "N/A",
+        "correlation_redundancy_score": "N/A",
+        "industry_bias_score": "N/A",
+        "turnover_cost_score": "N/A",
+        "liquidity_sensitivity_score": "N/A",
+        "implementation_complexity_score": "N/A",
+        "explainability_score": "N/A",
+        "data_quality_score": "N/A"
+      },
+      "risk_flags": {
+        "small_sample_flag": true,
+        "missing_data_flag": true,
+        "lookahead_risk_flag": true,
+        "survivorship_risk_flag": true,
+        "industry_bias_flag": true,
+        "turnover_cost_flag": true,
+        "redundancy_flag": "N/A",
+        "overfit_risk_flag": true,
+        "execution_dependency_flag": false,
+        "pipeline_dependency_flag": false,
+        "blocked_for_promotion_reason": "NO_FORMAL_OOS_VALIDATION"
+      },
+      "decision_fields": {
+        "evaluation_tier": "TIER_A_READY_FOR_FORMAL_VALIDATION",
+        "confidence_tier": "LOW_MEDIUM",
+        "use_case_class": "STANDALONE_SIGNAL_CANDIDATE",
+        "promotion_allowed": false,
+        "alpha_claim_allowed": false,
+        "execution_allowed": false,
+        "runner_enabled": false,
+        "paper_trading_allowed": false,
+        "recommended_action": "EXPAND_TO_U475_6_MONTH_FORMAL_VALIDATION",
+        "next_required_validation": "U475_6_MONTH_FORMAL_VALIDATION"
+      },
+      "hash_fields": {
+        "factor_evaluation_row_hash": "b16101beae8370165f78b901ed13e3ff84741a8784cd6eb556a1cec7eafa4aa3",
+        "factor_evaluation_matrix_hash_placeholder": "46b591d466f3abbf531cf85edf29dd35c3ee6096fc64399a71d6c2eb2e1547ed"
+      }
+    },
+    {
+      "identity": {
+        "factor_id": "F11",
+        "factor_name": "Factor_F11",
+        "canonical_group": "F7_A_STANDALONE",
+        "canonical_status": "CANONICAL_REGISTERED",
+        "signal_role": "STANDALONE_SIGNAL",
+        "standalone_or_pipeline_bound": "F7_A_STANDALONE",
+        "source_registry_status": "REGISTERED"
+      },
+      "data_scope": {
+        "sample_universe": "U475 (pre-OOS)",
+        "sample_size": 475,
+        "sample_window_start": "2025-11",
+        "sample_window_end": "2026-05",
+        "rebalance_date": "MONTHLY",
+        "horizons": [
+          "5D",
+          "20D"
+        ],
+        "formal_oos_validation_executed": false,
+        "formal_validation_status": "NOT_EXECUTED",
+        "measurement_status": "MICRO_SAMPLE_MONITORING_ONLY"
+      },
+      "performance_observation": {
+        "monitoring_positive_5D": "N/A",
+        "monitoring_positive_20D": "N/A",
+        "micro_sample_return_5D": "N/A",
+        "micro_sample_return_20D": "N/A",
+        "hit_direction_5D": "N/A",
+        "hit_direction_20D": "N/A"
+      },
+      "evaluation_metrics": {
+        "ic_5D": "N/A",
+        "rank_ic_5D": "N/A",
+        "ic_20D": "N/A",
+        "rank_ic_20D": "N/A",
+        "stability_score": "N/A",
+        "decay_score": "N/A",
+        "coverage_score": "N/A",
+        "sample_robustness_score": "N/A",
+        "correlation_redundancy_score": "N/A",
+        "industry_bias_score": "N/A",
+        "turnover_cost_score": "N/A",
+        "liquidity_sensitivity_score": "N/A",
+        "implementation_complexity_score": "N/A",
+        "explainability_score": "N/A",
+        "data_quality_score": "N/A"
+      },
+      "risk_flags": {
+        "small_sample_flag": true,
+        "missing_data_flag": true,
+        "lookahead_risk_flag": true,
+        "survivorship_risk_flag": true,
+        "industry_bias_flag": true,
+        "turnover_cost_flag": true,
+        "redundancy_flag": "N/A",
+        "overfit_risk_flag": true,
+        "execution_dependency_flag": false,
+        "pipeline_dependency_flag": false,
+        "blocked_for_promotion_reason": "NO_FORMAL_OOS_VALIDATION"
+      },
+      "decision_fields": {
+        "evaluation_tier": "TIER_A_READY_FOR_FORMAL_VALIDATION",
+        "confidence_tier": "LOW_MEDIUM",
+        "use_case_class": "STANDALONE_SIGNAL_CANDIDATE",
+        "promotion_allowed": false,
+        "alpha_claim_allowed": false,
+        "execution_allowed": false,
+        "runner_enabled": false,
+        "paper_trading_allowed": false,
+        "recommended_action": "EXPAND_TO_U475_6_MONTH_FORMAL_VALIDATION",
+        "next_required_validation": "U475_6_MONTH_FORMAL_VALIDATION"
+      },
+      "hash_fields": {
+        "factor_evaluation_row_hash": "0507de1d94abeadb7a39c1e64ce235152c616cd36ed45e0204debbd356afef05",
+        "factor_evaluation_matrix_hash_placeholder": "46b591d466f3abbf531cf85edf29dd35c3ee6096fc64399a71d6c2eb2e1547ed"
+      }
+    },
+    {
+      "identity": {
+        "factor_id": "F21",
+        "factor_name": "Factor_F21",
+        "canonical_group": "F7_A_STANDALONE",
+        "canonical_status": "CANONICAL_REGISTERED",
+        "signal_role": "STANDALONE_SIGNAL",
+        "standalone_or_pipeline_bound": "F7_A_STANDALONE",
+        "source_registry_status": "REGISTERED"
+      },
+      "data_scope": {
+        "sample_universe": "U475 (pre-OOS)",
+        "sample_size": 475,
+        "sample_window_start": "2025-11",
+        "sample_window_end": "2026-05",
+        "rebalance_date": "MONTHLY",
+        "horizons": [
+          "5D",
+          "20D"
+        ],
+        "formal_oos_validation_executed": false,
+        "formal_validation_status": "NOT_EXECUTED",
+        "measurement_status": "MICRO_SAMPLE_MONITORING_ONLY"
+      },
+      "performance_observation": {
+        "monitoring_positive_5D": "N/A",
+        "monitoring_positive_20D": "N/A",
+        "micro_sample_return_5D": "N/A",
+        "micro_sample_return_20D": "N/A",
+        "hit_direction_5D": "N/A",
+        "hit_direction_20D": "N/A"
+      },
+      "evaluation_metrics": {
+        "ic_5D": "N/A",
+        "rank_ic_5D": "N/A",
+        "ic_20D": "N/A",
+        "rank_ic_20D": "N/A",
+        "stability_score": "N/A",
+        "decay_score": "N/A",
+        "coverage_score": "N/A",
+        "sample_robustness_score": "N/A",
+        "correlation_redundancy_score": "N/A",
+        "industry_bias_score": "N/A",
+        "turnover_cost_score": "N/A",
+        "liquidity_sensitivity_score": "N/A",
+        "implementation_complexity_score": "N/A",
+        "explainability_score": "N/A",
+        "data_quality_score": "N/A"
+      },
+      "risk_flags": {
+        "small_sample_flag": true,
+        "missing_data_flag": true,
+        "lookahead_risk_flag": true,
+        "survivorship_risk_flag": true,
+        "industry_bias_flag": true,
+        "turnover_cost_flag": true,
+        "redundancy_flag": "N/A",
+        "overfit_risk_flag": true,
+        "execution_dependency_flag": false,
+        "pipeline_dependency_flag": false,
+        "blocked_for_promotion_reason": "NO_FORMAL_OOS_VALIDATION"
+      },
+      "decision_fields": {
+        "evaluation_tier": "TIER_A_READY_FOR_FORMAL_VALIDATION",
+        "confidence_tier": "LOW_MEDIUM",
+        "use_case_class": "STANDALONE_SIGNAL_CANDIDATE",
+        "promotion_allowed": false,
+        "alpha_claim_allowed": false,
+        "execution_allowed": false,
+        "runner_enabled": false,
+        "paper_trading_allowed": false,
+        "recommended_action": "EXPAND_TO_U475_6_MONTH_FORMAL_VALIDATION",
+        "next_required_validation": "U475_6_MONTH_FORMAL_VALIDATION"
+      },
+      "hash_fields": {
+        "factor_evaluation_row_hash": "ea0e6f381f96010d1982ab48da8eed8d694495d56be42a7e854abf811ba8d8bc",
+        "factor_evaluation_matrix_hash_placeholder": "46b591d466f3abbf531cf85edf29dd35c3ee6096fc64399a71d6c2eb2e1547ed"
+      }
+    },
+    {
+      "identity": {
+        "factor_id": "F24",
+        "factor_name": "Factor_F24",
+        "canonical_group": "F7_A_STANDALONE",
+        "canonical_status": "CANONICAL_REGISTERED",
+        "signal_role": "STANDALONE_SIGNAL",
+        "standalone_or_pipeline_bound": "F7_A_STANDALONE",
+        "source_registry_status": "REGISTERED"
+      },
+      "data_scope": {
+        "sample_universe": "U475 (pre-OOS)",
+        "sample_size": 475,
+        "sample_window_start": "2025-11",
+        "sample_window_end": "2026-05",
+        "rebalance_date": "MONTHLY",
+        "horizons": [
+          "5D",
+          "20D"
+        ],
+        "formal_oos_validation_executed": false,
+        "formal_validation_status": "NOT_EXECUTED",
+        "measurement_status": "MICRO_SAMPLE_MONITORING_ONLY"
+      },
+      "performance_observation": {
+        "monitoring_positive_5D": "N/A",
+        "monitoring_positive_20D": "N/A",
+        "micro_sample_return_5D": "N/A",
+        "micro_sample_return_20D": "N/A",
+        "hit_direction_5D": "N/A",
+        "hit_direction_20D": "N/A"
+      },
+      "evaluation_metrics": {
+        "ic_5D": "N/A",
+        "rank_ic_5D": "N/A",
+        "ic_20D": "N/A",
+        "rank_ic_20D": "N/A",
+        "stability_score": "N/A",
+        "decay_score": "N/A",
+        "coverage_score": "N/A",
+        "sample_robustness_score": "N/A",
+        "correlation_redundancy_score": "N/A",
+        "industry_bias_score": "N/A",
+        "turnover_cost_score": "N/A",
+        "liquidity_sensitivity_score": "N/A",
+        "implementation_complexity_score": "N/A",
+        "explainability_score": "N/A",
+        "data_quality_score": "N/A"
+      },
+      "risk_flags": {
+        "small_sample_flag": true,
+        "missing_data_flag": true,
+        "lookahead_risk_flag": true,
+        "survivorship_risk_flag": true,
+        "industry_bias_flag": true,
+        "turnover_cost_flag": true,
+        "redundancy_flag": "N/A",
+        "overfit_risk_flag": true,
+        "execution_dependency_flag": false,
+        "pipeline_dependency_flag": false,
+        "blocked_for_promotion_reason": "NO_FORMAL_OOS_VALIDATION"
+      },
+      "decision_fields": {
+        "evaluation_tier": "TIER_A_READY_FOR_FORMAL_VALIDATION",
+        "confidence_tier": "LOW_MEDIUM",
+        "use_case_class": "STANDALONE_SIGNAL_CANDIDATE",
+        "promotion_allowed": false,
+        "alpha_claim_allowed": false,
+        "execution_allowed": false,
+        "runner_enabled": false,
+        "paper_trading_allowed": false,
+        "recommended_action": "EXPAND_TO_U475_6_MONTH_FORMAL_VALIDATION",
+        "next_required_validation": "U475_6_MONTH_FORMAL_VALIDATION"
+      },
+      "hash_fields": {
+        "factor_evaluation_row_hash": "b5e2c4e9a5e06be2f9026e2ce0c1d68c5ead4f8809dac3c52da3f5b152d2bdb8",
+        "factor_evaluation_matrix_hash_placeholder": "46b591d466f3abbf531cf85edf29dd35c3ee6096fc64399a71d6c2eb2e1547ed"
+      }
+    },
+    {
+      "identity": {
+        "factor_id": "F30",
+        "factor_name": "Factor_F30",
+        "canonical_group": "F7_A_STANDALONE",
+        "canonical_status": "CANONICAL_REGISTERED",
+        "signal_role": "STANDALONE_SIGNAL",
+        "standalone_or_pipeline_bound": "F7_A_STANDALONE",
+        "source_registry_status": "REGISTERED"
+      },
+      "data_scope": {
+        "sample_universe": "U475 (pre-OOS)",
+        "sample_size": 475,
+        "sample_window_start": "2025-11",
+        "sample_window_end": "2026-05",
+        "rebalance_date": "MONTHLY",
+        "horizons": [
+          "5D",
+          "20D"
+        ],
+        "formal_oos_validation_executed": false,
+        "formal_validation_status": "NOT_EXECUTED",
+        "measurement_status": "MICRO_SAMPLE_MONITORING_ONLY"
+      },
+      "performance_observation": {
+        "monitoring_positive_5D": "N/A",
+        "monitoring_positive_20D": "N/A",
+        "micro_sample_return_5D": "N/A",
+        "micro_sample_return_20D": "N/A",
+        "hit_direction_5D": "N/A",
+        "hit_direction_20D": "N/A"
+      },
+      "evaluation_metrics": {
+        "ic_5D": "N/A",
+        "rank_ic_5D": "N/A",
+        "ic_20D": "N/A",
+        "rank_ic_20D": "N/A",
+        "stability_score": "N/A",
+        "decay_score": "N/A",
+        "coverage_score": "N/A",
+        "sample_robustness_score": "N/A",
+        "correlation_redundancy_score": "N/A",
+        "industry_bias_score": "N/A",
+        "turnover_cost_score": "N/A",
+        "liquidity_sensitivity_score": "N/A",
+        "implementation_complexity_score": "N/A",
+        "explainability_score": "N/A",
+        "data_quality_score": "N/A"
+      },
+      "risk_flags": {
+        "small_sample_flag": true,
+        "missing_data_flag": true,
+        "lookahead_risk_flag": true,
+        "survivorship_risk_flag": true,
+        "industry_bias_flag": true,
+        "turnover_cost_flag": true,
+        "redundancy_flag": "N/A",
+        "overfit_risk_flag": true,
+        "execution_dependency_flag": false,
+        "pipeline_dependency_flag": false,
+        "blocked_for_promotion_reason": "NO_FORMAL_OOS_VALIDATION"
+      },
+      "decision_fields": {
+        "evaluation_tier": "TIER_A_READY_FOR_FORMAL_VALIDATION",
+        "confidence_tier": "LOW_MEDIUM",
+        "use_case_class": "STANDALONE_SIGNAL_CANDIDATE",
+        "promotion_allowed": false,
+        "alpha_claim_allowed": false,
+        "execution_allowed": false,
+        "runner_enabled": false,
+        "paper_trading_allowed": false,
+        "recommended_action": "EXPAND_TO_U475_6_MONTH_FORMAL_VALIDATION",
+        "next_required_validation": "U475_6_MONTH_FORMAL_VALIDATION"
+      },
+      "hash_fields": {
+        "factor_evaluation_row_hash": "69fc9bcc42c8dc034addb5d92c420d8bd2bf578717229b87b0f7aaa16ab9af72",
+        "factor_evaluation_matrix_hash_placeholder": "46b591d466f3abbf531cf85edf29dd35c3ee6096fc64399a71d6c2eb2e1547ed"
+      }
+    },
+    {
+      "identity": {
+        "factor_id": "F31",
+        "factor_name": "Factor_F31",
+        "canonical_group": "F7_A_STANDALONE",
+        "canonical_status": "CANONICAL_REGISTERED",
+        "signal_role": "STANDALONE_SIGNAL",
+        "standalone_or_pipeline_bound": "F7_A_STANDALONE",
+        "source_registry_status": "REGISTERED"
+      },
+      "data_scope": {
+        "sample_universe": "U475 (pre-OOS)",
+        "sample_size": 475,
+        "sample_window_start": "2025-11",
+        "sample_window_end": "2026-05",
+        "rebalance_date": "MONTHLY",
+        "horizons": [
+          "5D",
+          "20D"
+        ],
+        "formal_oos_validation_executed": false,
+        "formal_validation_status": "NOT_EXECUTED",
+        "measurement_status": "MICRO_SAMPLE_MONITORING_ONLY"
+      },
+      "performance_observation": {
+        "monitoring_positive_5D": "N/A",
+        "monitoring_positive_20D": "N/A",
+        "micro_sample_return_5D": "N/A",
+        "micro_sample_return_20D": "N/A",
+        "hit_direction_5D": "N/A",
+        "hit_direction_20D": "N/A"
+      },
+      "evaluation_metrics": {
+        "ic_5D": "N/A",
+        "rank_ic_5D": "N/A",
+        "ic_20D": "N/A",
+        "rank_ic_20D": "N/A",
+        "stability_score": "N/A",
+        "decay_score": "N/A",
+        "coverage_score": "N/A",
+        "sample_robustness_score": "N/A",
+        "correlation_redundancy_score": "N/A",
+        "industry_bias_score": "N/A",
+        "turnover_cost_score": "N/A",
+        "liquidity_sensitivity_score": "N/A",
+        "implementation_complexity_score": "N/A",
+        "explainability_score": "N/A",
+        "data_quality_score": "N/A"
+      },
+      "risk_flags": {
+        "small_sample_flag": true,
+        "missing_data_flag": true,
+        "lookahead_risk_flag": true,
+        "survivorship_risk_flag": true,
+        "industry_bias_flag": true,
+        "turnover_cost_flag": true,
+        "redundancy_flag": "N/A",
+        "overfit_risk_flag": true,
+        "execution_dependency_flag": false,
+        "pipeline_dependency_flag": false,
+        "blocked_for_promotion_reason": "NO_FORMAL_OOS_VALIDATION"
+      },
+      "decision_fields": {
+        "evaluation_tier": "TIER_A_READY_FOR_FORMAL_VALIDATION",
+        "confidence_tier": "LOW_MEDIUM",
+        "use_case_class": "STANDALONE_SIGNAL_CANDIDATE",
+        "promotion_allowed": false,
+        "alpha_claim_allowed": false,
+        "execution_allowed": false,
+        "runner_enabled": false,
+        "paper_trading_allowed": false,
+        "recommended_action": "EXPAND_TO_U475_6_MONTH_FORMAL_VALIDATION",
+        "next_required_validation": "U475_6_MONTH_FORMAL_VALIDATION"
+      },
+      "hash_fields": {
+        "factor_evaluation_row_hash": "2fd66608192ab31347a227a8358b697fbc91810d0b4cad4574b5048c45baaa42",
+        "factor_evaluation_matrix_hash_placeholder": "46b591d466f3abbf531cf85edf29dd35c3ee6096fc64399a71d6c2eb2e1547ed"
+      }
+    },
+    {
+      "identity": {
+        "factor_id": "F53",
+        "factor_name": "Factor_F53",
+        "canonical_group": "F7_A_STANDALONE",
+        "canonical_status": "CANONICAL_REGISTERED",
+        "signal_role": "STANDALONE_SIGNAL",
+        "standalone_or_pipeline_bound": "F7_A_STANDALONE",
+        "source_registry_status": "REGISTERED"
+      },
+      "data_scope": {
+        "sample_universe": "U475 (pre-OOS)",
+        "sample_size": 475,
+        "sample_window_start": "2025-11",
+        "sample_window_end": "2026-05",
+        "rebalance_date": "MONTHLY",
+        "horizons": [
+          "5D",
+          "20D"
+        ],
+        "formal_oos_validation_executed": false,
+        "formal_validation_status": "NOT_EXECUTED",
+        "measurement_status": "MICRO_SAMPLE_MONITORING_ONLY"
+      },
+      "performance_observation": {
+        "monitoring_positive_5D": "N/A",
+        "monitoring_positive_20D": "N/A",
+        "micro_sample_return_5D": "N/A",
+        "micro_sample_return_20D": "N/A",
+        "hit_direction_5D": "N/A",
+        "hit_direction_20D": "N/A"
+      },
+      "evaluation_metrics": {
+        "ic_5D": "N/A",
+        "rank_ic_5D": "N/A",
+        "ic_20D": "N/A",
+        "rank_ic_20D": "N/A",
+        "stability_score": "N/A",
+        "decay_score": "N/A",
+        "coverage_score": "N/A",
+        "sample_robustness_score": "N/A",
+        "correlation_redundancy_score": "N/A",
+        "industry_bias_score": "N/A",
+        "turnover_cost_score": "N/A",
+        "liquidity_sensitivity_score": "N/A",
+        "implementation_complexity_score": "N/A",
+        "explainability_score": "N/A",
+        "data_quality_score": "N/A"
+      },
+      "risk_flags": {
+        "small_sample_flag": true,
+        "missing_data_flag": true,
+        "lookahead_risk_flag": true,
+        "survivorship_risk_flag": true,
+        "industry_bias_flag": true,
+        "turnover_cost_flag": true,
+        "redundancy_flag": "N/A",
+        "overfit_risk_flag": true,
+        "execution_dependency_flag": false,
+        "pipeline_dependency_flag": false,
+        "blocked_for_promotion_reason": "NO_FORMAL_OOS_VALIDATION"
+      },
+      "decision_fields": {
+        "evaluation_tier": "TIER_A_READY_FOR_FORMAL_VALIDATION",
+        "confidence_tier": "LOW_MEDIUM",
+        "use_case_class": "STANDALONE_SIGNAL_CANDIDATE",
+        "promotion_allowed": false,
+        "alpha_claim_allowed": false,
+        "execution_allowed": false,
+        "runner_enabled": false,
+        "paper_trading_allowed": false,
+        "recommended_action": "EXPAND_TO_U475_6_MONTH_FORMAL_VALIDATION",
+        "next_required_validation": "U475_6_MONTH_FORMAL_VALIDATION"
+      },
+      "hash_fields": {
+        "factor_evaluation_row_hash": "dcdd1edd634fbece45fa07431cb28acfa89ec2096e62ff870ebf67ff3dcbcf6c",
+        "factor_evaluation_matrix_hash_placeholder": "46b591d466f3abbf531cf85edf29dd35c3ee6096fc64399a71d6c2eb2e1547ed"
+      }
+    },
+    {
+      "identity": {
+        "factor_id": "F54",
+        "factor_name": "Factor_F54",
+        "canonical_group": "F7_A_STANDALONE",
+        "canonical_status": "CANONICAL_REGISTERED",
+        "signal_role": "STANDALONE_SIGNAL",
+        "standalone_or_pipeline_bound": "F7_A_STANDALONE",
+        "source_registry_status": "REGISTERED"
+      },
+      "data_scope": {
+        "sample_universe": "U475 (pre-OOS)",
+        "sample_size": 475,
+        "sample_window_start": "2025-11",
+        "sample_window_end": "2026-05",
+        "rebalance_date": "MONTHLY",
+        "horizons": [
+          "5D",
+          "20D"
+        ],
+        "formal_oos_validation_executed": false,
+        "formal_validation_status": "NOT_EXECUTED",
+        "measurement_status": "MICRO_SAMPLE_MONITORING_ONLY"
+      },
+      "performance_observation": {
+        "monitoring_positive_5D": "N/A",
+        "monitoring_positive_20D": "N/A",
+        "micro_sample_return_5D": "N/A",
+        "micro_sample_return_20D": "N/A",
+        "hit_direction_5D": "N/A",
+        "hit_direction_20D": "N/A"
+      },
+      "evaluation_metrics": {
+        "ic_5D": "N/A",
+        "rank_ic_5D": "N/A",
+        "ic_20D": "N/A",
+        "rank_ic_20D": "N/A",
+        "stability_score": "N/A",
+        "decay_score": "N/A",
+        "coverage_score": "N/A",
+        "sample_robustness_score": "N/A",
+        "correlation_redundancy_score": "N/A",
+        "industry_bias_score": "N/A",
+        "turnover_cost_score": "N/A",
+        "liquidity_sensitivity_score": "N/A",
+        "implementation_complexity_score": "N/A",
+        "explainability_score": "N/A",
+        "data_quality_score": "N/A"
+      },
+      "risk_flags": {
+        "small_sample_flag": true,
+        "missing_data_flag": true,
+        "lookahead_risk_flag": true,
+        "survivorship_risk_flag": true,
+        "industry_bias_flag": true,
+        "turnover_cost_flag": true,
+        "redundancy_flag": "N/A",
+        "overfit_risk_flag": true,
+        "execution_dependency_flag": false,
+        "pipeline_dependency_flag": false,
+        "blocked_for_promotion_reason": "NO_FORMAL_OOS_VALIDATION"
+      },
+      "decision_fields": {
+        "evaluation_tier": "TIER_A_READY_FOR_FORMAL_VALIDATION",
+        "confidence_tier": "LOW_MEDIUM",
+        "use_case_class": "STANDALONE_SIGNAL_CANDIDATE",
+        "promotion_allowed": false,
+        "alpha_claim_allowed": false,
+        "execution_allowed": false,
+        "runner_enabled": false,
+        "paper_trading_allowed": false,
+        "recommended_action": "EXPAND_TO_U475_6_MONTH_FORMAL_VALIDATION",
+        "next_required_validation": "U475_6_MONTH_FORMAL_VALIDATION"
+      },
+      "hash_fields": {
+        "factor_evaluation_row_hash": "34655e70bca9903946fe11e4bc9bea83946db3c303a509f10e6ab2dc312e2beb",
+        "factor_evaluation_matrix_hash_placeholder": "46b591d466f3abbf531cf85edf29dd35c3ee6096fc64399a71d6c2eb2e1547ed"
+      }
+    },
+    {
+      "identity": {
+        "factor_id": "F55",
+        "factor_name": "Factor_F55",
+        "canonical_group": "F7_A_STANDALONE",
+        "canonical_status": "CANONICAL_REGISTERED",
+        "signal_role": "STANDALONE_SIGNAL",
+        "standalone_or_pipeline_bound": "F7_A_STANDALONE",
+        "source_registry_status": "REGISTERED"
+      },
+      "data_scope": {
+        "sample_universe": "U475 (pre-OOS)",
+        "sample_size": 475,
+        "sample_window_start": "2025-11",
+        "sample_window_end": "2026-05",
+        "rebalance_date": "MONTHLY",
+        "horizons": [
+          "5D",
+          "20D"
+        ],
+        "formal_oos_validation_executed": false,
+        "formal_validation_status": "NOT_EXECUTED",
+        "measurement_status": "MICRO_SAMPLE_MONITORING_ONLY"
+      },
+      "performance_observation": {
+        "monitoring_positive_5D": "N/A",
+        "monitoring_positive_20D": "N/A",
+        "micro_sample_return_5D": "N/A",
+        "micro_sample_return_20D": "N/A",
+        "hit_direction_5D": "N/A",
+        "hit_direction_20D": "N/A"
+      },
+      "evaluation_metrics": {
+        "ic_5D": "N/A",
+        "rank_ic_5D": "N/A",
+        "ic_20D": "N/A",
+        "rank_ic_20D": "N/A",
+        "stability_score": "N/A",
+        "decay_score": "N/A",
+        "coverage_score": "N/A",
+        "sample_robustness_score": "N/A",
+        "correlation_redundancy_score": "N/A",
+        "industry_bias_score": "N/A",
+        "turnover_cost_score": "N/A",
+        "liquidity_sensitivity_score": "N/A",
+        "implementation_complexity_score": "N/A",
+        "explainability_score": "N/A",
+        "data_quality_score": "N/A"
+      },
+      "risk_flags": {
+        "small_sample_flag": true,
+        "missing_data_flag": true,
+        "lookahead_risk_flag": true,
+        "survivorship_risk_flag": true,
+        "industry_bias_flag": true,
+        "turnover_cost_flag": true,
+        "redundancy_flag": "N/A",
+        "overfit_risk_flag": true,
+        "execution_dependency_flag": false,
+        "pipeline_dependency_flag": false,
+        "blocked_for_promotion_reason": "NO_FORMAL_OOS_VALIDATION"
+      },
+      "decision_fields": {
+        "evaluation_tier": "TIER_A_READY_FOR_FORMAL_VALIDATION",
+        "confidence_tier": "LOW_MEDIUM",
+        "use_case_class": "STANDALONE_SIGNAL_CANDIDATE",
+        "promotion_allowed": false,
+        "alpha_claim_allowed": false,
+        "execution_allowed": false,
+        "runner_enabled": false,
+        "paper_trading_allowed": false,
+        "recommended_action": "EXPAND_TO_U475_6_MONTH_FORMAL_VALIDATION",
+        "next_required_validation": "U475_6_MONTH_FORMAL_VALIDATION"
+      },
+      "hash_fields": {
+        "factor_evaluation_row_hash": "7af7e864691d832e19d18908113a644c0b6d5b850fa1e1effee4156bc754c791",
+        "factor_evaluation_matrix_hash_placeholder": "46b591d466f3abbf531cf85edf29dd35c3ee6096fc64399a71d6c2eb2e1547ed"
+      }
+    },
+    {
+      "identity": {
+        "factor_id": "F56",
+        "factor_name": "Factor_F56",
+        "canonical_group": "F7_A_STANDALONE",
+        "canonical_status": "CANONICAL_REGISTERED",
+        "signal_role": "STANDALONE_SIGNAL",
+        "standalone_or_pipeline_bound": "F7_A_STANDALONE",
+        "source_registry_status": "REGISTERED"
+      },
+      "data_scope": {
+        "sample_universe": "U475 (pre-OOS)",
+        "sample_size": 475,
+        "sample_window_start": "2025-11",
+        "sample_window_end": "2026-05",
+        "rebalance_date": "MONTHLY",
+        "horizons": [
+          "5D",
+          "20D"
+        ],
+        "formal_oos_validation_executed": false,
+        "formal_validation_status": "NOT_EXECUTED",
+        "measurement_status": "MICRO_SAMPLE_MONITORING_ONLY"
+      },
+      "performance_observation": {
+        "monitoring_positive_5D": "N/A",
+        "monitoring_positive_20D": "N/A",
+        "micro_sample_return_5D": "N/A",
+        "micro_sample_return_20D": "N/A",
+        "hit_direction_5D": "N/A",
+        "hit_direction_20D": "N/A"
+      },
+      "evaluation_metrics": {
+        "ic_5D": "N/A",
+        "rank_ic_5D": "N/A",
+        "ic_20D": "N/A",
+        "rank_ic_20D": "N/A",
+        "stability_score": "N/A",
+        "decay_score": "N/A",
+        "coverage_score": "N/A",
+        "sample_robustness_score": "N/A",
+        "correlation_redundancy_score": "N/A",
+        "industry_bias_score": "N/A",
+        "turnover_cost_score": "N/A",
+        "liquidity_sensitivity_score": "N/A",
+        "implementation_complexity_score": "N/A",
+        "explainability_score": "N/A",
+        "data_quality_score": "N/A"
+      },
+      "risk_flags": {
+        "small_sample_flag": true,
+        "missing_data_flag": true,
+        "lookahead_risk_flag": true,
+        "survivorship_risk_flag": true,
+        "industry_bias_flag": true,
+        "turnover_cost_flag": true,
+        "redundancy_flag": "N/A",
+        "overfit_risk_flag": true,
+        "execution_dependency_flag": false,
+        "pipeline_dependency_flag": false,
+        "blocked_for_promotion_reason": "NO_FORMAL_OOS_VALIDATION"
+      },
+      "decision_fields": {
+        "evaluation_tier": "TIER_A_READY_FOR_FORMAL_VALIDATION",
+        "confidence_tier": "LOW_MEDIUM",
+        "use_case_class": "STANDALONE_SIGNAL_CANDIDATE",
+        "promotion_allowed": false,
+        "alpha_claim_allowed": false,
+        "execution_allowed": false,
+        "runner_enabled": false,
+        "paper_trading_allowed": false,
+        "recommended_action": "EXPAND_TO_U475_6_MONTH_FORMAL_VALIDATION",
+        "next_required_validation": "U475_6_MONTH_FORMAL_VALIDATION"
+      },
+      "hash_fields": {
+        "factor_evaluation_row_hash": "0a2d5912c6b7e1deb530df775f8fdd39a06329ace960518a8da669dec77a26c4",
+        "factor_evaluation_matrix_hash_placeholder": "46b591d466f3abbf531cf85edf29dd35c3ee6096fc64399a71d6c2eb2e1547ed"
+      }
+    },
+    {
+      "identity": {
+        "factor_id": "F58",
+        "factor_name": "Factor_F58",
+        "canonical_group": "F7_A_STANDALONE",
+        "canonical_status": "CANONICAL_REGISTERED",
+        "signal_role": "STANDALONE_SIGNAL",
+        "standalone_or_pipeline_bound": "F7_A_STANDALONE",
+        "source_registry_status": "REGISTERED"
+      },
+      "data_scope": {
+        "sample_universe": "U475 (pre-OOS)",
+        "sample_size": 475,
+        "sample_window_start": "2025-11",
+        "sample_window_end": "2026-05",
+        "rebalance_date": "MONTHLY",
+        "horizons": [
+          "5D",
+          "20D"
+        ],
+        "formal_oos_validation_executed": false,
+        "formal_validation_status": "NOT_EXECUTED",
+        "measurement_status": "MICRO_SAMPLE_MONITORING_ONLY"
+      },
+      "performance_observation": {
+        "monitoring_positive_5D": "N/A",
+        "monitoring_positive_20D": "N/A",
+        "micro_sample_return_5D": "N/A",
+        "micro_sample_return_20D": "N/A",
+        "hit_direction_5D": "N/A",
+        "hit_direction_20D": "N/A"
+      },
+      "evaluation_metrics": {
+        "ic_5D": "N/A",
+        "rank_ic_5D": "N/A",
+        "ic_20D": "N/A",
+        "rank_ic_20D": "N/A",
+        "stability_score": "N/A",
+        "decay_score": "N/A",
+        "coverage_score": "N/A",
+        "sample_robustness_score": "N/A",
+        "correlation_redundancy_score": "N/A",
+        "industry_bias_score": "N/A",
+        "turnover_cost_score": "N/A",
+        "liquidity_sensitivity_score": "N/A",
+        "implementation_complexity_score": "N/A",
+        "explainability_score": "N/A",
+        "data_quality_score": "N/A"
+      },
+      "risk_flags": {
+        "small_sample_flag": true,
+        "missing_data_flag": true,
+        "lookahead_risk_flag": true,
+        "survivorship_risk_flag": true,
+        "industry_bias_flag": true,
+        "turnover_cost_flag": true,
+        "redundancy_flag": "N/A",
+        "overfit_risk_flag": true,
+        "execution_dependency_flag": false,
+        "pipeline_dependency_flag": false,
+        "blocked_for_promotion_reason": "NO_FORMAL_OOS_VALIDATION"
+      },
+      "decision_fields": {
+        "evaluation_tier": "TIER_A_READY_FOR_FORMAL_VALIDATION",
+        "confidence_tier": "LOW_MEDIUM",
+        "use_case_class": "STANDALONE_SIGNAL_CANDIDATE",
+        "promotion_allowed": false,
+        "alpha_claim_allowed": false,
+        "execution_allowed": false,
+        "runner_enabled": false,
+        "paper_trading_allowed": false,
+        "recommended_action": "EXPAND_TO_U475_6_MONTH_FORMAL_VALIDATION",
+        "next_required_validation": "U475_6_MONTH_FORMAL_VALIDATION"
+      },
+      "hash_fields": {
+        "factor_evaluation_row_hash": "6d03a0a811cb3d06d1821a5a8e719ee21073d5b5796f06a28ebeef41fae1bed4",
+        "factor_evaluation_matrix_hash_placeholder": "46b591d466f3abbf531cf85edf29dd35c3ee6096fc64399a71d6c2eb2e1547ed"
+      }
+    },
+    {
+      "identity": {
+        "factor_id": "F60",
+        "factor_name": "Factor_F60",
+        "canonical_group": "F7_A_STANDALONE",
+        "canonical_status": "CANONICAL_REGISTERED",
+        "signal_role": "STANDALONE_SIGNAL",
+        "standalone_or_pipeline_bound": "F7_A_STANDALONE",
+        "source_registry_status": "REGISTERED"
+      },
+      "data_scope": {
+        "sample_universe": "U475 (pre-OOS)",
+        "sample_size": 475,
+        "sample_window_start": "2025-11",
+        "sample_window_end": "2026-05",
+        "rebalance_date": "MONTHLY",
+        "horizons": [
+          "5D",
+          "20D"
+        ],
+        "formal_oos_validation_executed": false,
+        "formal_validation_status": "NOT_EXECUTED",
+        "measurement_status": "MICRO_SAMPLE_MONITORING_ONLY"
+      },
+      "performance_observation": {
+        "monitoring_positive_5D": "N/A",
+        "monitoring_positive_20D": "N/A",
+        "micro_sample_return_5D": "N/A",
+        "micro_sample_return_20D": "N/A",
+        "hit_direction_5D": "N/A",
+        "hit_direction_20D": "N/A"
+      },
+      "evaluation_metrics": {
+        "ic_5D": "N/A",
+        "rank_ic_5D": "N/A",
+        "ic_20D": "N/A",
+        "rank_ic_20D": "N/A",
+        "stability_score": "N/A",
+        "decay_score": "N/A",
+        "coverage_score": "N/A",
+        "sample_robustness_score": "N/A",
+        "correlation_redundancy_score": "N/A",
+        "industry_bias_score": "N/A",
+        "turnover_cost_score": "N/A",
+        "liquidity_sensitivity_score": "N/A",
+        "implementation_complexity_score": "N/A",
+        "explainability_score": "N/A",
+        "data_quality_score": "N/A"
+      },
+      "risk_flags": {
+        "small_sample_flag": true,
+        "missing_data_flag": true,
+        "lookahead_risk_flag": true,
+        "survivorship_risk_flag": true,
+        "industry_bias_flag": true,
+        "turnover_cost_flag": true,
+        "redundancy_flag": "N/A",
+        "overfit_risk_flag": true,
+        "execution_dependency_flag": false,
+        "pipeline_dependency_flag": false,
+        "blocked_for_promotion_reason": "NO_FORMAL_OOS_VALIDATION"
+      },
+      "decision_fields": {
+        "evaluation_tier": "TIER_A_READY_FOR_FORMAL_VALIDATION",
+        "confidence_tier": "LOW_MEDIUM",
+        "use_case_class": "STANDALONE_SIGNAL_CANDIDATE",
+        "promotion_allowed": false,
+        "alpha_claim_allowed": false,
+        "execution_allowed": false,
+        "runner_enabled": false,
+        "paper_trading_allowed": false,
+        "recommended_action": "EXPAND_TO_U475_6_MONTH_FORMAL_VALIDATION",
+        "next_required_validation": "U475_6_MONTH_FORMAL_VALIDATION"
+      },
+      "hash_fields": {
+        "factor_evaluation_row_hash": "33837f77a284db9d8701a74b078ea764d158f35a344ebf324b5798992ead9840",
+        "factor_evaluation_matrix_hash_placeholder": "46b591d466f3abbf531cf85edf29dd35c3ee6096fc64399a71d6c2eb2e1547ed"
+      }
+    },
+    {
+      "identity": {
+        "factor_id": "F06",
+        "factor_name": "Factor_F06",
+        "canonical_group": "F7_B_PIPELINE_BOUND",
+        "canonical_status": "CANONICAL_REGISTERED",
+        "signal_role": "PIPELINE_BOUND_SIGNAL",
+        "standalone_or_pipeline_bound": "F7_B_PIPELINE_BOUND",
+        "source_registry_status": "REGISTERED"
+      },
+      "data_scope": {
+        "sample_universe": "U475 (pre-OOS)",
+        "sample_size": 475,
+        "sample_window_start": "2025-11",
+        "sample_window_end": "2026-05",
+        "rebalance_date": "MONTHLY",
+        "horizons": [
+          "5D",
+          "20D"
+        ],
+        "formal_oos_validation_executed": false,
+        "formal_validation_status": "NOT_EXECUTED",
+        "measurement_status": "MICRO_SAMPLE_MONITORING_ONLY"
+      },
+      "performance_observation": {
+        "monitoring_positive_5D": "N/A",
+        "monitoring_positive_20D": "N/A",
+        "micro_sample_return_5D": "N/A",
+        "micro_sample_return_20D": "N/A",
+        "hit_direction_5D": "N/A",
+        "hit_direction_20D": "N/A"
+      },
+      "evaluation_metrics": {
+        "ic_5D": "N/A",
+        "rank_ic_5D": "N/A",
+        "ic_20D": "N/A",
+        "rank_ic_20D": "N/A",
+        "stability_score": "N/A",
+        "decay_score": "N/A",
+        "coverage_score": "N/A",
+        "sample_robustness_score": "N/A",
+        "correlation_redundancy_score": "N/A",
+        "industry_bias_score": "N/A",
+        "turnover_cost_score": "N/A",
+        "liquidity_sensitivity_score": "N/A",
+        "implementation_complexity_score": "N/A",
+        "explainability_score": "N/A",
+        "data_quality_score": "N/A"
+      },
+      "risk_flags": {
+        "small_sample_flag": true,
+        "missing_data_flag": true,
+        "lookahead_risk_flag": true,
+        "survivorship_risk_flag": true,
+        "industry_bias_flag": true,
+        "turnover_cost_flag": true,
+        "redundancy_flag": "N/A",
+        "overfit_risk_flag": true,
+        "execution_dependency_flag": true,
+        "pipeline_dependency_flag": true,
+        "blocked_for_promotion_reason": "NO_FORMAL_OOS_VALIDATION"
+      },
+      "decision_fields": {
+        "evaluation_tier": "TIER_A_READY_FOR_FORMAL_VALIDATION",
+        "confidence_tier": "LOW_MEDIUM",
+        "use_case_class": "PIPELINE_BOUND_SIGNAL_CANDIDATE",
+        "promotion_allowed": false,
+        "alpha_claim_allowed": false,
+        "execution_allowed": false,
+        "runner_enabled": false,
+        "paper_trading_allowed": false,
+        "recommended_action": "EXPAND_TO_U475_6_MONTH_FORMAL_VALIDATION",
+        "next_required_validation": "U475_6_MONTH_FORMAL_VALIDATION"
+      },
+      "hash_fields": {
+        "factor_evaluation_row_hash": "14b175e5f8ed33d649f970e6e6aa60b1f6af31f086c3aa97ed6a6cda68712146",
+        "factor_evaluation_matrix_hash_placeholder": "46b591d466f3abbf531cf85edf29dd35c3ee6096fc64399a71d6c2eb2e1547ed"
+      }
+    },
+    {
+      "identity": {
+        "factor_id": "F07",
+        "factor_name": "Factor_F07",
+        "canonical_group": "F7_B_PIPELINE_BOUND",
+        "canonical_status": "CANONICAL_REGISTERED",
+        "signal_role": "PIPELINE_BOUND_SIGNAL",
+        "standalone_or_pipeline_bound": "F7_B_PIPELINE_BOUND",
+        "source_registry_status": "REGISTERED"
+      },
+      "data_scope": {
+        "sample_universe": "U475 (pre-OOS)",
+        "sample_size": 475,
+        "sample_window_start": "2025-11",
+        "sample_window_end": "2026-05",
+        "rebalance_date": "MONTHLY",
+        "horizons": [
+          "5D",
+          "20D"
+        ],
+        "formal_oos_validation_executed": false,
+        "formal_validation_status": "NOT_EXECUTED",
+        "measurement_status": "MICRO_SAMPLE_MONITORING_ONLY"
+      },
+      "performance_observation": {
+        "monitoring_positive_5D": "N/A",
+        "monitoring_positive_20D": "N/A",
+        "micro_sample_return_5D": "N/A",
+        "micro_sample_return_20D": "N/A",
+        "hit_direction_5D": "N/A",
+        "hit_direction_20D": "N/A"
+      },
+      "evaluation_metrics": {
+        "ic_5D": "N/A",
+        "rank_ic_5D": "N/A",
+        "ic_20D": "N/A",
+        "rank_ic_20D": "N/A",
+        "stability_score": "N/A",
+        "decay_score": "N/A",
+        "coverage_score": "N/A",
+        "sample_robustness_score": "N/A",
+        "correlation_redundancy_score": "N/A",
+        "industry_bias_score": "N/A",
+        "turnover_cost_score": "N/A",
+        "liquidity_sensitivity_score": "N/A",
+        "implementation_complexity_score": "N/A",
+        "explainability_score": "N/A",
+        "data_quality_score": "N/A"
+      },
+      "risk_flags": {
+        "small_sample_flag": true,
+        "missing_data_flag": true,
+        "lookahead_risk_flag": true,
+        "survivorship_risk_flag": true,
+        "industry_bias_flag": true,
+        "turnover_cost_flag": true,
+        "redundancy_flag": "N/A",
+        "overfit_risk_flag": true,
+        "execution_dependency_flag": true,
+        "pipeline_dependency_flag": true,
+        "blocked_for_promotion_reason": "NO_FORMAL_OOS_VALIDATION"
+      },
+      "decision_fields": {
+        "evaluation_tier": "TIER_C_NEEDS_MORE_DATA",
+        "confidence_tier": "LOW",
+        "use_case_class": "PIPELINE_BOUND_SIGNAL_CANDIDATE",
+        "promotion_allowed": false,
+        "alpha_claim_allowed": false,
+        "execution_allowed": false,
+        "runner_enabled": false,
+        "paper_trading_allowed": false,
+        "recommended_action": "HOLD_FOR_DATA_QUALITY_REVIEW",
+        "next_required_validation": "U475_6_MONTH_FORMAL_VALIDATION"
+      },
+      "hash_fields": {
+        "factor_evaluation_row_hash": "987302d431c8ef85e55f16f063c516422d44c19e393d3290c78a92ccda982c9d",
+        "factor_evaluation_matrix_hash_placeholder": "46b591d466f3abbf531cf85edf29dd35c3ee6096fc64399a71d6c2eb2e1547ed"
+      }
+    },
+    {
+      "identity": {
+        "factor_id": "F08",
+        "factor_name": "Factor_F08",
+        "canonical_group": "F7_B_PIPELINE_BOUND",
+        "canonical_status": "CANONICAL_REGISTERED",
+        "signal_role": "PIPELINE_BOUND_SIGNAL",
+        "standalone_or_pipeline_bound": "F7_B_PIPELINE_BOUND",
+        "source_registry_status": "REGISTERED"
+      },
+      "data_scope": {
+        "sample_universe": "U475 (pre-OOS)",
+        "sample_size": 475,
+        "sample_window_start": "2025-11",
+        "sample_window_end": "2026-05",
+        "rebalance_date": "MONTHLY",
+        "horizons": [
+          "5D",
+          "20D"
+        ],
+        "formal_oos_validation_executed": false,
+        "formal_validation_status": "NOT_EXECUTED",
+        "measurement_status": "MICRO_SAMPLE_MONITORING_ONLY"
+      },
+      "performance_observation": {
+        "monitoring_positive_5D": "N/A",
+        "monitoring_positive_20D": "N/A",
+        "micro_sample_return_5D": "N/A",
+        "micro_sample_return_20D": "N/A",
+        "hit_direction_5D": "N/A",
+        "hit_direction_20D": "N/A"
+      },
+      "evaluation_metrics": {
+        "ic_5D": "N/A",
+        "rank_ic_5D": "N/A",
+        "ic_20D": "N/A",
+        "rank_ic_20D": "N/A",
+        "stability_score": "N/A",
+        "decay_score": "N/A",
+        "coverage_score": "N/A",
+        "sample_robustness_score": "N/A",
+        "correlation_redundancy_score": "N/A",
+        "industry_bias_score": "N/A",
+        "turnover_cost_score": "N/A",
+        "liquidity_sensitivity_score": "N/A",
+        "implementation_complexity_score": "N/A",
+        "explainability_score": "N/A",
+        "data_quality_score": "N/A"
+      },
+      "risk_flags": {
+        "small_sample_flag": true,
+        "missing_data_flag": true,
+        "lookahead_risk_flag": true,
+        "survivorship_risk_flag": true,
+        "industry_bias_flag": true,
+        "turnover_cost_flag": true,
+        "redundancy_flag": "N/A",
+        "overfit_risk_flag": true,
+        "execution_dependency_flag": true,
+        "pipeline_dependency_flag": true,
+        "blocked_for_promotion_reason": "NO_FORMAL_OOS_VALIDATION"
+      },
+      "decision_fields": {
+        "evaluation_tier": "TIER_A_READY_FOR_FORMAL_VALIDATION",
+        "confidence_tier": "LOW_MEDIUM",
+        "use_case_class": "PIPELINE_BOUND_SIGNAL_CANDIDATE",
+        "promotion_allowed": false,
+        "alpha_claim_allowed": false,
+        "execution_allowed": false,
+        "runner_enabled": false,
+        "paper_trading_allowed": false,
+        "recommended_action": "EXPAND_TO_U475_6_MONTH_FORMAL_VALIDATION",
+        "next_required_validation": "U475_6_MONTH_FORMAL_VALIDATION"
+      },
+      "hash_fields": {
+        "factor_evaluation_row_hash": "f018c945bf20dcc9cecaeb0d8ec2923d5243a668b5a86cba71825a5bc9a8b5ff",
+        "factor_evaluation_matrix_hash_placeholder": "46b591d466f3abbf531cf85edf29dd35c3ee6096fc64399a71d6c2eb2e1547ed"
+      }
+    },
+    {
+      "identity": {
+        "factor_id": "F09",
+        "factor_name": "Factor_F09",
+        "canonical_group": "F7_B_PIPELINE_BOUND",
+        "canonical_status": "CANONICAL_REGISTERED",
+        "signal_role": "PIPELINE_BOUND_SIGNAL",
+        "standalone_or_pipeline_bound": "F7_B_PIPELINE_BOUND",
+        "source_registry_status": "REGISTERED"
+      },
+      "data_scope": {
+        "sample_universe": "U475 (pre-OOS)",
+        "sample_size": 475,
+        "sample_window_start": "2025-11",
+        "sample_window_end": "2026-05",
+        "rebalance_date": "MONTHLY",
+        "horizons": [
+          "5D",
+          "20D"
+        ],
+        "formal_oos_validation_executed": false,
+        "formal_validation_status": "NOT_EXECUTED",
+        "measurement_status": "MICRO_SAMPLE_MONITORING_ONLY"
+      },
+      "performance_observation": {
+        "monitoring_positive_5D": "N/A",
+        "monitoring_positive_20D": "N/A",
+        "micro_sample_return_5D": "N/A",
+        "micro_sample_return_20D": "N/A",
+        "hit_direction_5D": "N/A",
+        "hit_direction_20D": "N/A"
+      },
+      "evaluation_metrics": {
+        "ic_5D": "N/A",
+        "rank_ic_5D": "N/A",
+        "ic_20D": "N/A",
+        "rank_ic_20D": "N/A",
+        "stability_score": "N/A",
+        "decay_score": "N/A",
+        "coverage_score": "N/A",
+        "sample_robustness_score": "N/A",
+        "correlation_redundancy_score": "N/A",
+        "industry_bias_score": "N/A",
+        "turnover_cost_score": "N/A",
+        "liquidity_sensitivity_score": "N/A",
+        "implementation_complexity_score": "N/A",
+        "explainability_score": "N/A",
+        "data_quality_score": "N/A"
+      },
+      "risk_flags": {
+        "small_sample_flag": true,
+        "missing_data_flag": true,
+        "lookahead_risk_flag": true,
+        "survivorship_risk_flag": true,
+        "industry_bias_flag": true,
+        "turnover_cost_flag": true,
+        "redundancy_flag": "N/A",
+        "overfit_risk_flag": true,
+        "execution_dependency_flag": true,
+        "pipeline_dependency_flag": true,
+        "blocked_for_promotion_reason": "NO_FORMAL_OOS_VALIDATION"
+      },
+      "decision_fields": {
+        "evaluation_tier": "TIER_C_NEEDS_MORE_DATA",
+        "confidence_tier": "LOW",
+        "use_case_class": "PIPELINE_BOUND_SIGNAL_CANDIDATE",
+        "promotion_allowed": false,
+        "alpha_claim_allowed": false,
+        "execution_allowed": false,
+        "runner_enabled": false,
+        "paper_trading_allowed": false,
+        "recommended_action": "HOLD_FOR_DATA_QUALITY_REVIEW",
+        "next_required_validation": "U475_6_MONTH_FORMAL_VALIDATION"
+      },
+      "hash_fields": {
+        "factor_evaluation_row_hash": "4024591953b7f7ba0e2c09e4381a5dcd910162099325388c16804ddf50e4a034",
+        "factor_evaluation_matrix_hash_placeholder": "46b591d466f3abbf531cf85edf29dd35c3ee6096fc64399a71d6c2eb2e1547ed"
+      }
+    },
+    {
+      "identity": {
+        "factor_id": "F12",
+        "factor_name": "Factor_F12",
+        "canonical_group": "F7_B_PIPELINE_BOUND",
+        "canonical_status": "CANONICAL_REGISTERED",
+        "signal_role": "PIPELINE_BOUND_SIGNAL",
+        "standalone_or_pipeline_bound": "F7_B_PIPELINE_BOUND",
+        "source_registry_status": "REGISTERED"
+      },
+      "data_scope": {
+        "sample_universe": "U475 (pre-OOS)",
+        "sample_size": 475,
+        "sample_window_start": "2025-11",
+        "sample_window_end": "2026-05",
+        "rebalance_date": "MONTHLY",
+        "horizons": [
+          "5D",
+          "20D"
+        ],
+        "formal_oos_validation_executed": false,
+        "formal_validation_status": "NOT_EXECUTED",
+        "measurement_status": "MICRO_SAMPLE_MONITORING_ONLY"
+      },
+      "performance_observation": {
+        "monitoring_positive_5D": "N/A",
+        "monitoring_positive_20D": "N/A",
+        "micro_sample_return_5D": "N/A",
+        "micro_sample_return_20D": "N/A",
+        "hit_direction_5D": "N/A",
+        "hit_direction_20D": "N/A"
+      },
+      "evaluation_metrics": {
+        "ic_5D": "N/A",
+        "rank_ic_5D": "N/A",
+        "ic_20D": "N/A",
+        "rank_ic_20D": "N/A",
+        "stability_score": "N/A",
+        "decay_score": "N/A",
+        "coverage_score": "N/A",
+        "sample_robustness_score": "N/A",
+        "correlation_redundancy_score": "N/A",
+        "industry_bias_score": "N/A",
+        "turnover_cost_score": "N/A",
+        "liquidity_sensitivity_score": "N/A",
+        "implementation_complexity_score": "N/A",
+        "explainability_score": "N/A",
+        "data_quality_score": "N/A"
+      },
+      "risk_flags": {
+        "small_sample_flag": true,
+        "missing_data_flag": true,
+        "lookahead_risk_flag": true,
+        "survivorship_risk_flag": true,
+        "industry_bias_flag": true,
+        "turnover_cost_flag": true,
+        "redundancy_flag": "N/A",
+        "overfit_risk_flag": true,
+        "execution_dependency_flag": true,
+        "pipeline_dependency_flag": true,
+        "blocked_for_promotion_reason": "NO_FORMAL_OOS_VALIDATION"
+      },
+      "decision_fields": {
+        "evaluation_tier": "TIER_C_NEEDS_MORE_DATA",
+        "confidence_tier": "LOW",
+        "use_case_class": "PIPELINE_BOUND_SIGNAL_CANDIDATE",
+        "promotion_allowed": false,
+        "alpha_claim_allowed": false,
+        "execution_allowed": false,
+        "runner_enabled": false,
+        "paper_trading_allowed": false,
+        "recommended_action": "HOLD_FOR_DATA_QUALITY_REVIEW",
+        "next_required_validation": "U475_6_MONTH_FORMAL_VALIDATION"
+      },
+      "hash_fields": {
+        "factor_evaluation_row_hash": "2bf015884863418b196b17e1816dbe517bb11edb9c9625dc57ba0cfe2d48fb0b",
+        "factor_evaluation_matrix_hash_placeholder": "46b591d466f3abbf531cf85edf29dd35c3ee6096fc64399a71d6c2eb2e1547ed"
+      }
+    },
+    {
+      "identity": {
+        "factor_id": "F14",
+        "factor_name": "Factor_F14",
+        "canonical_group": "F7_B_PIPELINE_BOUND",
+        "canonical_status": "CANONICAL_REGISTERED",
+        "signal_role": "PIPELINE_BOUND_SIGNAL",
+        "standalone_or_pipeline_bound": "F7_B_PIPELINE_BOUND",
+        "source_registry_status": "REGISTERED"
+      },
+      "data_scope": {
+        "sample_universe": "U475 (pre-OOS)",
+        "sample_size": 475,
+        "sample_window_start": "2025-11",
+        "sample_window_end": "2026-05",
+        "rebalance_date": "MONTHLY",
+        "horizons": [
+          "5D",
+          "20D"
+        ],
+        "formal_oos_validation_executed": false,
+        "formal_validation_status": "NOT_EXECUTED",
+        "measurement_status": "MICRO_SAMPLE_MONITORING_ONLY"
+      },
+      "performance_observation": {
+        "monitoring_positive_5D": "N/A",
+        "monitoring_positive_20D": "N/A",
+        "micro_sample_return_5D": "N/A",
+        "micro_sample_return_20D": "N/A",
+        "hit_direction_5D": "N/A",
+        "hit_direction_20D": "N/A"
+      },
+      "evaluation_metrics": {
+        "ic_5D": "N/A",
+        "rank_ic_5D": "N/A",
+        "ic_20D": "N/A",
+        "rank_ic_20D": "N/A",
+        "stability_score": "N/A",
+        "decay_score": "N/A",
+        "coverage_score": "N/A",
+        "sample_robustness_score": "N/A",
+        "correlation_redundancy_score": "N/A",
+        "industry_bias_score": "N/A",
+        "turnover_cost_score": "N/A",
+        "liquidity_sensitivity_score": "N/A",
+        "implementation_complexity_score": "N/A",
+        "explainability_score": "N/A",
+        "data_quality_score": "N/A"
+      },
+      "risk_flags": {
+        "small_sample_flag": true,
+        "missing_data_flag": true,
+        "lookahead_risk_flag": true,
+        "survivorship_risk_flag": true,
+        "industry_bias_flag": true,
+        "turnover_cost_flag": true,
+        "redundancy_flag": "N/A",
+        "overfit_risk_flag": true,
+        "execution_dependency_flag": true,
+        "pipeline_dependency_flag": true,
+        "blocked_for_promotion_reason": "NO_FORMAL_OOS_VALIDATION"
+      },
+      "decision_fields": {
+        "evaluation_tier": "TIER_B_KEEP_PIPELINE_BOUND",
+        "confidence_tier": "LOW_MEDIUM",
+        "use_case_class": "PIPELINE_BOUND_SIGNAL_CANDIDATE",
+        "promotion_allowed": false,
+        "alpha_claim_allowed": false,
+        "execution_allowed": false,
+        "runner_enabled": false,
+        "paper_trading_allowed": false,
+        "recommended_action": "KEEP_PIPELINE_BOUND_PENDING_VALIDATION",
+        "next_required_validation": "U475_6_MONTH_FORMAL_VALIDATION"
+      },
+      "hash_fields": {
+        "factor_evaluation_row_hash": "bf7730acb2e39e2408f41b255739d3d49ba4f6f05f8e8137c780f2274437deef",
+        "factor_evaluation_matrix_hash_placeholder": "46b591d466f3abbf531cf85edf29dd35c3ee6096fc64399a71d6c2eb2e1547ed"
+      }
+    },
+    {
+      "identity": {
+        "factor_id": "F15",
+        "factor_name": "Factor_F15",
+        "canonical_group": "F7_B_PIPELINE_BOUND",
+        "canonical_status": "CANONICAL_REGISTERED",
+        "signal_role": "PIPELINE_BOUND_SIGNAL",
+        "standalone_or_pipeline_bound": "F7_B_PIPELINE_BOUND",
+        "source_registry_status": "REGISTERED"
+      },
+      "data_scope": {
+        "sample_universe": "U475 (pre-OOS)",
+        "sample_size": 475,
+        "sample_window_start": "2025-11",
+        "sample_window_end": "2026-05",
+        "rebalance_date": "MONTHLY",
+        "horizons": [
+          "5D",
+          "20D"
+        ],
+        "formal_oos_validation_executed": false,
+        "formal_validation_status": "NOT_EXECUTED",
+        "measurement_status": "MICRO_SAMPLE_MONITORING_ONLY"
+      },
+      "performance_observation": {
+        "monitoring_positive_5D": "N/A",
+        "monitoring_positive_20D": "N/A",
+        "micro_sample_return_5D": "N/A",
+        "micro_sample_return_20D": "N/A",
+        "hit_direction_5D": "N/A",
+        "hit_direction_20D": "N/A"
+      },
+      "evaluation_metrics": {
+        "ic_5D": "N/A",
+        "rank_ic_5D": "N/A",
+        "ic_20D": "N/A",
+        "rank_ic_20D": "N/A",
+        "stability_score": "N/A",
+        "decay_score": "N/A",
+        "coverage_score": "N/A",
+        "sample_robustness_score": "N/A",
+        "correlation_redundancy_score": "N/A",
+        "industry_bias_score": "N/A",
+        "turnover_cost_score": "N/A",
+        "liquidity_sensitivity_score": "N/A",
+        "implementation_complexity_score": "N/A",
+        "explainability_score": "N/A",
+        "data_quality_score": "N/A"
+      },
+      "risk_flags": {
+        "small_sample_flag": true,
+        "missing_data_flag": true,
+        "lookahead_risk_flag": true,
+        "survivorship_risk_flag": true,
+        "industry_bias_flag": true,
+        "turnover_cost_flag": true,
+        "redundancy_flag": "N/A",
+        "overfit_risk_flag": true,
+        "execution_dependency_flag": true,
+        "pipeline_dependency_flag": true,
+        "blocked_for_promotion_reason": "NO_FORMAL_OOS_VALIDATION"
+      },
+      "decision_fields": {
+        "evaluation_tier": "TIER_B_KEEP_PIPELINE_BOUND",
+        "confidence_tier": "LOW_MEDIUM",
+        "use_case_class": "PIPELINE_BOUND_SIGNAL_CANDIDATE",
+        "promotion_allowed": false,
+        "alpha_claim_allowed": false,
+        "execution_allowed": false,
+        "runner_enabled": false,
+        "paper_trading_allowed": false,
+        "recommended_action": "KEEP_PIPELINE_BOUND_PENDING_VALIDATION",
+        "next_required_validation": "U475_6_MONTH_FORMAL_VALIDATION"
+      },
+      "hash_fields": {
+        "factor_evaluation_row_hash": "79cc6c1438796a55aa664041c5c18465afb6eab73c6faf1dacf89d864d002394",
+        "factor_evaluation_matrix_hash_placeholder": "46b591d466f3abbf531cf85edf29dd35c3ee6096fc64399a71d6c2eb2e1547ed"
+      }
+    },
+    {
+      "identity": {
+        "factor_id": "F44",
+        "factor_name": "Factor_F44",
+        "canonical_group": "F7_B_PIPELINE_BOUND",
+        "canonical_status": "CANONICAL_REGISTERED",
+        "signal_role": "PIPELINE_BOUND_SIGNAL",
+        "standalone_or_pipeline_bound": "F7_B_PIPELINE_BOUND",
+        "source_registry_status": "REGISTERED"
+      },
+      "data_scope": {
+        "sample_universe": "U475 (pre-OOS)",
+        "sample_size": 475,
+        "sample_window_start": "2025-11",
+        "sample_window_end": "2026-05",
+        "rebalance_date": "MONTHLY",
+        "horizons": [
+          "5D",
+          "20D"
+        ],
+        "formal_oos_validation_executed": false,
+        "formal_validation_status": "NOT_EXECUTED",
+        "measurement_status": "MICRO_SAMPLE_MONITORING_ONLY"
+      },
+      "performance_observation": {
+        "monitoring_positive_5D": "N/A",
+        "monitoring_positive_20D": "N/A",
+        "micro_sample_return_5D": "N/A",
+        "micro_sample_return_20D": "N/A",
+        "hit_direction_5D": "N/A",
+        "hit_direction_20D": "N/A"
+      },
+      "evaluation_metrics": {
+        "ic_5D": "N/A",
+        "rank_ic_5D": "N/A",
+        "ic_20D": "N/A",
+        "rank_ic_20D": "N/A",
+        "stability_score": "N/A",
+        "decay_score": "N/A",
+        "coverage_score": "N/A",
+        "sample_robustness_score": "N/A",
+        "correlation_redundancy_score": "N/A",
+        "industry_bias_score": "N/A",
+        "turnover_cost_score": "N/A",
+        "liquidity_sensitivity_score": "N/A",
+        "implementation_complexity_score": "N/A",
+        "explainability_score": "N/A",
+        "data_quality_score": "N/A"
+      },
+      "risk_flags": {
+        "small_sample_flag": true,
+        "missing_data_flag": true,
+        "lookahead_risk_flag": true,
+        "survivorship_risk_flag": true,
+        "industry_bias_flag": true,
+        "turnover_cost_flag": true,
+        "redundancy_flag": "N/A",
+        "overfit_risk_flag": true,
+        "execution_dependency_flag": true,
+        "pipeline_dependency_flag": true,
+        "blocked_for_promotion_reason": "NO_FORMAL_OOS_VALIDATION"
+      },
+      "decision_fields": {
+        "evaluation_tier": "TIER_C_NEEDS_MORE_DATA",
+        "confidence_tier": "LOW",
+        "use_case_class": "PIPELINE_BOUND_SIGNAL_CANDIDATE",
+        "promotion_allowed": false,
+        "alpha_claim_allowed": false,
+        "execution_allowed": false,
+        "runner_enabled": false,
+        "paper_trading_allowed": false,
+        "recommended_action": "HOLD_FOR_DATA_QUALITY_REVIEW",
+        "next_required_validation": "U475_6_MONTH_FORMAL_VALIDATION"
+      },
+      "hash_fields": {
+        "factor_evaluation_row_hash": "0ea8b361d188c65878bed2e674ed72b7ff1b2d84ba46fc8aa4a7f2e21cf321a1",
+        "factor_evaluation_matrix_hash_placeholder": "46b591d466f3abbf531cf85edf29dd35c3ee6096fc64399a71d6c2eb2e1547ed"
+      }
+    },
+    {
+      "identity": {
+        "factor_id": "F45",
+        "factor_name": "Factor_F45",
+        "canonical_group": "F7_B_PIPELINE_BOUND",
+        "canonical_status": "CANONICAL_REGISTERED",
+        "signal_role": "PIPELINE_BOUND_SIGNAL",
+        "standalone_or_pipeline_bound": "F7_B_PIPELINE_BOUND",
+        "source_registry_status": "REGISTERED"
+      },
+      "data_scope": {
+        "sample_universe": "U475 (pre-OOS)",
+        "sample_size": 475,
+        "sample_window_start": "2025-11",
+        "sample_window_end": "2026-05",
+        "rebalance_date": "MONTHLY",
+        "horizons": [
+          "5D",
+          "20D"
+        ],
+        "formal_oos_validation_executed": false,
+        "formal_validation_status": "NOT_EXECUTED",
+        "measurement_status": "MICRO_SAMPLE_MONITORING_ONLY"
+      },
+      "performance_observation": {
+        "monitoring_positive_5D": "N/A",
+        "monitoring_positive_20D": "N/A",
+        "micro_sample_return_5D": "N/A",
+        "micro_sample_return_20D": "N/A",
+        "hit_direction_5D": "N/A",
+        "hit_direction_20D": "N/A"
+      },
+      "evaluation_metrics": {
+        "ic_5D": "N/A",
+        "rank_ic_5D": "N/A",
+        "ic_20D": "N/A",
+        "rank_ic_20D": "N/A",
+        "stability_score": "N/A",
+        "decay_score": "N/A",
+        "coverage_score": "N/A",
+        "sample_robustness_score": "N/A",
+        "correlation_redundancy_score": "N/A",
+        "industry_bias_score": "N/A",
+        "turnover_cost_score": "N/A",
+        "liquidity_sensitivity_score": "N/A",
+        "implementation_complexity_score": "N/A",
+        "explainability_score": "N/A",
+        "data_quality_score": "N/A"
+      },
+      "risk_flags": {
+        "small_sample_flag": true,
+        "missing_data_flag": true,
+        "lookahead_risk_flag": true,
+        "survivorship_risk_flag": true,
+        "industry_bias_flag": true,
+        "turnover_cost_flag": true,
+        "redundancy_flag": "N/A",
+        "overfit_risk_flag": true,
+        "execution_dependency_flag": true,
+        "pipeline_dependency_flag": true,
+        "blocked_for_promotion_reason": "NO_FORMAL_OOS_VALIDATION"
+      },
+      "decision_fields": {
+        "evaluation_tier": "TIER_C_NEEDS_MORE_DATA",
+        "confidence_tier": "LOW",
+        "use_case_class": "PIPELINE_BOUND_SIGNAL_CANDIDATE",
+        "promotion_allowed": false,
+        "alpha_claim_allowed": false,
+        "execution_allowed": false,
+        "runner_enabled": false,
+        "paper_trading_allowed": false,
+        "recommended_action": "HOLD_FOR_DATA_QUALITY_REVIEW",
+        "next_required_validation": "U475_6_MONTH_FORMAL_VALIDATION"
+      },
+      "hash_fields": {
+        "factor_evaluation_row_hash": "6de03cb68476c2e030c21aba622a23d8b0953dc46d1e62bcf68ad6f64386a41f",
+        "factor_evaluation_matrix_hash_placeholder": "46b591d466f3abbf531cf85edf29dd35c3ee6096fc64399a71d6c2eb2e1547ed"
+      }
+    },
+    {
+      "identity": {
+        "factor_id": "F51",
+        "factor_name": "Factor_F51",
+        "canonical_group": "F7_B_PIPELINE_BOUND",
+        "canonical_status": "CANONICAL_REGISTERED",
+        "signal_role": "PIPELINE_BOUND_SIGNAL",
+        "standalone_or_pipeline_bound": "F7_B_PIPELINE_BOUND",
+        "source_registry_status": "REGISTERED"
+      },
+      "data_scope": {
+        "sample_universe": "U475 (pre-OOS)",
+        "sample_size": 475,
+        "sample_window_start": "2025-11",
+        "sample_window_end": "2026-05",
+        "rebalance_date": "MONTHLY",
+        "horizons": [
+          "5D",
+          "20D"
+        ],
+        "formal_oos_validation_executed": false,
+        "formal_validation_status": "NOT_EXECUTED",
+        "measurement_status": "MICRO_SAMPLE_MONITORING_ONLY"
+      },
+      "performance_observation": {
+        "monitoring_positive_5D": "N/A",
+        "monitoring_positive_20D": "N/A",
+        "micro_sample_return_5D": "N/A",
+        "micro_sample_return_20D": "N/A",
+        "hit_direction_5D": "N/A",
+        "hit_direction_20D": "N/A"
+      },
+      "evaluation_metrics": {
+        "ic_5D": "N/A",
+        "rank_ic_5D": "N/A",
+        "ic_20D": "N/A",
+        "rank_ic_20D": "N/A",
+        "stability_score": "N/A",
+        "decay_score": "N/A",
+        "coverage_score": "N/A",
+        "sample_robustness_score": "N/A",
+        "correlation_redundancy_score": "N/A",
+        "industry_bias_score": "N/A",
+        "turnover_cost_score": "N/A",
+        "liquidity_sensitivity_score": "N/A",
+        "implementation_complexity_score": "N/A",
+        "explainability_score": "N/A",
+        "data_quality_score": "N/A"
+      },
+      "risk_flags": {
+        "small_sample_flag": true,
+        "missing_data_flag": true,
+        "lookahead_risk_flag": true,
+        "survivorship_risk_flag": true,
+        "industry_bias_flag": true,
+        "turnover_cost_flag": true,
+        "redundancy_flag": "N/A",
+        "overfit_risk_flag": true,
+        "execution_dependency_flag": true,
+        "pipeline_dependency_flag": true,
+        "blocked_for_promotion_reason": "NO_FORMAL_OOS_VALIDATION"
+      },
+      "decision_fields": {
+        "evaluation_tier": "TIER_B_KEEP_PIPELINE_BOUND",
+        "confidence_tier": "LOW_MEDIUM",
+        "use_case_class": "PIPELINE_BOUND_SIGNAL_CANDIDATE",
+        "promotion_allowed": false,
+        "alpha_claim_allowed": false,
+        "execution_allowed": false,
+        "runner_enabled": false,
+        "paper_trading_allowed": false,
+        "recommended_action": "KEEP_PIPELINE_BOUND_PENDING_VALIDATION",
+        "next_required_validation": "U475_6_MONTH_FORMAL_VALIDATION"
+      },
+      "hash_fields": {
+        "factor_evaluation_row_hash": "754c6f5ddc60617ca3faeba08c82e23f13dad29c4b1fcf4a138b57b109eeab23",
+        "factor_evaluation_matrix_hash_placeholder": "46b591d466f3abbf531cf85edf29dd35c3ee6096fc64399a71d6c2eb2e1547ed"
+      }
+    }
+  ],
+  "aggregate_summary": {
+    "total_factors": 23,
+    "standalone": 13,
+    "pipeline_bound": 10,
+    "tier_a": 15,
+    "tier_b": 3,
+    "tier_c": 5,
+    "tier_d": 0,
+    "formal_oos_executed": false,
+    "promotion_allowed": false,
+    "alpha_claim_allowed": false,
+    "execution_allowed": false,
+    "runner_enabled": false,
+    "paper_trading_allowed": false,
+    "next_required_validation": "U475_6_MONTH_FORMAL_VALIDATION"
+  },
+  "safety_boundary": {
+    "production": "BLOCKED",
+    "broker_runtime": "BLOCKED",
+    "real_trade": "BLOCKED"
+  },
+  "recommended_next_action": "EXPAND_TO_U475_6_MONTHS_FORMAL_VALIDATION"
+}

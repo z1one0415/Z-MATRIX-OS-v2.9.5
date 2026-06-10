@@ -1,0 +1,95 @@
+{
+  "pipeline_signature": "Z2-V13-F7-1-FACTOR-EVALUATION-MATRIX-SCHEMA",
+  "schema_version": "v1.0",
+  "required_top_level_fields": [
+    "pipeline_signature",
+    "status",
+    "base_commit",
+    "source_registry_commit",
+    "source_registry_path",
+    "source_monitoring_path",
+    "matrix_version",
+    "evaluation_scope",
+    "factor_count",
+    "rows",
+    "aggregate_summary",
+    "safety_boundary",
+    "recommended_next_action"
+  ],
+  "row_fields": {
+    "identity": [
+      "factor_id",
+      "factor_name",
+      "canonical_group",
+      "canonical_status",
+      "signal_role",
+      "standalone_or_pipeline_bound",
+      "source_registry_status"
+    ],
+    "data_scope": [
+      "sample_universe",
+      "sample_size",
+      "sample_window_start",
+      "sample_window_end",
+      "rebalance_date",
+      "horizons",
+      "formal_oos_validation_executed",
+      "formal_validation_status",
+      "measurement_status"
+    ],
+    "performance_observation": [
+      "monitoring_positive_5D",
+      "monitoring_positive_20D",
+      "micro_sample_return_5D",
+      "micro_sample_return_20D",
+      "hit_direction_5D",
+      "hit_direction_20D"
+    ],
+    "evaluation_metrics": [
+      "ic_5D",
+      "rank_ic_5D",
+      "ic_20D",
+      "rank_ic_20D",
+      "stability_score",
+      "decay_score",
+      "coverage_score",
+      "sample_robustness_score",
+      "correlation_redundancy_score",
+      "industry_bias_score",
+      "turnover_cost_score",
+      "liquidity_sensitivity_score",
+      "implementation_complexity_score",
+      "explainability_score",
+      "data_quality_score"
+    ],
+    "risk_flags": [
+      "small_sample_flag",
+      "missing_data_flag",
+      "lookahead_risk_flag",
+      "survivorship_risk_flag",
+      "industry_bias_flag",
+      "turnover_cost_flag",
+      "redundancy_flag",
+      "overfit_risk_flag",
+      "execution_dependency_flag",
+      "pipeline_dependency_flag",
+      "blocked_for_promotion_reason"
+    ],
+    "decision_fields": [
+      "evaluation_tier",
+      "confidence_tier",
+      "use_case_class",
+      "promotion_allowed",
+      "alpha_claim_allowed",
+      "execution_allowed",
+      "runner_enabled",
+      "paper_trading_allowed",
+      "recommended_action",
+      "next_required_validation"
+    ],
+    "hash_fields": [
+      "factor_evaluation_row_hash",
+      "factor_evaluation_matrix_hash_placeholder"
+    ]
+  }
+}

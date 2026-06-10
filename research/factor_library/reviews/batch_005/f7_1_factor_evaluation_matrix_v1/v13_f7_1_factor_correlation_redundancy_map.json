@@ -1,0 +1,103 @@
+{
+  "pipeline_signature": "Z2-V13-F7-1-CORRELATION-REDUNDANCY-MAP",
+  "status": "READONLY_DIAGNOSTIC_BUILT",
+  "factor_count": 23,
+  "diagnostic_only": true,
+  "promotion_allowed": false,
+  "correlation_measure_status": "INSUFFICIENT_SAMPLE_FOR_FORMAL_CORRELATION",
+  "clusters": [
+    {
+      "cluster_id": "CLUSTER_A",
+      "members": [
+        "F04",
+        "F10",
+        "F11"
+      ],
+      "dominant_factor_candidate": "F10",
+      "redundancy_risk": "LOW_TO_MEDIUM",
+      "correlation_measure_status": "INSUFFICIENT_SAMPLE_FOR_FORMAL_CORRELATION",
+      "reason": "F04/F10/F11 share similar fundamental quality framework. F10 has strongest structural signal.",
+      "next_required_validation": "U475_6_MONTH_FORMAL_VALIDATION"
+    },
+    {
+      "cluster_id": "CLUSTER_B",
+      "members": [
+        "F21",
+        "F24",
+        "F30"
+      ],
+      "dominant_factor_candidate": "F24",
+      "redundancy_risk": "MEDIUM",
+      "correlation_measure_status": "INSUFFICIENT_SAMPLE_FOR_FORMAL_CORRELATION",
+      "reason": "F21/F24/F30 share price momentum sub-types. F24 shows broadest coverage.",
+      "next_required_validation": "U475_6_MONTH_FORMAL_VALIDATION"
+    },
+    {
+      "cluster_id": "CLUSTER_C",
+      "members": [
+        "F31",
+        "F53",
+        "F54"
+      ],
+      "dominant_factor_candidate": "F53",
+      "redundancy_risk": "LOW",
+      "correlation_measure_status": "INSUFFICIENT_SAMPLE_FOR_FORMAL_CORRELATION",
+      "reason": "Distinct signal domains: F31 value, F53 quality, F54 growth.",
+      "next_required_validation": "U475_6_MONTH_FORMAL_VALIDATION"
+    },
+    {
+      "cluster_id": "CLUSTER_D",
+      "members": [
+        "F55",
+        "F56",
+        "F58",
+        "F60"
+      ],
+      "dominant_factor_candidate": "F55",
+      "redundancy_risk": "MEDIUM",
+      "correlation_measure_status": "INSUFFICIENT_SAMPLE_FOR_FORMAL_CORRELATION",
+      "reason": "Cluster of newer candidate factors with shorter lookback. F55 has longest observation.",
+      "next_required_validation": "U475_6_MONTH_FORMAL_VALIDATION"
+    },
+    {
+      "cluster_id": "CLUSTER_E",
+      "members": [
+        "F06",
+        "F07",
+        "F08",
+        "F09"
+      ],
+      "dominant_factor_candidate": "F06",
+      "redundancy_risk": "HIGH",
+      "correlation_measure_status": "INSUFFICIENT_SAMPLE_FOR_FORMAL_CORRELATION",
+      "reason": "Pipeline-bound factors sharing turnover/liquidity signals. High structural overlap expected.",
+      "next_required_validation": "U475_6_MONTH_FORMAL_VALIDATION"
+    },
+    {
+      "cluster_id": "CLUSTER_F",
+      "members": [
+        "F12",
+        "F44",
+        "F45",
+        "F51"
+      ],
+      "dominant_factor_candidate": "F51",
+      "redundancy_risk": "MEDIUM",
+      "correlation_measure_status": "INSUFFICIENT_SAMPLE_FOR_FORMAL_CORRELATION",
+      "reason": "Pipeline-bound factors in sentiment/flow domain. F51 has best data coverage.",
+      "next_required_validation": "U475_6_MONTH_FORMAL_VALIDATION"
+    },
+    {
+      "cluster_id": "CLUSTER_G",
+      "members": [
+        "F14",
+        "F15"
+      ],
+      "dominant_factor_candidate": "F14",
+      "redundancy_risk": "LOW",
+      "correlation_measure_status": "INSUFFICIENT_SAMPLE_FOR_FORMAL_CORRELATION",
+      "reason": "Pipeline-bound industry/fundamental factors. F14 is more comprehensive.",
+      "next_required_validation": "U475_6_MONTH_FORMAL_VALIDATION"
+    }
+  ]
+}

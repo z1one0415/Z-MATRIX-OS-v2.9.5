@@ -1,0 +1,12 @@
+{
+  "pipeline_signature": "Z2-V13-F8-3-NO-PROMOTION",
+  "no_promotion": true,
+  "promotion_allowed": false,
+  "no_candidate_state_change": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

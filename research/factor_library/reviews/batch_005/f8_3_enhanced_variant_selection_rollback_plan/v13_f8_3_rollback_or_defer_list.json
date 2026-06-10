@@ -1,0 +1,24 @@
+{
+  "pipeline_signature": "Z2-V13-F8-3-ROLLBACK-DEFER",
+  "status": "V13_F8_3_ROLLBACK_LIST_COMPLETE",
+  "base_commit": "f71ad33",
+  "rollback_factors": [
+    "F04",
+    "F12",
+    "F30",
+    "F55"
+  ],
+  "defer_factors": [
+    "F53"
+  ],
+  "action": {
+    "ROLLBACK": "Delete enhanced_formula.py, primitive_contract.json, enhancement_notes.md. Canonical F7 factor unchanged.",
+    "DEFER": "Keep enhanced files but mark as NOT_FOR_FORWARD_TEST. Remove from active A/B pipeline."
+  },
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

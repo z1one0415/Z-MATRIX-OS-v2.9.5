@@ -1,0 +1,34 @@
+{
+  "pipeline_signature": "Z2-V13-F8-3-CLOSEOUT",
+  "status": "V13_F8_3_SELECTION_AND_ROLLBACK_PLAN_PASS",
+  "base_commit": "f71ad33",
+  "ab_result_digest_complete": true,
+  "keep_candidate_list_complete": true,
+  "rollback_or_defer_list_complete": true,
+  "forward_oos_watchlist_complete": true,
+  "decisions": {
+    "KEEP_AS_ENHANCED_CANDIDATE": [
+      "F56_5D_20D",
+      "F10_5D_20D",
+      "F31_5D_20D"
+    ],
+    "ROLLBACK": [
+      "F04",
+      "F12",
+      "F30",
+      "F55"
+    ],
+    "DEFER": [
+      "F53"
+    ]
+  },
+  "canonical_registry_mutated": false,
+  "f7a_f7b_rewritten": false,
+  "recommended_next": "V13_F9_0_FORWARD_OOS_WAIT_AND_REFRESH_GATE",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

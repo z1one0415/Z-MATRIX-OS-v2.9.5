@@ -1,0 +1,44 @@
+{
+  "pipeline_signature": "Z2-V13-F8-3-FORWARD-WATCHLIST",
+  "status": "V13_F8_3_WATCHLIST_COMPLETE",
+  "base_commit": "f71ad33",
+  "watchlist": [
+    {
+      "factor": "F56",
+      "horizons": [
+        "5D",
+        "20D"
+      ],
+      "baseline_ic_5D": 0.0095,
+      "enhanced_ic_5D": 0.1188,
+      "forward_monitor": "Check if 5D/20D gain holds in forward OOS"
+    },
+    {
+      "factor": "F10",
+      "horizons": [
+        "5D",
+        "20D"
+      ],
+      "baseline_ic_5D": -0.1098,
+      "enhanced_ic_5D": 0.0159,
+      "forward_monitor": "Check if 5D improves from negative"
+    },
+    {
+      "factor": "F31",
+      "horizons": [
+        "5D",
+        "20D"
+      ],
+      "baseline_ic_5D": -0.027,
+      "enhanced_ic_5D": 0.0409,
+      "forward_monitor": "Check 5D/20D gain persistence"
+    }
+  ],
+  "policy": "Watch F56/F10/F31 enhanced variants in forward OOS. Do NOT replace canonical until forward OOS confirms.",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,38 @@
+{
+  "pipeline_signature": "Z2-V13-F8-3-KEEP-CANDIDATES",
+  "status": "V13_F8_3_KEEP_LIST_COMPLETE",
+  "base_commit": "f71ad33",
+  "keep_candidates": [
+    {
+      "factor": "F56",
+      "horizons": [
+        "5D",
+        "20D"
+      ],
+      "reason": "turnover+vol_ratio primitives effective"
+    },
+    {
+      "factor": "F10",
+      "horizons": [
+        "5D",
+        "20D"
+      ],
+      "reason": "vol_20d primitive improved low-vol"
+    },
+    {
+      "factor": "F31",
+      "horizons": [
+        "5D",
+        "20D"
+      ],
+      "reason": "range_5d+shadow enhanced tail risk"
+    }
+  ],
+  "count": 3,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

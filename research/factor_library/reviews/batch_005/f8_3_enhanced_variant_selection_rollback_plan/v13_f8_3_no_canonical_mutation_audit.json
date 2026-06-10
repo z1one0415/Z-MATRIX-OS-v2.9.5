@@ -1,0 +1,11 @@
+{
+  "pipeline_signature": "Z2-V13-F8-3-NO-CANONICAL",
+  "canonical_mutated": false,
+  "f7_changed": false,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,12 @@
+{
+  "pipeline_signature": "Z2-V13-F8-3-SELECTION-AND-ROLLBACK-CONTRACT",
+  "status": "V13_F8_3_CONTRACT_BUILT",
+  "base_commit": "f71ad33",
+  "purpose": "Codify F8.2 A/B results into keep/rollback/defer decisions",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

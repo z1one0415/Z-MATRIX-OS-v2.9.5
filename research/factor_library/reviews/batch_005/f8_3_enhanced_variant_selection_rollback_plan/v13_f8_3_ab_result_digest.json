@@ -1,0 +1,75 @@
+{
+  "pipeline_signature": "Z2-V13-F8-3-AB-DIGEST",
+  "status": "V13_F8_3_AB_DIGEST_COMPLETE",
+  "base_commit": "f71ad33",
+  "results": {
+    "F56": {
+      "5D": 0.1093,
+      "20D": 0.1149,
+      "60D": -0.0477,
+      "verdict": "KEEP_5D_20D",
+      "notes": "turnover+vol_ratio primitives effective"
+    },
+    "F10": {
+      "5D": 0.1257,
+      "20D": 0.0502,
+      "60D": -0.1075,
+      "verdict": "KEEP_5D_20D",
+      "notes": "vol_20d primitive improved low-vol"
+    },
+    "F31": {
+      "5D": 0.0679,
+      "20D": 0.0907,
+      "60D": -0.0717,
+      "verdict": "KEEP_5D_20D",
+      "notes": "range_5d+shadow enhanced tail risk"
+    },
+    "F04": {
+      "5D": -0.1711,
+      "20D": -0.0335,
+      "60D": 0.0073,
+      "verdict": "ROLLBACK",
+      "notes": "adaptive lookback weakened 5D momentum"
+    },
+    "F12": {
+      "5D": -0.0299,
+      "20D": -0.0274,
+      "60D": -0.1405,
+      "verdict": "ROLLBACK",
+      "notes": "price proxy failed for value"
+    },
+    "F30": {
+      "5D": -0.015,
+      "20D": -0.0919,
+      "60D": -0.0161,
+      "verdict": "ROLLBACK",
+      "notes": "enhanced formula too complex"
+    },
+    "F53": {
+      "5D": -0.0259,
+      "20D": -0.0213,
+      "60D": 0.0261,
+      "verdict": "DEFER",
+      "notes": "60D slight improvement, short/medium blocked"
+    },
+    "F55": {
+      "5D": -0.0046,
+      "20D": -0.0593,
+      "60D": -0.0245,
+      "verdict": "ROLLBACK",
+      "notes": "sentiment decay primitive not effective"
+    }
+  },
+  "summary": {
+    "total_keep": 3,
+    "total_rollback": 4,
+    "total_defer": 1,
+    "total_enhanced": 8
+  },
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

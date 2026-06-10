@@ -1,0 +1,19 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-MONITORING-DRY-RUN",
+  "status": "V13_F7_2_DRY_RUN_COMPLETE",
+  "base_commit": "13df8ba",
+  "scale": "CURRENT_5_TICKER_1_MONTH_ONLY",
+  "reused_from": "V13.F7.0.1 recomputed rerun (23/23 complete, 0 nulls)",
+  "F7A_positive_5D": 6,
+  "F7A_positive_20D": 4,
+  "F7B_positive_5D": 4,
+  "F7B_positive_20D": 1,
+  "not_extrapolatable_to_U475": true,
+  "requires_full_rerun_after_data": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

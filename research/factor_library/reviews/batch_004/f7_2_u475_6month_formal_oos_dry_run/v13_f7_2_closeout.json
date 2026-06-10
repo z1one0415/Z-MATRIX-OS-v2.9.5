@@ -1,0 +1,20 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-CLOSEOUT",
+  "status": "V13_F7_2_DRY_RUN_PASS_DATA_GAP_BLOCKERS",
+  "base_commit": "13df8ba",
+  "dry_run_executed": true,
+  "current_scale": "5 tickers \u00d7 1 month",
+  "formal_gate_ready": false,
+  "blockers": [
+    "U475 universe (+470 tickers)",
+    "6 monthly rebalances (+5 months)",
+    "60D forward labels"
+  ],
+  "recommended_next": "INGEST_U475_MARKET_DATA_THEN_REBALANCE_6_MONTHS_THEN_F7_3_FORMAL_OOS",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

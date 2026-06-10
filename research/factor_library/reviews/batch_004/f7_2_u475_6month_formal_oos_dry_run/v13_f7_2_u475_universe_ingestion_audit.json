@@ -1,0 +1,29 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-U475-UNIVERSE-AUDIT",
+  "status": "V13_F7_2_U475_AUDIT_COMPLETE",
+  "base_commit": "13df8ba",
+  "current_ticker_count": 5,
+  "required_ticker_count": 475,
+  "gap": 470,
+  "gap_pct": 98.9,
+  "current_tickers": [
+    "000977",
+    "002050",
+    "002472",
+    "588000",
+    "601899"
+  ],
+  "ingestion_plan": {
+    "source": "tushare stock_basic \u2192 daily price_bars pull",
+    "target": "data/price_bars/",
+    "target_file": "u475_daily_bars.csv"
+  },
+  "ingestion_executed": false,
+  "ready_for_formal": false,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

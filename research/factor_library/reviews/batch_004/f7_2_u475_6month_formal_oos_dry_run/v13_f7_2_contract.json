@@ -1,0 +1,14 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-U475-6MONTH-OOS-DRY-RUN-CONTRACT",
+  "status": "V13_F7_2_CONTRACT_BUILT",
+  "base_commit": "13df8ba",
+  "dry_run_scope": "CURRENT_SCALE_ONLY",
+  "content": "U475 ingestion contract + current data audit + dry-run at 5-ticker scale",
+  "formal_oos_executed": false,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

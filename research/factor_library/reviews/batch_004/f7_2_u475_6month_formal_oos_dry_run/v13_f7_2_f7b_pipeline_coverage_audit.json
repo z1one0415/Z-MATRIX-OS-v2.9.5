@@ -1,0 +1,17 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-F7B-COVERAGE-AUDIT",
+  "status": "V13_F7_2_F7B_COVERAGE_COMPLETE",
+  "base_commit": "13df8ba",
+  "factors_expected": 10,
+  "factors_with_signals": 10,
+  "tushare_data_available": true,
+  "tushare_ticker_count": 4,
+  "note": "F7B factors use committed Tushare CSVs at 4-ticker scale",
+  "ready_for_formal": false,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

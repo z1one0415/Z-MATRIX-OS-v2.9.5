@@ -1,0 +1,37 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-FORMAL-GATE-READINESS",
+  "status": "V13_F7_2_GATE_READINESS_AUDIT",
+  "base_commit": "13df8ba",
+  "formal_gate_ready": false,
+  "blockers": [
+    {
+      "item": "U475 universe",
+      "status": "NOT_READY",
+      "gap": 470
+    },
+    {
+      "item": "6 monthly rebalances",
+      "status": "NOT_READY",
+      "gap": 5
+    },
+    {
+      "item": "60D labels",
+      "status": "NOT_READY",
+      "reason": "price data window too short"
+    },
+    {
+      "item": "F7A factor signals at scale",
+      "status": "NOT_READY"
+    },
+    {
+      "item": "F7B factor signals at scale",
+      "status": "NOT_READY"
+    }
+  ],
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

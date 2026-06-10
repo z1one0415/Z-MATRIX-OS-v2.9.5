@@ -1,0 +1,23 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-LABEL-MATRIX-DRY-RUN",
+  "status": "V13_F7_2_LABEL_AUDIT_COMPLETE",
+  "base_commit": "13df8ba",
+  "5D_label_rows": 10,
+  "_20D_label_rows": 10,
+  "horizons_available": [
+    "20D",
+    "5D"
+  ],
+  "60D_available": false,
+  "60D_blocked": "price data only extends to 2026-06-10 \u2014 need ~2026-07-25 for 60D forward",
+  "required_per_month_5D": 475,
+  "current": 10,
+  "gap": 465,
+  "ready_for_formal": false,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

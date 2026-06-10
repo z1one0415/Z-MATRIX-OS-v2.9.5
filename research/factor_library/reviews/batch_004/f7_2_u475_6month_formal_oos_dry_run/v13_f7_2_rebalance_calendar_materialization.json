@@ -1,0 +1,25 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-REBALANCE-CALENDAR",
+  "status": "V13_F7_2_CALENDAR_AUDIT_COMPLETE",
+  "base_commit": "13df8ba",
+  "months_required": 6,
+  "months_available": 1,
+  "available_months": [
+    "2026-05"
+  ],
+  "missing_months": [
+    "2026-06",
+    "2026-07",
+    "2026-08",
+    "2026-09",
+    "2026-10"
+  ],
+  "gap": 5,
+  "ready_for_formal": false,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

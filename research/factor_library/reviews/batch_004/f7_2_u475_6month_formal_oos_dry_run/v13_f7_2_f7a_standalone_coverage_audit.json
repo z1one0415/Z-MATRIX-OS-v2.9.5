@@ -1,0 +1,18 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-F7A-COVERAGE-AUDIT",
+  "status": "V13_F7_2_F7A_COVERAGE_COMPLETE",
+  "base_commit": "13df8ba",
+  "factors_expected": 13,
+  "factors_with_signals": 13,
+  "tickers_per_factor": 5,
+  "tickers_required": 475,
+  "coverage_5_ticker": "PASS (micro-sample)",
+  "coverage_475": "NOT_AVAILABLE",
+  "ready_for_formal": false,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

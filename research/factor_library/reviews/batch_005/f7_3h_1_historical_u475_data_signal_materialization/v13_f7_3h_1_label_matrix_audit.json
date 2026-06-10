@@ -1,0 +1,12 @@
+{
+  "5D_available": 180,
+  "20D_available": 180,
+  "60D_available": 150,
+  "total": 540,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

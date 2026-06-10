@@ -1,0 +1,15 @@
+{
+  "status": "V13_F7_3H_1_DEMONSTRATOR_PASS",
+  "months": 6,
+  "labels": 540,
+  "f7a_rows": 2730,
+  "f7b": "FEASIBLE_NEEDS_BATCH_PULL",
+  "demo_tickers_per_month": 30,
+  "recommended_next": "V13_F7_3H_2_FULL_U475_6M_DATA_PULL",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

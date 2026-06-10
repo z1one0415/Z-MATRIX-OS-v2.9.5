@@ -1,0 +1,10 @@
+{
+  "bars_pulled": 40944,
+  "unique_tickers": 35,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

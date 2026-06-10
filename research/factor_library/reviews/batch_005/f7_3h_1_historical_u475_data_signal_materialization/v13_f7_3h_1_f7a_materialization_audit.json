@@ -1,0 +1,10 @@
+{
+  "sample_scale": "30 tickers\u00d76 months",
+  "rows_generated": 2730,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

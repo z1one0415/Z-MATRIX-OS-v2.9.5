@@ -1,0 +1,65 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-BIAS-TURNOVER-CORRELATION-REVIEW",
+  "status": "BIAS_TURNOVER_CORRELATION_PLANNING_REVIEW_PASS",
+  "base_commit": "e636dcf",
+  "f7_1_requirements": {
+    "industry_bias": "Required",
+    "style_bias": "Required",
+    "liquidity_bias": "Required",
+    "turnover": "Required",
+    "redundancy_correlation": "Required"
+  },
+  "assessments": {
+    "industry_bias": {
+      "identified": true,
+      "measurement_required": true,
+      "current_status": "INSUFFICIENT_SAMPLE_FOR_FORMAL_INDUSTRY_BIAS"
+    },
+    "style_bias": {
+      "identified": true,
+      "measurement_required": true,
+      "current_status": "TO_BE_MEASURED_AT_FORMAL_STAGE"
+    },
+    "liquidity_bias": {
+      "identified": true,
+      "measurement_required": true,
+      "current_status": "TO_BE_MEASURED_AT_FORMAL_STAGE"
+    },
+    "turnover": {
+      "identified": true,
+      "measurement_required": true,
+      "current_status": "INSUFFICIENT_SAMPLE_FOR_FORMAL_TURNOVER_COST"
+    },
+    "correlation_redundancy": {
+      "identified": true,
+      "measurement_required": true,
+      "current_status": "7_CLUSTER_STRUCTURAL_OVERLAP_IDENTIFIED"
+    }
+  },
+  "high_redundancy_clusters": [
+    "CLUSTER_E (F06/F07/F08/F09)",
+    "CLUSTER_D (F55/F56/F58/F60)"
+  ],
+  "high_cost_candidates": [
+    "F07",
+    "F09",
+    "F12",
+    "F44",
+    "F45"
+  ],
+  "cannot_calculate_reasons": [
+    "Formal correlation matrix requires U475 6-month sample",
+    "Formal turnover cost requires execution simulation"
+  ],
+  "planning_gaps": [
+    "Formal correlation threshold not yet defined",
+    "Formal turnover cost model not yet specified"
+  ],
+  "recommendation": "Bias, turnover, and correlation planning is structurally sound. Formal measurement deferred to execution stage.",
+  "pass": true,
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "execution_allowed": false,
+  "runner_enabled": false,
+  "paper_trading_allowed": false
+}

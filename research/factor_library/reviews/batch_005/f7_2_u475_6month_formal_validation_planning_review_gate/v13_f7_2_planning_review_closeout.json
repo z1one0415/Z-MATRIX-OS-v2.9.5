@@ -1,0 +1,23 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-PLANNING-REVIEW-CLOSEOUT",
+  "status": "V13_F7_2_U475_6_MONTH_FORMAL_VALIDATION_PLANNING_REVIEW_COMPLETE",
+  "base_commit": "e636dcf",
+  "f7_1_matrix_commit": "45c9e17",
+  "f7_1_reconciliation_commit": "e636dcf",
+  "u475_universe_review_built": true,
+  "validation_window_review_built": true,
+  "label_and_horizon_review_built": true,
+  "metric_coverage_review_built": true,
+  "bias_turnover_correlation_review_built": true,
+  "formal_oos_validation_executed": false,
+  "u475_6_month_validation_executed": false,
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "execution_allowed": false,
+  "runner_enabled": false,
+  "paper_trading_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "next_legal_entry": "F7_2_HUMAN_PLANNING_REVIEW_DECISION_ONLY"
+}

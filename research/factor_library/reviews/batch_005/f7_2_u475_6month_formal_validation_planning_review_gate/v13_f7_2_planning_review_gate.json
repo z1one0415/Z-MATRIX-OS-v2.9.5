@@ -1,0 +1,52 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-PLANNING-REVIEW-GATE",
+  "status": "PLANNING_REVIEW_GATE_BUILT",
+  "base_commit": "e636dcf",
+  "f7_1_matrix_commit": "45c9e17",
+  "f7_1_reconciliation_commit": "e636dcf",
+  "review_purpose": "Review F7.2 U475 6-month formal validation planning readiness. Do NOT execute formal OOS. Do NOT generate validation results. Do NOT open promotion/alpha/runner/paper trading.",
+  "requirements_referenced": {
+    "minimum_universe": "U475",
+    "minimum_window": "6_MONTHS",
+    "horizons": [
+      "5D",
+      "20D",
+      "60D_optional"
+    ],
+    "metrics": [
+      "IC",
+      "Rank_IC",
+      "hit_rate",
+      "monotonic_bucket_spread",
+      "long_short_spread",
+      "turnover",
+      "coverage",
+      "missing_data_rate",
+      "factor_correlation",
+      "industry_bias",
+      "liquidity_sensitivity",
+      "drawdown_sensitivity",
+      "regime_split",
+      "stability_decay"
+    ]
+  },
+  "reviews_conducted": [
+    "U475_UNIVERSE_REVIEW",
+    "SIX_MONTH_WINDOW_REVIEW",
+    "LABEL_AND_HORIZON_REVIEW",
+    "METRIC_COVERAGE_REVIEW",
+    "BIAS_TURNOVER_CORRELATION_REVIEW"
+  ],
+  "overall_status": "PLANNING_REVIEW_LIMITED_TO_GATE_ONLY",
+  "human_decision_required": true,
+  "formal_oos_executed": false,
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "execution_allowed": false,
+  "runner_enabled": false,
+  "paper_trading_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "next_legal_entry": "F7_2_HUMAN_PLANNING_REVIEW_DECISION_ONLY"
+}

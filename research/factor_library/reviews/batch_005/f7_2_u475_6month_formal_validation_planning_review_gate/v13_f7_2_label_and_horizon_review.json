@@ -1,0 +1,53 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-LABEL-AND-HORIZON-REVIEW",
+  "status": "LABEL_AND_HORIZON_PLANNING_REVIEW_PASS",
+  "base_commit": "e636dcf",
+  "f7_1_requirements": {
+    "required_horizons": [
+      "5D",
+      "20D",
+      "60D_optional"
+    ]
+  },
+  "horizons": {
+    "5D": {
+      "label_definition": "Forward 5-trading-day return",
+      "return_basis": "Close-to-close",
+      "missing_label_handling": "Required",
+      "limit_up_down_handling": "Required \u2014 exclude or adjust limit-hit days",
+      "suspension_handling": "Required \u2014 exclude suspended periods",
+      "forward_window_cutoff": "5 trading days forward",
+      "label_mask_rule": "Apply mask for insufficient liquidity / missing data"
+    },
+    "20D": {
+      "label_definition": "Forward 20-trading-day return",
+      "return_basis": "Close-to-close",
+      "missing_label_handling": "Required",
+      "limit_up_down_handling": "Required",
+      "suspension_handling": "Required",
+      "forward_window_cutoff": "20 trading days forward",
+      "label_mask_rule": "Apply mask for insufficient liquidity / missing data"
+    },
+    "60D_optional": {
+      "label_definition": "Forward 60-trading-day return (optional)",
+      "return_basis": "Close-to-close",
+      "missing_label_handling": "Optional \u2014 only if sufficient sample depth",
+      "limit_up_down_handling": "Required",
+      "suspension_handling": "Required",
+      "forward_window_cutoff": "60 trading days forward",
+      "label_mask_rule": "Stricter mask due to longer window"
+    }
+  },
+  "planning_gaps": [
+    "Limit-up/down handling rule not yet specified",
+    "Label mask threshold not yet specified",
+    "60D optional still conditional on sample depth"
+  ],
+  "recommendation": "Horizon and label planning is structurally sound. Detail gaps exist but do not block the planning gate.",
+  "pass": true,
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "execution_allowed": false,
+  "runner_enabled": false,
+  "paper_trading_allowed": false
+}

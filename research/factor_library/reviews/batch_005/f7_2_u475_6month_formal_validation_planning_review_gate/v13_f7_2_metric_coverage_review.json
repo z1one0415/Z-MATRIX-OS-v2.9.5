@@ -1,0 +1,161 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-METRIC-COVERAGE-REVIEW",
+  "status": "METRIC_COVERAGE_PLANNING_REVIEW_PASS",
+  "base_commit": "e636dcf",
+  "f7_1_requirements": {
+    "required_metrics": [
+      "IC",
+      "Rank IC",
+      "hit rate",
+      "monotonic bucket spread",
+      "long-short spread diagnostic",
+      "turnover",
+      "coverage",
+      "missing data rate",
+      "factor correlation",
+      "industry bias",
+      "liquidity sensitivity",
+      "drawdown sensitivity",
+      "regime split",
+      "stability decay"
+    ]
+  },
+  "metrics": {
+    "IC": {
+      "metric_name": "IC",
+      "planned_formula": "Standard definition per factor research conventions",
+      "input_requirement": "U475 universe, 5D/20D forward labels",
+      "pass_condition": "TBD \u2014 to be defined at formal execution stage",
+      "fail_condition": "TBD \u2014 to be defined at formal execution stage",
+      "diagnostic_only_or_gate_metric": "GATE_METRIC",
+      "promotion_dependency": "EXECUTION_PHASE"
+    },
+    "Rank IC": {
+      "metric_name": "Rank IC",
+      "planned_formula": "Standard definition per factor research conventions",
+      "input_requirement": "U475 universe, 5D/20D forward labels",
+      "pass_condition": "TBD \u2014 to be defined at formal execution stage",
+      "fail_condition": "TBD \u2014 to be defined at formal execution stage",
+      "diagnostic_only_or_gate_metric": "GATE_METRIC",
+      "promotion_dependency": "EXECUTION_PHASE"
+    },
+    "hit rate": {
+      "metric_name": "hit rate",
+      "planned_formula": "Standard definition per factor research conventions",
+      "input_requirement": "U475 universe, 5D/20D forward labels",
+      "pass_condition": "TBD \u2014 to be defined at formal execution stage",
+      "fail_condition": "TBD \u2014 to be defined at formal execution stage",
+      "diagnostic_only_or_gate_metric": "GATE_METRIC",
+      "promotion_dependency": "EXECUTION_PHASE"
+    },
+    "monotonic bucket spread": {
+      "metric_name": "monotonic bucket spread",
+      "planned_formula": "Standard definition per factor research conventions",
+      "input_requirement": "U475 universe, 5D/20D forward labels",
+      "pass_condition": "TBD \u2014 to be defined at formal execution stage",
+      "fail_condition": "TBD \u2014 to be defined at formal execution stage",
+      "diagnostic_only_or_gate_metric": "GATE_METRIC",
+      "promotion_dependency": "EXECUTION_PHASE"
+    },
+    "long-short spread diagnostic": {
+      "metric_name": "long-short spread diagnostic",
+      "planned_formula": "Standard definition per factor research conventions",
+      "input_requirement": "U475 universe, 5D/20D forward labels",
+      "pass_condition": "TBD \u2014 to be defined at formal execution stage",
+      "fail_condition": "TBD \u2014 to be defined at formal execution stage",
+      "diagnostic_only_or_gate_metric": "GATE_METRIC",
+      "promotion_dependency": "EXECUTION_PHASE"
+    },
+    "turnover": {
+      "metric_name": "turnover",
+      "planned_formula": "Standard definition per factor research conventions",
+      "input_requirement": "U475 universe, 5D/20D forward labels",
+      "pass_condition": "TBD \u2014 to be defined at formal execution stage",
+      "fail_condition": "TBD \u2014 to be defined at formal execution stage",
+      "diagnostic_only_or_gate_metric": "GATE_METRIC",
+      "promotion_dependency": "EXECUTION_PHASE"
+    },
+    "coverage": {
+      "metric_name": "coverage",
+      "planned_formula": "Standard definition per factor research conventions",
+      "input_requirement": "U475 universe, 5D/20D forward labels",
+      "pass_condition": "TBD \u2014 to be defined at formal execution stage",
+      "fail_condition": "TBD \u2014 to be defined at formal execution stage",
+      "diagnostic_only_or_gate_metric": "GATE_METRIC",
+      "promotion_dependency": "EXECUTION_PHASE"
+    },
+    "missing data rate": {
+      "metric_name": "missing data rate",
+      "planned_formula": "Standard definition per factor research conventions",
+      "input_requirement": "U475 universe, 5D/20D forward labels",
+      "pass_condition": "TBD \u2014 to be defined at formal execution stage",
+      "fail_condition": "TBD \u2014 to be defined at formal execution stage",
+      "diagnostic_only_or_gate_metric": "GATE_METRIC",
+      "promotion_dependency": "EXECUTION_PHASE"
+    },
+    "factor correlation": {
+      "metric_name": "factor correlation",
+      "planned_formula": "Standard definition per factor research conventions",
+      "input_requirement": "U475 universe, 5D/20D forward labels",
+      "pass_condition": "TBD \u2014 to be defined at formal execution stage",
+      "fail_condition": "TBD \u2014 to be defined at formal execution stage",
+      "diagnostic_only_or_gate_metric": "GATE_METRIC",
+      "promotion_dependency": "EXECUTION_PHASE"
+    },
+    "industry bias": {
+      "metric_name": "industry bias",
+      "planned_formula": "Standard definition per factor research conventions",
+      "input_requirement": "U475 universe, 5D/20D forward labels",
+      "pass_condition": "TBD \u2014 to be defined at formal execution stage",
+      "fail_condition": "TBD \u2014 to be defined at formal execution stage",
+      "diagnostic_only_or_gate_metric": "GATE_METRIC",
+      "promotion_dependency": "EXECUTION_PHASE"
+    },
+    "liquidity sensitivity": {
+      "metric_name": "liquidity sensitivity",
+      "planned_formula": "Standard definition per factor research conventions",
+      "input_requirement": "U475 universe, 5D/20D forward labels",
+      "pass_condition": "TBD \u2014 to be defined at formal execution stage",
+      "fail_condition": "TBD \u2014 to be defined at formal execution stage",
+      "diagnostic_only_or_gate_metric": "GATE_METRIC",
+      "promotion_dependency": "EXECUTION_PHASE"
+    },
+    "drawdown sensitivity": {
+      "metric_name": "drawdown sensitivity",
+      "planned_formula": "Standard definition per factor research conventions",
+      "input_requirement": "U475 universe, 5D/20D forward labels",
+      "pass_condition": "TBD \u2014 to be defined at formal execution stage",
+      "fail_condition": "TBD \u2014 to be defined at formal execution stage",
+      "diagnostic_only_or_gate_metric": "GATE_METRIC",
+      "promotion_dependency": "EXECUTION_PHASE"
+    },
+    "regime split": {
+      "metric_name": "regime split",
+      "planned_formula": "Standard definition per factor research conventions",
+      "input_requirement": "U475 universe, 5D/20D forward labels",
+      "pass_condition": "TBD \u2014 to be defined at formal execution stage",
+      "fail_condition": "TBD \u2014 to be defined at formal execution stage",
+      "diagnostic_only_or_gate_metric": "GATE_METRIC",
+      "promotion_dependency": "EXECUTION_PHASE"
+    },
+    "stability decay": {
+      "metric_name": "stability decay",
+      "planned_formula": "Standard definition per factor research conventions",
+      "input_requirement": "U475 universe, 5D/20D forward labels",
+      "pass_condition": "TBD \u2014 to be defined at formal execution stage",
+      "fail_condition": "TBD \u2014 to be defined at formal execution stage",
+      "diagnostic_only_or_gate_metric": "GATE_METRIC",
+      "promotion_dependency": "EXECUTION_PHASE"
+    }
+  },
+  "planning_gaps": [
+    "Pass/fail conditions not yet specified \u2014 that requires formal execution stage"
+  ],
+  "recommendation": "Metric coverage planning is complete. All 14 required metrics covered.",
+  "pass": true,
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "execution_allowed": false,
+  "runner_enabled": false,
+  "paper_trading_allowed": false
+}

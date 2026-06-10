@@ -1,0 +1,73 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-U475-UNIVERSE-REVIEW",
+  "status": "U475_UNIVERSE_PLANNING_REVIEW_PASS",
+  "base_commit": "e636dcf",
+  "f7_1_coverage_requirements": {
+    "pipeline_signature": "Z2-V13-F7-1-COVERAGE-VALIDATION-PLAN",
+    "status": "FORMAL_VALIDATION_PLAN_READY",
+    "recommended_next_action": "EXPAND_TO_U475_6_MONTHS_FORMAL_VALIDATION",
+    "formal_validation_required": true,
+    "formal_validation_not_yet_executed": true,
+    "minimum_required_universe": "U475",
+    "minimum_required_window": "6_MONTHS",
+    "required_horizons": [
+      "5D",
+      "20D",
+      "60D"
+    ],
+    "required_metrics": [
+      "IC",
+      "Rank IC",
+      "hit rate",
+      "monotonic bucket spread",
+      "long-short spread diagnostic",
+      "turnover",
+      "coverage",
+      "missing data rate",
+      "factor correlation",
+      "industry bias",
+      "liquidity sensitivity",
+      "drawdown sensitivity",
+      "regime split",
+      "stability decay"
+    ],
+    "required_splits": [
+      "bull/bear/sideways",
+      "high volatility/low volatility",
+      "large cap/mid cap/small cap",
+      "industry groups",
+      "liquidity buckets"
+    ],
+    "hard_gates": [
+      "no alpha claim before formal validation",
+      "no promotion before formal validation",
+      "no runner before formal validation",
+      "no paper trading before formal validation",
+      "no execution before formal validation",
+      "no production before formal validation"
+    ]
+  },
+  "u475_spec": {
+    "universe": "U475",
+    "sample_size": 475,
+    "constituent_selection": "F7.1 matrix rows (23 factors) measured across U475 universe",
+    "survivorship_bias_control": "Required \u2014 inclusion criteria must be defined before forward observation period",
+    "suspension_delisting_handling": "Required \u2014 suspension/delisting/missing data rules must be documented",
+    "industry_coverage": "Required \u2014 at minimum sector-level classification",
+    "market_cap_liquidity_tiers": "Required \u2014 large/mid/small cap stratification",
+    "future_invisible_data_isolation": "Required \u2014 no lookahead, no future function leakage",
+    "promotion_dependency": "F7.2 planning review gate pass required before formal execution"
+  },
+  "planning_gaps": [
+    "Survivorship bias handling rule not yet specified in detail",
+    "Suspension/delisting rule not yet specified",
+    "Market cap tier boundaries not yet specified"
+  ],
+  "recommendation": "U475 universe planning is conceptually complete but requires detailed specification before formal execution",
+  "pass": true,
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "execution_allowed": false,
+  "runner_enabled": false,
+  "paper_trading_allowed": false
+}

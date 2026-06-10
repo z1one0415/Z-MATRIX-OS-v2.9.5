@@ -1,0 +1,28 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-SIX-MONTH-WINDOW-REVIEW",
+  "status": "SIX_MONTH_WINDOW_PLANNING_REVIEW_PASS",
+  "base_commit": "e636dcf",
+  "f7_1_requirements": {
+    "minimum_required_window": "6_MONTHS"
+  },
+  "window_spec": {
+    "minimum_window": "6_MONTHS",
+    "recommended_start": "T+1 after formal execution approval",
+    "rebalance_frequency": "MONTHLY",
+    "train_validation_split": "Rolling window with forward test period",
+    "lookahead_avoidance": "Required \u2014 all labels must be forward-looking with no future data leakage",
+    "future_function_avoidance": "Required \u2014 no peek-ahead in label construction",
+    "label_availability_cutoff": "Labels only available after forward window closes"
+  },
+  "planning_gaps": [
+    "Exact start date depends on human planning approval",
+    "Forward observation window length not yet finalized"
+  ],
+  "recommendation": "6-month window planning is structurally sound",
+  "pass": true,
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "execution_allowed": false,
+  "runner_enabled": false,
+  "paper_trading_allowed": false
+}

@@ -1,0 +1,18 @@
+{
+  "pipeline_signature": "Z2-V13-F8-1-F56-PRIMITIVE-CONTRACT",
+  "factor_id": "F56",
+  "factor_name": "MONEY_FLOW_STRENGTH",
+  "primitives": [
+    "turnover_rate",
+    "vol_ratio"
+  ],
+  "description": "Enhanced with vol_ratio and turnover proxy \u2014 captures flow intensity",
+  "status": "ENHANCED_VARIANT",
+  "canonical_factor_unchanged": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

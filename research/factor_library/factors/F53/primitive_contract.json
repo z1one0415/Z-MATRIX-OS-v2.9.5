@@ -1,0 +1,18 @@
+{
+  "pipeline_signature": "Z2-V13-F8-1-F53-PRIMITIVE-CONTRACT",
+  "factor_id": "F53",
+  "factor_name": "ATTENTION_SPIKE",
+  "primitives": [
+    "vol_climax",
+    "vol_ratio"
+  ],
+  "description": "Enhanced with vol_ratio and vol_climax \u2014 attention spike detection",
+  "status": "ENHANCED_VARIANT",
+  "canonical_factor_unchanged": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

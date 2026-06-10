@@ -1,0 +1,14 @@
+{
+  "pipeline_signature": "Z2-V13-F8-1-AB-READY",
+  "ab_test_ready": true,
+  "baseline_source": "F7.3H.3.1 historical OOS (d664447)",
+  "variant_source": "F8.1 enhanced primitives",
+  "baseline_vs_variant": "original executable_formula.py vs enhanced_formula.py",
+  "next": "V13_F8_2_ENHANCED_VARIANT_HISTORICAL_AB_TEST",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

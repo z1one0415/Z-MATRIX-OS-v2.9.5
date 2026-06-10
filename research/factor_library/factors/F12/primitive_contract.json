@@ -1,0 +1,18 @@
+{
+  "pipeline_signature": "Z2-V13-F8-1-F12-PRIMITIVE-CONTRACT",
+  "factor_id": "F12",
+  "factor_name": "VALUE_COMPOSITE",
+  "primitives": [
+    "pb_inv",
+    "pe_inv"
+  ],
+  "description": "Enhanced with pb_inv and pe_inv proxies \u2014 value detection from price decline",
+  "status": "ENHANCED_VARIANT",
+  "canonical_factor_unchanged": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

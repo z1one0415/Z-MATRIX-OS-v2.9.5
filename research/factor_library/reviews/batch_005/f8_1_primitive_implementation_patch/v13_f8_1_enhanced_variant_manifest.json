@@ -1,0 +1,130 @@
+{
+  "pipeline_signature": "Z2-V13-F8-1-VARIANT-MANIFEST",
+  "enhanced_variants": [
+    {
+      "factor_id": "F04",
+      "name": "RESIDUAL_MOMENTUM",
+      "primitives": [
+        "mom_20d",
+        "mom_60d",
+        "ma60_dev"
+      ],
+      "files": [
+        "enhanced_formula.py",
+        "primitive_contract.json",
+        "enhancement_notes.md"
+      ],
+      "canonical_unchanged": true,
+      "f7_baseline_unmodified": true
+    },
+    {
+      "factor_id": "F10",
+      "name": "LOW_VOLATILITY",
+      "primitives": [
+        "vol_20d"
+      ],
+      "files": [
+        "enhanced_formula.py",
+        "primitive_contract.json",
+        "enhancement_notes.md"
+      ],
+      "canonical_unchanged": true,
+      "f7_baseline_unmodified": true
+    },
+    {
+      "factor_id": "F30",
+      "name": "VOLUME_PRICE_CONFIRMATION",
+      "primitives": [
+        "strengthened_volume_correlation"
+      ],
+      "files": [
+        "enhanced_formula.py",
+        "primitive_contract.json",
+        "enhancement_notes.md"
+      ],
+      "canonical_unchanged": true,
+      "f7_baseline_unmodified": true
+    },
+    {
+      "factor_id": "F53",
+      "name": "ATTENTION_SPIKE",
+      "primitives": [
+        "vol_climax",
+        "vol_ratio"
+      ],
+      "files": [
+        "enhanced_formula.py",
+        "primitive_contract.json",
+        "enhancement_notes.md"
+      ],
+      "canonical_unchanged": true,
+      "f7_baseline_unmodified": true
+    },
+    {
+      "factor_id": "F56",
+      "name": "MONEY_FLOW_STRENGTH",
+      "primitives": [
+        "turnover_rate",
+        "vol_ratio"
+      ],
+      "files": [
+        "enhanced_formula.py",
+        "primitive_contract.json",
+        "enhancement_notes.md"
+      ],
+      "canonical_unchanged": true,
+      "f7_baseline_unmodified": true
+    },
+    {
+      "factor_id": "F55",
+      "name": "SENTIMENT_DECAY",
+      "primitives": [
+        "attention_decay_alignment"
+      ],
+      "files": [
+        "enhanced_formula.py",
+        "primitive_contract.json",
+        "enhancement_notes.md"
+      ],
+      "canonical_unchanged": true,
+      "f7_baseline_unmodified": true
+    },
+    {
+      "factor_id": "F31",
+      "name": "DOWNSIDE_TAIL_RISK",
+      "primitives": [
+        "range_5d",
+        "upper_shadow"
+      ],
+      "files": [
+        "enhanced_formula.py",
+        "primitive_contract.json",
+        "enhancement_notes.md"
+      ],
+      "canonical_unchanged": true,
+      "f7_baseline_unmodified": true
+    },
+    {
+      "factor_id": "F12",
+      "name": "VALUE_COMPOSITE",
+      "primitives": [
+        "pb_inv",
+        "pe_inv"
+      ],
+      "files": [
+        "enhanced_formula.py",
+        "primitive_contract.json",
+        "enhancement_notes.md"
+      ],
+      "canonical_unchanged": true,
+      "f7_baseline_unmodified": true
+    }
+  ],
+  "total_variants": 8,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

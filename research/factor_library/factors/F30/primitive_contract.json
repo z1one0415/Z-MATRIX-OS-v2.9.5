@@ -1,0 +1,17 @@
+{
+  "pipeline_signature": "Z2-V13-F8-1-F30-PRIMITIVE-CONTRACT",
+  "factor_id": "F30",
+  "factor_name": "VOLUME_PRICE_CONFIRMATION",
+  "primitives": [
+    "strengthened_volume_correlation"
+  ],
+  "description": "Enhanced with up_volume_ratio and down_volume_pressure \u2014 strengthens signal quality",
+  "status": "ENHANCED_VARIANT",
+  "canonical_factor_unchanged": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

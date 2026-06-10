@@ -1,0 +1,64 @@
+{
+  "F04": {
+    "primitives": [
+      "mom_20d",
+      "mom_60d",
+      "ma60_dev"
+    ],
+    "name": "RESIDUAL_MOMENTUM",
+    "description": "Enhanced with mom_20d, mom_60d (momentum), ma60_dev (trend alignment)"
+  },
+  "F10": {
+    "primitives": [
+      "vol_20d"
+    ],
+    "name": "LOW_VOLATILITY",
+    "description": "Enhanced with vol_20d primitive \u2014 penalizes high volatility more aggressively"
+  },
+  "F30": {
+    "primitives": [
+      "strengthened_volume_correlation"
+    ],
+    "name": "VOLUME_PRICE_CONFIRMATION",
+    "description": "Enhanced with up_volume_ratio and down_volume_pressure \u2014 strengthens signal quality"
+  },
+  "F53": {
+    "primitives": [
+      "vol_climax",
+      "vol_ratio"
+    ],
+    "name": "ATTENTION_SPIKE",
+    "description": "Enhanced with vol_ratio and vol_climax \u2014 attention spike detection"
+  },
+  "F56": {
+    "primitives": [
+      "turnover_rate",
+      "vol_ratio"
+    ],
+    "name": "MONEY_FLOW_STRENGTH",
+    "description": "Enhanced with vol_ratio and turnover proxy \u2014 captures flow intensity"
+  },
+  "F55": {
+    "primitives": [
+      "attention_decay_alignment"
+    ],
+    "name": "SENTIMENT_DECAY",
+    "description": "Enhanced with decay_strength factor \u2014 penalizes sharp attention drops"
+  },
+  "F31": {
+    "primitives": [
+      "range_5d",
+      "upper_shadow"
+    ],
+    "name": "DOWNSIDE_TAIL_RISK",
+    "description": "Enhanced with range_5d and upper_shadow \u2014 tail risk from price extremes"
+  },
+  "F12": {
+    "primitives": [
+      "pb_inv",
+      "pe_inv"
+    ],
+    "name": "VALUE_COMPOSITE",
+    "description": "Enhanced with pb_inv and pe_inv proxies \u2014 value detection from price decline"
+  }
+}

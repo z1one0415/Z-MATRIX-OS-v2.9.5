@@ -1,0 +1,68 @@
+{
+  "pipeline_signature": "Z2-V13-F8-1-DIVERSITY",
+  "diversity_results": [
+    {
+      "factor_id": "F04",
+      "tickers": 5,
+      "unique_scores": 1,
+      "all_zero": true,
+      "pass": false
+    },
+    {
+      "factor_id": "F10",
+      "tickers": 5,
+      "unique_scores": 5,
+      "all_zero": false,
+      "pass": true
+    },
+    {
+      "factor_id": "F30",
+      "tickers": 5,
+      "unique_scores": 5,
+      "all_zero": false,
+      "pass": true
+    },
+    {
+      "factor_id": "F53",
+      "tickers": 5,
+      "unique_scores": 5,
+      "all_zero": false,
+      "pass": true
+    },
+    {
+      "factor_id": "F56",
+      "tickers": 5,
+      "unique_scores": 5,
+      "all_zero": false,
+      "pass": true
+    },
+    {
+      "factor_id": "F55",
+      "tickers": 5,
+      "unique_scores": 4,
+      "all_zero": false,
+      "pass": true
+    },
+    {
+      "factor_id": "F31",
+      "tickers": 5,
+      "unique_scores": 5,
+      "all_zero": false,
+      "pass": true
+    },
+    {
+      "factor_id": "F12",
+      "tickers": 5,
+      "unique_scores": 5,
+      "all_zero": false,
+      "pass": true
+    }
+  ],
+  "all_factors_have_diverse_signals": false,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,17 @@
+{
+  "pipeline_signature": "Z2-V13-F8-1-F10-PRIMITIVE-CONTRACT",
+  "factor_id": "F10",
+  "factor_name": "LOW_VOLATILITY",
+  "primitives": [
+    "vol_20d"
+  ],
+  "description": "Enhanced with vol_20d primitive \u2014 penalizes high volatility more aggressively",
+  "status": "ENHANCED_VARIANT",
+  "canonical_factor_unchanged": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

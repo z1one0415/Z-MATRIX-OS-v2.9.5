@@ -1,0 +1,14 @@
+{
+  "pipeline_signature": "Z2-V13-F8-1-SMOKE",
+  "factors_tested": 8,
+  "import_pass": 8,
+  "all_import_pass": true,
+  "compute_signal_pass": 8,
+  "all_non_zero": false,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

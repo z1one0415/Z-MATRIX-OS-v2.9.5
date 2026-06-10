@@ -1,0 +1,18 @@
+{
+  "pipeline_signature": "Z2-V13-F8-1-CLOSEOUT",
+  "status": "V13_F8_1_PRIMITIVE_IMPLEMENTATION_PARTIAL",
+  "base_commit": "d664447",
+  "enhanced_variants_created": 8,
+  "smoke_test_pass": 8,
+  "signal_diversity_pass": 7,
+  "files_created": 8,
+  "canonical_factor_modified": false,
+  "registry_mutated": false,
+  "recommended_next": "V13_F8_2_ENHANCED_VARIANT_HISTORICAL_AB_TEST",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

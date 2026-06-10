@@ -1,0 +1,22 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3H-2-60D-REPAIR",
+  "total_60d_nulls": 478,
+  "null_by_month": {
+    "20251009": 475,
+    "20251203": 2,
+    "20260204": 1
+  },
+  "analysis": "Majority from 2025-10-09 rebalance: 60D window ends ~2026-01-02. For tickers that had incomplete data covering the 60-trading-day window from Oct through Jan, the forward_return is null.",
+  "resolution_rule": {
+    "policy": "60D labels excluded for Oct rebalance where forward window crosses Jan earnings season with data gaps",
+    "valid_later_months": true,
+    "note": "60D works fully for Nov-Dec-Jan rebalances where the window falls wholly within available data (2025-07 to 2026-06)",
+    "65D_completeness_check": "not applicable"
+  },
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

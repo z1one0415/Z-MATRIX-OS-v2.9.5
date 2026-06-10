@@ -1,8 +1,6 @@
 {
   "status": "PASS",
   "violations": 0,
-  "historical": true,
-  "forward": false,
   "alpha_claim_allowed": false,
   "runner_enabled": false,
   "execution_allowed": false,

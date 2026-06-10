@@ -1,0 +1,99 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3H-1-LABELS",
+  "status": "V13_F7_3H_1_LABELS_CHECKED",
+  "base_commit": "2f8efbd",
+  "label_feasibility": {
+    "20251008": {
+      "5D": {
+        "need_date": "20251015",
+        "available": true
+      },
+      "20D": {
+        "need_date": "20251105",
+        "available": true
+      },
+      "60D": {
+        "need_date": "20251231",
+        "available": true
+      }
+    },
+    "20251105": {
+      "5D": {
+        "need_date": "20251112",
+        "available": true
+      },
+      "20D": {
+        "need_date": "20251203",
+        "available": true
+      },
+      "60D": {
+        "need_date": "20260128",
+        "available": true
+      }
+    },
+    "20251203": {
+      "5D": {
+        "need_date": "20251210",
+        "available": true
+      },
+      "20D": {
+        "need_date": "20251231",
+        "available": true
+      },
+      "60D": {
+        "need_date": "20260225",
+        "available": true
+      }
+    },
+    "20260107": {
+      "5D": {
+        "need_date": "20260114",
+        "available": true
+      },
+      "20D": {
+        "need_date": "20260204",
+        "available": true
+      },
+      "60D": {
+        "need_date": "20260401",
+        "available": true
+      }
+    },
+    "20260204": {
+      "5D": {
+        "need_date": "20260211",
+        "available": true
+      },
+      "20D": {
+        "need_date": "20260304",
+        "available": true
+      },
+      "60D": {
+        "need_date": "20260429",
+        "available": true
+      }
+    },
+    "20260304": {
+      "5D": {
+        "need_date": "20260311",
+        "available": true
+      },
+      "20D": {
+        "need_date": "20260401",
+        "available": true
+      },
+      "60D": {
+        "need_date": "20260527",
+        "available": true
+      }
+    }
+  },
+  "all_60D_feasible": true,
+  "months_fully_feasible": 6,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

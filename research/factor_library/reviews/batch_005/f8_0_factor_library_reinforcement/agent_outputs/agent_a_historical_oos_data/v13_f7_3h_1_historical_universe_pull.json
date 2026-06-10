@@ -1,0 +1,21 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3H-1-UNIVERSE",
+  "status": "V13_F7_3H_1_UNIVERSE_CHECKED",
+  "base_commit": "2f8efbd",
+  "months_checked": 6,
+  "monthly_coverage": {
+    "20251008": 0,
+    "20251105": 5434,
+    "20251203": 5442,
+    "20260107": 5460,
+    "20260204": 5468,
+    "20260304": 5474
+  },
+  "all_months_gte_475": false,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

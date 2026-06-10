@@ -1,0 +1,17 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3H-1-CLOSEOUT",
+  "status": "V13_F7_3H_1_PRECHECK_PASS",
+  "base_commit": "2f8efbd",
+  "all_6_months_checked": true,
+  "all_60D_feasible": true,
+  "all_months_u475": true,
+  "forward_oos_claim": false,
+  "recommended_next": "EXECUTE_FULL_HISTORICAL_DATA_PULL_AND_SIGNAL_MATERIALIZATION",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "oct_rebalance_note": "2025-10-08 was National Day holiday; adjusted to 2025-10-09 (5419 tickers)"
+}

@@ -1,0 +1,15 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3H-1-F7A",
+  "status": "V13_F7_3H_1_F7A_PRECHECK",
+  "base_commit": "2f8efbd",
+  "factors": 13,
+  "executable_ready": true,
+  "signal_rows_expected": "13\u00d7475\u00d76=37050",
+  "monthly_data_available": false,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

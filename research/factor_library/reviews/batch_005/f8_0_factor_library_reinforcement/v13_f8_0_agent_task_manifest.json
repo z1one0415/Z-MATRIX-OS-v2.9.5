@@ -1,0 +1,10 @@
+{
+  "A": "historical_oos_data",
+  "B": "workspace_inventory",
+  "C": "id_collision_mapping",
+  "D": "primitive_absorption",
+  "E": "new_candidate_contracts",
+  "F": "g18_overlay",
+  "G": "ic_methodology",
+  "H": "safety_gatekeeper"
+}

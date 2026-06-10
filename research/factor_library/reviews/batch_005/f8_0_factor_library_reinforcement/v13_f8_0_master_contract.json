@@ -1,0 +1,22 @@
+{
+  "pipeline_signature": "Z2-V13-F8-0",
+  "status": "V13_F8_0_INITIATED",
+  "base_commit": "2f8efbd",
+  "agents": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H"
+  ],
+  "f7_mutation_allowed": false,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

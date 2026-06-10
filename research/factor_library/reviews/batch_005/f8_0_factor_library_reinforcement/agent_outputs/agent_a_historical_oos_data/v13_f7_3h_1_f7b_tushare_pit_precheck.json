@@ -1,0 +1,14 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3H-1-F7B",
+  "status": "V13_F7_3H_1_F7B_PRECHECK",
+  "base_commit": "2f8efbd",
+  "factors": 10,
+  "tushare_pit_required": true,
+  "historical_feasibility": "All 6 months of financials should be available (reports published by now)",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

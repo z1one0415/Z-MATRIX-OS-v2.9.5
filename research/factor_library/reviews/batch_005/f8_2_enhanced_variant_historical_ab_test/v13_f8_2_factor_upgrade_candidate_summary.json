@@ -1,0 +1,146 @@
+{
+  "pipeline_signature": "Z2-V13-F8-2-UPGRADE-SUMMARY",
+  "improvements": [
+    {
+      "factor_id": "F10",
+      "horizon": "5D",
+      "delta": 0.1257,
+      "type": "IMPROVEMENT"
+    },
+    {
+      "factor_id": "F10",
+      "horizon": "20D",
+      "delta": 0.0502,
+      "type": "IMPROVEMENT"
+    },
+    {
+      "factor_id": "F31",
+      "horizon": "5D",
+      "delta": 0.0679,
+      "type": "IMPROVEMENT"
+    },
+    {
+      "factor_id": "F31",
+      "horizon": "20D",
+      "delta": 0.0907,
+      "type": "IMPROVEMENT"
+    },
+    {
+      "factor_id": "F53",
+      "horizon": "60D",
+      "delta": 0.0261,
+      "type": "IMPROVEMENT"
+    },
+    {
+      "factor_id": "F56",
+      "horizon": "5D",
+      "delta": 0.1093,
+      "type": "IMPROVEMENT"
+    },
+    {
+      "factor_id": "F56",
+      "horizon": "20D",
+      "delta": 0.1149,
+      "type": "IMPROVEMENT"
+    }
+  ],
+  "degradations": [
+    {
+      "factor_id": "F04",
+      "horizon": "5D",
+      "delta": -0.1711,
+      "type": "DEGRADATION"
+    },
+    {
+      "factor_id": "F04",
+      "horizon": "20D",
+      "delta": -0.0335,
+      "type": "DEGRADATION"
+    },
+    {
+      "factor_id": "F10",
+      "horizon": "60D",
+      "delta": -0.1075,
+      "type": "DEGRADATION"
+    },
+    {
+      "factor_id": "F12",
+      "horizon": "5D",
+      "delta": -0.0299,
+      "type": "DEGRADATION"
+    },
+    {
+      "factor_id": "F12",
+      "horizon": "20D",
+      "delta": -0.0274,
+      "type": "DEGRADATION"
+    },
+    {
+      "factor_id": "F12",
+      "horizon": "60D",
+      "delta": -0.1405,
+      "type": "DEGRADATION"
+    },
+    {
+      "factor_id": "F30",
+      "horizon": "5D",
+      "delta": -0.015,
+      "type": "DEGRADATION"
+    },
+    {
+      "factor_id": "F30",
+      "horizon": "20D",
+      "delta": -0.0919,
+      "type": "DEGRADATION"
+    },
+    {
+      "factor_id": "F30",
+      "horizon": "60D",
+      "delta": -0.0161,
+      "type": "DEGRADATION"
+    },
+    {
+      "factor_id": "F31",
+      "horizon": "60D",
+      "delta": -0.0717,
+      "type": "DEGRADATION"
+    },
+    {
+      "factor_id": "F53",
+      "horizon": "5D",
+      "delta": -0.0259,
+      "type": "DEGRADATION"
+    },
+    {
+      "factor_id": "F53",
+      "horizon": "20D",
+      "delta": -0.0213,
+      "type": "DEGRADATION"
+    },
+    {
+      "factor_id": "F55",
+      "horizon": "20D",
+      "delta": -0.0593,
+      "type": "DEGRADATION"
+    },
+    {
+      "factor_id": "F55",
+      "horizon": "60D",
+      "delta": -0.0245,
+      "type": "DEGRADATION"
+    },
+    {
+      "factor_id": "F56",
+      "horizon": "60D",
+      "delta": -0.0477,
+      "type": "DEGRADATION"
+    }
+  ],
+  "no_change_factors": [],
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

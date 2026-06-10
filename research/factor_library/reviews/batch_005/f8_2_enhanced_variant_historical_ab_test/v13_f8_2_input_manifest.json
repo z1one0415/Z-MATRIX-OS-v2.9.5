@@ -1,0 +1,11 @@
+{
+  "baseline_commit": "d664447",
+  "enhanced_commit": "4b268bd",
+  "factors_tested": 8,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

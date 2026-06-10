@@ -1,0 +1,15 @@
+{
+  "F04": {
+    "tickers": 5,
+    "unique_scores": 5,
+    "all_zero": false,
+    "pass": true
+  },
+  "aggregate_8_8": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

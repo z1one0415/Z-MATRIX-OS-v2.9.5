@@ -1,0 +1,11 @@
+{
+  "pipeline_signature": "Z2-V13-F8-1-1",
+  "base_commit": "0e9c64c",
+  "task": "fix F04 enhanced all_zero",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

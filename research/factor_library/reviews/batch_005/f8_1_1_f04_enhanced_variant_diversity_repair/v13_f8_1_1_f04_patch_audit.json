@@ -1,0 +1,18 @@
+{
+  "fix": "adaptive lookback: compute with available bars when <60",
+  "executable_formula_modified": false,
+  "f04_enhanced_before": {
+    "all_zero": true,
+    "unique_scores": 1
+  },
+  "f04_enhanced_after": {
+    "all_zero": false,
+    "unique_scores": 5
+  },
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

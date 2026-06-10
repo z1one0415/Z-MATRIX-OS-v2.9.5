@@ -1,0 +1,31 @@
+{
+  "pipeline_signature": "Z2-V13-F9-0-FORWARD-WINDOW",
+  "window": "2026-05-06 to 2026-10-06 (6 monthly rebalances)",
+  "rebalance_dates": [
+    "2026-05-06",
+    "2026-06-03",
+    "2026-07-01",
+    "2026-08-03",
+    "2026-09-01",
+    "2026-10-06"
+  ],
+  "status": "WAITING_FOR_TIME_PASSAGE",
+  "months_available_now": [
+    "2026-05",
+    "2026-06"
+  ],
+  "months_waiting": [
+    "2026-07",
+    "2026-08",
+    "2026-09",
+    "2026-10"
+  ],
+  "earliest_completion": "2026-10-06 (all 6 months in the past)",
+  "note": "Forward OOS cannot be executed until all 6 rebalance months have occurred.",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

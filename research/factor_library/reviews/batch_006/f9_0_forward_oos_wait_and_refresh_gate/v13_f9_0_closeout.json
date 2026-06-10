@@ -1,0 +1,20 @@
+{
+  "pipeline_signature": "Z2-V13-F9-0-CLOSEOUT",
+  "status": "V13_F9_0_FORWARD_OOS_WAIT_GATE_PASS",
+  "base_commit": "eb62c70",
+  "forward_window_defined": true,
+  "refresh_schedule_defined": true,
+  "monitored_factor_set_defined": true,
+  "enhanced_candidate_watchlist_defined": true,
+  "f7_baseline_count": 23,
+  "enhanced_candidate_count": 3,
+  "formal_alpha": 0,
+  "forward_oos_executed": false,
+  "recommended_next_idle": "WAIT_FOR_FORWARD_OOS_MONTHLY_REFRESH_CYCLE",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

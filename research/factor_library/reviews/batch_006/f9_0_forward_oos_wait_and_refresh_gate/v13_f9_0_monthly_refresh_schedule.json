@@ -1,0 +1,18 @@
+{
+  "pipeline_signature": "Z2-V13-F9-0-REFRESH-SCHEDULE",
+  "schedule": "First trading day of each month, starting 2026-07-01",
+  "checklist": {
+    "pull_new_price_bars": true,
+    "update_forward_labels": true,
+    "compute_new_months_signals": true,
+    "rerun_IC": true,
+    "update_watchlist": true
+  },
+  "next_refresh": "2026-07-01 (after 2026-06 forward labels become available)",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

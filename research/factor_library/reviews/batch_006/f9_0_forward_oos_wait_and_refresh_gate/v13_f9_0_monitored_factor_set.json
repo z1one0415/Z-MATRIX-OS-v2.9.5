@@ -1,0 +1,42 @@
+{
+  "pipeline_signature": "Z2-V13-F9-0-MONITORED-SET",
+  "f7_baseline": [
+    "F04",
+    "F06",
+    "F07",
+    "F08",
+    "F09",
+    "F10",
+    "F11",
+    "F12",
+    "F14",
+    "F15",
+    "F21",
+    "F24",
+    "F30",
+    "F31",
+    "F44",
+    "F45",
+    "F51",
+    "F53",
+    "F54",
+    "F55",
+    "F56",
+    "F58",
+    "F60"
+  ],
+  "f7_baseline_count": 23,
+  "enhanced_candidates": [
+    "F56_5D_20D",
+    "F10_5D_20D",
+    "F31_5D_20D"
+  ],
+  "enhanced_candidates_count": 3,
+  "policy": "F7 baseline tracks 23 original factors. Enhanced candidates are monitored for forward confirmation but do NOT replace canonical until forward OOS validates.",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

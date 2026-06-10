@@ -1,0 +1,11 @@
+{
+  "pipeline_signature": "Z2-V13-F9-0-NO-EXEC",
+  "runner": false,
+  "execution": false,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

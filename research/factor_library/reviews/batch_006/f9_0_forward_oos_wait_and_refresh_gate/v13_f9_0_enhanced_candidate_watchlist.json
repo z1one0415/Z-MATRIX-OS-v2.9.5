@@ -1,0 +1,53 @@
+{
+  "pipeline_signature": "Z2-V13-F9-0-WATCHLIST",
+  "candidates": [
+    {
+      "id": "F56_5D_20D",
+      "factor": "F56",
+      "horizon": [
+        "5D",
+        "20D"
+      ],
+      "baseline_5D_IC": 0.0095,
+      "enhanced_5D_IC": 0.1188,
+      "baseline_20D_IC": 0.0113,
+      "enhanced_20D_IC": 0.1262
+    },
+    {
+      "id": "F10_5D_20D",
+      "factor": "F10",
+      "horizon": [
+        "5D",
+        "20D"
+      ],
+      "baseline_5D_IC": -0.1098,
+      "enhanced_5D_IC": 0.0159,
+      "baseline_20D_IC": -0.0699,
+      "enhanced_20D_IC": -0.0197
+    },
+    {
+      "id": "F31_5D_20D",
+      "factor": "F31",
+      "horizon": [
+        "5D",
+        "20D"
+      ],
+      "baseline_5D_IC": -0.027,
+      "enhanced_5D_IC": 0.0409,
+      "baseline_20D_IC": 0.0286,
+      "enhanced_20D_IC": 0.1193
+    }
+  ],
+  "forward_confirmation_required": [
+    "5D IC > baseline",
+    "20D IC > baseline",
+    "IC stability across months"
+  ],
+  "policy": "DO NOT replace canonical F56/F10/F31 before forward OOS confirms.",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

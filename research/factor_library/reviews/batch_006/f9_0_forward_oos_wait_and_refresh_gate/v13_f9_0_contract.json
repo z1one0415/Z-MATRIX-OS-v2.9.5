@@ -1,0 +1,13 @@
+{
+  "pipeline_signature": "Z2-V13-F9-0-FORWARD-OOS-WAIT-CONTRACT",
+  "status": "V13_F9_0_CONTRACT_BUILT",
+  "base_commit": "eb62c70",
+  "forward_oos_waiting": true,
+  "formal_oos_executed": false,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

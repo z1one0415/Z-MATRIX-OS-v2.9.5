@@ -1,0 +1,87 @@
+{
+  "pipeline_signature": "Z2-V13-F7-0-CANONICAL-REGISTRY",
+  "status": "V13_F7_0_REGISTRY_UPDATED",
+  "base_commit": "73d2537",
+  "total_slots": 61,
+  "F7_A_STANDALONE": [
+    "F04",
+    "F10",
+    "F11",
+    "F21",
+    "F24",
+    "F30",
+    "F31",
+    "F53",
+    "F54",
+    "F55",
+    "F56",
+    "F58",
+    "F60"
+  ],
+  "F7_B_PIPELINE_BOUND": [
+    "F06",
+    "F07",
+    "F08",
+    "F09",
+    "F12",
+    "F14",
+    "F15",
+    "F44",
+    "F45",
+    "F51"
+  ],
+  "BLOCKED": [
+    "F13",
+    "F16",
+    "F41",
+    "F42",
+    "F43",
+    "F46",
+    "F47",
+    "F48",
+    "F49",
+    "F50",
+    "F52",
+    "F57",
+    "F59"
+  ],
+  "EXCLUDED": {
+    "REJECTED": [
+      "F02",
+      "F03",
+      "F05"
+    ],
+    "ORANGE": [
+      "F01"
+    ],
+    "SOURCE_AUDIT": [
+      "F17",
+      "F18",
+      "F19",
+      "F20"
+    ],
+    "WATCH": [
+      "F22",
+      "F26",
+      "F27",
+      "F34"
+    ],
+    "RESERVED": [
+      "F23",
+      "F25",
+      "F28",
+      "F29",
+      "F32",
+      "F33",
+      "F35",
+      "F36",
+      "F37",
+      "F38",
+      "F39",
+      "F40"
+    ],
+    "SIDECAR": [
+      "F03R"
+    ]
+  }
+}

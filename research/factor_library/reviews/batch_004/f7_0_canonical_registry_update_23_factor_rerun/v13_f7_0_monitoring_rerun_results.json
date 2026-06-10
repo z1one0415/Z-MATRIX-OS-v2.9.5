@@ -1,0 +1,489 @@
+{
+  "pipeline_signature": "Z2-V13-F7-0-23-FACTOR-RERUN",
+  "status": "V13_F7_0_RERUN_COMPLETE",
+  "base_commit": "73d2537",
+  "sample": "MICRO_SAMPLE_5_TICKERS",
+  "rebalance": "2026-05-06",
+  "horizons": [
+    "5D",
+    "20D"
+  ],
+  "F7_A": {
+    "count": 13,
+    "positive_5D": 5,
+    "positive_20D": 2,
+    "results": [
+      {
+        "factor_id": "F04",
+        "type": "STANDALONE",
+        "5D": null,
+        "20D": null
+      },
+      {
+        "factor_id": "F10",
+        "type": "STANDALONE",
+        "5D": null,
+        "20D": null
+      },
+      {
+        "factor_id": "F11",
+        "type": "STANDALONE",
+        "5D": null,
+        "20D": null
+      },
+      {
+        "factor_id": "F21",
+        "type": "STANDALONE",
+        "5D": {
+          "spread": -0.002824,
+          "top_mean": 0.033336,
+          "bottom_mean": 0.03616,
+          "top_n": 2,
+          "bot_n": 2,
+          "sign": 0.4,
+          "n": 5
+        },
+        "20D": {
+          "spread": 0.092559,
+          "top_mean": 0.179682,
+          "bottom_mean": 0.087123,
+          "top_n": 2,
+          "bot_n": 2,
+          "sign": 0.5,
+          "n": 5
+        }
+      },
+      {
+        "factor_id": "F24",
+        "type": "STANDALONE",
+        "5D": {
+          "spread": -0.074554,
+          "top_mean": -0.01616,
+          "bottom_mean": 0.058394,
+          "top_n": 2,
+          "bot_n": 2,
+          "sign": 0.2,
+          "n": 5
+        },
+        "20D": {
+          "spread": -0.233192,
+          "top_mean": -0.000322,
+          "bottom_mean": 0.232871,
+          "top_n": 2,
+          "bot_n": 2,
+          "sign": 0.3,
+          "n": 5
+        }
+      },
+      {
+        "factor_id": "F30",
+        "type": "STANDALONE",
+        "5D": {
+          "spread": -0.024438,
+          "top_mean": 0.008898,
+          "bottom_mean": 0.033336,
+          "top_n": 2,
+          "bot_n": 2,
+          "sign": 0.5,
+          "n": 5
+        },
+        "20D": {
+          "spread": -0.126816,
+          "top_mean": 0.052866,
+          "bottom_mean": 0.179682,
+          "top_n": 2,
+          "bot_n": 2,
+          "sign": 0.4,
+          "n": 5
+        }
+      },
+      {
+        "factor_id": "F31",
+        "type": "STANDALONE",
+        "5D": {
+          "spread": 0.002824,
+          "top_mean": 0.03616,
+          "bottom_mean": 0.033336,
+          "top_n": 2,
+          "bot_n": 2,
+          "sign": 0.5,
+          "n": 5
+        },
+        "20D": {
+          "spread": -0.092559,
+          "top_mean": 0.087123,
+          "bottom_mean": 0.179682,
+          "top_n": 2,
+          "bot_n": 2,
+          "sign": 0.4,
+          "n": 5
+        }
+      },
+      {
+        "factor_id": "F53",
+        "type": "STANDALONE",
+        "5D": {
+          "spread": 0.002204,
+          "top_mean": 0.011102,
+          "bottom_mean": 0.008898,
+          "top_n": 2,
+          "bot_n": 2,
+          "sign": 0.4,
+          "n": 5
+        },
+        "20D": {
+          "spread": -0.018932,
+          "top_mean": 0.033934,
+          "bottom_mean": 0.052866,
+          "top_n": 2,
+          "bot_n": 2,
+          "sign": 0.5,
+          "n": 5
+        }
+      },
+      {
+        "factor_id": "F54",
+        "type": "STANDALONE",
+        "5D": {
+          "spread": 0.002824,
+          "top_mean": 0.03616,
+          "bottom_mean": 0.033336,
+          "top_n": 2,
+          "bot_n": 2,
+          "sign": 0.4,
+          "n": 5
+        },
+        "20D": {
+          "spread": -0.092559,
+          "top_mean": 0.087123,
+          "bottom_mean": 0.179682,
+          "top_n": 2,
+          "bot_n": 2,
+          "sign": 0.3,
+          "n": 5
+        }
+      },
+      {
+        "factor_id": "F55",
+        "type": "STANDALONE",
+        "5D": {
+          "spread": -0.001349,
+          "top_mean": 0.011102,
+          "bottom_mean": 0.012451,
+          "top_n": 2,
+          "bot_n": 2,
+          "sign": 0.4,
+          "n": 5
+        },
+        "20D": {
+          "spread": -0.093194,
+          "top_mean": 0.033934,
+          "bottom_mean": 0.127128,
+          "top_n": 2,
+          "bot_n": 2,
+          "sign": 0.5,
+          "n": 5
+        }
+      },
+      {
+        "factor_id": "F56",
+        "type": "STANDALONE",
+        "5D": {
+          "spread": -0.05232,
+          "top_mean": -0.01616,
+          "bottom_mean": 0.03616,
+          "top_n": 2,
+          "bot_n": 2,
+          "sign": 0.3,
+          "n": 5
+        },
+        "20D": {
+          "spread": -0.087445,
+          "top_mean": -0.000322,
+          "bottom_mean": 0.087123,
+          "top_n": 2,
+          "bot_n": 2,
+          "sign": 0.4,
+          "n": 5
+        }
+      },
+      {
+        "factor_id": "F58",
+        "type": "STANDALONE",
+        "5D": {
+          "spread": 0.002824,
+          "top_mean": 0.03616,
+          "bottom_mean": 0.033336,
+          "top_n": 2,
+          "bot_n": 2,
+          "sign": 0.4,
+          "n": 5
+        },
+        "20D": {
+          "spread": -0.092559,
+          "top_mean": 0.087123,
+          "bottom_mean": 0.179682,
+          "top_n": 2,
+          "bot_n": 2,
+          "sign": 0.3,
+          "n": 5
+        }
+      },
+      {
+        "factor_id": "F60",
+        "type": "STANDALONE",
+        "5D": {
+          "spread": 0.055873,
+          "top_mean": 0.039713,
+          "bottom_mean": -0.01616,
+          "top_n": 2,
+          "bot_n": 2,
+          "sign": 0.7,
+          "n": 5
+        },
+        "20D": {
+          "spread": 0.161707,
+          "top_mean": 0.161385,
+          "bottom_mean": -0.000322,
+          "top_n": 2,
+          "bot_n": 2,
+          "sign": 0.6,
+          "n": 5
+        }
+      }
+    ]
+  },
+  "F7_B": {
+    "count": 10,
+    "positive_5D": 4,
+    "positive_20D": 1,
+    "results": [
+      {
+        "factor_id": "F06",
+        "type": "PIPELINE_BOUND",
+        "5D": {
+          "spread": 0.008582,
+          "top_mean": 0.01748,
+          "bottom_mean": 0.008898,
+          "top_n": 1,
+          "bot_n": 2,
+          "sign": 0.6667,
+          "n": 4
+        },
+        "20D": {
+          "spread": -0.037229,
+          "top_mean": 0.015637,
+          "bottom_mean": 0.052866,
+          "top_n": 1,
+          "bot_n": 2,
+          "sign": 0.5,
+          "n": 4
+        }
+      },
+      {
+        "factor_id": "F07",
+        "type": "PIPELINE_BOUND",
+        "5D": {
+          "spread": -0.004173,
+          "top_mean": 0.004725,
+          "bottom_mean": 0.008898,
+          "top_n": 1,
+          "bot_n": 2,
+          "sign": 0.5,
+          "n": 4
+        },
+        "20D": {
+          "spread": -0.000634,
+          "top_mean": 0.052232,
+          "bottom_mean": 0.052866,
+          "top_n": 1,
+          "bot_n": 2,
+          "sign": 0.6667,
+          "n": 4
+        }
+      },
+      {
+        "factor_id": "F08",
+        "type": "PIPELINE_BOUND",
+        "5D": {
+          "spread": 0.008582,
+          "top_mean": 0.01748,
+          "bottom_mean": 0.008898,
+          "top_n": 1,
+          "bot_n": 2,
+          "sign": 0.6667,
+          "n": 4
+        },
+        "20D": {
+          "spread": -0.037229,
+          "top_mean": 0.015637,
+          "bottom_mean": 0.052866,
+          "top_n": 1,
+          "bot_n": 2,
+          "sign": 0.5,
+          "n": 4
+        }
+      },
+      {
+        "factor_id": "F09",
+        "type": "PIPELINE_BOUND",
+        "5D": {
+          "spread": -0.031435,
+          "top_mean": 0.004725,
+          "bottom_mean": 0.03616,
+          "top_n": 1,
+          "bot_n": 2,
+          "sign": 0.1667,
+          "n": 4
+        },
+        "20D": {
+          "spread": -0.034891,
+          "top_mean": 0.052232,
+          "bottom_mean": 0.087123,
+          "top_n": 1,
+          "bot_n": 2,
+          "sign": 0.3333,
+          "n": 4
+        }
+      },
+      {
+        "factor_id": "F12",
+        "type": "PIPELINE_BOUND",
+        "5D": {
+          "spread": -0.004173,
+          "top_mean": 0.004725,
+          "bottom_mean": 0.008898,
+          "top_n": 1,
+          "bot_n": 2,
+          "sign": 0.3333,
+          "n": 4
+        },
+        "20D": {
+          "spread": -0.000634,
+          "top_mean": 0.052232,
+          "bottom_mean": 0.052866,
+          "top_n": 1,
+          "bot_n": 2,
+          "sign": 0.5,
+          "n": 4
+        }
+      },
+      {
+        "factor_id": "F14",
+        "type": "PIPELINE_BOUND",
+        "5D": {
+          "spread": -0.048148,
+          "top_mean": -0.037045,
+          "bottom_mean": 0.011102,
+          "top_n": 1,
+          "bot_n": 2,
+          "sign": 0.5,
+          "n": 4
+        },
+        "20D": {
+          "spread": -0.08681,
+          "top_mean": -0.052876,
+          "bottom_mean": 0.033934,
+          "top_n": 1,
+          "bot_n": 2,
+          "sign": 0.3333,
+          "n": 4
+        }
+      },
+      {
+        "factor_id": "F15",
+        "type": "PIPELINE_BOUND",
+        "5D": {
+          "spread": 0.064624,
+          "top_mean": 0.054841,
+          "bottom_mean": -0.009783,
+          "top_n": 1,
+          "bot_n": 2,
+          "sign": 0.8333,
+          "n": 4
+        },
+        "20D": {
+          "spread": 0.177229,
+          "top_mean": 0.158609,
+          "bottom_mean": -0.018619,
+          "top_n": 1,
+          "bot_n": 2,
+          "sign": 1.0,
+          "n": 4
+        }
+      },
+      {
+        "factor_id": "F44",
+        "type": "PIPELINE_BOUND",
+        "5D": {
+          "spread": -0.012303,
+          "top_mean": 0.01748,
+          "bottom_mean": 0.029783,
+          "top_n": 1,
+          "bot_n": 2,
+          "sign": 0.5,
+          "n": 4
+        },
+        "20D": {
+          "spread": -0.089784,
+          "top_mean": 0.015637,
+          "bottom_mean": 0.105421,
+          "top_n": 1,
+          "bot_n": 2,
+          "sign": 0.3333,
+          "n": 4
+        }
+      },
+      {
+        "factor_id": "F45",
+        "type": "PIPELINE_BOUND",
+        "5D": {
+          "spread": -0.066828,
+          "top_mean": -0.037045,
+          "bottom_mean": 0.029783,
+          "top_n": 1,
+          "bot_n": 2,
+          "sign": 0.3333,
+          "n": 4
+        },
+        "20D": {
+          "spread": -0.158297,
+          "top_mean": -0.052876,
+          "bottom_mean": 0.105421,
+          "top_n": 1,
+          "bot_n": 2,
+          "sign": 0.1667,
+          "n": 4
+        }
+      },
+      {
+        "factor_id": "F51",
+        "type": "PIPELINE_BOUND",
+        "5D": {
+          "spread": 0.008582,
+          "top_mean": 0.01748,
+          "bottom_mean": 0.008898,
+          "top_n": 1,
+          "bot_n": 2,
+          "sign": 0.5,
+          "n": 4
+        },
+        "20D": {
+          "spread": -0.037229,
+          "top_mean": 0.015637,
+          "bottom_mean": 0.052866,
+          "top_n": 1,
+          "bot_n": 2,
+          "sign": 0.3333,
+          "n": 4
+        }
+      }
+    ]
+  },
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

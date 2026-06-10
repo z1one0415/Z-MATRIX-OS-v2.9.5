@@ -1,0 +1,14 @@
+{
+  "f7a_factors": 13,
+  "f7b_factors": 10,
+  "total": 23,
+  "horizons": 3,
+  "rebalance_months": 6,
+  "label_mask_applied": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

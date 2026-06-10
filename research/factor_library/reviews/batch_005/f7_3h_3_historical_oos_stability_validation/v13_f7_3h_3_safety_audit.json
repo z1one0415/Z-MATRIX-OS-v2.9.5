@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "violations": 0,
+  "historical_validation": true,
+  "forward_oos": false,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

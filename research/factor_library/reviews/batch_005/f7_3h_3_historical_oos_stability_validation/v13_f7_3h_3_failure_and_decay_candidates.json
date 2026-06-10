@@ -1,0 +1,11 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3H-3-FAILURE-DECAY",
+  "candidates": [],
+  "note": "Historical OSS only \u2014 not a final factor judgment. See forward OOS for confirmation.",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,14 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3H-3-MASK-AUDIT",
+  "mask_applied": true,
+  "5D_excluded": 1,
+  "20D_excluded": 10,
+  "60D_excluded": 478,
+  "oct_60d_excluded_by_policy": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

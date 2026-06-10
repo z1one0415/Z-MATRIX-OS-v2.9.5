@@ -37,6 +37,7 @@ class Z9ReviewNodeResponse:
     )
     evidence: dict = field(default_factory=dict)
     sections: list = field(default_factory=list)
+    z2_feedback_candidate: object = None
     forbidden_outputs_removed: list = field(
         default_factory=lambda: sorted(FORBIDDEN_OUTPUT_KEYS)
     )

@@ -7,6 +7,7 @@ from skillos.capability_invocation_os.review_node.constants import (
     FORBIDDEN_INPUT_KEYS,
     FORBIDDEN_OUTPUT_KEYS,
     ALLOWED_REVIEW_SECTIONS,
+    ALLOWED_REVIEW_LABELS,
 )
 from skillos.capability_invocation_os.review_node.models import (
     Z9ReviewDecision,
@@ -92,8 +93,17 @@ def validate_z2_snapshot_candidate(candidate) -> Z9ReviewDecision:
         return Z9ReviewDecision.DENY_Z9_TRADE_RESULT_FORBIDDEN
     if not candidate.no_position_change:
         return Z9ReviewDecision.DENY_Z9_TRADE_RESULT_FORBIDDEN
-    # Check blocked_outputs_removed complete
-    if candidate.blocked_outputs_removed and not blocked_outputs_removed_complete(candidate.blocked_outputs_removed):
+    # Check required hashes are non-empty (BLOCKER 3)
+    if not all([
+        candidate.report_node_id,
+        candidate.source_graph_hash,
+        candidate.evidence_chain_hash,
+        candidate.research_summary_hash,
+        candidate.risk_warning_hash,
+    ]):
+        return Z9ReviewDecision.DENY_Z9_EVIDENCE_INCOMPLETE
+    # Check blocked_outputs_removed complete (BLOCKER 4 — empty list must fail)
+    if not blocked_outputs_removed_complete(candidate.blocked_outputs_removed):
         return Z9ReviewDecision.DENY_Z9_OUTPUTS_UNSAFE
     # Check payload for forbidden inputs
     if payload_contains_forbidden_inputs(candidate):
@@ -112,8 +122,8 @@ def validate_z9_review_section(section: Z9ReviewSection) -> Z9ReviewDecision:
         return Z9ReviewDecision.DENY_Z9_SOURCE_FORBIDDEN
     if not section.readonly_only:
         return Z9ReviewDecision.DENY_Z9_EXECUTION_FORBIDDEN
-    # Check blocked_outputs_removed complete
-    if section.blocked_outputs_removed and not blocked_outputs_removed_complete(section.blocked_outputs_removed):
+    # Check blocked_outputs_removed complete (BLOCKER 4 — empty list must fail)
+    if not blocked_outputs_removed_complete(section.blocked_outputs_removed):
         return Z9ReviewDecision.DENY_Z9_OUTPUTS_UNSAFE
     # Check payload for forbidden outputs
     if payload_contains_forbidden_outputs(section):
@@ -135,19 +145,21 @@ def validate_z9_review_response(response: Z9ReviewNodeResponse) -> Z9ReviewDecis
         return Z9ReviewDecision.DENY_Z9_TRADE_RESULT_FORBIDDEN
     if not response.no_position_change:
         return Z9ReviewDecision.DENY_Z9_TRADE_RESULT_FORBIDDEN
-    if not response.memory_mutation_enabled:
-        # Memory mutation should be disabled; if enabled in P0, deny
-        pass
     if response.memory_mutation_enabled:
         return Z9ReviewDecision.DENY_Z9_MEMORY_MUTATION_FORBIDDEN
-    if not response.forbidden_outputs_removed:
-        return Z9ReviewDecision.DENY_Z9_OUTPUTS_UNSAFE
+    # BLOCKER 4 — empty list must fail (same condition as below)
     if not blocked_outputs_removed_complete(response.forbidden_outputs_removed):
         return Z9ReviewDecision.DENY_Z9_OUTPUTS_UNSAFE
-    # Scan sections for forbidden outputs
+    # BLOCKER 5 — validate each section with validate_z9_review_section
     for section in response.sections:
-        if payload_contains_forbidden_outputs(section):
-            return Z9ReviewDecision.DENY_Z9_OUTPUTS_UNSAFE
+        sec_decision = validate_z9_review_section(section)
+        if sec_decision.value.startswith("DENY_"):
+            return sec_decision
+    # BLOCKER 5 — validate z2_feedback_candidate if present
+    if response.z2_feedback_candidate is not None:
+        fb_decision = validate_z2_feedback_candidate(response.z2_feedback_candidate)
+        if fb_decision.value.startswith("DENY_"):
+            return fb_decision
     # Scan evidence payload
     if payload_contains_forbidden_outputs(response.evidence):
         return Z9ReviewDecision.DENY_Z9_OUTPUTS_UNSAFE
@@ -162,6 +174,9 @@ def validate_z2_feedback_candidate(candidate: Z2FeedbackCandidate) -> Z9ReviewDe
         return Z9ReviewDecision.DENY_Z9_EXECUTION_FORBIDDEN
     if not candidate.requires_human_review:
         return Z9ReviewDecision.DENY_Z9_EXECUTION_FORBIDDEN
+    # Review label must be in allowed set
+    if candidate.review_label not in ALLOWED_REVIEW_LABELS:
+        return Z9ReviewDecision.DENY_Z9_SOURCE_FORBIDDEN
     # Feedback candidates must not contain forbidden outputs
     if payload_contains_forbidden_outputs(candidate):
         return Z9ReviewDecision.DENY_Z9_OUTPUTS_UNSAFE

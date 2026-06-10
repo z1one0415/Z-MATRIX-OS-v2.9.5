@@ -44,11 +44,18 @@ def test_blocked_outputs_complete():
     assert blocked_outputs_removed_complete(["buy_signal", "sell_signal"]) is False
 
 def test_z9_section_valid():
-    section = Z9ReviewSection(section_id="s1", section_type="review_header")
+    section = Z9ReviewSection(
+        section_id="s1", section_type="review_header",
+        blocked_outputs_removed=sorted(FORBIDDEN_OUTPUT_KEYS),
+    )
     result = validate_z9_review_section(section)
     assert result == Z9ReviewDecision.ALLOW_Z9_READONLY_REVIEW
 
 def test_feedback_readonly():
-    f = Z2FeedbackCandidate()
+    f = Z2FeedbackCandidate(
+        review_label="EXPLANATION_ACCEPTED_STRUCTURE_ONLY",
+        readonly_only=True,
+        requires_human_review=True,
+    )
     result = validate_z2_feedback_candidate(f)
     assert result == Z9ReviewDecision.ALLOW_Z9_READONLY_REVIEW

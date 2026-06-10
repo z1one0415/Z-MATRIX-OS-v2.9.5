@@ -1,0 +1,138 @@
+{
+  "pipeline_signature": "Z2-V13-F6-5-5-STANDALONE-RECOMPUTE-AUDIT",
+  "status": "RECOMPUTE_AUDIT_COMPLETE",
+  "base_commit": "5006656",
+  "total_tested": 13,
+  "results": [
+    {
+      "factor_id": "F04",
+      "rank_match": "5/5",
+      "bucket_match": "5/5",
+      "score_range": [
+        -0.029254,
+        0.224382
+      ],
+      "status": "RECOMPUTE_PASS"
+    },
+    {
+      "factor_id": "F10",
+      "rank_match": "5/5",
+      "bucket_match": "5/5",
+      "score_range": [
+        0.344394,
+        0.38343
+      ],
+      "status": "RECOMPUTE_PASS"
+    },
+    {
+      "factor_id": "F11",
+      "rank_match": "5/5",
+      "bucket_match": "5/5",
+      "score_range": [
+        -0.099934,
+        0.045381
+      ],
+      "status": "RECOMPUTE_PASS"
+    },
+    {
+      "factor_id": "F21",
+      "rank_match": "1/5",
+      "bucket_match": "1/5",
+      "score_range": [
+        0.190476,
+        0.380952
+      ],
+      "status": "RECOMPUTE_MISMATCH"
+    },
+    {
+      "factor_id": "F24",
+      "rank_match": "5/5",
+      "bucket_match": "5/5",
+      "score_range": [
+        -0.101378,
+        0.836621
+      ],
+      "status": "RECOMPUTE_PASS"
+    },
+    {
+      "factor_id": "F30",
+      "rank_match": "5/5",
+      "bucket_match": "5/5",
+      "score_range": [
+        -0.446606,
+        0.173495
+      ],
+      "status": "RECOMPUTE_PASS"
+    },
+    {
+      "factor_id": "F31",
+      "rank_match": "5/5",
+      "bucket_match": "5/5",
+      "score_range": [
+        0.026484,
+        0.110563
+      ],
+      "status": "RECOMPUTE_PASS"
+    },
+    {
+      "factor_id": "F53",
+      "rank_match": "5/5",
+      "bucket_match": "5/5",
+      "score_range": [
+        0.011605,
+        0.097461
+      ],
+      "status": "RECOMPUTE_PASS"
+    },
+    {
+      "factor_id": "F54",
+      "rank_match": "5/5",
+      "bucket_match": "5/5",
+      "score_range": [
+        -0.992194,
+        2.053613
+      ],
+      "status": "RECOMPUTE_PASS"
+    },
+    {
+      "factor_id": "F55",
+      "rank_match": "3/5",
+      "bucket_match": "3/5",
+      "score_range": [
+        -0.0,
+        0.348571
+      ],
+      "status": "RECOMPUTE_PARTIAL_MATCH"
+    },
+    {
+      "factor_id": "F56",
+      "rank_match": "5/5",
+      "bucket_match": "5/5",
+      "score_range": [
+        0.449841,
+        0.771179
+      ],
+      "status": "RECOMPUTE_PASS"
+    },
+    {
+      "factor_id": "F58",
+      "rank_match": "5/5",
+      "bucket_match": "5/5",
+      "score_range": [
+        -1.457558,
+        1.6273
+      ],
+      "status": "RECOMPUTE_PASS"
+    },
+    {
+      "factor_id": "F60",
+      "rank_match": "5/5",
+      "bucket_match": "5/5",
+      "score_range": [
+        -0.685408,
+        0.153161
+      ],
+      "status": "RECOMPUTE_PASS"
+    }
+  ]
+}

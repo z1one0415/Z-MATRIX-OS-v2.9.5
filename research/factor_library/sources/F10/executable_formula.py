@@ -4,17 +4,14 @@ Factor type: PRICE_VOLUME_RISK
 Formula: 1/(1+std(daily_returns,20)*100)
 Source: data/price_bars
 Signal role: FACTOR_SIGNAL_ONLY
-
-DO NOT use forward_return or outcome labels in computation.
-DO NOT output alpha_signal, trade_signal, position, order.
 """
 import csv, math
-from pathlib import Path
 from datetime import date
+from pathlib import Path
 
 PRICE_BARS = Path("data/price_bars/daily_bars.csv")
 SIGNAL_ROLE = "FACTOR_SIGNAL_ONLY"
-FACTOR_ID = "F10"
+
 
 def load_pre_rebalance_prices(rebalance_date, tickers=None):
     """Load OHLCV data strictly BEFORE rebalance_date."""
@@ -31,36 +28,31 @@ def load_pre_rebalance_prices(rebalance_date, tickers=None):
                 if t not in data:
                     data[t] = []
                 data[t].append({
-                    "date": d, "open": float(row["open"]), "high": float(row["high"]),
-                    "low": float(row["low"]), "close": float(row["close"]),
-                    "volume": int(row["volume"])
+                    "date": d, "open": float(row["open"]),
+                    "high": float(row["high"]), "low": float(row["low"]),
+                    "close": float(row["close"]), "volume": int(row["volume"])
                 })
     for t in data:
         data[t].sort(key=lambda x: x["date"])
     return data
+
 
 def compute_signal(input_prices, rebalance_date):
     """Compute F10 LOW_VOLATILITY signal scores.
 
     Formula: 1/(1+std(daily_returns,20)*100)
     Source: data/price_bars
-
-    Returns: dict of ticker -> signal_score (float)
     """
-    # should use the pre-rebalance price data to compute scores.
-    # For reproducible signal-ready classification, this function
-    # must be able to reproduce the signal_scores.csv from source data.
-        scores = {}
+    scores = {}
     for ticker, bars in input_prices.items():
-        if len(bars) < 20:
+        if len(bars) < 5:
             scores[ticker] = 0.0
             continue
-        returns = [(bars[i]["close"]-bars[i-1]["close"])/max(bars[i-1]["close"],0.0001)
-                   for i in range(max(1,len(bars)-20),len(bars))]
-        if not returns: scores[ticker]=0.0; continue
-        m=sum(returns)/len(returns)
-        std=(sum((r-m)**2 for r in returns)/len(returns))**0.5
-        scores[ticker]=round(1.0/(1.0+std*100),6)
+        returns = [(bars[i]["close"] - bars[i-1]["close"]) / max(bars[i-1]["close"], 0.0001)
+                   for i in range(max(1, len(bars)-20), len(bars))]
+        m = sum(returns) / len(returns)
+        std = (sum((r - m) ** 2 for r in returns) / len(returns)) ** 0.5
+        scores[ticker] = round(1.0 / (1.0 + std * 100), 6)
     return scores
 
 
@@ -74,11 +66,3 @@ def rank_and_bucket(scores):
              "bucket": min(5, max(1, math.ceil((i + 1) * 5 / n)))}
         for i, (t, s) in enumerate(items)
     }
-
-def main(tickers, rebalance_date=None):
-    """Generate signal scores for given tickers at rebalance_date."""
-    if rebalance_date is None:
-        rebalance_date = date(2026, 5, 6)
-    prices = load_pre_rebalance_prices(rebalance_date, set(tickers))
-    raw_scores = compute_signal(prices, rebalance_date)
-    return rank_and_bucket(raw_scores)

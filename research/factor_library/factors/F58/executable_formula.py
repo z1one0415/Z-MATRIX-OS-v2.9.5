@@ -1,20 +1,17 @@
 """Executable formula for F58 LIQUIDITY_SHOCK.
 
 Factor type: MONEY_FLOW_MICRO
-Formula: volume_zscore+range_zscore
+Formula: volume_zscore + range_zscore
 Source: data/price_bars
 Signal role: FACTOR_SIGNAL_ONLY
-
-DO NOT use forward_return or outcome labels in computation.
-DO NOT output alpha_signal, trade_signal, position, order.
 """
 import csv, math
-from pathlib import Path
 from datetime import date
+from pathlib import Path
 
 PRICE_BARS = Path("data/price_bars/daily_bars.csv")
 SIGNAL_ROLE = "FACTOR_SIGNAL_ONLY"
-FACTOR_ID = "F58"
+
 
 def load_pre_rebalance_prices(rebalance_date, tickers=None):
     """Load OHLCV data strictly BEFORE rebalance_date."""
@@ -31,34 +28,35 @@ def load_pre_rebalance_prices(rebalance_date, tickers=None):
                 if t not in data:
                     data[t] = []
                 data[t].append({
-                    "date": d, "open": float(row["open"]), "high": float(row["high"]),
-                    "low": float(row["low"]), "close": float(row["close"]),
-                    "volume": int(row["volume"])
+                    "date": d, "open": float(row["open"]),
+                    "high": float(row["high"]), "low": float(row["low"]),
+                    "close": float(row["close"]), "volume": int(row["volume"])
                 })
     for t in data:
         data[t].sort(key=lambda x: x["date"])
     return data
 
+
 def compute_signal(input_prices, rebalance_date):
     """Compute F58 LIQUIDITY_SHOCK signal scores.
 
-    Formula: volume_zscore+range_zscore
+    Formula: volume_zscore + range_zscore
     Source: data/price_bars
-
-    Returns: dict of ticker -> signal_score (float)
     """
-    # should use the pre-rebalance price data to compute scores.
-    # For reproducible signal-ready classification, this function
-    # must be able to reproduce the signal_scores.csv from source data.
-        scores = {}
+    scores = {}
     for ticker, bars in input_prices.items():
-        if len(bars) < 20: scores[ticker]=0.0; continue
-        vols=[b["volume"] for b in bars[-20:]]
-        rngs=[b["high"]-b["low"] for b in bars[-20:]]
-        mv=sum(vols)/len(vols); sv=(sum((v-mv)**2 for v in vols)/len(vols))**0.5
-        mr=sum(rngs)/len(rngs); sr=(sum((r-mr)**2 for r in rngs)/len(rngs))**0.5
-        vz=(vols[-1]-mv)/max(sv,1); rz=(rngs[-1]-mr)/max(sr,0.0001)
-        scores[ticker]=round(vz+rz,6)
+        if len(bars) < 5:
+            scores[ticker] = 0.0
+            continue
+        vols = [b["volume"] for b in bars[-20:]]
+        rngs = [b["high"] - b["low"] for b in bars[-20:]]
+        mv = sum(vols) / len(vols)
+        sv = (sum((v - mv) ** 2 for v in vols) / len(vols)) ** 0.5
+        mr = sum(rngs) / len(rngs)
+        sr = (sum((r - mr) ** 2 for r in rngs) / len(rngs)) ** 0.5
+        vz = (vols[-1] - mv) / max(sv, 1)
+        rz = (rngs[-1] - mr) / max(sr, 0.0001)
+        scores[ticker] = round(vz + rz, 6)
     return scores
 
 
@@ -72,11 +70,3 @@ def rank_and_bucket(scores):
              "bucket": min(5, max(1, math.ceil((i + 1) * 5 / n)))}
         for i, (t, s) in enumerate(items)
     }
-
-def main(tickers, rebalance_date=None):
-    """Generate signal scores for given tickers at rebalance_date."""
-    if rebalance_date is None:
-        rebalance_date = date(2026, 5, 6)
-    prices = load_pre_rebalance_prices(rebalance_date, set(tickers))
-    raw_scores = compute_signal(prices, rebalance_date)
-    return rank_and_bucket(raw_scores)

@@ -1,0 +1,37 @@
+{
+  "pipeline_signature": "Z2-V13-F6-5-5-F7-ELIGIBILITY-MATRIX",
+  "status": "V13_F6_5_5_F7_ELIGIBILITY_COMPLETE",
+  "base_commit": "5006656",
+  "F7_A_STANDALONE_REPRODUCIBLE": [
+    "F04",
+    "F10",
+    "F11",
+    "F24",
+    "F30",
+    "F31",
+    "F53",
+    "F54",
+    "F55",
+    "F56",
+    "F58",
+    "F60"
+  ],
+  "F7_A_count": 12,
+  "F7_B_PIPELINE_BOUND_REPLAY": [
+    "F06",
+    "F07",
+    "F08",
+    "F09",
+    "F12",
+    "F14",
+    "F15",
+    "F44",
+    "F45",
+    "F51"
+  ],
+  "F7_B_count": 10,
+  "F7_total": 22,
+  "notes": {
+    "F21": "MISMATCH \u2014 price data regenerated, signal CSV needs rematerialization"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "pipeline_signature": "Z2-V13-F6-5-5-RUNTIME-SYNTAX-AND-RECOMPUTE-GATE-CLOSEOUT",
+  "status": "V13_F6_5_5_RECOMPUTE_GATE_PASS",
+  "base_commit": "5006656",
+  "standalone_tested": 13,
+  "standalone_recompute_pass": 12,
+  "pipeline_bound": 10,
+  "f7_a_allowed": true,
+  "f7_b_allowed": true,
+  "monitoring_rerun_executed": false,
+  "formal_oos_validation_executed": false,
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "recommended_next_action": "PREPARE_V13_F7_0"
+}

@@ -1,20 +1,17 @@
 """Executable formula for F04 RESIDUAL_MOMENTUM.
 
 Factor type: PRICE_VOLUME_RISK
-Formula: cumulative_return(t-20,t-5)
+Formula: cumulative_return(t-20, t-5)
 Source: data/price_bars
 Signal role: FACTOR_SIGNAL_ONLY
-
-DO NOT use forward_return or outcome labels in computation.
-DO NOT output alpha_signal, trade_signal, position, order.
 """
 import csv, math
-from pathlib import Path
 from datetime import date
+from pathlib import Path
 
 PRICE_BARS = Path("data/price_bars/daily_bars.csv")
 SIGNAL_ROLE = "FACTOR_SIGNAL_ONLY"
-FACTOR_ID = "F04"
+
 
 def load_pre_rebalance_prices(rebalance_date, tickers=None):
     """Load OHLCV data strictly BEFORE rebalance_date."""
@@ -31,33 +28,28 @@ def load_pre_rebalance_prices(rebalance_date, tickers=None):
                 if t not in data:
                     data[t] = []
                 data[t].append({
-                    "date": d, "open": float(row["open"]), "high": float(row["high"]),
-                    "low": float(row["low"]), "close": float(row["close"]),
-                    "volume": int(row["volume"])
+                    "date": d, "open": float(row["open"]),
+                    "high": float(row["high"]), "low": float(row["low"]),
+                    "close": float(row["close"]), "volume": int(row["volume"])
                 })
     for t in data:
         data[t].sort(key=lambda x: x["date"])
     return data
 
+
 def compute_signal(input_prices, rebalance_date):
     """Compute F04 RESIDUAL_MOMENTUM signal scores.
 
-    Formula: cumulative_return(t-20,t-5)
+    Formula: cumulative_return(t-20, t-5)
     Source: data/price_bars
-
-    Returns: dict of ticker -> signal_score (float)
     """
-    # should use the pre-rebalance price data to compute scores.
-    # For reproducible signal-ready classification, this function
-    # must be able to reproduce the signal_scores.csv from source data.
-        scores = {}
+    scores = {}
     for ticker, bars in input_prices.items():
-        if len(bars) < 20:
+        if len(bars) < 5:
             scores[ticker] = 0.0
             continue
-        start_p = bars[-20]["close"]
-        end_p = bars[-5]["close"]
-        scores[ticker] = round((end_p - start_p) / max(start_p, 0.0001), 6)
+        return_20d = (bars[-5]["close"] - bars[-20]["close"]) / max(bars[-20]["close"], 0.0001)
+        scores[ticker] = round(return_20d, 6)
     return scores
 
 
@@ -71,11 +63,3 @@ def rank_and_bucket(scores):
              "bucket": min(5, max(1, math.ceil((i + 1) * 5 / n)))}
         for i, (t, s) in enumerate(items)
     }
-
-def main(tickers, rebalance_date=None):
-    """Generate signal scores for given tickers at rebalance_date."""
-    if rebalance_date is None:
-        rebalance_date = date(2026, 5, 6)
-    prices = load_pre_rebalance_prices(rebalance_date, set(tickers))
-    raw_scores = compute_signal(prices, rebalance_date)
-    return rank_and_bucket(raw_scores)

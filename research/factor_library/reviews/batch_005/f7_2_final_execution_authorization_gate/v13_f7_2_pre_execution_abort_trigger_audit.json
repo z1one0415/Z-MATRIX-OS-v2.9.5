@@ -1,0 +1,167 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-PRE-EXECUTION-ABORT-TRIGGER-AUDIT",
+  "status": "ABORT_TRIGGER_AUDIT_BUILT_NOT_EXECUTED",
+  "triggers": [
+    {
+      "trigger_id": "ABORT_01",
+      "trigger_name": "missing U475 universe",
+      "condition": "missing U475 universe during validation execution",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run",
+      "pre_execution_review_status": "REVIEWED_NOT_EXECUTED"
+    },
+    {
+      "trigger_id": "ABORT_02",
+      "trigger_name": "universe count out of range",
+      "condition": "universe count out of range during validation execution",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run",
+      "pre_execution_review_status": "REVIEWED_NOT_EXECUTED"
+    },
+    {
+      "trigger_id": "ABORT_03",
+      "trigger_name": "missing price bars",
+      "condition": "missing price bars during validation execution",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run",
+      "pre_execution_review_status": "REVIEWED_NOT_EXECUTED"
+    },
+    {
+      "trigger_id": "ABORT_04",
+      "trigger_name": "missing factor panel",
+      "condition": "missing factor panel during validation execution",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run",
+      "pre_execution_review_status": "REVIEWED_NOT_EXECUTED"
+    },
+    {
+      "trigger_id": "ABORT_05",
+      "trigger_name": "missing label panel",
+      "condition": "missing label panel during validation execution",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run",
+      "pre_execution_review_status": "REVIEWED_NOT_EXECUTED"
+    },
+    {
+      "trigger_id": "ABORT_06",
+      "trigger_name": "lookahead risk detected",
+      "condition": "lookahead risk detected during validation execution",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run",
+      "pre_execution_review_status": "REVIEWED_NOT_EXECUTED"
+    },
+    {
+      "trigger_id": "ABORT_07",
+      "trigger_name": "PIT violation detected",
+      "condition": "PIT violation detected during validation execution",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run",
+      "pre_execution_review_status": "REVIEWED_NOT_EXECUTED"
+    },
+    {
+      "trigger_id": "ABORT_08",
+      "trigger_name": "missing data rate exceeds threshold",
+      "condition": "missing data rate exceeds threshold during validation execution",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run",
+      "pre_execution_review_status": "REVIEWED_NOT_EXECUTED"
+    },
+    {
+      "trigger_id": "ABORT_09",
+      "trigger_name": "industry coverage insufficient",
+      "condition": "industry coverage insufficient during validation execution",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run",
+      "pre_execution_review_status": "REVIEWED_NOT_EXECUTED"
+    },
+    {
+      "trigger_id": "ABORT_10",
+      "trigger_name": "liquidity data insufficient",
+      "condition": "liquidity data insufficient during validation execution",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run",
+      "pre_execution_review_status": "REVIEWED_NOT_EXECUTED"
+    },
+    {
+      "trigger_id": "ABORT_11",
+      "trigger_name": "duplicate security-date rows",
+      "condition": "duplicate security-date rows during validation execution",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run",
+      "pre_execution_review_status": "REVIEWED_NOT_EXECUTED"
+    },
+    {
+      "trigger_id": "ABORT_12",
+      "trigger_name": "invalid return calculation",
+      "condition": "invalid return calculation during validation execution",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run",
+      "pre_execution_review_status": "REVIEWED_NOT_EXECUTED"
+    },
+    {
+      "trigger_id": "ABORT_13",
+      "trigger_name": "factor panel join failure",
+      "condition": "factor panel join failure during validation execution",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run",
+      "pre_execution_review_status": "REVIEWED_NOT_EXECUTED"
+    },
+    {
+      "trigger_id": "ABORT_14",
+      "trigger_name": "label panel join failure",
+      "condition": "label panel join failure during validation execution",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run",
+      "pre_execution_review_status": "REVIEWED_NOT_EXECUTED"
+    },
+    {
+      "trigger_id": "ABORT_15",
+      "trigger_name": "metric computation incomplete",
+      "condition": "metric computation incomplete during validation execution",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run",
+      "pre_execution_review_status": "REVIEWED_NOT_EXECUTED"
+    },
+    {
+      "trigger_id": "ABORT_16",
+      "trigger_name": "accidental trade output detected",
+      "condition": "accidental trade output detected during validation execution",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run",
+      "pre_execution_review_status": "REVIEWED_NOT_EXECUTED"
+    },
+    {
+      "trigger_id": "ABORT_17",
+      "trigger_name": "alpha claim detected",
+      "condition": "alpha claim detected during validation execution",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run",
+      "pre_execution_review_status": "REVIEWED_NOT_EXECUTED"
+    },
+    {
+      "trigger_id": "ABORT_18",
+      "trigger_name": "promotion flag true detected",
+      "condition": "promotion flag true detected during validation execution",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run",
+      "pre_execution_review_status": "REVIEWED_NOT_EXECUTED"
+    },
+    {
+      "trigger_id": "ABORT_19",
+      "trigger_name": "runner flag true detected",
+      "condition": "runner flag true detected during validation execution",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run",
+      "pre_execution_review_status": "REVIEWED_NOT_EXECUTED"
+    },
+    {
+      "trigger_id": "ABORT_20",
+      "trigger_name": "paper trading flag true detected",
+      "condition": "paper trading flag true detected during validation execution",
+      "abort_status": "ABORT_FORMAL_VALIDATION_EXECUTION",
+      "recovery_action": "Investigate before re-run",
+      "pre_execution_review_status": "REVIEWED_NOT_EXECUTED"
+    }
+  ],
+  "global_abort_rule": "If any forbidden output, alpha claim, promotion flag, runner flag, paper trading flag, broker field, order field, or real_trade field appears, abort formal validation execution immediately."
+}

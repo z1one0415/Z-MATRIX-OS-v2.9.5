@@ -1,0 +1,314 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-PRE-EXECUTION-OUTPUT-CONTRACT",
+  "status": "OUTPUT_CONTRACT_BUILT_NOT_GENERATED",
+  "planned_outputs": [
+    {
+      "output_name": "formal_oos_ic_table.csv",
+      "output_type": "TABLE/JSON",
+      "required_fields": [
+        "formal_oos_ic_table_csv_fields"
+      ],
+      "allowed_content": "Diagnostic metrics only",
+      "forbidden_content": [
+        "buy",
+        "sell",
+        "order",
+        "position",
+        "broker_action",
+        "trade_result",
+        "real_pnl",
+        "alpha_claim",
+        "promotion_claim",
+        "runner_enablement",
+        "paper_trading_signal"
+      ],
+      "generation_status": "PLANNED_NOT_GENERATED"
+    },
+    {
+      "output_name": "formal_oos_rank_ic_table.csv",
+      "output_type": "TABLE/JSON",
+      "required_fields": [
+        "formal_oos_rank_ic_table_csv_fields"
+      ],
+      "allowed_content": "Diagnostic metrics only",
+      "forbidden_content": [
+        "buy",
+        "sell",
+        "order",
+        "position",
+        "broker_action",
+        "trade_result",
+        "real_pnl",
+        "alpha_claim",
+        "promotion_claim",
+        "runner_enablement",
+        "paper_trading_signal"
+      ],
+      "generation_status": "PLANNED_NOT_GENERATED"
+    },
+    {
+      "output_name": "formal_oos_hit_rate_table.csv",
+      "output_type": "TABLE/JSON",
+      "required_fields": [
+        "formal_oos_hit_rate_table_csv_fields"
+      ],
+      "allowed_content": "Diagnostic metrics only",
+      "forbidden_content": [
+        "buy",
+        "sell",
+        "order",
+        "position",
+        "broker_action",
+        "trade_result",
+        "real_pnl",
+        "alpha_claim",
+        "promotion_claim",
+        "runner_enablement",
+        "paper_trading_signal"
+      ],
+      "generation_status": "PLANNED_NOT_GENERATED"
+    },
+    {
+      "output_name": "formal_oos_bucket_spread_table.csv",
+      "output_type": "TABLE/JSON",
+      "required_fields": [
+        "formal_oos_bucket_spread_table_csv_fields"
+      ],
+      "allowed_content": "Diagnostic metrics only",
+      "forbidden_content": [
+        "buy",
+        "sell",
+        "order",
+        "position",
+        "broker_action",
+        "trade_result",
+        "real_pnl",
+        "alpha_claim",
+        "promotion_claim",
+        "runner_enablement",
+        "paper_trading_signal"
+      ],
+      "generation_status": "PLANNED_NOT_GENERATED"
+    },
+    {
+      "output_name": "formal_oos_turnover_table.csv",
+      "output_type": "TABLE/JSON",
+      "required_fields": [
+        "formal_oos_turnover_table_csv_fields"
+      ],
+      "allowed_content": "Diagnostic metrics only",
+      "forbidden_content": [
+        "buy",
+        "sell",
+        "order",
+        "position",
+        "broker_action",
+        "trade_result",
+        "real_pnl",
+        "alpha_claim",
+        "promotion_claim",
+        "runner_enablement",
+        "paper_trading_signal"
+      ],
+      "generation_status": "PLANNED_NOT_GENERATED"
+    },
+    {
+      "output_name": "formal_oos_coverage_table.csv",
+      "output_type": "TABLE/JSON",
+      "required_fields": [
+        "formal_oos_coverage_table_csv_fields"
+      ],
+      "allowed_content": "Diagnostic metrics only",
+      "forbidden_content": [
+        "buy",
+        "sell",
+        "order",
+        "position",
+        "broker_action",
+        "trade_result",
+        "real_pnl",
+        "alpha_claim",
+        "promotion_claim",
+        "runner_enablement",
+        "paper_trading_signal"
+      ],
+      "generation_status": "PLANNED_NOT_GENERATED"
+    },
+    {
+      "output_name": "formal_oos_correlation_matrix.csv",
+      "output_type": "TABLE/JSON",
+      "required_fields": [
+        "formal_oos_correlation_matrix_csv_fields"
+      ],
+      "allowed_content": "Diagnostic metrics only",
+      "forbidden_content": [
+        "buy",
+        "sell",
+        "order",
+        "position",
+        "broker_action",
+        "trade_result",
+        "real_pnl",
+        "alpha_claim",
+        "promotion_claim",
+        "runner_enablement",
+        "paper_trading_signal"
+      ],
+      "generation_status": "PLANNED_NOT_GENERATED"
+    },
+    {
+      "output_name": "formal_oos_industry_bias_table.csv",
+      "output_type": "TABLE/JSON",
+      "required_fields": [
+        "formal_oos_industry_bias_table_csv_fields"
+      ],
+      "allowed_content": "Diagnostic metrics only",
+      "forbidden_content": [
+        "buy",
+        "sell",
+        "order",
+        "position",
+        "broker_action",
+        "trade_result",
+        "real_pnl",
+        "alpha_claim",
+        "promotion_claim",
+        "runner_enablement",
+        "paper_trading_signal"
+      ],
+      "generation_status": "PLANNED_NOT_GENERATED"
+    },
+    {
+      "output_name": "formal_oos_liquidity_sensitivity_table.csv",
+      "output_type": "TABLE/JSON",
+      "required_fields": [
+        "formal_oos_liquidity_sensitivity_table_csv_fields"
+      ],
+      "allowed_content": "Diagnostic metrics only",
+      "forbidden_content": [
+        "buy",
+        "sell",
+        "order",
+        "position",
+        "broker_action",
+        "trade_result",
+        "real_pnl",
+        "alpha_claim",
+        "promotion_claim",
+        "runner_enablement",
+        "paper_trading_signal"
+      ],
+      "generation_status": "PLANNED_NOT_GENERATED"
+    },
+    {
+      "output_name": "formal_oos_regime_split_table.csv",
+      "output_type": "TABLE/JSON",
+      "required_fields": [
+        "formal_oos_regime_split_table_csv_fields"
+      ],
+      "allowed_content": "Diagnostic metrics only",
+      "forbidden_content": [
+        "buy",
+        "sell",
+        "order",
+        "position",
+        "broker_action",
+        "trade_result",
+        "real_pnl",
+        "alpha_claim",
+        "promotion_claim",
+        "runner_enablement",
+        "paper_trading_signal"
+      ],
+      "generation_status": "PLANNED_NOT_GENERATED"
+    },
+    {
+      "output_name": "formal_oos_stability_decay_table.csv",
+      "output_type": "TABLE/JSON",
+      "required_fields": [
+        "formal_oos_stability_decay_table_csv_fields"
+      ],
+      "allowed_content": "Diagnostic metrics only",
+      "forbidden_content": [
+        "buy",
+        "sell",
+        "order",
+        "position",
+        "broker_action",
+        "trade_result",
+        "real_pnl",
+        "alpha_claim",
+        "promotion_claim",
+        "runner_enablement",
+        "paper_trading_signal"
+      ],
+      "generation_status": "PLANNED_NOT_GENERATED"
+    },
+    {
+      "output_name": "formal_oos_factor_summary.json",
+      "output_type": "TABLE/JSON",
+      "required_fields": [
+        "formal_oos_factor_summary_json_fields"
+      ],
+      "allowed_content": "Diagnostic metrics only",
+      "forbidden_content": [
+        "buy",
+        "sell",
+        "order",
+        "position",
+        "broker_action",
+        "trade_result",
+        "real_pnl",
+        "alpha_claim",
+        "promotion_claim",
+        "runner_enablement",
+        "paper_trading_signal"
+      ],
+      "generation_status": "PLANNED_NOT_GENERATED"
+    },
+    {
+      "output_name": "formal_oos_safety_audit.json",
+      "output_type": "TABLE/JSON",
+      "required_fields": [
+        "formal_oos_safety_audit_json_fields"
+      ],
+      "allowed_content": "Diagnostic metrics only",
+      "forbidden_content": [
+        "buy",
+        "sell",
+        "order",
+        "position",
+        "broker_action",
+        "trade_result",
+        "real_pnl",
+        "alpha_claim",
+        "promotion_claim",
+        "runner_enablement",
+        "paper_trading_signal"
+      ],
+      "generation_status": "PLANNED_NOT_GENERATED"
+    },
+    {
+      "output_name": "formal_oos_closeout.json",
+      "output_type": "TABLE/JSON",
+      "required_fields": [
+        "formal_oos_closeout_json_fields"
+      ],
+      "allowed_content": "Diagnostic metrics only",
+      "forbidden_content": [
+        "buy",
+        "sell",
+        "order",
+        "position",
+        "broker_action",
+        "trade_result",
+        "real_pnl",
+        "alpha_claim",
+        "promotion_claim",
+        "runner_enablement",
+        "paper_trading_signal"
+      ],
+      "generation_status": "PLANNED_NOT_GENERATED"
+    }
+  ]
+}

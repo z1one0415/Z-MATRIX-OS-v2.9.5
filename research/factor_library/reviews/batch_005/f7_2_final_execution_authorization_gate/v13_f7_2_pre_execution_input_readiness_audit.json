@@ -1,0 +1,126 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-PRE-EXECUTION-INPUT-READINESS-AUDIT",
+  "status": "READINESS_AUDIT_BUILT_EXECUTION_NOT_AUTHORIZED",
+  "required_inputs": [
+    {
+      "input_name": "U475 universe snapshot",
+      "declared_source_or_expected_path": "EXECUTION_PLAN_GATE_STAGE",
+      "readiness_status": "DECLARED_READY_FOR_AUTHORIZATION_REVIEW",
+      "required_columns_declared": true,
+      "time_cutoff_rule_declared": true,
+      "lookahead_guard_declared": true,
+      "missing_data_policy_declared": true,
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "input_name": "6-month price bar panel",
+      "declared_source_or_expected_path": "EXECUTION_PLAN_GATE_STAGE",
+      "readiness_status": "DECLARED_READY_FOR_AUTHORIZATION_REVIEW",
+      "required_columns_declared": true,
+      "time_cutoff_rule_declared": true,
+      "lookahead_guard_declared": true,
+      "missing_data_policy_declared": true,
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "input_name": "23-factor signal panel",
+      "declared_source_or_expected_path": "EXECUTION_PLAN_GATE_STAGE",
+      "readiness_status": "DECLARED_READY_FOR_AUTHORIZATION_REVIEW",
+      "required_columns_declared": true,
+      "time_cutoff_rule_declared": true,
+      "lookahead_guard_declared": true,
+      "missing_data_policy_declared": true,
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "input_name": "5D label panel",
+      "declared_source_or_expected_path": "EXECUTION_PLAN_GATE_STAGE",
+      "readiness_status": "DECLARED_READY_FOR_AUTHORIZATION_REVIEW",
+      "required_columns_declared": true,
+      "time_cutoff_rule_declared": true,
+      "lookahead_guard_declared": true,
+      "missing_data_policy_declared": true,
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "input_name": "20D label panel",
+      "declared_source_or_expected_path": "EXECUTION_PLAN_GATE_STAGE",
+      "readiness_status": "DECLARED_READY_FOR_AUTHORIZATION_REVIEW",
+      "required_columns_declared": true,
+      "time_cutoff_rule_declared": true,
+      "lookahead_guard_declared": true,
+      "missing_data_policy_declared": true,
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "input_name": "60D label panel (optional)",
+      "declared_source_or_expected_path": "EXECUTION_PLAN_GATE_STAGE",
+      "readiness_status": "DECLARED_READY_FOR_AUTHORIZATION_REVIEW",
+      "required_columns_declared": true,
+      "time_cutoff_rule_declared": true,
+      "lookahead_guard_declared": true,
+      "missing_data_policy_declared": true,
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "input_name": "industry classification panel",
+      "declared_source_or_expected_path": "EXECUTION_PLAN_GATE_STAGE",
+      "readiness_status": "DECLARED_READY_FOR_AUTHORIZATION_REVIEW",
+      "required_columns_declared": true,
+      "time_cutoff_rule_declared": true,
+      "lookahead_guard_declared": true,
+      "missing_data_policy_declared": true,
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "input_name": "liquidity/turnover panel",
+      "declared_source_or_expected_path": "EXECUTION_PLAN_GATE_STAGE",
+      "readiness_status": "DECLARED_READY_FOR_AUTHORIZATION_REVIEW",
+      "required_columns_declared": true,
+      "time_cutoff_rule_declared": true,
+      "lookahead_guard_declared": true,
+      "missing_data_policy_declared": true,
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "input_name": "rebalance calendar",
+      "declared_source_or_expected_path": "EXECUTION_PLAN_GATE_STAGE",
+      "readiness_status": "DECLARED_READY_FOR_AUTHORIZATION_REVIEW",
+      "required_columns_declared": true,
+      "time_cutoff_rule_declared": true,
+      "lookahead_guard_declared": true,
+      "missing_data_policy_declared": true,
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "input_name": "missing data mask",
+      "declared_source_or_expected_path": "EXECUTION_PLAN_GATE_STAGE",
+      "readiness_status": "DECLARED_READY_FOR_AUTHORIZATION_REVIEW",
+      "required_columns_declared": true,
+      "time_cutoff_rule_declared": true,
+      "lookahead_guard_declared": true,
+      "missing_data_policy_declared": true,
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "input_name": "label validation mask",
+      "declared_source_or_expected_path": "EXECUTION_PLAN_GATE_STAGE",
+      "readiness_status": "DECLARED_READY_FOR_AUTHORIZATION_REVIEW",
+      "required_columns_declared": true,
+      "time_cutoff_rule_declared": true,
+      "lookahead_guard_declared": true,
+      "missing_data_policy_declared": true,
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "input_name": "factor availability mask",
+      "declared_source_or_expected_path": "EXECUTION_PLAN_GATE_STAGE",
+      "readiness_status": "DECLARED_READY_FOR_AUTHORIZATION_REVIEW",
+      "required_columns_declared": true,
+      "time_cutoff_rule_declared": true,
+      "lookahead_guard_declared": true,
+      "missing_data_policy_declared": true,
+      "execution_status": "NOT_EXECUTED"
+    }
+  ]
+}

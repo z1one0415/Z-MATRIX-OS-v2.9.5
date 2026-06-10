@@ -1,0 +1,15 @@
+{
+  "pipeline_signature": "Z2-V13-F7-1-1-CLOSEOUT",
+  "status": "V13_F7_1_1_GATE_CRITERIA_SEMANTIC_PATCH_PASS",
+  "base_commit": "2b53904",
+  "fix": "PASS\u2192NOT_EVALUATED",
+  "F7_1_sealed": true,
+  "formal_oos_not_executed": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "next": "PREPARE_V13_F7_2_U475_6_MONTH_FORMAL_OOS_DRY_RUN"
+}

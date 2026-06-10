@@ -21,8 +21,29 @@
     "60D labels not available"
   ],
   "gate_criteria": {
-    "rank_IC_mean_gt_0": "PASS",
-    "rank_IC_t_stat_gt_2_sector_conditional": "PASS"
+    "rank_IC_mean": {
+      "threshold": "> 0",
+      "evaluation_status": "NOT_EVALUATED",
+      "requires_formal_oos": true
+    },
+    "rank_IC_t_stat": {
+      "threshold": "> 2",
+      "evaluation_status": "NOT_EVALUATED",
+      "sector_conditional": true,
+      "requires_formal_oos": true
+    },
+    "directional_spread_mean": {
+      "threshold": "> 0",
+      "evaluation_status": "NOT_EVALUATED",
+      "requires_formal_oos": true
+    },
+    "minimum_oos_months": 6,
+    "minimum_universe_size": 475,
+    "required_horizons": [
+      "5D",
+      "20D",
+      "60D"
+    ]
   },
   "formal_oos_not_executed": true,
   "micro_sample_results_not_extrapolated": true,

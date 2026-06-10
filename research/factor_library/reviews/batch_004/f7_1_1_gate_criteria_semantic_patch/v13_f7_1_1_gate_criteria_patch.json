@@ -1,0 +1,13 @@
+{
+  "pipeline_signature": "Z2-V13-F7-1-1-GATE-CRITERIA-PATCH",
+  "status": "V13_F7_1_1_PATCHED",
+  "base_commit": "2b53904",
+  "change": "PASS \u2192 NOT_EVALUATED",
+  "reason": "formal OOS not yet executed \u2014 gate status cannot be pre-claimed",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

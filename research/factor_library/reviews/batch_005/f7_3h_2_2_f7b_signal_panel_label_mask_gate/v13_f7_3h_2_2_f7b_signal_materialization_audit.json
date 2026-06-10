@@ -1,0 +1,24 @@
+{
+  "factors": 10,
+  "expected": 10,
+  "total_rows": 28500,
+  "meets_27k": true,
+  "rows_per_factor": {
+    "F06": 2850,
+    "F07": 2850,
+    "F08": 2850,
+    "F09": 2850,
+    "F12": 2850,
+    "F14": 2850,
+    "F15": 2850,
+    "F44": 2850,
+    "F45": 2850,
+    "F51": 2850
+  },
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

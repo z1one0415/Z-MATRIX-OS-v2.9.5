@@ -1,0 +1,14 @@
+{
+  "status": "ALLOW_ALL_DESIGN_MERGE",
+  "blockers": [],
+  "warnings": [
+    "historical OOS not yet executed",
+    "local IC not production weight"
+  ],
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

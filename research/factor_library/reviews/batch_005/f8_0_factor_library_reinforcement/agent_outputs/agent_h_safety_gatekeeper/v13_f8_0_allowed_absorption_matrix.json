@@ -1,0 +1,17 @@
+{
+  "allow_primitive_absorption_design": true,
+  "allow_candidate_sidecar_contracts": true,
+  "allow_g18_overlay_design": true,
+  "allow_ic_methodology_audit": true,
+  "block_canonical_registry_mutation": true,
+  "block_f7a_f7b_rewrite": true,
+  "block_alpha_claim": true,
+  "block_promotion": true,
+  "block_runner": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

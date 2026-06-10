@@ -1,0 +1,16 @@
+{
+  "sources": {
+    "price_bars": 6,
+    "tushare": 7,
+    "northbound": 1,
+    "margin": 1,
+    "chain": 2
+  },
+  "base_commit": "3d92065",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

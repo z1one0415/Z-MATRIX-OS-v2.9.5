@@ -1,0 +1,14 @@
+{
+  "candidate_id": "F57",
+  "canonical_target": "none_sidecar_only",
+  "entry_status": "CANDIDATE_SIDECAR_ONLY",
+  "source_data": "northbound_data",
+  "formula": "northbound_net_flow/total_mv",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "promotion_allowed": false
+}

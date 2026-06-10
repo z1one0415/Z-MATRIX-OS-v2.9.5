@@ -1,0 +1,14 @@
+{
+  "ic_factors": 16,
+  "avg_abs_ic": 0.04,
+  "max_ic": 0.051,
+  "min_ic": -0.041,
+  "note": "IC is local candidate prior, not formal production weight",
+  "requires_historical_OOS": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

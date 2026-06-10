@@ -1,0 +1,11 @@
+{
+  "pit_safe": true,
+  "known_at_gate": "rebalance_date",
+  "survivorship_bias": "not_evaluated",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

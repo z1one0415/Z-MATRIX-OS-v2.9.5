@@ -1,0 +1,75 @@
+{
+  "primitives": [
+    {
+      "name": "turnover_rate",
+      "absorb_into": "F54,F56"
+    },
+    {
+      "name": "range_5d",
+      "absorb_into": "F31,F58"
+    },
+    {
+      "name": "vol_20d",
+      "absorb_into": "F10"
+    },
+    {
+      "name": "ma20_dev",
+      "absorb_into": "F21"
+    },
+    {
+      "name": "ma60_dev",
+      "absorb_into": "F04,F21"
+    },
+    {
+      "name": "vol_climax",
+      "absorb_into": "F53"
+    },
+    {
+      "name": "upper_shadow",
+      "absorb_into": "F31,F58"
+    },
+    {
+      "name": "vol_ratio",
+      "absorb_into": "F53,F54,F56"
+    },
+    {
+      "name": "mom_5d",
+      "absorb_into": "F11"
+    },
+    {
+      "name": "mom_10d",
+      "absorb_into": "F11"
+    },
+    {
+      "name": "mom_20d",
+      "absorb_into": "F04"
+    },
+    {
+      "name": "mom_60d",
+      "absorb_into": "F04"
+    },
+    {
+      "name": "pb_inv",
+      "absorb_into": "F12"
+    },
+    {
+      "name": "pe_inv",
+      "absorb_into": "F12"
+    },
+    {
+      "name": "pos_20d",
+      "absorb_into": "F21,F54"
+    },
+    {
+      "name": "northbound_net_flow",
+      "absorb_into": "F57_NORTHBOUND"
+    }
+  ],
+  "count": 16,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

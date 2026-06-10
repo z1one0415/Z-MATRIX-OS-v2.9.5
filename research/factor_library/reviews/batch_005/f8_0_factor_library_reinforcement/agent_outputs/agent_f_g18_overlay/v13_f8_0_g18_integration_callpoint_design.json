@@ -1,0 +1,12 @@
+{
+  "callpoint": "G18_post_base_score",
+  "modifier": "factor_risk_overlay_delta",
+  "no_alpha_claim": true,
+  "no_trade_signal": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,22 @@
+{
+  "pipeline_signature": "Z2-V13-F8-0-H-SAFETY",
+  "status": "V13_F8_0_H_SAFETY_PASS",
+  "violation_count": 0,
+  "checks": {
+    "f7a_f7b_rewritten": false,
+    "workspace_f21_not_merged_over_cloud_f21": true,
+    "no_alpha_claim": true,
+    "no_promotion": true,
+    "no_runner": true,
+    "no_execution": true,
+    "historical_oos_not_forward_oos": true,
+    "local_ic_not_production_weight": true,
+    "candidate_sidecar_not_canonical": true,
+    "alpha_claim_allowed": false,
+    "runner_enabled": false,
+    "execution_allowed": false,
+    "production": "BLOCKED",
+    "broker_runtime": "BLOCKED",
+    "real_trade": "BLOCKED"
+  }
+}

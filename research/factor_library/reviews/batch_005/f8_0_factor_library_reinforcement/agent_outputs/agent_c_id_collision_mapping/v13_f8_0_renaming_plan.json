@@ -1,0 +1,15 @@
+{
+  "renames": [
+    {
+      "from": "F21_northbound",
+      "to": "F57_NORTHBOUND_FLOW_PRESSURE",
+      "reason": "cloud F21 already TREND_PERSISTENCE_QUALITY"
+    }
+  ],
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

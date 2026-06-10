@@ -1,0 +1,12 @@
+{
+  "months_available": 1,
+  "months_required": 6,
+  "inter_month_stability": "not_yet_evaluated",
+  "requires_historical_OOS": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

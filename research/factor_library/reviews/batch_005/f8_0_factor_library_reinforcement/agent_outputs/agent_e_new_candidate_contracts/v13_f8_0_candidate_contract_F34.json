@@ -1,0 +1,14 @@
+{
+  "candidate_id": "F34",
+  "canonical_target": "none_sidecar_only",
+  "entry_status": "CANDIDATE_SIDECAR_ONLY",
+  "source_data": "price_bars",
+  "formula": "vol_ratio(long/short)*regime_prediction",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "promotion_allowed": false
+}

@@ -1,0 +1,11 @@
+{
+  "window": "5-ticker micro-sample",
+  "min_required": "U475\u00d76months",
+  "weighting": false,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

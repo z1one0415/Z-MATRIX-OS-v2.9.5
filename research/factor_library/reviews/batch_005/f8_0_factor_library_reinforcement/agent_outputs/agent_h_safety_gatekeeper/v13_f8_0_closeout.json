@@ -1,0 +1,12 @@
+{
+  "status": "V13_F8_0_AGENT_H_PASS",
+  "base_commit": "3d92065",
+  "all_agents_checked": true,
+  "gate_open": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

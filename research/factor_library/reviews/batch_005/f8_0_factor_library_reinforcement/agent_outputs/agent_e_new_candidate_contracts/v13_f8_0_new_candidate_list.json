@@ -1,0 +1,17 @@
+{
+  "candidates": [
+    "F34",
+    "F35",
+    "F57",
+    "F22",
+    "F20",
+    "F41",
+    "F42"
+  ],
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,17 @@
+{
+  "blocked": [
+    "canonical_registry_mutation",
+    "f7a_f7b_rewrite",
+    "alpha_claim",
+    "promotion",
+    "runner",
+    "execution",
+    "real_trade"
+  ],
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

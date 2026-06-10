@@ -1,0 +1,10 @@
+{
+  "duplicates": "0 new standalone factors",
+  "all_suggested_primitives_are_absorbed": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,15 @@
+{
+  "checks": {
+    "no_alpha_signal": true,
+    "overlay_is_risk_correction": true,
+    "no_trade_signal": true,
+    "no_order": true,
+    "no_position": true
+  },
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

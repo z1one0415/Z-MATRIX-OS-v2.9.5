@@ -1,0 +1,11 @@
+{
+  "status": "V13_F8_0_AGENT_D_PASS",
+  "primitives_absorbed": 16,
+  "no_duplicate_factors": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

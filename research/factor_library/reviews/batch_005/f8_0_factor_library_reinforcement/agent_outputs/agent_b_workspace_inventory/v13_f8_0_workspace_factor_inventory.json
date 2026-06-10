@@ -1,0 +1,267 @@
+{
+  "inventory": [
+    {
+      "id": "A01",
+      "workspace_id": "F06",
+      "display_name": "FUNDAMENTAL_QUALITY",
+      "formula": "z(roe)+z(roa)+z(gm)+z(ocfps)-z(debt)",
+      "direction": "ALPHA",
+      "ic": 0.051,
+      "status": "hypothesis",
+      "source": "tushare",
+      "mapping": "F06_FUNDAMENTAL_QUALITY"
+    },
+    {
+      "id": "A02",
+      "workspace_id": "F07",
+      "display_name": "PROFITABILITY_MOMENTUM",
+      "formula": "z(npyoy)+z(oryoy)+z(delta_roe)",
+      "direction": "ALPHA",
+      "ic": 0.048,
+      "status": "verified",
+      "source": "tushare",
+      "mapping": "F07_PROFITABILITY_MOMENTUM"
+    },
+    {
+      "id": "A03",
+      "workspace_id": "F08",
+      "display_name": "CASH_FLOW_YIELD",
+      "formula": "ocf/market_cap",
+      "direction": "ALPHA",
+      "ic": 0.043,
+      "status": "verified",
+      "source": "tushare",
+      "mapping": "F08_CASH_FLOW_YIELD"
+    },
+    {
+      "id": "A04",
+      "workspace_id": "F09",
+      "display_name": "EARNINGS_REVISION",
+      "formula": "guidance_direction*0.7+conservatism*0.3",
+      "direction": "ALPHA",
+      "ic": 0.035,
+      "status": "hypothesis",
+      "source": "tushare_forecast",
+      "mapping": "F09_EARNINGS_REVISION"
+    },
+    {
+      "id": "A05",
+      "workspace_id": "F04",
+      "display_name": "RESIDUAL_MOMENTUM",
+      "formula": "return(t-20,t-5)",
+      "direction": "ALPHA",
+      "ic": 0.032,
+      "status": "verified",
+      "source": "price_bars",
+      "mapping": "F04_RESIDUAL_MOMENTUM"
+    },
+    {
+      "id": "A06",
+      "workspace_id": "F10",
+      "display_name": "LOW_VOLATILITY",
+      "formula": "1/(1+std(ret,20)*100)",
+      "direction": "RISK",
+      "ic": -0.041,
+      "status": "verified",
+      "source": "price_bars",
+      "mapping": "F10_LOW_VOLATILITY"
+    },
+    {
+      "id": "A07",
+      "workspace_id": "F11",
+      "display_name": "SHORT_TERM_REVERSAL",
+      "formula": "-ret(t-5,t)",
+      "direction": "ALPHA",
+      "ic": -0.028,
+      "status": "verified",
+      "source": "price_bars",
+      "mapping": "F11_SHORT_TERM_REVERSAL"
+    },
+    {
+      "id": "A08",
+      "workspace_id": "F12",
+      "display_name": "VALUE_COMPOSITE",
+      "formula": "-pe_ttm",
+      "direction": "ALPHA",
+      "ic": 0.039,
+      "status": "hypothesis",
+      "source": "tushare",
+      "mapping": "F12_VALUE_COMPOSITE"
+    },
+    {
+      "id": "A09",
+      "workspace_id": "F14",
+      "display_name": "ASSET_GROWTH_DISC",
+      "formula": "-or_yoy",
+      "direction": "ALPHA",
+      "ic": 0.044,
+      "status": "hypothesis",
+      "source": "tushare",
+      "mapping": "F14_ASSET_GROWTH_DISCIPLINE"
+    },
+    {
+      "id": "A10",
+      "workspace_id": "F15",
+      "display_name": "ACCRUALS_QUALITY",
+      "formula": "-|ni-ocf|/ta",
+      "direction": "ALPHA",
+      "ic": 0.047,
+      "status": "hypothesis",
+      "source": "tushare",
+      "mapping": "F15_ACCRUALS_QUALITY"
+    },
+    {
+      "id": "A11",
+      "workspace_id": "F21",
+      "display_name": "TREND_PERSISTENCE",
+      "formula": "consecutive_same_direction_ratio_20d",
+      "direction": "ALPHA",
+      "ic": 0.045,
+      "status": "verified",
+      "source": "price_bars",
+      "mapping": "F21_TREND_PERSISTENCE"
+    },
+    {
+      "id": "A12",
+      "workspace_id": "F24",
+      "display_name": "VOL_COMPRESSION",
+      "formula": "1.0-std(ret_5d)/std(ret_20d)",
+      "direction": "ALPHA",
+      "ic": 0.038,
+      "status": "verified",
+      "source": "price_bars",
+      "mapping": "F24_VOLATILITY_COMPRESSION"
+    },
+    {
+      "id": "A13",
+      "workspace_id": "F30",
+      "display_name": "VOL_PRICE_CONFIRM",
+      "formula": "corr(rets,vol_changes,20d)",
+      "direction": "ALPHA",
+      "ic": 0.029,
+      "status": "verified",
+      "source": "price_bars",
+      "mapping": "F30_VOLUME_PRICE_CONFIRMATION"
+    },
+    {
+      "id": "A14",
+      "workspace_id": "F31",
+      "display_name": "DOWNSIDE_TAIL",
+      "formula": "-max_dd_20d",
+      "direction": "RISK",
+      "ic": -0.035,
+      "status": "verified",
+      "source": "price_bars",
+      "mapping": "F31_DOWNSIDE_TAIL_RISK"
+    },
+    {
+      "id": "A15",
+      "workspace_id": "F53",
+      "display_name": "ATTENTION_SPIKE",
+      "formula": "(vol_5d/vol_20d)*abs(ret_5d)",
+      "direction": "ALPHA",
+      "ic": 0.042,
+      "status": "verified",
+      "source": "price_bars",
+      "mapping": "F53_ATTENTION_SPIKE"
+    },
+    {
+      "id": "A16",
+      "workspace_id": "F60",
+      "display_name": "INTRADAY_REVERSAL",
+      "formula": "-mean((close-open)/(hl),3d)",
+      "direction": "ALPHA",
+      "ic": 0.044,
+      "status": "verified",
+      "source": "price_bars",
+      "mapping": "F60_INTRADAY_REVERSAL"
+    },
+    {
+      "id": "B01",
+      "workspace_id": "F07",
+      "role": "cloud_migration_proxy",
+      "action": "accept_as_is"
+    },
+    {
+      "id": "B02",
+      "workspace_id": "F08",
+      "role": "cloud_migration_proxy",
+      "action": "accept_as_is"
+    },
+    {
+      "id": "B03",
+      "workspace_id": "F09",
+      "role": "cloud_migration_proxy",
+      "action": "accept_as_is"
+    },
+    {
+      "id": "B04",
+      "workspace_id": "F14",
+      "role": "cloud_migration_proxy",
+      "action": "accept_as_is"
+    },
+    {
+      "id": "B05",
+      "workspace_id": "F44",
+      "role": "cloud_migration_proxy",
+      "action": "accept_as_is"
+    },
+    {
+      "id": "C01",
+      "workspace_id": "F34",
+      "role": "candidate_sidecar",
+      "action": "contract_only"
+    },
+    {
+      "id": "C02",
+      "workspace_id": "F35",
+      "role": "candidate_sidecar",
+      "action": "contract_only"
+    },
+    {
+      "id": "C03",
+      "workspace_id": "F57_NORTHBOUND",
+      "role": "candidate_sidecar",
+      "action": "contract_only"
+    },
+    {
+      "id": "C04",
+      "workspace_id": "F22_MARGIN",
+      "role": "candidate_sidecar",
+      "action": "contract_only"
+    },
+    {
+      "id": "C05",
+      "workspace_id": "F20_SECTOR",
+      "role": "candidate_sidecar",
+      "action": "contract_only"
+    },
+    {
+      "id": "C06",
+      "workspace_id": "F41_CHAIN",
+      "role": "candidate_sidecar",
+      "action": "contract_only"
+    },
+    {
+      "id": "C07",
+      "workspace_id": "F42_CHAIN",
+      "role": "candidate_sidecar",
+      "action": "contract_only"
+    },
+    {
+      "id": "C08",
+      "workspace_id": "F46",
+      "role": "candidate_sidecar",
+      "action": "contract_only"
+    }
+  ],
+  "count": 29,
+  "policy": "sidecar_only_no_canonical_merge",
+  "base_commit": "3d92065",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

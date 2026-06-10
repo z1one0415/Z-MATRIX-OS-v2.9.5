@@ -1,0 +1,12 @@
+{
+  "layer": "Factor Risk Overlay",
+  "range": "-20 to +5",
+  "goal": "risk_correction_not_alpha",
+  "interface": "G18_score_modifier",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

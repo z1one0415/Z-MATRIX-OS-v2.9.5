@@ -1,0 +1,20 @@
+{
+  "mapping": [
+    {
+      "workspace_id": "F21_northbound",
+      "renamed_to": "F57_NORTHBOUND_FLOW_PRESSURE",
+      "canonical_registry_unchanged": true
+    },
+    {
+      "workspace_id": "F20_sector",
+      "renamed_to": "F20_SECTOR_MOMENTUM",
+      "canonical_registry_check": "reserved"
+    }
+  ],
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

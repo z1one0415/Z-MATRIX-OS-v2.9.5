@@ -1,0 +1,12 @@
+{
+  "overlay_delta": "abs(ic_mean)*sqrt(min(sample_months,6)/6)*stability*data_quality",
+  "ic_source": "workspace_candidate_prior",
+  "max_overlay_abs": 20,
+  "base_unit": "basis_points",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

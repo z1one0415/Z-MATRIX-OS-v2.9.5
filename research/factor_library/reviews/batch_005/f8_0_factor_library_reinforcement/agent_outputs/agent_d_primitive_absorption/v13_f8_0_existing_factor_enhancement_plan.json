@@ -1,0 +1,84 @@
+{
+  "enhancements": [
+    {
+      "factor": "F10",
+      "add_primitives": [
+        "vol_20d"
+      ]
+    },
+    {
+      "factor": "F04",
+      "add_primitives": [
+        "mom_20d",
+        "mom_60d",
+        "ma60_dev"
+      ]
+    },
+    {
+      "factor": "F11",
+      "add_primitives": [
+        "mom_5d",
+        "mom_10d"
+      ]
+    },
+    {
+      "factor": "F21",
+      "add_primitives": [
+        "ma20_dev",
+        "ma60_dev",
+        "pos_20d"
+      ]
+    },
+    {
+      "factor": "F31",
+      "add_primitives": [
+        "range_5d",
+        "upper_shadow"
+      ]
+    },
+    {
+      "factor": "F53",
+      "add_primitives": [
+        "vol_climax",
+        "vol_ratio"
+      ]
+    },
+    {
+      "factor": "F54",
+      "add_primitives": [
+        "turnover_rate",
+        "vol_ratio",
+        "pos_20d"
+      ]
+    },
+    {
+      "factor": "F56",
+      "add_primitives": [
+        "turnover_rate",
+        "vol_ratio"
+      ]
+    },
+    {
+      "factor": "F58",
+      "add_primitives": [
+        "range_5d",
+        "upper_shadow"
+      ]
+    },
+    {
+      "factor": "F12",
+      "add_primitives": [
+        "pb_inv",
+        "pe_inv"
+      ]
+    }
+  ],
+  "new_standalone_factor_blocked": true,
+  "all_primitives_absorbed": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,17 @@
+{
+  "direct_merge_allowed": false,
+  "collisions": [
+    {
+      "workspace": "F21_northbound",
+      "canonical": "F21_TREND_PERSISTENCE_QUALITY",
+      "severity": "CRITICAL",
+      "action": "rename"
+    }
+  ],
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

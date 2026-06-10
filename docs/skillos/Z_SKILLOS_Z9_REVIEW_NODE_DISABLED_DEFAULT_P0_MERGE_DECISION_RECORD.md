@@ -1,55 +1,56 @@
 # Z9 Review Node Disabled-Default P0 Merge Decision Record
 
-## Status: Z_SKILLOS_Z9_REVIEW_NODE_DISABLED_DEFAULT_P0_MERGE_DECISION_PENDING
+## Status: Z_SKILLOS_Z9_REVIEW_NODE_DISABLED_DEFAULT_P0_MERGE_DECISION_APPROVED
+
+## Decision: APPROVE_Z9_REVIEW_NODE_DISABLED_DEFAULT_P0_MERGE
 
 ## Date: 2026-06-10
 
-## Decision Options
-- APPROVE_Z9_REVIEW_NODE_DISABLED_DEFAULT_P0_MERGE
-- REJECT_Z9_REVIEW_NODE_DISABLED_DEFAULT_P0_MERGE
-- REQUEST_Z9_REVIEW_NODE_DISABLED_DEFAULT_P0_HARDENING_V3
+## Approved Implementation Branch: impl/skillos-z9-review-node-disabled-default-p0
+## Approved Implementation HEAD: 0e91d03
+## Approved Base: postmerge/skillos-v0-baseline-freeze @ f97cf55
 
-## Verified Inputs
+## Verified Commits
 - implementation commit: 04fd84e
 - hardening commit: 7608ced
-- base seal: f97cf55 (Z9_REVIEW_NODE_IMPLEMENTATION_BRANCH_APPROVAL_POST_MERGE_SEALED)
-- Z9 tests: 125 passed
-- full suite: 1050 passed, 4 skipped, 0 failed
-- scope: review_node source/tests/docs only
-- no research
-- no zmatrix
-- no runtime enablement
-- no adapter execution enablement
-- no capability execution
-- no paper trading
-- no trade_result
-- no real_pnl
-- no memory mutation
-- no persistent memory write
-- Level 5 remains BLOCKED
+- merge decision gate commit: 0e91d03
 
-## Pending Fields
-| Field | Value |
-|:--|:--|
-| approver_name | PENDING |
-| approver_role | PENDING |
-| approval_date | PENDING |
-| decision | PENDING |
-| reviewed_implementation_commit | PENDING |
-| reviewed_hardening_commit | PENDING |
-| reviewed_test_results | PENDING |
-| reviewed_scope_boundary | PENDING |
-| reviewed_no_runtime_enablement | PENDING |
-| reviewed_no_adapter_execution | PENDING |
-| reviewed_no_capability_execution | PENDING |
-| reviewed_no_paper_trading | PENDING |
-| reviewed_no_trade_result | PENDING |
-| reviewed_no_real_pnl | PENDING |
-| reviewed_no_memory_mutation | PENDING |
-| reviewed_level5_blocked | PENDING |
-| conditions | PENDING |
-| rollback_triggers | PENDING |
-| next_allowed_action | PENDING |
+## Verified Tests
+- Z9 Review Node: 125 passed
+- Z2 Research Report Node: 105 passed
+- B1 Composition Graph: 124 passed
+- A1 Bridge: 65 passed
+- Factor Library: 83 passed
+- Wave0: 118 passed
+- All Adapters: 303 passed, 2 skipped
+- Runtime: 63 passed, 2 skipped
+- Level4: 64 passed
+- Total: 1050 passed, 4 skipped, 0 failed
+
+## Approved Scope
+Merge Z9 Review Node Disabled-Default P0 skeleton.
+
+## Approved Behavior
+Disabled-default only. Readonly-only. Z2 z9_review_snapshot_candidate only.
+Builds readonly Z9ReviewNodeResponse with 12 review sections.
+Builds explanation-quality and evidence-completeness review.
+Builds readonly z2_feedback_candidate.
+Inherits Z2 report snapshot evidence chain.
+Validates response before return. Blocks forbidden inputs/outputs.
+Blocks trade_result / real_pnl / broker / memory mutation.
+
+## Forbidden Behavior
+Runtime enablement. Adapter execution enablement. Capability execution.
+Paper trading. Alpha claim. Trade_result. Real_pnl. Broker action.
+Memory mutation. Z8 trigger. Research/factor_library read.
+Direct FactorInvocationResponse. Direct B1 CompositionGraphResponse.
+Level 5 planning.
+
+## Conditions
+Merge only. Post-merge seal required. No runtime after merge.
+No adapter execution after merge. No capability execution after merge.
+No paper trading after merge. No memory mutation after merge.
+Level 5 remains BLOCKED.
 
 ## Next Legal Entry
-Human decision only.
+Merge to postmerge and create post-merge seal only.

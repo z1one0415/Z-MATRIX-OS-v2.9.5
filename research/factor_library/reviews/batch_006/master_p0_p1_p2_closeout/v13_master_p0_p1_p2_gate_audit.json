@@ -1,0 +1,25 @@
+{
+  "pipeline_signature": "Z2-V13-MASTER-P0-P1-P2-GATE-AUDIT",
+  "base_commit": "9c1d944",
+  "current_commit": "02b55df",
+  "checks": {
+    "all_9_agents_executed": true,
+    "no_registry_mutation": true,
+    "no_f7a_f7b_rewrite": true,
+    "f9_1_wait_state_not_executed": true,
+    "prs_research_only": true,
+    "cost_no_orders": true,
+    "neutral_no_baseline_change": true,
+    "cards_no_alpha": true,
+    "f7b_pit_plan_only": true,
+    "enhanced_v2_design_only": true,
+    "dqc_research_quality_only": true,
+    "survival_ledger_schema_only": true
+  },
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

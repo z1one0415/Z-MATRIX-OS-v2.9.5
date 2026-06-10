@@ -1,0 +1,18 @@
+{
+  "pipeline_signature": "Z2-V13-MASTER-P0-P1-P2-CLOSEOUT",
+  "status": "V13_MASTER_P0_P1_P2_PASS",
+  "base_commit": "9c1d944",
+  "current_commit": "02b55df",
+  "agents_executed": 9,
+  "total_artifacts": 71,
+  "canonical_registry_mutated": false,
+  "f7a_f7b_rewritten": false,
+  "alpha_claim_allowed": false,
+  "promotion_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "recommended_next": "V13_F9_2_FIRST_MONTHLY_REFRESH_ON_2026-07-01"
+}

@@ -1,0 +1,15 @@
+{
+  "total_factors": 23,
+  "mean_abs_IC": -0.0164,
+  "positive_5D": 13,
+  "positive_20D": 13,
+  "positive_60D": 0,
+  "decay_candidates": [],
+  "enhancement_candidates": [],
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

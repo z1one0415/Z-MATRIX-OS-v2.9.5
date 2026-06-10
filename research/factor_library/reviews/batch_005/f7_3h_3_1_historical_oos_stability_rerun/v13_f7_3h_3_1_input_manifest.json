@@ -1,0 +1,12 @@
+{
+  "f7a": 13,
+  "f7b": 10,
+  "total": 23,
+  "mask_applied": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

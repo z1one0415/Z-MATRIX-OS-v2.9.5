@@ -1,0 +1,21 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3H-3-1-CLOSEOUT",
+  "status": "V13_F7_3H_3_1_STABILITY_VALIDATION_RERUN_PASS",
+  "base_commit": "02625ba",
+  "total_factors": 23,
+  "non_null_IC_entries": 39,
+  "mean_abs_IC": -0.0164,
+  "positive_5D": 13,
+  "positive_20D": 13,
+  "positive_60D": 0,
+  "valid_observations_gt_0": 39,
+  "historical_validation_executed": true,
+  "forward_oos_replaced": false,
+  "recommended_next": "V13_F8_1_PRIMITIVE_IMPLEMENTATION_BASED_ON_HISTORICAL_OOS_BASELINE",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

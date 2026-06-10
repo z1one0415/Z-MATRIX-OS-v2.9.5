@@ -1,0 +1,27 @@
+{
+  "pipeline_signature": "Z2-V13-F7-1-REBALANCE-CALENDAR",
+  "status": "V13_F7_1_CALENDAR_DEFINED",
+  "base_commit": "7080b3e",
+  "rebalance_frequency": "MONTHLY",
+  "minimum_months": 6,
+  "preferred_months": 12,
+  "first_month": "2026-05",
+  "projected_months": [
+    "2026-05",
+    "2026-06",
+    "2026-07",
+    "2026-08",
+    "2026-09",
+    "2026-10"
+  ],
+  "earliest_formal_gate": "2026-10 (6 months after first rebalance)",
+  "rebalance_day": "first_trading_day_of_month",
+  "current_oos_months_available": 1,
+  "gap": 5,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,35 @@
+{
+  "pipeline_signature": "Z2-V13-F7-1-F7A-VALIDATION-DESIGN",
+  "status": "V13_F7_1_F7A_DESIGN_COMPLETE",
+  "base_commit": "7080b3e",
+  "scope": "13 standalone factors",
+  "metrics": [
+    "rank_IC",
+    "directional_spread",
+    "sign_consistency",
+    "factor_autocorrelation"
+  ],
+  "requirements": [
+    "U475 ticker universe",
+    "6 monthly rebalance dates",
+    "5D/20D/60D labels",
+    "factor-local executable available"
+  ],
+  "current_gaps": [
+    "only 5 tickers available",
+    "only 1 rebalance month",
+    "60D labels not available"
+  ],
+  "gate_criteria": {
+    "rank_IC_mean_gt_0": "PASS",
+    "rank_IC_t_stat_gt_2_sector_conditional": "PASS"
+  },
+  "formal_oos_not_executed": true,
+  "micro_sample_results_not_extrapolated": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

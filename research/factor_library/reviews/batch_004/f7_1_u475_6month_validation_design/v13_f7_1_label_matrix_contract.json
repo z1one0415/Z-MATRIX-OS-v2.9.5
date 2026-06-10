@@ -1,0 +1,37 @@
+{
+  "pipeline_signature": "Z2-V13-F7-1-LABEL-MATRIX-CONTRACT",
+  "status": "V13_F7_1_LABEL_MATRIX_DEFINED",
+  "base_commit": "7080b3e",
+  "horizons": {
+    "for_F7A_and_F7B": [
+      "5D",
+      "20D"
+    ],
+    "required_for_formal_gate": [
+      "60D"
+    ]
+  },
+  "label_role": "OUTCOME_LABEL_ONLY",
+  "forward_return_source": "data/price_bars post-rebalance close",
+  "current_availability": {
+    "5D": true,
+    "20D": true,
+    "60D": false
+  },
+  "60D_blocked_reason": "insufficient forward window data \u2014 price_bars only extend to 2026-06-10",
+  "per_rebalance_month": {
+    "label_rows_5D": ">=475",
+    "label_rows_20D": ">=475",
+    "label_rows_60D": ">=475"
+  },
+  "label_generation_constraints": {
+    "no_feature_store_write": true,
+    "no_forward_look_in_signal": true
+  },
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

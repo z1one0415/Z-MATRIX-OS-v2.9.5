@@ -1,0 +1,37 @@
+{
+  "pipeline_signature": "Z2-V13-F7-1-U475-6MONTH-VALIDATION-DESIGN-CLOSEOUT",
+  "status": "V13_F7_1_VALIDATION_DESIGN_PASS",
+  "base_commit": "7080b3e",
+  "design_complete": true,
+  "formal_oos_executed": false,
+  "artifacts": [
+    "universe_contract",
+    "rebalance_calendar",
+    "label_matrix",
+    "factor_track_protocol",
+    "f7a_design",
+    "f7b_design",
+    "micro_sample_audit"
+  ],
+  "current_gaps": {
+    "tickers": 470,
+    "months": 5,
+    "60D_horizon": true
+  },
+  "micro_sample_results": {
+    "not_extrapolated": true,
+    "F10_positive": "observation_only",
+    "F60_positive": "observation_only",
+    "F15_positive": "observation_only"
+  },
+  "F7A_standalone_count": 13,
+  "F7B_pipeline_count": 10,
+  "total_signal_ready": 23,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "recommended_next_action": "PREPARE_V13_F7_2_U475_6_MONTH_FORMAL_OOS_DRY_RUN_AFTER_DATA_INGESTION"
+}

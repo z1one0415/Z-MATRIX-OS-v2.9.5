@@ -1,0 +1,18 @@
+{
+  "pipeline_signature": "Z2-V13-F7-1-SAFETY-AUDIT",
+  "status": "V13_F7_1_SAFETY_PASS",
+  "violation_count": 0,
+  "checks": {
+    "planning_only": true,
+    "formal_oos_not_executed": true,
+    "promotion_not_allowed": true,
+    "alpha_not_claimed": true,
+    "micro_sample_not_extrapolated": true,
+    "F7A_F7B_not_merged": true,
+    "runner_enabled": false,
+    "execution_allowed": false,
+    "production_blocked": true,
+    "broker_runtime_blocked": true,
+    "real_trade_blocked": true
+  }
+}

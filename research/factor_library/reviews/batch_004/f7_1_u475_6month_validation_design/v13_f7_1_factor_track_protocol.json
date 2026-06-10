@@ -1,0 +1,55 @@
+{
+  "pipeline_signature": "Z2-V13-F7-1-FACTOR-TRACK-PROTOCOL",
+  "status": "V13_F7_1_TRACK_PROTOCOL_DEFINED",
+  "base_commit": "7080b3e",
+  "F7_A_STANDALONE": {
+    "factors": [
+      "F04",
+      "F10",
+      "F11",
+      "F21",
+      "F24",
+      "F30",
+      "F31",
+      "F53",
+      "F54",
+      "F55",
+      "F56",
+      "F58",
+      "F60"
+    ],
+    "count": 13,
+    "signal_source": "factor-local executable_formula.py + data/price_bars",
+    "reproducibility_claim": "ALLOWED \u2014 signals can be recomputed from source data",
+    "rerun_mode": "STANDALONE_EXPANDED_MONITORING"
+  },
+  "F7_B_PIPELINE_BOUND": {
+    "factors": [
+      "F06",
+      "F07",
+      "F08",
+      "F09",
+      "F12",
+      "F14",
+      "F15",
+      "F44",
+      "F45",
+      "F51"
+    ],
+    "count": 10,
+    "signal_source": "committed signal_scores.csv via F6.2/F6.3 Tushare pipeline",
+    "reproducibility_claim": "NOT_ALLOWED \u2014 signals require Tushare PIT fundamental pipeline",
+    "rerun_mode": "PIPELINE_BOUND_DIAGNOSTIC_REPLAY"
+  },
+  "FORBIDDEN": {
+    "do_not_merge_tracks": true,
+    "do_not_call_23_standalone": true,
+    "correct_terminology": "13 standalone reproducible + 10 pipeline-bound replay = 23 signal-ready"
+  },
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

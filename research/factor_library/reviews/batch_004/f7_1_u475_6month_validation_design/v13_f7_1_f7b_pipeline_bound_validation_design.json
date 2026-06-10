@@ -1,0 +1,27 @@
+{
+  "pipeline_signature": "Z2-V13-F7-1-F7B-VALIDATION-DESIGN",
+  "status": "V13_F7_1_F7B_DESIGN_COMPLETE",
+  "base_commit": "7080b3e",
+  "scope": "10 pipeline-bound factors",
+  "metrics": [
+    "diagnostic_spread",
+    "coverage_completeness",
+    "signal_persistence"
+  ],
+  "requirements": [
+    "committed signal_scores.csv from F6.2/F6.3",
+    "U475 label panel",
+    "monthly rebalance calendar"
+  ],
+  "limitations": [
+    "cannot claim standalone reproducibility",
+    "signal regeneration requires Tushare pipeline rerun"
+  ],
+  "formal_oos_not_executed": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

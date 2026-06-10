@@ -1,0 +1,44 @@
+{
+  "pipeline_signature": "Z2-V13-F7-1-MICRO-SAMPLE-AUDIT",
+  "status": "V13_F7_1_MICRO_SAMPLE_AUDIT_ACTIVE",
+  "base_commit": "7080b3e",
+  "current_sample": {
+    "tickers": 5,
+    "oos_months": 1,
+    "label_rows": 10,
+    "horizons": [
+      "5D",
+      "20D"
+    ]
+  },
+  "formal_requirements": {
+    "tickers": 475,
+    "oos_months": 6,
+    "label_rows": ">=2850 (475*6)",
+    "horizons": [
+      "5D",
+      "20D",
+      "60D"
+    ]
+  },
+  "gaps": {
+    "ticker_gap": 470,
+    "month_gap": 5,
+    "60D_gap": true,
+    "label_row_gap": ">=2840"
+  },
+  "prohibitions": [
+    "F10_positive_spread_is_NOT_alpha",
+    "negative_spreads_are_NOT_rejections",
+    "no_suspension_from_micro_sample",
+    "no_promotion_from_micro_sample",
+    "no_candidate_state_change"
+  ],
+  "current_results_are": "PIPELINE_VALIDATION_ONLY \u2014 not extrapolatable to production",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

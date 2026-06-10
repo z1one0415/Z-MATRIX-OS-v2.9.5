@@ -1,0 +1,28 @@
+{
+  "pipeline_signature": "Z2-V13-F7-1-UNIVERSE-CONTRACT",
+  "status": "V13_F7_1_UNIVERSE_CONTRACT_DEFINED",
+  "base_commit": "7080b3e",
+  "minimum_ticker_count": 475,
+  "preferred_ticker_count": 1000,
+  "current_ticker_count": 5,
+  "gap": 470,
+  "universe_sources": [
+    "tushare stock_basic",
+    "data/price_bars"
+  ],
+  "inclusion_criteria": {
+    "list_status": "L",
+    "exclude_st": true,
+    "exclude_new_listing_lt_60d": true
+  },
+  "required_per_ticker": [
+    "daily_bars covering 6 rebalance months + forward windows + signal lookback"
+  ],
+  "current_status": "MICRO_SAMPLE_5_TICKERS \u2014 NOT ready for formal OOS",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

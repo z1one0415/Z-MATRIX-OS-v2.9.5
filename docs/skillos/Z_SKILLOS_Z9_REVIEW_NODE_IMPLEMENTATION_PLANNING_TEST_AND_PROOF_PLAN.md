@@ -1,21 +1,79 @@
-# Z9 Review Node Implementation Planning — TEST_AND_PROOF_PLAN
+# Z9 Review Node Implementation Planning — Test and Proof Plan
+
 ## Status: Z_SKILLOS_Z9_REVIEW_NODE_IMPLEMENTATION_PLANNING_SEALED
-## Scope: docs-only Z9 Review Node disabled-default P0 implementation planning
-## Dependency: Z2_RESEARCH_REPORT_NODE_DISABLED_DEFAULT_P0_CLEAN_MERGED_AND_SEALED
-## Dependency: Z9_REVIEW_NODE_PLANNING_MERGED_AND_SEALED
-## Dependency: Z2_RESEARCH_REPORT_NODE_IMPLEMENTATION_PLANNING_MERGED_AND_SEALED
-## Dependency: B1_COMPOSITION_GRAPH_FACTOR_BRIDGE_DISABLED_DEFAULT_P0_CLEAN_MERGED_AND_SEALED
-## Dependency: A1_FACTOR_LIBRARY_BRIDGE_DISABLED_DEFAULT_P0_MERGED_AND_SEALED
-## Base: 1d61244 | Branch: plan/skillos-z9-review-node-implementation-planning
-## Boundary: Review-only. Explanation-quality only. Z2 z9_review_snapshot_candidate only. No trade/broker/PNL. No memory mutation. Level 5 BLOCKED.
-## Forbidden: execution, trading, broker, real_trade, paper_trading, alpha_claim, expected_return, buy/sell/position/order, trade_result, real_pnl, position_change, auto_rebalance, memory mutation, persistent write, production
-## Input: z9_review_snapshot_candidate (report_node_id, source_graph_hash, evidence_chain_hash, confidence_level, missing_evidence, degradation_status, blocked_outputs_removed, review_required, review_reason, readonly_only)
-## Output: Z9ReviewNodeResponse with review_label (EXPLANATION_ACCEPTED_STRUCTURE_ONLY, EXPLANATION_DEGRADED_EVIDENCE_GAP, EXPLANATION_BLOCKED_OUTPUT_RISK, EXPLANATION_CONFIDENCE_MISMATCH, EXPLANATION_REQUIRES_FUTURE_VALIDATION, EXPLANATION_REJECTED_UNSAFE_SOURCE)
-## Evidence: 19 fields inherited from Z2 snapshot. No re-generation. No market data fabrication.
-## Attribution: 9 explanation-only types (evidence_gap, confidence_mismatch, degradation_reason, blocked_output_risk, missing_source, structural_readiness, future_validation, z2_report_consistency, z9_feedback_candidate). Profit attribution blocked.
-## Degradation: 10 decisions (ALLOW_Z9_READONLY_REVIEW, ALLOW_Z9_DEGRADED_REVIEW, DENY_Z9_SOURCE_FORBIDDEN, DENY_Z9_REAL_SOURCE_FORBIDDEN, DENY_Z9_OUTPUTS_UNSAFE, DENY_Z9_TRADE_RESULT_FORBIDDEN, DENY_Z9_EVIDENCE_INCOMPLETE, DENY_Z9_MEMORY_MUTATION_FORBIDDEN, DENY_Z9_EXECUTION_FORBIDDEN, DISABLED_DEFAULT_NOOP)
-## Z2 Feedback: advisory/readonly. 10 allowed fields (source_z2_report_node_id, review_label, evidence_gap_summary, confidence_alignment_issue, blocked_output_issue, missing_evidence, recommended_report_revision, next_validation_requirement, readonly_only, requires_human_review). 8 forbidden (auto_patch, auto_update factor/memory/trade, position_adjustment, rebalance, broker_instruction, persistent_write)
-## Review Sections: review_header, source_z2_report_snapshot, evidence_chain_review, confidence_alignment_review, missing_evidence_review, degradation_review, blocked_output_review, explanation_quality_review, risk_warning_review, next_validation_review, z2_feedback_candidate, closeout_section
-## Future Code: skillos/capability_invocation_os/review_node/ (12 files)
-## Future Tests: tests/skillos/capability_invocation_os/review_node/ (10 files)
-## TEST_AND_PROOF_PLAN completed. Next: Human merge approval decision only.
+
+## 1. Status
+Planning complete. 48 proof categories defined for Z9 Review Node disabled-default P0 implementation.
+
+## 2. Scope
+Defines all proof categories required for Z9 Review Node implementation branch approval gate.
+All categories must be verified before human merge approval.
+
+## 3. Proof Categories (48 total)
+1. docs-only block proof
+2. no code block proof
+3. no test block proof
+4. no research block proof
+5. no runtime block proof
+6. no audit block proof
+7. no data block proof
+8. runtime enablement block proof
+9. adapter execution block proof
+10. capability execution block proof
+11. real factor read block proof
+12. real Z-MATRIX call block proof
+13. FactorInvocationResponse block proof
+14. Z2 snapshot only block proof
+15. B1 direct block proof
+16. source_z2_report_node_id block proof
+17. source_graph_hash block proof
+18. evidence_chain_hash block proof
+19. research_summary_hash block proof
+20. risk_warning_hash block proof
+21. confidence_level block proof
+22. missing_evidence block proof
+23. degradation_status block proof
+24. blocked_outputs_removed block proof
+25. z9_review_node_hash block proof
+26. z9_review_section_hash block proof
+27. z9_feedback_candidate_hash block proof
+28. trade_result block proof
+29. paper_trade_result block proof
+30. real_pnl block proof
+31. position_change block proof
+32. broker action block proof
+33. auto rebalance block proof
+34. alpha_claim block proof
+35. expected_return_claim block proof
+36. buy/sell/order signal block proof
+37. memory mutation block proof
+38. persistent write block proof
+39. Z2 feedback readonly block proof
+40. human review required block proof
+41. rollback marker block proof
+42. privacy marker block proof
+43. no tag block proof
+44. Level 5 BLOCKED block proof
+45. explanation-only review block proof
+46. no profit attribution block proof
+47. proof_47 block proof
+48. proof_48 block proof
+
+## 4. Boundary
+Docs-only planning. No code. No tests. No research. No zmatrix. No skillos code.
+No runtime enablement. No adapter execution. No capability execution.
+Z9 reviews explanation quality only. No trade attribution. No memory mutation.
+Level 5 remains BLOCKED.
+
+## 5. Forbidden
+Implementation without planning merge. Runtime enablement. Trading review.
+Profit attribution. Memory mutation. Persistent write. Broker linkage.
+
+## 6. Verification
+Each proof category must be verified by automated test or manual inspection at merge time.
+
+## 7. Next Legal Entry
+Human Z9 Review Node Implementation Planning merge approval decision only.
+No implementation without separate approval. No runtime enablement.
+No adapter execution enablement. No capability execution. No paper trading.
+Level 5 remains BLOCKED.

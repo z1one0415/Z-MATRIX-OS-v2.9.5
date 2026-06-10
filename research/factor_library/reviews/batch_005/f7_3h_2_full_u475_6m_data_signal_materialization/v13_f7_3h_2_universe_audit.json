@@ -1,0 +1,18 @@
+{
+  "months": 6,
+  "selected_tickers_per_month": [
+    475,
+    475,
+    475,
+    475,
+    475,
+    475
+  ],
+  "all_gte_475": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

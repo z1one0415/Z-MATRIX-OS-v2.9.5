@@ -1,0 +1,12 @@
+{
+  "join_key": "ticker+rebalance_date",
+  "label_tickers": 567,
+  "f7a_tickers": 567,
+  "note": "Full joinability confirmed when both datasets complete at same scale",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

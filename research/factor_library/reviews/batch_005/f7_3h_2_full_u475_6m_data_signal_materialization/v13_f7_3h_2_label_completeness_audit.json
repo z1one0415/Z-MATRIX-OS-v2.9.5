@@ -1,0 +1,16 @@
+{
+  "5D_rows": 2850,
+  "5D_non_null": 2849,
+  "5D_null": 1,
+  "20D_non_null": 2840,
+  "60D_rows": 2850,
+  "60D_non_null": 2372,
+  "60D_null": 478,
+  "total_label_rows": 8550,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

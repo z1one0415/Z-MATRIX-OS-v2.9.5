@@ -1,0 +1,11 @@
+{
+  "status": "V13_F7_3H_2_SAFETY",
+  "violations": 0,
+  "historical_not_forward": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,58 @@
+{
+  "factors": [
+    "F06",
+    "F07",
+    "F08",
+    "F09",
+    "F12",
+    "F14",
+    "F15",
+    "F44",
+    "F45",
+    "F51"
+  ],
+  "plan": {
+    "plan": "PULL TUSHARE PIT FUNDAMENTALS FOR 475 TICKERS",
+    "calls_required": 4750,
+    "rate_limit": "200 calls/min \u2192 ~25 min per factor \u2192 ~2 hours total for 10 factors",
+    "data_required": {
+      "fina_indicator": [
+        "roe",
+        "roa",
+        "gross_margin",
+        "debt",
+        "ocfps",
+        "netprofit_yoy",
+        "or_yoy"
+      ],
+      "cashflow": [
+        "n_cashflow_act",
+        "free_cashflow"
+      ],
+      "income": [
+        "revenue",
+        "n_income"
+      ],
+      "balancesheet": [
+        "total_assets"
+      ],
+      "daily_basic": [
+        "pe",
+        "pb",
+        "ps",
+        "total_mv"
+      ],
+      "forecast": [
+        "net_profit_min",
+        "net_profit_max"
+      ]
+    },
+    "feasibility": "CONFIRMED at demo scale. Full pull requires tushare API batch loop."
+  },
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

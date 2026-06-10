@@ -1,0 +1,20 @@
+{
+  "pipeline_signature": "Z2-V13-F7-3H-2-FULL-U475-PULL",
+  "status": "V13_F7_3H_2_FULL_U475_MATERIALIZATION_PASS",
+  "base_commit": "a5959c3",
+  "months": 6,
+  "monthly_tickers": 475,
+  "all_475": true,
+  "label_rows_total": 8550,
+  "5D_complete": false,
+  "60D_complete": false,
+  "f7a_executed": true,
+  "f7b_plan": "BATCH_PULL_DESIGNED",
+  "recommended_next": "V13_F7_3H_3_HISTORICAL_OOS_STABILITY_VALIDATION_AFTER_F7B_BATCH_PULL",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

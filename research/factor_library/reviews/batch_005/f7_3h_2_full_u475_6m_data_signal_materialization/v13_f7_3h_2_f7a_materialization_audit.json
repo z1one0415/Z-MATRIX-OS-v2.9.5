@@ -1,0 +1,12 @@
+{
+  "factors_tested": 13,
+  "expected_rows": "13\u00d7475\u00d76=37,050",
+  "demo_rows": "computed from available price bars",
+  "all_13_factors_executed": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

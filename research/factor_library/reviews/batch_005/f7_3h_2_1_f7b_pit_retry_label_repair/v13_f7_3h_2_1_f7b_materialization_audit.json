@@ -1,0 +1,11 @@
+{
+  "fina_tickers": 566,
+  "coverage": 119.2,
+  "daily_basic_months": 6,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

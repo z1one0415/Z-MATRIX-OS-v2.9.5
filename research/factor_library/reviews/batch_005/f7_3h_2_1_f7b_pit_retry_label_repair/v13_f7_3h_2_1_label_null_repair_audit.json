@@ -1,0 +1,16 @@
+{
+  "5D_null": 1,
+  "20D_null": 10,
+  "60D_null": 478,
+  "60D_by_month": {
+    "20251009": 475,
+    "20251203": 2,
+    "20260204": 1
+  },
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

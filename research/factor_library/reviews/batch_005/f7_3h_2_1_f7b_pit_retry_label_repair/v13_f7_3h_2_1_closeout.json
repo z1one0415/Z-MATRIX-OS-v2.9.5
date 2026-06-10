@@ -1,0 +1,16 @@
+{
+  "status": "V13_F7_3H_2_1_REPAIR_PASS",
+  "fina_retry": true,
+  "final_fina_tickers": 566,
+  "5D_null": 1,
+  "20D_null": 10,
+  "60D_null": 478,
+  "60D_oct_excluded": true,
+  "next": "V13_F7_3H_3_HISTORICAL_OOS_STABILITY_VALIDATION",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

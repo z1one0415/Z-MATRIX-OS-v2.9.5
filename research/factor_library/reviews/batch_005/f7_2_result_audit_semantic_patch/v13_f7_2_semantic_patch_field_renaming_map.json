@@ -1,0 +1,32 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-SEMANTIC-PATCH-FIELD-RENAMING-MAP",
+  "status": "FIELD_SEMANTIC_RENAMING_MAP_BUILT",
+  "base_result_audit_commit": "b9f77ab",
+  "formal_validation_run_commit": "ea80ff9",
+  "semantic_conflict_id": "F7_2_SAFETY_AUDIT_FIELD_NAME_CONFLICT_001",
+  "old_fields": {
+    "no_formal_oos_execution": "ambiguous_after_authorized_readonly_validation_run",
+    "no_u475_6month_validation_execution": "ambiguous_after_authorized_readonly_validation_run",
+    "no_validation_result_generated": "ambiguous_after_authorized_readonly_validation_run"
+  },
+  "new_fields": {
+    "no_unauthorized_formal_oos_execution": true,
+    "no_unauthorized_u475_validation_execution": true,
+    "no_unauthorized_validation_result_generation": true
+  },
+  "validation_executed_fact": {
+    "formal_oos_validation_executed": true,
+    "u475_6_month_validation_executed": true,
+    "validation_results_generated": true
+  },
+  "result_artifacts_modified": false,
+  "metrics_recalculated": false,
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "execution_allowed": false,
+  "runner_enabled": false,
+  "paper_trading_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

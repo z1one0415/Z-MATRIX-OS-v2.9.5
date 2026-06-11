@@ -1,0 +1,34 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-SEMANTIC-PATCH-SAFETY-AUDIT-OVERLAY",
+  "status": "SAFETY_FIELD_SEMANTICS_SUPERSEDED_BY_OVERLAY",
+  "base_safety_audit_artifact": "f7_2_formal_validation_run_execution_readonly/v13_f7_2_formal_validation_safety_audit.json",
+  "base_result_audit_commit": "b9f77ab",
+  "formal_validation_run_commit": "ea80ff9",
+  "superseded_fields": [
+    "no_formal_oos_execution",
+    "no_u475_6month_validation_execution",
+    "no_validation_result_generated"
+  ],
+  "replacement_fields": {
+    "no_unauthorized_formal_oos_execution": true,
+    "no_unauthorized_u475_validation_execution": true,
+    "no_unauthorized_validation_result_generation": true
+  },
+  "authorized_readonly_validation_facts": {
+    "formal_oos_validation_executed": true,
+    "u475_6_month_validation_executed": true,
+    "validation_results_generated": true
+  },
+  "interpretation": "The prior no_* fields are superseded for downstream route gating. They must be read as no unauthorized execution/result generation, not as no execution/result generation.",
+  "result_audit_now_blocked_by_semantic_conflict": false,
+  "promotion_still_blocked": true,
+  "f8_advancement_still_blocked": true,
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "execution_allowed": false,
+  "runner_enabled": false,
+  "paper_trading_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

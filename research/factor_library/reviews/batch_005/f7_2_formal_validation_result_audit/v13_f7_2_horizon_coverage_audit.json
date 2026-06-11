@@ -1,0 +1,23 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-HORIZON-COVERAGE-AUDIT",
+  "horizons": [
+    {
+      "horizon": "5D",
+      "expected": "yes",
+      "observed_in_ic_table": true,
+      "status": "PASS"
+    },
+    {
+      "horizon": "20D",
+      "expected": "yes",
+      "observed_in_ic_table": true,
+      "status": "PASS"
+    },
+    {
+      "horizon": "60D",
+      "expected": "optional",
+      "observed_in_ic_table": false,
+      "status": "OPTIONAL_NOT_AVAILABLE"
+    }
+  ]
+}

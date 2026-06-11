@@ -1,0 +1,20 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-SAFETY-FIELD-SEMANTIC-AUDIT",
+  "findings": [
+    {
+      "finding_id": "F7_2_SAFETY_AUDIT_FIELD_NAME_CONFLICT_001",
+      "finding": "v13_f7_2_formal_validation_safety_audit.json contains execution_checks with fields named no_formal_oos_execution=true, no_u475_6month_validation_execution=true, no_validation_result_generated=true, while the same file and closeout also correctly state formal_oos_validation_executed=True, u475_6_month_validation_executed=True, validation_results_generated=True",
+      "classification": "SEMANTIC_FIELD_NAME_CONFLICT",
+      "severity": "MEDIUM",
+      "impact": "Does not invalidate readonly validation results, but can confuse downstream route gates.",
+      "required_fix": "Rename or supersede these fields in a later semantic patch as no_unauthorized_formal_oos_execution, no_unauthorized_u475_validation_execution, no_unauthorized_validation_result_generation",
+      "result_audit_blocking": false,
+      "promotion_blocking": true,
+      "f8_advancement_blocking": true,
+      "recommended_next_action": "F7_2_FORMAL_VALIDATION_RESULT_AUDIT_SEMANTIC_PATCH_OR_RESULT_INTERPRETATION_REVIEW"
+    }
+  ],
+  "validation_executed_fact_consistent": true,
+  "result_generated_fact_consistent": true,
+  "authorization_boundary_intact": true
+}

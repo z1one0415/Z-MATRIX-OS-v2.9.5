@@ -1,0 +1,150 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-RESULT-INTERPRETATION-AUDIT",
+  "allowed_enums": [
+    "PROMISING_DIAGNOSTIC_ONLY",
+    "MIXED_DIAGNOSTIC_ONLY",
+    "WEAK_DIAGNOSTIC_ONLY",
+    "FAILED_DIAGNOSTIC_ONLY",
+    "ABORTED_INPUT_INVALID"
+  ],
+  "forbidden_enums": [
+    "ALPHA",
+    "PROMOTED",
+    "RUNNER",
+    "TRADE_READY",
+    "BUY",
+    "SELL",
+    "POSITION",
+    "ORDER"
+  ],
+  "factors": [
+    {
+      "factor_id": "F04",
+      "validation_interpretation": "MIXED_DIAGNOSTIC_ONLY",
+      "valid": true
+    },
+    {
+      "factor_id": "F10",
+      "validation_interpretation": "MIXED_DIAGNOSTIC_ONLY",
+      "valid": true
+    },
+    {
+      "factor_id": "F11",
+      "validation_interpretation": "WEAK_DIAGNOSTIC_ONLY",
+      "valid": true
+    },
+    {
+      "factor_id": "F21",
+      "validation_interpretation": "PROMISING_DIAGNOSTIC_ONLY",
+      "valid": true
+    },
+    {
+      "factor_id": "F24",
+      "validation_interpretation": "MIXED_DIAGNOSTIC_ONLY",
+      "valid": true
+    },
+    {
+      "factor_id": "F30",
+      "validation_interpretation": "PROMISING_DIAGNOSTIC_ONLY",
+      "valid": true
+    },
+    {
+      "factor_id": "F31",
+      "validation_interpretation": "MIXED_DIAGNOSTIC_ONLY",
+      "valid": true
+    },
+    {
+      "factor_id": "F53",
+      "validation_interpretation": "PROMISING_DIAGNOSTIC_ONLY",
+      "valid": true
+    },
+    {
+      "factor_id": "F54",
+      "validation_interpretation": "PROMISING_DIAGNOSTIC_ONLY",
+      "valid": true
+    },
+    {
+      "factor_id": "F55",
+      "validation_interpretation": "MIXED_DIAGNOSTIC_ONLY",
+      "valid": true
+    },
+    {
+      "factor_id": "F56",
+      "validation_interpretation": "MIXED_DIAGNOSTIC_ONLY",
+      "valid": true
+    },
+    {
+      "factor_id": "F58",
+      "validation_interpretation": "MIXED_DIAGNOSTIC_ONLY",
+      "valid": true
+    },
+    {
+      "factor_id": "F60",
+      "validation_interpretation": "PROMISING_DIAGNOSTIC_ONLY",
+      "valid": true
+    },
+    {
+      "factor_id": "F06",
+      "validation_interpretation": "MIXED_DIAGNOSTIC_ONLY",
+      "valid": true
+    },
+    {
+      "factor_id": "F07",
+      "validation_interpretation": "WEAK_DIAGNOSTIC_ONLY",
+      "valid": true
+    },
+    {
+      "factor_id": "F08",
+      "validation_interpretation": "PROMISING_DIAGNOSTIC_ONLY",
+      "valid": true
+    },
+    {
+      "factor_id": "F09",
+      "validation_interpretation": "MIXED_DIAGNOSTIC_ONLY",
+      "valid": true
+    },
+    {
+      "factor_id": "F12",
+      "validation_interpretation": "WEAK_DIAGNOSTIC_ONLY",
+      "valid": true
+    },
+    {
+      "factor_id": "F14",
+      "validation_interpretation": "MIXED_DIAGNOSTIC_ONLY",
+      "valid": true
+    },
+    {
+      "factor_id": "F15",
+      "validation_interpretation": "MIXED_DIAGNOSTIC_ONLY",
+      "valid": true
+    },
+    {
+      "factor_id": "F44",
+      "validation_interpretation": "WEAK_DIAGNOSTIC_ONLY",
+      "valid": true
+    },
+    {
+      "factor_id": "F45",
+      "validation_interpretation": "WEAK_DIAGNOSTIC_ONLY",
+      "valid": true
+    },
+    {
+      "factor_id": "F51",
+      "validation_interpretation": "MIXED_DIAGNOSTIC_ONLY",
+      "valid": true
+    }
+  ],
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "execution_allowed": false,
+  "runner_enabled": false,
+  "paper_trading_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "factor_count": 23,
+  "valid_interpretation_count": 23,
+  "invalid_interpretation_count": 0,
+  "invalid_items": [],
+  "interpretation_language_safe": true
+}

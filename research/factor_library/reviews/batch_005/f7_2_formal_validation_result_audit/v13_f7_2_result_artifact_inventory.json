@@ -1,0 +1,238 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-FORMAL-VALIDATION-RESULT-ARTIFACT-INVENTORY",
+  "artifacts": [
+    {
+      "artifact_name": "v13_f7_2_formal_validation_run_authorization_record.json",
+      "relative_path": "f7_2_formal_validation_run_execution_readonly/v13_f7_2_formal_validation_run_authorization_record.json",
+      "artifact_type": "JSON",
+      "exists": true,
+      "readable": true,
+      "line_count_or_record_count": 18,
+      "expected_role": "JSON artifact for F7.2 formal validation",
+      "audit_status": "PASS"
+    },
+    {
+      "artifact_name": "v13_f7_2_formal_validation_input_resolution.json",
+      "relative_path": "f7_2_formal_validation_run_execution_readonly/v13_f7_2_formal_validation_input_resolution.json",
+      "artifact_type": "JSON",
+      "exists": true,
+      "readable": true,
+      "line_count_or_record_count": 144,
+      "expected_role": "JSON artifact for F7.2 formal validation",
+      "audit_status": "PASS"
+    },
+    {
+      "artifact_name": "v13_f7_2_formal_validation_data_quality_audit.json",
+      "relative_path": "f7_2_formal_validation_run_execution_readonly/v13_f7_2_formal_validation_data_quality_audit.json",
+      "artifact_type": "JSON",
+      "exists": true,
+      "readable": true,
+      "line_count_or_record_count": 55,
+      "expected_role": "JSON artifact for F7.2 formal validation",
+      "audit_status": "PASS"
+    },
+    {
+      "artifact_name": "v13_f7_2_formal_validation_universe_audit.json",
+      "relative_path": "f7_2_formal_validation_run_execution_readonly/v13_f7_2_formal_validation_universe_audit.json",
+      "artifact_type": "JSON",
+      "exists": true,
+      "readable": true,
+      "line_count_or_record_count": 8,
+      "expected_role": "JSON artifact for F7.2 formal validation",
+      "audit_status": "PASS"
+    },
+    {
+      "artifact_name": "v13_f7_2_formal_validation_label_audit.json",
+      "relative_path": "f7_2_formal_validation_run_execution_readonly/v13_f7_2_formal_validation_label_audit.json",
+      "artifact_type": "JSON",
+      "exists": true,
+      "readable": true,
+      "line_count_or_record_count": 28,
+      "expected_role": "JSON artifact for F7.2 formal validation",
+      "audit_status": "PASS"
+    },
+    {
+      "artifact_name": "v13_f7_2_formal_validation_factor_panel_audit.json",
+      "relative_path": "f7_2_formal_validation_run_execution_readonly/v13_f7_2_formal_validation_factor_panel_audit.json",
+      "artifact_type": "JSON",
+      "exists": true,
+      "readable": true,
+      "line_count_or_record_count": 235,
+      "expected_role": "JSON artifact for F7.2 formal validation",
+      "audit_status": "PASS"
+    },
+    {
+      "artifact_name": "v13_f7_2_formal_validation_metric_manifest.json",
+      "relative_path": "f7_2_formal_validation_run_execution_readonly/v13_f7_2_formal_validation_metric_manifest.json",
+      "artifact_type": "JSON",
+      "exists": true,
+      "readable": true,
+      "line_count_or_record_count": 285,
+      "expected_role": "JSON artifact for F7.2 formal validation",
+      "audit_status": "PASS"
+    },
+    {
+      "artifact_name": "v13_f7_2_formal_oos_factor_summary.json",
+      "relative_path": "f7_2_formal_validation_run_execution_readonly/v13_f7_2_formal_oos_factor_summary.json",
+      "artifact_type": "JSON",
+      "exists": true,
+      "readable": true,
+      "line_count_or_record_count": 702,
+      "expected_role": "JSON artifact for F7.2 formal validation",
+      "audit_status": "PASS"
+    },
+    {
+      "artifact_name": "v13_f7_2_formal_oos_abort_report.json",
+      "relative_path": "f7_2_formal_validation_run_execution_readonly/v13_f7_2_formal_oos_abort_report.json",
+      "artifact_type": "JSON",
+      "exists": true,
+      "readable": true,
+      "line_count_or_record_count": 9,
+      "expected_role": "JSON artifact for F7.2 formal validation",
+      "audit_status": "PASS"
+    },
+    {
+      "artifact_name": "v13_f7_2_formal_validation_safety_audit.json",
+      "relative_path": "f7_2_formal_validation_run_execution_readonly/v13_f7_2_formal_validation_safety_audit.json",
+      "artifact_type": "JSON",
+      "exists": true,
+      "readable": true,
+      "line_count_or_record_count": 45,
+      "expected_role": "JSON artifact for F7.2 formal validation",
+      "audit_status": "PASS"
+    },
+    {
+      "artifact_name": "v13_f7_2_formal_validation_closeout.json",
+      "relative_path": "f7_2_formal_validation_run_execution_readonly/v13_f7_2_formal_validation_closeout.json",
+      "artifact_type": "JSON",
+      "exists": true,
+      "readable": true,
+      "line_count_or_record_count": 27,
+      "expected_role": "JSON artifact for F7.2 formal validation",
+      "audit_status": "PASS"
+    },
+    {
+      "artifact_name": "v13_f7_2_formal_oos_ic_table.csv",
+      "relative_path": "f7_2_formal_validation_run_execution_readonly/v13_f7_2_formal_oos_ic_table.csv",
+      "artifact_type": "CSV",
+      "exists": true,
+      "readable": true,
+      "line_count_or_record_count": 47,
+      "expected_role": "CSV artifact for F7.2 formal validation",
+      "audit_status": "PASS"
+    },
+    {
+      "artifact_name": "v13_f7_2_formal_oos_rank_ic_table.csv",
+      "relative_path": "f7_2_formal_validation_run_execution_readonly/v13_f7_2_formal_oos_rank_ic_table.csv",
+      "artifact_type": "CSV",
+      "exists": true,
+      "readable": true,
+      "line_count_or_record_count": 47,
+      "expected_role": "CSV artifact for F7.2 formal validation",
+      "audit_status": "PASS"
+    },
+    {
+      "artifact_name": "v13_f7_2_formal_oos_hit_rate_table.csv",
+      "relative_path": "f7_2_formal_validation_run_execution_readonly/v13_f7_2_formal_oos_hit_rate_table.csv",
+      "artifact_type": "CSV",
+      "exists": true,
+      "readable": true,
+      "line_count_or_record_count": 47,
+      "expected_role": "CSV artifact for F7.2 formal validation",
+      "audit_status": "PASS"
+    },
+    {
+      "artifact_name": "v13_f7_2_formal_oos_bucket_spread_table.csv",
+      "relative_path": "f7_2_formal_validation_run_execution_readonly/v13_f7_2_formal_oos_bucket_spread_table.csv",
+      "artifact_type": "CSV",
+      "exists": true,
+      "readable": true,
+      "line_count_or_record_count": 47,
+      "expected_role": "CSV artifact for F7.2 formal validation",
+      "audit_status": "PASS"
+    },
+    {
+      "artifact_name": "v13_f7_2_formal_oos_turnover_table.csv",
+      "relative_path": "f7_2_formal_validation_run_execution_readonly/v13_f7_2_formal_oos_turnover_table.csv",
+      "artifact_type": "CSV",
+      "exists": true,
+      "readable": true,
+      "line_count_or_record_count": 24,
+      "expected_role": "CSV artifact for F7.2 formal validation",
+      "audit_status": "PASS"
+    },
+    {
+      "artifact_name": "v13_f7_2_formal_oos_coverage_table.csv",
+      "relative_path": "f7_2_formal_validation_run_execution_readonly/v13_f7_2_formal_oos_coverage_table.csv",
+      "artifact_type": "CSV",
+      "exists": true,
+      "readable": true,
+      "line_count_or_record_count": 47,
+      "expected_role": "CSV artifact for F7.2 formal validation",
+      "audit_status": "PASS"
+    },
+    {
+      "artifact_name": "v13_f7_2_formal_oos_correlation_matrix.csv",
+      "relative_path": "f7_2_formal_validation_run_execution_readonly/v13_f7_2_formal_oos_correlation_matrix.csv",
+      "artifact_type": "CSV",
+      "exists": true,
+      "readable": true,
+      "line_count_or_record_count": 51,
+      "expected_role": "CSV artifact for F7.2 formal validation",
+      "audit_status": "PASS"
+    },
+    {
+      "artifact_name": "v13_f7_2_formal_oos_industry_bias_table.csv",
+      "relative_path": "f7_2_formal_validation_run_execution_readonly/v13_f7_2_formal_oos_industry_bias_table.csv",
+      "artifact_type": "CSV",
+      "exists": true,
+      "readable": true,
+      "line_count_or_record_count": 24,
+      "expected_role": "CSV artifact for F7.2 formal validation",
+      "audit_status": "PASS"
+    },
+    {
+      "artifact_name": "v13_f7_2_formal_oos_liquidity_sensitivity_table.csv",
+      "relative_path": "f7_2_formal_validation_run_execution_readonly/v13_f7_2_formal_oos_liquidity_sensitivity_table.csv",
+      "artifact_type": "CSV",
+      "exists": true,
+      "readable": true,
+      "line_count_or_record_count": 70,
+      "expected_role": "CSV artifact for F7.2 formal validation",
+      "audit_status": "PASS"
+    },
+    {
+      "artifact_name": "v13_f7_2_formal_oos_regime_split_table.csv",
+      "relative_path": "f7_2_formal_validation_run_execution_readonly/v13_f7_2_formal_oos_regime_split_table.csv",
+      "artifact_type": "CSV",
+      "exists": true,
+      "readable": true,
+      "line_count_or_record_count": 231,
+      "expected_role": "CSV artifact for F7.2 formal validation",
+      "audit_status": "PASS"
+    },
+    {
+      "artifact_name": "v13_f7_2_formal_oos_stability_decay_table.csv",
+      "relative_path": "f7_2_formal_validation_run_execution_readonly/v13_f7_2_formal_oos_stability_decay_table.csv",
+      "artifact_type": "CSV",
+      "exists": true,
+      "readable": true,
+      "line_count_or_record_count": 277,
+      "expected_role": "CSV artifact for F7.2 formal validation",
+      "audit_status": "PASS"
+    },
+    {
+      "artifact_name": "README.md",
+      "relative_path": "f7_2_formal_validation_run_execution_readonly/README.md",
+      "artifact_type": "MD",
+      "exists": true,
+      "readable": true,
+      "line_count_or_record_count": 5,
+      "expected_role": "MD artifact for F7.2 formal validation",
+      "audit_status": "PASS"
+    }
+  ],
+  "total_artifacts": 23,
+  "pass_count": 23,
+  "blocked_count": 0
+}

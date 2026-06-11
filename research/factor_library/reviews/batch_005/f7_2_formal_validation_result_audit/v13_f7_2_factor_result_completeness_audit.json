@@ -1,0 +1,398 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-FACTOR-RESULT-COMPLETENESS-AUDIT",
+  "factors": [
+    {
+      "factor_id": "F04",
+      "canonical_group": "STD",
+      "present_in_ic_table": true,
+      "present_in_rank_ic_table": true,
+      "present_in_hit_rate_table": true,
+      "present_in_bucket_spread_table": true,
+      "present_in_turnover_table": true,
+      "present_in_coverage_table": true,
+      "present_in_factor_summary": true,
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "diagnostic_only_interpretation_present": true,
+      "audit_status": "PASS"
+    },
+    {
+      "factor_id": "F10",
+      "canonical_group": "STD",
+      "present_in_ic_table": true,
+      "present_in_rank_ic_table": true,
+      "present_in_hit_rate_table": true,
+      "present_in_bucket_spread_table": true,
+      "present_in_turnover_table": true,
+      "present_in_coverage_table": true,
+      "present_in_factor_summary": true,
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "diagnostic_only_interpretation_present": true,
+      "audit_status": "PASS"
+    },
+    {
+      "factor_id": "F11",
+      "canonical_group": "STD",
+      "present_in_ic_table": true,
+      "present_in_rank_ic_table": true,
+      "present_in_hit_rate_table": true,
+      "present_in_bucket_spread_table": true,
+      "present_in_turnover_table": true,
+      "present_in_coverage_table": true,
+      "present_in_factor_summary": true,
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "diagnostic_only_interpretation_present": true,
+      "audit_status": "PASS"
+    },
+    {
+      "factor_id": "F21",
+      "canonical_group": "STD",
+      "present_in_ic_table": true,
+      "present_in_rank_ic_table": true,
+      "present_in_hit_rate_table": true,
+      "present_in_bucket_spread_table": true,
+      "present_in_turnover_table": true,
+      "present_in_coverage_table": true,
+      "present_in_factor_summary": true,
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "diagnostic_only_interpretation_present": true,
+      "audit_status": "PASS"
+    },
+    {
+      "factor_id": "F24",
+      "canonical_group": "STD",
+      "present_in_ic_table": true,
+      "present_in_rank_ic_table": true,
+      "present_in_hit_rate_table": true,
+      "present_in_bucket_spread_table": true,
+      "present_in_turnover_table": true,
+      "present_in_coverage_table": true,
+      "present_in_factor_summary": true,
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "diagnostic_only_interpretation_present": true,
+      "audit_status": "PASS"
+    },
+    {
+      "factor_id": "F30",
+      "canonical_group": "STD",
+      "present_in_ic_table": true,
+      "present_in_rank_ic_table": true,
+      "present_in_hit_rate_table": true,
+      "present_in_bucket_spread_table": true,
+      "present_in_turnover_table": true,
+      "present_in_coverage_table": true,
+      "present_in_factor_summary": true,
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "diagnostic_only_interpretation_present": true,
+      "audit_status": "PASS"
+    },
+    {
+      "factor_id": "F31",
+      "canonical_group": "STD",
+      "present_in_ic_table": true,
+      "present_in_rank_ic_table": true,
+      "present_in_hit_rate_table": true,
+      "present_in_bucket_spread_table": true,
+      "present_in_turnover_table": true,
+      "present_in_coverage_table": true,
+      "present_in_factor_summary": true,
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "diagnostic_only_interpretation_present": true,
+      "audit_status": "PASS"
+    },
+    {
+      "factor_id": "F53",
+      "canonical_group": "STD",
+      "present_in_ic_table": true,
+      "present_in_rank_ic_table": true,
+      "present_in_hit_rate_table": true,
+      "present_in_bucket_spread_table": true,
+      "present_in_turnover_table": true,
+      "present_in_coverage_table": true,
+      "present_in_factor_summary": true,
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "diagnostic_only_interpretation_present": true,
+      "audit_status": "PASS"
+    },
+    {
+      "factor_id": "F54",
+      "canonical_group": "STD",
+      "present_in_ic_table": true,
+      "present_in_rank_ic_table": true,
+      "present_in_hit_rate_table": true,
+      "present_in_bucket_spread_table": true,
+      "present_in_turnover_table": true,
+      "present_in_coverage_table": true,
+      "present_in_factor_summary": true,
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "diagnostic_only_interpretation_present": true,
+      "audit_status": "PASS"
+    },
+    {
+      "factor_id": "F55",
+      "canonical_group": "STD",
+      "present_in_ic_table": true,
+      "present_in_rank_ic_table": true,
+      "present_in_hit_rate_table": true,
+      "present_in_bucket_spread_table": true,
+      "present_in_turnover_table": true,
+      "present_in_coverage_table": true,
+      "present_in_factor_summary": true,
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "diagnostic_only_interpretation_present": true,
+      "audit_status": "PASS"
+    },
+    {
+      "factor_id": "F56",
+      "canonical_group": "STD",
+      "present_in_ic_table": true,
+      "present_in_rank_ic_table": true,
+      "present_in_hit_rate_table": true,
+      "present_in_bucket_spread_table": true,
+      "present_in_turnover_table": true,
+      "present_in_coverage_table": true,
+      "present_in_factor_summary": true,
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "diagnostic_only_interpretation_present": true,
+      "audit_status": "PASS"
+    },
+    {
+      "factor_id": "F58",
+      "canonical_group": "STD",
+      "present_in_ic_table": true,
+      "present_in_rank_ic_table": true,
+      "present_in_hit_rate_table": true,
+      "present_in_bucket_spread_table": true,
+      "present_in_turnover_table": true,
+      "present_in_coverage_table": true,
+      "present_in_factor_summary": true,
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "diagnostic_only_interpretation_present": true,
+      "audit_status": "PASS"
+    },
+    {
+      "factor_id": "F60",
+      "canonical_group": "STD",
+      "present_in_ic_table": true,
+      "present_in_rank_ic_table": true,
+      "present_in_hit_rate_table": true,
+      "present_in_bucket_spread_table": true,
+      "present_in_turnover_table": true,
+      "present_in_coverage_table": true,
+      "present_in_factor_summary": true,
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "diagnostic_only_interpretation_present": true,
+      "audit_status": "PASS"
+    },
+    {
+      "factor_id": "F06",
+      "canonical_group": "PPB",
+      "present_in_ic_table": true,
+      "present_in_rank_ic_table": true,
+      "present_in_hit_rate_table": true,
+      "present_in_bucket_spread_table": true,
+      "present_in_turnover_table": true,
+      "present_in_coverage_table": true,
+      "present_in_factor_summary": true,
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "diagnostic_only_interpretation_present": true,
+      "audit_status": "PASS"
+    },
+    {
+      "factor_id": "F07",
+      "canonical_group": "PPB",
+      "present_in_ic_table": true,
+      "present_in_rank_ic_table": true,
+      "present_in_hit_rate_table": true,
+      "present_in_bucket_spread_table": true,
+      "present_in_turnover_table": true,
+      "present_in_coverage_table": true,
+      "present_in_factor_summary": true,
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "diagnostic_only_interpretation_present": true,
+      "audit_status": "PASS"
+    },
+    {
+      "factor_id": "F08",
+      "canonical_group": "PPB",
+      "present_in_ic_table": true,
+      "present_in_rank_ic_table": true,
+      "present_in_hit_rate_table": true,
+      "present_in_bucket_spread_table": true,
+      "present_in_turnover_table": true,
+      "present_in_coverage_table": true,
+      "present_in_factor_summary": true,
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "diagnostic_only_interpretation_present": true,
+      "audit_status": "PASS"
+    },
+    {
+      "factor_id": "F09",
+      "canonical_group": "PPB",
+      "present_in_ic_table": true,
+      "present_in_rank_ic_table": true,
+      "present_in_hit_rate_table": true,
+      "present_in_bucket_spread_table": true,
+      "present_in_turnover_table": true,
+      "present_in_coverage_table": true,
+      "present_in_factor_summary": true,
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "diagnostic_only_interpretation_present": true,
+      "audit_status": "PASS"
+    },
+    {
+      "factor_id": "F12",
+      "canonical_group": "PPB",
+      "present_in_ic_table": true,
+      "present_in_rank_ic_table": true,
+      "present_in_hit_rate_table": true,
+      "present_in_bucket_spread_table": true,
+      "present_in_turnover_table": true,
+      "present_in_coverage_table": true,
+      "present_in_factor_summary": true,
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "diagnostic_only_interpretation_present": true,
+      "audit_status": "PASS"
+    },
+    {
+      "factor_id": "F14",
+      "canonical_group": "PPB",
+      "present_in_ic_table": true,
+      "present_in_rank_ic_table": true,
+      "present_in_hit_rate_table": true,
+      "present_in_bucket_spread_table": true,
+      "present_in_turnover_table": true,
+      "present_in_coverage_table": true,
+      "present_in_factor_summary": true,
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "diagnostic_only_interpretation_present": true,
+      "audit_status": "PASS"
+    },
+    {
+      "factor_id": "F15",
+      "canonical_group": "PPB",
+      "present_in_ic_table": true,
+      "present_in_rank_ic_table": true,
+      "present_in_hit_rate_table": true,
+      "present_in_bucket_spread_table": true,
+      "present_in_turnover_table": true,
+      "present_in_coverage_table": true,
+      "present_in_factor_summary": true,
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "diagnostic_only_interpretation_present": true,
+      "audit_status": "PASS"
+    },
+    {
+      "factor_id": "F44",
+      "canonical_group": "PPB",
+      "present_in_ic_table": true,
+      "present_in_rank_ic_table": true,
+      "present_in_hit_rate_table": true,
+      "present_in_bucket_spread_table": true,
+      "present_in_turnover_table": true,
+      "present_in_coverage_table": true,
+      "present_in_factor_summary": true,
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "diagnostic_only_interpretation_present": true,
+      "audit_status": "PASS"
+    },
+    {
+      "factor_id": "F45",
+      "canonical_group": "PPB",
+      "present_in_ic_table": true,
+      "present_in_rank_ic_table": true,
+      "present_in_hit_rate_table": true,
+      "present_in_bucket_spread_table": true,
+      "present_in_turnover_table": true,
+      "present_in_coverage_table": true,
+      "present_in_factor_summary": true,
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "diagnostic_only_interpretation_present": true,
+      "audit_status": "PASS"
+    },
+    {
+      "factor_id": "F51",
+      "canonical_group": "PPB",
+      "present_in_ic_table": true,
+      "present_in_rank_ic_table": true,
+      "present_in_hit_rate_table": true,
+      "present_in_bucket_spread_table": true,
+      "present_in_turnover_table": true,
+      "present_in_coverage_table": true,
+      "present_in_factor_summary": true,
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "diagnostic_only_interpretation_present": true,
+      "audit_status": "PASS"
+    }
+  ],
+  "factor_count": 23,
+  "pass_count": 23
+}

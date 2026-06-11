@@ -1,0 +1,336 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-METRIC-TABLE-INTEGRITY-AUDIT",
+  "status": "AUDITED",
+  "tables": [
+    {
+      "table_name": "v13_f7_2_formal_oos_ic_table.csv",
+      "path": "f7_2_formal_validation_run_execution_readonly/v13_f7_2_formal_oos_ic_table.csv",
+      "exists": true,
+      "readable": true,
+      "expected_columns": "see specification",
+      "observed_columns": [
+        "factor_id",
+        "canonical_group",
+        "horizon",
+        "ic_mean",
+        "rank_ic_mean",
+        "ic_std",
+        "ic_t_stat",
+        "ic_positive_rate",
+        "status"
+      ],
+      "required_columns_present": true,
+      "row_count": 46,
+      "factor_coverage_count": 23,
+      "horizon_coverage": [
+        "5D",
+        "20D"
+      ],
+      "contains_trade_output": false,
+      "contains_alpha_claim": false,
+      "contains_promotion_claim": false,
+      "contains_runner_enablement": false,
+      "contains_broker_field": false,
+      "audit_status": "PASS",
+      "all_clear": true
+    },
+    {
+      "table_name": "v13_f7_2_formal_oos_rank_ic_table.csv",
+      "path": "f7_2_formal_validation_run_execution_readonly/v13_f7_2_formal_oos_rank_ic_table.csv",
+      "exists": true,
+      "readable": true,
+      "expected_columns": "see specification",
+      "observed_columns": [
+        "factor_id",
+        "canonical_group",
+        "horizon",
+        "rank_ic_mean",
+        "rank_ic_median",
+        "rank_ic_std",
+        "rank_ic_t_stat",
+        "status"
+      ],
+      "required_columns_present": true,
+      "row_count": 46,
+      "factor_coverage_count": 23,
+      "horizon_coverage": [
+        "5D",
+        "20D"
+      ],
+      "contains_trade_output": false,
+      "contains_alpha_claim": false,
+      "contains_promotion_claim": false,
+      "contains_runner_enablement": false,
+      "contains_broker_field": false,
+      "audit_status": "PASS",
+      "all_clear": true
+    },
+    {
+      "table_name": "v13_f7_2_formal_oos_hit_rate_table.csv",
+      "path": "f7_2_formal_validation_run_execution_readonly/v13_f7_2_formal_oos_hit_rate_table.csv",
+      "exists": true,
+      "readable": true,
+      "expected_columns": "see specification",
+      "observed_columns": [
+        "factor_id",
+        "canonical_group",
+        "horizon",
+        "bucket_method",
+        "top_bucket_hit_rate",
+        "bottom_bucket_hit_rate",
+        "spread_hit_rate",
+        "status"
+      ],
+      "required_columns_present": true,
+      "row_count": 46,
+      "factor_coverage_count": 23,
+      "horizon_coverage": [
+        "5D",
+        "20D"
+      ],
+      "contains_trade_output": false,
+      "contains_alpha_claim": false,
+      "contains_promotion_claim": false,
+      "contains_runner_enablement": false,
+      "contains_broker_field": false,
+      "audit_status": "PASS",
+      "all_clear": true
+    },
+    {
+      "table_name": "v13_f7_2_formal_oos_bucket_spread_table.csv",
+      "path": "f7_2_formal_validation_run_execution_readonly/v13_f7_2_formal_oos_bucket_spread_table.csv",
+      "exists": true,
+      "readable": true,
+      "expected_columns": "see specification",
+      "observed_columns": [
+        "factor_id",
+        "canonical_group",
+        "horizon",
+        "bucket_count",
+        "top_bucket_return",
+        "bottom_bucket_return",
+        "spread_return",
+        "monotonicity_score",
+        "status"
+      ],
+      "required_columns_present": true,
+      "row_count": 46,
+      "factor_coverage_count": 23,
+      "horizon_coverage": [
+        "5D",
+        "20D"
+      ],
+      "contains_trade_output": false,
+      "contains_alpha_claim": false,
+      "contains_promotion_claim": false,
+      "contains_runner_enablement": false,
+      "contains_broker_field": false,
+      "audit_status": "PASS",
+      "all_clear": true
+    },
+    {
+      "table_name": "v13_f7_2_formal_oos_turnover_table.csv",
+      "path": "f7_2_formal_validation_run_execution_readonly/v13_f7_2_formal_oos_turnover_table.csv",
+      "exists": true,
+      "readable": true,
+      "expected_columns": "see specification",
+      "observed_columns": [
+        "factor_id",
+        "canonical_group",
+        "rebalance_frequency",
+        "avg_turnover",
+        "turnover_cost_flag",
+        "status"
+      ],
+      "required_columns_present": true,
+      "row_count": 23,
+      "factor_coverage_count": 23,
+      "horizon_coverage": [
+        ""
+      ],
+      "contains_trade_output": false,
+      "contains_alpha_claim": false,
+      "contains_promotion_claim": false,
+      "contains_runner_enablement": false,
+      "contains_broker_field": false,
+      "audit_status": "PASS",
+      "all_clear": true
+    },
+    {
+      "table_name": "v13_f7_2_formal_oos_coverage_table.csv",
+      "path": "f7_2_formal_validation_run_execution_readonly/v13_f7_2_formal_oos_coverage_table.csv",
+      "exists": true,
+      "readable": true,
+      "expected_columns": "see specification",
+      "observed_columns": [
+        "factor_id",
+        "canonical_group",
+        "horizon",
+        "coverage_rate",
+        "missing_signal_rate",
+        "status"
+      ],
+      "required_columns_present": true,
+      "row_count": 46,
+      "factor_coverage_count": 23,
+      "horizon_coverage": [
+        "5D",
+        "20D"
+      ],
+      "contains_trade_output": false,
+      "contains_alpha_claim": false,
+      "contains_promotion_claim": false,
+      "contains_runner_enablement": false,
+      "contains_broker_field": false,
+      "audit_status": "PASS",
+      "all_clear": true
+    },
+    {
+      "table_name": "v13_f7_2_formal_oos_correlation_matrix.csv",
+      "path": "f7_2_formal_validation_run_execution_readonly/v13_f7_2_formal_oos_correlation_matrix.csv",
+      "exists": true,
+      "readable": true,
+      "expected_columns": "see specification",
+      "observed_columns": [
+        "factor_id_left",
+        "factor_id_right",
+        "correlation",
+        "high_redundancy_flag"
+      ],
+      "required_columns_present": true,
+      "row_count": 50,
+      "factor_coverage_count": 1,
+      "horizon_coverage": [
+        ""
+      ],
+      "contains_trade_output": false,
+      "contains_alpha_claim": false,
+      "contains_promotion_claim": false,
+      "contains_runner_enablement": false,
+      "contains_broker_field": false,
+      "audit_status": "PASS",
+      "all_clear": true
+    },
+    {
+      "table_name": "v13_f7_2_formal_oos_industry_bias_table.csv",
+      "path": "f7_2_formal_validation_run_execution_readonly/v13_f7_2_formal_oos_industry_bias_table.csv",
+      "exists": true,
+      "readable": true,
+      "expected_columns": "see specification",
+      "observed_columns": [
+        "factor_id",
+        "canonical_group",
+        "industry_bias_score",
+        "max_industry_exposure",
+        "industry_bias_flag",
+        "status"
+      ],
+      "required_columns_present": true,
+      "row_count": 23,
+      "factor_coverage_count": 23,
+      "horizon_coverage": [
+        ""
+      ],
+      "contains_trade_output": false,
+      "contains_alpha_claim": false,
+      "contains_promotion_claim": false,
+      "contains_runner_enablement": false,
+      "contains_broker_field": false,
+      "audit_status": "PASS",
+      "all_clear": true
+    },
+    {
+      "table_name": "v13_f7_2_formal_oos_liquidity_sensitivity_table.csv",
+      "path": "f7_2_formal_validation_run_execution_readonly/v13_f7_2_formal_oos_liquidity_sensitivity_table.csv",
+      "exists": true,
+      "readable": true,
+      "expected_columns": "see specification",
+      "observed_columns": [
+        "factor_id",
+        "canonical_group",
+        "liquidity_bucket",
+        "ic_mean",
+        "sensitivity_flag",
+        "status"
+      ],
+      "required_columns_present": true,
+      "row_count": 69,
+      "factor_coverage_count": 23,
+      "horizon_coverage": [
+        ""
+      ],
+      "contains_trade_output": false,
+      "contains_alpha_claim": false,
+      "contains_promotion_claim": false,
+      "contains_runner_enablement": false,
+      "contains_broker_field": false,
+      "audit_status": "PASS",
+      "all_clear": true
+    },
+    {
+      "table_name": "v13_f7_2_formal_oos_regime_split_table.csv",
+      "path": "f7_2_formal_validation_run_execution_readonly/v13_f7_2_formal_oos_regime_split_table.csv",
+      "exists": true,
+      "readable": true,
+      "expected_columns": "see specification",
+      "observed_columns": [
+        "factor_id",
+        "canonical_group",
+        "regime_name",
+        "horizon",
+        "ic_mean",
+        "rank_ic_mean",
+        "spread_return",
+        "status"
+      ],
+      "required_columns_present": true,
+      "row_count": 230,
+      "factor_coverage_count": 23,
+      "horizon_coverage": [
+        "5D",
+        "20D"
+      ],
+      "contains_trade_output": false,
+      "contains_alpha_claim": false,
+      "contains_promotion_claim": false,
+      "contains_runner_enablement": false,
+      "contains_broker_field": false,
+      "audit_status": "PASS",
+      "all_clear": true
+    },
+    {
+      "table_name": "v13_f7_2_formal_oos_stability_decay_table.csv",
+      "path": "f7_2_formal_validation_run_execution_readonly/v13_f7_2_formal_oos_stability_decay_table.csv",
+      "exists": true,
+      "readable": true,
+      "expected_columns": "see specification",
+      "observed_columns": [
+        "factor_id",
+        "canonical_group",
+        "horizon",
+        "month",
+        "ic_mean",
+        "rank_ic_mean",
+        "decay_flag",
+        "status"
+      ],
+      "required_columns_present": true,
+      "row_count": 276,
+      "factor_coverage_count": 23,
+      "horizon_coverage": [
+        "5D",
+        "20D"
+      ],
+      "contains_trade_output": false,
+      "contains_alpha_claim": false,
+      "contains_promotion_claim": false,
+      "contains_runner_enablement": false,
+      "contains_broker_field": false,
+      "audit_status": "PASS",
+      "all_clear": true
+    }
+  ],
+  "total_tables": 11,
+  "pass_count": 11,
+  "blocked_count": 0
+}

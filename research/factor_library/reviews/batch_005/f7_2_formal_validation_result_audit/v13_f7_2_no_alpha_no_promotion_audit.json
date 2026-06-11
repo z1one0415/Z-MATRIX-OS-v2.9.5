@@ -1,0 +1,29 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-NO-ALPHA-NO-PROMOTION-AUDIT",
+  "no_alpha_claim": true,
+  "no_promotion_claim": true,
+  "no_runner_enablement": true,
+  "no_paper_trading_signal": true,
+  "no_buy_sell_order_position": true,
+  "no_broker_action": true,
+  "no_real_trade": true,
+  "no_production_enablement": true,
+  "no_investment_advice_language": true,
+  "diagnostic_only_language_used": true,
+  "all_pass": false,
+  "blocked_artifacts": [
+    "v13_f7_2_formal_validation_safety_audit.json",
+    "v13_f7_2_formal_validation_run_authorization_record.json",
+    "v13_f7_2_formal_oos_factor_summary.json",
+    "v13_f7_2_formal_validation_closeout.json"
+  ],
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "execution_allowed": false,
+  "runner_enabled": false,
+  "paper_trading_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "blocked_count": 4
+}

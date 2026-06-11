@@ -1,0 +1,29 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-HUMAN-INTERPRETATION-REVIEW-DECISION-GATE",
+  "status": "PENDING",
+  "decision_state": "PENDING_HUMAN_DECISION",
+  "base_commit": "4dcef2ab",
+  "human_interpretation_review_commit": "4dcef2ab",
+  "formal_validation_run_commit": "ea80ff9",
+  "result_audit_commit": "b9f77ab",
+  "semantic_patch_commit": "1842984",
+  "f8_advancement_allowed": false,
+  "available_decisions": [
+    "APPROVE_F7_2_HUMAN_INTERPRETATION_REVIEW",
+    "REJECT_F7_2_HUMAN_INTERPRETATION_REVIEW",
+    "REQUEST_F7_2_HUMAN_INTERPRETATION_REVIEW_HARDENING"
+  ],
+  "default_decision": "NO_ADVANCEMENT_AUTHORIZED",
+  "decision_scope": "human interpretation review decision only",
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "execution_allowed": false,
+  "runner_enabled": false,
+  "paper_trading_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "next_legal_entry_if_approved": "F7_2_PROMOTION_ELIGIBILITY_REVIEW_PLANNING_GATE_ONLY",
+  "next_legal_entry_if_rejected": "F7_2_INTERPRETATION_REVIEW_CLOSEOUT_OR_REVISION",
+  "next_legal_entry_if_hardening_requested": "F7_2_HUMAN_INTERPRETATION_REVIEW_HARDENING"
+}

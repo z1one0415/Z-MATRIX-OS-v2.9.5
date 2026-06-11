@@ -1,0 +1,32 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-HUMAN-INTERPRETATION-REVIEW-DECISION-RISK-ACKNOWLEDGEMENT",
+  "status": "RISK_ACK_REQUIRED_BEFORE_INTERPRETATION_APPROVAL",
+  "base_commit": "4dcef2ab",
+  "risk_items": [
+    "diagnostic classification is not promotion",
+    "A group is not alpha",
+    "B group is not alpha",
+    "classification does not imply runner selection",
+    "classification does not imply paper trading permission",
+    "validation results may decay out of sample",
+    "5D and 20D interpretations may diverge",
+    "high correlation may reduce incremental value",
+    "industry bias may distort apparent factor strength",
+    "turnover cost may impair practical usability",
+    "liquidity sensitivity may reduce robustness",
+    "pipeline-bound factors may not work standalone",
+    "human interpretation may require extended validation",
+    "promotion eligibility review is a separate gate",
+    "F8 advancement is still blocked"
+  ],
+  "must_acknowledge_before_approval": true,
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "execution_allowed": false,
+  "runner_enabled": false,
+  "paper_trading_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "f8_advancement_allowed": false
+}

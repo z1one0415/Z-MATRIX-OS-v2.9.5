@@ -1,0 +1,73 @@
+{
+  "gate_state_demo": {
+    "pipeline": "Z-G14 Monthly BRD Rescan",
+    "run_id": "RUN-2026-06-12-0403",
+    "generated_utc": "2026-06-12T04:03:00Z",
+    "f7_gate_chain": {
+      "description": "Seven-gate pipeline: F7.0 truth check → F7.1 intermediate gates → F7.2 decision gate",
+      "total_gates": 7,
+      "gates_passed": 7,
+      "gates_failed": 0,
+      "gates_skipped": 0
+    },
+    "gates": [
+      {
+        "gate_id": "F7.0",
+        "name": "TruthGate",
+        "status": "PASSED",
+        "checked_utc": "2026-06-12T03:50:02Z",
+        "preconditions": [
+          { "name": "Data Source Connectivity", "passed": true, "detail": "All 3 data sources responding" },
+          { "name": "Factor Library Integrity", "passed": true, "detail": "23/23 factors sealed" },
+          { "name": "Market Session Valid", "passed": true, "detail": "Post-market data available for 2026-06-11" },
+          { "name": "Memory Bank Reachable", "passed": true, "detail": "Hermes graph: 18423 nodes, 56102 edges" },
+          { "name": "Event Store Writable", "passed": true, "detail": "Disk: 47.2 GB available" },
+          { "name": "Pipeline Not Running", "passed": true, "detail": "No concurrent Z-G14 run detected" },
+          { "name": "Schema Version Match", "passed": true, "detail": "v2.9.6-draft matches deployment" }
+        ]
+      },
+      {
+        "gate_id": "F7.1a",
+        "name": "Macro Gate",
+        "status": "PASSED",
+        "checked_utc": "2026-06-12T03:52:45Z",
+        "detail": "L2.5 MacroVeto: no directional shocks. 8/8 domains nominal."
+      },
+      {
+        "gate_id": "F7.1b",
+        "name": "Data Quality Gate",
+        "status": "PASSED",
+        "checked_utc": "2026-06-12T03:52:50Z",
+        "detail": "OHLCV completeness: 99.97%. Financial data coverage: 98.2%."
+      },
+      {
+        "gate_id": "F7.1c",
+        "name": "Matrix Reliability Gate",
+        "status": "PASSED",
+        "checked_utc": "2026-06-12T03:55:10Z",
+        "detail": "B-Matrix reliability: 0.94. D-Matrix reliability: 0.89. R-Matrix reliability: 0.91."
+      },
+      {
+        "gate_id": "F7.1d",
+        "name": "Evidence Chain Gate",
+        "status": "PASSED",
+        "checked_utc": "2026-06-12T03:58:15Z",
+        "detail": "Evidence chain hash continuity verified across 5 nodes."
+      },
+      {
+        "gate_id": "F7.1e",
+        "name": "Conflict Resolution Gate",
+        "status": "PASSED",
+        "checked_utc": "2026-06-12T03:59:30Z",
+        "detail": "ZG18 conflict resolver: 0 conflicts detected in cross-matrix analysis."
+      },
+      {
+        "gate_id": "F7.2",
+        "name": "Decision Gate",
+        "status": "PASSED",
+        "checked_utc": "2026-06-12T04:00:27Z",
+        "detail": "28 stock final selection. All upstream gates passed. Decision envelope sealed."
+      }
+    ]
+  }
+}

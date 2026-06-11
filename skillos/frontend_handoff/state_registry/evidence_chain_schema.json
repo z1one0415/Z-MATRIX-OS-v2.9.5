@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://z-matrix-os/skillos/frontend_handoff/state_registry/evidence_chain_schema.json",
+  "title": "Evidence Chain Schema",
+  "description": "Evidence chain nodes with content hashes, source classification, and no-real-source flag",
+  "type": "object",
+  "required": ["chain_id", "nodes", "generated_at"],
+  "properties": {
+    "chain_id": {
+      "type": "string",
+      "description": "Identifier for the evidence chain"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of chain generation"
+    },
+    "nodes": {
+      "type": "array",
+      "description": "Ordered list of evidence chain nodes",
+      "items": {
+        "type": "object",
+        "required": ["node_id", "hash", "source_class", "no_real_source_flag", "linked_gate_id"],
+        "properties": {
+          "node_id": {
+            "type": "string",
+            "description": "Unique node identifier in the chain"
+          },
+          "hash": {
+            "type": "string",
+            "description": "Content hash (SHA-256) of the evidence artifact"
+          },
+          "hash_algorithm": {
+            "type": "string",
+            "enum": ["SHA-256", "SHA-512", "BLAKE3"],
+            "description": "Hash algorithm used",
+            "default": "SHA-256"
+          },
+          "source_class": {
+            "type": "string",
+            "enum": [
+              "COMMIT_LOG",
+              "RESEARCH_ARTIFACT",
+              "AUDIT_REPORT",
+              "VALIDATION_OUTPUT",
+              "FACTOR_RESULT",
+              "HUMAN_REVIEW",
+              "DECISION_GATE",
+              "EXTERNAL_REFERENCE",
+              "RUNTIME_LOG",
+              "SCHEMA_DEFINITION"
+            ],
+            "description": "Classification of evidence source"
+          },
+          "no_real_source_flag": {
+            "type": "boolean",
+            "description": "True if this node has no real source (placeholder/stub)"
+          },
+          "linked_gate_id": {
+            "type": "string",
+            "description": "Gate ID this evidence node is associated with"
+          },
+          "artifact_path": {
+            "type": "string",
+            "description": "Filesystem path to the evidence artifact"
+          },
+          "commit_sha": {
+            "type": "string",
+            "description": "Git commit SHA that produced this evidence"
+          },
+          "description": {
+            "type": "string",
+            "description": "Human-readable description of the evidence"
+          },
+          "verified_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "When this evidence was last verified"
+          },
+          "verification_status": {
+            "type": "string",
+            "enum": ["UNVERIFIED", "VERIFIED", "STALE", "CORRUPT"],
+            "description": "Verification status of the evidence"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "root_hash": {
+      "type": "string",
+      "description": "Merkle root hash of the entire chain"
+    }
+  }
+}

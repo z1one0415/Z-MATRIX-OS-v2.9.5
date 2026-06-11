@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://z-matrix-os/skillos/frontend_handoff/observability/log_schema.json",
+  "title": "Z-SkillOS Frontend Handoff Log Schema",
+  "description": "Structured log entry schema for the Z-SkillOS Frontend Handoff backend",
+  "version": "1.0.0",
+  "type": "object",
+  "required": ["timestamp", "level", "logger", "message"],
+  "properties": {
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp with timezone of the log event"
+    },
+    "level": {
+      "type": "string",
+      "enum": ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"],
+      "description": "Log severity level"
+    },
+    "logger": {
+      "type": "string",
+      "description": "Logger name, typically dot-separated module path"
+    },
+    "message": {
+      "type": "string",
+      "description": "Human-readable log message"
+    },
+    "module": {
+      "type": "string",
+      "description": "Source module emitting the log entry"
+    },
+    "function": {
+      "type": "string",
+      "description": "Function or method emitting the log entry"
+    },
+    "endpoint": {
+      "type": "string",
+      "description": "API endpoint path if request-related"
+    },
+    "method": {
+      "type": "string",
+      "enum": ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"],
+      "description": "HTTP method if request-related"
+    },
+    "status_code": {
+      "type": "integer",
+      "minimum": 100,
+      "maximum": 599,
+      "description": "HTTP response status code"
+    },
+    "duration_ms": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Request duration in milliseconds"
+    },
+    "request_id": {
+      "type": "string",
+      "description": "Unique request identifier for tracing"
+    },
+    "user_agent": {
+      "type": "string",
+      "description": "Client user agent string"
+    },
+    "client_ip": {
+      "type": "string",
+      "description": "Client IP address"
+    },
+    "error": {
+      "type": "string",
+      "description": "Error message if level is ERROR or CRITICAL"
+    },
+    "error_traceback": {
+      "type": "string",
+      "description": "Full error traceback if available"
+    },
+    "extra": {
+      "type": "object",
+      "description": "Additional structured context data"
+    }
+  },
+  "additionalProperties": false
+}

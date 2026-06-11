@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://z-matrix-os/skillos/frontend_handoff/state_registry/event_log_schema.json",
+  "title": "Event Log Schema",
+  "description": "Event log entries with timestamp, action, source, and result for audit trail",
+  "type": "object",
+  "required": ["events", "generated_at"],
+  "properties": {
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of log generation"
+    },
+    "events": {
+      "type": "array",
+      "description": "Ordered list of event log entries",
+      "items": {
+        "type": "object",
+        "required": ["event_id", "timestamp", "action", "source", "result"],
+        "properties": {
+          "event_id": {
+            "type": "string",
+            "description": "Unique event identifier"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "description": "ISO 8601 timestamp of the event"
+          },
+          "action": {
+            "type": "string",
+            "description": "Action performed (e.g., gate_passed, validation_run, abort_triggered)"
+          },
+          "source": {
+            "type": "string",
+            "description": "Component or agent that emitted the event"
+          },
+          "result": {
+            "type": "string",
+            "description": "Result of the action (e.g., PASS, FAIL, ABORTED)"
+          },
+          "gate_id": {
+            "type": "string",
+            "description": "Associated gate ID if applicable"
+          },
+          "run_id": {
+            "type": "string",
+            "description": "Associated run ID if applicable"
+          },
+          "commit_sha": {
+            "type": "string",
+            "description": "Git commit SHA at time of event"
+          },
+          "details": {
+            "type": "string",
+            "description": "Additional details about the event"
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "References to evidence chain nodes"
+          },
+          "user_triggered": {
+            "type": "boolean",
+            "description": "Whether this event was triggered by a human user"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "total_events": {
+      "type": "integer",
+      "description": "Total number of events in the log"
+    }
+  }
+}

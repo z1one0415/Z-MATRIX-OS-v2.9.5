@@ -1,0 +1,31 @@
+{
+  "run_state_demo": {
+    "pipeline": "Z-G14 Monthly BRD Rescan",
+    "run_id": "RUN-2026-06-12-0403",
+    "trigger": "SCHEDULED",
+    "started_utc": "2026-06-12T03:50:00Z",
+    "completed_utc": "2026-06-12T04:00:30Z",
+    "total_elapsed_sec": 630.5,
+    "execution_status": "COMPLETED",
+    "phases": [
+      { "phase": "TruthGate F7.0", "status": "PASSED", "elapsed_sec": 2.1, "output": "All 7 preconditions met" },
+      { "phase": "Data Ingestion A1", "status": "PASSED", "elapsed_sec": 45.3, "output": "3676 stocks, 882240 OHLCV bars loaded" },
+      { "phase": "B-Matrix Scan", "status": "PASSED", "elapsed_sec": 187.2, "output": "42 candidates from 3676 stocks" },
+      { "phase": "D-Matrix Scan", "status": "PASSED", "elapsed_sec": 165.8, "output": "87 candidates above threshold" },
+      { "phase": "R-Matrix Scan", "status": "PASSED", "elapsed_sec": 142.4, "output": "63 oscillation candidates" },
+      { "phase": "Cross Matrix", "status": "PASSED", "elapsed_sec": 8.7, "output": "B∩D:3, B∩R:5, D∩R:11" },
+      { "phase": "Chain Mapping", "status": "PASSED", "elapsed_sec": 22.1, "output": "10 chains mapped, 1 blind spot" },
+      { "phase": "Holdings Diff", "status": "PASSED", "elapsed_sec": 5.9, "output": "7 replacement candidates" },
+      { "phase": "Risk Matrix", "status": "PASSED", "elapsed_sec": 12.3, "output": "3 elevated individual risk flags" },
+      { "phase": "Decision Gate F7.2", "status": "PASSED", "elapsed_sec": 3.1, "output": "28 stock final selection" },
+      { "phase": "Archive", "status": "PASSED", "elapsed_sec": 35.6, "output": "47 EventStore entries, 112 graph nodes" }
+    ],
+    "abort_reasons": [],
+    "resource_usage": {
+      "cpu_peak_pct": 72.3,
+      "memory_peak_mb": 1847.2,
+      "disk_io_mb": 342.1
+    },
+    "retry_count": 0
+  }
+}

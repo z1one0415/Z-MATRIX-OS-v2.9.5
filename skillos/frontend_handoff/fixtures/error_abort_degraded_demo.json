@@ -1,0 +1,116 @@
+{
+  "error_abort_degraded_demo": {
+    "generated_utc": "2026-06-12T04:03:00Z",
+    "description": "Synthetic examples of error, abort, and degraded states for UI testing. These do NOT represent actual system states.",
+    "scenarios": [
+      {
+        "type": "ERROR",
+        "scenario_id": "ERR-001",
+        "title": "Data Source Timeout",
+        "severity": "HIGH",
+        "pipeline": "Z-G02 Sensor Array",
+        "detail": "Primary OHLCV data source timed out after 30 seconds. Retry 1/3 failed. Fallback to secondary source triggered.",
+        "error_code": "DATA_SOURCE_TIMEOUT",
+        "recovery_action": "AUTO_RETRY_WITH_FALLBACK",
+        "ui_state": "RED_BANNER",
+        "user_action_required": false
+      },
+      {
+        "type": "ERROR",
+        "scenario_id": "ERR-002",
+        "title": "Factor Library Hash Mismatch",
+        "severity": "CRITICAL",
+        "pipeline": "Z-G14 Monthly BRD",
+        "detail": "Computed FactorLib hash does not match sealed hash. Possible unauthorized modification detected.",
+        "error_code": "FACTOR_HASH_MISMATCH",
+        "recovery_action": "MANUAL_INVESTIGATION_REQUIRED",
+        "ui_state": "RED_BANNER_WITH_ACTION",
+        "user_action_required": true
+      },
+      {
+        "type": "ERROR",
+        "scenario_id": "ERR-003",
+        "title": "Event Store Write Failure",
+        "severity": "MEDIUM",
+        "pipeline": "Event Store",
+        "detail": "Disk write failure on EventStore partition. 3 events queued in memory buffer.",
+        "error_code": "EVENT_STORE_WRITE_FAILURE",
+        "recovery_action": "BUFFER_RETRY",
+        "ui_state": "AMBER_BANNER",
+        "user_action_required": false
+      },
+      {
+        "type": "ABORT",
+        "scenario_id": "ABT-001",
+        "title": "Macro Veto Triggered",
+        "severity": "HIGH",
+        "pipeline": "Z-G03 Intraday Confirm",
+        "detail": "L2.5 MacroVeto: VIX spike >30 detected. All intraday operations halted per policy L2.5-ABORT-01.",
+        "abort_reason": "MACRO_VETO_VOLATILITY_SPIKE",
+        "abort_policy_ref": "L2.5-ABORT-01",
+        "ui_state": "RED_BANNER",
+        "user_action_required": false
+      },
+      {
+        "type": "ABORT",
+        "scenario_id": "ABT-002",
+        "title": "Concurrent Run Conflict",
+        "severity": "HIGH",
+        "pipeline": "Z-G14 Monthly BRD",
+        "detail": "Another Z-G14 run (RUN-2026-06-12-0200) still in progress. Aborting duplicate per singleton policy.",
+        "abort_reason": "CONCURRENT_RUN_DETECTED",
+        "abort_policy_ref": "SINGLETON-01",
+        "ui_state": "AMBER_BANNER",
+        "user_action_required": false
+      },
+      {
+        "type": "ABORT",
+        "scenario_id": "ABT-003",
+        "title": "Schema Version Mismatch",
+        "severity": "CRITICAL",
+        "pipeline": "Z-G14 Monthly BRD",
+        "detail": "Deployed schema v2.9.5 vs expected v2.9.6-draft. Rollback or migration required.",
+        "abort_reason": "SCHEMA_VERSION_MISMATCH",
+        "abort_policy_ref": "SCHEMA-ABORT-01",
+        "ui_state": "RED_BANNER_WITH_ACTION",
+        "user_action_required": true
+      },
+      {
+        "type": "DEGRADED",
+        "scenario_id": "DEG-001",
+        "title": "Hermes Memory Kernel Blocked",
+        "severity": "LOW",
+        "service": "Hermes Memory Kernel",
+        "detail": "Knowledge graph persistence unavailable due to schema migration. Events buffered in EventStore. No data loss.",
+        "degraded_mode": "EVENT_STORE_BUFFER_ONLY",
+        "impact": "Memory recall delayed until migration completes",
+        "ui_state": "AMBER_BANNER",
+        "user_action_required": false
+      },
+      {
+        "type": "DEGRADED",
+        "scenario_id": "DEG-002",
+        "title": "Z9 Calibration Stale",
+        "severity": "MEDIUM",
+        "service": "Z9 Calibration Engine",
+        "detail": "Calibration samples older than 48 hours. Confidence intervals widened from [0.68,0.81] to [0.59,0.86].",
+        "degraded_mode": "WIDE_CONFIDENCE_INTERVAL",
+        "impact": "Decision gate uses relaxed confidence thresholds",
+        "ui_state": "AMBER_BANNER",
+        "user_action_required": false
+      },
+      {
+        "type": "DEGRADED",
+        "scenario_id": "DEG-003",
+        "title": "R-Matrix Partial Coverage",
+        "severity": "LOW",
+        "service": "R-Matrix Oscillation Ranker",
+        "detail": "Real Estate sector (SW 3/31) excluded from R-Matrix due to insufficient oscillation patterns. 60/63 stocks processed.",
+        "degraded_mode": "SECTOR_EXCLUSION",
+        "impact": "RE sector stocks unavailable for oscillation ranking",
+        "ui_state": "INFO_BANNER",
+        "user_action_required": false
+      }
+    ]
+  }
+}

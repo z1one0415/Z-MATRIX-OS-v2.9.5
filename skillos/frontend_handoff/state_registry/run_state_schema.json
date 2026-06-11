@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://z-matrix-os/skillos/frontend_handoff/state_registry/run_state_schema.json",
+  "title": "Run State Registry Schema",
+  "description": "Pipeline run state, execution status, abort reasons, timing for Z-SkillOS Frontend Handoff",
+  "type": "object",
+  "required": ["run_id", "pipeline_name", "status", "created_at", "stages"],
+  "properties": {
+    "run_id": {
+      "type": "string",
+      "description": "Unique run identifier (e.g., RUN-YYYYMMDD-NNN)"
+    },
+    "pipeline_name": {
+      "type": "string",
+      "description": "Pipeline name (e.g., F7.2-formal-validation)"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["NOT_STARTED", "RUNNING", "PAUSED", "COMPLETED", "ABORTED", "DEGRADED", "TIMED_OUT"],
+      "description": "Overall pipeline run status"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of run creation"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of run start"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of run completion"
+    },
+    "duration_seconds": {
+      "type": "number",
+      "description": "Total run duration in seconds"
+    },
+    "abort_reason": {
+      "type": "string",
+      "description": "Reason for abort if status is ABORTED"
+    },
+    "abort_source": {
+      "type": "string",
+      "description": "Component that triggered the abort"
+    },
+    "stages": {
+      "type": "array",
+      "description": "Ordered list of pipeline stages with timing",
+      "items": {
+        "type": "object",
+        "required": ["stage_id", "name", "status"],
+        "properties": {
+          "stage_id": { "type": "string" },
+          "name": { "type": "string" },
+          "status": {
+            "type": "string",
+            "enum": ["NOT_STARTED", "RUNNING", "COMPLETED", "FAILED", "SKIPPED", "ABORTED"]
+          },
+          "started_at": { "type": "string", "format": "date-time" },
+          "completed_at": { "type": "string", "format": "date-time" },
+          "duration_seconds": { "type": "number" },
+          "error": { "type": "string" }
+        }
+      }
+    },
+    "runtime_enabled": {
+      "type": "boolean",
+      "description": "Whether pipeline runtime is enabled"
+    },
+    "runner_enabled": {
+      "type": "boolean",
+      "description": "Whether pipeline runner is enabled"
+    },
+    "commit_sha": {
+      "type": "string",
+      "description": "Git commit SHA at time of run"
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Tags for categorization"
+    }
+  }
+}

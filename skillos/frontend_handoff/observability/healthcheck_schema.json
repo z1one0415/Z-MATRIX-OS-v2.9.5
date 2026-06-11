@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://z-matrix-os/skillos/frontend_handoff/observability/healthcheck_schema.json",
+  "title": "Z-SkillOS Frontend Handoff Health Check Schema",
+  "description": "Health check response schema for service monitoring",
+  "version": "1.0.0",
+  "type": "object",
+  "required": ["status", "version"],
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": ["ok", "degraded", "down", "starting", "shutting_down"],
+      "description": "Current service health status"
+    },
+    "version": {
+      "type": "string",
+      "description": "Service version string"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of health check response"
+    },
+    "uptime_seconds": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Service uptime in seconds"
+    },
+    "dependencies": {
+      "type": "object",
+      "description": "Health status of upstream dependencies",
+      "properties": {
+        "fixtures": {
+          "type": "string",
+          "enum": ["ok", "degraded", "down"],
+          "description": "Fixture data availability"
+        },
+        "schemas": {
+          "type": "string",
+          "enum": ["ok", "degraded", "down"],
+          "description": "JSON schema availability"
+        },
+        "contracts": {
+          "type": "string",
+          "enum": ["ok", "degraded", "down"],
+          "description": "Contract file availability"
+        }
+      }
+    },
+    "memory_mb": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Current memory usage in MB"
+    },
+    "active_requests": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of currently active requests"
+    },
+    "total_requests_served": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Total requests served since startup"
+    },
+    "total_mutations_blocked": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Total mutation requests blocked since startup"
+    },
+    "mode": {
+      "type": "string",
+      "enum": ["readonly", "disabled_default"],
+      "description": "Current operational mode"
+    }
+  },
+  "additionalProperties": false
+}

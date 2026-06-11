@@ -1,0 +1,41 @@
+{
+  "policy_version": "1.0.0",
+  "description": "Blocked action policy — actions that are denied regardless of role permissions",
+  "blocked_actions": [
+    {
+      "action": "enable_runtime",
+      "condition": "Always blocked. Requires out-of-band production incident approval.",
+      "block_for_all_roles": true,
+      "reason": "Production runtime enablement carries catastrophic blast-radius risk."
+    },
+    {
+      "action": "enable_runner",
+      "condition": "Always blocked. Requires out-of-band production incident approval.",
+      "block_for_all_roles": true,
+      "reason": "Production runner enablement carries catastrophic blast-radius risk."
+    },
+    {
+      "action": "enable_paper_trading",
+      "condition": "Always blocked. Requires out-of-band production incident approval.",
+      "block_for_all_roles": true,
+      "reason": "Paper trading enablement bypasses risk controls."
+    },
+    {
+      "action": "enable_broker",
+      "condition": "Always blocked. Requires out-of-band production incident approval.",
+      "block_for_all_roles": true,
+      "reason": "Broker enablement creates real financial exposure."
+    },
+    {
+      "action": "enable_production",
+      "condition": "Always blocked. Requires out-of-band production incident approval.",
+      "block_for_all_roles": true,
+      "reason": "Production enablement carries maximum blast-radius risk."
+    }
+  ],
+  "override_mechanism": {
+    "type": "out_of_band_incident_approval",
+    "description": "Any blocked action requires a signed production incident ticket approved by two independent admin-role holders.",
+    "requires": ["incident_ticket_id", "two_admin_signatures"]
+  }
+}

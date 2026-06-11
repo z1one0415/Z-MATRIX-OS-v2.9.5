@@ -1,0 +1,294 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "z-skillos:frontend-handoff:error-abort-degraded-contract:v1",
+  "title": "Z-SkillOS Error, Abort, and Degraded State Contract",
+  "description": "All error codes, abort reasons, and degraded state definitions for frontend handoff.",
+  "version": "v0.1.0-rc",
+  "seal": "A1_CONTRACT_FREEZE",
+  "error_codes": {
+    "description": "All possible error codes returned by the system",
+    "categories": {
+      "client_error": {
+        "description": "4xx-class errors caused by client request",
+        "codes": {
+          "ERR_BAD_REQUEST": {
+            "code": "ERR_BAD_REQUEST",
+            "http_status": 400,
+            "message": "The request was malformed or missing required parameters.",
+            "ui_treatment": "error_card",
+            "retry_allowed": false
+          },
+          "ERR_UNAUTHORIZED": {
+            "code": "ERR_UNAUTHORIZED",
+            "http_status": 401,
+            "message": "Authentication required for this endpoint.",
+            "ui_treatment": "blocked_overlay",
+            "retry_allowed": false
+          },
+          "ERR_FORBIDDEN": {
+            "code": "ERR_FORBIDDEN",
+            "http_status": 403,
+            "message": "You do not have permission to access this resource.",
+            "ui_treatment": "blocked_overlay",
+            "retry_allowed": false
+          },
+          "ERR_NOT_FOUND": {
+            "code": "ERR_NOT_FOUND",
+            "http_status": 404,
+            "message": "The requested resource was not found.",
+            "ui_treatment": "error_card",
+            "retry_allowed": false
+          },
+          "ERR_METHOD_BLOCKED": {
+            "code": "ERR_METHOD_BLOCKED",
+            "http_status": 405,
+            "message": "This HTTP method is blocked. Only GET is allowed.",
+            "ui_treatment": "blocked_overlay",
+            "retry_allowed": false
+          },
+          "ERR_TIMEOUT": {
+            "code": "ERR_TIMEOUT",
+            "http_status": 408,
+            "message": "The request timed out.",
+            "ui_treatment": "error_card",
+            "retry_allowed": true
+          },
+          "ERR_TOO_MANY_REQUESTS": {
+            "code": "ERR_TOO_MANY_REQUESTS",
+            "http_status": 429,
+            "message": "Rate limit exceeded. Please wait before retrying.",
+            "ui_treatment": "error_card",
+            "retry_allowed": true,
+            "retry_after_seconds": 30
+          }
+        }
+      },
+      "server_error": {
+        "description": "5xx-class errors caused by server issues",
+        "codes": {
+          "ERR_INTERNAL": {
+            "code": "ERR_INTERNAL",
+            "http_status": 500,
+            "message": "An unexpected internal error occurred.",
+            "ui_treatment": "error_card",
+            "retry_allowed": true
+          },
+          "ERR_SERVICE_UNAVAILABLE": {
+            "code": "ERR_SERVICE_UNAVAILABLE",
+            "http_status": 503,
+            "message": "The service is temporarily unavailable.",
+            "ui_treatment": "error_card",
+            "retry_allowed": true
+          },
+          "ERR_GATEWAY_TIMEOUT": {
+            "code": "ERR_GATEWAY_TIMEOUT",
+            "http_status": 504,
+            "message": "An upstream service timed out.",
+            "ui_treatment": "error_card",
+            "retry_allowed": true
+          }
+        }
+      },
+      "safety_error": {
+        "description": "Errors triggered by safety boundaries",
+        "codes": {
+          "ERR_SAFETY_BLOCKED": {
+            "code": "ERR_SAFETY_BLOCKED",
+            "http_status": 403,
+            "message": "This action is blocked by the safety boundary.",
+            "ui_treatment": "blocked_overlay",
+            "retry_allowed": false
+          },
+          "ERR_READONLY_MODE": {
+            "code": "ERR_READONLY_MODE",
+            "http_status": 403,
+            "message": "System is in read-only mode. All mutations are disabled.",
+            "ui_treatment": "blocked_overlay",
+            "retry_allowed": false
+          },
+          "ERR_DISABLED_DEFAULT": {
+            "code": "ERR_DISABLED_DEFAULT",
+            "http_status": 403,
+            "message": "This feature is disabled by default.",
+            "ui_treatment": "blocked_overlay",
+            "retry_allowed": false
+          },
+          "ERR_CONTRACT_VIOLATION": {
+            "code": "ERR_CONTRACT_VIOLATION",
+            "http_status": 403,
+            "message": "The requested action would violate the frozen contract.",
+            "ui_treatment": "blocked_overlay",
+            "retry_allowed": false
+          }
+        }
+      }
+    }
+  },
+  "abort_reasons": {
+    "description": "All possible reasons a pipeline run may be aborted",
+    "reasons": {
+      "ABORT_SAFETY_GATE_FAILED": {
+        "code": "ABORT_SAFETY_GATE_FAILED",
+        "severity": "critical",
+        "message": "Pipeline aborted because a safety gate check failed.",
+        "recoverable": false,
+        "ui_treatment": "error_card"
+      },
+      "ABORT_CONTRACT_VIOLATION": {
+        "code": "ABORT_CONTRACT_VIOLATION",
+        "severity": "critical",
+        "message": "Pipeline aborted because a contract violation was detected.",
+        "recoverable": false,
+        "ui_treatment": "blocked_overlay"
+      },
+      "ABORT_TIMEOUT": {
+        "code": "ABORT_TIMEOUT",
+        "severity": "warning",
+        "message": "Pipeline aborted because it exceeded the maximum runtime.",
+        "recoverable": true,
+        "ui_treatment": "error_card"
+      },
+      "ABORT_DEPENDENCY_FAILURE": {
+        "code": "ABORT_DEPENDENCY_FAILURE",
+        "severity": "error",
+        "message": "Pipeline aborted because a required dependency failed.",
+        "recoverable": true,
+        "ui_treatment": "error_card"
+      },
+      "ABORT_MANUAL": {
+        "code": "ABORT_MANUAL",
+        "severity": "info",
+        "message": "Pipeline manually aborted by operator.",
+        "recoverable": false,
+        "ui_treatment": "error_card"
+      },
+      "ABORT_PERMISSION_DENIED": {
+        "code": "ABORT_PERMISSION_DENIED",
+        "severity": "critical",
+        "message": "Pipeline aborted due to insufficient permissions.",
+        "recoverable": false,
+        "ui_treatment": "blocked_overlay"
+      },
+      "ABORT_EVIDENCE_CHAIN_BROKEN": {
+        "code": "ABORT_EVIDENCE_CHAIN_BROKEN",
+        "severity": "critical",
+        "message": "Pipeline aborted because the evidence chain was compromised.",
+        "recoverable": false,
+        "ui_treatment": "error_card"
+      }
+    }
+  },
+  "degraded_states": {
+    "description": "Definitions for each degraded state the system can enter",
+    "states": {
+      "DEGRADED_PARTIAL_DATA": {
+        "code": "DEGRADED_PARTIAL_DATA",
+        "description": "One or more data sources returned partial data. Some fields may be unavailable.",
+        "severity": "warning",
+        "ui_treatment": "degraded_badge",
+        "icon": "alert_triangle",
+        "color": "amber",
+        "user_message": "Some data is temporarily unavailable. Available data is still shown.",
+        "auto_recover": true,
+        "degraded_fields_example": ["factor_detail_view", "report_preview_panel"]
+      },
+      "DEGRADED_HASH_VERIFICATION": {
+        "code": "DEGRADED_HASH_VERIFICATION",
+        "description": "Evidence chain hash verification is unavailable. Data integrity cannot be confirmed.",
+        "severity": "warning",
+        "ui_treatment": "degraded_badge",
+        "icon": "shield_alert",
+        "color": "amber",
+        "user_message": "Evidence hash verification is currently unavailable.",
+        "auto_recover": true
+      },
+      "DEGRADED_GRAPH_RENDERER": {
+        "code": "DEGRADED_GRAPH_RENDERER",
+        "description": "Graph visualization renderer is degraded. Node list is still available.",
+        "severity": "info",
+        "ui_treatment": "degraded_badge",
+        "icon": "git_branch",
+        "color": "amber",
+        "user_message": "Graph visualization is simplified. All data is still accessible.",
+        "auto_recover": true
+      },
+      "DEGRADED_AUDIT_HISTORY": {
+        "code": "DEGRADED_AUDIT_HISTORY",
+        "description": "Audit trail historical entries are truncated. Recent entries are still available.",
+        "severity": "info",
+        "ui_treatment": "degraded_badge",
+        "icon": "clock",
+        "color": "amber",
+        "user_message": "Historical audit entries are limited. Recent entries are shown.",
+        "auto_recover": true
+      },
+      "DEGRADED_COMPONENT_UNREACHABLE": {
+        "code": "DEGRADED_COMPONENT_UNREACHABLE",
+        "description": "One or more Z-SkillOS components are unreachable.",
+        "severity": "error",
+        "ui_treatment": "degraded_badge",
+        "icon": "wifi_off",
+        "color": "red",
+        "user_message": "Some components are unreachable. Available data is shown.",
+        "auto_recover": true
+      }
+    }
+  },
+  "blocked_actions": {
+    "description": "All actions that are permanently blocked in this contract freeze",
+    "permanently_blocked": [
+      "start_pipeline",
+      "stop_pipeline",
+      "abort_pipeline",
+      "enable_skill",
+      "disable_skill",
+      "invoke_skill",
+      "configure_skill",
+      "promote_skill",
+      "promote_factor",
+      "advance_f8",
+      "unseal_factor",
+      "create_factor",
+      "modify_factor",
+      "delete_factor",
+      "add_node",
+      "remove_node",
+      "add_edge",
+      "remove_edge",
+      "modify_graph",
+      "reconfigure_flow",
+      "generate_report",
+      "modify_report",
+      "delete_report",
+      "start_review",
+      "submit_review",
+      "approve_review",
+      "reject_review",
+      "modify_review_criteria",
+      "modify_evidence",
+      "delete_evidence",
+      "inject_evidence",
+      "start_run",
+      "stop_run",
+      "retry_run",
+      "modify_run_config",
+      "open_gate",
+      "close_gate",
+      "bypass_gate",
+      "modify_gate_rules",
+      "modify_audit",
+      "delete_audit",
+      "redact_entry",
+      "purge_trail",
+      "modify_permissions",
+      "enable_runtime",
+      "enable_production",
+      "enable_paper_trading",
+      "modify_safety_boundary",
+      "change_contract",
+      "set_confidence",
+      "promote_to_production",
+      "tamper_hash"
+    ]
+  }
+}

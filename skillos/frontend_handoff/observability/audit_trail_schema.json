@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://z-matrix-os/skillos/frontend_handoff/observability/audit_trail_schema.json",
+  "title": "Z-SkillOS Frontend Handoff Audit Trail Schema",
+  "description": "Audit trail event schema for tracking all API requests and system events",
+  "version": "1.0.0",
+  "type": "object",
+  "required": ["events", "total_events", "generated_at"],
+  "properties": {
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of audit trail generation"
+    },
+    "total_events": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Total number of events in the audit trail"
+    },
+    "since": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of earliest event included"
+    },
+    "events": {
+      "type": "array",
+      "description": "Ordered list of audit trail events",
+      "items": {
+        "type": "object",
+        "required": ["event_id", "timestamp", "event_type", "source"],
+        "properties": {
+          "event_id": {
+            "type": "string",
+            "description": "Unique event identifier (e.g., audit-NNNNN)"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "description": "ISO 8601 timestamp of the event"
+          },
+          "event_type": {
+            "type": "string",
+            "enum": [
+              "request_received",
+              "response_sent",
+              "mutation_blocked",
+              "fixture_served",
+              "error_occurred",
+              "health_check",
+              "startup",
+              "shutdown",
+              "config_change"
+            ],
+            "description": "Type of audit event"
+          },
+          "source": {
+            "type": "string",
+            "description": "Component or agent that emitted the event"
+          },
+          "endpoint": {
+            "type": "string",
+            "description": "API endpoint path"
+          },
+          "method": {
+            "type": "string",
+            "enum": ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"],
+            "description": "HTTP method if applicable"
+          },
+          "status_code": {
+            "type": "integer",
+            "minimum": 100,
+            "maximum": 599,
+            "description": "HTTP response status code"
+          },
+          "request_id": {
+            "type": "string",
+            "description": "Unique request identifier for tracing"
+          },
+          "client_ip": {
+            "type": "string",
+            "description": "Client IP address"
+          },
+          "user_agent": {
+            "type": "string",
+            "description": "Client user agent string"
+          },
+          "duration_ms": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Request duration in milliseconds"
+          },
+          "result": {
+            "type": "string",
+            "enum": ["SUCCESS", "BLOCKED", "ERROR", "DEGRADED"],
+            "description": "Result of the event"
+          },
+          "details": {
+            "type": "string",
+            "description": "Additional event details"
+          },
+          "role": {
+            "type": "string",
+            "description": "User role if authenticated request"
+          },
+          "session_id": {
+            "type": "string",
+            "description": "Session identifier if authenticated request"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

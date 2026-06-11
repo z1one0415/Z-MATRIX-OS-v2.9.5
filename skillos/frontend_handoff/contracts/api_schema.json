@@ -1,0 +1,432 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "z-skillos:frontend-handoff:api-schema:v1",
+  "title": "Z-SkillOS Frontend Handoff API Schema",
+  "description": "All endpoints are GET-only. Mutation endpoints return BLOCKED.",
+  "version": "v0.1.0-rc",
+  "seal": "A1_CONTRACT_FREEZE",
+  "base_url": "/api",
+  "methods_allowed": ["GET"],
+  "methods_blocked": {
+    "POST": {"status": "BLOCKED", "reason": "readonly_disabled_default"},
+    "PUT": {"status": "BLOCKED", "reason": "readonly_disabled_default"},
+    "PATCH": {"status": "BLOCKED", "reason": "readonly_disabled_default"},
+    "DELETE": {"status": "BLOCKED", "reason": "readonly_disabled_default"}
+  },
+  "global_response_headers": {
+    "X-SkillOS-Version": "v0.1.0-rc",
+    "X-ReadOnly": "true",
+    "X-Contract-Version": "v1"
+  },
+  "error_formats": {
+    "standard_error": {
+      "description": "Universal error envelope for all endpoints",
+      "schema": {
+        "type": "object",
+        "required": ["error", "code", "timestamp"],
+        "properties": {
+          "error": {"type": "string", "description": "Human-readable error message"},
+          "code": {"type": "string", "description": "Machine-readable error code"},
+          "timestamp": {"type": "string", "format": "date-time"},
+          "details": {"type": "object", "description": "Optional error context"},
+          "trace_id": {"type": "string", "description": "Request trace id for debugging"}
+        }
+      }
+    },
+    "blocked_error": {
+      "description": "Returned for any disallowed operation",
+      "schema": {
+        "type": "object",
+        "required": ["status", "reason", "action", "timestamp"],
+        "properties": {
+          "status": {"const": "BLOCKED"},
+          "reason": {"type": "string", "enum": [
+            "readonly_disabled_default",
+            "permission_denied",
+            "runtime_disabled",
+            "production_disabled",
+            "paper_trading_disabled"
+          ]},
+          "action": {"type": "string", "description": "The action that was blocked"},
+          "timestamp": {"type": "string", "format": "date-time"},
+          "message": {"type": "string", "description": "User-facing explanation"},
+          "trace_id": {"type": "string"}
+        }
+      }
+    },
+    "degraded_error": {
+      "description": "Returned when endpoint is in degraded state",
+      "schema": {
+        "type": "object",
+        "required": ["status", "degraded_since", "remaining_fields"],
+        "properties": {
+          "status": {"const": "DEGRADED"},
+          "degraded_since": {"type": "string", "format": "date-time"},
+          "remaining_fields": {"type": "array", "items": {"type": "string"}},
+          "degraded_fields": {"type": "array", "items": {"type": "string"}},
+          "reason": {"type": "string"},
+          "trace_id": {"type": "string"}
+        }
+      }
+    }
+  },
+  "endpoints": {
+    "/api/health": {
+      "method": "GET",
+      "description": "System health check",
+      "response": {
+        "type": "object",
+        "required": ["status", "version"],
+        "properties": {
+          "status": {"const": "ok"},
+          "version": {"type": "string"},
+          "uptime_seconds": {"type": "number"},
+          "components": {
+            "type": "object",
+            "properties": {
+              "factor_library": {"type": "string", "enum": ["ok", "degraded", "error"]},
+              "composition_graph": {"type": "string", "enum": ["ok", "degraded", "error"]},
+              "research_report": {"type": "string", "enum": ["ok", "degraded", "error"]},
+              "z9_review": {"type": "string", "enum": ["ok", "degraded", "error"]},
+              "evidence_chain": {"type": "string", "enum": ["ok", "degraded", "error"]},
+              "run_state": {"type": "string", "enum": ["ok", "degraded", "error"]},
+              "gate_state": {"type": "string", "enum": ["ok", "degraded", "error"]},
+              "audit_trail": {"type": "string", "enum": ["ok", "degraded", "error"]}
+            }
+          }
+        }
+      }
+    },
+    "/api/version": {
+      "method": "GET",
+      "description": "Version and contract information",
+      "response": {
+        "type": "object",
+        "required": ["version", "contract_version", "seal"],
+        "properties": {
+          "version": {"type": "string"},
+          "contract_version": {"type": "string"},
+          "seal": {"type": "string"},
+          "build_timestamp": {"type": "string", "format": "date-time"},
+          "readonly": {"const": true}
+        }
+      }
+    },
+    "/api/dashboard/summary": {
+      "method": "GET",
+      "description": "Dashboard summary including gate status and recent activity",
+      "response": {"$ref": "dashboard_contract.json#/dashboard_summary"}
+    },
+    "/api/capabilities": {
+      "method": "GET",
+      "description": "Capability Invocation OS skill catalog",
+      "response": {
+        "type": "object",
+        "required": ["capabilities", "total_count", "enabled_count"],
+        "properties": {
+          "capabilities": {"type": "array", "items": {"$ref": "#/definitions/capability_entry"}},
+          "total_count": {"type": "integer"},
+          "enabled_count": {"type": "integer", "const": 0},
+          "readonly": {"const": true}
+        }
+      }
+    },
+    "/api/factor-library/summary": {
+      "method": "GET",
+      "description": "Factor Library seal status and evaluation matrix",
+      "response": {
+        "type": "object",
+        "required": ["seal_status", "factor_count", "factors"],
+        "properties": {
+          "seal_status": {"type": "string", "enum": ["SEALED", "UNSEALED", "DEGRADED"]},
+          "factor_count": {"type": "integer"},
+          "readonly": {"const": true},
+          "factors": {"type": "array", "items": {"$ref": "#/definitions/factor_entry"}}
+        }
+      }
+    },
+    "/api/composition-graph/summary": {
+      "method": "GET",
+      "description": "Composition Graph node/edge summary",
+      "response": {
+        "type": "object",
+        "required": ["nodes", "edges", "node_count", "edge_count"],
+        "properties": {
+          "nodes": {"type": "array", "items": {"$ref": "#/definitions/graph_node"}},
+          "edges": {"type": "array", "items": {"$ref": "#/definitions/graph_edge"}},
+          "node_count": {"type": "integer"},
+          "edge_count": {"type": "integer"},
+          "readonly": {"const": true},
+          "disabled_default": {"const": true}
+        }
+      }
+    },
+    "/api/research-report/summary": {
+      "method": "GET",
+      "description": "Research Report Node preview and status",
+      "response": {
+        "type": "object",
+        "required": ["report_status", "recent_reports"],
+        "properties": {
+          "report_status": {"type": "string", "enum": ["disabled_default", "generating", "ready", "error"]},
+          "recent_reports": {"type": "array", "items": {"$ref": "#/definitions/report_entry"}},
+          "generation_enabled": {"const": false},
+          "readonly": {"const": true}
+        }
+      }
+    },
+    "/api/z9-review/summary": {
+      "method": "GET",
+      "description": "Z9 Review Node review queue and feedback status",
+      "response": {
+        "type": "object",
+        "required": ["review_status", "queue_size"],
+        "properties": {
+          "review_status": {"type": "string", "enum": ["disabled_default", "idle", "reviewing", "complete"]},
+          "queue_size": {"type": "integer"},
+          "reviews": {"type": "array", "items": {"$ref": "#/definitions/review_entry"}},
+          "review_enabled": {"const": false},
+          "readonly": {"const": true}
+        }
+      }
+    },
+    "/api/evidence-chain": {
+      "method": "GET",
+      "description": "Full evidence chain traversal",
+      "response": {
+        "type": "object",
+        "required": ["chain_id", "nodes", "links"],
+        "properties": {
+          "chain_id": {"type": "string"},
+          "nodes": {"type": "array", "items": {"$ref": "#/definitions/evidence_node"}},
+          "links": {"type": "array", "items": {"$ref": "#/definitions/evidence_link"}},
+          "readonly": {"const": true}
+        }
+      }
+    },
+    "/api/run-state": {
+      "method": "GET",
+      "description": "Pipeline run state registry",
+      "response": {
+        "type": "object",
+        "required": ["current_state", "pipeline_runs"],
+        "properties": {
+          "current_state": {"type": "string", "enum": ["idle", "running", "completed", "aborted", "degraded"]},
+          "pipeline_runs": {"type": "array", "items": {"$ref": "#/definitions/pipeline_run"}},
+          "readonly": {"const": true}
+        }
+      }
+    },
+    "/api/gate-state": {
+      "method": "GET",
+      "description": "Gate pass/fail/pending matrix",
+      "response": {
+        "type": "object",
+        "required": ["gates"],
+        "properties": {
+          "gates": {"type": "array", "items": {"$ref": "#/definitions/gate_entry"}},
+          "summary": {
+            "type": "object",
+            "properties": {
+              "passed": {"type": "integer"},
+              "failed": {"type": "integer"},
+              "pending": {"type": "integer"},
+              "blocked": {"type": "integer"}
+            }
+          },
+          "readonly": {"const": true}
+        }
+      }
+    },
+    "/api/audit-trail": {
+      "method": "GET",
+      "description": "Full audit trail of actions and decisions",
+      "response": {
+        "type": "object",
+        "required": ["entries", "total_count"],
+        "properties": {
+          "entries": {"type": "array", "items": {"$ref": "#/definitions/audit_entry"}},
+          "total_count": {"type": "integer"},
+          "readonly": {"const": true}
+        }
+      }
+    },
+    "/api/frontend/routes": {
+      "method": "GET",
+      "description": "Frontend route index",
+      "response": {
+        "type": "object",
+        "required": ["routes"],
+        "properties": {
+          "routes": {"type": "array", "items": {"$ref": "#/definitions/route_entry"}}
+        }
+      }
+    },
+    "/api/frontend/contracts": {
+      "method": "GET",
+      "description": "Frontend contract index",
+      "response": {
+        "type": "object",
+        "required": ["contracts"],
+        "properties": {
+          "contracts": {"type": "array", "items": {"$ref": "#/definitions/contract_entry"}}
+        }
+      }
+    }
+  },
+  "definitions": {
+    "capability_entry": {
+      "type": "object",
+      "required": ["id", "name", "status", "permissions"],
+      "properties": {
+        "id": {"type": "string"},
+        "name": {"type": "string"},
+        "description": {"type": "string"},
+        "status": {"type": "string", "enum": ["disabled_default", "enabled", "degraded", "blocked", "error"]},
+        "permissions": {
+          "type": "object",
+          "properties": {
+            "can_view": {"const": true},
+            "can_invoke": {"const": false},
+            "can_configure": {"const": false},
+            "can_enable": {"const": false}
+          }
+        }
+      }
+    },
+    "factor_entry": {
+      "type": "object",
+      "required": ["id", "name", "seal_status"],
+      "properties": {
+        "id": {"type": "string"},
+        "name": {"type": "string"},
+        "seal_status": {"type": "string", "enum": ["SEALED", "UNSEALED", "DEGRADED"]},
+        "category": {"type": "string"},
+        "evaluation_count": {"type": "integer"},
+        "last_evaluated": {"type": "string", "format": "date-time"}
+      }
+    },
+    "graph_node": {
+      "type": "object",
+      "required": ["id", "label", "status"],
+      "properties": {
+        "id": {"type": "string"},
+        "label": {"type": "string"},
+        "status": {"type": "string", "enum": ["disabled_default", "enabled", "degraded", "blocked"]},
+        "type": {"type": "string", "enum": ["skill", "fact", "evidence", "review", "report"]},
+        "dependencies": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "graph_edge": {
+      "type": "object",
+      "required": ["from", "to", "type"],
+      "properties": {
+        "from": {"type": "string"},
+        "to": {"type": "string"},
+        "type": {"type": "string", "enum": ["depends_on", "produces", "reviews", "feeds_into"]},
+        "status": {"type": "string", "enum": ["active", "degraded", "blocked"]}
+      }
+    },
+    "report_entry": {
+      "type": "object",
+      "required": ["id", "title", "status", "created_at"],
+      "properties": {
+        "id": {"type": "string"},
+        "title": {"type": "string"},
+        "status": {"type": "string", "enum": ["draft", "generating", "ready", "error"]},
+        "created_at": {"type": "string", "format": "date-time"},
+        "confidence": {"type": "number", "minimum": 0, "maximum": 1}
+      }
+    },
+    "review_entry": {
+      "type": "object",
+      "required": ["id", "target", "status", "created_at"],
+      "properties": {
+        "id": {"type": "string"},
+        "target": {"type": "string", "description": "Target report or decision id"},
+        "status": {"type": "string", "enum": ["pending", "in_progress", "completed", "rejected"]},
+        "created_at": {"type": "string", "format": "date-time"},
+        "findings": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "evidence_node": {
+      "type": "object",
+      "required": ["id", "type", "content"],
+      "properties": {
+        "id": {"type": "string"},
+        "type": {"type": "string", "enum": ["input", "intermediate", "output", "decision", "review"]},
+        "content": {"type": "string"},
+        "timestamp": {"type": "string", "format": "date-time"},
+        "hash": {"type": "string", "description": "Evidence integrity hash"},
+        "source": {"type": "string"}
+      }
+    },
+    "evidence_link": {
+      "type": "object",
+      "required": ["from", "to"],
+      "properties": {
+        "from": {"type": "string"},
+        "to": {"type": "string"},
+        "type": {"type": "string", "enum": ["derives_from", "confirms", "contradicts", "references"]}
+      }
+    },
+    "pipeline_run": {
+      "type": "object",
+      "required": ["run_id", "pipeline", "status", "started_at"],
+      "properties": {
+        "run_id": {"type": "string"},
+        "pipeline": {"type": "string"},
+        "status": {"type": "string", "enum": ["running", "completed", "aborted", "degraded", "blocked"]},
+        "started_at": {"type": "string", "format": "date-time"},
+        "completed_at": {"type": "string", "format": "date-time"},
+        "abort_reason": {"type": "string"},
+        "readonly": {"const": true}
+      }
+    },
+    "gate_entry": {
+      "type": "object",
+      "required": ["gate_id", "name", "status"],
+      "properties": {
+        "gate_id": {"type": "string"},
+        "name": {"type": "string"},
+        "status": {"type": "string", "enum": ["passed", "failed", "pending", "blocked", "skipped"]},
+        "last_checked": {"type": "string", "format": "date-time"},
+        "details": {"type": "string"},
+        "required_permission": {"type": "string"}
+      }
+    },
+    "audit_entry": {
+      "type": "object",
+      "required": ["id", "action", "timestamp", "actor"],
+      "properties": {
+        "id": {"type": "string"},
+        "action": {"type": "string"},
+        "timestamp": {"type": "string", "format": "date-time"},
+        "actor": {"type": "string"},
+        "target": {"type": "string"},
+        "result": {"type": "string", "enum": ["success", "blocked", "error", "degraded"]},
+        "details": {"type": "object"}
+      }
+    },
+    "route_entry": {
+      "type": "object",
+      "required": ["route", "page_id", "title"],
+      "properties": {
+        "route": {"type": "string"},
+        "page_id": {"type": "string"},
+        "title": {"type": "string"},
+        "description": {"type": "string"}
+      }
+    },
+    "contract_entry": {
+      "type": "object",
+      "required": ["contract_id", "name", "version"],
+      "properties": {
+        "contract_id": {"type": "string"},
+        "name": {"type": "string"},
+        "version": {"type": "string"},
+        "path": {"type": "string"}
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "factor_library_summary": {
+    "version": "v2.9.6-draft",
+    "generated_utc": "2026-06-12T04:03:00Z",
+    "total_factors": 23,
+    "factor_seal_status": {
+      "sealed": 20,
+      "draft": 3,
+      "deprecated": 0
+    },
+    "matrix_status": {
+      "b_matrix_factors": 7,
+      "d_matrix_factors": 7,
+      "r_matrix_factors": 5,
+      "shared_factors": 4
+    },
+    "factors": [
+      { "id": "F001", "name": "Dividend Yield 3Y", "category": "B-Matrix", "seal": "SEALED", "weight": 0.30, "description": "Three-year trailing dividend yield stability score" },
+      { "id": "F002", "name": "FCF Reinvestment Rate", "category": "B-Matrix", "seal": "SEALED", "weight": 0.22, "description": "Free-cash-flow reinvestment ratio over 3-year window" },
+      { "id": "F003", "name": "Resource ROE 5Y", "category": "B-Matrix", "seal": "SEALED", "weight": 0.18, "description": "Five-year return on equity for resource-sector stocks" },
+      { "id": "F004", "name": "Infrastructure Moat Width", "category": "B-Matrix", "seal": "SEALED", "weight": 0.15, "description": "Regulatory/network moat durability score" },
+      { "id": "F005", "name": "Brand Scarcity Index", "category": "B-Matrix", "seal": "DRAFT", "weight": 0.10, "description": "Brand pricing power and scarcity premium estimator" },
+      { "id": "F006", "name": "Debt Service Coverage", "category": "B-Matrix", "seal": "SEALED", "weight": 0.03, "description": "Interest coverage and debt maturity profile" },
+      { "id": "F007", "name": "Payout Ratio Stability", "category": "B-Matrix", "seal": "SEALED", "weight": 0.02, "description": "Dividend payout ratio variance over 5 years" },
+      { "id": "F008", "name": "Gene Expression Score", "category": "D-Matrix", "seal": "SEALED", "weight": 0.22, "description": "Multi-factor genetic algorithm stock fingerprint match" },
+      { "id": "F009", "name": "Sector Tailwind Index", "category": "D-Matrix", "seal": "SEALED", "weight": 0.18, "description": "Sector-level momentum and breadth signal" },
+      { "id": "F010", "name": "Theme Alignment", "category": "D-Matrix", "seal": "SEALED", "weight": 0.15, "description": "Narrative-theme mapping score from L1.6 radar" },
+      { "id": "F011", "name": "Silent Accumulation", "category": "D-Matrix", "seal": "SEALED", "weight": 0.18, "description": "Smart-money silent positioning detection via volume profile" },
+      { "id": "F012", "name": "Smart Money Footprint", "category": "D-Matrix", "seal": "DRAFT", "weight": 0.10, "description": "Institutional flow footprint from block trade analysis" },
+      { "id": "F013", "name": "Micro Structure Quality", "category": "D-Matrix", "seal": "SEALED", "weight": 0.10, "description": "Spread, depth, and resiliency composite" },
+      { "id": "F014", "name": "Volatility Preload", "category": "D-Matrix", "seal": "SEALED", "weight": 0.07, "description": "Pre-breakout volatility compression detector" },
+      { "id": "F015", "name": "Horizontal Oscillation Score", "category": "R-Matrix", "seal": "SEALED", "weight": 0.25, "description": "Type-A range-bound oscillation quality metric" },
+      { "id": "F016", "name": "Channel Slope Integrity", "category": "R-Matrix", "seal": "SEALED", "weight": 0.20, "description": "Type-B ascending channel trend consistency" },
+      { "id": "F017", "name": "Bounce Frequency Ratio", "category": "R-Matrix", "seal": "SEALED", "weight": 0.18, "description": "Support/resistance touch count and reliability" },
+      { "id": "F018", "name": "False Breakout Penalty", "category": "R-Matrix", "seal": "SEALED", "weight": 0.15, "description": "Penalty score for whipsaw and false breakout events" },
+      { "id": "F019", "name": "Volume Confirmation Ratio", "category": "R-Matrix", "seal": "DRAFT", "weight": 0.12, "description": "Volume spike confirmation at boundary tests" },
+      { "id": "F020", "name": "Coverage Discount", "category": "Shared", "seal": "SEALED", "weight": null, "description": "Analyst coverage breadth penalty for over-covered stocks" },
+      { "id": "F021", "name": "M1 240bar Standard Axis", "category": "Shared", "seal": "SEALED", "weight": null, "description": "Minute-level 240-bar time alignment window (09:31-15:00)" },
+      { "id": "F022", "name": "False Preheat Penalty", "category": "Shared", "seal": "SEALED", "weight": null, "description": "Pre-market false signal detection and penalty application" },
+      { "id": "F023", "name": "Rating Cap Enforcer", "category": "Shared", "seal": "SEALED", "weight": null, "description": "Upper-bound rating clamp to prevent over-optimism drift" }
+    ]
+  }
+}

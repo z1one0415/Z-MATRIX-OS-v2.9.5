@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://z-matrix-os/skillos/frontend_handoff/auth/auth_schema.json",
+  "title": "Z-SkillOS Frontend Handoff Auth Schema",
+  "description": "Authentication token, role, and permissions payload schema",
+  "version": "1.0.0",
+  "type": "object",
+  "required": ["auth_token", "role", "permissions"],
+  "properties": {
+    "auth_token": {
+      "type": "string",
+      "minLength": 32,
+      "description": "JWT or opaque bearer token for session authentication"
+    },
+    "role": {
+      "type": "string",
+      "enum": ["viewer", "analyst", "reviewer", "approver", "admin", "system_auditor"],
+      "description": "Assigned role determining permission set"
+    },
+    "permissions": {
+      "type": "object",
+      "description": "Resolved permissions map for the assigned role",
+      "required": [
+        "can_view_dashboard",
+        "can_view_factor_library",
+        "can_view_reports",
+        "can_view_reviews",
+        "can_view_evidence_chain",
+        "can_view_gate_state",
+        "can_acknowledge_risk",
+        "can_approve_planning_gate",
+        "can_approve_interpretation_review",
+        "can_approve_promotion_eligibility_review",
+        "can_enable_runtime",
+        "can_enable_runner",
+        "can_enable_paper_trading",
+        "can_enable_broker",
+        "can_enable_production"
+      ],
+      "properties": {
+        "can_view_dashboard": { "type": "boolean" },
+        "can_view_factor_library": { "type": "boolean" },
+        "can_view_reports": { "type": "boolean" },
+        "can_view_reviews": { "type": "boolean" },
+        "can_view_evidence_chain": { "type": "boolean" },
+        "can_view_gate_state": { "type": "boolean" },
+        "can_acknowledge_risk": { "type": "boolean" },
+        "can_approve_planning_gate": { "type": "boolean" },
+        "can_approve_interpretation_review": { "type": "boolean" },
+        "can_approve_promotion_eligibility_review": { "type": "boolean" },
+        "can_enable_runtime": { "type": "boolean" },
+        "can_enable_runner": { "type": "boolean" },
+        "can_enable_paper_trading": { "type": "boolean" },
+        "can_enable_broker": { "type": "boolean" },
+        "can_enable_production": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "session_id": {
+      "type": "string",
+      "description": "Unique session identifier"
+    },
+    "issued_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of token issuance"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of token expiry"
+    }
+  },
+  "additionalProperties": false
+}

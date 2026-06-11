@@ -1,0 +1,43 @@
+{
+  "z9_review_summary": {
+    "version": "v2.9.6-draft",
+    "generated_utc": "2026-06-12T04:03:00Z",
+    "node_status": "DISABLED_DEFAULT",
+    "policy_ref": "P0-merge-decision-Z9-review-disabled-default",
+    "review_labels": [
+      { "label": "CALIBRATION_DRIFT", "active": false, "last_triggered": null, "description": "Model calibration drift exceeding ±5% tolerance" },
+      { "label": "REGIME_CHANGE", "active": false, "last_triggered": null, "description": "Market regime transition detected (e.g. NORMAL→VOLATILE)" },
+      { "label": "SAMPLE_DEGRADATION", "active": false, "last_triggered": "2026-05-28", "description": "Calibration sample quality below 0.85 integrity threshold" },
+      { "label": "OUTLIER_CLUSTER", "active": false, "last_triggered": null, "description": "Cluster of 5+ consecutive prediction outliers" },
+      { "label": "FACTOR_STALENESS", "active": false, "last_triggered": null, "description": "Factor weight stability below 0.90 over rolling 20-day window" },
+      { "label": "COVERAGE_GAP", "active": false, "last_triggered": "2026-06-01", "description": "Sector/stock coverage below minimum threshold" }
+    ],
+    "feedback_status": {
+      "total_feedback_events": 47,
+      "pending_review": 0,
+      "acknowledged": 42,
+      "escalated": 5,
+      "last_feedback_utc": "2026-06-11T14:55:00Z"
+    },
+    "escalated_items": [
+      {
+        "id": "ESC-001",
+        "label": "COVERAGE_GAP",
+        "title": "New Energy Storage chain under-covered",
+        "severity": "MEDIUM",
+        "detected_utc": "2026-06-01T09:45:00Z",
+        "resolution": "PENDING",
+        "note": "Chain missing from D-Matrix sector mapping. Manual override applied."
+      },
+      {
+        "id": "ESC-002",
+        "label": "SAMPLE_DEGRADATION",
+        "title": "R-Matrix calibration sample stale for RE sector",
+        "severity": "LOW",
+        "detected_utc": "2026-05-28T15:30:00Z",
+        "resolution": "ACKNOWLEDGED",
+        "note": "Awaiting next monthly rescan for refresh."
+      }
+    ]
+  }
+}

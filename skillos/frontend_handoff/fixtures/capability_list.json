@@ -1,0 +1,30 @@
+{
+  "capability_list": {
+    "total": 18,
+    "by_status": {
+      "READY": 14,
+      "DISABLED": 3,
+      "BLOCKED": 1
+    },
+    "items": [
+      { "id": "CAP-001", "name": "F7 Gate Chain", "status": "READY", "description": "Seven-gate pipeline from sensor to decision envelope", "depends_on": [] },
+      { "id": "CAP-002", "name": "B-Matrix Classifier", "status": "READY", "description": "Five-category bottom-qualification scoring gate", "depends_on": ["CAP-001"] },
+      { "id": "CAP-003", "name": "D-Matrix Radar", "status": "READY", "description": "Dark-horse origin signal detection with 7-factor scoring", "depends_on": ["CAP-001"] },
+      { "id": "CAP-004", "name": "R-Matrix Oscillation", "status": "READY", "description": "Type-A horizontal / Type-B ascending channel oscillator ranker", "depends_on": ["CAP-001"] },
+      { "id": "CAP-005", "name": "Z2 Research Kernel", "status": "READY", "description": "Industrial chain evidence layering and financial gate analysis", "depends_on": [] },
+      { "id": "CAP-006", "name": "Z8 Position Control", "status": "READY", "description": "Pre-trade checklist and allocation sizing validator", "depends_on": ["CAP-002"] },
+      { "id": "CAP-007", "name": "Z9 Calibration Engine", "status": "READY", "description": "Prediction accuracy tracking and regime-aware calibration", "depends_on": [] },
+      { "id": "CAP-008", "name": "Z9 Review Node", "status": "DISABLED", "description": "Disabled-default review module per P0 merge policy", "depends_on": ["CAP-007"] },
+      { "id": "CAP-009", "name": "Macro Veto L2.5", "status": "READY", "description": "Eight-domain directional shock assessment gate", "depends_on": ["CAP-001"] },
+      { "id": "CAP-010", "name": "Narrative Radar L1.6", "status": "READY", "description": "Slogan/exhaustion/diversity signal extraction from newsflow", "depends_on": [] },
+      { "id": "CAP-011", "name": "Composition Graph", "status": "READY", "description": "Factor-to-skill dependency graph across Z-MATRIX-OS", "depends_on": [] },
+      { "id": "CAP-012", "name": "Event Store", "status": "READY", "description": "Immutable event log with lineage tracking", "depends_on": [] },
+      { "id": "CAP-013", "name": "Audit Trail", "status": "READY", "description": "Full decision-audit chain with timestamped actions", "depends_on": ["CAP-012"] },
+      { "id": "CAP-014", "name": "Evidence Chain", "status": "READY", "description": "Hash-chained evidence traversal from FactorLib to Z9", "depends_on": [] },
+      { "id": "CAP-015", "name": "Portfolio Exposure", "status": "DISABLED", "description": "Beta/correlation exposure reporting (offline maintenance)", "depends_on": [] },
+      { "id": "CAP-016", "name": "Tail Risk Controller", "status": "DISABLED", "description": "Limit-down blackhole detection (suspended per v3.6)", "depends_on": ["CAP-009"] },
+      { "id": "CAP-017", "name": "Research Asset Index", "status": "READY", "description": "Cross-pipeline asset discovery and catalog", "depends_on": [] },
+      { "id": "CAP-018", "name": "Hermes Memory Kernel", "status": "BLOCKED", "description": "Knowledge graph persistence layer (blocked by schema migration)", "depends_on": ["CAP-012"] }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "audit_trail_demo": {
+    "run_id": "RUN-2026-06-12-0403",
+    "pipeline": "Z-G14 Monthly BRD Rescan",
+    "generated_utc": "2026-06-12T04:03:00Z",
+    "total_events": 24,
+    "events": [
+      { "seq": 1, "timestamp_utc": "2026-06-12T03:50:00.000Z", "actor": "SCHEDULER", "action": "PIPELINE_TRIGGER", "detail": "Z-G14 monthly run triggered by cron schedule", "status": "OK" },
+      { "seq": 2, "timestamp_utc": "2026-06-12T03:50:00.100Z", "actor": "TRUTH_GATE", "action": "GATE_CHECK_START", "detail": "F7.0 preconditions evaluation starting", "status": "OK" },
+      { "seq": 3, "timestamp_utc": "2026-06-12T03:50:02.100Z", "actor": "TRUTH_GATE", "action": "GATE_CHECK_PASS", "detail": "F7.0: 7/7 preconditions met", "status": "OK" },
+      { "seq": 4, "timestamp_utc": "2026-06-12T03:50:02.200Z", "actor": "DATA_PIPELINE", "action": "INGESTION_START", "detail": "A1 OHLCV + financial data loading", "status": "OK" },
+      { "seq": 5, "timestamp_utc": "2026-06-12T03:52:47.500Z", "actor": "DATA_PIPELINE", "action": "INGESTION_COMPLETE", "detail": "3676 stocks, 882240 bars loaded", "status": "OK" },
+      { "seq": 6, "timestamp_utc": "2026-06-12T03:52:47.600Z", "actor": "MACRO_VETO", "action": "MACRO_CHECK", "detail": "L2.5: 8/8 domains nominal, no veto", "status": "OK" },
+      { "seq": 7, "timestamp_utc": "2026-06-12T03:52:50.000Z", "actor": "B_MATRIX", "action": "SCAN_START", "detail": "B-Matrix v2.1.1 full scan of 3676 stocks", "status": "OK" },
+      { "seq": 8, "timestamp_utc": "2026-06-12T03:55:57.200Z", "actor": "B_MATRIX", "action": "SCAN_COMPLETE", "detail": "42 candidates (B1:12 B2:8 B3:9 B4:7 B5:6)", "status": "OK" },
+      { "seq": 9, "timestamp_utc": "2026-06-12T03:55:57.300Z", "actor": "D_MATRIX", "action": "SCAN_START", "detail": "D-Matrix v2.2 full scan of 3676 stocks", "status": "OK" },
+      { "seq": 10, "timestamp_utc": "2026-06-12T03:58:43.100Z", "actor": "D_MATRIX", "action": "SCAN_COMPLETE", "detail": "87 candidates above threshold 0.55", "status": "OK" },
+      { "seq": 11, "timestamp_utc": "2026-06-12T03:58:43.200Z", "actor": "R_MATRIX", "action": "SCAN_START", "detail": "R-Matrix v1.1 full scan", "status": "OK" },
+      { "seq": 12, "timestamp_utc": "2026-06-12T04:01:05.600Z", "actor": "R_MATRIX", "action": "SCAN_COMPLETE", "detail": "63 oscillation candidates (Type-A:38 Type-B:25)", "status": "OK" },
+      { "seq": 13, "timestamp_utc": "2026-06-12T04:01:05.700Z", "actor": "CROSS_MATRIX", "action": "ANALYSIS_START", "detail": "B/D/R cross-intersection analysis", "status": "OK" },
+      { "seq": 14, "timestamp_utc": "2026-06-12T04:01:14.400Z", "actor": "CROSS_MATRIX", "action": "ANALYSIS_COMPLETE", "detail": "B∩D:3 B∩R:5 D∩R:11", "status": "OK" },
+      { "seq": 15, "timestamp_utc": "2026-06-12T04:01:14.500Z", "actor": "Z2_KERNEL", "action": "RESEARCH_START", "detail": "Industrial chain evidence layering on candidates", "status": "OK" },
+      { "seq": 16, "timestamp_utc": "2026-06-12T04:01:36.600Z", "actor": "Z2_KERNEL", "action": "RESEARCH_COMPLETE", "detail": "10 chains, 38 financial gates passed", "status": "OK" },
+      { "seq": 17, "timestamp_utc": "2026-06-12T04:01:36.700Z", "actor": "HOLDINGS_DIFF", "action": "DIFF_START", "detail": "Scan vs current holdings comparison", "status": "OK" },
+      { "seq": 18, "timestamp_utc": "2026-06-12T04:01:42.600Z", "actor": "HOLDINGS_DIFF", "action": "DIFF_COMPLETE", "detail": "7 replacement candidates generated", "status": "OK" },
+      { "seq": 19, "timestamp_utc": "2026-06-12T04:01:42.700Z", "actor": "RISK_MATRIX", "action": "RISK_ASSESS_START", "detail": "Macro/sector/individual risk assessment", "status": "OK" },
+      { "seq": 20, "timestamp_utc": "2026-06-12T04:01:55.000Z", "actor": "RISK_MATRIX", "action": "RISK_ASSESS_COMPLETE", "detail": "3 elevated individual risk flags", "status": "OK" },
+      { "seq": 21, "timestamp_utc": "2026-06-12T04:01:55.100Z", "actor": "DECISION_GATE", "action": "GATE_CHECK_START", "detail": "F7.2 decision gate evaluation", "status": "OK" },
+      { "seq": 22, "timestamp_utc": "2026-06-12T04:01:58.200Z", "actor": "DECISION_GATE", "action": "GATE_CHECK_PASS", "detail": "F7.2: decision envelope sealed, 28 stocks final", "status": "OK" },
+      { "seq": 23, "timestamp_utc": "2026-06-12T04:01:58.300Z", "actor": "ARCHIVE_ENGINE", "action": "ARCHIVE_START", "detail": "Memory Vault + EventStore persistence", "status": "OK" },
+      { "seq": 24, "timestamp_utc": "2026-06-12T04:02:33.900Z", "actor": "ARCHIVE_ENGINE", "action": "ARCHIVE_COMPLETE", "detail": "47 EventStore entries, 112 Hermes graph nodes", "status": "OK" }
+    ]
+  }
+}

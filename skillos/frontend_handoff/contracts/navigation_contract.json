@@ -1,0 +1,283 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "z-skillos:frontend-handoff:navigation-contract:v1",
+  "title": "Z-SkillOS Navigation Contract",
+  "description": "Sidebar navigation tree, breadcrumb rules, and permission-gated links.",
+  "version": "v0.1.0-rc",
+  "seal": "A1_CONTRACT_FREEZE",
+  "sidebar": {
+    "description": "Collapsible sidebar navigation tree for Z-SkillOS dashboard",
+    "sections": [
+      {
+        "section_id": "section_overview",
+        "label": "Overview",
+        "icon": "home",
+        "default_expanded": true,
+        "items": [
+          {
+            "id": "nav_dashboard",
+            "label": "Dashboard",
+            "route": "/",
+            "icon": "layout_dashboard",
+            "page_id": "home_dashboard",
+            "permission_gated": false,
+            "required_permissions": [],
+            "always_visible": true,
+            "breadcrumb_label": "Home"
+          }
+        ]
+      },
+      {
+        "section_id": "section_capabilities",
+        "label": "Capabilities",
+        "icon": "zap",
+        "default_expanded": false,
+        "items": [
+          {
+            "id": "nav_capabilities",
+            "label": "Capability OS",
+            "route": "/capabilities",
+            "icon": "cpu",
+            "page_id": "capabilities",
+            "permission_gated": false,
+            "required_permissions": [],
+            "always_visible": true,
+            "breadcrumb_label": "Capabilities",
+            "status_indicator": {
+              "field": "component_status",
+              "component": "capabilities_os"
+            }
+          },
+          {
+            "id": "nav_factor_library",
+            "label": "Factor Library",
+            "route": "/factor-library",
+            "icon": "grid",
+            "page_id": "factor_library",
+            "permission_gated": false,
+            "required_permissions": [],
+            "always_visible": true,
+            "breadcrumb_label": "Factor Library",
+            "status_indicator": {
+              "field": "component_status",
+              "component": "factor_library"
+            }
+          },
+          {
+            "id": "nav_composition_graph",
+            "label": "Composition Graph",
+            "route": "/composition-graph",
+            "icon": "git_branch",
+            "page_id": "composition_graph",
+            "permission_gated": false,
+            "required_permissions": [],
+            "always_visible": true,
+            "breadcrumb_label": "Composition Graph",
+            "status_indicator": {
+              "field": "component_status",
+              "component": "composition_graph"
+            }
+          }
+        ]
+      },
+      {
+        "section_id": "section_research",
+        "label": "Research & Review",
+        "icon": "search",
+        "default_expanded": false,
+        "items": [
+          {
+            "id": "nav_research_report",
+            "label": "Research Report",
+            "route": "/research-report",
+            "icon": "file_text",
+            "page_id": "research_report",
+            "permission_gated": false,
+            "required_permissions": [],
+            "always_visible": true,
+            "breadcrumb_label": "Research Report",
+            "status_indicator": {
+              "field": "component_status",
+              "component": "research_report"
+            }
+          },
+          {
+            "id": "nav_z9_review",
+            "label": "Z9 Review",
+            "route": "/z9-review",
+            "icon": "check_square",
+            "page_id": "z9_review",
+            "permission_gated": false,
+            "required_permissions": [],
+            "always_visible": true,
+            "breadcrumb_label": "Z9 Review",
+            "status_indicator": {
+              "field": "component_status",
+              "component": "z9_review"
+            }
+          }
+        ]
+      },
+      {
+        "section_id": "section_evidence",
+        "label": "Evidence & State",
+        "icon": "shield",
+        "default_expanded": false,
+        "items": [
+          {
+            "id": "nav_evidence_chain",
+            "label": "Evidence Chain",
+            "route": "/evidence-chain",
+            "icon": "link",
+            "page_id": "evidence_chain",
+            "permission_gated": false,
+            "required_permissions": [],
+            "always_visible": true,
+            "breadcrumb_label": "Evidence Chain",
+            "status_indicator": {
+              "field": "component_status",
+              "component": "evidence_chain"
+            }
+          },
+          {
+            "id": "nav_run_state",
+            "label": "Run State",
+            "route": "/run-state",
+            "icon": "play_circle",
+            "page_id": "run_state",
+            "permission_gated": false,
+            "required_permissions": [],
+            "always_visible": true,
+            "breadcrumb_label": "Run State",
+            "status_indicator": {
+              "field": "component_status",
+              "component": "run_state"
+            }
+          },
+          {
+            "id": "nav_gate_state",
+            "label": "Gate State",
+            "route": "/gate-state",
+            "icon": "toggle_right",
+            "page_id": "gate_state",
+            "permission_gated": false,
+            "required_permissions": [],
+            "always_visible": true,
+            "breadcrumb_label": "Gate State",
+            "status_indicator": {
+              "field": "component_status",
+              "component": "gate_state"
+            }
+          },
+          {
+            "id": "nav_audit_trail",
+            "label": "Audit Trail",
+            "route": "/audit-trail",
+            "icon": "list",
+            "page_id": "audit_trail",
+            "permission_gated": false,
+            "required_permissions": [],
+            "always_visible": true,
+            "breadcrumb_label": "Audit Trail",
+            "status_indicator": {
+              "field": "component_status",
+              "component": "audit_trail"
+            }
+          }
+        ]
+      },
+      {
+        "section_id": "section_system",
+        "label": "System",
+        "icon": "settings",
+        "default_expanded": false,
+        "items": [
+          {
+            "id": "nav_settings",
+            "label": "Settings & Safety",
+            "route": "/settings",
+            "icon": "sliders",
+            "page_id": "settings",
+            "permission_gated": false,
+            "required_permissions": [],
+            "always_visible": true,
+            "breadcrumb_label": "Settings"
+          }
+        ]
+      }
+    ],
+    "footer": {
+      "version_display": {
+        "show": true,
+        "field": "version",
+        "api_endpoint": "/api/version"
+      },
+      "readonly_indicator": {
+        "show": true,
+        "icon": "lock",
+        "label": "Read-Only Mode",
+        "color": "amber"
+      },
+      "contract_seal": {
+        "show": true,
+        "label": "A1_CONTRACT_FREEZE"
+      }
+    }
+  },
+  "breadcrumb_rules": {
+    "description": "Rules for generating breadcrumb navigation across the app",
+    "format": {
+      "separator": " / ",
+      "home_label": "Home",
+      "home_route": "/",
+      "max_depth": 4,
+      "truncate_long_labels": true,
+      "max_label_length": 30
+    },
+    "generate_from": {
+      "source": "sidebar items breadcrumb_label",
+      "fallback": "page title"
+    },
+    "examples": [
+      {"route": "/", "breadcrumb": ["Home"]},
+      {"route": "/capabilities", "breadcrumb": ["Home", "Capabilities"]},
+      {"route": "/factor-library", "breadcrumb": ["Home", "Factor Library"]},
+      {"route": "/composition-graph", "breadcrumb": ["Home", "Composition Graph"]},
+      {"route": "/research-report", "breadcrumb": ["Home", "Research Report"]},
+      {"route": "/z9-review", "breadcrumb": ["Home", "Z9 Review"]},
+      {"route": "/evidence-chain", "breadcrumb": ["Home", "Evidence Chain"]},
+      {"route": "/run-state", "breadcrumb": ["Home", "Run State"]},
+      {"route": "/gate-state", "breadcrumb": ["Home", "Gate State"]},
+      {"route": "/audit-trail", "breadcrumb": ["Home", "Audit Trail"]},
+      {"route": "/settings", "breadcrumb": ["Home", "Settings"]}
+    ]
+  },
+  "permission_gated_links": {
+    "description": "Links that require specific permissions to be visible or active",
+    "policy": "all_links_visible_permission_gate_applies_to_interaction_only",
+    "rules": [
+      {
+        "rule_id": "ALL_VIEWABLE",
+        "description": "All navigation links are visible. Permissions gate interaction, not visibility.",
+        "applies_to": "all_sidebar_items",
+        "permission_check": "none_for_visibility",
+        "interaction_gate": {
+          "on_click": "check_permission",
+          "if_denied": "show_blocked_overlay",
+          "blocked_reason": "permission_denied"
+        }
+      }
+    ],
+    "disabled_sections": {
+      "description": "Sections or items that are always visible but may show disabled status",
+      "items": []
+    }
+  },
+  "mobile_navigation": {
+    "description": "Mobile-optimized navigation variant (hamburger menu)",
+    "show_hamburger_on": "screen_width < 768px",
+    "sidebar_behavior": "slide_overlay",
+    "close_on_navigate": true,
+    "close_on_backdrop_click": true
+  }
+}

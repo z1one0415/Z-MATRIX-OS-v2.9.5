@@ -1,0 +1,245 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "z-skillos:frontend-handoff:component-state-contract:v1",
+  "title": "Z-SkillOS Component State Contract",
+  "description": "UI component specifications for loading, empty, error, degraded, blocked, and success states.",
+  "version": "v0.1.0-rc",
+  "seal": "A1_CONTRACT_FREEZE",
+  "components": {
+    "loading_spinner": {
+      "component_id": "loading_spinner",
+      "description": "Displayed while data is being fetched from an API endpoint",
+      "visual": {
+        "type": "spinner",
+        "animation": "rotate",
+        "color": "primary",
+        "size": "medium",
+        "label": "Loading...",
+        "variant": "centered",
+        "accessibility": {
+          "role": "status",
+          "aria_label": "Loading content",
+          "aria_busy": true
+        }
+      },
+      "behavior": {
+        "show_after_ms": 300,
+        "timeout_ms": {
+          "default": 10000,
+          "graph_pages": 15000
+        },
+        "on_timeout": "transition_to_error_card",
+        "dismiss_on": "data_received"
+      },
+      "states": {
+        "active": {
+          "spinner_visible": true,
+          "overlay": true,
+          "interaction_blocked": true
+        },
+        "dismissed": {
+          "spinner_visible": false,
+          "overlay": false,
+          "interaction_blocked": false
+        }
+      }
+    },
+    "empty_state": {
+      "component_id": "empty_state",
+      "description": "Displayed when an API returns successfully but with no data",
+      "visual": {
+        "type": "empty_state",
+        "icon": "inbox",
+        "color": "muted",
+        "layout": "centered_column",
+        "accessibility": {
+          "role": "status",
+          "aria_label": "No data available"
+        }
+      },
+      "behavior": {
+        "show_when": "data_array_empty_or_null",
+        "action": {
+          "label": "Refresh",
+          "type": "refresh_button",
+          "disabled": false
+        }
+      },
+      "message_override": {
+        "description": "Each page may override the default empty message",
+        "default": "No data available.",
+        "capabilities": "No capabilities registered in the system.",
+        "factor_library": "No factors have been registered in the library.",
+        "composition_graph": "No composition graph data available. Graph may be uninitialized.",
+        "research_report": "No research reports available. Report generation is disabled by default.",
+        "z9_review": "No reviews pending. Review system is disabled by default.",
+        "evidence_chain": "No evidence chain data available.",
+        "run_state": "No pipeline runs have been recorded.",
+        "gate_state": "No safety gates registered in the system.",
+        "audit_trail": "No audit entries recorded yet.",
+        "settings": "Settings data unavailable."
+      }
+    },
+    "error_card": {
+      "component_id": "error_card",
+      "description": "Displayed when an API call fails with an error",
+      "visual": {
+        "type": "card",
+        "variant": "error",
+        "icon": "alert_circle",
+        "color": "red",
+        "border": "red",
+        "layout": "centered_card",
+        "max_width": "480px",
+        "elements": ["error_icon", "error_title", "error_message", "error_code", "retry_button", "trace_id_text"],
+        "accessibility": {
+          "role": "alert",
+          "aria_label": "Error occurred"
+        }
+      },
+      "behavior": {
+        "show_when": "api_response_error_or_timeout",
+        "retry": {
+          "enabled": true,
+          "label": "Retry",
+          "type": "retry_button",
+          "max_retries": 3,
+          "retry_delay_ms": 2000,
+          "backoff": "exponential"
+        },
+        "dismiss_on": "successful_retry_or_navigation"
+      },
+      "data": {
+        "title": "Error loading data",
+        "error_code_field": "code",
+        "error_message_field": "error",
+        "trace_id_field": "trace_id"
+      }
+    },
+    "degraded_badge": {
+      "component_id": "degraded_badge",
+      "description": "Displayed when some data is available but a sub-component is degraded",
+      "visual": {
+        "type": "badge",
+        "variant": "warning",
+        "icon": "alert_triangle",
+        "color": "amber",
+        "placement": "top_banner",
+        "dismissible": false,
+        "elements": ["degraded_icon", "degraded_message", "degraded_components_list"],
+        "accessibility": {
+          "role": "status",
+          "aria_label": "Degraded service"
+        }
+      },
+      "behavior": {
+        "show_when": "api_response_degraded",
+        "auto_dismiss": true,
+        "auto_dismiss_on": "component_recovery",
+        "block_interaction": false,
+        "allow_partial_rendering": true
+      },
+      "data": {
+        "title_template": "Some data is temporarily unavailable",
+        "degraded_fields": "degraded_components",
+        "remaining_fields": "remaining_components"
+      }
+    },
+    "blocked_overlay": {
+      "component_id": "blocked_overlay",
+      "description": "Displayed when a page or action is blocked by safety/policy/permissions",
+      "visual": {
+        "type": "overlay",
+        "variant": "blocked",
+        "icon": "shield_off",
+        "color": "red",
+        "opacity": 0.9,
+        "layout": "centered_overlay",
+        "elements": ["blocked_icon", "blocked_title", "blocked_reason", "action_list", "help_text"],
+        "accessibility": {
+          "role": "alert",
+          "aria_label": "Action blocked"
+        }
+      },
+      "behavior": {
+        "show_when": "action_blocked_or_permission_denied_or_disabled_default",
+        "block_page_interaction": true,
+        "dismissible": false,
+        "show_dismiss_button": false
+      },
+      "data": {
+        "title_template": "Action Blocked",
+        "reason_field": "reason",
+        "action_field": "action",
+        "default_reason": "This action is blocked by the system safety boundary."
+      },
+      "blocked_reason_messages": {
+        "readonly_disabled_default": "The system is in read-only mode. All mutations are disabled by default.",
+        "permission_denied": "You do not have permission to perform this action.",
+        "runtime_disabled": "Runtime execution is disabled.",
+        "production_disabled": "Production mode is disabled.",
+        "paper_trading_disabled": "Paper trading is disabled.",
+        "disabled_default": "This feature is disabled by default."
+      }
+    },
+    "success_indicator": {
+      "component_id": "success_indicator",
+      "description": "Displayed briefly when data loads successfully",
+      "visual": {
+        "type": "toast",
+        "variant": "success",
+        "icon": "check_circle",
+        "color": "green",
+        "placement": "top_right",
+        "duration_ms": 2000,
+        "elements": ["success_icon", "success_message"],
+        "accessibility": {
+          "role": "status",
+          "aria_label": "Data loaded successfully"
+        }
+      },
+      "behavior": {
+        "show_on": "data_load_success",
+        "auto_dismiss": true,
+        "auto_dismiss_after_ms": 2000,
+        "block_interaction": false,
+        "show_for_empty_data": false
+      },
+      "variants": {
+        "data_loaded": {
+          "message": "Data loaded",
+          "icon": "check_circle",
+          "color": "green"
+        },
+        "component_recovered": {
+          "message": "Component recovered",
+          "icon": "refresh_cw",
+          "color": "green"
+        },
+        "hash_verified": {
+          "message": "Integrity verified",
+          "icon": "shield_check",
+          "color": "green"
+        }
+      }
+    }
+  },
+  "state_machine": {
+    "description": "Page state transitions for data fetching lifecycle",
+    "initial_state": "loading",
+    "states": ["loading", "empty", "error", "degraded", "blocked", "success"],
+    "transitions": [
+      {"from": "loading", "to": "success", "trigger": "data_received"},
+      {"from": "loading", "to": "empty", "trigger": "data_received_empty"},
+      {"from": "loading", "to": "error", "trigger": "fetch_failed"},
+      {"from": "loading", "to": "degraded", "trigger": "data_received_partial"},
+      {"from": "loading", "to": "blocked", "trigger": "permission_denied_or_disabled"},
+      {"from": "success", "to": "degraded", "trigger": "component_degraded"},
+      {"from": "success", "to": "error", "trigger": "subsequent_fetch_failed"},
+      {"from": "degraded", "to": "success", "trigger": "component_recovered"},
+      {"from": "error", "to": "success", "trigger": "retry_succeeded"},
+      {"from": "error", "to": "blocked", "trigger": "permission_denied"},
+      {"from": "empty", "to": "blocked", "trigger": "permission_revoked"}
+    ]
+  }
+}

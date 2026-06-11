@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://z-matrix-os/skillos/frontend_handoff/state_registry/gate_state_schema.json",
+  "title": "Gate State Registry Schema",
+  "description": "Gate records for Z-SkillOS decision gate chain with full state tracking",
+  "type": "object",
+  "required": ["gates", "chain_id", "generated_at"],
+  "properties": {
+    "chain_id": {
+      "type": "string",
+      "description": "Identifier for the gate chain (e.g., F7.2-formal-validation)"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of registry generation"
+    },
+    "gates": {
+      "type": "array",
+      "description": "Ordered list of gate records in the chain",
+      "items": {
+        "type": "object",
+        "required": ["gate_id", "stage", "commit", "parent_commit", "status", "created_at"],
+        "properties": {
+          "gate_id": {
+            "type": "string",
+            "description": "Unique gate identifier (e.g., F7.0-reconcile)"
+          },
+          "stage": {
+            "type": "integer",
+            "description": "Sequential stage number in chain"
+          },
+          "commit": {
+            "type": "string",
+            "description": "Git commit SHA for this gate"
+          },
+          "parent_commit": {
+            "type": "string",
+            "description": "Git commit SHA of parent gate"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "PASS",
+              "PASS_WITH_NOTE",
+              "PASS_WITH_SEMANTIC_FIELD_NOTE",
+              "BLOCKED",
+              "PENDING",
+              "ABORTED",
+              "DEGRADED",
+              "DISABLED_DEFAULT",
+              "MERGED_AND_SEALED"
+            ],
+            "description": "Gate status enumeration"
+          },
+          "scope": {
+            "type": "string",
+            "description": "Scope description of what this gate validates"
+          },
+          "allowed_next_entries": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "List of gate_ids allowed to follow this gate"
+          },
+          "blocked_actions": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "List of actions blocked by this gate"
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "References to evidence chain nodes"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "ISO 8601 timestamp of gate creation"
+          },
+          "human_decision_required": {
+            "type": "boolean",
+            "description": "Whether a human decision is required to pass this gate"
+          },
+          "promotion_allowed": {
+            "type": "boolean",
+            "description": "Whether factor promotion is allowed beyond this gate"
+          },
+          "alpha_claim_allowed": {
+            "type": "boolean",
+            "description": "Whether alpha claims are allowed beyond this gate"
+          },
+          "runner_enabled": {
+            "type": "boolean",
+            "description": "Whether the pipeline runner is active for this gate"
+          },
+          "paper_trading_allowed": {
+            "type": "boolean",
+            "description": "Whether paper trading is allowed beyond this gate"
+          },
+          "production": {
+            "type": "boolean",
+            "description": "Whether this is a production gate"
+          },
+          "broker_runtime": {
+            "type": "string",
+            "enum": ["none", "paper", "live", "both"],
+            "description": "Broker runtime mode"
+          },
+          "real_trade": {
+            "type": "boolean",
+            "description": "Whether real trades are permitted beyond this gate"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "chain_summary": {
+      "type": "object",
+      "description": "Summary statistics for the gate chain",
+      "properties": {
+        "total_gates": { "type": "integer" },
+        "passed": { "type": "integer" },
+        "blocked": { "type": "integer" },
+        "pending": { "type": "integer" },
+        "merged_and_sealed": { "type": "integer" },
+        "degraded": { "type": "integer" }
+      }
+    }
+  }
+}

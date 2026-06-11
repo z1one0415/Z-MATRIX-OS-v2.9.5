@@ -1,0 +1,49 @@
+{
+  "composition_graph_summary": {
+    "version": "v2.9.6-draft",
+    "generated_utc": "2026-06-12T04:03:00Z",
+    "total_nodes": 14,
+    "total_edges": 23,
+    "nodes": [
+      { "id": "N01", "type": "TRUTH_GATE", "label": "F7.0 TruthGate", "status": "GREEN" },
+      { "id": "N02", "type": "SENSOR", "label": "Sensor Array", "status": "GREEN" },
+      { "id": "N03", "type": "MACRO", "label": "L2.5 MacroVeto", "status": "GREEN" },
+      { "id": "N04", "type": "NARRATIVE", "label": "L1.6 NarrativeRadar", "status": "GREEN" },
+      { "id": "N05", "type": "B_MATRIX", "label": "B-Matrix v2.1.1", "status": "GREEN" },
+      { "id": "N06", "type": "D_MATRIX", "label": "D-Matrix v2.2", "status": "GREEN" },
+      { "id": "N07", "type": "R_MATRIX", "label": "R-Matrix v1.1", "status": "GREEN" },
+      { "id": "N08", "type": "RESEARCH", "label": "Z2 Research Kernel", "status": "GREEN" },
+      { "id": "N09", "type": "ALLOCATION", "label": "Z8 Allocation Control", "status": "GREEN" },
+      { "id": "N10", "type": "CALIBRATION", "label": "Z9 Calibration", "status": "AMBER" },
+      { "id": "N11", "type": "REVIEW", "label": "Z9 Review Node", "status": "DISABLED" },
+      { "id": "N12", "type": "DECISION", "label": "F7.2 Decision Gate", "status": "GREEN" },
+      { "id": "N13", "type": "MEMORY", "label": "Hermes Memory Kernel", "status": "BLOCKED" },
+      { "id": "N14", "type": "EVENT_STORE", "label": "Event Store", "status": "GREEN" }
+    ],
+    "edges": [
+      { "from": "N01", "to": "N02", "label": "sensor_trigger" },
+      { "from": "N02", "to": "N03", "label": "macro_feed" },
+      { "from": "N02", "to": "N04", "label": "narrative_feed" },
+      { "from": "N03", "to": "N05", "label": "veto_clear" },
+      { "from": "N04", "to": "N06", "label": "theme_score" },
+      { "from": "N05", "to": "N08", "label": "b_candidates" },
+      { "from": "N06", "to": "N08", "label": "d_candidates" },
+      { "from": "N07", "to": "N08", "label": "r_candidates" },
+      { "from": "N05", "to": "N07", "label": "cross_matrix_b" },
+      { "from": "N06", "to": "N07", "label": "cross_matrix_d" },
+      { "from": "N08", "to": "N09", "label": "research_brief" },
+      { "from": "N09", "to": "N10", "label": "position_event" },
+      { "from": "N10", "to": "N11", "label": "calibration_data" },
+      { "from": "N10", "to": "N12", "label": "accuracy_report" },
+      { "from": "N12", "to": "N14", "label": "decision_event" },
+      { "from": "N08", "to": "N14", "label": "research_event" },
+      { "from": "N02", "to": "N14", "label": "sensor_event" },
+      { "from": "N14", "to": "N13", "label": "persist" },
+      { "from": "N05", "to": "N14", "label": "b_event" },
+      { "from": "N06", "to": "N14", "label": "d_event" },
+      { "from": "N07", "to": "N14", "label": "r_event" },
+      { "from": "N09", "to": "N14", "label": "checklist_event" },
+      { "from": "N03", "to": "N04", "label": "context_pass" }
+    ]
+  }
+}

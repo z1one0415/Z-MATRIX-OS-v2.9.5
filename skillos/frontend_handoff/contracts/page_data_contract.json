@@ -1,0 +1,738 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "z-skillos:frontend-handoff:page-data-contract:v1",
+  "title": "Z-SkillOS Frontend Handoff Page Data Contract",
+  "description": "11 pages with data sources, API endpoints, all UI states, and permission matrices.",
+  "version": "v0.1.0-rc",
+  "seal": "A1_CONTRACT_FREEZE",
+  "pages": [
+    {
+      "page_id": "home_dashboard",
+      "route": "/",
+      "title": "Home Dashboard",
+      "description": "System overview, gate status indicators, recent activity feed",
+      "data_sources": ["dashboard_summary"],
+      "api_endpoints": ["/api/dashboard/summary"],
+      "required_permissions": [],
+      "forbidden_actions": [
+        "start_pipeline",
+        "stop_pipeline",
+        "enable_skill",
+        "disable_skill",
+        "modify_config"
+      ],
+      "states": {
+        "loading": {
+          "description": "Dashboard data is being fetched from /api/dashboard/summary",
+          "ui": "loading_spinner",
+          "timeout_ms": 10000
+        },
+        "empty": {
+          "description": "No dashboard data returned (first run, empty DB)",
+          "ui": "empty_state",
+          "message": "No dashboard data available yet. System may be initializing."
+        },
+        "error": {
+          "description": "API returned an error",
+          "ui": "error_card",
+          "retry": true,
+          "retry_endpoint": "/api/dashboard/summary"
+        },
+        "degraded": {
+          "description": "Some components are degraded but partial data available",
+          "ui": "degraded_badge",
+          "degraded_components": ["gate_state", "activity_feed"],
+          "remaining_components": ["system_health", "component_status"]
+        },
+        "blocked": {
+          "description": "Dashboard access blocked due to permissions",
+          "ui": "blocked_overlay",
+          "reason": "Dashboard is always accessible; this state is a safety boundary placeholder"
+        },
+        "success": {
+          "description": "Dashboard loaded successfully with all components",
+          "ui": "success_indicator",
+          "data_schema": {"$ref": "dashboard_contract.json#/dashboard_summary"}
+        }
+      },
+      "fixture_payload": {
+        "system_health": "ok",
+        "gate_summary": {"passed": 8, "failed": 0, "pending": 3, "blocked": 0},
+        "component_status": {
+          "factor_library": "ok",
+          "composition_graph": "ok",
+          "research_report": "disabled_default",
+          "z9_review": "disabled_default",
+          "evidence_chain": "ok",
+          "run_state": "ok",
+          "gate_state": "ok",
+          "audit_trail": "ok"
+        },
+        "recent_activity": []
+      }
+    },
+    {
+      "page_id": "capabilities",
+      "route": "/capabilities",
+      "title": "Capability Invocation OS",
+      "description": "Skill catalog viewer showing invocation status for all registered skills",
+      "data_sources": ["capability_list"],
+      "api_endpoints": ["/api/capabilities"],
+      "required_permissions": [],
+      "forbidden_actions": [
+        "invoke_skill",
+        "enable_skill",
+        "disable_skill",
+        "configure_skill",
+        "promote_skill"
+      ],
+      "states": {
+        "loading": {
+          "description": "Capability catalog is being fetched",
+          "ui": "loading_spinner",
+          "timeout_ms": 10000
+        },
+        "empty": {
+          "description": "No capabilities registered",
+          "ui": "empty_state",
+          "message": "No capabilities registered in the system."
+        },
+        "error": {
+          "description": "Failed to load capability list",
+          "ui": "error_card",
+          "retry": true,
+          "retry_endpoint": "/api/capabilities"
+        },
+        "degraded": {
+          "description": "Partial capability data (some skills unresponsive)",
+          "ui": "degraded_badge",
+          "degraded_components": ["skill_detail_panel"],
+          "remaining_components": ["skill_list"]
+        },
+        "blocked": {
+          "description": "Access blocked",
+          "ui": "blocked_overlay",
+          "reason": "Capabilities page is always accessible; blocked state is a safety placeholder"
+        },
+        "success": {
+          "description": "Capability catalog loaded successfully",
+          "ui": "success_indicator",
+          "data_schema": {
+            "type": "object",
+            "required": ["capabilities", "total_count", "enabled_count"],
+            "properties": {
+              "capabilities": {"type": "array"},
+              "total_count": {"type": "integer"},
+              "enabled_count": {"type": "integer", "const": 0},
+              "readonly": {"const": true}
+            }
+          }
+        }
+      },
+      "fixture_payload": {
+        "capabilities": [],
+        "total_count": 0,
+        "enabled_count": 0,
+        "readonly": true
+      }
+    },
+    {
+      "page_id": "factor_library",
+      "route": "/factor-library",
+      "title": "Factor Library",
+      "description": "Browse factor seal status and evaluation matrix (read-only)",
+      "data_sources": ["factor_library_summary"],
+      "api_endpoints": ["/api/factor-library/summary"],
+      "required_permissions": [],
+      "forbidden_actions": [
+        "create_factor",
+        "modify_factor",
+        "delete_factor",
+        "promote_factor",
+        "advance_f8",
+        "unseal_factor"
+      ],
+      "states": {
+        "loading": {
+          "description": "Factor library data loading",
+          "ui": "loading_spinner",
+          "timeout_ms": 10000
+        },
+        "empty": {
+          "description": "No factors registered",
+          "ui": "empty_state",
+          "message": "No factors have been registered in the library."
+        },
+        "error": {
+          "description": "Failed to load factor library",
+          "ui": "error_card",
+          "retry": true,
+          "retry_endpoint": "/api/factor-library/summary"
+        },
+        "degraded": {
+          "description": "Partial factor data (some factors unreachable)",
+          "ui": "degraded_badge",
+          "degraded_components": ["factor_detail_view"],
+          "remaining_components": ["factor_list", "seal_status_badge"]
+        },
+        "blocked": {
+          "description": "Factor library access blocked",
+          "ui": "blocked_overlay",
+          "reason": "Factor library is read-only accessible; blocked is a safety boundary placeholder"
+        },
+        "success": {
+          "description": "Factor library loaded",
+          "ui": "success_indicator",
+          "data_schema": {
+            "type": "object",
+            "required": ["seal_status", "factor_count", "factors"],
+            "properties": {
+              "seal_status": {"type": "string"},
+              "factor_count": {"type": "integer"},
+              "readonly": {"const": true},
+              "factors": {"type": "array"}
+            }
+          }
+        }
+      },
+      "fixture_payload": {
+        "seal_status": "SEALED",
+        "factor_count": 0,
+        "readonly": true,
+        "factors": []
+      }
+    },
+    {
+      "page_id": "composition_graph",
+      "route": "/composition-graph",
+      "title": "Composition Graph",
+      "description": "Visual graph viewer showing node/edge status (no editing)",
+      "data_sources": ["composition_graph_summary"],
+      "api_endpoints": ["/api/composition-graph/summary"],
+      "required_permissions": [],
+      "forbidden_actions": [
+        "add_node",
+        "remove_node",
+        "add_edge",
+        "remove_edge",
+        "modify_graph",
+        "reconfigure_flow"
+      ],
+      "states": {
+        "loading": {
+          "description": "Graph data loading",
+          "ui": "loading_spinner",
+          "timeout_ms": 15000
+        },
+        "empty": {
+          "description": "Graph has no nodes or edges",
+          "ui": "empty_state",
+          "message": "No composition graph data available. Graph may be uninitialized."
+        },
+        "error": {
+          "description": "Failed to load graph data",
+          "ui": "error_card",
+          "retry": true,
+          "retry_endpoint": "/api/composition-graph/summary"
+        },
+        "degraded": {
+          "description": "Graph partially loaded (some nodes unreachable)",
+          "ui": "degraded_badge",
+          "degraded_components": ["graph_renderer", "node_details"],
+          "remaining_components": ["node_list"]
+        },
+        "blocked": {
+          "description": "Graph access blocked",
+          "ui": "blocked_overlay",
+          "reason": "Composition graph is view-only; blocked is a safety boundary placeholder"
+        },
+        "success": {
+          "description": "Graph loaded and rendered",
+          "ui": "success_indicator",
+          "data_schema": {
+            "type": "object",
+            "required": ["nodes", "edges", "node_count", "edge_count"],
+            "properties": {
+              "nodes": {"type": "array"},
+              "edges": {"type": "array"},
+              "node_count": {"type": "integer"},
+              "edge_count": {"type": "integer"},
+              "readonly": {"const": true},
+              "disabled_default": {"const": true}
+            }
+          }
+        }
+      },
+      "fixture_payload": {
+        "nodes": [],
+        "edges": [],
+        "node_count": 0,
+        "edge_count": 0,
+        "readonly": true,
+        "disabled_default": true
+      }
+    },
+    {
+      "page_id": "research_report",
+      "route": "/research-report",
+      "title": "Research Report Node",
+      "description": "View research report previews and evidence chain links",
+      "data_sources": ["research_report_summary"],
+      "api_endpoints": ["/api/research-report/summary"],
+      "required_permissions": [],
+      "forbidden_actions": [
+        "generate_report",
+        "modify_report",
+        "delete_report",
+        "promote_to_production",
+        "set_confidence"
+      ],
+      "states": {
+        "loading": {
+          "description": "Report data loading",
+          "ui": "loading_spinner",
+          "timeout_ms": 10000
+        },
+        "empty": {
+          "description": "No reports generated",
+          "ui": "empty_state",
+          "message": "No research reports available. Report generation is disabled by default."
+        },
+        "error": {
+          "description": "Failed to load report data",
+          "ui": "error_card",
+          "retry": true,
+          "retry_endpoint": "/api/research-report/summary"
+        },
+        "degraded": {
+          "description": "Partial report data",
+          "ui": "degraded_badge",
+          "degraded_components": ["report_preview_panel"],
+          "remaining_components": ["report_list"]
+        },
+        "blocked": {
+          "description": "Report viewing blocked",
+          "ui": "blocked_overlay",
+          "reason": "Research report is view-only; blocked is a safety boundary placeholder"
+        },
+        "success": {
+          "description": "Report data loaded",
+          "ui": "success_indicator",
+          "data_schema": {
+            "type": "object",
+            "required": ["report_status", "recent_reports"],
+            "properties": {
+              "report_status": {"type": "string"},
+              "recent_reports": {"type": "array"},
+              "generation_enabled": {"const": false},
+              "readonly": {"const": true}
+            }
+          }
+        }
+      },
+      "fixture_payload": {
+        "report_status": "disabled_default",
+        "recent_reports": [],
+        "generation_enabled": false,
+        "readonly": true
+      }
+    },
+    {
+      "page_id": "z9_review",
+      "route": "/z9-review",
+      "title": "Z9 Review Node",
+      "description": "View review queue and feedback status",
+      "data_sources": ["z9_review_summary"],
+      "api_endpoints": ["/api/z9-review/summary"],
+      "required_permissions": [],
+      "forbidden_actions": [
+        "start_review",
+        "submit_review",
+        "approve_review",
+        "reject_review",
+        "modify_review_criteria"
+      ],
+      "states": {
+        "loading": {
+          "description": "Review data loading",
+          "ui": "loading_spinner",
+          "timeout_ms": 10000
+        },
+        "empty": {
+          "description": "No reviews in queue",
+          "ui": "empty_state",
+          "message": "No reviews pending. Review system is disabled by default."
+        },
+        "error": {
+          "description": "Failed to load review data",
+          "ui": "error_card",
+          "retry": true,
+          "retry_endpoint": "/api/z9-review/summary"
+        },
+        "degraded": {
+          "description": "Partial review data",
+          "ui": "degraded_badge",
+          "degraded_components": ["review_detail_panel"],
+          "remaining_components": ["review_list"]
+        },
+        "blocked": {
+          "description": "Review access blocked",
+          "ui": "blocked_overlay",
+          "reason": "Z9 review is view-only; blocked is a safety boundary placeholder"
+        },
+        "success": {
+          "description": "Review data loaded",
+          "ui": "success_indicator",
+          "data_schema": {
+            "type": "object",
+            "required": ["review_status", "queue_size"],
+            "properties": {
+              "review_status": {"type": "string"},
+              "queue_size": {"type": "integer"},
+              "reviews": {"type": "array"},
+              "review_enabled": {"const": false},
+              "readonly": {"const": true}
+            }
+          }
+        }
+      },
+      "fixture_payload": {
+        "review_status": "disabled_default",
+        "queue_size": 0,
+        "reviews": [],
+        "review_enabled": false,
+        "readonly": true
+      }
+    },
+    {
+      "page_id": "evidence_chain",
+      "route": "/evidence-chain",
+      "title": "Evidence Chain Viewer",
+      "description": "Full evidence chain traversal with hash verification",
+      "data_sources": ["evidence_chain_demo"],
+      "api_endpoints": ["/api/evidence-chain"],
+      "required_permissions": [],
+      "forbidden_actions": [
+        "modify_evidence",
+        "delete_evidence",
+        "inject_evidence",
+        "tamper_hash"
+      ],
+      "states": {
+        "loading": {
+          "description": "Evidence chain data loading",
+          "ui": "loading_spinner",
+          "timeout_ms": 15000
+        },
+        "empty": {
+          "description": "No evidence chain data",
+          "ui": "empty_state",
+          "message": "No evidence chain data available."
+        },
+        "error": {
+          "description": "Failed to load evidence chain",
+          "ui": "error_card",
+          "retry": true,
+          "retry_endpoint": "/api/evidence-chain"
+        },
+        "degraded": {
+          "description": "Partial evidence chain (hash verification unavailable)",
+          "ui": "degraded_badge",
+          "degraded_components": ["hash_verifier"],
+          "remaining_components": ["chain_viewer", "node_list"]
+        },
+        "blocked": {
+          "description": "Evidence chain access blocked",
+          "ui": "blocked_overlay",
+          "reason": "Evidence chain is view-only; blocked is a safety boundary placeholder"
+        },
+        "success": {
+          "description": "Evidence chain loaded and validated",
+          "ui": "success_indicator",
+          "data_schema": {
+            "type": "object",
+            "required": ["chain_id", "nodes", "links"],
+            "properties": {
+              "chain_id": {"type": "string"},
+              "nodes": {"type": "array"},
+              "links": {"type": "array"},
+              "readonly": {"const": true}
+            }
+          }
+        }
+      },
+      "fixture_payload": {
+        "chain_id": "demo-chain-001",
+        "nodes": [],
+        "links": [],
+        "readonly": true
+      }
+    },
+    {
+      "page_id": "run_state",
+      "route": "/run-state",
+      "title": "Run State Registry",
+      "description": "Pipeline run status, abort reasons, run history",
+      "data_sources": ["run_state_demo"],
+      "api_endpoints": ["/api/run-state"],
+      "required_permissions": [],
+      "forbidden_actions": [
+        "start_run",
+        "stop_run",
+        "abort_run",
+        "retry_run",
+        "modify_run_config"
+      ],
+      "states": {
+        "loading": {
+          "description": "Run state data loading",
+          "ui": "loading_spinner",
+          "timeout_ms": 10000
+        },
+        "empty": {
+          "description": "No pipeline runs recorded",
+          "ui": "empty_state",
+          "message": "No pipeline runs have been recorded."
+        },
+        "error": {
+          "description": "Failed to load run state",
+          "ui": "error_card",
+          "retry": true,
+          "retry_endpoint": "/api/run-state"
+        },
+        "degraded": {
+          "description": "Partial run state data",
+          "ui": "degraded_badge",
+          "degraded_components": ["run_detail_panel"],
+          "remaining_components": ["run_list", "state_summary"]
+        },
+        "blocked": {
+          "description": "Run state access blocked",
+          "ui": "blocked_overlay",
+          "reason": "Run state is view-only; blocked is a safety boundary placeholder"
+        },
+        "success": {
+          "description": "Run state loaded",
+          "ui": "success_indicator",
+          "data_schema": {
+            "type": "object",
+            "required": ["current_state", "pipeline_runs"],
+            "properties": {
+              "current_state": {"type": "string"},
+              "pipeline_runs": {"type": "array"},
+              "readonly": {"const": true}
+            }
+          }
+        }
+      },
+      "fixture_payload": {
+        "current_state": "idle",
+        "pipeline_runs": [],
+        "readonly": true
+      }
+    },
+    {
+      "page_id": "gate_state",
+      "route": "/gate-state",
+      "title": "Gate State Registry",
+      "description": "Gate pass/fail/pending matrix for all safety gates",
+      "data_sources": ["gate_state_demo"],
+      "api_endpoints": ["/api/gate-state"],
+      "required_permissions": [],
+      "forbidden_actions": [
+        "open_gate",
+        "close_gate",
+        "bypass_gate",
+        "modify_gate_rules"
+      ],
+      "states": {
+        "loading": {
+          "description": "Gate state data loading",
+          "ui": "loading_spinner",
+          "timeout_ms": 10000
+        },
+        "empty": {
+          "description": "No gates registered",
+          "ui": "empty_state",
+          "message": "No safety gates registered in the system."
+        },
+        "error": {
+          "description": "Failed to load gate state",
+          "ui": "error_card",
+          "retry": true,
+          "retry_endpoint": "/api/gate-state"
+        },
+        "degraded": {
+          "description": "Partial gate state data",
+          "ui": "degraded_badge",
+          "degraded_components": ["gate_detail_panel"],
+          "remaining_components": ["gate_matrix", "summary"]
+        },
+        "blocked": {
+          "description": "Gate state access blocked",
+          "ui": "blocked_overlay",
+          "reason": "Gate state is view-only; blocked is a safety boundary placeholder"
+        },
+        "success": {
+          "description": "Gate state loaded",
+          "ui": "success_indicator",
+          "data_schema": {
+            "type": "object",
+            "required": ["gates"],
+            "properties": {
+              "gates": {"type": "array"},
+              "summary": {"type": "object"},
+              "readonly": {"const": true}
+            }
+          }
+        }
+      },
+      "fixture_payload": {
+        "gates": [],
+        "summary": {"passed": 0, "failed": 0, "pending": 0, "blocked": 0},
+        "readonly": true
+      }
+    },
+    {
+      "page_id": "audit_trail",
+      "route": "/audit-trail",
+      "title": "Audit Trail",
+      "description": "Full audit trail of all actions, decisions, and timestamps",
+      "data_sources": ["audit_trail_demo"],
+      "api_endpoints": ["/api/audit-trail"],
+      "required_permissions": [],
+      "forbidden_actions": [
+        "modify_audit",
+        "delete_audit",
+        "redact_entry",
+        "purge_trail"
+      ],
+      "states": {
+        "loading": {
+          "description": "Audit trail data loading",
+          "ui": "loading_spinner",
+          "timeout_ms": 10000
+        },
+        "empty": {
+          "description": "No audit entries",
+          "ui": "empty_state",
+          "message": "No audit entries recorded yet."
+        },
+        "error": {
+          "description": "Failed to load audit trail",
+          "ui": "error_card",
+          "retry": true,
+          "retry_endpoint": "/api/audit-trail"
+        },
+        "degraded": {
+          "description": "Partial audit trail (history truncated)",
+          "ui": "degraded_badge",
+          "degraded_components": ["historical_entries"],
+          "remaining_components": ["recent_entries"]
+        },
+        "blocked": {
+          "description": "Audit trail access blocked",
+          "ui": "blocked_overlay",
+          "reason": "Audit trail is view-only; blocked is a safety boundary placeholder"
+        },
+        "success": {
+          "description": "Audit trail loaded",
+          "ui": "success_indicator",
+          "data_schema": {
+            "type": "object",
+            "required": ["entries", "total_count"],
+            "properties": {
+              "entries": {"type": "array"},
+              "total_count": {"type": "integer"},
+              "readonly": {"const": true}
+            }
+          }
+        }
+      },
+      "fixture_payload": {
+        "entries": [],
+        "total_count": 0,
+        "readonly": true
+      }
+    },
+    {
+      "page_id": "settings",
+      "route": "/settings",
+      "title": "Settings / Safety",
+      "description": "Permission matrix viewer, blocked actions list, safety boundary display",
+      "data_sources": ["auth/permission_matrix"],
+      "api_endpoints": ["/api/version"],
+      "required_permissions": [],
+      "forbidden_actions": [
+        "modify_permissions",
+        "enable_runtime",
+        "enable_production",
+        "enable_paper_trading",
+        "modify_safety_boundary",
+        "change_contract"
+      ],
+      "states": {
+        "loading": {
+          "description": "Settings data loading",
+          "ui": "loading_spinner",
+          "timeout_ms": 10000
+        },
+        "empty": {
+          "description": "No settings data",
+          "ui": "empty_state",
+          "message": "Settings data unavailable."
+        },
+        "error": {
+          "description": "Failed to load settings",
+          "ui": "error_card",
+          "retry": true,
+          "retry_endpoint": "/api/version"
+        },
+        "degraded": {
+          "description": "Partial settings data",
+          "ui": "degraded_badge",
+          "degraded_components": ["permission_matrix"],
+          "remaining_components": ["version_info", "safety_status"]
+        },
+        "blocked": {
+          "description": "Settings access blocked",
+          "ui": "blocked_overlay",
+          "reason": "Settings is view-only; blocked is a safety boundary placeholder"
+        },
+        "success": {
+          "description": "Settings loaded",
+          "ui": "success_indicator",
+          "data_schema": {
+            "type": "object",
+            "required": ["version", "contract_version", "seal"],
+            "properties": {
+              "version": {"type": "string"},
+              "contract_version": {"type": "string"},
+              "seal": {"type": "string"},
+              "readonly": {"const": true}
+            }
+          }
+        }
+      },
+      "fixture_payload": {
+        "version": "v0.1.0-rc",
+        "contract_version": "v1",
+        "seal": "A1_CONTRACT_FREEZE",
+        "readonly": true,
+        "safety_flags": {
+          "runtime_enabled": false,
+          "production_enabled": false,
+          "paper_trading_allowed": false,
+          "broker_action_allowed": false,
+          "mutation_allowed": false,
+          "all_skills_disabled_default": true
+        }
+      }
+    }
+  ],
+  "global_forbidden_fields": [
+    "buy", "sell", "order", "position",
+    "broker_action", "runtime_enable", "production_enable",
+    "paper_trading_start", "alpha_claim"
+  ]
+}

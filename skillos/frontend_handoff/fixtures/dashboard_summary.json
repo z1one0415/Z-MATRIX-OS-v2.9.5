@@ -1,0 +1,43 @@
+{
+  "dashboard_summary": {
+    "system": "Z-MATRIX-OS SkillOS v2.9.6-draft",
+    "timestamp_utc": "2026-06-12T04:03:00Z",
+    "last_run_utc": "2026-06-11T15:00:00Z",
+    "last_run_elapsed_sec": 124.7,
+    "status": {
+      "overall": "NOMINAL",
+      "health": "GREEN",
+      "degraded_services": []
+    },
+    "counts": {
+      "skills": 18,
+      "factors": 23,
+      "graphs": 7,
+      "gates": 21,
+      "gates_passed": 21,
+      "gates_blocked": 0,
+      "capabilities_ready": 14,
+      "capabilities_disabled": 3,
+      "capabilities_blocked": 1
+    },
+    "pipeline_runs": {
+      "z_g02_sensors": "COMPLETED",
+      "z_g03_intraday": "COMPLETED",
+      "z_g06_review": "COMPLETED",
+      "z_g08_narrative": "COMPLETED",
+      "z_g14_monthly_brd": "SCHEDULED"
+    },
+    "matrix_status": {
+      "b_matrix": "READY",
+      "d_matrix": "READY",
+      "r_matrix": "READY"
+    },
+    "indicator_lights": {
+      "truth_gate": "GREEN",
+      "data_pipeline": "GREEN",
+      "memory_bank": "GREEN",
+      "event_store": "GREEN",
+      "z9_calibration": "AMBER"
+    }
+  }
+}

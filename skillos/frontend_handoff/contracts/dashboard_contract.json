@@ -1,0 +1,163 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "z-skillos:frontend-handoff:dashboard-contract:v1",
+  "title": "Z-SkillOS Dashboard Data Contract",
+  "description": "Dashboard summary cards, gate status indicators, recent activity feed. All read-only.",
+  "version": "v0.1.0-rc",
+  "seal": "A1_CONTRACT_FREEZE",
+  "dashboard_summary": {
+    "title": "DashboardSummary",
+    "type": "object",
+    "required": ["system_health", "gate_summary", "component_status", "recent_activity", "readonly"],
+    "properties": {
+      "system_health": {
+        "type": "object",
+        "required": ["status", "uptime_seconds"],
+        "properties": {
+          "status": {"type": "string", "enum": ["ok", "degraded", "error"]},
+          "uptime_seconds": {"type": "number"},
+          "version": {"type": "string"},
+          "seal": {"type": "string"}
+        }
+      },
+      "gate_summary": {
+        "type": "object",
+        "description": "Aggregate gate pass/fail/pending/blocked counts",
+        "required": ["passed", "failed", "pending", "blocked"],
+        "properties": {
+          "passed": {"type": "integer", "minimum": 0},
+          "failed": {"type": "integer", "minimum": 0},
+          "pending": {"type": "integer", "minimum": 0},
+          "blocked": {"type": "integer", "minimum": 0}
+        }
+      },
+      "component_status": {
+        "type": "object",
+        "description": "Status of each Z-SkillOS component",
+        "required": [
+          "factor_library",
+          "composition_graph",
+          "research_report",
+          "z9_review",
+          "evidence_chain",
+          "run_state",
+          "gate_state",
+          "audit_trail"
+        ],
+        "properties": {
+          "factor_library": {"$ref": "#/definitions/component_status_value"},
+          "composition_graph": {"$ref": "#/definitions/component_status_value"},
+          "research_report": {"$ref": "#/definitions/component_status_value"},
+          "z9_review": {"$ref": "#/definitions/component_status_value"},
+          "evidence_chain": {"$ref": "#/definitions/component_status_value"},
+          "run_state": {"$ref": "#/definitions/component_status_value"},
+          "gate_state": {"$ref": "#/definitions/component_status_value"},
+          "audit_trail": {"$ref": "#/definitions/component_status_value"}
+        }
+      },
+      "recent_activity": {
+        "type": "array",
+        "description": "Most recent activity feed entries (max 20)",
+        "maxItems": 20,
+        "items": {"$ref": "#/definitions/activity_entry"}
+      },
+      "readonly": {"const": true}
+    }
+  },
+  "summary_cards": {
+    "description": "Dashboard summary cards shown at top of home page",
+    "cards": [
+      {
+        "card_id": "system_health_card",
+        "title": "System Health",
+        "icon": "heartbeat",
+        "data_field": "system_health.status",
+        "states": {
+          "ok": {"color": "green", "label": "All Systems Operational"},
+          "degraded": {"color": "amber", "label": "Degraded"},
+          "error": {"color": "red", "label": "System Error"}
+        }
+      },
+      {
+        "card_id": "gate_status_card",
+        "title": "Gate Status",
+        "icon": "shield",
+        "data_field": "gate_summary",
+        "display": {
+          "type": "summary_table",
+          "columns": ["passed", "failed", "pending", "blocked"]
+        },
+        "states": {
+          "ok": {"condition": "failed == 0 && blocked == 0", "color": "green"},
+          "warning": {"condition": "failed > 0 || pending > 3", "color": "amber"},
+          "critical": {"condition": "blocked > 0", "color": "red"}
+        }
+      },
+      {
+        "card_id": "component_overview_card",
+        "title": "Component Status",
+        "icon": "cube",
+        "data_field": "component_status",
+        "display": {
+          "type": "status_grid",
+          "columns": ["component", "status"]
+        },
+        "states": {
+          "ok": {"condition": "all active components ok", "color": "green"},
+          "degraded": {"condition": "any component degraded", "color": "amber"},
+          "error": {"condition": "any component error", "color": "red"}
+        }
+      },
+      {
+        "card_id": "activity_feed_card",
+        "title": "Recent Activity",
+        "icon": "activity",
+        "data_field": "recent_activity",
+        "display": {
+          "type": "feed_list",
+          "max_entries": 20
+        }
+      }
+    ]
+  },
+  "gate_status_indicators": {
+    "description": "Visual indicators for individual gate statuses",
+    "indicators": {
+      "passed": {"icon": "check_circle", "color": "green", "label": "Passed"},
+      "failed": {"icon": "x_circle", "color": "red", "label": "Failed"},
+      "pending": {"icon": "clock", "color": "amber", "label": "Pending"},
+      "blocked": {"icon": "shield_off", "color": "red", "label": "Blocked"},
+      "skipped": {"icon": "skip_forward", "color": "grey", "label": "Skipped"}
+    }
+  },
+  "recent_activity_feed": {
+    "description": "Chronological feed of system events (max 20)",
+    "max_entries": 20,
+    "entry_schema": {"$ref": "#/definitions/activity_entry"}
+  },
+  "definitions": {
+    "component_status_value": {
+      "type": "string",
+      "enum": ["ok", "degraded", "error", "disabled_default", "blocked"]
+    },
+    "activity_entry": {
+      "type": "object",
+      "required": ["id", "type", "message", "timestamp"],
+      "properties": {
+        "id": {"type": "string"},
+        "type": {"type": "string", "enum": [
+          "gate_check",
+          "pipeline_run",
+          "component_status_change",
+          "audit_event",
+          "seal_change",
+          "system_event"
+        ]},
+        "message": {"type": "string"},
+        "timestamp": {"type": "string", "format": "date-time"},
+        "actor": {"type": "string"},
+        "details": {"type": "object"}
+      }
+    }
+  }
+}

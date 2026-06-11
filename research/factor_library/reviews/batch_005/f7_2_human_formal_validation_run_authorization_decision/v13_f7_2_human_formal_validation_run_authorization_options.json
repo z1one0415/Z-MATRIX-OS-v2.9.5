@@ -1,0 +1,42 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-HUMAN-FORMAL-VALIDATION-RUN-OPTIONS",
+  "status": "OPTIONS_DEFINED",
+  "options": [
+    {
+      "decision": "APPROVE_F7_2_FORMAL_VALIDATION_RUN",
+      "meaning": "Authorize formal validation run (readonly)",
+      "allowed_next_step": "F7_2_FORMAL_VALIDATION_RUN_EXECUTION_READONLY_ONLY",
+      "still_forbidden": [
+        "promotion",
+        "alpha claim",
+        "runner",
+        "paper trading",
+        "production",
+        "broker",
+        "real_trade",
+        "buy/sell/order/position",
+        "automatic trading",
+        "F8 advancement"
+      ],
+      "risk_ack_required": true
+    },
+    {
+      "decision": "REJECT_F7_2_FORMAL_VALIDATION_RUN",
+      "meaning": "Reject formal validation run",
+      "allowed_next_step": "F7_2_EXECUTION_PLAN_REVISION_OR_CLOSEOUT",
+      "still_forbidden": [
+        "all gates still blocked"
+      ],
+      "risk_ack_required": false
+    },
+    {
+      "decision": "REQUEST_F7_2_FINAL_EXECUTION_AUTHORIZATION_HARDENING",
+      "meaning": "Request hardening before allowing run",
+      "allowed_next_step": "F7_2_FINAL_EXECUTION_AUTHORIZATION_HARDENING",
+      "still_forbidden": [
+        "same restrictions apply until re-approval"
+      ],
+      "risk_ack_required": false
+    }
+  ]
+}

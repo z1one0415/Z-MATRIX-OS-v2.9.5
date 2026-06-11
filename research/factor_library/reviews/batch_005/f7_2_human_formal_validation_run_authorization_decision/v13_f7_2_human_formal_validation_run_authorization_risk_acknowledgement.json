@@ -1,0 +1,31 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-RISK-ACKNOWLEDGEMENT",
+  "status": "RISK_ACK_REQUIRED_BEFORE_RUN",
+  "base_commit": "2448124",
+  "risk_items": [
+    "formal validation may fail",
+    "formal IC may be weak or unstable",
+    "rank IC may be unstable",
+    "factor spread may not be monotonic",
+    "factor correlation may be high",
+    "industry bias may be material",
+    "turnover cost may be high",
+    "coverage may be incomplete",
+    "missing data may exceed threshold",
+    "U475 sample may reveal decay",
+    "pipeline-bound factors may fail standalone interpretation",
+    "formal validation result does not imply alpha claim",
+    "formal validation result does not imply promotion",
+    "formal validation result does not imply runner enablement",
+    "formal validation result does not imply paper trading permission"
+  ],
+  "must_acknowledge_before_approval": true,
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "execution_allowed": false,
+  "runner_enabled": false,
+  "paper_trading_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

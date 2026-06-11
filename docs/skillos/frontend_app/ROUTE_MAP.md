@@ -12,7 +12,7 @@
 | 8 | `/run-state` | run_state | Run State Registry | `/api/run-state` |
 | 9 | `/gate-state` | gate_state | Gate State Registry | `/api/gate-state` |
 | 10 | `/audit-trail` | audit_trail | Audit Trail | `/api/audit-trail` |
-| 11 | `/safety-boundary` | settings | Settings / Safety | `/api/version` |
+| 11 | `/safety-boundary` | safety_boundary | Safety Boundary | `/api/version` |
 
 ## Breadcrumb Rules
 

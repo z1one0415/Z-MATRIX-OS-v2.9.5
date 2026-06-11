@@ -1,0 +1,38 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-HORIZON-INTERPRETATION-REVIEW",
+  "horizons": [
+    {
+      "horizon": "5D",
+      "availability": "AVAILABLE",
+      "factor_count_covered": 23,
+      "metric_coverage": "FULL",
+      "general_strengths": "Stronger IC signal at 5D for m",
+      "general_weaknesses": "",
+      "interpretation": "Diagnostic only - not a trading cycle recommendation",
+      "risk_flags": [],
+      "diagnostic_only": true
+    },
+    {
+      "horizon": "20D",
+      "availability": "AVAILABLE",
+      "factor_count_covered": 23,
+      "metric_coverage": "FULL",
+      "general_strengths": "20D results consistent with 5D",
+      "general_weaknesses": "",
+      "interpretation": "Diagnostic only - not a trading cycle recommendation",
+      "risk_flags": [],
+      "diagnostic_only": true
+    },
+    {
+      "horizon": "60D",
+      "availability": "OPTIONAL_NOT_AVAILABLE",
+      "factor_count_covered": 0,
+      "metric_coverage": "FULL",
+      "general_strengths": "Not computed - insufficient sa",
+      "general_weaknesses": "Optional horizon not computed",
+      "interpretation": "Diagnostic only - not a trading cycle recommendation",
+      "risk_flags": [],
+      "diagnostic_only": true
+    }
+  ]
+}

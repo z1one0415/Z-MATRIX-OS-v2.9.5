@@ -1,0 +1,36 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-VALIDATION-RESULT-SNAPSHOT-FOR-INTERPRETATION",
+  "status": "SNAPSHOT_BUILT_FROM_READONLY_RESULT_ARTIFACTS",
+  "source_commit": "ea80ff9",
+  "factor_count": 23,
+  "horizons": [
+    "5D",
+    "20D"
+  ],
+  "metric_tables_read": [
+    "ic_table",
+    "rank_ic_table",
+    "hit_rate_table",
+    "bucket_spread_table",
+    "turnover_table",
+    "coverage_table",
+    "correlation_matrix",
+    "industry_bias_table",
+    "liquidity_sensitivity_table",
+    "regime_split_table",
+    "stability_decay_table"
+  ],
+  "factor_summary_read": true,
+  "result_audit_read": true,
+  "semantic_patch_read": true,
+  "metrics_recalculated": false,
+  "result_artifacts_modified": false,
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "execution_allowed": false,
+  "runner_enabled": false,
+  "paper_trading_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

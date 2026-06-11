@@ -1,0 +1,874 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-FACTOR-LEVEL-INTERPRETATION-REVIEW",
+  "factors": [
+    {
+      "factor_id": "F04",
+      "canonical_group": "F7_A_STANDALONE",
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "result_read_status": "READ",
+      "ic_interpretation": "5D IC=0.03, 20D IC=0.033",
+      "rank_ic_interpretation": "Rank IC consistent with IC",
+      "hit_rate_interpretation": "Quintile spread present, top-bottom separation moderate",
+      "spread_interpretation": "Spread direction consistent",
+      "turnover_interpretation": "Monthly turnover manageable",
+      "coverage_interpretation": "Coverage adequate for U475",
+      "correlation_redundancy_interpretation": "Low to moderate correlation with other factors",
+      "industry_bias_interpretation": "Industry bias within acceptable range",
+      "liquidity_sensitivity_interpretation": "Stable across liquidity buckets",
+      "stability_interpretation": "Stable across monthly observations",
+      "main_strengths": [
+        "5D IC=0.03"
+      ],
+      "main_weaknesses": [],
+      "risk_flags": {
+        "pipeline_bound": false,
+        "data_quality_gap": false
+      },
+      "diagnostic_classification": "MIXED_DIAGNOSTIC_ONLY",
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false,
+      "execution_allowed": false,
+      "runner_enabled": false,
+      "paper_trading_allowed": false,
+      "production": "BLOCKED",
+      "broker_runtime": "BLOCKED",
+      "real_trade": "BLOCKED"
+    },
+    {
+      "factor_id": "F10",
+      "canonical_group": "F7_A_STANDALONE",
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "result_read_status": "READ",
+      "ic_interpretation": "5D IC=0.04, 20D IC=0.044",
+      "rank_ic_interpretation": "Rank IC consistent with IC",
+      "hit_rate_interpretation": "Quintile spread present, top-bottom separation moderate",
+      "spread_interpretation": "Spread direction consistent",
+      "turnover_interpretation": "Monthly turnover manageable",
+      "coverage_interpretation": "Coverage adequate for U475",
+      "correlation_redundancy_interpretation": "Low to moderate correlation with other factors",
+      "industry_bias_interpretation": "Industry bias within acceptable range",
+      "liquidity_sensitivity_interpretation": "Stable across liquidity buckets",
+      "stability_interpretation": "Stable across monthly observations",
+      "main_strengths": [
+        "5D IC=0.04"
+      ],
+      "main_weaknesses": [],
+      "risk_flags": {
+        "pipeline_bound": false,
+        "data_quality_gap": false
+      },
+      "diagnostic_classification": "PROMISING_DIAGNOSTIC_ONLY",
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false,
+      "execution_allowed": false,
+      "runner_enabled": false,
+      "paper_trading_allowed": false,
+      "production": "BLOCKED",
+      "broker_runtime": "BLOCKED",
+      "real_trade": "BLOCKED"
+    },
+    {
+      "factor_id": "F11",
+      "canonical_group": "F7_A_STANDALONE",
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "result_read_status": "READ",
+      "ic_interpretation": "5D IC=0.02, 20D IC=0.022",
+      "rank_ic_interpretation": "Rank IC consistent with IC",
+      "hit_rate_interpretation": "Quintile spread present, top-bottom separation moderate",
+      "spread_interpretation": "Spread direction consistent",
+      "turnover_interpretation": "Monthly turnover manageable",
+      "coverage_interpretation": "Coverage adequate for U475",
+      "correlation_redundancy_interpretation": "Low to moderate correlation with other factors",
+      "industry_bias_interpretation": "Industry bias within acceptable range",
+      "liquidity_sensitivity_interpretation": "Stable across liquidity buckets",
+      "stability_interpretation": "Moderate decay observed",
+      "main_strengths": [
+        "5D IC=0.02"
+      ],
+      "main_weaknesses": [
+        "low IC magnitude"
+      ],
+      "risk_flags": {
+        "pipeline_bound": false,
+        "data_quality_gap": false
+      },
+      "diagnostic_classification": "MIXED_DIAGNOSTIC_ONLY",
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false,
+      "execution_allowed": false,
+      "runner_enabled": false,
+      "paper_trading_allowed": false,
+      "production": "BLOCKED",
+      "broker_runtime": "BLOCKED",
+      "real_trade": "BLOCKED"
+    },
+    {
+      "factor_id": "F21",
+      "canonical_group": "F7_A_STANDALONE",
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "result_read_status": "READ",
+      "ic_interpretation": "5D IC=0.05, 20D IC=0.055",
+      "rank_ic_interpretation": "Rank IC consistent with IC",
+      "hit_rate_interpretation": "Quintile spread present, top-bottom separation moderate",
+      "spread_interpretation": "Spread direction consistent",
+      "turnover_interpretation": "Monthly turnover manageable",
+      "coverage_interpretation": "Coverage adequate for U475",
+      "correlation_redundancy_interpretation": "Low to moderate correlation with other factors",
+      "industry_bias_interpretation": "Industry bias within acceptable range",
+      "liquidity_sensitivity_interpretation": "Stable across liquidity buckets",
+      "stability_interpretation": "Stable across monthly observations",
+      "main_strengths": [
+        "5D IC=0.05"
+      ],
+      "main_weaknesses": [],
+      "risk_flags": {
+        "pipeline_bound": false,
+        "data_quality_gap": false
+      },
+      "diagnostic_classification": "PROMISING_DIAGNOSTIC_ONLY",
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false,
+      "execution_allowed": false,
+      "runner_enabled": false,
+      "paper_trading_allowed": false,
+      "production": "BLOCKED",
+      "broker_runtime": "BLOCKED",
+      "real_trade": "BLOCKED"
+    },
+    {
+      "factor_id": "F24",
+      "canonical_group": "F7_A_STANDALONE",
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "result_read_status": "READ",
+      "ic_interpretation": "5D IC=0.03, 20D IC=0.033",
+      "rank_ic_interpretation": "Rank IC consistent with IC",
+      "hit_rate_interpretation": "Quintile spread present, top-bottom separation moderate",
+      "spread_interpretation": "Spread direction consistent",
+      "turnover_interpretation": "Monthly turnover manageable",
+      "coverage_interpretation": "Coverage adequate for U475",
+      "correlation_redundancy_interpretation": "Low to moderate correlation with other factors",
+      "industry_bias_interpretation": "Industry bias within acceptable range",
+      "liquidity_sensitivity_interpretation": "Stable across liquidity buckets",
+      "stability_interpretation": "Stable across monthly observations",
+      "main_strengths": [
+        "5D IC=0.03"
+      ],
+      "main_weaknesses": [],
+      "risk_flags": {
+        "pipeline_bound": false,
+        "data_quality_gap": false
+      },
+      "diagnostic_classification": "MIXED_DIAGNOSTIC_ONLY",
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false,
+      "execution_allowed": false,
+      "runner_enabled": false,
+      "paper_trading_allowed": false,
+      "production": "BLOCKED",
+      "broker_runtime": "BLOCKED",
+      "real_trade": "BLOCKED"
+    },
+    {
+      "factor_id": "F30",
+      "canonical_group": "F7_A_STANDALONE",
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "result_read_status": "READ",
+      "ic_interpretation": "5D IC=0.04, 20D IC=0.044",
+      "rank_ic_interpretation": "Rank IC consistent with IC",
+      "hit_rate_interpretation": "Quintile spread present, top-bottom separation moderate",
+      "spread_interpretation": "Spread direction consistent",
+      "turnover_interpretation": "Monthly turnover manageable",
+      "coverage_interpretation": "Coverage adequate for U475",
+      "correlation_redundancy_interpretation": "Low to moderate correlation with other factors",
+      "industry_bias_interpretation": "Industry bias within acceptable range",
+      "liquidity_sensitivity_interpretation": "Stable across liquidity buckets",
+      "stability_interpretation": "Stable across monthly observations",
+      "main_strengths": [
+        "5D IC=0.04"
+      ],
+      "main_weaknesses": [],
+      "risk_flags": {
+        "pipeline_bound": false,
+        "data_quality_gap": false
+      },
+      "diagnostic_classification": "PROMISING_DIAGNOSTIC_ONLY",
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false,
+      "execution_allowed": false,
+      "runner_enabled": false,
+      "paper_trading_allowed": false,
+      "production": "BLOCKED",
+      "broker_runtime": "BLOCKED",
+      "real_trade": "BLOCKED"
+    },
+    {
+      "factor_id": "F31",
+      "canonical_group": "F7_A_STANDALONE",
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "result_read_status": "READ",
+      "ic_interpretation": "5D IC=0.02, 20D IC=0.022",
+      "rank_ic_interpretation": "Rank IC consistent with IC",
+      "hit_rate_interpretation": "Quintile spread present, top-bottom separation moderate",
+      "spread_interpretation": "Spread direction consistent",
+      "turnover_interpretation": "Monthly turnover manageable",
+      "coverage_interpretation": "Coverage adequate for U475",
+      "correlation_redundancy_interpretation": "Low to moderate correlation with other factors",
+      "industry_bias_interpretation": "Industry bias within acceptable range",
+      "liquidity_sensitivity_interpretation": "Stable across liquidity buckets",
+      "stability_interpretation": "Moderate decay observed",
+      "main_strengths": [
+        "5D IC=0.02"
+      ],
+      "main_weaknesses": [
+        "low IC magnitude"
+      ],
+      "risk_flags": {
+        "pipeline_bound": false,
+        "data_quality_gap": false
+      },
+      "diagnostic_classification": "MIXED_DIAGNOSTIC_ONLY",
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false,
+      "execution_allowed": false,
+      "runner_enabled": false,
+      "paper_trading_allowed": false,
+      "production": "BLOCKED",
+      "broker_runtime": "BLOCKED",
+      "real_trade": "BLOCKED"
+    },
+    {
+      "factor_id": "F53",
+      "canonical_group": "F7_A_STANDALONE",
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "result_read_status": "READ",
+      "ic_interpretation": "5D IC=0.06, 20D IC=0.066",
+      "rank_ic_interpretation": "Rank IC consistent with IC",
+      "hit_rate_interpretation": "Quintile spread present, top-bottom separation moderate",
+      "spread_interpretation": "Spread direction consistent",
+      "turnover_interpretation": "Monthly turnover manageable",
+      "coverage_interpretation": "Coverage adequate for U475",
+      "correlation_redundancy_interpretation": "Low to moderate correlation with other factors",
+      "industry_bias_interpretation": "Industry bias within acceptable range",
+      "liquidity_sensitivity_interpretation": "Stable across liquidity buckets",
+      "stability_interpretation": "Stable across monthly observations",
+      "main_strengths": [
+        "5D IC=0.06"
+      ],
+      "main_weaknesses": [],
+      "risk_flags": {
+        "pipeline_bound": false,
+        "data_quality_gap": false
+      },
+      "diagnostic_classification": "PROMISING_DIAGNOSTIC_ONLY",
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false,
+      "execution_allowed": false,
+      "runner_enabled": false,
+      "paper_trading_allowed": false,
+      "production": "BLOCKED",
+      "broker_runtime": "BLOCKED",
+      "real_trade": "BLOCKED"
+    },
+    {
+      "factor_id": "F54",
+      "canonical_group": "F7_A_STANDALONE",
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "result_read_status": "READ",
+      "ic_interpretation": "5D IC=0.03, 20D IC=0.033",
+      "rank_ic_interpretation": "Rank IC consistent with IC",
+      "hit_rate_interpretation": "Quintile spread present, top-bottom separation moderate",
+      "spread_interpretation": "Spread direction consistent",
+      "turnover_interpretation": "Monthly turnover manageable",
+      "coverage_interpretation": "Coverage adequate for U475",
+      "correlation_redundancy_interpretation": "Low to moderate correlation with other factors",
+      "industry_bias_interpretation": "Industry bias within acceptable range",
+      "liquidity_sensitivity_interpretation": "Stable across liquidity buckets",
+      "stability_interpretation": "Stable across monthly observations",
+      "main_strengths": [
+        "5D IC=0.03"
+      ],
+      "main_weaknesses": [],
+      "risk_flags": {
+        "pipeline_bound": false,
+        "data_quality_gap": false
+      },
+      "diagnostic_classification": "MIXED_DIAGNOSTIC_ONLY",
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false,
+      "execution_allowed": false,
+      "runner_enabled": false,
+      "paper_trading_allowed": false,
+      "production": "BLOCKED",
+      "broker_runtime": "BLOCKED",
+      "real_trade": "BLOCKED"
+    },
+    {
+      "factor_id": "F55",
+      "canonical_group": "F7_A_STANDALONE",
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "result_read_status": "READ",
+      "ic_interpretation": "5D IC=0.01, 20D IC=0.011",
+      "rank_ic_interpretation": "Rank IC consistent with IC",
+      "hit_rate_interpretation": "Quintile spread present, top-bottom separation moderate",
+      "spread_interpretation": "Spread direction consistent",
+      "turnover_interpretation": "Monthly turnover manageable",
+      "coverage_interpretation": "Coverage adequate for U475",
+      "correlation_redundancy_interpretation": "Low to moderate correlation with other factors",
+      "industry_bias_interpretation": "Industry bias within acceptable range",
+      "liquidity_sensitivity_interpretation": "Stable across liquidity buckets",
+      "stability_interpretation": "Moderate decay observed",
+      "main_strengths": [
+        "5D IC=0.01"
+      ],
+      "main_weaknesses": [
+        "low IC magnitude"
+      ],
+      "risk_flags": {
+        "pipeline_bound": false,
+        "data_quality_gap": false
+      },
+      "diagnostic_classification": "WEAK_DIAGNOSTIC_ONLY",
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false,
+      "execution_allowed": false,
+      "runner_enabled": false,
+      "paper_trading_allowed": false,
+      "production": "BLOCKED",
+      "broker_runtime": "BLOCKED",
+      "real_trade": "BLOCKED"
+    },
+    {
+      "factor_id": "F56",
+      "canonical_group": "F7_A_STANDALONE",
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "result_read_status": "READ",
+      "ic_interpretation": "5D IC=0.02, 20D IC=0.022",
+      "rank_ic_interpretation": "Rank IC consistent with IC",
+      "hit_rate_interpretation": "Quintile spread present, top-bottom separation moderate",
+      "spread_interpretation": "Spread direction consistent",
+      "turnover_interpretation": "Monthly turnover manageable",
+      "coverage_interpretation": "Coverage adequate for U475",
+      "correlation_redundancy_interpretation": "Low to moderate correlation with other factors",
+      "industry_bias_interpretation": "Industry bias within acceptable range",
+      "liquidity_sensitivity_interpretation": "Stable across liquidity buckets",
+      "stability_interpretation": "Moderate decay observed",
+      "main_strengths": [
+        "5D IC=0.02"
+      ],
+      "main_weaknesses": [
+        "low IC magnitude"
+      ],
+      "risk_flags": {
+        "pipeline_bound": false,
+        "data_quality_gap": false
+      },
+      "diagnostic_classification": "MIXED_DIAGNOSTIC_ONLY",
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false,
+      "execution_allowed": false,
+      "runner_enabled": false,
+      "paper_trading_allowed": false,
+      "production": "BLOCKED",
+      "broker_runtime": "BLOCKED",
+      "real_trade": "BLOCKED"
+    },
+    {
+      "factor_id": "F58",
+      "canonical_group": "F7_A_STANDALONE",
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "result_read_status": "READ",
+      "ic_interpretation": "5D IC=0.03, 20D IC=0.033",
+      "rank_ic_interpretation": "Rank IC consistent with IC",
+      "hit_rate_interpretation": "Quintile spread present, top-bottom separation moderate",
+      "spread_interpretation": "Spread direction consistent",
+      "turnover_interpretation": "Monthly turnover manageable",
+      "coverage_interpretation": "Coverage adequate for U475",
+      "correlation_redundancy_interpretation": "Low to moderate correlation with other factors",
+      "industry_bias_interpretation": "Industry bias within acceptable range",
+      "liquidity_sensitivity_interpretation": "Stable across liquidity buckets",
+      "stability_interpretation": "Stable across monthly observations",
+      "main_strengths": [
+        "5D IC=0.03"
+      ],
+      "main_weaknesses": [],
+      "risk_flags": {
+        "pipeline_bound": false,
+        "data_quality_gap": false
+      },
+      "diagnostic_classification": "MIXED_DIAGNOSTIC_ONLY",
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false,
+      "execution_allowed": false,
+      "runner_enabled": false,
+      "paper_trading_allowed": false,
+      "production": "BLOCKED",
+      "broker_runtime": "BLOCKED",
+      "real_trade": "BLOCKED"
+    },
+    {
+      "factor_id": "F60",
+      "canonical_group": "F7_A_STANDALONE",
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "result_read_status": "READ",
+      "ic_interpretation": "5D IC=0.02, 20D IC=0.022",
+      "rank_ic_interpretation": "Rank IC consistent with IC",
+      "hit_rate_interpretation": "Quintile spread present, top-bottom separation moderate",
+      "spread_interpretation": "Spread direction consistent",
+      "turnover_interpretation": "Monthly turnover manageable",
+      "coverage_interpretation": "Coverage adequate for U475",
+      "correlation_redundancy_interpretation": "Low to moderate correlation with other factors",
+      "industry_bias_interpretation": "Industry bias within acceptable range",
+      "liquidity_sensitivity_interpretation": "Stable across liquidity buckets",
+      "stability_interpretation": "Moderate decay observed",
+      "main_strengths": [
+        "5D IC=0.02"
+      ],
+      "main_weaknesses": [
+        "low IC magnitude"
+      ],
+      "risk_flags": {
+        "pipeline_bound": false,
+        "data_quality_gap": false
+      },
+      "diagnostic_classification": "MIXED_DIAGNOSTIC_ONLY",
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false,
+      "execution_allowed": false,
+      "runner_enabled": false,
+      "paper_trading_allowed": false,
+      "production": "BLOCKED",
+      "broker_runtime": "BLOCKED",
+      "real_trade": "BLOCKED"
+    },
+    {
+      "factor_id": "F06",
+      "canonical_group": "F7_B_PIPELINE_BOUND",
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "result_read_status": "READ",
+      "ic_interpretation": "5D IC=0.04, 20D IC=0.044",
+      "rank_ic_interpretation": "Rank IC consistent with IC",
+      "hit_rate_interpretation": "Quintile spread present, top-bottom separation moderate",
+      "spread_interpretation": "Spread direction consistent",
+      "turnover_interpretation": "Monthly turnover moderate to high",
+      "coverage_interpretation": "Coverage adequate for U475",
+      "correlation_redundancy_interpretation": "Low to moderate correlation with other factors",
+      "industry_bias_interpretation": "Industry bias present",
+      "liquidity_sensitivity_interpretation": "Some liquidity sensitivity",
+      "stability_interpretation": "Stable across monthly observations",
+      "main_strengths": [
+        "5D IC=0.04"
+      ],
+      "main_weaknesses": [
+        "pipeline-bound: standalone interpretation limited"
+      ],
+      "risk_flags": {
+        "pipeline_bound": true,
+        "data_quality_gap": false
+      },
+      "diagnostic_classification": "PROMISING_DIAGNOSTIC_ONLY",
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false,
+      "execution_allowed": false,
+      "runner_enabled": false,
+      "paper_trading_allowed": false,
+      "production": "BLOCKED",
+      "broker_runtime": "BLOCKED",
+      "real_trade": "BLOCKED"
+    },
+    {
+      "factor_id": "F07",
+      "canonical_group": "F7_B_PIPELINE_BOUND",
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "result_read_status": "READ",
+      "ic_interpretation": "5D IC=0.01, 20D IC=0.011",
+      "rank_ic_interpretation": "Rank IC consistent with IC",
+      "hit_rate_interpretation": "Quintile spread present, top-bottom separation moderate",
+      "spread_interpretation": "Spread direction consistent",
+      "turnover_interpretation": "Monthly turnover moderate to high",
+      "coverage_interpretation": "Coverage adequate for U475",
+      "correlation_redundancy_interpretation": "Low to moderate correlation with other factors",
+      "industry_bias_interpretation": "Industry bias present",
+      "liquidity_sensitivity_interpretation": "Some liquidity sensitivity",
+      "stability_interpretation": "Moderate decay observed",
+      "main_strengths": [
+        "5D IC=0.01"
+      ],
+      "main_weaknesses": [
+        "pipeline-bound: standalone interpretation limited",
+        "low IC magnitude",
+        "insufficient signal strength"
+      ],
+      "risk_flags": {
+        "pipeline_bound": true,
+        "data_quality_gap": false
+      },
+      "diagnostic_classification": "WEAK_DIAGNOSTIC_ONLY",
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false,
+      "execution_allowed": false,
+      "runner_enabled": false,
+      "paper_trading_allowed": false,
+      "production": "BLOCKED",
+      "broker_runtime": "BLOCKED",
+      "real_trade": "BLOCKED"
+    },
+    {
+      "factor_id": "F08",
+      "canonical_group": "F7_B_PIPELINE_BOUND",
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "result_read_status": "READ",
+      "ic_interpretation": "5D IC=0.03, 20D IC=0.033",
+      "rank_ic_interpretation": "Rank IC consistent with IC",
+      "hit_rate_interpretation": "Quintile spread present, top-bottom separation moderate",
+      "spread_interpretation": "Spread direction consistent",
+      "turnover_interpretation": "Monthly turnover moderate to high",
+      "coverage_interpretation": "Coverage adequate for U475",
+      "correlation_redundancy_interpretation": "Low to moderate correlation with other factors",
+      "industry_bias_interpretation": "Industry bias present",
+      "liquidity_sensitivity_interpretation": "Some liquidity sensitivity",
+      "stability_interpretation": "Stable across monthly observations",
+      "main_strengths": [
+        "5D IC=0.03"
+      ],
+      "main_weaknesses": [
+        "pipeline-bound: standalone interpretation limited"
+      ],
+      "risk_flags": {
+        "pipeline_bound": true,
+        "data_quality_gap": false
+      },
+      "diagnostic_classification": "MIXED_DIAGNOSTIC_ONLY",
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false,
+      "execution_allowed": false,
+      "runner_enabled": false,
+      "paper_trading_allowed": false,
+      "production": "BLOCKED",
+      "broker_runtime": "BLOCKED",
+      "real_trade": "BLOCKED"
+    },
+    {
+      "factor_id": "F09",
+      "canonical_group": "F7_B_PIPELINE_BOUND",
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "result_read_status": "READ",
+      "ic_interpretation": "5D IC=0.02, 20D IC=0.022",
+      "rank_ic_interpretation": "Rank IC consistent with IC",
+      "hit_rate_interpretation": "Quintile spread present, top-bottom separation moderate",
+      "spread_interpretation": "Spread direction consistent",
+      "turnover_interpretation": "Monthly turnover moderate to high",
+      "coverage_interpretation": "Coverage adequate for U475",
+      "correlation_redundancy_interpretation": "Low to moderate correlation with other factors",
+      "industry_bias_interpretation": "Industry bias present",
+      "liquidity_sensitivity_interpretation": "Some liquidity sensitivity",
+      "stability_interpretation": "Moderate decay observed",
+      "main_strengths": [
+        "5D IC=0.02"
+      ],
+      "main_weaknesses": [
+        "pipeline-bound: standalone interpretation limited",
+        "low IC magnitude",
+        "insufficient signal strength"
+      ],
+      "risk_flags": {
+        "pipeline_bound": true,
+        "data_quality_gap": false
+      },
+      "diagnostic_classification": "MIXED_DIAGNOSTIC_ONLY",
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false,
+      "execution_allowed": false,
+      "runner_enabled": false,
+      "paper_trading_allowed": false,
+      "production": "BLOCKED",
+      "broker_runtime": "BLOCKED",
+      "real_trade": "BLOCKED"
+    },
+    {
+      "factor_id": "F12",
+      "canonical_group": "F7_B_PIPELINE_BOUND",
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "result_read_status": "READ",
+      "ic_interpretation": "5D IC=0.01, 20D IC=0.011",
+      "rank_ic_interpretation": "Rank IC consistent with IC",
+      "hit_rate_interpretation": "Quintile spread present, top-bottom separation moderate",
+      "spread_interpretation": "Spread direction consistent",
+      "turnover_interpretation": "Monthly turnover moderate to high",
+      "coverage_interpretation": "Coverage adequate for U475",
+      "correlation_redundancy_interpretation": "Low to moderate correlation with other factors",
+      "industry_bias_interpretation": "Industry bias present",
+      "liquidity_sensitivity_interpretation": "Some liquidity sensitivity",
+      "stability_interpretation": "Moderate decay observed",
+      "main_strengths": [
+        "5D IC=0.01"
+      ],
+      "main_weaknesses": [
+        "pipeline-bound: standalone interpretation limited",
+        "low IC magnitude",
+        "insufficient signal strength"
+      ],
+      "risk_flags": {
+        "pipeline_bound": true,
+        "data_quality_gap": false
+      },
+      "diagnostic_classification": "WEAK_DIAGNOSTIC_ONLY",
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false,
+      "execution_allowed": false,
+      "runner_enabled": false,
+      "paper_trading_allowed": false,
+      "production": "BLOCKED",
+      "broker_runtime": "BLOCKED",
+      "real_trade": "BLOCKED"
+    },
+    {
+      "factor_id": "F14",
+      "canonical_group": "F7_B_PIPELINE_BOUND",
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "result_read_status": "READ",
+      "ic_interpretation": "5D IC=0.03, 20D IC=0.033",
+      "rank_ic_interpretation": "Rank IC consistent with IC",
+      "hit_rate_interpretation": "Quintile spread present, top-bottom separation moderate",
+      "spread_interpretation": "Spread direction consistent",
+      "turnover_interpretation": "Monthly turnover moderate to high",
+      "coverage_interpretation": "Coverage adequate for U475",
+      "correlation_redundancy_interpretation": "Low to moderate correlation with other factors",
+      "industry_bias_interpretation": "Industry bias present",
+      "liquidity_sensitivity_interpretation": "Some liquidity sensitivity",
+      "stability_interpretation": "Stable across monthly observations",
+      "main_strengths": [
+        "5D IC=0.03"
+      ],
+      "main_weaknesses": [
+        "pipeline-bound: standalone interpretation limited"
+      ],
+      "risk_flags": {
+        "pipeline_bound": true,
+        "data_quality_gap": false
+      },
+      "diagnostic_classification": "MIXED_DIAGNOSTIC_ONLY",
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false,
+      "execution_allowed": false,
+      "runner_enabled": false,
+      "paper_trading_allowed": false,
+      "production": "BLOCKED",
+      "broker_runtime": "BLOCKED",
+      "real_trade": "BLOCKED"
+    },
+    {
+      "factor_id": "F15",
+      "canonical_group": "F7_B_PIPELINE_BOUND",
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "result_read_status": "READ",
+      "ic_interpretation": "5D IC=0.02, 20D IC=0.022",
+      "rank_ic_interpretation": "Rank IC consistent with IC",
+      "hit_rate_interpretation": "Quintile spread present, top-bottom separation moderate",
+      "spread_interpretation": "Spread direction consistent",
+      "turnover_interpretation": "Monthly turnover moderate to high",
+      "coverage_interpretation": "Coverage adequate for U475",
+      "correlation_redundancy_interpretation": "Low to moderate correlation with other factors",
+      "industry_bias_interpretation": "Industry bias present",
+      "liquidity_sensitivity_interpretation": "Some liquidity sensitivity",
+      "stability_interpretation": "Moderate decay observed",
+      "main_strengths": [
+        "5D IC=0.02"
+      ],
+      "main_weaknesses": [
+        "pipeline-bound: standalone interpretation limited",
+        "low IC magnitude"
+      ],
+      "risk_flags": {
+        "pipeline_bound": true,
+        "data_quality_gap": false
+      },
+      "diagnostic_classification": "MIXED_DIAGNOSTIC_ONLY",
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false,
+      "execution_allowed": false,
+      "runner_enabled": false,
+      "paper_trading_allowed": false,
+      "production": "BLOCKED",
+      "broker_runtime": "BLOCKED",
+      "real_trade": "BLOCKED"
+    },
+    {
+      "factor_id": "F44",
+      "canonical_group": "F7_B_PIPELINE_BOUND",
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "result_read_status": "READ",
+      "ic_interpretation": "5D IC=0.01, 20D IC=0.011",
+      "rank_ic_interpretation": "Rank IC consistent with IC",
+      "hit_rate_interpretation": "Quintile spread present, top-bottom separation moderate",
+      "spread_interpretation": "Spread direction consistent",
+      "turnover_interpretation": "Monthly turnover moderate to high",
+      "coverage_interpretation": "Coverage limited",
+      "correlation_redundancy_interpretation": "Low to moderate correlation with other factors",
+      "industry_bias_interpretation": "Industry bias present",
+      "liquidity_sensitivity_interpretation": "Some liquidity sensitivity",
+      "stability_interpretation": "Moderate decay observed",
+      "main_strengths": [
+        "5D IC=0.01"
+      ],
+      "main_weaknesses": [
+        "pipeline-bound: standalone interpretation limited",
+        "low IC magnitude",
+        "insufficient signal strength"
+      ],
+      "risk_flags": {
+        "pipeline_bound": true,
+        "data_quality_gap": true
+      },
+      "diagnostic_classification": "WEAK_DIAGNOSTIC_ONLY",
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false,
+      "execution_allowed": false,
+      "runner_enabled": false,
+      "paper_trading_allowed": false,
+      "production": "BLOCKED",
+      "broker_runtime": "BLOCKED",
+      "real_trade": "BLOCKED"
+    },
+    {
+      "factor_id": "F45",
+      "canonical_group": "F7_B_PIPELINE_BOUND",
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "result_read_status": "READ",
+      "ic_interpretation": "5D IC=0.01, 20D IC=0.011",
+      "rank_ic_interpretation": "Rank IC consistent with IC",
+      "hit_rate_interpretation": "Quintile spread present, top-bottom separation moderate",
+      "spread_interpretation": "Spread direction consistent",
+      "turnover_interpretation": "Monthly turnover moderate to high",
+      "coverage_interpretation": "Coverage limited",
+      "correlation_redundancy_interpretation": "Low to moderate correlation with other factors",
+      "industry_bias_interpretation": "Industry bias present",
+      "liquidity_sensitivity_interpretation": "Some liquidity sensitivity",
+      "stability_interpretation": "Moderate decay observed",
+      "main_strengths": [
+        "5D IC=0.01"
+      ],
+      "main_weaknesses": [
+        "pipeline-bound: standalone interpretation limited",
+        "low IC magnitude",
+        "insufficient signal strength"
+      ],
+      "risk_flags": {
+        "pipeline_bound": true,
+        "data_quality_gap": true
+      },
+      "diagnostic_classification": "WEAK_DIAGNOSTIC_ONLY",
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false,
+      "execution_allowed": false,
+      "runner_enabled": false,
+      "paper_trading_allowed": false,
+      "production": "BLOCKED",
+      "broker_runtime": "BLOCKED",
+      "real_trade": "BLOCKED"
+    },
+    {
+      "factor_id": "F51",
+      "canonical_group": "F7_B_PIPELINE_BOUND",
+      "validated_horizons": [
+        "5D",
+        "20D"
+      ],
+      "result_read_status": "READ",
+      "ic_interpretation": "5D IC=0.03, 20D IC=0.033",
+      "rank_ic_interpretation": "Rank IC consistent with IC",
+      "hit_rate_interpretation": "Quintile spread present, top-bottom separation moderate",
+      "spread_interpretation": "Spread direction consistent",
+      "turnover_interpretation": "Monthly turnover moderate to high",
+      "coverage_interpretation": "Coverage adequate for U475",
+      "correlation_redundancy_interpretation": "Low to moderate correlation with other factors",
+      "industry_bias_interpretation": "Industry bias present",
+      "liquidity_sensitivity_interpretation": "Some liquidity sensitivity",
+      "stability_interpretation": "Stable across monthly observations",
+      "main_strengths": [
+        "5D IC=0.03"
+      ],
+      "main_weaknesses": [
+        "pipeline-bound: standalone interpretation limited"
+      ],
+      "risk_flags": {
+        "pipeline_bound": true,
+        "data_quality_gap": false
+      },
+      "diagnostic_classification": "MIXED_DIAGNOSTIC_ONLY",
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false,
+      "execution_allowed": false,
+      "runner_enabled": false,
+      "paper_trading_allowed": false,
+      "production": "BLOCKED",
+      "broker_runtime": "BLOCKED",
+      "real_trade": "BLOCKED"
+    }
+  ]
+}

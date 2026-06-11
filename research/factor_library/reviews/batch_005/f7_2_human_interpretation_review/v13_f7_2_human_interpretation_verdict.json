@@ -1,0 +1,28 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-HUMAN-INTERPRETATION-VERDICT",
+  "status": "PASS_DIAGNOSTIC_INTERPRETATION_ONLY",
+  "base_commit": "18429840",
+  "formal_validation_run_commit": "ea80ff9",
+  "result_audit_commit": "b9f77ab",
+  "semantic_patch_commit": "18429840",
+  "factor_count": 23,
+  "horizons_interpreted": [
+    "5D",
+    "20D"
+  ],
+  "diagnostic_classification_built": true,
+  "cross_factor_risk_review_built": true,
+  "horizon_interpretation_review_built": true,
+  "result_artifacts_modified": false,
+  "metrics_recalculated": false,
+  "interpretation_is_diagnostic_only": true,
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "execution_allowed": false,
+  "runner_enabled": false,
+  "paper_trading_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "next_legal_entry": "F7_2_HUMAN_INTERPRETATION_REVIEW_DECISION_ONLY"
+}

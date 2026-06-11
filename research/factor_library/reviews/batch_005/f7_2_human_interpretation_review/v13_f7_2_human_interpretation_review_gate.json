@@ -1,0 +1,23 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-HUMAN-INTERPRETATION-REVIEW-GATE",
+  "status": "HUMAN_INTERPRETATION_REVIEW_BUILT",
+  "base_commit": "18429840",
+  "formal_validation_run_commit": "ea80ff9",
+  "result_audit_commit": "b9f77ab",
+  "semantic_patch_commit": "18429840",
+  "review_scope": "diagnostic-only human interpretation of readonly formal validation results",
+  "metrics_recalculated": false,
+  "result_artifacts_modified": false,
+  "formal_oos_validation_executed": true,
+  "u475_6_month_validation_executed": true,
+  "validation_results_generated": true,
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "execution_allowed": false,
+  "runner_enabled": false,
+  "paper_trading_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "next_legal_entry": "F7_2_HUMAN_INTERPRETATION_VERDICT_REVIEW_ONLY"
+}

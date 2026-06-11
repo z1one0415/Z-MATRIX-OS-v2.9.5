@@ -1,0 +1,115 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-CANDIDATE-DIAGNOSTIC-CLASSIFICATION",
+  "classification_is_not_promotion": true,
+  "classification_is_not_alpha_claim": true,
+  "classification_is_not_runner_selection": true,
+  "classification_is_not_trade_signal": true,
+  "categories": [
+    {
+      "category_id": "A_DIAGNOSTIC_REVIEW_CANDIDATE",
+      "classification_reason": "Factors with promising diagnostic signal but requiring further OOS confirmation",
+      "factor_ids": [
+        "F10",
+        "F21",
+        "F30",
+        "F53",
+        "F06",
+        "F08",
+        "F14"
+      ],
+      "required_followup": "Extended U475 validation accepted for promotion eligibility review preparation",
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false,
+      "execution_allowed": false,
+      "runner_enabled": false,
+      "paper_trading_allowed": false,
+      "production": "BLOCKED",
+      "broker_runtime": "BLOCKED",
+      "real_trade": "BLOCKED"
+    },
+    {
+      "category_id": "B_EXTENDED_VALIDATION_CANDIDATE",
+      "classification_reason": "Factors with moderate signal needing extended lookback",
+      "factor_ids": [
+        "F04",
+        "F11",
+        "F24",
+        "F31",
+        "F54",
+        "F58",
+        "F60",
+        "F51"
+      ],
+      "required_followup": "Extend U475 window to 12+ months",
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false,
+      "execution_allowed": false,
+      "runner_enabled": false,
+      "paper_trading_allowed": false,
+      "production": "BLOCKED",
+      "broker_runtime": "BLOCKED",
+      "real_trade": "BLOCKED"
+    },
+    {
+      "category_id": "C_FACTOR_REFINEMENT_CANDIDATE",
+      "classification_reason": "Factors needing signal refinement before re-evaluation",
+      "factor_ids": [
+        "F55",
+        "F56",
+        "F15"
+      ],
+      "required_followup": "Review factor construction and reduce noise",
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false,
+      "execution_allowed": false,
+      "runner_enabled": false,
+      "paper_trading_allowed": false,
+      "production": "BLOCKED",
+      "broker_runtime": "BLOCKED",
+      "real_trade": "BLOCKED"
+    },
+    {
+      "category_id": "D_DEPRIORITIZE_DIAGNOSTIC_ONLY",
+      "classification_reason": "Factors showing insufficient standalone strength for near-term promotion review",
+      "factor_ids": [
+        "F07",
+        "F09",
+        "F12",
+        "F44",
+        "F45"
+      ],
+      "required_followup": "Monitor quarterly; no near-term promotion review",
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false,
+      "execution_allowed": false,
+      "runner_enabled": false,
+      "paper_trading_allowed": false,
+      "production": "BLOCKED",
+      "broker_runtime": "BLOCKED",
+      "real_trade": "BLOCKED"
+    },
+    {
+      "category_id": "E_REJECT_OR_ARCHIVE_DIAGNOSTIC_ONLY",
+      "classification_reason": "Factors with blocked or failed diagnostic",
+      "factor_ids": [],
+      "required_followup": "No factors in this category",
+      "promotion_allowed": false,
+      "alpha_claim_allowed": false,
+      "execution_allowed": false,
+      "runner_enabled": false,
+      "paper_trading_allowed": false,
+      "production": "BLOCKED",
+      "broker_runtime": "BLOCKED",
+      "real_trade": "BLOCKED"
+    }
+  ],
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "execution_allowed": false,
+  "runner_enabled": false,
+  "paper_trading_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "factor_count": 23
+}

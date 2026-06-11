@@ -1,0 +1,190 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-CROSS-FACTOR-RISK-INTERPRETATION-REVIEW",
+  "risks": [
+    {
+      "risk_name": "F7_A standalone cluster overlaps",
+      "source_artifact": "ea80ff9 factor_summary",
+      "observed_summary": "F7_A standalone cluster overlaps",
+      "severity": "MEDIUM",
+      "affected_factors": [
+        "F04/F10/F11",
+        "F21/F24/F30",
+        "F31/F53/F54",
+        "F55/F56/F58/F60"
+      ],
+      "interpretation": "Diagnostic only",
+      "blocking_for_promotion_review": false,
+      "blocking_for_f8_advancement": true,
+      "recommended_followup": "Independent pipeline-bound factor analysis required before promotion review"
+    },
+    {
+      "risk_name": "F7_B pipeline-bound high correlation",
+      "source_artifact": "ea80ff9 factor_summary",
+      "observed_summary": "F7_B pipeline-bound high correlation",
+      "severity": "HIGH",
+      "affected_factors": [
+        "F06/F07/F08/F09"
+      ],
+      "interpretation": "Diagnostic only",
+      "blocking_for_promotion_review": true,
+      "blocking_for_f8_advancement": true,
+      "recommended_followup": "Independent pipeline-bound factor analysis required before promotion review"
+    },
+    {
+      "risk_name": "Industry bias observed across pipeline-bound factors",
+      "source_artifact": "ea80ff9 factor_summary",
+      "observed_summary": "Industry bias observed across pipeline-bound factors",
+      "severity": "MEDIUM",
+      "affected_factors": [
+        "F06",
+        "F07",
+        "F08",
+        "F09",
+        "F12",
+        "F14",
+        "F15",
+        "F44",
+        "F45",
+        "F51"
+      ],
+      "interpretation": "Diagnostic only",
+      "blocking_for_promotion_review": false,
+      "blocking_for_f8_advancement": true,
+      "recommended_followup": "Independent pipeline-bound factor analysis required before promotion review"
+    },
+    {
+      "risk_name": "Liquidity sensitivity in small-cap bucket",
+      "source_artifact": "ea80ff9 factor_summary",
+      "observed_summary": "Liquidity sensitivity in small-cap bucket",
+      "severity": "MEDIUM",
+      "affected_factors": [
+        "F06",
+        "F07",
+        "F08",
+        "F09",
+        "F12",
+        "F14",
+        "F15",
+        "F44",
+        "F45",
+        "F51"
+      ],
+      "interpretation": "Diagnostic only",
+      "blocking_for_promotion_review": false,
+      "blocking_for_f8_advancement": true,
+      "recommended_followup": "Independent pipeline-bound factor analysis required before promotion review"
+    },
+    {
+      "risk_name": "Higher turnover in momentum/value factors",
+      "source_artifact": "ea80ff9 factor_summary",
+      "observed_summary": "Higher turnover in momentum/value factors",
+      "severity": "MEDIUM",
+      "affected_factors": [
+        "F07",
+        "F09",
+        "F12",
+        "F44",
+        "F45"
+      ],
+      "interpretation": "Diagnostic only",
+      "blocking_for_promotion_review": false,
+      "blocking_for_f8_advancement": true,
+      "recommended_followup": "Independent pipeline-bound factor analysis required before promotion review"
+    },
+    {
+      "risk_name": "Some factors underperform in sideways regime",
+      "source_artifact": "ea80ff9 factor_summary",
+      "observed_summary": "Some factors underperform in sideways regime",
+      "severity": "LOW",
+      "affected_factors": [
+        "F04",
+        "F11",
+        "F55",
+        "F56"
+      ],
+      "interpretation": "Diagnostic only",
+      "blocking_for_promotion_review": false,
+      "blocking_for_f8_advancement": true,
+      "recommended_followup": "Independent pipeline-bound factor analysis required before promotion review"
+    },
+    {
+      "risk_name": "Decay after 3 months observed for low-IC factors",
+      "source_artifact": "ea80ff9 factor_summary",
+      "observed_summary": "Decay after 3 months observed for low-IC factors",
+      "severity": "HIGH",
+      "affected_factors": [
+        "F07",
+        "F09",
+        "F12",
+        "F55",
+        "F56",
+        "F44",
+        "F45"
+      ],
+      "interpretation": "Diagnostic only",
+      "blocking_for_promotion_review": true,
+      "blocking_for_f8_advancement": true,
+      "recommended_followup": "Independent pipeline-bound factor analysis required before promotion review"
+    },
+    {
+      "risk_name": "Coverage gaps in pipeline-bound factors",
+      "source_artifact": "ea80ff9 factor_summary",
+      "observed_summary": "Coverage gaps in pipeline-bound factors",
+      "severity": "MEDIUM",
+      "affected_factors": [
+        "F06",
+        "F07",
+        "F08",
+        "F09",
+        "F12",
+        "F14",
+        "F15",
+        "F44",
+        "F45",
+        "F51"
+      ],
+      "interpretation": "Diagnostic only",
+      "blocking_for_promotion_review": false,
+      "blocking_for_f8_advancement": true,
+      "recommended_followup": "Independent pipeline-bound factor analysis required before promotion review"
+    },
+    {
+      "risk_name": "Data gaps impact F44/F45/F07/F09",
+      "source_artifact": "ea80ff9 factor_summary",
+      "observed_summary": "Data gaps impact F44/F45/F07/F09",
+      "severity": "HIGH",
+      "affected_factors": [
+        "F44",
+        "F45",
+        "F07",
+        "F09"
+      ],
+      "interpretation": "Diagnostic only",
+      "blocking_for_promotion_review": true,
+      "blocking_for_f8_advancement": true,
+      "recommended_followup": "Independent pipeline-bound factor analysis required before promotion review"
+    },
+    {
+      "risk_name": "Pipeline-bound factors require context for standalone interpretation",
+      "source_artifact": "ea80ff9 factor_summary",
+      "observed_summary": "Pipeline-bound factors require context for standalone interpretation",
+      "severity": "HIGH",
+      "affected_factors": [
+        "F06",
+        "F07",
+        "F08",
+        "F09",
+        "F12",
+        "F14",
+        "F15",
+        "F44",
+        "F45",
+        "F51"
+      ],
+      "interpretation": "Diagnostic only",
+      "blocking_for_promotion_review": true,
+      "blocking_for_f8_advancement": true,
+      "recommended_followup": "Independent pipeline-bound factor analysis required before promotion review"
+    }
+  ]
+}

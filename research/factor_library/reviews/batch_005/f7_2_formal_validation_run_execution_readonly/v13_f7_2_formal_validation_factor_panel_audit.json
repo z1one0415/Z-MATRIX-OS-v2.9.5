@@ -1,0 +1,235 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-FORMAL-VALIDATION-FACTOR-PANEL-AUDIT",
+  "factors": [
+    {
+      "factor_id": "F04",
+      "canonical_group": "STD",
+      "panel_available": true,
+      "status": "PASS",
+      "row_count": 265200,
+      "pit_requirement_pass": true,
+      "lookahead_guard_pass": true,
+      "join_to_labels_pass": true
+    },
+    {
+      "factor_id": "F10",
+      "canonical_group": "STD",
+      "panel_available": true,
+      "status": "PASS",
+      "row_count": 265200,
+      "pit_requirement_pass": true,
+      "lookahead_guard_pass": true,
+      "join_to_labels_pass": true
+    },
+    {
+      "factor_id": "F11",
+      "canonical_group": "STD",
+      "panel_available": true,
+      "status": "PASS",
+      "row_count": 265200,
+      "pit_requirement_pass": true,
+      "lookahead_guard_pass": true,
+      "join_to_labels_pass": true
+    },
+    {
+      "factor_id": "F21",
+      "canonical_group": "STD",
+      "panel_available": true,
+      "status": "PASS",
+      "row_count": 265200,
+      "pit_requirement_pass": true,
+      "lookahead_guard_pass": true,
+      "join_to_labels_pass": true
+    },
+    {
+      "factor_id": "F24",
+      "canonical_group": "STD",
+      "panel_available": true,
+      "status": "PASS",
+      "row_count": 265200,
+      "pit_requirement_pass": true,
+      "lookahead_guard_pass": true,
+      "join_to_labels_pass": true
+    },
+    {
+      "factor_id": "F30",
+      "canonical_group": "STD",
+      "panel_available": true,
+      "status": "PASS",
+      "row_count": 265200,
+      "pit_requirement_pass": true,
+      "lookahead_guard_pass": true,
+      "join_to_labels_pass": true
+    },
+    {
+      "factor_id": "F31",
+      "canonical_group": "STD",
+      "panel_available": true,
+      "status": "PASS",
+      "row_count": 265200,
+      "pit_requirement_pass": true,
+      "lookahead_guard_pass": true,
+      "join_to_labels_pass": true
+    },
+    {
+      "factor_id": "F53",
+      "canonical_group": "STD",
+      "panel_available": true,
+      "status": "PASS",
+      "row_count": 265200,
+      "pit_requirement_pass": true,
+      "lookahead_guard_pass": true,
+      "join_to_labels_pass": true
+    },
+    {
+      "factor_id": "F54",
+      "canonical_group": "STD",
+      "panel_available": true,
+      "status": "PASS",
+      "row_count": 265200,
+      "pit_requirement_pass": true,
+      "lookahead_guard_pass": true,
+      "join_to_labels_pass": true
+    },
+    {
+      "factor_id": "F55",
+      "canonical_group": "STD",
+      "panel_available": true,
+      "status": "PASS",
+      "row_count": 265200,
+      "pit_requirement_pass": true,
+      "lookahead_guard_pass": true,
+      "join_to_labels_pass": true
+    },
+    {
+      "factor_id": "F56",
+      "canonical_group": "STD",
+      "panel_available": true,
+      "status": "PASS",
+      "row_count": 265200,
+      "pit_requirement_pass": true,
+      "lookahead_guard_pass": true,
+      "join_to_labels_pass": true
+    },
+    {
+      "factor_id": "F58",
+      "canonical_group": "STD",
+      "panel_available": true,
+      "status": "PASS",
+      "row_count": 265200,
+      "pit_requirement_pass": true,
+      "lookahead_guard_pass": true,
+      "join_to_labels_pass": true
+    },
+    {
+      "factor_id": "F60",
+      "canonical_group": "STD",
+      "panel_available": true,
+      "status": "PASS",
+      "row_count": 265200,
+      "pit_requirement_pass": true,
+      "lookahead_guard_pass": true,
+      "join_to_labels_pass": true
+    },
+    {
+      "factor_id": "F06",
+      "canonical_group": "PPB",
+      "panel_available": true,
+      "status": "PASS",
+      "row_count": 265200,
+      "pit_requirement_pass": true,
+      "lookahead_guard_pass": true,
+      "join_to_labels_pass": true
+    },
+    {
+      "factor_id": "F07",
+      "canonical_group": "PPB",
+      "panel_available": true,
+      "status": "PASS",
+      "row_count": 265200,
+      "pit_requirement_pass": true,
+      "lookahead_guard_pass": true,
+      "join_to_labels_pass": true
+    },
+    {
+      "factor_id": "F08",
+      "canonical_group": "PPB",
+      "panel_available": true,
+      "status": "PASS",
+      "row_count": 265200,
+      "pit_requirement_pass": true,
+      "lookahead_guard_pass": true,
+      "join_to_labels_pass": true
+    },
+    {
+      "factor_id": "F09",
+      "canonical_group": "PPB",
+      "panel_available": true,
+      "status": "PASS",
+      "row_count": 265200,
+      "pit_requirement_pass": true,
+      "lookahead_guard_pass": true,
+      "join_to_labels_pass": true
+    },
+    {
+      "factor_id": "F12",
+      "canonical_group": "PPB",
+      "panel_available": true,
+      "status": "PASS",
+      "row_count": 265200,
+      "pit_requirement_pass": true,
+      "lookahead_guard_pass": true,
+      "join_to_labels_pass": true
+    },
+    {
+      "factor_id": "F14",
+      "canonical_group": "PPB",
+      "panel_available": true,
+      "status": "PASS",
+      "row_count": 265200,
+      "pit_requirement_pass": true,
+      "lookahead_guard_pass": true,
+      "join_to_labels_pass": true
+    },
+    {
+      "factor_id": "F15",
+      "canonical_group": "PPB",
+      "panel_available": true,
+      "status": "PASS",
+      "row_count": 265200,
+      "pit_requirement_pass": true,
+      "lookahead_guard_pass": true,
+      "join_to_labels_pass": true
+    },
+    {
+      "factor_id": "F44",
+      "canonical_group": "PPB",
+      "panel_available": true,
+      "status": "PASS",
+      "row_count": 265200,
+      "pit_requirement_pass": true,
+      "lookahead_guard_pass": true,
+      "join_to_labels_pass": true
+    },
+    {
+      "factor_id": "F45",
+      "canonical_group": "PPB",
+      "panel_available": true,
+      "status": "PASS",
+      "row_count": 265200,
+      "pit_requirement_pass": true,
+      "lookahead_guard_pass": true,
+      "join_to_labels_pass": true
+    },
+    {
+      "factor_id": "F51",
+      "canonical_group": "PPB",
+      "panel_available": true,
+      "status": "PASS",
+      "row_count": 265200,
+      "pit_requirement_pass": true,
+      "lookahead_guard_pass": true,
+      "join_to_labels_pass": true
+    }
+  ]
+}

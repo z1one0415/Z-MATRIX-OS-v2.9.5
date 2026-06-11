@@ -1,0 +1,9 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-FORMAL-OOS-ABORT-REPORT",
+  "aborted": false,
+  "abort_triggers_checked": 20,
+  "triggered_abort_count": 0,
+  "metrics_generated": true,
+  "validation_results_generated": true,
+  "notes": "No abort trigger fired during readonly validation run."
+}

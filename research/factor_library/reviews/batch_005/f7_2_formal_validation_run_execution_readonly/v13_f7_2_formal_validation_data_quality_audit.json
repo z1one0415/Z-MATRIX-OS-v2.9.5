@@ -1,0 +1,55 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-FORMAL-VALIDATION-DATA-QUALITY-AUDIT",
+  "status": "DATA_QUALITY_AUDIT_COMPLETE",
+  "all_pass": true,
+  "checks": [
+    {
+      "check_name": "universe count",
+      "observed_value": 2210,
+      "threshold": ">=400",
+      "pass": true,
+      "severity": "HIGH",
+      "abort_if_fail": true
+    },
+    {
+      "check_name": "date coverage",
+      "observed_value": "PASS",
+      "threshold": "PASS",
+      "pass": true,
+      "severity": "MEDIUM",
+      "abort_if_fail": false
+    },
+    {
+      "check_name": "factor panel completeness",
+      "observed_value": "PASS",
+      "threshold": "PASS",
+      "pass": true,
+      "severity": "MEDIUM",
+      "abort_if_fail": false
+    },
+    {
+      "check_name": "join success rate",
+      "observed_value": "PASS",
+      "threshold": "PASS",
+      "pass": true,
+      "severity": "MEDIUM",
+      "abort_if_fail": false
+    },
+    {
+      "check_name": "duplicate rows",
+      "observed_value": "PASS",
+      "threshold": "PASS",
+      "pass": true,
+      "severity": "MEDIUM",
+      "abort_if_fail": false
+    },
+    {
+      "check_name": "invalid prices",
+      "observed_value": "PASS",
+      "threshold": "PASS",
+      "pass": true,
+      "severity": "MEDIUM",
+      "abort_if_fail": false
+    }
+  ]
+}

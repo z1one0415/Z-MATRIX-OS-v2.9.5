@@ -1,0 +1,144 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-FORMAL-VALIDATION-INPUT-RESOLUTION",
+  "status": "INPUT_RESOLUTION_COMPLETE",
+  "required_inputs": [
+    {
+      "input_name": "U475 universe snapshot",
+      "exists": true,
+      "readable": true,
+      "status": "RESOLVED",
+      "row_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "required_columns_present": true,
+      "pit_requirement_pass": true,
+      "lookahead_guard_pass": true
+    },
+    {
+      "input_name": "6-month price bar panel",
+      "exists": true,
+      "readable": true,
+      "status": "RESOLVED",
+      "row_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "required_columns_present": true,
+      "pit_requirement_pass": true,
+      "lookahead_guard_pass": true
+    },
+    {
+      "input_name": "23-factor signal panel",
+      "exists": true,
+      "readable": true,
+      "status": "RESOLVED",
+      "row_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "required_columns_present": true,
+      "pit_requirement_pass": true,
+      "lookahead_guard_pass": true
+    },
+    {
+      "input_name": "5D label panel",
+      "exists": true,
+      "readable": true,
+      "status": "RESOLVED",
+      "row_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "required_columns_present": true,
+      "pit_requirement_pass": true,
+      "lookahead_guard_pass": true
+    },
+    {
+      "input_name": "20D label panel",
+      "exists": true,
+      "readable": true,
+      "status": "RESOLVED",
+      "row_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "required_columns_present": true,
+      "pit_requirement_pass": true,
+      "lookahead_guard_pass": true
+    },
+    {
+      "input_name": "industry classification panel",
+      "exists": true,
+      "readable": true,
+      "status": "RESOLVED",
+      "row_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "required_columns_present": true,
+      "pit_requirement_pass": true,
+      "lookahead_guard_pass": true
+    },
+    {
+      "input_name": "liquidity/turnover panel",
+      "exists": true,
+      "readable": true,
+      "status": "RESOLVED",
+      "row_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "required_columns_present": true,
+      "pit_requirement_pass": true,
+      "lookahead_guard_pass": true
+    },
+    {
+      "input_name": "rebalance calendar",
+      "exists": true,
+      "readable": true,
+      "status": "RESOLVED",
+      "row_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "required_columns_present": true,
+      "pit_requirement_pass": true,
+      "lookahead_guard_pass": true
+    },
+    {
+      "input_name": "missing data mask",
+      "exists": true,
+      "readable": true,
+      "status": "RESOLVED",
+      "row_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "required_columns_present": true,
+      "pit_requirement_pass": true,
+      "lookahead_guard_pass": true
+    },
+    {
+      "input_name": "label validation mask",
+      "exists": true,
+      "readable": true,
+      "status": "RESOLVED",
+      "row_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "required_columns_present": true,
+      "pit_requirement_pass": true,
+      "lookahead_guard_pass": true
+    },
+    {
+      "input_name": "factor availability mask",
+      "exists": true,
+      "readable": true,
+      "status": "RESOLVED",
+      "row_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "required_columns_present": true,
+      "pit_requirement_pass": true,
+      "lookahead_guard_pass": true
+    }
+  ],
+  "optional": [
+    {
+      "input_name": "60D label panel",
+      "status": "OPTIONAL_NOT_AVAILABLE"
+    }
+  ]
+}

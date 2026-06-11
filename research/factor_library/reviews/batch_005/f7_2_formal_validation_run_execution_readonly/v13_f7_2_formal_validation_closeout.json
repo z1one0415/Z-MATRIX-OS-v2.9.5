@@ -1,0 +1,27 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-FORMAL-VALIDATION-RUN-CLOSEOUT",
+  "status": "V13_F7_2_FORMAL_VALIDATION_RUN_COMPLETE_READONLY_RESULTS_ONLY",
+  "base_commit": "597aaa32",
+  "authorization_decision_commit": "597aaa32",
+  "formal_oos_validation_executed": true,
+  "u475_6_month_validation_executed": true,
+  "validation_results_generated": true,
+  "factor_count": 23,
+  "horizons": [
+    "5D",
+    "20D"
+  ],
+  "metric_tables_generated": true,
+  "factor_summary_generated": true,
+  "abort_report_generated": true,
+  "safety_audit_generated": true,
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "execution_allowed": false,
+  "runner_enabled": false,
+  "paper_trading_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED",
+  "next_legal_entry": "F7_2_FORMAL_VALIDATION_RESULT_AUDIT_ONLY"
+}

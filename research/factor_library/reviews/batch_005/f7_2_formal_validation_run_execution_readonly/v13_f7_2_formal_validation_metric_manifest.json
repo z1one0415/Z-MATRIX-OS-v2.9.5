@@ -1,0 +1,285 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-FORMAL-VALIDATION-METRIC-MANIFEST",
+  "metrics": [
+    {
+      "metric_name": "IC",
+      "computed": true,
+      "horizon": "5D",
+      "status": "COMPUTED",
+      "sample_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "diagnostic_only_or_gate_metric": "GATE_METRIC"
+    },
+    {
+      "metric_name": "IC",
+      "computed": true,
+      "horizon": "20D",
+      "status": "COMPUTED",
+      "sample_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "diagnostic_only_or_gate_metric": "GATE_METRIC"
+    },
+    {
+      "metric_name": "Rank IC",
+      "computed": true,
+      "horizon": "5D",
+      "status": "COMPUTED",
+      "sample_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "diagnostic_only_or_gate_metric": "GATE_METRIC"
+    },
+    {
+      "metric_name": "Rank IC",
+      "computed": true,
+      "horizon": "20D",
+      "status": "COMPUTED",
+      "sample_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "diagnostic_only_or_gate_metric": "GATE_METRIC"
+    },
+    {
+      "metric_name": "hit rate",
+      "computed": true,
+      "horizon": "5D",
+      "status": "COMPUTED",
+      "sample_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "diagnostic_only_or_gate_metric": "GATE_METRIC"
+    },
+    {
+      "metric_name": "hit rate",
+      "computed": true,
+      "horizon": "20D",
+      "status": "COMPUTED",
+      "sample_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "diagnostic_only_or_gate_metric": "GATE_METRIC"
+    },
+    {
+      "metric_name": "monotonic bucket spread",
+      "computed": true,
+      "horizon": "5D",
+      "status": "COMPUTED",
+      "sample_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "diagnostic_only_or_gate_metric": "GATE_METRIC"
+    },
+    {
+      "metric_name": "monotonic bucket spread",
+      "computed": true,
+      "horizon": "20D",
+      "status": "COMPUTED",
+      "sample_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "diagnostic_only_or_gate_metric": "GATE_METRIC"
+    },
+    {
+      "metric_name": "long-short spread",
+      "computed": true,
+      "horizon": "5D",
+      "status": "COMPUTED",
+      "sample_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "diagnostic_only_or_gate_metric": "GATE_METRIC"
+    },
+    {
+      "metric_name": "long-short spread",
+      "computed": true,
+      "horizon": "20D",
+      "status": "COMPUTED",
+      "sample_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "diagnostic_only_or_gate_metric": "GATE_METRIC"
+    },
+    {
+      "metric_name": "turnover",
+      "computed": true,
+      "horizon": "5D",
+      "status": "COMPUTED",
+      "sample_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "diagnostic_only_or_gate_metric": "GATE_METRIC"
+    },
+    {
+      "metric_name": "turnover",
+      "computed": true,
+      "horizon": "20D",
+      "status": "COMPUTED",
+      "sample_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "diagnostic_only_or_gate_metric": "GATE_METRIC"
+    },
+    {
+      "metric_name": "coverage",
+      "computed": true,
+      "horizon": "5D",
+      "status": "COMPUTED",
+      "sample_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "diagnostic_only_or_gate_metric": "GATE_METRIC"
+    },
+    {
+      "metric_name": "coverage",
+      "computed": true,
+      "horizon": "20D",
+      "status": "COMPUTED",
+      "sample_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "diagnostic_only_or_gate_metric": "GATE_METRIC"
+    },
+    {
+      "metric_name": "missing data rate",
+      "computed": true,
+      "horizon": "5D",
+      "status": "COMPUTED",
+      "sample_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "diagnostic_only_or_gate_metric": "GATE_METRIC"
+    },
+    {
+      "metric_name": "missing data rate",
+      "computed": true,
+      "horizon": "20D",
+      "status": "COMPUTED",
+      "sample_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "diagnostic_only_or_gate_metric": "GATE_METRIC"
+    },
+    {
+      "metric_name": "factor correlation",
+      "computed": true,
+      "horizon": "5D",
+      "status": "COMPUTED",
+      "sample_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "diagnostic_only_or_gate_metric": "GATE_METRIC"
+    },
+    {
+      "metric_name": "factor correlation",
+      "computed": true,
+      "horizon": "20D",
+      "status": "COMPUTED",
+      "sample_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "diagnostic_only_or_gate_metric": "GATE_METRIC"
+    },
+    {
+      "metric_name": "industry bias",
+      "computed": true,
+      "horizon": "5D",
+      "status": "COMPUTED",
+      "sample_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "diagnostic_only_or_gate_metric": "GATE_METRIC"
+    },
+    {
+      "metric_name": "industry bias",
+      "computed": true,
+      "horizon": "20D",
+      "status": "COMPUTED",
+      "sample_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "diagnostic_only_or_gate_metric": "GATE_METRIC"
+    },
+    {
+      "metric_name": "liquidity sensitivity",
+      "computed": true,
+      "horizon": "5D",
+      "status": "COMPUTED",
+      "sample_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "diagnostic_only_or_gate_metric": "GATE_METRIC"
+    },
+    {
+      "metric_name": "liquidity sensitivity",
+      "computed": true,
+      "horizon": "20D",
+      "status": "COMPUTED",
+      "sample_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "diagnostic_only_or_gate_metric": "GATE_METRIC"
+    },
+    {
+      "metric_name": "drawdown sensitivity",
+      "computed": true,
+      "horizon": "5D",
+      "status": "COMPUTED",
+      "sample_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "diagnostic_only_or_gate_metric": "DIAGNOSTIC"
+    },
+    {
+      "metric_name": "drawdown sensitivity",
+      "computed": true,
+      "horizon": "20D",
+      "status": "COMPUTED",
+      "sample_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "diagnostic_only_or_gate_metric": "DIAGNOSTIC"
+    },
+    {
+      "metric_name": "regime split",
+      "computed": true,
+      "horizon": "5D",
+      "status": "COMPUTED",
+      "sample_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "diagnostic_only_or_gate_metric": "DIAGNOSTIC"
+    },
+    {
+      "metric_name": "regime split",
+      "computed": true,
+      "horizon": "20D",
+      "status": "COMPUTED",
+      "sample_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "diagnostic_only_or_gate_metric": "DIAGNOSTIC"
+    },
+    {
+      "metric_name": "stability decay",
+      "computed": true,
+      "horizon": "5D",
+      "status": "COMPUTED",
+      "sample_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "diagnostic_only_or_gate_metric": "DIAGNOSTIC"
+    },
+    {
+      "metric_name": "stability decay",
+      "computed": true,
+      "horizon": "20D",
+      "status": "COMPUTED",
+      "sample_count": 265200,
+      "security_count": 2210,
+      "date_count": 120,
+      "diagnostic_only_or_gate_metric": "DIAGNOSTIC"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-FORMAL-VALIDATION-LABEL-AUDIT",
+  "horizons": [
+    {
+      "horizon": "5D",
+      "label_available": true,
+      "status": "PASS",
+      "missing_label_rate": 0.0442,
+      "limit_up_down_policy_applied": true,
+      "suspension_policy_applied": true,
+      "lookahead_guard_pass": true
+    },
+    {
+      "horizon": "20D",
+      "label_available": true,
+      "status": "PASS",
+      "missing_label_rate": 0.0404,
+      "limit_up_down_policy_applied": true,
+      "suspension_policy_applied": true,
+      "lookahead_guard_pass": true
+    },
+    {
+      "horizon": "60D",
+      "label_available": false,
+      "status": "OPTIONAL_NOT_AVAILABLE"
+    }
+  ]
+}

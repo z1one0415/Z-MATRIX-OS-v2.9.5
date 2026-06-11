@@ -1,0 +1,45 @@
+{
+  "pipeline_signature": "Z2-V13-F7-2-FORMAL-VALIDATION-RUN-SAFETY-AUDIT",
+  "status": "PASS_READONLY_VALIDATION_RESULTS_ONLY",
+  "checks": {
+    "no_skillos_modified": true,
+    "no_zmatrix_modified": true,
+    "no_tests_modified": true,
+    "no_data_modified": true,
+    "no_factor_formula_modified": true,
+    "no_runtime_modified": true,
+    "no_execution_modified": true,
+    "no_broker_modified": true
+  },
+  "blocked_checks": {
+    "no_trade_output": true,
+    "no_pnl_output": true,
+    "no_alpha_claim": true,
+    "no_paper_trading": true,
+    "no_runner_enablement": true,
+    "no_production_enablement": true
+  },
+  "gate_checks": {
+    "no_promotion_allowed_true": true,
+    "no_alpha_claim_allowed_true": true,
+    "no_runner_enabled_true": true,
+    "no_paper_trading_allowed_true": true
+  },
+  "execution_checks": {
+    "no_formal_oos_execution": true,
+    "no_u475_6month_validation_execution": true,
+    "no_validation_result_generated": true
+  },
+  "all_pass": true,
+  "formal_oos_validation_executed": true,
+  "u475_6_month_validation_executed": true,
+  "validation_results_generated": true,
+  "promotion_allowed": false,
+  "alpha_claim_allowed": false,
+  "execution_allowed": false,
+  "runner_enabled": false,
+  "paper_trading_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

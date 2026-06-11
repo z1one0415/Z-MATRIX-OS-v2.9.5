@@ -58,7 +58,7 @@ const NAV_STRUCTURE: NavSection[] = [
     label: 'System',
     icon: '\u{2699}\u{FE0F}',
     items: [
-      { id: 'nav_settings', label: 'Settings / Safety', route: '/settings', icon: '\u{1F512}' },
+      { id: 'nav_settings', label: 'Safety Boundary', route: '/safety-boundary', icon: '\u{1F512}' },
     ],
   },
 ];

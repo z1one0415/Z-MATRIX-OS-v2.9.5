@@ -12,7 +12,7 @@
 | 8 | `/run-state` | run_state | Run State Registry | `/api/run-state` |
 | 9 | `/gate-state` | gate_state | Gate State Registry | `/api/gate-state` |
 | 10 | `/audit-trail` | audit_trail | Audit Trail | `/api/audit-trail` |
-| 11 | `/settings` | settings | Settings / Safety | `/api/version` |
+| 11 | `/safety-boundary` | settings | Settings / Safety | `/api/version` |
 
 ## Breadcrumb Rules
 
@@ -24,3 +24,6 @@
 ## Catch-all
 
 - `/*` → redirects to Home Dashboard `/`
+
+
+> `/settings` is retained as a backward-compatible alias for `/safety-boundary`.

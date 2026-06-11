@@ -107,3 +107,7 @@ A1_CONTRACT_FREEZE seal applied.
 🛡️ **Z-SkillOS Frontend Dashboard v0.1.0-rc**
 🔒 Read-Only | DISABLED_DEFAULT | A1_CONTRACT_FREEZE
 📜 2026-06-12
+
+- Safety Boundary primary route = /safety-boundary
+- Settings alias route = /settings (backward compatible)
+- Route alias patch complete

@@ -35,7 +35,8 @@ export function AppRouter() {
         <Route path="audit-trail" element={<AuditTrail />} />
 
         {/* System */}
-        <Route path="settings" element={<SafetyBoundary />} />
+        <Route path="safety-boundary" element={<SafetyBoundary />} />
+          <Route path="settings" element={<SafetyBoundary />} />
 
         {/* Catch-all */}
         <Route path="*" element={<HomeDashboard />} />

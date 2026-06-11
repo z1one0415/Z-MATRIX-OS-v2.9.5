@@ -1,0 +1,14 @@
+# Merge Options
+
+## 1. APPROVE_FRONTEND_APP_RC_MERGE
+- Next: FRONTEND_APP_RC_MERGE_EXECUTION_ONLY
+- Still forbidden: production, broker, real_trade, runtime, runner, paper trading, alpha, promotion, F8, live backend
+
+## 2. REJECT_FRONTEND_APP_RC_MERGE
+- Next: FRONTEND_APP_RC_REVISION_OR_CLOSEOUT
+
+## 3. REQUEST_FRONTEND_APP_RC_HARDENING
+- Next: FRONTEND_APP_RC_HARDENING
+
+## 4. REQUEST_BROWSER_RENDER_QA_BEFORE_MERGE
+- Next: FRONTEND_BROWSER_RENDER_QA_ONLY

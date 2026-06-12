@@ -635,8 +635,46 @@ function cloneData(packet: DayanAskPageData, workspaceId: string): DayanAskPageD
   };
 }
 
+function getBackendDayanAskPacketUrl(): string | null {
+  const configured = import.meta.env.VITE_ZMATRIX_DAYAN_ASK_PACKET_URL as string | undefined;
+  if (configured) {
+    return configured;
+  }
+  if (import.meta.env.MODE === "test" || typeof window === "undefined" || typeof fetch !== "function") {
+    return null;
+  }
+  return "/api/cockpit/dayan_ask_packet.json";
+}
+
+async function loadBackendDayanAskPacket(workspaceId: string): Promise<DayanAskPageData | null> {
+  const packetUrl = getBackendDayanAskPacketUrl();
+  if (!packetUrl) {
+    return null;
+  }
+  try {
+    const response = await fetch(packetUrl, {
+      headers: { accept: "application/json" },
+      cache: "no-store"
+    });
+    if (!response.ok) {
+      return null;
+    }
+    const packet = (await response.json()) as DayanAskPageData;
+    if (packet.workspaceId !== workspaceId) {
+      return null;
+    }
+    return packet;
+  } catch {
+    return null;
+  }
+}
+
 export async function getDayanAskPageData(session: AuthSession | null): Promise<DayanAskPageData> {
   const current = requireSession(session);
+  const backendPacket = await loadBackendDayanAskPacket(current.workspaceId);
+  if (backendPacket) {
+    return cloneData(backendPacket, current.workspaceId);
+  }
   if (current.workspaceId === "ws_personal_z_prime") {
     return cloneData(zPrimeData, current.workspaceId);
   }

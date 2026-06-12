@@ -1,7 +1,13 @@
 import { demoSession } from "../auth";
 import { createControlCompassActionDraft, getControlCompassPageData } from "../services/controlCompassApi";
+import { afterEach, vi } from "vitest";
 
 describe("Batch 3B control compass tenant-aware data", () => {
+  afterEach(() => {
+    vi.unstubAllEnvs();
+    vi.unstubAllGlobals();
+  });
+
   it("returns the z-prime quant parameter compass packet", async () => {
     const packet = await getControlCompassPageData(demoSession);
 
@@ -42,6 +48,115 @@ describe("Batch 3B control compass tenant-aware data", () => {
     expect(packet.safety.realTradeAllowed).toBe(false);
     expect(packet.safety.brokerOrderAllowed).toBe(false);
     expect(packet.safety.agentDirectMutationAllowed).toBe(false);
+  });
+
+  it("uses backend control compass packet when configured", async () => {
+    vi.stubEnv("VITE_ZMATRIX_CONTROL_COMPASS_PACKET_URL", "/api/cockpit/control_compass_packet.json");
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async () =>
+        new Response(
+          JSON.stringify({
+            workspaceId: demoSession.workspaceId,
+            asOf: "2026-06-13",
+            safety: {
+              paperOnly: true,
+              humanReviewRequired: true,
+              realTradeAllowed: false,
+              brokerOrderAllowed: false,
+              productionAllowed: false,
+              agentDirectMutationAllowed: false
+            },
+            kpi: {
+              governanceDomainCount: 8,
+              healthyDomainCount: 7,
+              healthScore: 88,
+              latestPaperHitRatePct: 0,
+              weakenedSignalCount: 4,
+              pendingAdjudicationCount: 1,
+              optimizationSnapshotStatus: "READY",
+              pendingChangeCount: 0,
+              blockedChangeCount: 1,
+              monthlyInternalizationPct: 56,
+              auditCompletenessPct: 88,
+              configVersion: "v13.5.13",
+              dataFreshness: "FRESH"
+            },
+            governanceDomains: [
+              {
+                domainId: "FACTOR_SIGNAL",
+                index: 3,
+                displayName: "因子信号门",
+                ringIndex: 6,
+                status: "UNDER_REVIEW",
+                pendingChanges: 1,
+                riskLevel: "MID",
+                lastReviewedAt: "2026-06-13"
+              }
+            ],
+            selectedDomain: {
+              selectedDomainId: "FACTOR_SIGNAL",
+              selectedDomainName: "因子信号门",
+              currentValue: { label: "当前阶段", value: "backend" },
+              suggestedValue: { label: "系统建议", value: "等待复核" },
+              impactScope: { relatedParameterCount: 104, affectedModuleCount: 20, affectedPages: ["天机罗盘"] },
+              validationStatus: { paperValidationPassed: false, confidencePct: 88, method: "runtime reports" },
+              auditStatus: { status: "PENDING_EXPERT_REVIEW" }
+            },
+            sandbox: {
+              draft: { draftId: "CC-TEST", domainId: "FACTOR_SIGNAL", affectedParameterCount: 104, version: "v13.5.13" },
+              impact: { impactLevel: "MID", coverage: "HIGH", strategyImpact: "只读复核", internalizationImpactPct: 4 },
+              risk: { riskLevel: "MID", potentialImpact: "等待样本", varianceRange: [-1, 1], blockingCount: 1 },
+              paperValidation: { method: "paper", sampleSize: 8, passRatePct: 88, conclusion: "INSUFFICIENT" },
+              humanReview: { status: "PENDING", requiredReviewerCount: 2, estimatedMinutes: 90 }
+            },
+            ruling: {
+              draftId: "CC-TEST",
+              evidenceChain: { linkedEvidenceCount: 6, completenessPct: 88 },
+              expertReview: { required: 2, passed: 0 },
+              auditResult: { status: "PENDING", completenessPct: 88 },
+              rulingStatus: { status: "PENDING", changeWindowOpen: false }
+            },
+            optimizationSummary: {
+              systemVersion: "Z-MATRIX v13.5.13",
+              suggestedVersion: "review",
+              latestCycleId: "V13.5.13",
+              headline: "backend",
+              evidence: "registry",
+              snapshotId: "CC-SNAP",
+              snapshotStatus: "READY",
+              restoreAvailable: true
+            },
+            parameterFamilies: [],
+            calibrationDisputes: [],
+            derivationPanel: {
+              dashboard: { configVersion: "v13.5.13", pendingApprovalCount: 1, blockedCount: 1, internalizationPct: 56, doNotChangeTodayCount: 3 },
+              riftAlerts: [],
+              seals: []
+            },
+            todos: [],
+            systemStatus: {
+              marketData: "READY",
+              financialData: "READY",
+              macroData: "READY",
+              strategyEngine: "READY",
+              riskEngine: "READY",
+              dataService: "READY",
+              configRegistry: "READY",
+              auditService: "READY",
+              lastUpdatedAt: "2026-06-13"
+            }
+          }),
+          { status: 200, headers: { "Content-Type": "application/json" } }
+        )
+      )
+    );
+
+    const packet = await getControlCompassPageData(demoSession);
+
+    expect(packet.kpi.configVersion).toBe("v13.5.13");
+    expect(packet.optimizationSummary.headline).toBe("backend");
+    expect(fetch).toHaveBeenCalledWith("/api/cockpit/control_compass_packet.json", expect.objectContaining({ cache: "no-store" }));
   });
 
   it("returns an isolated partial compass view for another workspace", async () => {

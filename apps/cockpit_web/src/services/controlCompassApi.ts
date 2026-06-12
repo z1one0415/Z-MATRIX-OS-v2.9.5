@@ -617,8 +617,46 @@ function cloneData(data: ControlCompassPageData, workspaceId: string): ControlCo
   };
 }
 
+function getBackendControlCompassPacketUrl(): string | null {
+  const configured = import.meta.env.VITE_ZMATRIX_CONTROL_COMPASS_PACKET_URL as string | undefined;
+  if (configured) {
+    return configured;
+  }
+  if (import.meta.env.MODE === "test" || typeof window === "undefined" || typeof fetch !== "function") {
+    return null;
+  }
+  return "/api/cockpit/control_compass_packet.json";
+}
+
+async function loadBackendControlCompassPacket(workspaceId: string): Promise<ControlCompassPageData | null> {
+  const packetUrl = getBackendControlCompassPacketUrl();
+  if (!packetUrl) {
+    return null;
+  }
+  try {
+    const response = await fetch(packetUrl, {
+      headers: { accept: "application/json" },
+      cache: "no-store"
+    });
+    if (!response.ok) {
+      return null;
+    }
+    const packet = (await response.json()) as ControlCompassPageData;
+    if (packet.workspaceId !== workspaceId) {
+      return null;
+    }
+    return packet;
+  } catch {
+    return null;
+  }
+}
+
 export async function getControlCompassPageData(session: AuthSession | null): Promise<ControlCompassPageData> {
   const current = requireSession(session);
+  const backendPacket = await loadBackendControlCompassPacket(current.workspaceId);
+  if (backendPacket) {
+    return cloneData(backendPacket, current.workspaceId);
+  }
   if (current.workspaceId === "ws_personal_z_prime") {
     return cloneData(compassMock, current.workspaceId);
   }

@@ -4,6 +4,11 @@ import json
 import sys
 
 from scripts.cockpit.export_all_packets import main as export_all_packets_main
+from zmatrix.research_db.cockpit.control_compass_read_model import (
+    build_control_compass_packet,
+    export_control_compass_packet,
+)
+from zmatrix.research_db.cockpit.dayan_ask_read_model import build_dayan_ask_packet, export_dayan_ask_packet
 from zmatrix.research_db.cockpit.history_read_model import build_history_packet, export_history_packet
 from zmatrix.research_db.cockpit.selection_read_model import build_selection_packet, export_selection_packet
 
@@ -39,6 +44,40 @@ def test_selection_and_history_export(tmp_path):
     assert json.loads(history_path.read_text(encoding="utf-8"))["workspaceId"] == history["workspaceId"]
 
 
+def test_control_compass_packet_uses_runtime_governance_and_blocks_trade():
+    packet = build_control_compass_packet()
+    assert packet["workspaceId"] == "ws_personal_z_prime"
+    assert packet["kpi"]["governanceDomainCount"] == 8
+    assert packet["kpi"]["configVersion"] == "v13.5.13"
+    assert packet["selectedDomain"]["selectedDomainName"] == "因子信号门"
+    assert packet["parameterFamilies"]
+    assert packet["safety"]["paperOnly"] is True
+    assert packet["safety"]["realTradeAllowed"] is False
+    assert packet["safety"]["brokerOrderAllowed"] is False
+    assert packet["safety"]["productionAllowed"] is False
+
+
+def test_dayan_ask_packet_uses_skillos_registry_and_blocks_trade():
+    packet = build_dayan_ask_packet()
+    assert packet["workspaceId"] == "ws_personal_z_prime"
+    assert packet["systemStatus"]["registeredMethodCount"] >= 100
+    assert packet["systemStatus"]["concreteDomainCount"] >= 17
+    assert packet["skillCategories"]
+    assert packet["safety"]["paperOnly"] is True
+    assert packet["safety"]["brokerRuntime"] == "BLOCKED"
+    assert packet["safety"]["realTrade"] == "BLOCKED"
+    assert packet["safety"]["registryDirectMutationAllowed"] is False
+
+
+def test_control_compass_and_dayan_export(tmp_path):
+    compass_path = tmp_path / "control_compass_packet.json"
+    dayan_path = tmp_path / "dayan_ask_packet.json"
+    compass = export_control_compass_packet(compass_path)
+    dayan = export_dayan_ask_packet(dayan_path)
+    assert json.loads(compass_path.read_text(encoding="utf-8"))["workspaceId"] == compass["workspaceId"]
+    assert json.loads(dayan_path.read_text(encoding="utf-8"))["workspaceId"] == dayan["workspaceId"]
+
+
 def test_export_all_packets_script(tmp_path):
     old_argv = sys.argv
     sys.argv = ["export_all_packets.py", "--public-root", str(tmp_path)]
@@ -46,9 +85,13 @@ def test_export_all_packets_script(tmp_path):
         assert export_all_packets_main() == 0
     finally:
         sys.argv = old_argv
-    for name in ["holdings", "selection", "history"]:
+    for name in ["holdings", "selection", "history", "control_compass", "dayan_ask"]:
         assert (tmp_path / f"{name}_packet.json").exists()
         payload = json.loads((tmp_path / f"{name}_packet.json").read_text(encoding="utf-8"))
         safety = payload.get("audit", payload.get("safety", {}))
-        assert safety["brokerRuntime"] == "BLOCKED"
-        assert safety["realTrade"] == "BLOCKED"
+        if name == "control_compass":
+            assert safety["brokerOrderAllowed"] is False
+            assert safety["realTradeAllowed"] is False
+        else:
+            assert safety["brokerRuntime"] == "BLOCKED"
+            assert safety["realTrade"] == "BLOCKED"

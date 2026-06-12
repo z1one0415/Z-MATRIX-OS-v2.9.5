@@ -1,0 +1,638 @@
+{
+  "workspaceId": "ws_personal_z_prime",
+  "asOf": "2026-06-13",
+  "source": "SKILLOS_REGISTRY_READ_MODEL",
+  "safety": {
+    "paperOnly": true,
+    "humanReviewRequired": true,
+    "brokerRuntime": "BLOCKED",
+    "realTrade": "BLOCKED",
+    "productionAllowed": false,
+    "agentDirectMutationAllowed": false,
+    "registryDirectMutationAllowed": false,
+    "memoryDirectWriteAllowed": false,
+    "ruleDirectEnableAllowed": false,
+    "dataScope": "WORKSPACE_SCOPED"
+  },
+  "altar": {
+    "mode": "DEEP_RESEARCH",
+    "modeLabel": "深度研究模式",
+    "currentTopic": "从 SkillOS 能力图谱生成纸面研究链路",
+    "researchScope": "ALL_MARKET",
+    "researchScopeLabel": "A股全市场",
+    "memoryContext": "LONG_MEMORY",
+    "memoryContextLabel": "长链记忆",
+    "safety": {
+      "paperOnly": true,
+      "humanReviewRequired": true,
+      "brokerRuntime": "BLOCKED",
+      "realTrade": "BLOCKED",
+      "productionAllowed": false,
+      "agentDirectMutationAllowed": false,
+      "registryDirectMutationAllowed": false,
+      "memoryDirectWriteAllowed": false,
+      "ruleDirectEnableAllowed": false,
+      "dataScope": "WORKSPACE_SCOPED"
+    }
+  },
+  "formations": [
+    {
+      "id": "research-chain",
+      "name": "研究链路编排阵",
+      "description": "计划、证据、报告草案",
+      "promptTemplate": "请基于当前研究主题生成只读研究链路，并列出证据缺口。",
+      "composedSkillIds": [
+        "workflow-plan",
+        "research-report",
+        "audit-pack"
+      ],
+      "safetyLevel": "PROPOSAL_REQUIRED"
+    },
+    {
+      "id": "portfolio-review",
+      "name": "组合复核阵",
+      "description": "暴露模板与风险预算",
+      "promptTemplate": "请生成组合复核草案，只输出观察、风险预算和待确认点。",
+      "composedSkillIds": [
+        "portfolio-schema",
+        "portfolio-review"
+      ],
+      "safetyLevel": "PROPOSAL_REQUIRED"
+    },
+    {
+      "id": "history-memory",
+      "name": "历史记忆阵",
+      "description": "相似案例与记忆候选",
+      "promptTemplate": "请检索历史相似案例，并提炼待确认记忆候选。",
+      "composedSkillIds": [
+        "similar-cases",
+        "memory-draft"
+      ],
+      "safetyLevel": "DRAFT_ONLY"
+    },
+    {
+      "id": "audit-guard",
+      "name": "审计护法阵",
+      "description": "证据链与安全硬门",
+      "promptTemplate": "请整理当前链路的审计包，保持只读并等待人工确认。",
+      "composedSkillIds": [
+        "audit-pack"
+      ],
+      "safetyLevel": "READ_ONLY"
+    },
+    {
+      "id": "factor-watch",
+      "name": "因子观察阵",
+      "description": "纸面观察与衰减复核",
+      "promptTemplate": "请复核因子纸面观察项，区分有效、弱化与样本不足。",
+      "composedSkillIds": [
+        "factor-snapshot",
+        "similar-cases"
+      ],
+      "safetyLevel": "DRAFT_ONLY"
+    },
+    {
+      "id": "governance-review",
+      "name": "治理复核阵",
+      "description": "注册表与硬门检查",
+      "promptTemplate": "请检查 SkillOS 注册表与安全硬门，输出复核草案。",
+      "composedSkillIds": [
+        "audit-pack",
+        "rule-draft"
+      ],
+      "safetyLevel": "PROPOSAL_REQUIRED"
+    }
+  ],
+  "hermesGuidance": {
+    "guidanceId": "HG-REGISTRY-20260613",
+    "contextSummary": "SkillOS 已注册 104 个技能，覆盖 20 个领域，当前只生成草案与审计参考。",
+    "suggestions": [
+      "优先选择研究链路编排，再补证据缺口。",
+      "涉及组合与账户内容时只生成复核草案。",
+      "所有能力调用保持人审与审计包约束。",
+      "不触发券商、生产或真实交易链。"
+    ],
+    "missingInputs": [
+      "研究主题",
+      "观察周期",
+      "证据材料"
+    ],
+    "recommendedMethods": [
+      "研究链路编排阵",
+      "组合复核阵",
+      "审计护法阵"
+    ],
+    "quickQuestions": [
+      "这个研究问题应该调用哪些技能？",
+      "当前证据链还缺什么？",
+      "帮我生成一条只读研究链路。",
+      "把这次问答整理为人审草案。"
+    ],
+    "nextActionText": "生成研究链路草案",
+    "hermesStatus": "常驻"
+  },
+  "advisoryGroups": [
+    {
+      "id": "research",
+      "title": "研究编排",
+      "description": "计划、检索、报告草案",
+      "entries": [
+        "研究计划",
+        "证据缺口",
+        "报告草案"
+      ]
+    },
+    {
+      "id": "portfolio",
+      "title": "组合复核",
+      "description": "账户观察与风险预算草案",
+      "entries": [
+        "暴露模板",
+        "风险预算",
+        "复核草案"
+      ]
+    },
+    {
+      "id": "governance",
+      "title": "治理审计",
+      "description": "规则、注册表与审计包",
+      "entries": [
+        "注册表",
+        "硬门",
+        "审计包"
+      ]
+    },
+    {
+      "id": "memory",
+      "title": "记忆沉淀",
+      "description": "候选记忆与案例复盘",
+      "entries": [
+        "案例草案",
+        "记忆候选",
+        "复盘摘要"
+      ]
+    }
+  ],
+  "forgeCandidates": [
+    {
+      "id": "forge-registry-001",
+      "suggestedName": "SkillOS 研究链路框架 v0.1",
+      "sourceCombination": [
+        "研究链路编排阵",
+        "审计护法阵"
+      ],
+      "usageCount": 25,
+      "scenario": "研究草案",
+      "status": "READY_TO_ADD",
+      "safetyLevel": "PROPOSAL_REQUIRED"
+    }
+  ],
+  "moveReview": [
+    {
+      "id": "move-registry-001",
+      "date": "2026-06-13",
+      "researchTopic": "SkillOS 合流后能力复核",
+      "methodCombination": "研究链路编排阵 + 审计护法阵",
+      "conclusion": "注册表可读，写入链仍需人审",
+      "memoryStatus": "待人审"
+    }
+  ],
+  "myMethods": [
+    {
+      "id": "my-registry-001",
+      "name": "只读研究链路",
+      "scenario": "系统复核",
+      "promptTemplate": "请基于已注册技能生成研究链路草案，并列出证据缺口。",
+      "composedSkills": [
+        "workflow-plan",
+        "audit-pack"
+      ],
+      "status": "ACTIVE",
+      "lastUsedAt": "2026-06-13",
+      "usageCount": 104
+    }
+  ],
+  "skillCategories": [
+    {
+      "id": "portfolio",
+      "name": "持仓问诊",
+      "description": "组合与账户观察",
+      "skillCount": 6,
+      "safetyLevel": "PROPOSAL_REQUIRED",
+      "skills": [
+        {
+          "id": "portfolio",
+          "userVisibleName": "组合复核草案",
+          "description": "读取注册能力并生成待确认草案",
+          "promptTemplate": "请基于该领域能力生成只读研究草案，并列出人审项。",
+          "outputType": "CHAT",
+          "safetyLevel": "READ_ONLY",
+          "requiredInputs": [
+            "研究主题",
+            "证据材料"
+          ],
+          "backendBinding": {
+            "registrySkillIds": [
+              "PORTFOLIO.GET_SCHEMA"
+            ],
+            "domain": "PORTFOLIO",
+            "operation": "registry_read"
+          }
+        }
+      ]
+    },
+    {
+      "id": "stock-selection",
+      "name": "选股问策",
+      "description": "因子与候选观察",
+      "skillCount": 6,
+      "safetyLevel": "PROPOSAL_REQUIRED",
+      "skills": [
+        {
+          "id": "stock_selection",
+          "userVisibleName": "因子观察摘要",
+          "description": "读取注册能力并生成待确认草案",
+          "promptTemplate": "请基于该领域能力生成只读研究草案，并列出人审项。",
+          "outputType": "CHAT",
+          "safetyLevel": "READ_ONLY",
+          "requiredInputs": [
+            "研究主题",
+            "证据材料"
+          ],
+          "backendBinding": {
+            "registrySkillIds": [
+              "FACTOR.GET_FACTOR_REGISTRY"
+            ],
+            "domain": "FACTOR",
+            "operation": "registry_read"
+          }
+        }
+      ]
+    },
+    {
+      "id": "catalyst",
+      "name": "催化问因",
+      "description": "催化与复核草案",
+      "skillCount": 5,
+      "safetyLevel": "PROPOSAL_REQUIRED",
+      "skills": [
+        {
+          "id": "catalyst",
+          "userVisibleName": "催化复核摘要",
+          "description": "读取注册能力并生成待确认草案",
+          "promptTemplate": "请基于该领域能力生成只读研究草案，并列出人审项。",
+          "outputType": "CHAT",
+          "safetyLevel": "READ_ONLY",
+          "requiredInputs": [
+            "研究主题",
+            "证据材料"
+          ],
+          "backendBinding": {
+            "registrySkillIds": [
+              "ZC35.GET_SCHEMA"
+            ],
+            "domain": "ZC35",
+            "operation": "registry_read"
+          }
+        }
+      ]
+    },
+    {
+      "id": "chain-research",
+      "name": "链上研判",
+      "description": "研究库与证据材料",
+      "skillCount": 6,
+      "safetyLevel": "DRAFT_ONLY",
+      "skills": [
+        {
+          "id": "chain_research",
+          "userVisibleName": "研究库检索",
+          "description": "读取注册能力并生成待确认草案",
+          "promptTemplate": "请基于该领域能力生成只读研究草案，并列出人审项。",
+          "outputType": "CHAT",
+          "safetyLevel": "READ_ONLY",
+          "requiredInputs": [
+            "研究主题",
+            "证据材料"
+          ],
+          "backendBinding": {
+            "registrySkillIds": [
+              "RESEARCHDB.GET_LAYER_STATUS"
+            ],
+            "domain": "RESEARCHDB",
+            "operation": "registry_read"
+          }
+        }
+      ]
+    },
+    {
+      "id": "advisory",
+      "name": "天官问策",
+      "description": "专家会审草案",
+      "skillCount": 7,
+      "safetyLevel": "PROPOSAL_REQUIRED",
+      "skills": [
+        {
+          "id": "advisory",
+          "userVisibleName": "专家会审草案",
+          "description": "读取注册能力并生成待确认草案",
+          "promptTemplate": "请基于该领域能力生成只读研究草案，并列出人审项。",
+          "outputType": "CHAT",
+          "safetyLevel": "READ_ONLY",
+          "requiredInputs": [
+            "研究主题",
+            "证据材料"
+          ],
+          "backendBinding": {
+            "registrySkillIds": [
+              "COUNCIL.GET_COUNCIL_SCHEMA"
+            ],
+            "domain": "COUNCIL",
+            "operation": "registry_read"
+          }
+        }
+      ]
+    },
+    {
+      "id": "history",
+      "name": "历史问迹",
+      "description": "案例与历史检索",
+      "skillCount": 4,
+      "safetyLevel": "PROPOSAL_REQUIRED",
+      "skills": [
+        {
+          "id": "history",
+          "userVisibleName": "相似案例检索",
+          "description": "读取注册能力并生成待确认草案",
+          "promptTemplate": "请基于该领域能力生成只读研究草案，并列出人审项。",
+          "outputType": "CHAT",
+          "safetyLevel": "READ_ONLY",
+          "requiredInputs": [
+            "研究主题",
+            "证据材料"
+          ],
+          "backendBinding": {
+            "registrySkillIds": [
+              "AUTOCASE.GET_INTAKE_SCHEMA"
+            ],
+            "domain": "AUTOCASE",
+            "operation": "registry_read"
+          }
+        }
+      ]
+    },
+    {
+      "id": "report",
+      "name": "报告落盘",
+      "description": "报告草案渲染",
+      "skillCount": 3,
+      "safetyLevel": "PROPOSAL_REQUIRED",
+      "skills": [
+        {
+          "id": "report",
+          "userVisibleName": "报告草案渲染",
+          "description": "读取注册能力并生成待确认草案",
+          "promptTemplate": "请基于该领域能力生成只读研究草案，并列出人审项。",
+          "outputType": "REPORT_DRAFT",
+          "safetyLevel": "PROPOSAL_REQUIRED",
+          "requiredInputs": [
+            "研究主题",
+            "证据材料"
+          ],
+          "backendBinding": {
+            "registrySkillIds": [
+              "REPORT.RENDER_SKILLOS_STATUS_DRAFT"
+            ],
+            "domain": "REPORT",
+            "operation": "registry_read"
+          }
+        }
+      ]
+    },
+    {
+      "id": "case-replay",
+      "name": "案例复盘",
+      "description": "案例候选草案",
+      "skillCount": 4,
+      "safetyLevel": "PROPOSAL_REQUIRED",
+      "skills": [
+        {
+          "id": "case_replay",
+          "userVisibleName": "案例候选草案",
+          "description": "读取注册能力并生成待确认草案",
+          "promptTemplate": "请基于该领域能力生成只读研究草案，并列出人审项。",
+          "outputType": "CHAT",
+          "safetyLevel": "READ_ONLY",
+          "requiredInputs": [
+            "研究主题",
+            "证据材料"
+          ],
+          "backendBinding": {
+            "registrySkillIds": [
+              "CASEFORGE.GET_CASE_DRAFT_SCHEMA"
+            ],
+            "domain": "CASEFORGE",
+            "operation": "registry_read"
+          }
+        }
+      ]
+    },
+    {
+      "id": "memory",
+      "name": "记忆沉淀",
+      "description": "记忆候选草案",
+      "skillCount": 4,
+      "safetyLevel": "PROPOSAL_REQUIRED",
+      "skills": [
+        {
+          "id": "memory",
+          "userVisibleName": "记忆候选草案",
+          "description": "读取注册能力并生成待确认草案",
+          "promptTemplate": "请基于该领域能力生成只读研究草案，并列出人审项。",
+          "outputType": "CHAT",
+          "safetyLevel": "READ_ONLY",
+          "requiredInputs": [
+            "研究主题",
+            "证据材料"
+          ],
+          "backendBinding": {
+            "registrySkillIds": [
+              "MEMORY.GET_MEMORY_CANDIDATE_SCHEMA"
+            ],
+            "domain": "MEMORY",
+            "operation": "registry_read"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rule",
+      "name": "规则候选",
+      "description": "治理与规则复核",
+      "skillCount": 9,
+      "safetyLevel": "PROPOSAL_REQUIRED",
+      "skills": [
+        {
+          "id": "rule",
+          "userVisibleName": "治理审计草案",
+          "description": "读取注册能力并生成待确认草案",
+          "promptTemplate": "请基于该领域能力生成只读研究草案，并列出人审项。",
+          "outputType": "CHAT",
+          "safetyLevel": "READ_ONLY",
+          "requiredInputs": [
+            "研究主题",
+            "证据材料"
+          ],
+          "backendBinding": {
+            "registrySkillIds": [
+              "GOVERNANCE.GET_VERIFY_SCRIPT_REGISTRY"
+            ],
+            "domain": "GOVERNANCE",
+            "operation": "registry_read"
+          }
+        }
+      ]
+    },
+    {
+      "id": "compass",
+      "name": "罗盘问治",
+      "description": "驾驶舱状态草案",
+      "skillCount": 4,
+      "safetyLevel": "DRAFT_ONLY",
+      "skills": [
+        {
+          "id": "compass",
+          "userVisibleName": "驾驶舱状态草案",
+          "description": "读取注册能力并生成待确认草案",
+          "promptTemplate": "请基于该领域能力生成只读研究草案，并列出人审项。",
+          "outputType": "CHAT",
+          "safetyLevel": "READ_ONLY",
+          "requiredInputs": [
+            "研究主题",
+            "证据材料"
+          ],
+          "backendBinding": {
+            "registrySkillIds": [
+              "COCKPIT.BUILD_SKILLOS_OVERVIEW"
+            ],
+            "domain": "COCKPIT",
+            "operation": "registry_read"
+          }
+        }
+      ]
+    },
+    {
+      "id": "audit",
+      "name": "审计护法",
+      "description": "硬门与审计检查",
+      "skillCount": 3,
+      "safetyLevel": "DRAFT_ONLY",
+      "skills": [
+        {
+          "id": "audit",
+          "userVisibleName": "硬门检查",
+          "description": "读取注册能力并生成待确认草案",
+          "promptTemplate": "请基于该领域能力生成只读研究草案，并列出人审项。",
+          "outputType": "CHAT",
+          "safetyLevel": "READ_ONLY",
+          "requiredInputs": [
+            "研究主题",
+            "证据材料"
+          ],
+          "backendBinding": {
+            "registrySkillIds": [
+              "VERIFY.RUN_DRY"
+            ],
+            "domain": "SYSTEM_VERIFY",
+            "operation": "registry_read"
+          }
+        }
+      ]
+    }
+  ],
+  "currentConversation": {
+    "conversationId": "ask-registry-20260613-001",
+    "topic": "研究主题：SkillOS 能力图谱复核",
+    "selectedPromptFragments": [
+      "研究链路编排阵",
+      "审计护法阵"
+    ],
+    "messages": [
+      {
+        "id": "msg-registry-001",
+        "role": "HERMES",
+        "label": "问天",
+        "content": "已读取 SkillOS 注册表。当前建议先生成只读研究链路，再把证据缺口交给人审。",
+        "createdAt": "09:42"
+      }
+    ]
+  },
+  "latestHermesPlan": {
+    "planId": "plan-registry-20260613-001",
+    "userGoal": "从当前能力图谱生成研究链路",
+    "interpretedTask": "技能选择 + 证据缺口 + 草案产出",
+    "recommendedMethods": [
+      "研究链路编排阵",
+      "组合复核阵",
+      "审计护法阵"
+    ],
+    "executionSteps": [
+      {
+        "order": 1,
+        "actionName": "选择技能组合",
+        "userVisiblePurpose": "确认研究路径",
+        "requiredInput": [
+          "研究主题"
+        ],
+        "expectedOutput": "技能清单"
+      },
+      {
+        "order": 2,
+        "actionName": "生成证据缺口",
+        "userVisiblePurpose": "标记需要补证的材料",
+        "requiredInput": [
+          "证据材料"
+        ],
+        "expectedOutput": "缺口清单"
+      },
+      {
+        "order": 3,
+        "actionName": "生成审计草案",
+        "userVisiblePurpose": "保留人审轨迹",
+        "requiredInput": [
+          "前两步结论"
+        ],
+        "expectedOutput": "审计草案"
+      }
+    ],
+    "missingInputs": [
+      "研究主题",
+      "观察周期"
+    ],
+    "outputTarget": [
+      "CHAT_ONLY",
+      "REPORT_DRAFT",
+      "AUDIT_CHECK"
+    ],
+    "humanReviewRequired": true
+  },
+  "voice": {
+    "state": "READY",
+    "label": "语音输入可用",
+    "privacyNote": "仅转写到输入框，不写入正式库。"
+  },
+  "systemStatus": {
+    "registeredMethodCount": 104,
+    "concreteDomainCount": 20,
+    "maxRiskLevel": "R2_DRAFT",
+    "workflowMode": "DRY_RUN_ONLY",
+    "registryMutation": "BLOCKED"
+  },
+  "backendMapping": {
+    "registry": "skill_registry.generated.json",
+    "contracts": "skill_contract_registry.json",
+    "invocation": "invoke_skill(command_envelope, context_slice)",
+    "workflow": "WORKFLOW.RUN_RESEARCH_DRY_CHAIN",
+    "approval": "Proposal/Human Review"
+  }
+}

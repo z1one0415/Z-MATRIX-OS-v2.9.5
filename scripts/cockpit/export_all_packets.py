@@ -7,6 +7,8 @@ import argparse
 import json
 from pathlib import Path
 
+from zmatrix.research_db.cockpit.control_compass_read_model import export_control_compass_packet
+from zmatrix.research_db.cockpit.dayan_ask_read_model import export_dayan_ask_packet
 from zmatrix.research_db.cockpit.history_read_model import export_history_packet
 from zmatrix.research_db.cockpit.holdings_read_model import (
     SAMPLE_HOLDINGS_SNAPSHOT,
@@ -31,6 +33,8 @@ def main() -> int:
         ),
         "selection": export_selection_packet(root / "selection_packet.json", workspace_id=args.workspace_id),
         "history": export_history_packet(root / "history_packet.json", workspace_id=args.workspace_id),
+        "control_compass": export_control_compass_packet(root / "control_compass_packet.json", workspace_id=args.workspace_id),
+        "dayan_ask": export_dayan_ask_packet(root / "dayan_ask_packet.json", workspace_id=args.workspace_id),
     }
     print(
         json.dumps(
@@ -58,11 +62,23 @@ def _paper_only(packet: dict) -> bool:
 
 
 def _broker_runtime(packet: dict) -> str:
-    return str(packet.get("audit", packet.get("safety", {})).get("brokerRuntime"))
+    safety = packet.get("audit", packet.get("safety", {}))
+    runtime = safety.get("brokerRuntime")
+    if runtime:
+        return str(runtime)
+    if safety.get("brokerOrderAllowed") is False:
+        return "BLOCKED"
+    return "UNKNOWN"
 
 
 def _real_trade(packet: dict) -> str:
-    return str(packet.get("audit", packet.get("safety", {})).get("realTrade"))
+    safety = packet.get("audit", packet.get("safety", {}))
+    runtime = safety.get("realTrade")
+    if runtime:
+        return str(runtime)
+    if safety.get("realTradeAllowed") is False:
+        return "BLOCKED"
+    return "UNKNOWN"
 
 
 if __name__ == "__main__":

@@ -1,0 +1,441 @@
+{
+  "workspaceId": "ws_personal_z_prime",
+  "asOf": "2026-06-13",
+  "source": "RUNTIME_GOVERNANCE_READ_MODEL",
+  "safety": {
+    "paperOnly": true,
+    "humanReviewRequired": true,
+    "realTradeAllowed": false,
+    "brokerOrderAllowed": false,
+    "productionAllowed": false,
+    "agentDirectMutationAllowed": false
+  },
+  "kpi": {
+    "governanceDomainCount": 8,
+    "healthyDomainCount": 8,
+    "healthScore": 100.0,
+    "latestPaperHitRatePct": 0.0,
+    "weakenedSignalCount": 4,
+    "pendingAdjudicationCount": 0,
+    "optimizationSnapshotStatus": "READY",
+    "pendingChangeCount": 3,
+    "blockedChangeCount": 0,
+    "monthlyInternalizationPct": 56,
+    "auditCompletenessPct": 100.0,
+    "configVersion": "v13.5.13",
+    "dataFreshness": "FRESH"
+  },
+  "governanceDomains": [
+    {
+      "domainId": "DATA_QUALITY",
+      "index": 1,
+      "displayName": "数据质量门",
+      "ringIndex": 8,
+      "status": "STABLE",
+      "pendingChanges": 0,
+      "riskLevel": "LOW",
+      "lastReviewedAt": "2026-06-13 09:42"
+    },
+    {
+      "domainId": "SAMPLE_POOL",
+      "index": 2,
+      "displayName": "样本池韧性",
+      "ringIndex": 7,
+      "status": "NEED_CALIBRATION",
+      "pendingChanges": 0,
+      "riskLevel": "MID",
+      "lastReviewedAt": "2026-06-13 09:42"
+    },
+    {
+      "domainId": "FACTOR_SIGNAL",
+      "index": 3,
+      "displayName": "因子信号门",
+      "ringIndex": 6,
+      "status": "UNDER_REVIEW",
+      "pendingChanges": 0,
+      "riskLevel": "MID",
+      "lastReviewedAt": "2026-06-13 09:42"
+    },
+    {
+      "domainId": "CATALYST_CYCLE",
+      "index": 4,
+      "displayName": "催化周期门",
+      "ringIndex": 5,
+      "status": "STABLE",
+      "pendingChanges": 0,
+      "riskLevel": "LOW",
+      "lastReviewedAt": "2026-06-13 09:42"
+    },
+    {
+      "domainId": "B_MATRIX",
+      "index": 5,
+      "displayName": "B-Matrix 底仓",
+      "ringIndex": 4,
+      "status": "STABLE",
+      "pendingChanges": 0,
+      "riskLevel": "LOW",
+      "lastReviewedAt": "2026-06-13 09:42"
+    },
+    {
+      "domainId": "R_MATRIX",
+      "index": 6,
+      "displayName": "R-Matrix 轮动",
+      "ringIndex": 3,
+      "status": "NEED_CALIBRATION",
+      "pendingChanges": 1,
+      "riskLevel": "MID",
+      "lastReviewedAt": "2026-06-13 09:42"
+    },
+    {
+      "domainId": "D_MATRIX",
+      "index": 7,
+      "displayName": "D-Matrix 黑马",
+      "ringIndex": 2,
+      "status": "UNDER_REVIEW",
+      "pendingChanges": 1,
+      "riskLevel": "MID",
+      "lastReviewedAt": "2026-06-13 09:42"
+    },
+    {
+      "domainId": "EXPERIENCE_INTERNALIZATION",
+      "index": 8,
+      "displayName": "经验内化",
+      "ringIndex": 1,
+      "status": "STABLE",
+      "pendingChanges": 0,
+      "riskLevel": "LOW",
+      "lastReviewedAt": "2026-06-13 09:42"
+    }
+  ],
+  "selectedDomain": {
+    "selectedDomainId": "FACTOR_SIGNAL",
+    "selectedDomainName": "因子信号门",
+    "currentValue": {
+      "label": "当前阶段",
+      "value": "V13_5_13_TACTICAL_MONITORING_NO_TRUE_NEW_OOS"
+    },
+    "suggestedValue": {
+      "label": "系统建议",
+      "value": "等待新增 OOS 数据后复核"
+    },
+    "impactScope": {
+      "relatedParameterCount": 104,
+      "affectedModuleCount": 20,
+      "affectedPages": [
+        "投研选股",
+        "历史回溯",
+        "天机罗盘",
+        "大衍天问"
+      ]
+    },
+    "validationStatus": {
+      "paperValidationPassed": true,
+      "confidencePct": 100.0,
+      "method": "runtime reports + SkillOS registry"
+    },
+    "auditStatus": {
+      "status": "PENDING_EXPERT_REVIEW",
+      "expectedFinishAt": "2026-06-14 14:00"
+    }
+  },
+  "sandbox": {
+    "draft": {
+      "draftId": "CC-RUNTIME-20260613",
+      "domainId": "FACTOR_SIGNAL",
+      "affectedParameterCount": 104,
+      "version": "runtime-governance v13.5.13"
+    },
+    "impact": {
+      "impactLevel": "MID",
+      "coverage": "HIGH",
+      "strategyImpact": "研究链保持只读，新增样本后再复核",
+      "internalizationImpactPct": 4
+    },
+    "risk": {
+      "riskLevel": "LOW",
+      "potentialImpact": "若新增样本不足，因子晋级继续延后",
+      "varianceRange": [
+        -1.2,
+        0.8
+      ],
+      "blockingCount": 0
+    },
+    "paperValidation": {
+      "method": "多轮纸面跟踪与审计",
+      "sampleSize": 8,
+      "passRatePct": 100.0,
+      "conclusion": "PASSED"
+    },
+    "humanReview": {
+      "status": "PENDING",
+      "requiredReviewerCount": 2,
+      "estimatedMinutes": 90
+    }
+  },
+  "ruling": {
+    "draftId": "CC-RUNTIME-20260613",
+    "evidenceChain": {
+      "linkedEvidenceCount": 6,
+      "completenessPct": 100.0
+    },
+    "expertReview": {
+      "required": 2,
+      "passed": 0,
+      "expectedFinishAt": "2026-06-14 14:00"
+    },
+    "auditResult": {
+      "status": "PENDING",
+      "completenessPct": 100.0
+    },
+    "rulingStatus": {
+      "status": "PENDING",
+      "changeWindowOpen": false
+    }
+  },
+  "optimizationSummary": {
+    "systemVersion": "Z-MATRIX v13.5.13",
+    "suggestedVersion": "v13.5.13 review draft",
+    "latestCycleId": "V13.5.13",
+    "headline": "等待真实新增样本，研究链继续停在只读监控。",
+    "evidence": "SkillOS registry 104 skills / 20 domains",
+    "snapshotId": "CC-SNAP-20260613-01",
+    "snapshotStatus": "READY",
+    "restoreAvailable": true
+  },
+  "parameterFamilies": [
+    {
+      "familyId": "PF-DATA-QUALITY",
+      "domainId": "DATA_QUALITY",
+      "label": "数据健康与泄漏门",
+      "scope": "数据新鲜度、覆盖率、泄漏审计",
+      "backendMapping": "data gate",
+      "currentVersion": "runtime v13.5.13",
+      "systemOptimizedVersion": "runtime v13.5.13-review",
+      "currentSignal": "STABLE",
+      "optimizationAdvice": "保持当前门槛",
+      "paperReview": "只读审计，人审后再入下一阶段",
+      "driftStatus": "STABLE",
+      "editableMode": "DRAFT_ONLY",
+      "snapshotRequired": true,
+      "restoreAvailable": true
+    },
+    {
+      "familyId": "PF-SAMPLE-POOL",
+      "domainId": "SAMPLE_POOL",
+      "label": "样本池韧性与矩阵时钟",
+      "scope": "池规模、月份覆盖、样本有效性",
+      "backendMapping": "sample gate",
+      "currentVersion": "runtime v13.5.13",
+      "systemOptimizedVersion": "runtime v13.5.13-review",
+      "currentSignal": "STABLE",
+      "optimizationAdvice": "等待新增 OOS 样本",
+      "paperReview": "只读审计，人审后再入下一阶段",
+      "driftStatus": "STABLE",
+      "editableMode": "DRAFT_ONLY",
+      "snapshotRequired": true,
+      "restoreAvailable": true
+    },
+    {
+      "familyId": "PF-FACTOR-SIGNAL",
+      "domainId": "FACTOR_SIGNAL",
+      "label": "因子信号与晋级门",
+      "scope": "RankIC、decay、horizon、纸面跟踪",
+      "backendMapping": "factor gate",
+      "currentVersion": "runtime v13.5.13",
+      "systemOptimizedVersion": "runtime v13.5.13-review",
+      "currentSignal": "STABLE",
+      "optimizationAdvice": "延后因子晋级",
+      "paperReview": "只读审计，人审后再入下一阶段",
+      "driftStatus": "STABLE",
+      "editableMode": "DRAFT_ONLY",
+      "snapshotRequired": true,
+      "restoreAvailable": true
+    },
+    {
+      "familyId": "PF-CATALYST-CYCLE",
+      "domainId": "CATALYST_CYCLE",
+      "label": "催化周期门",
+      "scope": "叙事水温、催化半衰期、事件回链",
+      "backendMapping": "catalyst cycle",
+      "currentVersion": "runtime v13.5.13",
+      "systemOptimizedVersion": "runtime v13.5.13-review",
+      "currentSignal": "STABLE",
+      "optimizationAdvice": "保持复核节奏",
+      "paperReview": "只读审计，人审后再入下一阶段",
+      "driftStatus": "STABLE",
+      "editableMode": "DRAFT_ONLY",
+      "snapshotRequired": true,
+      "restoreAvailable": true
+    },
+    {
+      "familyId": "PF-B-MATRIX",
+      "domainId": "B_MATRIX",
+      "label": "B-Matrix 底仓质量门",
+      "scope": "评级 cap、估值上下文、Thesis Stop",
+      "backendMapping": "b matrix",
+      "currentVersion": "runtime v13.5.13",
+      "systemOptimizedVersion": "runtime v13.5.13-review",
+      "currentSignal": "STABLE",
+      "optimizationAdvice": "保持底仓质量门",
+      "paperReview": "只读审计，人审后再入下一阶段",
+      "driftStatus": "STABLE",
+      "editableMode": "DRAFT_ONLY",
+      "snapshotRequired": true,
+      "restoreAvailable": true
+    },
+    {
+      "familyId": "PF-R-MATRIX",
+      "domainId": "R_MATRIX",
+      "label": "R-Matrix 轮动门",
+      "scope": "Hurst、半衰期、波动衰减",
+      "backendMapping": "r matrix",
+      "currentVersion": "runtime v13.5.13",
+      "systemOptimizedVersion": "runtime v13.5.13-review",
+      "currentSignal": "DRIFTING",
+      "optimizationAdvice": "复核轮动参数",
+      "paperReview": "只读审计，人审后再入下一阶段",
+      "driftStatus": "DRIFTING",
+      "editableMode": "DRAFT_ONLY",
+      "snapshotRequired": true,
+      "restoreAvailable": true
+    },
+    {
+      "familyId": "PF-D-MATRIX",
+      "domainId": "D_MATRIX",
+      "label": "D-Matrix 黑马源点门",
+      "scope": "黑马基因、主题种子、M1 覆盖",
+      "backendMapping": "d matrix",
+      "currentVersion": "runtime v13.5.13",
+      "systemOptimizedVersion": "runtime v13.5.13-review",
+      "currentSignal": "LOW_SAMPLE",
+      "optimizationAdvice": "补充 M1 覆盖证据",
+      "paperReview": "只读审计，人审后再入下一阶段",
+      "driftStatus": "LOW_SAMPLE",
+      "editableMode": "DRAFT_ONLY",
+      "snapshotRequired": true,
+      "restoreAvailable": true
+    },
+    {
+      "familyId": "PF-EXPERIENCE-INTERNALIZATION",
+      "domainId": "EXPERIENCE_INTERNALIZATION",
+      "label": "经验内化",
+      "scope": "安全硬门、Z9 反馈、月度内化",
+      "backendMapping": "memory gate",
+      "currentVersion": "runtime v13.5.13",
+      "systemOptimizedVersion": "runtime v13.5.13-review",
+      "currentSignal": "STABLE",
+      "optimizationAdvice": "保持人审门",
+      "paperReview": "只读审计，人审后再入下一阶段",
+      "driftStatus": "STABLE",
+      "editableMode": "DRAFT_ONLY",
+      "snapshotRequired": true,
+      "restoreAvailable": true
+    }
+  ],
+  "calibrationDisputes": [
+    {
+      "disputeId": "DISPUTE-OOS-001",
+      "domainId": "FACTOR_SIGNAL",
+      "title": "新增样本不足",
+      "reason": "V13.5.13 未取得真实新增 OOS 月份，因子链保持复核态。",
+      "severity": "MID",
+      "humanReviewRequired": true
+    },
+    {
+      "disputeId": "DISPUTE-REGISTRY-001",
+      "domainId": "EXPERIENCE_INTERNALIZATION",
+      "title": "SkillOS 合流后需压平审计",
+      "reason": "注册表已扩展，需要保持驾驶舱只读映射。",
+      "severity": "LOW",
+      "humanReviewRequired": true
+    }
+  ],
+  "derivationPanel": {
+    "dashboard": {
+      "configVersion": "v13.5.13",
+      "pendingApprovalCount": 0,
+      "blockedCount": 0,
+      "internalizationPct": 56,
+      "doNotChangeTodayCount": 3
+    },
+    "riftAlerts": [
+      {
+        "alertId": "RIFT-OOS-20260613",
+        "level": "L3",
+        "title": "新增 OOS 数据不足",
+        "summary": "当前候选保留，等待下一轮真实样本。",
+        "affectedDomainIds": [
+          "FACTOR_SIGNAL",
+          "SAMPLE_POOL"
+        ],
+        "actionRequired": true
+      }
+    ],
+    "seals": [
+      {
+        "sealType": "STABLE",
+        "title": "稳定印",
+        "summary": "SkillOS 注册与只读域保持稳定",
+        "targetDomainIds": [
+          "DATA_QUALITY",
+          "EXPERIENCE_INTERNALIZATION"
+        ]
+      },
+      {
+        "sealType": "CALIBRATION",
+        "title": "校准印",
+        "summary": "因子与样本池等待新增样本",
+        "targetDomainIds": [
+          "FACTOR_SIGNAL",
+          "SAMPLE_POOL"
+        ]
+      },
+      {
+        "sealType": "FORBIDDEN",
+        "title": "禁改印",
+        "summary": "券商、生产与真实交易链保持锁定",
+        "targetDomainIds": [
+          "D_MATRIX",
+          "R_MATRIX"
+        ]
+      }
+    ]
+  },
+  "todos": [
+    {
+      "todoId": "cc-refresh-01",
+      "sourceType": "AUDIT_REVIEW",
+      "priority": "HIGH",
+      "title": "复核 V13.5.13 样本状态",
+      "dueTime": "09:30",
+      "status": "PENDING"
+    },
+    {
+      "todoId": "cc-registry-01",
+      "sourceType": "MONTHLY_INTERNALIZATION",
+      "priority": "MID",
+      "title": "核对 SkillOS 注册表映射",
+      "dueTime": "10:30",
+      "status": "PENDING"
+    },
+    {
+      "todoId": "cc-export-01",
+      "sourceType": "AUDIT_REVIEW",
+      "priority": "MID",
+      "title": "导出天机罗盘审计包",
+      "dueTime": "14:30",
+      "status": "PENDING"
+    }
+  ],
+  "systemStatus": {
+    "marketData": "READY",
+    "financialData": "READY",
+    "macroData": "READY",
+    "strategyEngine": "READY",
+    "riskEngine": "READY",
+    "dataService": "READY",
+    "configRegistry": "READY",
+    "auditService": "READY",
+    "lastUpdatedAt": "2026-06-13"
+  }
+}

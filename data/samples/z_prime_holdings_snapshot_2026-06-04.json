@@ -1,0 +1,72 @@
+{
+  "snapshot_id": "Z_PRIME_HOLDINGS_2026_06_04",
+  "source": "USER_PORTFOLIO_SCREENSHOT_SAMPLE",
+  "workspace_id": "ws_personal_z_prime",
+  "as_of": "2026-06-04",
+  "account": {
+    "account_mask": "550***06",
+    "currency": "CNY",
+    "total_assets": 110249.84,
+    "floating_pnl": -4776.77,
+    "day_reference_pnl": 3733.5,
+    "market_value": 110137.0,
+    "cash": 112.84,
+    "withdrawable": 112.84
+  },
+  "positions": [
+    {
+      "symbol": "601899",
+      "name": "紫金矿业",
+      "role": "CORE",
+      "market_value": 25264.0,
+      "floating_pnl": -2317.42,
+      "floating_pnl_pct": -8.4,
+      "quantity": 800,
+      "available": 800,
+      "cost_price": 34.477,
+      "current_price": 31.58,
+      "signal_strength": "MID",
+      "thesis_status": "REVIEW",
+      "catalyst_status": "DECAYING",
+      "next_action": "RISK_REVIEW",
+      "review_status": "待复核",
+      "risk_tag": "回撤复核"
+    },
+    {
+      "symbol": "002472",
+      "name": "双环传动",
+      "role": "ROTATION",
+      "market_value": 71964.0,
+      "floating_pnl": -3116.61,
+      "floating_pnl_pct": -4.15,
+      "quantity": 1800,
+      "available": 1800,
+      "cost_price": 41.711,
+      "current_price": 39.98,
+      "signal_strength": "LOW",
+      "thesis_status": "REVIEW",
+      "catalyst_status": "DECAYING",
+      "next_action": "THESIS_REVIEW",
+      "review_status": "待复核",
+      "risk_tag": "回撤复核"
+    },
+    {
+      "symbol": "588860",
+      "name": "科创创业ETF天弘",
+      "role": "DEFENSIVE",
+      "market_value": 12909.0,
+      "floating_pnl": 657.26,
+      "floating_pnl_pct": 5.36,
+      "quantity": 6500,
+      "available": 6500,
+      "cost_price": 1.885,
+      "current_price": 1.986,
+      "signal_strength": "MID",
+      "thesis_status": "WATCH",
+      "catalyst_status": "ACTIVE",
+      "next_action": "WATCH",
+      "review_status": "只读观察",
+      "risk_tag": "正收益观察"
+    }
+  ]
+}

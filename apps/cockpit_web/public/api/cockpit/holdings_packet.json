@@ -1,0 +1,196 @@
+{
+  "workspaceId": "ws_personal_z_prime",
+  "asOf": "2026-06-04",
+  "source": "USER_PORTFOLIO_SCREENSHOT_SAMPLE",
+  "account": {
+    "totalAssets": 110249.84,
+    "floatingPnl": -4776.77,
+    "dayReferencePnl": 3733.5,
+    "marketValue": 110137.0,
+    "cash": 112.84,
+    "withdrawable": 112.84,
+    "currency": "CNY",
+    "accountMask": "550***06"
+  },
+  "kpi": {
+    "todayPnl": 3733.5,
+    "todayPnlPct": 3.39,
+    "totalAsset": 110249.84,
+    "holdingAlphaAnnualized": null,
+    "cashRatio": 0.1,
+    "maxDrawdownRecentYear": null,
+    "dataFreshness": "FRESH"
+  },
+  "curveStats": [
+    {
+      "label": "累计收益",
+      "value": "待导入",
+      "tone": "muted"
+    },
+    {
+      "label": "年化收益",
+      "value": "待归因",
+      "tone": "muted"
+    },
+    {
+      "label": "波动率",
+      "value": "待计算",
+      "tone": "muted"
+    },
+    {
+      "label": "夏普比率",
+      "value": "待计算",
+      "tone": "muted"
+    },
+    {
+      "label": "最大回撤",
+      "value": "待计算",
+      "tone": "muted"
+    }
+  ],
+  "positions": [
+    {
+      "symbol": "601899",
+      "name": "紫金矿业",
+      "role": "CORE",
+      "marketValue": 25264.0,
+      "weightPct": 22.94,
+      "floatingPnl": -2317.42,
+      "floatingPnlPct": -8.4,
+      "alphaContributionPct": null,
+      "signalStrength": "MID",
+      "thesisStatus": "REVIEW",
+      "catalystStatus": "DECAYING",
+      "nextAction": "RISK_REVIEW",
+      "quantity": 800,
+      "available": 800,
+      "costPrice": 34.477,
+      "currentPrice": 31.58,
+      "reviewStatus": "待复核",
+      "riskTag": "回撤复核"
+    },
+    {
+      "symbol": "002472",
+      "name": "双环传动",
+      "role": "ROTATION",
+      "marketValue": 71964.0,
+      "weightPct": 65.34,
+      "floatingPnl": -3116.61,
+      "floatingPnlPct": -4.15,
+      "alphaContributionPct": null,
+      "signalStrength": "LOW",
+      "thesisStatus": "REVIEW",
+      "catalystStatus": "DECAYING",
+      "nextAction": "THESIS_REVIEW",
+      "quantity": 1800,
+      "available": 1800,
+      "costPrice": 41.711,
+      "currentPrice": 39.98,
+      "reviewStatus": "待复核",
+      "riskTag": "回撤复核"
+    },
+    {
+      "symbol": "588860",
+      "name": "科创创业ETF天弘",
+      "role": "DEFENSIVE",
+      "marketValue": 12909.0,
+      "weightPct": 11.72,
+      "floatingPnl": 657.26,
+      "floatingPnlPct": 5.36,
+      "alphaContributionPct": null,
+      "signalStrength": "MID",
+      "thesisStatus": "WATCH",
+      "catalystStatus": "ACTIVE",
+      "nextAction": "WATCH",
+      "quantity": 6500,
+      "available": 6500,
+      "costPrice": 1.885,
+      "currentPrice": 1.986,
+      "reviewStatus": "只读观察",
+      "riskTag": "正收益观察"
+    }
+  ],
+  "observationWarehouses": [
+    {
+      "warehouseType": "CORE_OBSERVATION",
+      "title": "底仓观察",
+      "count": 2,
+      "pendingActionCount": 1,
+      "todayChange": "新增复核 1 项",
+      "outcomeStatus": "稳定",
+      "tone": "green",
+      "topCandidates": [
+        {
+          "ticker": "601899",
+          "name": "紫金矿业",
+          "oneLineReason": "回撤复核",
+          "validationStatus": "NEED_REVIEW"
+        },
+        {
+          "ticker": "588860",
+          "name": "科创创业ETF天弘",
+          "oneLineReason": "正收益观察",
+          "validationStatus": "OUTPERFORMING"
+        }
+      ]
+    },
+    {
+      "warehouseType": "ROTATION_OBSERVATION",
+      "title": "轮动观察",
+      "count": 1,
+      "pendingActionCount": 1,
+      "todayChange": "新增复核 1 项",
+      "outcomeStatus": "关注",
+      "tone": "gold",
+      "topCandidates": [
+        {
+          "ticker": "002472",
+          "name": "双环传动",
+          "oneLineReason": "回撤复核",
+          "validationStatus": "NEED_REVIEW"
+        }
+      ]
+    },
+    {
+      "warehouseType": "DARK_HORSE_OBSERVATION",
+      "title": "黑马观察",
+      "count": 0,
+      "pendingActionCount": 0,
+      "todayChange": "无新增",
+      "outcomeStatus": "空仓",
+      "tone": "gold",
+      "topCandidates": [
+        {
+          "ticker": "PENDING",
+          "name": "等待投研问股输入",
+          "oneLineReason": "由候选池进入观察",
+          "validationStatus": "PENDING"
+        }
+      ]
+    }
+  ],
+  "todos": [
+    {
+      "time": "09:30",
+      "title": "复核紫金矿业研究路径",
+      "tone": "red"
+    },
+    {
+      "time": "09:30",
+      "title": "复核双环传动研究路径",
+      "tone": "red"
+    },
+    {
+      "time": "14:30",
+      "title": "生成持仓只读审计包（2 项）",
+      "tone": "gold"
+    }
+  ],
+  "audit": {
+    "paperOnly": true,
+    "humanReview": true,
+    "brokerRuntime": "BLOCKED",
+    "realTrade": "BLOCKED",
+    "dataScope": "WORKSPACE_SCOPED"
+  }
+}

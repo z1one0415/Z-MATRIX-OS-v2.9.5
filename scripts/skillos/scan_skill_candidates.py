@@ -23,12 +23,26 @@ def scan_py(path):
   if isinstance(node,(ast.FunctionDef,ast.AsyncFunctionDef)) and not node.name.startswith("_"):
    r=infer_risk(node.name); out.append({"candidate_id":f"CANDIDATE.{domain}.{node.name.upper()}","module_path":str(path),"symbol_name":node.name,"candidate_type":"function","domain":domain,"suggested_skill_id":f"{domain}.{node.name.upper()}","suggested_skill_layer":"L0_ATOMIC","suggested_risk_level":r,"read_layers":[],"write_layers":[],"requires_human_review":r not in["R0_READ","R1_ANNOTATE"],"production_allowed":False,"status":"CANDIDATE_ONLY","reason":"public function"})
  return out
+def preserve_existing_order(cands):
+ by_key={(c["module_path"],c["symbol_name"]):c for c in cands}
+ ordered=[]; used=set()
+ if OUT.exists():
+  try: existing=json.loads(OUT.read_text(encoding="utf-8"))
+  except Exception: existing=[]
+  for item in existing:
+   k=(item.get("module_path"),item.get("symbol_name"))
+   if k in by_key and k not in used:
+    ordered.append(by_key[k]); used.add(k)
+ remaining=[c for k,c in by_key.items() if k not in used]
+ remaining.sort(key=lambda c: (c["domain"], c["module_path"], c["symbol_name"], c["candidate_type"]))
+ ordered.extend(remaining)
+ return ordered
 def main():
  cands=[]
  for r in ROOTS:
   p=Path(r)
   if not p.exists(): continue
-  for f in p.rglob("*"):
+  for f in sorted(p.rglob("*"), key=lambda x: x.as_posix()):
    if any(e in f.parts for e in EXCLUDE): continue
    if f.suffix==".py": cands.extend(scan_py(f))
    elif f.suffix==".sh": cands.append(scan_sh(f))
@@ -36,7 +50,10 @@ def main():
  for c in cands:
   k=(c["module_path"],c["symbol_name"])
   if k not in seen: seen.add(k); dedup.append(c)
+ dedup=preserve_existing_order(dedup)
  OUT.parent.mkdir(parents=True,exist_ok=True)
- OUT.write_text(json.dumps(dedup,ensure_ascii=False,indent=2),encoding="utf-8")
+ payload=json.dumps(dedup,ensure_ascii=False,indent=2)
+ if not OUT.exists() or OUT.read_text(encoding="utf-8") != payload:
+  OUT.write_text(payload,encoding="utf-8")
  print(f"skill candidates: {len(dedup)}")
 if __name__=="__main__": main()

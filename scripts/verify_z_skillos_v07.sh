@@ -43,6 +43,7 @@ import re
 import io
 import tokenize
 import subprocess
+import os
 
 def strip_comments_and_strings(text):
     try:
@@ -60,13 +61,29 @@ def strip_comments_and_strings(text):
         clean = re.sub(r'#.*', '', clean)
         return clean
 
+def resolve_scan_base():
+    explicit = os.environ.get("Z_SKILLOS_SCAN_BASE_REF")
+    candidates = [explicit] if explicit else []
+    candidates.extend([
+        "@{upstream}",
+        "origin/v4.0-batch-0-final-hardgates-scope-lock-clean",
+        "origin/v4.0-batch-0-final-hardgates-scope-lock",
+    ])
+    for ref in candidates:
+        if not ref:
+            continue
+        probe = subprocess.run(["git", "rev-parse", "--verify", ref], capture_output=True, text=True)
+        if probe.returncode == 0:
+            return ref
+    raise SystemExit("FAIL: unable to resolve SkillOS forbidden scan base")
+
 bkeys=["external_api_used","shadowbroker_deployed","production_allowed","trade_allowed","verdict_allowed","broker_order_allowed","real_trade_allowed","auto_buy_allowed","auto_sell_allowed","investment_verdict_allowed","trade_signal_allowed","buy_sell_hold_allowed","portfolio_allowed"]
 ckeys=["买"+"入","卖"+"出","持"+"有","目标"+"价","止"+"盈","止"+"损","仓"+"位"]
 rkeys=["subprocess"+".run(","os"+".system("]
 en_re=re.compile(r"\b(BUY|SELL|HOLD)\b")
-parent="origin/v4.0-batch-0-final-hardgates-scope-lock"
-result=subprocess.run(["git","diff","--name-only",f"{parent}...HEAD"],capture_output=True,text=True)
-changed=set(line for line in result.stdout.split("\n") if line)
+parent=resolve_scan_base()
+result=subprocess.run(["git","diff","--diff-filter=ACMR","--name-only",f"{parent}...HEAD"],capture_output=True,text=True,check=True)
+changed=set(result.stdout.splitlines())
 for f_str in changed:
     f=Path(f_str)
     if not f.exists():continue

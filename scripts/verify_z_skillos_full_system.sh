@@ -59,4 +59,13 @@ for f in data/research_db/agent/ledgers/*.jsonl data/research_db/governance/*.js
     [ "$base" = "data_source_attribution_ledger.csv" ] && continue
     [ -s "$f" ] && { echo "FAIL:$f"; exit 1; }
 done
+
+echo "═══ Workspace Clean Gate ═══"
+dirty="$(git status --short --untracked-files=all)"
+if [ -n "$dirty" ]; then
+    echo "$dirty"
+    echo "FAIL: verify left workspace dirty"
+    exit 1
+fi
+
 echo "═══ Z-SkillOS Full System vFS.11 PASS ═══"

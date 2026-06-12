@@ -1,7 +1,13 @@
 import { demoSession } from "../auth";
 import { createSelectionActionDraft, getSelectionDashboardPacket } from "../services/selectionApi";
+import { afterEach, vi } from "vitest";
 
 describe("Batch 2 selection tenant-aware data", () => {
+  afterEach(() => {
+    vi.unstubAllEnvs();
+    vi.unstubAllGlobals();
+  });
+
   it("returns the z-prime research selection dashboard mock", async () => {
     const packet = await getSelectionDashboardPacket(demoSession);
 
@@ -12,6 +18,35 @@ describe("Batch 2 selection tenant-aware data", () => {
     expect(packet.matrixGroups.map((group) => group.title)).toEqual(["B-Matrix Top", "R-Matrix Top", "D-Matrix Top", "综合候选"]);
     expect(packet.candidates.map((candidate) => candidate.symbol)).toContain("300308");
     expect(packet.audit.realTrade).toBe("BLOCKED");
+  });
+
+  it("uses backend selection packet when configured", async () => {
+    vi.stubEnv("VITE_ZMATRIX_SELECTION_PACKET_URL", "/api/cockpit/selection_packet.json");
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async () =>
+        new Response(
+          JSON.stringify({
+            workspaceId: demoSession.workspaceId,
+            asOf: "2026-06-13",
+            kpis: [{ label: "候选因子", value: "16", note: "backend", tone: "gold", visual: "bars" }],
+            filterChain: [],
+            conclusion: { priorityDirection: "backend", confidence: "中高", reasons: ["V11"], avoidToday: ["不交易"] },
+            opportunityGroups: [],
+            matrixGroups: [],
+            candidates: [],
+            todos: [],
+            audit: { paperOnly: true, humanReview: true, brokerRuntime: "BLOCKED", realTrade: "BLOCKED", dataScope: "WORKSPACE_SCOPED" }
+          }),
+          { status: 200, headers: { "Content-Type": "application/json" } }
+        )
+      )
+    );
+
+    const packet = await getSelectionDashboardPacket(demoSession);
+
+    expect(packet.kpis[0].note).toBe("backend");
+    expect(fetch).toHaveBeenCalledWith("/api/cockpit/selection_packet.json", expect.objectContaining({ cache: "no-store" }));
   });
 
   it("returns an empty private selection view for another workspace", async () => {

@@ -1,0 +1,545 @@
+{
+  "workspaceId": "ws_personal_z_prime",
+  "asOf": "2026-06-13",
+  "source": "V11_PAPER_WATCHLIST_READ_MODEL",
+  "kpis": [
+    {
+      "label": "候选因子",
+      "value": "16",
+      "note": "V11 paper watchlist",
+      "tone": "gold",
+      "visual": "bars"
+    },
+    {
+      "label": "主动观察",
+      "value": "15",
+      "note": "ACTIVE_PAPER_WATCH",
+      "tone": "green",
+      "visual": "line"
+    },
+    {
+      "label": "限制观察",
+      "value": "1",
+      "note": "WATCH_WITH_LIMITATION",
+      "tone": "gold",
+      "visual": "line"
+    },
+    {
+      "label": "拒绝候选",
+      "value": "0",
+      "note": "REJECT_FROM_WATCHLIST",
+      "tone": "muted",
+      "visual": "donut"
+    },
+    {
+      "label": "准入状态",
+      "value": "V11 confirmed",
+      "note": "research only",
+      "tone": "gold",
+      "visual": "line"
+    }
+  ],
+  "filterChain": [
+    {
+      "step": 1,
+      "title": "V10 候选继承",
+      "detail": "读取 V10 candidate thesis pack",
+      "remaining": 16,
+      "dropRatePct": 0,
+      "status": "PASSED"
+    },
+    {
+      "step": 2,
+      "title": "语义传播审计",
+      "detail": "rankic_direction 与 decay basis 已传播",
+      "remaining": 16,
+      "dropRatePct": 0,
+      "status": "PASSED"
+    },
+    {
+      "step": 3,
+      "title": "证据完整性过滤",
+      "detail": "缺字段与 raw leak 均进入硬门",
+      "remaining": 16,
+      "dropRatePct": 0,
+      "status": "PASSED"
+    },
+    {
+      "step": 4,
+      "title": "限制观察分流",
+      "detail": "1 项进入 limitation 复核",
+      "remaining": 16,
+      "dropRatePct": 0.0,
+      "status": "REVIEW"
+    },
+    {
+      "step": 5,
+      "title": "交易边界阻断",
+      "detail": "仅允许 paper watchlist 输出",
+      "remaining": 15,
+      "dropRatePct": 0,
+      "status": "STRICT"
+    },
+    {
+      "step": 6,
+      "title": "人工复核队列",
+      "detail": "所有进入观察项等待后续人工解释",
+      "remaining": 16,
+      "dropRatePct": 0,
+      "status": "REVIEW"
+    },
+    {
+      "step": 7,
+      "title": "驾驶舱只读映射",
+      "detail": "生成前端 SelectionDashboardPacket",
+      "remaining": 16,
+      "dropRatePct": 0,
+      "status": "PASSED"
+    }
+  ],
+  "conclusion": {
+    "priorityDirection": "因子候选纸面观察",
+    "confidence": "中高",
+    "reasons": [
+      "AMOUNT_20D_AVG",
+      "AMOUNT_60D_AVG",
+      "MAX_DRAWDOWN_60D"
+    ],
+    "avoidToday": [
+      "不生成买卖建议",
+      "不接入券商",
+      "不做实盘动作"
+    ]
+  },
+  "opportunityGroups": [
+    {
+      "title": "主动观察因子 Top5",
+      "tone": "green",
+      "items": [
+        {
+          "rank": 1,
+          "name": "AMOUNT_20D_AVG",
+          "changePct": 0
+        },
+        {
+          "rank": 2,
+          "name": "AMOUNT_20D_AVG",
+          "changePct": 0
+        },
+        {
+          "rank": 3,
+          "name": "AMOUNT_20D_AVG",
+          "changePct": 0
+        },
+        {
+          "rank": 4,
+          "name": "AMOUNT_60D_AVG",
+          "changePct": 0
+        },
+        {
+          "rank": 5,
+          "name": "AMOUNT_60D_AVG",
+          "changePct": 0
+        }
+      ]
+    },
+    {
+      "title": "限制观察因子",
+      "tone": "red",
+      "items": [
+        {
+          "rank": 1,
+          "name": "MAX_DRAWDOWN_60D",
+          "changePct": 0
+        }
+      ]
+    },
+    {
+      "title": "低因子值优先",
+      "tone": "green",
+      "items": [
+        {
+          "rank": 1,
+          "name": "AMOUNT_20D_AVG",
+          "changePct": 0
+        },
+        {
+          "rank": 2,
+          "name": "AMOUNT_20D_AVG",
+          "changePct": 0
+        },
+        {
+          "rank": 3,
+          "name": "AMOUNT_20D_AVG",
+          "changePct": 0
+        },
+        {
+          "rank": 4,
+          "name": "AMOUNT_60D_AVG",
+          "changePct": 0
+        },
+        {
+          "rank": 5,
+          "name": "AMOUNT_60D_AVG",
+          "changePct": 0
+        }
+      ]
+    },
+    {
+      "title": "待人工复核",
+      "tone": "red",
+      "items": [
+        {
+          "rank": 1,
+          "name": "MAX_DRAWDOWN_60D",
+          "changePct": 0
+        },
+        {
+          "rank": 2,
+          "name": "MOM_60D",
+          "changePct": 0
+        },
+        {
+          "rank": 3,
+          "name": "MOM_60D",
+          "changePct": 0
+        },
+        {
+          "rank": 4,
+          "name": "TRAILING_BENCHMARK_RELATIVE_60D",
+          "changePct": 0
+        },
+        {
+          "rank": 5,
+          "name": "TRAILING_BENCHMARK_RELATIVE_60D",
+          "changePct": 0
+        }
+      ]
+    }
+  ],
+  "matrixGroups": [
+    {
+      "matrix": "B",
+      "title": "B-Matrix Top",
+      "subtitle": "paper watchlist",
+      "items": [
+        {
+          "symbol": "V11_WATCH_001",
+          "name": "AMOUNT_20D_AVG",
+          "tags": [
+            "T10",
+            "ACTIVE_PAPER_WATCH"
+          ]
+        },
+        {
+          "symbol": "V11_WATCH_002",
+          "name": "AMOUNT_20D_AVG",
+          "tags": [
+            "T20",
+            "ACTIVE_PAPER_WATCH"
+          ]
+        },
+        {
+          "symbol": "V11_WATCH_003",
+          "name": "AMOUNT_20D_AVG",
+          "tags": [
+            "T60",
+            "ACTIVE_PAPER_WATCH"
+          ]
+        },
+        {
+          "symbol": "V11_WATCH_004",
+          "name": "AMOUNT_60D_AVG",
+          "tags": [
+            "T10",
+            "ACTIVE_PAPER_WATCH"
+          ]
+        },
+        {
+          "symbol": "V11_WATCH_005",
+          "name": "AMOUNT_60D_AVG",
+          "tags": [
+            "T20",
+            "ACTIVE_PAPER_WATCH"
+          ]
+        }
+      ]
+    },
+    {
+      "matrix": "R",
+      "title": "R-Matrix Top",
+      "subtitle": "paper watchlist",
+      "items": [
+        {
+          "symbol": "V11_WATCH_008",
+          "name": "MOM_60D",
+          "tags": [
+            "T20",
+            "ACTIVE_PAPER_WATCH"
+          ]
+        },
+        {
+          "symbol": "V11_WATCH_009",
+          "name": "MOM_60D",
+          "tags": [
+            "T60",
+            "ACTIVE_PAPER_WATCH"
+          ]
+        },
+        {
+          "symbol": "V11_WATCH_012",
+          "name": "VOLATILITY_20D",
+          "tags": [
+            "T20",
+            "ACTIVE_PAPER_WATCH"
+          ]
+        },
+        {
+          "symbol": "V11_WATCH_013",
+          "name": "VOLATILITY_20D",
+          "tags": [
+            "T60",
+            "ACTIVE_PAPER_WATCH"
+          ]
+        },
+        {
+          "symbol": "V11_WATCH_014",
+          "name": "VOLATILITY_60D",
+          "tags": [
+            "T10",
+            "ACTIVE_PAPER_WATCH"
+          ]
+        }
+      ]
+    },
+    {
+      "matrix": "D",
+      "title": "D-Matrix Top",
+      "subtitle": "paper watchlist",
+      "items": [
+        {
+          "symbol": "V11_WATCH_007",
+          "name": "MAX_DRAWDOWN_60D",
+          "tags": [
+            "T60",
+            "WATCH_WITH_LIMITATION"
+          ]
+        },
+        {
+          "symbol": "V11_WATCH_010",
+          "name": "TRAILING_BENCHMARK_RELATIVE_60D",
+          "tags": [
+            "T20",
+            "ACTIVE_PAPER_WATCH"
+          ]
+        },
+        {
+          "symbol": "V11_WATCH_011",
+          "name": "TRAILING_BENCHMARK_RELATIVE_60D",
+          "tags": [
+            "T60",
+            "ACTIVE_PAPER_WATCH"
+          ]
+        }
+      ]
+    },
+    {
+      "matrix": "ALL",
+      "title": "ALL-Matrix Top",
+      "subtitle": "paper watchlist",
+      "items": [
+        {
+          "symbol": "V11_WATCH_001",
+          "name": "AMOUNT_20D_AVG",
+          "tags": [
+            "T10",
+            "ACTIVE_PAPER_WATCH"
+          ]
+        },
+        {
+          "symbol": "V11_WATCH_002",
+          "name": "AMOUNT_20D_AVG",
+          "tags": [
+            "T20",
+            "ACTIVE_PAPER_WATCH"
+          ]
+        },
+        {
+          "symbol": "V11_WATCH_003",
+          "name": "AMOUNT_20D_AVG",
+          "tags": [
+            "T60",
+            "ACTIVE_PAPER_WATCH"
+          ]
+        },
+        {
+          "symbol": "V11_WATCH_004",
+          "name": "AMOUNT_60D_AVG",
+          "tags": [
+            "T10",
+            "ACTIVE_PAPER_WATCH"
+          ]
+        },
+        {
+          "symbol": "V11_WATCH_005",
+          "name": "AMOUNT_60D_AVG",
+          "tags": [
+            "T20",
+            "ACTIVE_PAPER_WATCH"
+          ]
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "symbol": "V11_WATCH_001",
+      "name": "AMOUNT_20D_AVG",
+      "humanMachineConsensus": "人机共识",
+      "recommendedRole": "轮动观察",
+      "researchStrength": "投研增强",
+      "eventDriver": "T10",
+      "riskProfile": "只读观察",
+      "allocationFit": "LOW_FACTOR_VALUE_FAVORED",
+      "fitScore": 80,
+      "keyPoint": "ABS_MONOTONIC_INCREASING",
+      "chain": "NEGATIVE RankIC semantic direction",
+      "financialHealth": "ROBUST",
+      "catalystStatus": "RAW_MONOTONIC_DECREASING",
+      "tianjiDiagnosis": "只进入纸面观察清单，不形成投资动作。"
+    },
+    {
+      "symbol": "V11_WATCH_002",
+      "name": "AMOUNT_20D_AVG",
+      "humanMachineConsensus": "人机共识",
+      "recommendedRole": "轮动观察",
+      "researchStrength": "投研增强",
+      "eventDriver": "T20",
+      "riskProfile": "只读观察",
+      "allocationFit": "LOW_FACTOR_VALUE_FAVORED",
+      "fitScore": 80,
+      "keyPoint": "ABS_MONOTONIC_INCREASING",
+      "chain": "NEGATIVE RankIC semantic direction",
+      "financialHealth": "ROBUST",
+      "catalystStatus": "RAW_MONOTONIC_DECREASING",
+      "tianjiDiagnosis": "只进入纸面观察清单，不形成投资动作。"
+    },
+    {
+      "symbol": "V11_WATCH_003",
+      "name": "AMOUNT_20D_AVG",
+      "humanMachineConsensus": "人机共识",
+      "recommendedRole": "轮动观察",
+      "researchStrength": "投研增强",
+      "eventDriver": "T60",
+      "riskProfile": "只读观察",
+      "allocationFit": "LOW_FACTOR_VALUE_FAVORED",
+      "fitScore": 80,
+      "keyPoint": "ABS_MONOTONIC_INCREASING",
+      "chain": "NEGATIVE RankIC semantic direction",
+      "financialHealth": "ROBUST",
+      "catalystStatus": "RAW_MONOTONIC_DECREASING",
+      "tianjiDiagnosis": "只进入纸面观察清单，不形成投资动作。"
+    },
+    {
+      "symbol": "V11_WATCH_004",
+      "name": "AMOUNT_60D_AVG",
+      "humanMachineConsensus": "人机共识",
+      "recommendedRole": "轮动观察",
+      "researchStrength": "投研增强",
+      "eventDriver": "T10",
+      "riskProfile": "只读观察",
+      "allocationFit": "LOW_FACTOR_VALUE_FAVORED",
+      "fitScore": 80,
+      "keyPoint": "ABS_MONOTONIC_INCREASING",
+      "chain": "NEGATIVE RankIC semantic direction",
+      "financialHealth": "ROBUST",
+      "catalystStatus": "RAW_MONOTONIC_DECREASING",
+      "tianjiDiagnosis": "只进入纸面观察清单，不形成投资动作。"
+    },
+    {
+      "symbol": "V11_WATCH_005",
+      "name": "AMOUNT_60D_AVG",
+      "humanMachineConsensus": "人机共识",
+      "recommendedRole": "轮动观察",
+      "researchStrength": "投研增强",
+      "eventDriver": "T20",
+      "riskProfile": "只读观察",
+      "allocationFit": "LOW_FACTOR_VALUE_FAVORED",
+      "fitScore": 80,
+      "keyPoint": "ABS_MONOTONIC_INCREASING",
+      "chain": "NEGATIVE RankIC semantic direction",
+      "financialHealth": "ROBUST",
+      "catalystStatus": "RAW_MONOTONIC_DECREASING",
+      "tianjiDiagnosis": "只进入纸面观察清单，不形成投资动作。"
+    },
+    {
+      "symbol": "V11_WATCH_006",
+      "name": "AMOUNT_60D_AVG",
+      "humanMachineConsensus": "人机共识",
+      "recommendedRole": "轮动观察",
+      "researchStrength": "投研增强",
+      "eventDriver": "T60",
+      "riskProfile": "只读观察",
+      "allocationFit": "LOW_FACTOR_VALUE_FAVORED",
+      "fitScore": 80,
+      "keyPoint": "ABS_MONOTONIC_INCREASING",
+      "chain": "NEGATIVE RankIC semantic direction",
+      "financialHealth": "ROBUST",
+      "catalystStatus": "RAW_MONOTONIC_DECREASING",
+      "tianjiDiagnosis": "只进入纸面观察清单，不形成投资动作。"
+    },
+    {
+      "symbol": "V11_WATCH_007",
+      "name": "MAX_DRAWDOWN_60D",
+      "humanMachineConsensus": "待人工判断",
+      "recommendedRole": "暂不观察",
+      "researchStrength": "投研待核",
+      "eventDriver": "T60",
+      "riskProfile": "只读观察",
+      "allocationFit": "NO_PREFERRED_DIRECTION",
+      "fitScore": 60,
+      "keyPoint": "LONG_HORIZON_PEAK",
+      "chain": "MIXED RankIC semantic direction",
+      "financialHealth": "REVIEW",
+      "catalystStatus": "RAW_NON_MONOTONIC",
+      "tianjiDiagnosis": "只进入纸面观察清单，不形成投资动作。"
+    },
+    {
+      "symbol": "V11_WATCH_008",
+      "name": "MOM_60D",
+      "humanMachineConsensus": "人机共识",
+      "recommendedRole": "轮动观察",
+      "researchStrength": "投研待核",
+      "eventDriver": "T20",
+      "riskProfile": "只读观察",
+      "allocationFit": "LOW_FACTOR_VALUE_FAVORED",
+      "fitScore": 80,
+      "keyPoint": "ABS_MONOTONIC_INCREASING",
+      "chain": "NEGATIVE RankIC semantic direction",
+      "financialHealth": "REVIEW",
+      "catalystStatus": "RAW_MONOTONIC_DECREASING",
+      "tianjiDiagnosis": "只进入纸面观察清单，不形成投资动作。"
+    }
+  ],
+  "todos": [
+    {
+      "time": "09:30",
+      "title": "刷新 V11 纸面观察清单"
+    },
+    {
+      "time": "10:00",
+      "title": "复核限制观察因子"
+    },
+    {
+      "time": "14:30",
+      "title": "导出投研问股审计包"
+    }
+  ],
+  "audit": {
+    "paperOnly": true,
+    "humanReview": true,
+    "brokerRuntime": "BLOCKED",
+    "realTrade": "BLOCKED",
+    "dataScope": "WORKSPACE_SCOPED"
+  }
+}

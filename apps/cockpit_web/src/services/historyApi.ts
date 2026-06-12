@@ -346,8 +346,46 @@ function cloneHistoryData(packet: HistoryPageData, workspaceId: string): History
   };
 }
 
+function getBackendHistoryPacketUrl(): string | null {
+  const configured = import.meta.env.VITE_ZMATRIX_HISTORY_PACKET_URL as string | undefined;
+  if (configured) {
+    return configured;
+  }
+  if (import.meta.env.MODE === "test" || typeof window === "undefined" || typeof fetch !== "function") {
+    return null;
+  }
+  return "/api/cockpit/history_packet.json";
+}
+
+async function loadBackendHistoryPacket(workspaceId: string): Promise<HistoryPageData | null> {
+  const packetUrl = getBackendHistoryPacketUrl();
+  if (!packetUrl) {
+    return null;
+  }
+  try {
+    const response = await fetch(packetUrl, {
+      headers: { accept: "application/json" },
+      cache: "no-store"
+    });
+    if (!response.ok) {
+      return null;
+    }
+    const packet = (await response.json()) as HistoryPageData;
+    if (packet.workspaceId !== workspaceId) {
+      return null;
+    }
+    return packet;
+  } catch {
+    return null;
+  }
+}
+
 export async function getHistoryPageData(session: AuthSession | null): Promise<HistoryPageData> {
   const current = requireSession(session);
+  const backendPacket = await loadBackendHistoryPacket(current.workspaceId);
+  if (backendPacket) {
+    return cloneHistoryData(backendPacket, current.workspaceId);
+  }
   if (current.workspaceId === "ws_personal_z_prime") {
     return cloneHistoryData(zPrimeHistory, current.workspaceId);
   }

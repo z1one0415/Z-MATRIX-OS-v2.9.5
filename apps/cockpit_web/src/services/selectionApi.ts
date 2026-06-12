@@ -354,8 +354,46 @@ function clonePacket(packet: SelectionDashboardPacket, workspaceId: string): Sel
   };
 }
 
+function getBackendSelectionPacketUrl(): string | null {
+  const configured = import.meta.env.VITE_ZMATRIX_SELECTION_PACKET_URL as string | undefined;
+  if (configured) {
+    return configured;
+  }
+  if (import.meta.env.MODE === "test" || typeof window === "undefined" || typeof fetch !== "function") {
+    return null;
+  }
+  return "/api/cockpit/selection_packet.json";
+}
+
+async function loadBackendSelectionPacket(workspaceId: string): Promise<SelectionDashboardPacket | null> {
+  const packetUrl = getBackendSelectionPacketUrl();
+  if (!packetUrl) {
+    return null;
+  }
+  try {
+    const response = await fetch(packetUrl, {
+      headers: { accept: "application/json" },
+      cache: "no-store"
+    });
+    if (!response.ok) {
+      return null;
+    }
+    const packet = (await response.json()) as SelectionDashboardPacket;
+    if (packet.workspaceId !== workspaceId) {
+      return null;
+    }
+    return packet;
+  } catch {
+    return null;
+  }
+}
+
 export async function getSelectionDashboardPacket(session: AuthSession | null): Promise<SelectionDashboardPacket> {
   const current = requireSession(session);
+  const backendPacket = await loadBackendSelectionPacket(current.workspaceId);
+  if (backendPacket) {
+    return clonePacket(backendPacket, current.workspaceId);
+  }
   if (current.workspaceId === "ws_personal_z_prime") {
     return clonePacket(zPrimeSelection, current.workspaceId);
   }

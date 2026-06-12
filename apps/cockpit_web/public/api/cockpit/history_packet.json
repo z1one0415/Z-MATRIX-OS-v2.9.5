@@ -1,0 +1,367 @@
+{
+  "workspaceId": "ws_personal_z_prime",
+  "asOf": "2026-06-13",
+  "source": "RUNTIME_REPORTS_READ_MODEL",
+  "safety": {
+    "paperOnly": true,
+    "humanReviewRequired": true,
+    "brokerRuntime": "BLOCKED",
+    "realTrade": "BLOCKED",
+    "agentDirectMutationAllowed": false,
+    "dataScope": "WORKSPACE_SCOPED"
+  },
+  "kpis": [
+    {
+      "label": "累计报告",
+      "value": "516",
+      "note": "runtime reports",
+      "delta": "+0",
+      "tone": "gold"
+    },
+    {
+      "label": "实盘案例",
+      "value": "224",
+      "note": "case chain assets",
+      "delta": "+0",
+      "tone": "gold"
+    },
+    {
+      "label": "系统记忆",
+      "value": "277",
+      "note": "factor/research artifacts",
+      "delta": "+0",
+      "tone": "green"
+    },
+    {
+      "label": "规则候选",
+      "value": "75",
+      "note": "audit artifacts",
+      "delta": "+0",
+      "tone": "gold"
+    },
+    {
+      "label": "待清理记忆",
+      "value": "0",
+      "note": "not scheduled",
+      "delta": "0",
+      "tone": "muted"
+    }
+  ],
+  "learningPipeline": [
+    {
+      "nodeId": "REPORT",
+      "displayName": "分析报告",
+      "count": 516,
+      "monthlyDelta": 0,
+      "status": "READY"
+    },
+    {
+      "nodeId": "CASE",
+      "displayName": "实盘案例",
+      "count": 224,
+      "monthlyDelta": 0,
+      "status": "PARTIAL"
+    },
+    {
+      "nodeId": "MEMORY",
+      "displayName": "系统记忆",
+      "count": 277,
+      "monthlyDelta": 0,
+      "status": "PARTIAL"
+    },
+    {
+      "nodeId": "RULE_CANDIDATE",
+      "displayName": "规则候选",
+      "count": 75,
+      "monthlyDelta": 0,
+      "status": "PARTIAL"
+    },
+    {
+      "nodeId": "FROZEN_RULE",
+      "displayName": "固化规则",
+      "count": 0,
+      "monthlyDelta": 0,
+      "status": "PENDING"
+    }
+  ],
+  "monthlyStats": {
+    "month": "2026-06",
+    "newItems": 516,
+    "verified": 29,
+    "falsified": 414,
+    "crystallized": 132,
+    "promotable": 13
+  },
+  "events": [
+    {
+      "eventId": "HE-RUNTIME-001",
+      "date": "2026-06-13",
+      "targetName": "architecture freeze audit",
+      "targetCode": "JSON",
+      "eventType": "策略复盘",
+      "conclusion": "已纳入驾驶舱只读历史索引",
+      "outcomeStatus": "待验证",
+      "memoryStatus": "时效性记忆",
+      "ruleStatus": "观察中",
+      "evidenceStatus": "审计包"
+    },
+    {
+      "eventId": "HE-RUNTIME-002",
+      "date": "2026-06-13",
+      "targetName": "core module behavior audit",
+      "targetCode": "JSON",
+      "eventType": "策略复盘",
+      "conclusion": "已纳入驾驶舱只读历史索引",
+      "outcomeStatus": "待验证",
+      "memoryStatus": "时效性记忆",
+      "ruleStatus": "观察中",
+      "evidenceStatus": "审计包"
+    },
+    {
+      "eventId": "HE-RUNTIME-003",
+      "date": "2026-06-13",
+      "targetName": "core module manual review",
+      "targetCode": "JSON",
+      "eventType": "策略复盘",
+      "conclusion": "已纳入驾驶舱只读历史索引",
+      "outcomeStatus": "待验证",
+      "memoryStatus": "时效性记忆",
+      "ruleStatus": "观察中",
+      "evidenceStatus": "审计包"
+    },
+    {
+      "eventId": "HE-RUNTIME-004",
+      "date": "2026-06-13",
+      "targetName": "core module reaudit after c4 1",
+      "targetCode": "JSON",
+      "eventType": "策略复盘",
+      "conclusion": "已纳入驾驶舱只读历史索引",
+      "outcomeStatus": "待验证",
+      "memoryStatus": "时效性记忆",
+      "ruleStatus": "观察中",
+      "evidenceStatus": "审计包"
+    },
+    {
+      "eventId": "HE-RUNTIME-005",
+      "date": "2026-06-13",
+      "targetName": "core module risk register",
+      "targetCode": "JSON",
+      "eventType": "策略复盘",
+      "conclusion": "已纳入驾驶舱只读历史索引",
+      "outcomeStatus": "待验证",
+      "memoryStatus": "时效性记忆",
+      "ruleStatus": "观察中",
+      "evidenceStatus": "审计包"
+    },
+    {
+      "eventId": "HE-RUNTIME-006",
+      "date": "2026-06-13",
+      "targetName": "core module test map",
+      "targetCode": "JSON",
+      "eventType": "策略复盘",
+      "conclusion": "已纳入驾驶舱只读历史索引",
+      "outcomeStatus": "待验证",
+      "memoryStatus": "时效性记忆",
+      "ruleStatus": "观察中",
+      "evidenceStatus": "审计包"
+    },
+    {
+      "eventId": "HE-RUNTIME-007",
+      "date": "2026-06-13",
+      "targetName": "golden path repro audit",
+      "targetCode": "JSON",
+      "eventType": "策略复盘",
+      "conclusion": "已纳入驾驶舱只读历史索引",
+      "outcomeStatus": "待验证",
+      "memoryStatus": "时效性记忆",
+      "ruleStatus": "观察中",
+      "evidenceStatus": "审计包"
+    },
+    {
+      "eventId": "HE-RUNTIME-008",
+      "date": "2026-06-13",
+      "targetName": "major audit final verdict",
+      "targetCode": "JSON",
+      "eventType": "策略复盘",
+      "conclusion": "已纳入驾驶舱只读历史索引",
+      "outcomeStatus": "待验证",
+      "memoryStatus": "时效性记忆",
+      "ruleStatus": "观察中",
+      "evidenceStatus": "审计包"
+    }
+  ],
+  "reportLibrary": [
+    {
+      "itemId": "审计报告-001",
+      "date": "2026-06-13",
+      "title": "architecture freeze audit",
+      "type": "审计报告",
+      "status": "已沉淀"
+    },
+    {
+      "itemId": "审计报告-002",
+      "date": "2026-06-13",
+      "title": "core module behavior audit",
+      "type": "审计报告",
+      "status": "已沉淀"
+    },
+    {
+      "itemId": "审计报告-003",
+      "date": "2026-06-13",
+      "title": "core module manual review",
+      "type": "审计报告",
+      "status": "已沉淀"
+    }
+  ],
+  "caseLibrary": [
+    {
+      "itemId": "案例链-001",
+      "date": "2026-06-13",
+      "title": " test v5 temp",
+      "type": "案例链",
+      "status": "已沉淀"
+    },
+    {
+      "itemId": "案例链-002",
+      "date": "2026-06-13",
+      "title": "case coverage audit",
+      "type": "案例链",
+      "status": "已沉淀"
+    },
+    {
+      "itemId": "案例链-003",
+      "date": "2026-06-13",
+      "title": "case expansion v10 closeout",
+      "type": "案例链",
+      "status": "已沉淀"
+    }
+  ],
+  "memoryRuleSummary": {
+    "memories": [
+      {
+        "label": "核心永固记忆",
+        "count": 277
+      },
+      {
+        "label": "时效性记忆",
+        "count": 224
+      },
+      {
+        "label": "待清理记忆",
+        "count": 0
+      }
+    ],
+    "rules": [
+      {
+        "label": "待验证",
+        "count": 0
+      },
+      {
+        "label": "验证中",
+        "count": 75
+      },
+      {
+        "label": "待复核",
+        "count": 0
+      },
+      {
+        "label": "可晋级",
+        "count": 13
+      }
+    ]
+  },
+  "spaceTimeSeal": {
+    "summary": [
+      {
+        "label": "报告",
+        "value": "516",
+        "detail": "已索引",
+        "tone": "gold"
+      },
+      {
+        "label": "案例",
+        "value": "224",
+        "detail": "只读复盘",
+        "tone": "gold"
+      },
+      {
+        "label": "记忆",
+        "value": "277",
+        "detail": "研究资产",
+        "tone": "green"
+      },
+      {
+        "label": "规则候选",
+        "value": "75",
+        "detail": "待验证",
+        "tone": "gold"
+      },
+      {
+        "label": "清理项",
+        "value": "0",
+        "detail": "未启用",
+        "tone": "muted"
+      }
+    ],
+    "alert": {
+      "title": "时空预鉴",
+      "level": "H3",
+      "summary": "历史资产已完成只读索引，规则沉淀仍需人工复核。"
+    },
+    "bookmarks": [
+      {
+        "title": "可复现链",
+        "body": "V11/V12/V13",
+        "verdict": "标签",
+        "tone": "green"
+      },
+      {
+        "title": "审计资产",
+        "body": "runtime audit",
+        "verdict": "标签",
+        "tone": "gold"
+      },
+      {
+        "title": "待服务化",
+        "body": "report drilldown",
+        "verdict": "标签",
+        "tone": "gold"
+      }
+    ]
+  },
+  "todos": [
+    {
+      "time": "09:30",
+      "title": "刷新历史报告索引",
+      "status": "待处理"
+    },
+    {
+      "time": "10:00",
+      "title": "复核可晋级规则候选",
+      "status": "待处理"
+    },
+    {
+      "time": "14:30",
+      "title": "导出历史回溯审计包",
+      "status": "待处理"
+    }
+  ],
+  "systemStatus": {
+    "reportIndex": "READY",
+    "caseRegistry": "PARTIAL",
+    "memoryRegistry": "PARTIAL",
+    "ruleRegistry": "PARTIAL",
+    "auditPack": "READY",
+    "researchDb": "READY",
+    "lastUpdatedAt": "2026-06-13"
+  },
+  "backendMapping": {
+    "reportLibrary": "runtime_reports/*",
+    "auditEvidence": "runtime_reports/audit",
+    "evidenceChain": "runtime_reports/cases",
+    "caseRegistry": "runtime_reports/cases",
+    "replay": "historical_replay",
+    "memoryDraft": "MemoryCandidate Preview",
+    "ruleCandidate": "Rule Candidate Miner"
+  }
+}

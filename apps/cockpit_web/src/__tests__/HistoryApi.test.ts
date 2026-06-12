@@ -1,7 +1,13 @@
 import { demoSession } from "../auth";
 import { createHistoryActionDraft, getHistoryPageData } from "../services/historyApi";
+import { afterEach, vi } from "vitest";
 
 describe("Batch 4 history tenant-aware data", () => {
+  afterEach(() => {
+    vi.unstubAllEnvs();
+    vi.unstubAllGlobals();
+  });
+
   it("returns the z-prime space-time history cockpit mock", async () => {
     const packet = await getHistoryPageData(demoSession);
 
@@ -17,6 +23,62 @@ describe("Batch 4 history tenant-aware data", () => {
     expect(packet.safety.brokerRuntime).toBe("BLOCKED");
     expect(packet.safety.realTrade).toBe("BLOCKED");
     expect(packet.safety.agentDirectMutationAllowed).toBe(false);
+  });
+
+  it("uses backend history packet when configured", async () => {
+    vi.stubEnv("VITE_ZMATRIX_HISTORY_PACKET_URL", "/api/cockpit/history_packet.json");
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async () =>
+        new Response(
+          JSON.stringify({
+            workspaceId: demoSession.workspaceId,
+            asOf: "2026-06-13",
+            safety: {
+              paperOnly: true,
+              humanReviewRequired: true,
+              brokerRuntime: "BLOCKED",
+              realTrade: "BLOCKED",
+              agentDirectMutationAllowed: false,
+              dataScope: "WORKSPACE_SCOPED"
+            },
+            kpis: [{ label: "累计报告", value: "88", note: "backend", delta: "+0", tone: "gold" }],
+            learningPipeline: [],
+            monthlyStats: { month: "2026-06", newItems: 88, verified: 0, falsified: 0, crystallized: 0, promotable: 0 },
+            events: [],
+            reportLibrary: [],
+            caseLibrary: [],
+            memoryRuleSummary: { memories: [], rules: [] },
+            spaceTimeSeal: { summary: [], alert: { title: "时空预鉴", level: "H3", summary: "backend" }, bookmarks: [] },
+            todos: [],
+            systemStatus: {
+              reportIndex: "READY",
+              caseRegistry: "PARTIAL",
+              memoryRegistry: "PARTIAL",
+              ruleRegistry: "PARTIAL",
+              auditPack: "READY",
+              researchDb: "READY",
+              lastUpdatedAt: "2026-06-13"
+            },
+            backendMapping: {
+              reportLibrary: "runtime_reports",
+              auditEvidence: "runtime_reports/audit",
+              evidenceChain: "runtime_reports/cases",
+              caseRegistry: "runtime_reports/cases",
+              replay: "historical_replay",
+              memoryDraft: "MemoryCandidate Preview",
+              ruleCandidate: "Rule Candidate Miner"
+            }
+          }),
+          { status: 200, headers: { "Content-Type": "application/json" } }
+        )
+      )
+    );
+
+    const packet = await getHistoryPageData(demoSession);
+
+    expect(packet.kpis[0].note).toBe("backend");
+    expect(fetch).toHaveBeenCalledWith("/api/cockpit/history_packet.json", expect.objectContaining({ cache: "no-store" }));
   });
 
   it("returns an isolated partial history view for another workspace", async () => {

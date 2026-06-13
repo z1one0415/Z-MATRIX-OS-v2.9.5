@@ -358,6 +358,22 @@ const defaultOperatorActions: ProductOperatorActions = {
         real_trade: "BLOCKED",
         secret_storage: "ENV_ONLY"
       }
+    },
+    {
+      id: "product-readiness",
+      label: "产品就绪自检",
+      category: "verification",
+      command: "PYTHONPATH=. python3 scripts/product/check_product_readiness.py",
+      detail: "检查安装、启动、驾驶舱、研究能力、Hermes 桥接和安全门状态。",
+      expected: "Z_MATRIX_LOCAL_PRODUCT_READINESS_PASS",
+      mode: "LOCAL_TERMINAL_MANUAL",
+      safety: {
+        alpha_claim: "BLOCKED",
+        promotion: "BLOCKED",
+        broker_runtime: "BLOCKED",
+        real_trade: "BLOCKED",
+        secret_storage: "ENV_ONLY"
+      }
     }
   ]
 };

@@ -114,7 +114,21 @@ PYTHONPATH=. python3 scripts/data/ingest_tushare_market_data.py \
 
 Remove `--dry-plan` only after `.env` contains a local token and the user intentionally wants local vendor files under the ignored vendor store.
 
-## 9. Product Smoke
+## 9. Product Readiness
+
+```bash
+PYTHONPATH=. python3 scripts/product/check_product_readiness.py
+```
+
+Expected state:
+
+```text
+Z_MATRIX_LOCAL_PRODUCT_READINESS_PASS
+```
+
+This checks install/start files, backend status, cockpit packets, research status, Hermes bridge status, operator actions, and hard safety states.
+
+## 10. Product Smoke
 
 ```bash
 bash scripts/verify_z_matrix_product_smoke.sh
@@ -124,6 +138,7 @@ This verifies:
 
 - product runtime imports;
 - backend status;
+- product readiness;
 - cockpit packet export;
 - vendor dry plan;
 - product runtime tests;
@@ -135,7 +150,7 @@ This verifies:
 - research report export.
 - local workstation package build.
 
-## 10. Export Research Report Pack
+## 11. Export Research Report Pack
 
 ```bash
 PYTHONPATH=. python3 scripts/product/export_research_report_pack.py
@@ -149,7 +164,7 @@ build/research_report_exports/Z-MATRIX-research-report-pack
 
 The export contains research docs, audit docs, selected runtime report manifests, a report export manifest, and checksums. It does not include raw vendor data, private account data, or real secrets.
 
-## 11. Build Local Workstation Package
+## 12. Build Local Workstation Package
 
 ```bash
 PYTHONPATH=. python3 scripts/product/build_local_workstation_package.py
@@ -163,7 +178,7 @@ build/product_packages/Z-MATRIX-OS-V4-PRO-local-workstation
 
 The output directory is ignored by Git. The package includes runtime entrypoints, cockpit build output, cockpit packets, a source snapshot, a product manifest, and checksums. It does not include raw vendor data, private account data, or real secrets.
 
-## 12. Safety State
+## 13. Safety State
 
 The local product preview is a research workstation. It keeps these states blocked:
 

@@ -13,6 +13,7 @@ from zmatrix.product_runtime.local_backend import (
     build_config_template_status,
     build_agent_research_draft,
     build_operator_actions,
+    build_report_export_status,
     build_research_evidence_index,
     build_runtime_product_readiness,
     build_product_status,
@@ -98,6 +99,7 @@ def test_config_template_status_reports_env_references_without_values(tmp_path: 
         "VITE_ZMATRIX_OPERATOR_ACTIONS_URL=http://127.0.0.1:8765/api/product/operator_actions.json\n"
         "VITE_ZMATRIX_RESEARCH_STATUS_URL=http://127.0.0.1:8765/api/product/research_status.json\n"
         "VITE_ZMATRIX_RESEARCH_EVIDENCE_INDEX_URL=http://127.0.0.1:8765/api/product/research_evidence_index.json\n"
+        "VITE_ZMATRIX_REPORT_EXPORT_STATUS_URL=http://127.0.0.1:8765/api/product/report_export_status.json\n"
         "VITE_ZMATRIX_COCKPIT_MANIFEST_URL=http://127.0.0.1:8765/api/product/cockpit_manifest.json\n"
         "VITE_ZMATRIX_AGENT_BRIDGE_URL=http://127.0.0.1:8765/api/product/agent_bridge.json\n"
         "VITE_ZMATRIX_AGENT_DRAFT_URL=http://127.0.0.1:8765/api/product/agent_draft.json\n"
@@ -185,6 +187,14 @@ def test_local_backend_serves_health_and_cockpit_packet(tmp_path: Path):
         assert evidence["group_count"] >= 8
         assert evidence["safety"]["evidence_to_alpha_promotion"] == "BLOCKED"
         assert {group["id"] for group in evidence["groups"]} >= {"factor-library", "portfolio-sandbox", "gatekeeper-audit"}
+
+        conn.request("GET", "/api/product/report_export_status.json")
+        report_response = conn.getresponse()
+        report_export = json.loads(report_response.read().decode("utf-8"))
+        assert report_response.status == 200
+        assert report_export["status"] == "Z_MATRIX_REPORT_EXPORT_READY"
+        assert report_export["artifact_policy"] == "LOCAL_FILES_ONLY"
+        assert report_export["safety"]["real_trade"] == "BLOCKED"
 
         conn.request("GET", "/api/product/cockpit_manifest.json")
         manifest_response = conn.getresponse()
@@ -279,6 +289,20 @@ def test_research_evidence_index_maps_product_evidence_groups():
     assert index["safety"]["evidence_to_alpha_promotion"] == "BLOCKED"
 
 
+def test_report_export_status_maps_exportable_local_artifacts():
+    status = build_report_export_status()
+
+    assert status["status"] == "Z_MATRIX_REPORT_EXPORT_READY"
+    assert status["artifact_count"] > 0
+    assert status["doc_artifact_count"] > 0
+    assert status["runtime_artifact_count"] > 0
+    assert status["artifact_policy"] == "LOCAL_FILES_ONLY"
+    assert status["data_policy"]["raw_vendor_data_included"] is False
+    assert status["data_policy"]["private_account_data_included"] is False
+    assert status["safety"]["broker_runtime"] == "BLOCKED"
+    assert status["safety"]["real_trade"] == "BLOCKED"
+
+
 def test_cockpit_manifest_maps_all_page_packets(tmp_path: Path):
     public_root = tmp_path / "public"
     public_root.mkdir()
@@ -348,6 +372,7 @@ def _make_runtime_root(root: Path) -> Path:
             "VITE_ZMATRIX_OPERATOR_ACTIONS_URL=http://127.0.0.1:8765/api/product/operator_actions.json\n"
             "VITE_ZMATRIX_RESEARCH_STATUS_URL=http://127.0.0.1:8765/api/product/research_status.json\n"
             "VITE_ZMATRIX_RESEARCH_EVIDENCE_INDEX_URL=http://127.0.0.1:8765/api/product/research_evidence_index.json\n"
+            "VITE_ZMATRIX_REPORT_EXPORT_STATUS_URL=http://127.0.0.1:8765/api/product/report_export_status.json\n"
             "VITE_ZMATRIX_COCKPIT_MANIFEST_URL=http://127.0.0.1:8765/api/product/cockpit_manifest.json\n"
             "VITE_ZMATRIX_AGENT_BRIDGE_URL=http://127.0.0.1:8765/api/product/agent_bridge.json\n"
             "VITE_ZMATRIX_AGENT_DRAFT_URL=http://127.0.0.1:8765/api/product/agent_draft.json\n"

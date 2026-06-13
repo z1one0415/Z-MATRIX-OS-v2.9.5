@@ -181,6 +181,7 @@ export type ProductReadinessStatus = {
     research_capabilities: number;
     ready_research_capabilities: number;
     research_evidence_groups: number;
+    report_export_artifacts: number;
     agent_intents: number;
     operator_actions: number;
     config_templates: number;
@@ -298,6 +299,29 @@ export type ProductResearchEvidenceIndex = {
   };
 };
 
+export type ProductReportExportStatus = {
+  status: "Z_MATRIX_REPORT_EXPORT_READY" | "Z_MATRIX_REPORT_EXPORT_EMPTY";
+  command: string;
+  default_output_dir: string;
+  artifact_count: number;
+  doc_artifact_count: number;
+  runtime_artifact_count: number;
+  sample_artifacts: string[];
+  artifact_policy: "LOCAL_FILES_ONLY";
+  data_policy: {
+    raw_vendor_data_included: false;
+    private_account_data_included: false;
+    secret_files_included: false;
+    local_files_only: true;
+  };
+  safety: {
+    alpha_claim: "BLOCKED";
+    promotion: "BLOCKED";
+    broker_runtime: "BLOCKED";
+    real_trade: "BLOCKED";
+  };
+};
+
 export type ProductCockpitRoute = {
   id: string;
   label: string;
@@ -352,6 +376,7 @@ export type SettingsPageData = {
   operatorActions: ProductOperatorActions;
   researchStatus: ProductResearchStatus;
   researchEvidence: ProductResearchEvidenceIndex;
+  reportExport: ProductReportExportStatus;
   cockpitManifest: ProductCockpitManifest;
   safety: SettingsSafety;
 };
@@ -469,6 +494,7 @@ const defaultProductReadiness: ProductReadinessStatus = {
     research_capabilities: 0,
     ready_research_capabilities: 0,
     research_evidence_groups: 0,
+    report_export_artifacts: 0,
     agent_intents: 0,
     operator_actions: 0,
     config_templates: 0,
@@ -481,6 +507,29 @@ const defaultProductReadiness: ProductReadinessStatus = {
     broker_runtime: "BLOCKED",
     real_trade: "BLOCKED",
     agent_direct_mutation: "BLOCKED"
+  }
+};
+
+const defaultReportExport: ProductReportExportStatus = {
+  status: "Z_MATRIX_REPORT_EXPORT_EMPTY",
+  command: "PYTHONPATH=. python3 scripts/product/export_research_report_pack.py",
+  default_output_dir: "build/research_report_exports/Z-MATRIX-research-report-pack",
+  artifact_count: 0,
+  doc_artifact_count: 0,
+  runtime_artifact_count: 0,
+  sample_artifacts: [],
+  artifact_policy: "LOCAL_FILES_ONLY",
+  data_policy: {
+    raw_vendor_data_included: false,
+    private_account_data_included: false,
+    secret_files_included: false,
+    local_files_only: true
+  },
+  safety: {
+    alpha_claim: "BLOCKED",
+    promotion: "BLOCKED",
+    broker_runtime: "BLOCKED",
+    real_trade: "BLOCKED"
   }
 };
 
@@ -1007,6 +1056,7 @@ const zPrimeSettings: Omit<SettingsPageData, "workspaceId"> = {
   operatorActions: defaultOperatorActions,
   researchStatus: defaultResearchStatus,
   researchEvidence: defaultResearchEvidence,
+  reportExport: defaultReportExport,
   cockpitManifest: defaultCockpitManifest,
   safety
 };
@@ -1042,6 +1092,7 @@ function cloneSettings(packet: SettingsPageData): SettingsPageData {
     operatorActions: cloneOperatorActions(packet.operatorActions),
     researchStatus: cloneResearchStatus(packet.researchStatus),
     researchEvidence: cloneResearchEvidence(packet.researchEvidence),
+    reportExport: cloneReportExport(packet.reportExport),
     cockpitManifest: cloneCockpitManifest(packet.cockpitManifest),
     safety: { ...packet.safety }
   };
@@ -1049,12 +1100,13 @@ function cloneSettings(packet: SettingsPageData): SettingsPageData {
 
 export async function getSettingsPageData(session: AuthSession | null): Promise<SettingsPageData> {
   const current = requireSession(session);
-  const [productRuntime, productReadiness, operatorActions, researchStatus, researchEvidence, cockpitManifest] = await Promise.all([
+  const [productRuntime, productReadiness, operatorActions, researchStatus, researchEvidence, reportExport, cockpitManifest] = await Promise.all([
     loadProductRuntimeStatus(),
     loadProductReadiness(),
     loadOperatorActions(),
     loadResearchStatus(),
     loadResearchEvidence(),
+    loadReportExport(),
     loadCockpitManifest()
   ]);
   return cloneSettings({
@@ -1065,6 +1117,7 @@ export async function getSettingsPageData(session: AuthSession | null): Promise<
     operatorActions,
     researchStatus,
     researchEvidence,
+    reportExport,
     cockpitManifest
   });
 }
@@ -1115,6 +1168,10 @@ function getResearchStatusUrl(): string {
 
 function getResearchEvidenceUrl(): string {
   return import.meta.env.VITE_ZMATRIX_RESEARCH_EVIDENCE_INDEX_URL || "/api/product/research_evidence_index.json";
+}
+
+function getReportExportUrl(): string {
+  return import.meta.env.VITE_ZMATRIX_REPORT_EXPORT_STATUS_URL || "/api/product/report_export_status.json";
 }
 
 function getCockpitManifestUrl(): string {
@@ -1197,6 +1254,25 @@ async function loadResearchEvidence(): Promise<ProductResearchEvidenceIndex> {
   }
 }
 
+async function loadReportExport(): Promise<ProductReportExportStatus> {
+  if (typeof fetch !== "function") {
+    return cloneReportExport(defaultReportExport);
+  }
+  try {
+    const response = await fetch(getReportExportUrl(), {
+      method: "GET",
+      headers: { Accept: "application/json" }
+    });
+    if (!response.ok) {
+      return cloneReportExport(defaultReportExport);
+    }
+    const packet = (await response.json()) as ProductReportExportStatus;
+    return normalizeReportExport(packet);
+  } catch {
+    return cloneReportExport(defaultReportExport);
+  }
+}
+
 async function loadOperatorActions(): Promise<ProductOperatorActions> {
   if (typeof fetch !== "function") {
     return cloneOperatorActions(defaultOperatorActions);
@@ -1257,6 +1333,7 @@ function normalizeProductReadiness(packet: ProductReadinessStatus): ProductReadi
       research_capabilities: Number(packet.summary?.research_capabilities ?? 0),
       ready_research_capabilities: Number(packet.summary?.ready_research_capabilities ?? 0),
       research_evidence_groups: Number(packet.summary?.research_evidence_groups ?? 0),
+      report_export_artifacts: Number(packet.summary?.report_export_artifacts ?? 0),
       agent_intents: Number(packet.summary?.agent_intents ?? 0),
       operator_actions: Number(packet.summary?.operator_actions ?? 0),
       config_templates: Number(packet.summary?.config_templates ?? 0),
@@ -1431,6 +1508,40 @@ function normalizeResearchEvidence(packet: ProductResearchEvidenceIndex): Produc
       broker_runtime: "BLOCKED",
       real_trade: "BLOCKED",
       evidence_to_alpha_promotion: "BLOCKED"
+    }
+  };
+}
+
+function cloneReportExport(packet: ProductReportExportStatus): ProductReportExportStatus {
+  return {
+    ...packet,
+    sample_artifacts: [...packet.sample_artifacts],
+    data_policy: { ...packet.data_policy },
+    safety: { ...packet.safety }
+  };
+}
+
+function normalizeReportExport(packet: ProductReportExportStatus): ProductReportExportStatus {
+  return {
+    status: packet.status === "Z_MATRIX_REPORT_EXPORT_READY" ? "Z_MATRIX_REPORT_EXPORT_READY" : "Z_MATRIX_REPORT_EXPORT_EMPTY",
+    command: String(packet.command ?? defaultReportExport.command),
+    default_output_dir: String(packet.default_output_dir ?? defaultReportExport.default_output_dir),
+    artifact_count: Number(packet.artifact_count ?? 0),
+    doc_artifact_count: Number(packet.doc_artifact_count ?? 0),
+    runtime_artifact_count: Number(packet.runtime_artifact_count ?? 0),
+    sample_artifacts: Array.isArray(packet.sample_artifacts) ? packet.sample_artifacts.map(String) : [],
+    artifact_policy: "LOCAL_FILES_ONLY",
+    data_policy: {
+      raw_vendor_data_included: false,
+      private_account_data_included: false,
+      secret_files_included: false,
+      local_files_only: true
+    },
+    safety: {
+      alpha_claim: "BLOCKED",
+      promotion: "BLOCKED",
+      broker_runtime: "BLOCKED",
+      real_trade: "BLOCKED"
     }
   };
 }

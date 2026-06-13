@@ -346,6 +346,7 @@ export function SettingsPage({ session }: SettingsPageProps) {
 
   function renderResearchStatus() {
     const status = settingsData.researchStatus;
+    const reportExport = settingsData.reportExport;
     return (
       <section className="settings-research-panel panel-shell" aria-label="研究能力状态">
         <div className="panel-title">
@@ -371,10 +372,14 @@ export function SettingsPage({ session }: SettingsPageProps) {
             <div>
               <Download size={16} aria-hidden="true" />
               <span>报告导出</span>
-              <em>{status.report_export.artifact_policy}</em>
+              <em>{reportExport.status}</em>
             </div>
             <p>通过本地报告导出器输出 manifest、checksums 与可审计材料。</p>
-            <code>{status.report_export.command}</code>
+            <dl className="settings-compact-dl">
+              <div><dt>材料</dt><dd>{reportExport.artifact_count}</dd></div>
+              <div><dt>文档/运行</dt><dd>{reportExport.doc_artifact_count}/{reportExport.runtime_artifact_count}</dd></div>
+            </dl>
+            <code>{reportExport.sample_artifacts[0] ?? reportExport.command}</code>
           </article>
           <article className="settings-research-card settings-research-card--report">
             <div>

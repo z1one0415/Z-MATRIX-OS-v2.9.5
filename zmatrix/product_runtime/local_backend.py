@@ -33,6 +33,7 @@ COCKPIT_ENV_TEMPLATE_KEYS = (
     "VITE_ZMATRIX_OPERATOR_ACTIONS_URL",
     "VITE_ZMATRIX_RESEARCH_STATUS_URL",
     "VITE_ZMATRIX_RESEARCH_EVIDENCE_INDEX_URL",
+    "VITE_ZMATRIX_REPORT_EXPORT_STATUS_URL",
     "VITE_ZMATRIX_COCKPIT_MANIFEST_URL",
     "VITE_ZMATRIX_AGENT_BRIDGE_URL",
     "VITE_ZMATRIX_AGENT_DRAFT_URL",
@@ -262,6 +263,19 @@ RESEARCH_EVIDENCE_GROUPS = (
             "docs/audit/SAFETY_FORBIDDEN_FLAG_AUDIT_REPORT.md",
         ),
     },
+)
+REPORT_EXPORT_DOC_DIRS = (
+    Path("docs/cases"),
+    Path("docs/audit"),
+    Path("docs/release"),
+)
+REPORT_EXPORT_RUNTIME_PATTERNS = (
+    "case_expansion_*closeout.json",
+    "v10_*audit.json",
+    "v10_*pack.json",
+    "v11*_*.json",
+    "v12*_*.json",
+    "v13*_*.json",
 )
 AGENT_BRIDGE_INTENTS = (
     {
@@ -546,6 +560,37 @@ def build_research_evidence_index(config: ProductRuntimeConfig | None = None) ->
     }
 
 
+def build_report_export_status(config: ProductRuntimeConfig | None = None) -> dict[str, Any]:
+    cfg = config or ProductRuntimeConfig()
+    doc_artifacts = _report_doc_artifacts(cfg.repo_root)
+    runtime_artifacts = _report_runtime_artifacts(cfg.repo_root)
+    artifact_count = len(doc_artifacts) + len(runtime_artifacts)
+    return {
+        "status": "Z_MATRIX_REPORT_EXPORT_READY" if artifact_count else "Z_MATRIX_REPORT_EXPORT_EMPTY",
+        "workspace_id": cfg.workspace_id,
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "command": "PYTHONPATH=. python3 scripts/product/export_research_report_pack.py",
+        "default_output_dir": "build/research_report_exports/Z-MATRIX-research-report-pack",
+        "artifact_count": artifact_count,
+        "doc_artifact_count": len(doc_artifacts),
+        "runtime_artifact_count": len(runtime_artifacts),
+        "sample_artifacts": (doc_artifacts + runtime_artifacts)[:12],
+        "artifact_policy": "LOCAL_FILES_ONLY",
+        "data_policy": {
+            "raw_vendor_data_included": False,
+            "private_account_data_included": False,
+            "secret_files_included": False,
+            "local_files_only": True,
+        },
+        "safety": {
+            "alpha_claim": "BLOCKED",
+            "promotion": "BLOCKED",
+            "broker_runtime": "BLOCKED",
+            "real_trade": "BLOCKED",
+        },
+    }
+
+
 def build_cockpit_manifest(config: ProductRuntimeConfig | None = None) -> dict[str, Any]:
     cfg = config or ProductRuntimeConfig()
     routes = []
@@ -700,6 +745,7 @@ def build_runtime_product_readiness(config: ProductRuntimeConfig | None = None, 
     product = build_product_status(cfg)
     research = build_research_status(cfg)
     evidence = build_research_evidence_index(cfg)
+    report_export = build_report_export_status(cfg)
     cockpit_manifest = build_cockpit_manifest(cfg)
     bridge = build_agent_bridge_status(cfg)
     actions = build_operator_actions(cfg)
@@ -715,6 +761,7 @@ def build_runtime_product_readiness(config: ProductRuntimeConfig | None = None, 
         _status_check("product-runtime", product["status"] == "Z_MATRIX_PRODUCT_RUNTIME_READY", product["status"]),
         _status_check("research-status", research["status"] == "Z_MATRIX_RESEARCH_STATUS_READY", research["status"]),
         _status_check("research-evidence-index", evidence["status"] == "Z_MATRIX_RESEARCH_EVIDENCE_INDEX_READY", evidence["status"]),
+        _status_check("report-export-status", report_export["status"] == "Z_MATRIX_REPORT_EXPORT_READY", report_export["status"]),
         _status_check("cockpit-manifest", cockpit_manifest["status"] == "Z_MATRIX_COCKPIT_MANIFEST_READY", cockpit_manifest["status"]),
         _status_check("agent-bridge", bridge["status"] == "Z_MATRIX_AGENT_BRIDGE_READY", bridge["status"]),
         _status_check("operator-actions", actions["status"] == "Z_MATRIX_OPERATOR_ACTIONS_READY", actions["status"]),
@@ -733,6 +780,7 @@ def build_runtime_product_readiness(config: ProductRuntimeConfig | None = None, 
             "research_capabilities": research["capability_count"],
             "ready_research_capabilities": research["ready_count"],
             "research_evidence_groups": evidence["ready_group_count"],
+            "report_export_artifacts": report_export["artifact_count"],
             "agent_intents": len(bridge["allowed_intents"]),
             "operator_actions": len(actions["actions"]),
             "config_templates": config_templates["ready_count"],
@@ -766,6 +814,9 @@ def make_handler(config: ProductRuntimeConfig) -> type[BaseHTTPRequestHandler]:
                 return
             if parsed.path == "/api/product/research_evidence_index.json":
                 self._send_json(build_research_evidence_index(config))
+                return
+            if parsed.path == "/api/product/report_export_status.json":
+                self._send_json(build_report_export_status(config))
                 return
             if parsed.path == "/api/product/cockpit_manifest.json":
                 self._send_json(build_cockpit_manifest(config))
@@ -1055,6 +1106,41 @@ def _json_status_field(path: Path) -> str:
         if isinstance(value, str) and value:
             return value[:120]
     return ""
+
+
+def _report_doc_artifacts(root: Path) -> list[str]:
+    artifacts = []
+    for relative_dir in REPORT_EXPORT_DOC_DIRS:
+        source_dir = root / relative_dir
+        if not source_dir.exists():
+            continue
+        for path in sorted(source_dir.glob("*.md")):
+            relative = path.relative_to(root)
+            if not _is_denied_report_path(relative):
+                artifacts.append(relative.as_posix())
+    return artifacts
+
+
+def _report_runtime_artifacts(root: Path) -> list[str]:
+    source_dir = root / "runtime_reports" / "cases"
+    if not source_dir.exists():
+        return []
+    artifacts = []
+    seen: set[Path] = set()
+    for pattern in REPORT_EXPORT_RUNTIME_PATTERNS:
+        for path in sorted(source_dir.glob(pattern)):
+            if path in seen or not path.is_file():
+                continue
+            seen.add(path)
+            relative = path.relative_to(root)
+            if not _is_denied_report_path(relative):
+                artifacts.append(relative.as_posix())
+    return artifacts
+
+
+def _is_denied_report_path(path: Path) -> bool:
+    denied_parts = {"raw", "staging", "vendor", "private", "__pycache__"}
+    return bool(set(path.parts) & denied_parts) or path.suffix in {".pyc", ".pyo"}
 
 
 def _monthly_refresh_status() -> dict[str, Any]:

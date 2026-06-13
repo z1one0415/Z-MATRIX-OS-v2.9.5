@@ -32542,5 +32542,21 @@
     "production_allowed": false,
     "status": "CANDIDATE_ONLY",
     "reason": "public function"
+  },
+  {
+    "candidate_id": "CANDIDATE.RESEARCHDB.START_LOCAL_WORKSTATION",
+    "module_path": "scripts/product/start_local_workstation.sh",
+    "symbol_name": "start_local_workstation.sh",
+    "candidate_type": "script",
+    "domain": "RESEARCHDB",
+    "suggested_skill_id": "RESEARCHDB.START_LOCAL_WORKSTATION",
+    "suggested_skill_layer": "L1_WORKFLOW",
+    "suggested_risk_level": "R1_ANNOTATE",
+    "read_layers": [],
+    "write_layers": [],
+    "requires_human_review": false,
+    "production_allowed": false,
+    "status": "CANDIDATE_ONLY",
+    "reason": "script discovered"
   }
 ]

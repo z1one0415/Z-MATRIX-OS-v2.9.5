@@ -1,38 +1,30 @@
 # Z-SkillOS System Completion Scope
 
-## Z-SkillOS System Completion INCLUDES
+## INCLUDES
+1. Factor Library readonly capability
+2. A1 Bridge
+3. B1 Composition Graph
+4. **R-Matrix Research Judgment Matrix**
+5. Z2 Research Report Node
+6. Z9 Review Node disabled-default
+7. Frontend Handoff Contract
+8. API/schema freeze
+9. Dashboard/page data contract freeze
+10. Readonly backend service shell
+11. Mock fixtures + Auth/permission matrix
+12. State/evidence/gate registry
+13. Install/deploy/observability/release docs
 
-| Layer | Component | Status |
-|:--|:--|:--:|
-| Backend | FactorLib P0/P1 | ✅ MERGED_AND_SEALED |
-| Backend | A1 Bridge | ✅ MERGED_AND_SEALED |
-| Backend | B1 Composition Graph | ✅ MERGED_AND_SEALED |
-| Backend | Z2 Research Report Node | ✅ MERGED_AND_SEALED |
-| Backend | Z9 Review Node disabled-default | ✅ MERGED_AND_SEALED |
-| Handoff | API/schema freeze | ✅ a6dcff2 |
-| Handoff | Dashboard/page data contract freeze | ✅ |
-| Handoff | Readonly backend service shell | ✅ |
-| Handoff | Mock fixtures | ✅ |
-| Handoff | Auth/permission matrix | ✅ |
-| Handoff | State/evidence/gate registry | ✅ |
-| Handoff | Install/deploy/observability/release docs | ✅ |
+## EXCLUDES
+- React dashboard page implementation
+- Browser render QA
+- Production frontend deployment
+- Live backend integration
+- Broker integration
+- Runtime/runner/paper trading enablement
+- Real trade
+- F8 advancement
+- Alpha claim
+- Factor promotion
 
-## Z-SkillOS System Completion EXCLUDES
-
-| Item | Status |
-|:--|:--:|
-| React dashboard page implementation | ❌ NOT REQUIRED |
-| Browser render QA | ❌ NOT REQUIRED |
-| Production frontend deployment | ❌ NOT REQUIRED |
-| Live backend integration | ❌ NOT REQUIRED |
-| Broker integration | 🚫 FORBIDDEN |
-| Runtime enablement | 🚫 FORBIDDEN |
-| Runner enablement | 🚫 FORBIDDEN |
-| Paper trading | 🚫 FORBIDDEN |
-| Real trade | 🚫 FORBIDDEN |
-| F8 advancement | 🚫 FORBIDDEN |
-| Alpha claim | 🚫 FORBIDDEN |
-| Factor promotion | 🚫 FORBIDDEN |
-
-## Frontend Dashboard App is a downstream application project.
-## It should start after Z-SkillOS completion seal, not before.
+## Frontend Dashboard App is a downstream project, starts AFTER completion seal.

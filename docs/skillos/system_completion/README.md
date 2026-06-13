@@ -1,5 +1,6 @@
 # Z-SkillOS System Completion
 
-Z-SkillOS system completion seal. Backend mainline + frontend handoff contract frozen.
-Frontend dashboard app is downstream work — not included in this seal.
+Final seal for Z-SkillOS system: backend + handoff + R-Matrix completed.
+Frontend dashboard = downstream project, starts after this seal.
+No runtime/runner/paper trading/broker/production/real trade/alpha/promotion/F8 authorized.
 Next: FRONTEND_DASHBOARD_APPLICATION_PROJECT_START

@@ -52,6 +52,7 @@ describe("settings api tenant-aware contract", () => {
     expect(packet.productRuntime.safety.broker_runtime).toBe("BLOCKED");
     expect(packet.productRuntime.safety.real_trade).toBe("BLOCKED");
     expect(packet.productReadiness.scope).toBe("LOCAL_PERSONAL_RESEARCH_WORKSTATION");
+    expect(packet.productReadiness.summary.cockpit_routes).toBe(0);
     expect(packet.productReadiness.summary.required_secret_refs).toBe(2);
     expect(packet.productReadiness.safety.broker_runtime).toBe("BLOCKED");
     expect(packet.productReadiness.safety.real_trade).toBe("BLOCKED");
@@ -64,6 +65,12 @@ describe("settings api tenant-aware contract", () => {
     expect(packet.researchStatus.monthly_refresh.mode).toBe("LOCAL_TERMINAL_MANUAL_DRY_PLAN");
     expect(packet.researchStatus.monthly_refresh.safety.broker_runtime).toBe("BLOCKED");
     expect(packet.researchStatus.safety.real_trade).toBe("BLOCKED");
+    expect(packet.cockpitManifest.route_count).toBe(5);
+    expect(packet.cockpitManifest.routes.map((route) => route.label)).toEqual(
+      expect.arrayContaining(["持仓管理", "投研选股", "历史回溯", "天机罗盘", "大衍天问"])
+    );
+    expect(packet.cockpitManifest.routes.every((route) => route.mode === "READ_ONLY_PACKET")).toBe(true);
+    expect(packet.cockpitManifest.safety.real_trade).toBe("BLOCKED");
   });
 
   it("includes tianji, plain, and english copy packs for core cockpit labels", async () => {

@@ -9,6 +9,7 @@ from pathlib import Path
 from zmatrix.product_runtime.local_backend import (
     ProductRuntimeConfig,
     build_agent_bridge_status,
+    build_cockpit_manifest,
     build_config_template_status,
     build_agent_research_draft,
     build_operator_actions,
@@ -95,6 +96,7 @@ def test_config_template_status_reports_env_references_without_values(tmp_path: 
         "VITE_ZMATRIX_PRODUCT_READINESS_URL=http://127.0.0.1:8765/api/product/readiness.json\n"
         "VITE_ZMATRIX_OPERATOR_ACTIONS_URL=http://127.0.0.1:8765/api/product/operator_actions.json\n"
         "VITE_ZMATRIX_RESEARCH_STATUS_URL=http://127.0.0.1:8765/api/product/research_status.json\n"
+        "VITE_ZMATRIX_COCKPIT_MANIFEST_URL=http://127.0.0.1:8765/api/product/cockpit_manifest.json\n"
         "VITE_ZMATRIX_AGENT_BRIDGE_URL=http://127.0.0.1:8765/api/product/agent_bridge.json\n"
         "VITE_ZMATRIX_AGENT_DRAFT_URL=http://127.0.0.1:8765/api/product/agent_draft.json\n"
         "VITE_ZMATRIX_HOLDINGS_PACKET_URL=/api/cockpit/holdings_packet.json\n"
@@ -174,6 +176,15 @@ def test_local_backend_serves_health_and_cockpit_packet(tmp_path: Path):
         assert research["capability_count"] >= 8
         assert research["safety"]["broker_runtime"] == "BLOCKED"
 
+        conn.request("GET", "/api/product/cockpit_manifest.json")
+        manifest_response = conn.getresponse()
+        manifest = json.loads(manifest_response.read().decode("utf-8"))
+        assert manifest_response.status == 200
+        assert manifest["status"] == "Z_MATRIX_COCKPIT_MANIFEST_READY"
+        assert manifest["route_count"] == 5
+        assert {route["id"] for route in manifest["routes"]} >= {"holdings", "selection", "history"}
+        assert all(route["safety"]["real_trade"] == "BLOCKED" for route in manifest["routes"])
+
         conn.request("GET", "/api/product/agent_bridge.json")
         bridge_response = conn.getresponse()
         bridge = json.loads(bridge_response.read().decode("utf-8"))
@@ -236,6 +247,28 @@ def test_research_status_maps_product_capabilities_to_repository_paths():
     assert status["safety"]["real_trade"] == "BLOCKED"
 
 
+def test_cockpit_manifest_maps_all_page_packets(tmp_path: Path):
+    public_root = tmp_path / "public"
+    public_root.mkdir()
+    for name in (
+        "holdings_packet.json",
+        "selection_packet.json",
+        "history_packet.json",
+        "control_compass_packet.json",
+        "dayan_ask_packet.json",
+    ):
+        (public_root / name).write_text(json.dumps({"name": name}), encoding="utf-8")
+
+    manifest = build_cockpit_manifest(ProductRuntimeConfig(public_root=public_root))
+
+    assert manifest["status"] == "Z_MATRIX_COCKPIT_MANIFEST_READY"
+    assert manifest["ready_count"] == 5
+    assert manifest["route_count"] == 5
+    assert {route["api_path"] for route in manifest["routes"]} >= {"/api/cockpit/holdings_packet.json"}
+    assert all(route["mode"] == "READ_ONLY_PACKET" for route in manifest["routes"])
+    assert manifest["safety"]["agent_direct_mutation"] == "BLOCKED"
+
+
 def test_agent_bridge_status_is_research_draft_only():
     status = build_agent_bridge_status()
 
@@ -282,6 +315,7 @@ def _make_runtime_root(root: Path) -> Path:
             "VITE_ZMATRIX_PRODUCT_READINESS_URL=http://127.0.0.1:8765/api/product/readiness.json\n"
             "VITE_ZMATRIX_OPERATOR_ACTIONS_URL=http://127.0.0.1:8765/api/product/operator_actions.json\n"
             "VITE_ZMATRIX_RESEARCH_STATUS_URL=http://127.0.0.1:8765/api/product/research_status.json\n"
+            "VITE_ZMATRIX_COCKPIT_MANIFEST_URL=http://127.0.0.1:8765/api/product/cockpit_manifest.json\n"
             "VITE_ZMATRIX_AGENT_BRIDGE_URL=http://127.0.0.1:8765/api/product/agent_bridge.json\n"
             "VITE_ZMATRIX_AGENT_DRAFT_URL=http://127.0.0.1:8765/api/product/agent_draft.json\n"
             "VITE_ZMATRIX_HOLDINGS_PACKET_URL=/api/cockpit/holdings_packet.json\n"

@@ -105,6 +105,7 @@ export function SettingsPage({ session }: SettingsPageProps) {
   const selectedProvider = settingsData.llmProviders.find((provider) => provider.id === selectedLlmProvider) ?? settingsData.llmProviders[0];
   const runtime = settingsData.productRuntime;
   const readiness = settingsData.productReadiness;
+  const cockpitManifest = settingsData.cockpitManifest;
   const runtimeReady = runtime.status === "Z_MATRIX_PRODUCT_RUNTIME_READY";
   const readinessReady = readiness.status === "Z_MATRIX_LOCAL_PRODUCT_READINESS_PASS";
 
@@ -167,6 +168,7 @@ export function SettingsPage({ session }: SettingsPageProps) {
       </section>
 
       {renderSettingsStatusBar()}
+      {renderCockpitManifest()}
       {renderOperatorActions()}
       {renderResearchStatus()}
 
@@ -305,6 +307,34 @@ export function SettingsPage({ session }: SettingsPageProps) {
                   复制命令
                 </button>
               </footer>
+            </article>
+          ))}
+        </div>
+      </section>
+    );
+  }
+
+  function renderCockpitManifest() {
+    return (
+      <section className="settings-research-panel panel-shell" aria-label="驾驶舱页面索引">
+        <div className="panel-title">
+          <span>驾驶舱页面索引</span>
+          <small>{cockpitManifest.ready_count}/{cockpitManifest.route_count} ready</small>
+        </div>
+        <div className="settings-research-grid">
+          {cockpitManifest.routes.map((route) => (
+            <article className="settings-research-card" key={route.id}>
+              <div>
+                <CheckCircle2 size={16} aria-hidden="true" />
+                <span>{route.label}</span>
+                <em className={route.ready ? "is-ready" : "is-partial"}>{route.ready ? "READY" : "WAITING"}</em>
+              </div>
+              <p>{route.capability}</p>
+              <dl className="settings-compact-dl">
+                <div><dt>路径</dt><dd>{route.route}</dd></div>
+                <div><dt>模式</dt><dd>{route.mode}</dd></div>
+              </dl>
+              <code>{route.api_path}</code>
             </article>
           ))}
         </div>

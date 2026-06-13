@@ -197,6 +197,20 @@ describe("settings page", () => {
     expect(within(panel).getAllByRole("button", { name: "复制命令" }).length).toBeGreaterThan(0);
   });
 
+  it("shows cockpit page packet manifest as a read-only product index", async () => {
+    renderSettings();
+
+    const panel = await screen.findByLabelText("驾驶舱页面索引");
+    expect(within(panel).getByText("驾驶舱页面索引")).toBeInTheDocument();
+    expect(within(panel).getByText("持仓管理")).toBeInTheDocument();
+    expect(within(panel).getByText("投研选股")).toBeInTheDocument();
+    expect(within(panel).getByText("历史回溯")).toBeInTheDocument();
+    expect(within(panel).getByText("天机罗盘")).toBeInTheDocument();
+    expect(within(panel).getByText("大衍天问")).toBeInTheDocument();
+    expect(within(panel).getAllByText("READ_ONLY_PACKET").length).toBe(5);
+    expect(within(panel).getByText("/api/cockpit/holdings_packet.json")).toBeInTheDocument();
+  });
+
   it("shows research capability status and local report export path", async () => {
     renderSettings();
 

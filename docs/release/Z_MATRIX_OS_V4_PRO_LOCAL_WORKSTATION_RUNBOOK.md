@@ -85,6 +85,7 @@ Useful local endpoints:
 ```text
 http://127.0.0.1:8765/health
 http://127.0.0.1:8765/api/product/status.json
+http://127.0.0.1:8765/api/product/cockpit_manifest.json
 http://127.0.0.1:8765/api/product/agent_bridge.json
 http://127.0.0.1:8765/api/cockpit/holdings_packet.json
 ```
@@ -97,7 +98,7 @@ The combined local startup command is:
 bash scripts/product/start_local_workstation.sh
 ```
 
-It starts the local backend, waits for `/health`, exports the cockpit runtime URLs, and starts the cockpit dev server in the foreground. Stop it with `Ctrl-C`; the backend process is cleaned up by the script.
+It starts the local backend, waits for `/health`, exports the cockpit runtime URLs and page packet URLs, and starts the cockpit dev server in the foreground. Stop it with `Ctrl-C`; the backend process is cleaned up by the script.
 
 If `.env` is present, this launcher applies the local host, port, workspace, cockpit packet root, vendor root, and secret reference variables before the backend starts. Secret values are never printed by the launcher or backend status endpoints.
 
@@ -112,6 +113,8 @@ cp apps/cockpit_web/.env.example apps/cockpit_web/.env.local
 ```bash
 npm --prefix apps/cockpit_web run dev -- --port 5173
 ```
+
+The Vite dev server proxies `/api` to `http://127.0.0.1:8765` by default, so the relative cockpit packet URLs in `.env.example` work when the backend is running.
 
 Open:
 

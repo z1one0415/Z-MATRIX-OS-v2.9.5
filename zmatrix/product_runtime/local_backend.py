@@ -32,6 +32,7 @@ COCKPIT_ENV_TEMPLATE_KEYS = (
     "VITE_ZMATRIX_PRODUCT_READINESS_URL",
     "VITE_ZMATRIX_OPERATOR_ACTIONS_URL",
     "VITE_ZMATRIX_RESEARCH_STATUS_URL",
+    "VITE_ZMATRIX_COCKPIT_MANIFEST_URL",
     "VITE_ZMATRIX_AGENT_BRIDGE_URL",
     "VITE_ZMATRIX_AGENT_DRAFT_URL",
     "VITE_ZMATRIX_HOLDINGS_PACKET_URL",
@@ -41,13 +42,44 @@ COCKPIT_ENV_TEMPLATE_KEYS = (
     "VITE_ZMATRIX_DAYAN_ASK_PACKET_URL",
 )
 SECRET_TEMPLATE_KEYS = ("TUSHARE_TOKEN", "DEEPSEEK_API_KEY")
-PACKET_NAMES = (
-    "holdings_packet.json",
-    "selection_packet.json",
-    "history_packet.json",
-    "control_compass_packet.json",
-    "dayan_ask_packet.json",
+COCKPIT_PACKET_SPECS = (
+    {
+        "id": "holdings",
+        "label": "持仓管理",
+        "route": "/holdings",
+        "file_name": "holdings_packet.json",
+        "capability": "portfolio_review_readonly",
+    },
+    {
+        "id": "selection",
+        "label": "投研选股",
+        "route": "/selection",
+        "file_name": "selection_packet.json",
+        "capability": "candidate_research_watchlist",
+    },
+    {
+        "id": "history",
+        "label": "历史回溯",
+        "route": "/history",
+        "file_name": "history_packet.json",
+        "capability": "oos_memory_report_library",
+    },
+    {
+        "id": "control-compass",
+        "label": "天机罗盘",
+        "route": "/control-compass",
+        "file_name": "control_compass_packet.json",
+        "capability": "gatekeeper_audit_control",
+    },
+    {
+        "id": "dayan-ask",
+        "label": "大衍天问",
+        "route": "/dayan-ask",
+        "file_name": "dayan_ask_packet.json",
+        "capability": "hermes_research_draft_interaction",
+    },
 )
+PACKET_NAMES = tuple(str(spec["file_name"]) for spec in COCKPIT_PACKET_SPECS)
 READINESS_PASS = "Z_MATRIX_LOCAL_PRODUCT_READINESS_PASS"
 READINESS_BLOCKED = "Z_MATRIX_LOCAL_PRODUCT_READINESS_BLOCKED"
 RESEARCH_CAPABILITY_SPECS = (
@@ -393,6 +425,51 @@ def build_research_status(config: ProductRuntimeConfig | None = None) -> dict[st
     }
 
 
+def build_cockpit_manifest(config: ProductRuntimeConfig | None = None) -> dict[str, Any]:
+    cfg = config or ProductRuntimeConfig()
+    routes = []
+    for spec in COCKPIT_PACKET_SPECS:
+        file_name = str(spec["file_name"])
+        path = cfg.public_root / file_name
+        ready = path.is_file()
+        routes.append(
+            {
+                "id": spec["id"],
+                "label": spec["label"],
+                "route": spec["route"],
+                "capability": spec["capability"],
+                "packet_file": file_name,
+                "api_path": f"/api/cockpit/{file_name}",
+                "ready": ready,
+                "bytes": path.stat().st_size if ready else 0,
+                "mode": "READ_ONLY_PACKET",
+                "safety": {
+                    "paper_only": True,
+                    "human_review_required": True,
+                    "broker_runtime": "BLOCKED",
+                    "real_trade": "BLOCKED",
+                },
+            }
+        )
+    ready_count = sum(1 for item in routes if item["ready"])
+    return {
+        "status": "Z_MATRIX_COCKPIT_MANIFEST_READY" if ready_count == len(routes) else "Z_MATRIX_COCKPIT_MANIFEST_DEGRADED",
+        "workspace_id": cfg.workspace_id,
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "public_root": cfg.public_root.as_posix(),
+        "route_count": len(routes),
+        "ready_count": ready_count,
+        "routes": routes,
+        "safety": {
+            "alpha_claim": "BLOCKED",
+            "promotion": "BLOCKED",
+            "broker_runtime": "BLOCKED",
+            "real_trade": "BLOCKED",
+            "agent_direct_mutation": "BLOCKED",
+        },
+    }
+
+
 def build_agent_bridge_status(config: ProductRuntimeConfig | None = None) -> dict[str, Any]:
     cfg = config or ProductRuntimeConfig()
     registry_status = _registry_status(cfg.registry_path)
@@ -501,6 +578,7 @@ def build_runtime_product_readiness(config: ProductRuntimeConfig | None = None, 
     cfg = replace(cfg, repo_root=resolved_root)
     product = build_product_status(cfg)
     research = build_research_status(cfg)
+    cockpit_manifest = build_cockpit_manifest(cfg)
     bridge = build_agent_bridge_status(cfg)
     actions = build_operator_actions(cfg)
     config_templates = build_config_template_status(resolved_root, cfg.env)
@@ -514,6 +592,7 @@ def build_runtime_product_readiness(config: ProductRuntimeConfig | None = None, 
         _file_check(resolved_root, "product-smoke", "scripts/verify_z_matrix_product_smoke.sh"),
         _status_check("product-runtime", product["status"] == "Z_MATRIX_PRODUCT_RUNTIME_READY", product["status"]),
         _status_check("research-status", research["status"] == "Z_MATRIX_RESEARCH_STATUS_READY", research["status"]),
+        _status_check("cockpit-manifest", cockpit_manifest["status"] == "Z_MATRIX_COCKPIT_MANIFEST_READY", cockpit_manifest["status"]),
         _status_check("agent-bridge", bridge["status"] == "Z_MATRIX_AGENT_BRIDGE_READY", bridge["status"]),
         _status_check("operator-actions", actions["status"] == "Z_MATRIX_OPERATOR_ACTIONS_READY", actions["status"]),
     ]
@@ -526,6 +605,7 @@ def build_runtime_product_readiness(config: ProductRuntimeConfig | None = None, 
         "blocking_reasons": blocking_reasons,
         "summary": {
             "cockpit_packets": product["cockpit"]["packet_count"],
+            "cockpit_routes": cockpit_manifest["ready_count"],
             "registered_skills": product["registry"]["skill_count"],
             "research_capabilities": research["capability_count"],
             "ready_research_capabilities": research["ready_count"],
@@ -559,6 +639,9 @@ def make_handler(config: ProductRuntimeConfig) -> type[BaseHTTPRequestHandler]:
                 return
             if parsed.path == "/api/product/research_status.json":
                 self._send_json(build_research_status(config))
+                return
+            if parsed.path == "/api/product/cockpit_manifest.json":
+                self._send_json(build_cockpit_manifest(config))
                 return
             if parsed.path == "/api/product/agent_bridge.json":
                 self._send_json(build_agent_bridge_status(config))

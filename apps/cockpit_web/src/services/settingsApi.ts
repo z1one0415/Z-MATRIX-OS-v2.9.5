@@ -176,6 +176,7 @@ export type ProductReadinessStatus = {
   blocking_reasons: string[];
   summary: {
     cockpit_packets: number;
+    cockpit_routes: number;
     registered_skills: number;
     research_capabilities: number;
     ready_research_capabilities: number;
@@ -262,6 +263,39 @@ export type ProductResearchStatus = {
   };
 };
 
+export type ProductCockpitRoute = {
+  id: string;
+  label: string;
+  route: string;
+  capability: string;
+  packet_file: string;
+  api_path: string;
+  ready: boolean;
+  bytes: number;
+  mode: "READ_ONLY_PACKET";
+  safety: {
+    paper_only: true;
+    human_review_required: true;
+    broker_runtime: "BLOCKED";
+    real_trade: "BLOCKED";
+  };
+};
+
+export type ProductCockpitManifest = {
+  status: "Z_MATRIX_COCKPIT_MANIFEST_READY" | "Z_MATRIX_COCKPIT_MANIFEST_DEGRADED";
+  public_root: string;
+  route_count: number;
+  ready_count: number;
+  routes: ProductCockpitRoute[];
+  safety: {
+    alpha_claim: "BLOCKED";
+    promotion: "BLOCKED";
+    broker_runtime: "BLOCKED";
+    real_trade: "BLOCKED";
+    agent_direct_mutation: "BLOCKED";
+  };
+};
+
 export type SettingsPageData = {
   workspaceId: string;
   title: "系统设置";
@@ -282,6 +316,7 @@ export type SettingsPageData = {
   productReadiness: ProductReadinessStatus;
   operatorActions: ProductOperatorActions;
   researchStatus: ProductResearchStatus;
+  cockpitManifest: ProductCockpitManifest;
   safety: SettingsSafety;
 };
 
@@ -393,6 +428,7 @@ const defaultProductReadiness: ProductReadinessStatus = {
   blocking_reasons: ["backend-service", "product-runtime"],
   summary: {
     cockpit_packets: 0,
+    cockpit_routes: 0,
     registered_skills: 0,
     research_capabilities: 0,
     ready_research_capabilities: 0,
@@ -402,6 +438,36 @@ const defaultProductReadiness: ProductReadinessStatus = {
     configured_secret_refs: 0,
     required_secret_refs: 2
   },
+  safety: {
+    alpha_claim: "BLOCKED",
+    promotion: "BLOCKED",
+    broker_runtime: "BLOCKED",
+    real_trade: "BLOCKED",
+    agent_direct_mutation: "BLOCKED"
+  }
+};
+
+const defaultCockpitManifest: ProductCockpitManifest = {
+  status: "Z_MATRIX_COCKPIT_MANIFEST_DEGRADED",
+  public_root: "apps/cockpit_web/public/api/cockpit",
+  route_count: 5,
+  ready_count: 0,
+  routes: [
+    { id: "holdings", label: "持仓管理", route: "/holdings", capability: "portfolio_review_readonly", packet_file: "holdings_packet.json", api_path: "/api/cockpit/holdings_packet.json", ready: false, bytes: 0 },
+    { id: "selection", label: "投研选股", route: "/selection", capability: "candidate_research_watchlist", packet_file: "selection_packet.json", api_path: "/api/cockpit/selection_packet.json", ready: false, bytes: 0 },
+    { id: "history", label: "历史回溯", route: "/history", capability: "oos_memory_report_library", packet_file: "history_packet.json", api_path: "/api/cockpit/history_packet.json", ready: false, bytes: 0 },
+    { id: "control-compass", label: "天机罗盘", route: "/control-compass", capability: "gatekeeper_audit_control", packet_file: "control_compass_packet.json", api_path: "/api/cockpit/control_compass_packet.json", ready: false, bytes: 0 },
+    { id: "dayan-ask", label: "大衍天问", route: "/dayan-ask", capability: "hermes_research_draft_interaction", packet_file: "dayan_ask_packet.json", api_path: "/api/cockpit/dayan_ask_packet.json", ready: false, bytes: 0 }
+  ].map((route) => ({
+    ...route,
+    mode: "READ_ONLY_PACKET",
+    safety: {
+      paper_only: true,
+      human_review_required: true,
+      broker_runtime: "BLOCKED",
+      real_trade: "BLOCKED"
+    }
+  })),
   safety: {
     alpha_claim: "BLOCKED",
     promotion: "BLOCKED",
@@ -847,6 +913,7 @@ const zPrimeSettings: Omit<SettingsPageData, "workspaceId"> = {
   productReadiness: defaultProductReadiness,
   operatorActions: defaultOperatorActions,
   researchStatus: defaultResearchStatus,
+  cockpitManifest: defaultCockpitManifest,
   safety
 };
 
@@ -880,17 +947,19 @@ function cloneSettings(packet: SettingsPageData): SettingsPageData {
     productReadiness: cloneProductReadiness(packet.productReadiness),
     operatorActions: cloneOperatorActions(packet.operatorActions),
     researchStatus: cloneResearchStatus(packet.researchStatus),
+    cockpitManifest: cloneCockpitManifest(packet.cockpitManifest),
     safety: { ...packet.safety }
   };
 }
 
 export async function getSettingsPageData(session: AuthSession | null): Promise<SettingsPageData> {
   const current = requireSession(session);
-  const [productRuntime, productReadiness, operatorActions, researchStatus] = await Promise.all([
+  const [productRuntime, productReadiness, operatorActions, researchStatus, cockpitManifest] = await Promise.all([
     loadProductRuntimeStatus(),
     loadProductReadiness(),
     loadOperatorActions(),
-    loadResearchStatus()
+    loadResearchStatus(),
+    loadCockpitManifest()
   ]);
   return cloneSettings({
     ...zPrimeSettings,
@@ -898,7 +967,8 @@ export async function getSettingsPageData(session: AuthSession | null): Promise<
     productRuntime,
     productReadiness,
     operatorActions,
-    researchStatus
+    researchStatus,
+    cockpitManifest
   });
 }
 
@@ -944,6 +1014,10 @@ function getOperatorActionsUrl(): string {
 
 function getResearchStatusUrl(): string {
   return import.meta.env.VITE_ZMATRIX_RESEARCH_STATUS_URL || "/api/product/research_status.json";
+}
+
+function getCockpitManifestUrl(): string {
+  return import.meta.env.VITE_ZMATRIX_COCKPIT_MANIFEST_URL || "/api/product/cockpit_manifest.json";
 }
 
 async function loadProductRuntimeStatus(): Promise<ProductRuntimeStatus> {
@@ -1022,6 +1096,25 @@ async function loadOperatorActions(): Promise<ProductOperatorActions> {
   }
 }
 
+async function loadCockpitManifest(): Promise<ProductCockpitManifest> {
+  if (typeof fetch !== "function") {
+    return cloneCockpitManifest(defaultCockpitManifest);
+  }
+  try {
+    const response = await fetch(getCockpitManifestUrl(), {
+      method: "GET",
+      headers: { Accept: "application/json" }
+    });
+    if (!response.ok) {
+      return cloneCockpitManifest(defaultCockpitManifest);
+    }
+    const packet = (await response.json()) as ProductCockpitManifest;
+    return normalizeCockpitManifest(packet);
+  } catch {
+    return cloneCockpitManifest(defaultCockpitManifest);
+  }
+}
+
 function normalizeProductReadiness(packet: ProductReadinessStatus): ProductReadinessStatus {
   const checks = Array.isArray(packet.checks) ? packet.checks : [];
   const blockingReasons = Array.isArray(packet.blocking_reasons) ? packet.blocking_reasons.map(String) : [];
@@ -1039,6 +1132,7 @@ function normalizeProductReadiness(packet: ProductReadinessStatus): ProductReadi
     blocking_reasons: blockingReasons,
     summary: {
       cockpit_packets: Number(packet.summary?.cockpit_packets ?? 0),
+      cockpit_routes: Number(packet.summary?.cockpit_routes ?? 0),
       registered_skills: Number(packet.summary?.registered_skills ?? 0),
       research_capabilities: Number(packet.summary?.research_capabilities ?? 0),
       ready_research_capabilities: Number(packet.summary?.ready_research_capabilities ?? 0),
@@ -1170,6 +1264,52 @@ function cloneResearchStatus(packet: ProductResearchStatus): ProductResearchStat
       safety: { ...packet.monthly_refresh.safety }
     },
     safety: { ...packet.safety }
+  };
+}
+
+function cloneCockpitManifest(packet: ProductCockpitManifest): ProductCockpitManifest {
+  return {
+    ...packet,
+    routes: packet.routes.map((route) => ({
+      ...route,
+      safety: { ...route.safety }
+    })),
+    safety: { ...packet.safety }
+  };
+}
+
+function normalizeCockpitManifest(packet: ProductCockpitManifest): ProductCockpitManifest {
+  const routes = Array.isArray(packet.routes) ? packet.routes : [];
+  const normalizedRoutes = routes.map((route) => ({
+    id: String(route.id ?? "cockpit-route"),
+    label: String(route.label ?? "驾驶舱页面"),
+    route: String(route.route ?? "/"),
+    capability: String(route.capability ?? "readonly_cockpit_packet"),
+    packet_file: String(route.packet_file ?? ""),
+    api_path: String(route.api_path ?? ""),
+    ready: Boolean(route.ready),
+    bytes: Number(route.bytes ?? 0),
+    mode: "READ_ONLY_PACKET" as const,
+    safety: {
+      paper_only: true as const,
+      human_review_required: true as const,
+      broker_runtime: "BLOCKED" as const,
+      real_trade: "BLOCKED" as const
+    }
+  }));
+  return {
+    status: packet.status === "Z_MATRIX_COCKPIT_MANIFEST_READY" ? "Z_MATRIX_COCKPIT_MANIFEST_READY" : "Z_MATRIX_COCKPIT_MANIFEST_DEGRADED",
+    public_root: String(packet.public_root ?? defaultCockpitManifest.public_root),
+    route_count: Number(packet.route_count ?? normalizedRoutes.length),
+    ready_count: Number(packet.ready_count ?? normalizedRoutes.filter((route) => route.ready).length),
+    routes: normalizedRoutes,
+    safety: {
+      alpha_claim: "BLOCKED",
+      promotion: "BLOCKED",
+      broker_runtime: "BLOCKED",
+      real_trade: "BLOCKED",
+      agent_direct_mutation: "BLOCKED"
+    }
   };
 }
 

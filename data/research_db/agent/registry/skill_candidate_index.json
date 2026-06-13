@@ -32590,5 +32590,37 @@
     "production_allowed": false,
     "status": "CANDIDATE_ONLY",
     "reason": "public function"
+  },
+  {
+    "candidate_id": "CANDIDATE.RESEARCHDB.BUILD_PRODUCT_READINESS",
+    "module_path": "scripts/product/check_product_readiness.py",
+    "symbol_name": "build_product_readiness",
+    "candidate_type": "function",
+    "domain": "RESEARCHDB",
+    "suggested_skill_id": "RESEARCHDB.BUILD_PRODUCT_READINESS",
+    "suggested_skill_layer": "L0_ATOMIC",
+    "suggested_risk_level": "R2_DRAFT",
+    "read_layers": [],
+    "write_layers": [],
+    "requires_human_review": true,
+    "production_allowed": false,
+    "status": "CANDIDATE_ONLY",
+    "reason": "public function"
+  },
+  {
+    "candidate_id": "CANDIDATE.RESEARCHDB.MAIN",
+    "module_path": "scripts/product/check_product_readiness.py",
+    "symbol_name": "main",
+    "candidate_type": "function",
+    "domain": "RESEARCHDB",
+    "suggested_skill_id": "RESEARCHDB.MAIN",
+    "suggested_skill_layer": "L0_ATOMIC",
+    "suggested_risk_level": "R0_READ",
+    "read_layers": [],
+    "write_layers": [],
+    "requires_human_review": false,
+    "production_allowed": false,
+    "status": "CANDIDATE_ONLY",
+    "reason": "public function"
   }
 ]

@@ -137,6 +137,12 @@ export type ProductRuntimeStatus = {
     manifest_count: number;
     mode: string;
   };
+  config: {
+    ready: boolean;
+    template_count: number;
+    ready_count: number;
+    secret_material_policy: "TEMPLATE_KEYS_ONLY_ENV_VALUES_NEVER_EMITTED";
+  };
   safety: {
     alpha_claim: "BLOCKED";
     promotion: "BLOCKED";
@@ -311,6 +317,12 @@ const defaultProductRuntime: ProductRuntimeStatus = {
     ready: false,
     manifest_count: 0,
     mode: "LOCAL_VENDOR_STORE_ONLY"
+  },
+  config: {
+    ready: true,
+    template_count: 2,
+    ready_count: 2,
+    secret_material_policy: "TEMPLATE_KEYS_ONLY_ENV_VALUES_NEVER_EMITTED"
   },
   safety: {
     alpha_claim: "BLOCKED",
@@ -900,6 +912,12 @@ function normalizeProductRuntime(packet: ProductRuntimeStatus): ProductRuntimeSt
       ready: Boolean(packet.data_source?.ready),
       manifest_count: Number(packet.data_source?.manifest_count ?? 0),
       mode: packet.data_source?.mode ?? defaultProductRuntime.data_source.mode
+    },
+    config: {
+      ready: Boolean(packet.config?.ready),
+      template_count: Number(packet.config?.template_count ?? defaultProductRuntime.config.template_count),
+      ready_count: Number(packet.config?.ready_count ?? 0),
+      secret_material_policy: "TEMPLATE_KEYS_ONLY_ENV_VALUES_NEVER_EMITTED"
     },
     safety: {
       alpha_claim: "BLOCKED",

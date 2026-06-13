@@ -248,9 +248,9 @@ export function SettingsPage({ session }: SettingsPageProps) {
           <small>{runtime.data_source.manifest_count} manifests</small>
         </article>
         <article>
-          <span>备份</span>
-          <strong>{settingsData.appearanceBackup.backupStatus}</strong>
-          <small>{settingsData.appearanceBackup.lastBackup}</small>
+          <span>配置模板</span>
+          <strong>{runtime.config.ready_count}/{runtime.config.template_count}</strong>
+          <small>{runtime.config.ready ? "ENV ONLY" : "Check templates"}</small>
         </article>
         <div className="settings-status-actions">
           <span>{latestDraft ? latestDraft.userMessage : "设置动作都会进入人审草案或审计记录。"}</span>

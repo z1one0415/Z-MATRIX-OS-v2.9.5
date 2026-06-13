@@ -46,6 +46,9 @@ def test_product_status_reports_cockpit_and_registry(tmp_path: Path):
     assert status["registry"]["skill_count"] == 2
     assert status["registry"]["domain_count"] == 2
     assert status["capabilities"]["agent_bridge"] is True
+    assert status["capabilities"]["configuration_templates"] is True
+    assert status["config"]["ready"] is True
+    assert status["config"]["secret_material_policy"] == "TEMPLATE_KEYS_ONLY_ENV_VALUES_NEVER_EMITTED"
     assert status["safety"]["broker_runtime"] == "BLOCKED"
     assert status["safety"]["real_trade"] == "BLOCKED"
 

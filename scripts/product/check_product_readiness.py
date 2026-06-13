@@ -5,7 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -13,6 +13,7 @@ from typing import Any
 from zmatrix.product_runtime.local_backend import (
     ProductRuntimeConfig,
     build_agent_bridge_status,
+    build_config_template_status,
     build_operator_actions,
     build_product_status,
     build_research_status,
@@ -32,14 +33,15 @@ class ReadinessOptions:
 
 def build_product_readiness(options: ReadinessOptions = ReadinessOptions()) -> dict[str, Any]:
     root = options.root
-    config = options.config
+    config = replace(options.config, repo_root=root)
     product = build_product_status(config)
     research = build_research_status(config)
     bridge = build_agent_bridge_status(config)
     actions = build_operator_actions(config)
+    config_templates = build_config_template_status(root)
     checks = [
         _file_check(root, "runbook", "docs/release/Z_MATRIX_OS_V4_PRO_LOCAL_WORKSTATION_RUNBOOK.md"),
-        _file_check(root, "cockpit-env", "apps/cockpit_web/.env.example"),
+        *_config_template_checks(config_templates),
         _file_check(root, "backend-service", "scripts/product/start_backend_service.py"),
         _file_check(root, "local-launcher", "scripts/product/start_local_workstation.sh"),
         _file_check(root, "report-export", "scripts/product/export_research_report_pack.py"),
@@ -63,6 +65,7 @@ def build_product_readiness(options: ReadinessOptions = ReadinessOptions()) -> d
             "ready_research_capabilities": research["ready_count"],
             "agent_intents": len(bridge["allowed_intents"]),
             "operator_actions": len(actions["actions"]),
+            "config_templates": config_templates["ready_count"],
         },
         "safety": {
             "alpha_claim": "BLOCKED",
@@ -89,6 +92,22 @@ def _status_check(check_id: str, ready: bool, evidence: str) -> dict[str, Any]:
         "ready": ready,
         "evidence": evidence,
     }
+
+
+def _config_template_checks(config_templates: dict[str, Any]) -> list[dict[str, Any]]:
+    checks = []
+    for item in config_templates["templates"]:
+        checks.append(
+            {
+                "id": item["id"],
+                "ready": item["ready"],
+                "evidence": item["path"],
+                "missing_required_keys": item["missing_required_keys"],
+                "unsafe_example_value_keys": item["unsafe_example_value_keys"],
+                "value_material": item["value_material"],
+            }
+        )
+    return checks
 
 
 def main() -> int:

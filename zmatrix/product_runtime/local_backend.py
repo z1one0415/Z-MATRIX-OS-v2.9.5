@@ -15,6 +15,29 @@ from urllib.parse import unquote, urlparse
 DEFAULT_PUBLIC_ROOT = Path("apps/cockpit_web/public/api/cockpit")
 DEFAULT_REGISTRY_PATH = Path("data/research_db/agent/registry/skill_registry.generated.json")
 DEFAULT_VENDOR_ROOT = Path("data/research_db/market_data/vendor/tushare_5y")
+DEFAULT_REPO_ROOT = Path(".")
+ROOT_ENV_TEMPLATE_KEYS = (
+    "Z_MATRIX_PRODUCT_HOST",
+    "Z_MATRIX_PRODUCT_PORT",
+    "Z_MATRIX_WORKSPACE_ID",
+    "TUSHARE_TOKEN",
+    "DEEPSEEK_API_KEY",
+    "Z_MATRIX_COCKPIT_PUBLIC_ROOT",
+    "Z_MATRIX_VENDOR_ROOT",
+)
+COCKPIT_ENV_TEMPLATE_KEYS = (
+    "VITE_ZMATRIX_PRODUCT_STATUS_URL",
+    "VITE_ZMATRIX_OPERATOR_ACTIONS_URL",
+    "VITE_ZMATRIX_RESEARCH_STATUS_URL",
+    "VITE_ZMATRIX_AGENT_BRIDGE_URL",
+    "VITE_ZMATRIX_AGENT_DRAFT_URL",
+    "VITE_ZMATRIX_HOLDINGS_PACKET_URL",
+    "VITE_ZMATRIX_SELECTION_PACKET_URL",
+    "VITE_ZMATRIX_HISTORY_PACKET_URL",
+    "VITE_ZMATRIX_CONTROL_COMPASS_PACKET_URL",
+    "VITE_ZMATRIX_DAYAN_ASK_PACKET_URL",
+)
+SECRET_TEMPLATE_KEYS = ("TUSHARE_TOKEN", "DEEPSEEK_API_KEY")
 PACKET_NAMES = (
     "holdings_packet.json",
     "selection_packet.json",
@@ -151,6 +174,7 @@ FORBIDDEN_AGENT_REQUEST_TERMS = tuple(
 class ProductRuntimeConfig:
     host: str = "127.0.0.1"
     port: int = 8765
+    repo_root: Path = DEFAULT_REPO_ROOT
     public_root: Path = DEFAULT_PUBLIC_ROOT
     registry_path: Path = DEFAULT_REGISTRY_PATH
     vendor_root: Path = DEFAULT_VENDOR_ROOT
@@ -162,7 +186,8 @@ def build_product_status(config: ProductRuntimeConfig | None = None) -> dict[str
     packet_status = _packet_status(cfg.public_root)
     registry_status = _registry_status(cfg.registry_path)
     vendor_status = _vendor_status(cfg.vendor_root)
-    ready = packet_status["ready"] and registry_status["ready"]
+    config_status = build_config_template_status(cfg.repo_root)
+    ready = packet_status["ready"] and registry_status["ready"] and config_status["ready"]
     return {
         "status": "Z_MATRIX_PRODUCT_RUNTIME_READY" if ready else "Z_MATRIX_PRODUCT_RUNTIME_DEGRADED",
         "workspace_id": cfg.workspace_id,
@@ -175,9 +200,11 @@ def build_product_status(config: ProductRuntimeConfig | None = None) -> dict[str
         "cockpit": packet_status,
         "registry": registry_status,
         "data_source": vendor_status,
+        "config": config_status,
         "capabilities": {
             "installable_local_preview": True,
             "backend_health": True,
+            "configuration_templates": config_status["ready"],
             "cockpit_packets": packet_status["ready"],
             "agent_registry": registry_status["ready"],
             "agent_bridge": registry_status["ready"],
@@ -195,6 +222,33 @@ def build_product_status(config: ProductRuntimeConfig | None = None) -> dict[str
             "agent_direct_mutation": "BLOCKED",
             "secret_storage": "ENV_ONLY",
         },
+    }
+
+
+def build_config_template_status(root: Path = DEFAULT_REPO_ROOT) -> dict[str, Any]:
+    specs = (
+        ("root-env-template", ".env.example", ROOT_ENV_TEMPLATE_KEYS, SECRET_TEMPLATE_KEYS),
+        ("cockpit-env-template", "apps/cockpit_web/.env.example", COCKPIT_ENV_TEMPLATE_KEYS, ()),
+    )
+    templates = [_env_template_status(root / relative, check_id, keys, secret_keys) for check_id, relative, keys, secret_keys in specs]
+    missing = [
+        {"template_id": item["id"], "key": key}
+        for item in templates
+        for key in item["missing_required_keys"]
+    ]
+    unsafe = [
+        {"template_id": item["id"], "key": key}
+        for item in templates
+        for key in item["unsafe_example_value_keys"]
+    ]
+    return {
+        "ready": all(item["ready"] for item in templates),
+        "template_count": len(templates),
+        "ready_count": sum(1 for item in templates if item["ready"]),
+        "templates": templates,
+        "missing_required_keys": missing,
+        "unsafe_example_value_keys": unsafe,
+        "secret_material_policy": "TEMPLATE_KEYS_ONLY_ENV_VALUES_NEVER_EMITTED",
     }
 
 
@@ -574,6 +628,39 @@ def _vendor_status(vendor_root: Path) -> dict[str, Any]:
         "latest_manifest": latest,
         "mode": "LOCAL_VENDOR_STORE_ONLY",
     }
+
+
+def _env_template_status(path: Path, check_id: str, required_keys: tuple[str, ...], secret_keys: tuple[str, ...]) -> dict[str, Any]:
+    assignments = _read_env_template_assignments(path)
+    present_keys = sorted(assignments)
+    missing = [key for key in required_keys if key not in assignments]
+    unsafe_values = [key for key in secret_keys if assignments.get(key, "").strip()]
+    return {
+        "id": check_id,
+        "ready": path.exists() and not missing and not unsafe_values,
+        "path": path.as_posix(),
+        "required_keys": list(required_keys),
+        "present_keys": present_keys,
+        "missing_required_keys": missing,
+        "unsafe_example_value_keys": unsafe_values,
+        "secret_keys": list(secret_keys),
+        "value_material": "NOT_EMITTED",
+    }
+
+
+def _read_env_template_assignments(path: Path) -> dict[str, str]:
+    if not path.exists():
+        return {}
+    assignments: dict[str, str] = {}
+    for raw_line in path.read_text(encoding="utf-8").splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, value = line.split("=", 1)
+        key = key.strip()
+        if key:
+            assignments[key] = value.strip()
+    return assignments
 
 
 def _research_capability_status(spec: dict[str, Any]) -> dict[str, Any]:

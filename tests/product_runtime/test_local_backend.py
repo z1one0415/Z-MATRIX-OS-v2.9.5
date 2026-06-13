@@ -142,6 +142,7 @@ def test_operator_actions_are_manual_and_block_runtime_paths():
     assert actions["status"] == "Z_MATRIX_OPERATOR_ACTIONS_READY"
     assert actions["auto_run_enabled"] is False
     assert len(actions["actions"]) >= 5
+    assert {action["id"] for action in actions["actions"]} >= {"research-report-export"}
     for action in actions["actions"]:
         assert action["mode"] == "LOCAL_TERMINAL_MANUAL"
         assert action["safety"]["broker_runtime"] == "BLOCKED"
@@ -154,6 +155,8 @@ def test_research_status_maps_product_capabilities_to_repository_paths():
     assert status["capability_count"] >= 8
     assert status["ready_count"] >= 6
     assert {item["id"] for item in status["capabilities"]} >= {"factor-library", "historical-oos", "gatekeeper-audit"}
+    assert status["report_export"]["status"] == "LOCAL_EXPORT_READY"
+    assert status["report_export"]["command"].endswith("scripts/product/export_research_report_pack.py")
     assert status["report_export"]["artifact_policy"] == "LOCAL_FILES_ONLY"
     assert status["safety"]["real_trade"] == "BLOCKED"
 

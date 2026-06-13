@@ -190,7 +190,7 @@ export type ProductResearchStatus = {
   ready_count: number;
   capabilities: ProductResearchCapability[];
   report_export: {
-    status: "LOCAL_EXPORT_PLANNED";
+    status: "LOCAL_EXPORT_PLANNED" | "LOCAL_EXPORT_READY";
     command: string;
     artifact_policy: "LOCAL_FILES_ONLY";
   };
@@ -404,8 +404,8 @@ const defaultResearchStatus: ProductResearchStatus = {
     }
   ],
   report_export: {
-    status: "LOCAL_EXPORT_PLANNED",
-    command: "PYTHONPATH=. python3 scripts/product/build_local_workstation_package.py",
+    status: "LOCAL_EXPORT_READY",
+    command: "PYTHONPATH=. python3 scripts/product/export_research_report_pack.py",
     artifact_policy: "LOCAL_FILES_ONLY"
   },
   safety: {
@@ -940,7 +940,7 @@ function normalizeResearchStatus(packet: ProductResearchStatus): ProductResearch
       safety: "RESEARCH_ONLY"
     })),
     report_export: {
-      status: "LOCAL_EXPORT_PLANNED",
+      status: packet.report_export?.status === "LOCAL_EXPORT_READY" ? "LOCAL_EXPORT_READY" : "LOCAL_EXPORT_PLANNED",
       command: String(packet.report_export?.command ?? defaultResearchStatus.report_export.command),
       artifact_policy: "LOCAL_FILES_ONLY"
     },

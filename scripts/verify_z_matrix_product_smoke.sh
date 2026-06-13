@@ -9,6 +9,7 @@ echo "=== Z-MATRIX Product Smoke ==="
 tmp_root="$(mktemp -d)"
 tmp_plan="$tmp_root/vendor_dry_plan.json"
 tmp_package="$tmp_root/product_package"
+tmp_report="$tmp_root/research_report_pack"
 trap 'rm -rf "$tmp_root"' EXIT
 
 echo "[1] Python product runtime compile"
@@ -47,7 +48,11 @@ npm --prefix apps/cockpit_web test
 echo "[10] Cockpit frontend build"
 npm --prefix apps/cockpit_web run build
 
-echo "[11] Product package build"
+echo "[11] Research report export"
+PYTHONPATH=. python3 scripts/product/export_research_report_pack.py \
+  --output-dir "$tmp_report" >/tmp/zmatrix_research_report_export_manifest.json
+
+echo "[12] Product package build"
 PYTHONPATH=. python3 scripts/product/build_local_workstation_package.py \
   --output-dir "$tmp_package" \
   --no-archive >/tmp/zmatrix_product_package_manifest.json

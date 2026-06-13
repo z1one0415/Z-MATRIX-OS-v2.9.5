@@ -28,6 +28,7 @@ REQUIRED_FILES = (
     ".env.example",
     "docs/release/Z_MATRIX_OS_V4_PRO_LOCAL_WORKSTATION_RUNBOOK.md",
     "docs/release/Z_MATRIX_OS_V4_PRO_PRODUCT_ACCEPTANCE_STANDARD.md",
+    "scripts/product/export_research_report_pack.py",
     "scripts/product/start_backend_service.py",
     "scripts/product/start_local_workstation.sh",
     "scripts/verify_z_matrix_product_smoke.sh",
@@ -257,6 +258,7 @@ def _build_manifest(
             "backend_service": "PYTHONPATH=. python3 scripts/product/start_backend_service.py --host 127.0.0.1 --port 8765",
             "cockpit_dev": "npm --prefix apps/cockpit_web run dev -- --port 5173",
             "local_workstation": "bash scripts/product/start_local_workstation.sh",
+            "research_report_export": "PYTHONPATH=. python3 scripts/product/export_research_report_pack.py",
             "product_smoke": "bash scripts/verify_z_matrix_product_smoke.sh",
         },
         "data_policy": {

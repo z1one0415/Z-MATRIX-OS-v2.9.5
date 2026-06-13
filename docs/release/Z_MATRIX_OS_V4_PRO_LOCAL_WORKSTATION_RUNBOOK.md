@@ -132,9 +132,24 @@ This verifies:
 - V4 final hard gates;
 - cockpit frontend tests;
 - cockpit frontend build.
+- research report export.
 - local workstation package build.
 
-## 10. Build Local Workstation Package
+## 10. Export Research Report Pack
+
+```bash
+PYTHONPATH=. python3 scripts/product/export_research_report_pack.py
+```
+
+Default output:
+
+```text
+build/research_report_exports/Z-MATRIX-research-report-pack
+```
+
+The export contains research docs, audit docs, selected runtime report manifests, a report export manifest, and checksums. It does not include raw vendor data, private account data, or real secrets.
+
+## 11. Build Local Workstation Package
 
 ```bash
 PYTHONPATH=. python3 scripts/product/build_local_workstation_package.py
@@ -148,7 +163,7 @@ build/product_packages/Z-MATRIX-OS-V4-PRO-local-workstation
 
 The output directory is ignored by Git. The package includes runtime entrypoints, cockpit build output, cockpit packets, a source snapshot, a product manifest, and checksums. It does not include raw vendor data, private account data, or real secrets.
 
-## 11. Safety State
+## 12. Safety State
 
 The local product preview is a research workstation. It keeps these states blocked:
 

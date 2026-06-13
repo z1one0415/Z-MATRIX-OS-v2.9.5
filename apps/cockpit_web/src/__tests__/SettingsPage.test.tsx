@@ -199,7 +199,7 @@ describe("settings page", () => {
     expect(within(panel).getByText("历史 OOS")).toBeInTheDocument();
     expect(within(panel).getByText("Forward OOS 等待")).toBeInTheDocument();
     expect(within(panel).getByText("报告导出")).toBeInTheDocument();
-    expect(within(panel).getByText(/build_local_workstation_package\.py/)).toBeInTheDocument();
+    expect(within(panel).getByText(/export_research_report_pack\.py/)).toBeInTheDocument();
   });
 
   it("does not render forbidden operational commands or internal identifiers", async () => {

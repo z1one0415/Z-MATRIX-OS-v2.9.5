@@ -184,7 +184,7 @@ def build_product_status(config: ProductRuntimeConfig | None = None) -> dict[str
             "vendor_data_ingestion": True,
             "monthly_refresh_dry_plan": True,
             "operator_actions": True,
-            "report_export": "PLANNED",
+            "report_export": "READY",
         },
         "safety": {
             "alpha_claim": "BLOCKED",
@@ -266,6 +266,16 @@ def build_operator_actions(config: ProductRuntimeConfig | None = None) -> dict[s
                 "mode": "LOCAL_TERMINAL_MANUAL",
                 "safety": base_safety,
             },
+            {
+                "id": "research-report-export",
+                "label": "研究报告导出",
+                "category": "package",
+                "command": "PYTHONPATH=. python3 scripts/product/export_research_report_pack.py",
+                "detail": "导出研究报告、审计材料和 runtime report manifest，输出到 ignored build 目录。",
+                "expected": "Z_MATRIX_RESEARCH_REPORT_EXPORT_PACK_BUILT",
+                "mode": "LOCAL_TERMINAL_MANUAL",
+                "safety": base_safety,
+            },
         ],
     }
 
@@ -282,8 +292,8 @@ def build_research_status(config: ProductRuntimeConfig | None = None) -> dict[st
         "ready_count": ready_count,
         "capabilities": capabilities,
         "report_export": {
-            "status": "LOCAL_EXPORT_PLANNED",
-            "command": "PYTHONPATH=. python3 scripts/product/build_local_workstation_package.py",
+            "status": "LOCAL_EXPORT_READY",
+            "command": "PYTHONPATH=. python3 scripts/product/export_research_report_pack.py",
             "artifact_policy": "LOCAL_FILES_ONLY",
         },
         "safety": {

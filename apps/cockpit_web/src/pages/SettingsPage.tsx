@@ -14,6 +14,7 @@ import {
   KeyRound,
   Languages,
   Palette,
+  Clipboard,
   RefreshCcw,
   Save,
   Server,
@@ -64,6 +65,14 @@ const themeModeMeta: Record<ThemeMode, { label: string; detail: string }> = {
   dark: { label: "深色", detail: "黑金驾驶舱默认主题" },
   light: { label: "浅色", detail: "白天环境的低眩光主题" }
 };
+
+const operatorCategoryLabel = {
+  health: "体检",
+  verification: "验证",
+  research: "研究",
+  cockpit: "驾驶舱",
+  package: "打包"
+} as const;
 
 export function SettingsPage({ session }: SettingsPageProps) {
   const { data, isLoading, isError } = useSettings(session);
@@ -151,6 +160,7 @@ export function SettingsPage({ session }: SettingsPageProps) {
       </section>
 
       {renderSettingsStatusBar()}
+      {renderOperatorActions()}
 
       <section className="settings-layout" aria-label="系统设置工作区">
         <aside className="settings-category-rail panel-shell" aria-label="设置分类">
@@ -247,6 +257,43 @@ export function SettingsPage({ session }: SettingsPageProps) {
             <Download size={15} aria-hidden="true" />
             导出审计记录
           </button>
+        </div>
+      </section>
+    );
+  }
+
+  function renderOperatorActions() {
+    const actions = settingsData.operatorActions.actions;
+    return (
+      <section className="settings-operator-panel panel-shell" aria-label="本地工作台动作">
+        <div className="panel-title">
+          <span>本地工作台</span>
+          <small>{settingsData.operatorActions.auto_run_enabled ? "自动启动" : "手动确认"}</small>
+        </div>
+        <div className="settings-operator-grid">
+          {actions.map((item) => (
+            <article className="settings-operator-card" key={item.id}>
+              <div>
+                <RefreshCcw size={16} aria-hidden="true" />
+                <span>{item.label}</span>
+                <em>{operatorCategoryLabel[item.category]}</em>
+              </div>
+              <p>{item.detail}</p>
+              <code>{item.command}</code>
+              <footer>
+                <small>{item.expected}</small>
+                <button
+                  type="button"
+                  onClick={() => {
+                    void navigator.clipboard?.writeText(item.command);
+                  }}
+                >
+                  <Clipboard size={14} aria-hidden="true" />
+                  复制命令
+                </button>
+              </footer>
+            </article>
+          ))}
         </div>
       </section>
     );

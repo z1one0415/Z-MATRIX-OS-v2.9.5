@@ -6,7 +6,7 @@ import threading
 from http.server import ThreadingHTTPServer
 from pathlib import Path
 
-from zmatrix.product_runtime.local_backend import ProductRuntimeConfig, build_product_status, make_handler
+from zmatrix.product_runtime.local_backend import ProductRuntimeConfig, build_operator_actions, build_product_status, make_handler
 
 
 def test_product_status_reports_cockpit_and_registry(tmp_path: Path):
@@ -68,6 +68,12 @@ def test_local_backend_serves_health_and_cockpit_packet(tmp_path: Path):
         assert payload["status"] == "Z_MATRIX_PRODUCT_RUNTIME_READY"
         assert response.getheader("Access-Control-Allow-Origin") == "http://127.0.0.1:5173"
 
+        conn.request("GET", "/api/product/operator_actions.json", headers={"Origin": "http://127.0.0.1:5174"})
+        local_origin_response = conn.getresponse()
+        local_origin_response.read()
+        assert local_origin_response.status == 200
+        assert local_origin_response.getheader("Access-Control-Allow-Origin") == "http://127.0.0.1:5174"
+
         conn.request("GET", "/api/cockpit/holdings_packet.json")
         packet_response = conn.getresponse()
         packet = json.loads(packet_response.read().decode("utf-8"))
@@ -78,7 +84,27 @@ def test_local_backend_serves_health_and_cockpit_packet(tmp_path: Path):
         options_response = conn.getresponse()
         options_response.read()
         assert options_response.status == 204
+
+        conn.request("GET", "/api/product/operator_actions.json")
+        actions_response = conn.getresponse()
+        actions = json.loads(actions_response.read().decode("utf-8"))
+        assert actions_response.status == 200
+        assert actions["auto_run_enabled"] is False
+        assert actions["human_review_required"] is True
+        assert {item["id"] for item in actions["actions"]} >= {"product-smoke", "workstation-package"}
     finally:
         server.shutdown()
         server.server_close()
         thread.join(timeout=5)
+
+
+def test_operator_actions_are_manual_and_block_runtime_paths():
+    actions = build_operator_actions()
+
+    assert actions["status"] == "Z_MATRIX_OPERATOR_ACTIONS_READY"
+    assert actions["auto_run_enabled"] is False
+    assert len(actions["actions"]) >= 5
+    for action in actions["actions"]:
+        assert action["mode"] == "LOCAL_TERMINAL_MANUAL"
+        assert action["safety"]["broker_runtime"] == "BLOCKED"
+        assert action["safety"]["real_trade"] == "BLOCKED"

@@ -147,6 +147,30 @@ export type ProductRuntimeStatus = {
   };
 };
 
+export type ProductOperatorAction = {
+  id: string;
+  label: string;
+  category: "health" | "verification" | "research" | "cockpit" | "package";
+  command: string;
+  detail: string;
+  expected: string;
+  mode: "LOCAL_TERMINAL_MANUAL";
+  safety: {
+    alpha_claim: "BLOCKED";
+    promotion: "BLOCKED";
+    broker_runtime: "BLOCKED";
+    real_trade: "BLOCKED";
+    secret_storage: "ENV_ONLY";
+  };
+};
+
+export type ProductOperatorActions = {
+  status: "Z_MATRIX_OPERATOR_ACTIONS_READY" | "Z_MATRIX_OPERATOR_ACTIONS_DEGRADED";
+  auto_run_enabled: false;
+  human_review_required: true;
+  actions: ProductOperatorAction[];
+};
+
 export type SettingsPageData = {
   workspaceId: string;
   title: "系统设置";
@@ -164,6 +188,7 @@ export type SettingsPageData = {
   systemHealth: SystemHealthItem[];
   auditSummary: AuditSummaryItem[];
   productRuntime: ProductRuntimeStatus;
+  operatorActions: ProductOperatorActions;
   safety: SettingsSafety;
 };
 
@@ -250,6 +275,46 @@ const defaultProductRuntime: ProductRuntimeStatus = {
     agent_direct_mutation: "BLOCKED",
     secret_storage: "ENV_ONLY"
   }
+};
+
+const defaultOperatorActions: ProductOperatorActions = {
+  status: "Z_MATRIX_OPERATOR_ACTIONS_DEGRADED",
+  auto_run_enabled: false,
+  human_review_required: true,
+  actions: [
+    {
+      id: "backend-check",
+      label: "后端健康检查",
+      category: "health",
+      command: "PYTHONPATH=. python3 scripts/product/start_backend_service.py --check",
+      detail: "读取本地服务状态、驾驶舱数据和 SkillOS registry。",
+      expected: "Z_MATRIX_PRODUCT_RUNTIME_READY",
+      mode: "LOCAL_TERMINAL_MANUAL",
+      safety: {
+        alpha_claim: "BLOCKED",
+        promotion: "BLOCKED",
+        broker_runtime: "BLOCKED",
+        real_trade: "BLOCKED",
+        secret_storage: "ENV_ONLY"
+      }
+    },
+    {
+      id: "product-smoke",
+      label: "产品 smoke test",
+      category: "verification",
+      command: "bash scripts/verify_z_matrix_product_smoke.sh",
+      detail: "验证后端、数据 dry plan、驾驶舱测试、驾驶舱构建和产品包。",
+      expected: "Z-MATRIX Product Smoke PASS",
+      mode: "LOCAL_TERMINAL_MANUAL",
+      safety: {
+        alpha_claim: "BLOCKED",
+        promotion: "BLOCKED",
+        broker_runtime: "BLOCKED",
+        real_trade: "BLOCKED",
+        secret_storage: "ENV_ONLY"
+      }
+    }
+  ]
 };
 
 const copyPack: CopyPack = {
@@ -529,6 +594,7 @@ const zPrimeSettings: Omit<SettingsPageData, "workspaceId"> = {
     { time: "待触发", title: "文字表达偏好保存", status: "待确认" }
   ],
   productRuntime: defaultProductRuntime,
+  operatorActions: defaultOperatorActions,
   safety
 };
 
@@ -559,17 +625,19 @@ function cloneSettings(packet: SettingsPageData): SettingsPageData {
     systemHealth: packet.systemHealth.map((item) => ({ ...item })),
     auditSummary: packet.auditSummary.map((item) => ({ ...item })),
     productRuntime: cloneProductRuntime(packet.productRuntime),
+    operatorActions: cloneOperatorActions(packet.operatorActions),
     safety: { ...packet.safety }
   };
 }
 
 export async function getSettingsPageData(session: AuthSession | null): Promise<SettingsPageData> {
   const current = requireSession(session);
-  const productRuntime = await loadProductRuntimeStatus();
+  const [productRuntime, operatorActions] = await Promise.all([loadProductRuntimeStatus(), loadOperatorActions()]);
   return cloneSettings({
     ...zPrimeSettings,
     workspaceId: current.workspaceId,
-    productRuntime
+    productRuntime,
+    operatorActions
   });
 }
 
@@ -591,6 +659,10 @@ function getProductRuntimeStatusUrl(): string {
   return import.meta.env.VITE_ZMATRIX_PRODUCT_STATUS_URL || "/api/product/status.json";
 }
 
+function getOperatorActionsUrl(): string {
+  return import.meta.env.VITE_ZMATRIX_OPERATOR_ACTIONS_URL || "/api/product/operator_actions.json";
+}
+
 async function loadProductRuntimeStatus(): Promise<ProductRuntimeStatus> {
   if (typeof fetch !== "function") {
     return cloneProductRuntime(defaultProductRuntime);
@@ -607,6 +679,25 @@ async function loadProductRuntimeStatus(): Promise<ProductRuntimeStatus> {
     return normalizeProductRuntime(packet);
   } catch {
     return cloneProductRuntime(defaultProductRuntime);
+  }
+}
+
+async function loadOperatorActions(): Promise<ProductOperatorActions> {
+  if (typeof fetch !== "function") {
+    return cloneOperatorActions(defaultOperatorActions);
+  }
+  try {
+    const response = await fetch(getOperatorActionsUrl(), {
+      method: "GET",
+      headers: { Accept: "application/json" }
+    });
+    if (!response.ok) {
+      return cloneOperatorActions(defaultOperatorActions);
+    }
+    const packet = (await response.json()) as ProductOperatorActions;
+    return normalizeOperatorActions(packet);
+  } catch {
+    return cloneOperatorActions(defaultOperatorActions);
   }
 }
 
@@ -644,6 +735,48 @@ function normalizeProductRuntime(packet: ProductRuntimeStatus): ProductRuntimeSt
       secret_storage: "ENV_ONLY"
     }
   };
+}
+
+function cloneOperatorActions(packet: ProductOperatorActions): ProductOperatorActions {
+  return {
+    ...packet,
+    actions: packet.actions.map((action) => ({
+      ...action,
+      safety: { ...action.safety }
+    }))
+  };
+}
+
+function normalizeOperatorActions(packet: ProductOperatorActions): ProductOperatorActions {
+  const actions = Array.isArray(packet.actions) ? packet.actions : [];
+  return {
+    status: packet.status === "Z_MATRIX_OPERATOR_ACTIONS_READY" ? "Z_MATRIX_OPERATOR_ACTIONS_READY" : "Z_MATRIX_OPERATOR_ACTIONS_DEGRADED",
+    auto_run_enabled: false,
+    human_review_required: true,
+    actions: actions.map((action) => ({
+      id: String(action.id ?? "local-action"),
+      label: String(action.label ?? "本地工作台动作"),
+      category: normalizeOperatorCategory(action.category),
+      command: String(action.command ?? ""),
+      detail: String(action.detail ?? ""),
+      expected: String(action.expected ?? ""),
+      mode: "LOCAL_TERMINAL_MANUAL",
+      safety: {
+        alpha_claim: "BLOCKED",
+        promotion: "BLOCKED",
+        broker_runtime: "BLOCKED",
+        real_trade: "BLOCKED",
+        secret_storage: "ENV_ONLY"
+      }
+    }))
+  };
+}
+
+function normalizeOperatorCategory(value: ProductOperatorAction["category"]): ProductOperatorAction["category"] {
+  if (value === "health" || value === "verification" || value === "research" || value === "cockpit" || value === "package") {
+    return value;
+  }
+  return "health";
 }
 
 export async function createSettingsActionDraft(

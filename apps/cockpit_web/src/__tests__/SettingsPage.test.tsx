@@ -178,6 +178,18 @@ describe("settings page", () => {
     expect(screen.queryByRole("region", { name: "童子谏言" })).not.toBeInTheDocument();
   });
 
+  it("shows local workstation actions as manual copyable commands", async () => {
+    renderSettings();
+
+    const panel = await screen.findByLabelText("本地工作台动作");
+    expect(within(panel).getByText("本地工作台")).toBeInTheDocument();
+    expect(within(panel).getByText("手动确认")).toBeInTheDocument();
+    expect(within(panel).getByText("后端健康检查")).toBeInTheDocument();
+    expect(within(panel).getByText("产品 smoke test")).toBeInTheDocument();
+    expect(within(panel).getByText(/scripts\/verify_z_matrix_product_smoke\.sh/)).toBeInTheDocument();
+    expect(within(panel).getAllByRole("button", { name: "复制命令" }).length).toBeGreaterThan(0);
+  });
+
   it("does not render forbidden operational commands or internal identifiers", async () => {
     renderSettings();
     await screen.findByRole("heading", { name: "系统设置" });

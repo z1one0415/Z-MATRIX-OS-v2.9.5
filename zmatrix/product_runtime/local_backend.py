@@ -59,6 +59,7 @@ def build_product_status(config: ProductRuntimeConfig | None = None) -> dict[str
             "agent_registry": registry_status["ready"],
             "vendor_data_ingestion": True,
             "monthly_refresh_dry_plan": True,
+            "operator_actions": True,
             "report_export": "PLANNED",
         },
         "safety": {
@@ -72,6 +73,79 @@ def build_product_status(config: ProductRuntimeConfig | None = None) -> dict[str
     }
 
 
+def build_operator_actions(config: ProductRuntimeConfig | None = None) -> dict[str, Any]:
+    cfg = config or ProductRuntimeConfig()
+    base_safety = {
+        "alpha_claim": "BLOCKED",
+        "promotion": "BLOCKED",
+        "broker_runtime": "BLOCKED",
+        "real_trade": "BLOCKED",
+        "secret_storage": "ENV_ONLY",
+    }
+    return {
+        "status": "Z_MATRIX_OPERATOR_ACTIONS_READY",
+        "workspace_id": cfg.workspace_id,
+        "auto_run_enabled": False,
+        "human_review_required": True,
+        "actions": [
+            {
+                "id": "backend-check",
+                "label": "后端健康检查",
+                "category": "health",
+                "command": "PYTHONPATH=. python3 scripts/product/start_backend_service.py --check",
+                "detail": "读取本地服务状态、驾驶舱 packet 与 SkillOS registry。",
+                "expected": "Z_MATRIX_PRODUCT_RUNTIME_READY",
+                "mode": "LOCAL_TERMINAL_MANUAL",
+                "safety": base_safety,
+            },
+            {
+                "id": "product-smoke",
+                "label": "产品 smoke test",
+                "category": "verification",
+                "command": "bash scripts/verify_z_matrix_product_smoke.sh",
+                "detail": "验证本地后端、数据 dry plan、驾驶舱测试、驾驶舱构建和产品包生成。",
+                "expected": "Z-MATRIX Product Smoke PASS",
+                "mode": "LOCAL_TERMINAL_MANUAL",
+                "safety": base_safety,
+            },
+            {
+                "id": "monthly-refresh-dry-plan",
+                "label": "月度刷新 dry plan",
+                "category": "research",
+                "command": (
+                    "PYTHONPATH=. python3 scripts/data/ingest_tushare_market_data.py "
+                    "--symbols 601899,002472,300750 --end-date 20260613 --years 5 "
+                    "--endpoints stock_basic,trade_cal,daily,adj_factor,daily_basic --dry-plan"
+                ),
+                "detail": "生成本地数据刷新计划，不写入正式研究结论。",
+                "expected": "dry_plan",
+                "mode": "LOCAL_TERMINAL_MANUAL",
+                "safety": base_safety,
+            },
+            {
+                "id": "cockpit-packets",
+                "label": "驾驶舱 packet 刷新",
+                "category": "cockpit",
+                "command": "PYTHONPATH=. python3 scripts/cockpit/export_all_packets.py",
+                "detail": "重建驾驶舱只读 packet，用于前端页面读取。",
+                "expected": "packet export summary",
+                "mode": "LOCAL_TERMINAL_MANUAL",
+                "safety": base_safety,
+            },
+            {
+                "id": "workstation-package",
+                "label": "本地工作站打包",
+                "category": "package",
+                "command": "PYTHONPATH=. python3 scripts/product/build_local_workstation_package.py",
+                "detail": "生成本地产品包、manifest 和 checksums，输出到 ignored build 目录。",
+                "expected": "Z_MATRIX_OS_V4_PRO_LOCAL_WORKSTATION_PACKAGE_BUILT",
+                "mode": "LOCAL_TERMINAL_MANUAL",
+                "safety": base_safety,
+            },
+        ],
+    }
+
+
 def make_handler(config: ProductRuntimeConfig) -> type[BaseHTTPRequestHandler]:
     class ProductRuntimeHandler(BaseHTTPRequestHandler):
         server_version = "ZMatrixProductBackend/0.1"
@@ -80,6 +154,9 @@ def make_handler(config: ProductRuntimeConfig) -> type[BaseHTTPRequestHandler]:
             parsed = urlparse(self.path)
             if parsed.path in {"/", "/health", "/api/product/status.json"}:
                 self._send_json(build_product_status(config))
+                return
+            if parsed.path == "/api/product/operator_actions.json":
+                self._send_json(build_operator_actions(config))
                 return
             if parsed.path.startswith("/api/cockpit/"):
                 relative = unquote(parsed.path.removeprefix("/api/cockpit/"))
@@ -126,8 +203,11 @@ def make_handler(config: ProductRuntimeConfig) -> type[BaseHTTPRequestHandler]:
             self.wfile.write(content)
 
         def _send_common_headers(self) -> None:
+            origin = self.headers.get("Origin", "")
+            allowed_origin = origin if _is_allowed_local_origin(origin) else "http://127.0.0.1:5173"
             self.send_header("Cache-Control", "no-store")
-            self.send_header("Access-Control-Allow-Origin", "http://127.0.0.1:5173")
+            self.send_header("Access-Control-Allow-Origin", allowed_origin)
+            self.send_header("Vary", "Origin")
             self.send_header("Access-Control-Allow-Methods", "GET, OPTIONS")
             self.send_header("Access-Control-Allow-Headers", "Accept, Content-Type")
 
@@ -186,3 +266,10 @@ def _vendor_status(vendor_root: Path) -> dict[str, Any]:
         "latest_manifest": latest,
         "mode": "LOCAL_VENDOR_STORE_ONLY",
     }
+
+
+def _is_allowed_local_origin(origin: str) -> bool:
+    if not origin:
+        return False
+    parsed = urlparse(origin)
+    return parsed.scheme == "http" and parsed.hostname in {"127.0.0.1", "localhost"}

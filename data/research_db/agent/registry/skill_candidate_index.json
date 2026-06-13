@@ -32622,5 +32622,21 @@
     "production_allowed": false,
     "status": "CANDIDATE_ONLY",
     "reason": "public function"
+  },
+  {
+    "candidate_id": "CANDIDATE.RESEARCHDB.BUILD_CONFIG_TEMPLATE_STATUS",
+    "module_path": "zmatrix/product_runtime/local_backend.py",
+    "symbol_name": "build_config_template_status",
+    "candidate_type": "function",
+    "domain": "RESEARCHDB",
+    "suggested_skill_id": "RESEARCHDB.BUILD_CONFIG_TEMPLATE_STATUS",
+    "suggested_skill_layer": "L0_ATOMIC",
+    "suggested_risk_level": "R2_DRAFT",
+    "read_layers": [],
+    "write_layers": [],
+    "requires_human_review": true,
+    "production_allowed": false,
+    "status": "CANDIDATE_ONLY",
+    "reason": "public function"
   }
 ]

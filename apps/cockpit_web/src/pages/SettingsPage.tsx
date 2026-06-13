@@ -161,6 +161,7 @@ export function SettingsPage({ session }: SettingsPageProps) {
 
       {renderSettingsStatusBar()}
       {renderOperatorActions()}
+      {renderResearchStatus()}
 
       <section className="settings-layout" aria-label="系统设置工作区">
         <aside className="settings-category-rail panel-shell" aria-label="设置分类">
@@ -294,6 +295,43 @@ export function SettingsPage({ session }: SettingsPageProps) {
               </footer>
             </article>
           ))}
+        </div>
+      </section>
+    );
+  }
+
+  function renderResearchStatus() {
+    const status = settingsData.researchStatus;
+    return (
+      <section className="settings-research-panel panel-shell" aria-label="研究能力状态">
+        <div className="panel-title">
+          <span>研究能力状态</span>
+          <small>{status.ready_count}/{status.capability_count} ready</small>
+        </div>
+        <div className="settings-research-grid">
+          {status.capabilities.map((item) => (
+            <article className="settings-research-card" key={item.id}>
+              <div>
+                <CheckCircle2 size={16} aria-hidden="true" />
+                <span>{item.label}</span>
+                <em className={item.status === "READY" ? "is-ready" : "is-partial"}>{item.status}</em>
+              </div>
+              <p>{item.summary}</p>
+              <dl className="settings-compact-dl">
+                <div><dt>证据</dt><dd>{item.available_count}/{item.required_count}</dd></div>
+                <div><dt>模块</dt><dd>{item.module_count}</dd></div>
+              </dl>
+            </article>
+          ))}
+          <article className="settings-research-card settings-research-card--report">
+            <div>
+              <Download size={16} aria-hidden="true" />
+              <span>报告导出</span>
+              <em>{status.report_export.artifact_policy}</em>
+            </div>
+            <p>通过本地产品包生成器输出 manifest、checksums 与可审计材料。</p>
+            <code>{status.report_export.command}</code>
+          </article>
         </div>
       </section>
     );

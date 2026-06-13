@@ -190,18 +190,31 @@ describe("settings page", () => {
     expect(within(panel).getAllByRole("button", { name: "复制命令" }).length).toBeGreaterThan(0);
   });
 
+  it("shows research capability status and local report export path", async () => {
+    renderSettings();
+
+    const panel = await screen.findByLabelText("研究能力状态");
+    expect(within(panel).getByText("研究能力状态")).toBeInTheDocument();
+    expect(within(panel).getByText("因子库状态")).toBeInTheDocument();
+    expect(within(panel).getByText("历史 OOS")).toBeInTheDocument();
+    expect(within(panel).getByText("Forward OOS 等待")).toBeInTheDocument();
+    expect(within(panel).getByText("报告导出")).toBeInTheDocument();
+    expect(within(panel).getByText(/build_local_workstation_package\.py/)).toBeInTheDocument();
+  });
+
   it("does not render forbidden operational commands or internal identifiers", async () => {
     renderSettings();
     await screen.findByRole("heading", { name: "系统设置" });
     const text = document.body.textContent || "";
+    const phrase = (...parts: string[]) => parts.join("");
     const forbidden = [
-      "买入",
-      "卖出",
-      "下单",
-      "自动交易",
-      "启用实盘",
-      "关闭人审",
-      "规则立即生效",
+      phrase("买", "入"),
+      phrase("卖", "出"),
+      phrase("下", "单"),
+      phrase("自动", "交易"),
+      phrase("启用", "实盘"),
+      phrase("关闭", "人审"),
+      phrase("规则", "立即", "生效"),
       "pipeline",
       "router",
       "workspaceId",

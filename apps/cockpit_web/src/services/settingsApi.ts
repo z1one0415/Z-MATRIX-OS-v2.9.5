@@ -171,6 +171,37 @@ export type ProductOperatorActions = {
   actions: ProductOperatorAction[];
 };
 
+export type ProductResearchCapability = {
+  id: string;
+  label: string;
+  summary: string;
+  status: "READY" | "PARTIAL";
+  available_count: number;
+  required_count: number;
+  evidence_paths: string[];
+  missing_paths: string[];
+  module_count: number;
+  safety: "RESEARCH_ONLY";
+};
+
+export type ProductResearchStatus = {
+  status: "Z_MATRIX_RESEARCH_STATUS_READY" | "Z_MATRIX_RESEARCH_STATUS_DEGRADED";
+  capability_count: number;
+  ready_count: number;
+  capabilities: ProductResearchCapability[];
+  report_export: {
+    status: "LOCAL_EXPORT_PLANNED";
+    command: string;
+    artifact_policy: "LOCAL_FILES_ONLY";
+  };
+  safety: {
+    alpha_claim: "BLOCKED";
+    promotion: "BLOCKED";
+    broker_runtime: "BLOCKED";
+    real_trade: "BLOCKED";
+  };
+};
+
 export type SettingsPageData = {
   workspaceId: string;
   title: "系统设置";
@@ -189,6 +220,7 @@ export type SettingsPageData = {
   auditSummary: AuditSummaryItem[];
   productRuntime: ProductRuntimeStatus;
   operatorActions: ProductOperatorActions;
+  researchStatus: ProductResearchStatus;
   safety: SettingsSafety;
 };
 
@@ -315,6 +347,73 @@ const defaultOperatorActions: ProductOperatorActions = {
       }
     }
   ]
+};
+
+const defaultResearchStatus: ProductResearchStatus = {
+  status: "Z_MATRIX_RESEARCH_STATUS_DEGRADED",
+  capability_count: 4,
+  ready_count: 0,
+  capabilities: [
+    {
+      id: "factor-library",
+      label: "因子库状态",
+      summary: "等待本地后端返回因子库状态。",
+      status: "PARTIAL",
+      available_count: 0,
+      required_count: 1,
+      evidence_paths: [],
+      missing_paths: ["backend"],
+      module_count: 0,
+      safety: "RESEARCH_ONLY"
+    },
+    {
+      id: "historical-oos",
+      label: "历史 OOS",
+      summary: "等待本地后端返回历史验证状态。",
+      status: "PARTIAL",
+      available_count: 0,
+      required_count: 1,
+      evidence_paths: [],
+      missing_paths: ["backend"],
+      module_count: 0,
+      safety: "RESEARCH_ONLY"
+    },
+    {
+      id: "forward-oos",
+      label: "Forward OOS 等待",
+      summary: "等待本地后端返回未来标签状态。",
+      status: "PARTIAL",
+      available_count: 0,
+      required_count: 1,
+      evidence_paths: [],
+      missing_paths: ["backend"],
+      module_count: 0,
+      safety: "RESEARCH_ONLY"
+    },
+    {
+      id: "gatekeeper-audit",
+      label: "Gatekeeper 审计",
+      summary: "等待本地后端返回审计闸状态。",
+      status: "PARTIAL",
+      available_count: 0,
+      required_count: 1,
+      evidence_paths: [],
+      missing_paths: ["backend"],
+      module_count: 0,
+      safety: "RESEARCH_ONLY"
+    }
+  ],
+  report_export: {
+    status: "LOCAL_EXPORT_PLANNED",
+    command: "PYTHONPATH=. python3 scripts/product/build_local_workstation_package.py",
+    artifact_policy: "LOCAL_FILES_ONLY"
+  },
+  safety: {
+    alpha_claim: "BLOCKED",
+    promotion: "BLOCKED",
+    broker_runtime: "BLOCKED",
+    real_trade: "BLOCKED"
+  }
 };
 
 const copyPack: CopyPack = {
@@ -595,6 +694,7 @@ const zPrimeSettings: Omit<SettingsPageData, "workspaceId"> = {
   ],
   productRuntime: defaultProductRuntime,
   operatorActions: defaultOperatorActions,
+  researchStatus: defaultResearchStatus,
   safety
 };
 
@@ -626,18 +726,24 @@ function cloneSettings(packet: SettingsPageData): SettingsPageData {
     auditSummary: packet.auditSummary.map((item) => ({ ...item })),
     productRuntime: cloneProductRuntime(packet.productRuntime),
     operatorActions: cloneOperatorActions(packet.operatorActions),
+    researchStatus: cloneResearchStatus(packet.researchStatus),
     safety: { ...packet.safety }
   };
 }
 
 export async function getSettingsPageData(session: AuthSession | null): Promise<SettingsPageData> {
   const current = requireSession(session);
-  const [productRuntime, operatorActions] = await Promise.all([loadProductRuntimeStatus(), loadOperatorActions()]);
+  const [productRuntime, operatorActions, researchStatus] = await Promise.all([
+    loadProductRuntimeStatus(),
+    loadOperatorActions(),
+    loadResearchStatus()
+  ]);
   return cloneSettings({
     ...zPrimeSettings,
     workspaceId: current.workspaceId,
     productRuntime,
-    operatorActions
+    operatorActions,
+    researchStatus
   });
 }
 
@@ -663,6 +769,10 @@ function getOperatorActionsUrl(): string {
   return import.meta.env.VITE_ZMATRIX_OPERATOR_ACTIONS_URL || "/api/product/operator_actions.json";
 }
 
+function getResearchStatusUrl(): string {
+  return import.meta.env.VITE_ZMATRIX_RESEARCH_STATUS_URL || "/api/product/research_status.json";
+}
+
 async function loadProductRuntimeStatus(): Promise<ProductRuntimeStatus> {
   if (typeof fetch !== "function") {
     return cloneProductRuntime(defaultProductRuntime);
@@ -679,6 +789,25 @@ async function loadProductRuntimeStatus(): Promise<ProductRuntimeStatus> {
     return normalizeProductRuntime(packet);
   } catch {
     return cloneProductRuntime(defaultProductRuntime);
+  }
+}
+
+async function loadResearchStatus(): Promise<ProductResearchStatus> {
+  if (typeof fetch !== "function") {
+    return cloneResearchStatus(defaultResearchStatus);
+  }
+  try {
+    const response = await fetch(getResearchStatusUrl(), {
+      method: "GET",
+      headers: { Accept: "application/json" }
+    });
+    if (!response.ok) {
+      return cloneResearchStatus(defaultResearchStatus);
+    }
+    const packet = (await response.json()) as ProductResearchStatus;
+    return normalizeResearchStatus(packet);
+  } catch {
+    return cloneResearchStatus(defaultResearchStatus);
   }
 }
 
@@ -777,6 +906,51 @@ function normalizeOperatorCategory(value: ProductOperatorAction["category"]): Pr
     return value;
   }
   return "health";
+}
+
+function cloneResearchStatus(packet: ProductResearchStatus): ProductResearchStatus {
+  return {
+    ...packet,
+    capabilities: packet.capabilities.map((item) => ({
+      ...item,
+      evidence_paths: [...item.evidence_paths],
+      missing_paths: [...item.missing_paths]
+    })),
+    report_export: { ...packet.report_export },
+    safety: { ...packet.safety }
+  };
+}
+
+function normalizeResearchStatus(packet: ProductResearchStatus): ProductResearchStatus {
+  const capabilities = Array.isArray(packet.capabilities) ? packet.capabilities : [];
+  return {
+    status: packet.status === "Z_MATRIX_RESEARCH_STATUS_READY" ? "Z_MATRIX_RESEARCH_STATUS_READY" : "Z_MATRIX_RESEARCH_STATUS_DEGRADED",
+    capability_count: Number(packet.capability_count ?? capabilities.length),
+    ready_count: Number(packet.ready_count ?? 0),
+    capabilities: capabilities.map((item) => ({
+      id: String(item.id ?? "research-capability"),
+      label: String(item.label ?? "研究能力状态"),
+      summary: String(item.summary ?? ""),
+      status: item.status === "READY" ? "READY" : "PARTIAL",
+      available_count: Number(item.available_count ?? 0),
+      required_count: Number(item.required_count ?? 0),
+      evidence_paths: Array.isArray(item.evidence_paths) ? item.evidence_paths.map(String) : [],
+      missing_paths: Array.isArray(item.missing_paths) ? item.missing_paths.map(String) : [],
+      module_count: Number(item.module_count ?? 0),
+      safety: "RESEARCH_ONLY"
+    })),
+    report_export: {
+      status: "LOCAL_EXPORT_PLANNED",
+      command: String(packet.report_export?.command ?? defaultResearchStatus.report_export.command),
+      artifact_policy: "LOCAL_FILES_ONLY"
+    },
+    safety: {
+      alpha_claim: "BLOCKED",
+      promotion: "BLOCKED",
+      broker_runtime: "BLOCKED",
+      real_trade: "BLOCKED"
+    }
+  };
 }
 
 export async function createSettingsActionDraft(

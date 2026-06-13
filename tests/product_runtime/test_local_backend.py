@@ -6,7 +6,13 @@ import threading
 from http.server import ThreadingHTTPServer
 from pathlib import Path
 
-from zmatrix.product_runtime.local_backend import ProductRuntimeConfig, build_operator_actions, build_product_status, make_handler
+from zmatrix.product_runtime.local_backend import (
+    ProductRuntimeConfig,
+    build_operator_actions,
+    build_product_status,
+    build_research_status,
+    make_handler,
+)
 
 
 def test_product_status_reports_cockpit_and_registry(tmp_path: Path):
@@ -92,6 +98,13 @@ def test_local_backend_serves_health_and_cockpit_packet(tmp_path: Path):
         assert actions["auto_run_enabled"] is False
         assert actions["human_review_required"] is True
         assert {item["id"] for item in actions["actions"]} >= {"product-smoke", "workstation-package"}
+
+        conn.request("GET", "/api/product/research_status.json")
+        research_response = conn.getresponse()
+        research = json.loads(research_response.read().decode("utf-8"))
+        assert research_response.status == 200
+        assert research["capability_count"] >= 8
+        assert research["safety"]["broker_runtime"] == "BLOCKED"
     finally:
         server.shutdown()
         server.server_close()
@@ -108,3 +121,13 @@ def test_operator_actions_are_manual_and_block_runtime_paths():
         assert action["mode"] == "LOCAL_TERMINAL_MANUAL"
         assert action["safety"]["broker_runtime"] == "BLOCKED"
         assert action["safety"]["real_trade"] == "BLOCKED"
+
+
+def test_research_status_maps_product_capabilities_to_repository_paths():
+    status = build_research_status()
+
+    assert status["capability_count"] >= 8
+    assert status["ready_count"] >= 6
+    assert {item["id"] for item in status["capabilities"]} >= {"factor-library", "historical-oos", "gatekeeper-audit"}
+    assert status["report_export"]["artifact_policy"] == "LOCAL_FILES_ONLY"
+    assert status["safety"]["real_trade"] == "BLOCKED"

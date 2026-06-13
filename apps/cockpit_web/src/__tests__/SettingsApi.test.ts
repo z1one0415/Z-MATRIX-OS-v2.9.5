@@ -55,6 +55,9 @@ describe("settings api tenant-aware contract", () => {
     expect(packet.operatorActions.human_review_required).toBe(true);
     expect(packet.operatorActions.actions.map((item) => item.id)).toEqual(expect.arrayContaining(["backend-check", "product-smoke"]));
     expect(packet.operatorActions.actions.every((item) => item.safety.broker_runtime === "BLOCKED")).toBe(true);
+    expect(packet.researchStatus.capability_count).toBeGreaterThanOrEqual(4);
+    expect(packet.researchStatus.report_export.artifact_policy).toBe("LOCAL_FILES_ONLY");
+    expect(packet.researchStatus.safety.real_trade).toBe("BLOCKED");
   });
 
   it("includes tianji, plain, and english copy packs for core cockpit labels", async () => {

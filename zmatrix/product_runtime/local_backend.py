@@ -22,6 +22,88 @@ PACKET_NAMES = (
     "control_compass_packet.json",
     "dayan_ask_packet.json",
 )
+RESEARCH_CAPABILITY_SPECS = (
+    {
+        "id": "factor-library",
+        "label": "因子库状态",
+        "summary": "因子基础、候选验证脚本与证据文件",
+        "paths": (
+            "zmatrix/research_db/factor_foundation",
+            "scripts/research/factors",
+            "docs/cases/V9_FACTOR_SELECTION_GATE.md",
+        ),
+    },
+    {
+        "id": "historical-oos",
+        "label": "历史 OOS",
+        "summary": "历史样本、标签隔离与验证结果",
+        "paths": (
+            "zmatrix/research_db/validation",
+            "zmatrix/research_db/outcome_engine",
+            "scripts/cases/calculate_v11_6_1_oos_paper_outcomes.py",
+        ),
+    },
+    {
+        "id": "forward-oos",
+        "label": "Forward OOS 等待",
+        "summary": "未来标签、月度刷新与到期检查",
+        "paths": (
+            "zmatrix/research_db/validation_factory",
+            "scripts/cases/select_v11_5_forward_compatible_as_of_date.py",
+            "scripts/cases/resolve_v11_6_1_oos_due_labels.py",
+        ),
+    },
+    {
+        "id": "candidate-evidence",
+        "label": "候选证据链",
+        "summary": "纸面观察清单、候选 thesis 与安全审计",
+        "paths": (
+            "scripts/cases/build_v11_candidate_factor_watchlist.py",
+            "scripts/cases/build_v11_paper_signal_snapshot.py",
+            "scripts/cases/audit_v11_paper_watchlist.py",
+        ),
+    },
+    {
+        "id": "factor-decay",
+        "label": "生存与衰减",
+        "summary": "RankIC 方向、衰减模式与稳健性",
+        "paths": (
+            "scripts/cases/calculate_v9_factor_decay.py",
+            "scripts/cases/calculate_v9_factor_robustness.py",
+            "docs/cases/V9_FACTOR_DECAY_ANALYSIS.md",
+        ),
+    },
+    {
+        "id": "portfolio-sandbox",
+        "label": "组合研究沙盒",
+        "summary": "纸面组合规则、成本代理与风险审计",
+        "paths": (
+            "zmatrix/research_db/portfolio",
+            "scripts/cases/build_v11_5_paper_portfolio_contract.py",
+            "scripts/cases/evaluate_v11_5_benchmark_and_cost_proxy.py",
+        ),
+    },
+    {
+        "id": "risk-cost-neutrality",
+        "label": "风险成本中性化",
+        "summary": "风险、成本、流动性与行业约束",
+        "paths": (
+            "zmatrix/research_db/attribution",
+            "zmatrix/research_db/portfolio_reality",
+            "docs/contracts/PORTFOLIO_EXPOSURE_V10.md",
+        ),
+    },
+    {
+        "id": "gatekeeper-audit",
+        "label": "Gatekeeper 审计",
+        "summary": "硬闸、审计报告与关闭条件",
+        "paths": (
+            "scripts/verify_v40_final_hardgates.sh",
+            "scripts/verify_z_skillos_full_system.sh",
+            "docs/audit/SAFETY_FORBIDDEN_FLAG_AUDIT_REPORT.md",
+        ),
+    },
+)
 
 
 @dataclass(frozen=True)
@@ -146,6 +228,31 @@ def build_operator_actions(config: ProductRuntimeConfig | None = None) -> dict[s
     }
 
 
+def build_research_status(config: ProductRuntimeConfig | None = None) -> dict[str, Any]:
+    cfg = config or ProductRuntimeConfig()
+    capabilities = [_research_capability_status(spec) for spec in RESEARCH_CAPABILITY_SPECS]
+    ready_count = sum(1 for item in capabilities if item["status"] == "READY")
+    return {
+        "status": "Z_MATRIX_RESEARCH_STATUS_READY" if ready_count >= 6 else "Z_MATRIX_RESEARCH_STATUS_DEGRADED",
+        "workspace_id": cfg.workspace_id,
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "capability_count": len(capabilities),
+        "ready_count": ready_count,
+        "capabilities": capabilities,
+        "report_export": {
+            "status": "LOCAL_EXPORT_PLANNED",
+            "command": "PYTHONPATH=. python3 scripts/product/build_local_workstation_package.py",
+            "artifact_policy": "LOCAL_FILES_ONLY",
+        },
+        "safety": {
+            "alpha_claim": "BLOCKED",
+            "promotion": "BLOCKED",
+            "broker_runtime": "BLOCKED",
+            "real_trade": "BLOCKED",
+        },
+    }
+
+
 def make_handler(config: ProductRuntimeConfig) -> type[BaseHTTPRequestHandler]:
     class ProductRuntimeHandler(BaseHTTPRequestHandler):
         server_version = "ZMatrixProductBackend/0.1"
@@ -157,6 +264,9 @@ def make_handler(config: ProductRuntimeConfig) -> type[BaseHTTPRequestHandler]:
                 return
             if parsed.path == "/api/product/operator_actions.json":
                 self._send_json(build_operator_actions(config))
+                return
+            if parsed.path == "/api/product/research_status.json":
+                self._send_json(build_research_status(config))
                 return
             if parsed.path.startswith("/api/cockpit/"):
                 relative = unquote(parsed.path.removeprefix("/api/cockpit/"))
@@ -179,7 +289,7 @@ def make_handler(config: ProductRuntimeConfig) -> type[BaseHTTPRequestHandler]:
             self.send_header("Content-Type", "application/json; charset=utf-8")
             self.send_header("Content-Length", str(len(encoded)))
             self.end_headers()
-            self.wfile.write(encoded)
+            self._write_body(encoded)
 
         def _send_public_file(self, relative: str) -> None:
             if not relative or ".." in Path(relative).parts:
@@ -200,7 +310,13 @@ def make_handler(config: ProductRuntimeConfig) -> type[BaseHTTPRequestHandler]:
             self.send_header("Content-Type", content_type)
             self.send_header("Content-Length", str(len(content)))
             self.end_headers()
-            self.wfile.write(content)
+            self._write_body(content)
+
+        def _write_body(self, content: bytes) -> None:
+            try:
+                self.wfile.write(content)
+            except (BrokenPipeError, ConnectionResetError):
+                return
 
         def _send_common_headers(self) -> None:
             origin = self.headers.get("Origin", "")
@@ -266,6 +382,30 @@ def _vendor_status(vendor_root: Path) -> dict[str, Any]:
         "latest_manifest": latest,
         "mode": "LOCAL_VENDOR_STORE_ONLY",
     }
+
+
+def _research_capability_status(spec: dict[str, Any]) -> dict[str, Any]:
+    paths = [Path(path) for path in spec["paths"]]
+    available_paths = [path.as_posix() for path in paths if path.exists()]
+    missing_paths = [path.as_posix() for path in paths if not path.exists()]
+    return {
+        "id": spec["id"],
+        "label": spec["label"],
+        "summary": spec["summary"],
+        "status": "READY" if not missing_paths else "PARTIAL",
+        "available_count": len(available_paths),
+        "required_count": len(paths),
+        "evidence_paths": available_paths,
+        "missing_paths": missing_paths,
+        "module_count": sum(_count_py_files(path) for path in paths if path.exists()),
+        "safety": "RESEARCH_ONLY",
+    }
+
+
+def _count_py_files(path: Path) -> int:
+    if path.is_file():
+        return 1 if path.suffix == ".py" else 0
+    return sum(1 for item in path.rglob("*.py") if "__pycache__" not in item.parts)
 
 
 def _is_allowed_local_origin(origin: str) -> bool:

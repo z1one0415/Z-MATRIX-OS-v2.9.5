@@ -25,6 +25,7 @@ __pycache__/
 .pytest_cache/
 *.zip
 .venv/
+build/product_packages/
 
 # 本地数据仓库（不提交到云仓）
 data/price_bars/*.csv

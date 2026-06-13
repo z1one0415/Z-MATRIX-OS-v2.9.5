@@ -121,8 +121,23 @@ This verifies:
 - V4 final hard gates;
 - cockpit frontend tests;
 - cockpit frontend build.
+- local workstation package build.
 
-## 9. Safety State
+## 9. Build Local Workstation Package
+
+```bash
+PYTHONPATH=. python3 scripts/product/build_local_workstation_package.py
+```
+
+Default output:
+
+```text
+build/product_packages/Z-MATRIX-OS-V4-PRO-local-workstation
+```
+
+The output directory is ignored by Git. The package includes runtime entrypoints, cockpit build output, cockpit packets, a source snapshot, a product manifest, and checksums. It does not include raw vendor data, private account data, or real secrets.
+
+## 10. Safety State
 
 The local product preview is a research workstation. It keeps these states blocked:
 

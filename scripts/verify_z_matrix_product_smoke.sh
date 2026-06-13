@@ -6,8 +6,10 @@ cd "$ROOT"
 
 echo "=== Z-MATRIX Product Smoke ==="
 
-tmp_plan="$(mktemp)"
-trap 'rm -f "$tmp_plan"' EXIT
+tmp_root="$(mktemp -d)"
+tmp_plan="$tmp_root/vendor_dry_plan.json"
+tmp_package="$tmp_root/product_package"
+trap 'rm -rf "$tmp_root"' EXIT
 
 echo "[1] Python product runtime compile"
 python3 -m compileall -q zmatrix/product_runtime tests/product_runtime scripts/product
@@ -43,5 +45,10 @@ npm --prefix apps/cockpit_web test
 
 echo "[10] Cockpit frontend build"
 npm --prefix apps/cockpit_web run build
+
+echo "[11] Product package build"
+PYTHONPATH=. python3 scripts/product/build_local_workstation_package.py \
+  --output-dir "$tmp_package" \
+  --no-archive >/tmp/zmatrix_product_package_manifest.json
 
 echo "=== Z-MATRIX Product Smoke PASS ==="

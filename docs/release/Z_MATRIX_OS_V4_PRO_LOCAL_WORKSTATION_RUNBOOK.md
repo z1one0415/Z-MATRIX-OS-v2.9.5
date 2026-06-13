@@ -26,7 +26,7 @@ Required for vendor data ingestion:
 TUSHARE_TOKEN=
 ```
 
-Optional for future agent bridge:
+Optional for local LLM bridge configuration:
 
 ```text
 DEEPSEEK_API_KEY=
@@ -69,10 +69,21 @@ Useful local endpoints:
 ```text
 http://127.0.0.1:8765/health
 http://127.0.0.1:8765/api/product/status.json
+http://127.0.0.1:8765/api/product/agent_bridge.json
 http://127.0.0.1:8765/api/cockpit/holdings_packet.json
 ```
 
-## 6. Start Cockpit
+## 6. Start Local Workstation
+
+The combined local startup command is:
+
+```bash
+bash scripts/product/start_local_workstation.sh
+```
+
+It starts the local backend, waits for `/health`, exports the cockpit runtime URLs, and starts the cockpit dev server in the foreground. Stop it with `Ctrl-C`; the backend process is cleaned up by the script.
+
+## 7. Start Cockpit Manually
 
 Optional frontend runtime pointer:
 
@@ -90,7 +101,7 @@ Open:
 http://127.0.0.1:5173
 ```
 
-## 7. Vendor Data Dry Plan
+## 8. Vendor Data Dry Plan
 
 ```bash
 PYTHONPATH=. python3 scripts/data/ingest_tushare_market_data.py \
@@ -103,7 +114,7 @@ PYTHONPATH=. python3 scripts/data/ingest_tushare_market_data.py \
 
 Remove `--dry-plan` only after `.env` contains a local token and the user intentionally wants local vendor files under the ignored vendor store.
 
-## 8. Product Smoke
+## 9. Product Smoke
 
 ```bash
 bash scripts/verify_z_matrix_product_smoke.sh
@@ -123,7 +134,7 @@ This verifies:
 - cockpit frontend build.
 - local workstation package build.
 
-## 9. Build Local Workstation Package
+## 10. Build Local Workstation Package
 
 ```bash
 PYTHONPATH=. python3 scripts/product/build_local_workstation_package.py
@@ -137,7 +148,7 @@ build/product_packages/Z-MATRIX-OS-V4-PRO-local-workstation
 
 The output directory is ignored by Git. The package includes runtime entrypoints, cockpit build output, cockpit packets, a source snapshot, a product manifest, and checksums. It does not include raw vendor data, private account data, or real secrets.
 
-## 10. Safety State
+## 11. Safety State
 
 The local product preview is a research workstation. It keeps these states blocked:
 

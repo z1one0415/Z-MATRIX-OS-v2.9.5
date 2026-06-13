@@ -22,6 +22,7 @@ def test_workstation_package_builds_manifest_and_checksums(tmp_path: Path):
     assert manifest_from_disk["components"]["source_snapshot_included"] is True
     assert manifest_from_disk["data_policy"]["raw_vendor_data_included"] is False
     assert manifest_from_disk["safety"]["broker_runtime"] == "BLOCKED"
+    assert manifest_from_disk["operator_entrypoints"]["local_workstation"] == "bash scripts/product/start_local_workstation.sh"
     assert (output_dir / "START_HERE.md").is_file()
     assert (output_dir / "ARTIFACT_CHECKSUMS.txt").read_text(encoding="utf-8").count("PRODUCT_MANIFEST.json") == 1
 
@@ -47,6 +48,7 @@ def _make_minimal_product_root(root: Path) -> Path:
         "docs/release/Z_MATRIX_OS_V4_PRO_LOCAL_WORKSTATION_RUNBOOK.md": "# runbook\n",
         "docs/release/Z_MATRIX_OS_V4_PRO_PRODUCT_ACCEPTANCE_STANDARD.md": "# standard\n",
         "scripts/product/start_backend_service.py": "def main():\n    return None\n",
+        "scripts/product/start_local_workstation.sh": "#!/usr/bin/env bash\nset -euo pipefail\n",
         "scripts/verify_z_matrix_product_smoke.sh": "#!/usr/bin/env bash\nset -euo pipefail\n",
         "scripts/data/ingest_tushare_market_data.py": "def main():\n    return None\n",
         "apps/cockpit_web/README.md": "# cockpit\n",

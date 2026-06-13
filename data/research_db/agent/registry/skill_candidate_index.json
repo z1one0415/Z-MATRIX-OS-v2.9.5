@@ -32510,5 +32510,37 @@
     "production_allowed": false,
     "status": "CANDIDATE_ONLY",
     "reason": "public function"
+  },
+  {
+    "candidate_id": "CANDIDATE.RESEARCHDB.BUILD_AGENT_RESEARCH_DRAFT",
+    "module_path": "zmatrix/product_runtime/local_backend.py",
+    "symbol_name": "build_agent_research_draft",
+    "candidate_type": "function",
+    "domain": "RESEARCHDB",
+    "suggested_skill_id": "RESEARCHDB.BUILD_AGENT_RESEARCH_DRAFT",
+    "suggested_skill_layer": "L0_ATOMIC",
+    "suggested_risk_level": "R2_DRAFT",
+    "read_layers": [],
+    "write_layers": [],
+    "requires_human_review": true,
+    "production_allowed": false,
+    "status": "CANDIDATE_ONLY",
+    "reason": "public function"
+  },
+  {
+    "candidate_id": "CANDIDATE.RESEARCHDB.DO_POST",
+    "module_path": "zmatrix/product_runtime/local_backend.py",
+    "symbol_name": "do_POST",
+    "candidate_type": "function",
+    "domain": "RESEARCHDB",
+    "suggested_skill_id": "RESEARCHDB.DO_POST",
+    "suggested_skill_layer": "L0_ATOMIC",
+    "suggested_risk_level": "R0_READ",
+    "read_layers": [],
+    "write_layers": [],
+    "requires_human_review": false,
+    "production_allowed": false,
+    "status": "CANDIDATE_ONLY",
+    "reason": "public function"
   }
 ]

@@ -190,6 +190,7 @@ describe("settings page", () => {
     const panel = await screen.findByLabelText("本地工作台动作");
     expect(within(panel).getByText("本地工作台")).toBeInTheDocument();
     expect(within(panel).getByText("手动确认")).toBeInTheDocument();
+    expect(within(panel).getByText("本地安装检查")).toBeInTheDocument();
     expect(within(panel).getByText("后端健康检查")).toBeInTheDocument();
     expect(within(panel).getByText("产品 smoke test")).toBeInTheDocument();
     expect(within(panel).getByText(/scripts\/verify_z_matrix_product_smoke\.sh/)).toBeInTheDocument();

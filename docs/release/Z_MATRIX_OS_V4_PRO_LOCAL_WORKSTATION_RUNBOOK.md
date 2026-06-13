@@ -5,6 +5,20 @@ Scope: install, configure, start backend, open cockpit, run smoke
 
 ## 1. Install
 
+Preferred local bootstrap:
+
+```bash
+bash scripts/product/bootstrap_local_workstation.sh
+```
+
+Offline bootstrap check:
+
+```bash
+bash scripts/product/bootstrap_local_workstation.sh --check
+```
+
+Manual equivalent:
+
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate

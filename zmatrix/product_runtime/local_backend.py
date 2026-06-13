@@ -219,6 +219,7 @@ def build_product_status(config: ProductRuntimeConfig | None = None) -> dict[str
             "operator_actions": True,
             "report_export": "READY",
             "product_readiness": True,
+            "local_bootstrap": True,
         },
         "safety": {
             "alpha_claim": "BLOCKED",
@@ -278,6 +279,16 @@ def build_operator_actions(config: ProductRuntimeConfig | None = None) -> dict[s
         "auto_run_enabled": False,
         "human_review_required": True,
         "actions": [
+            {
+                "id": "bootstrap-check",
+                "label": "本地安装检查",
+                "category": "verification",
+                "command": "bash scripts/product/bootstrap_local_workstation.sh --check",
+                "detail": "确认本地安装入口、Python/npm 工具链与关键文件存在，不安装依赖。",
+                "expected": "Z_MATRIX_LOCAL_BOOTSTRAP_CHECK_PASS",
+                "mode": "LOCAL_TERMINAL_MANUAL",
+                "safety": base_safety,
+            },
             {
                 "id": "backend-check",
                 "label": "后端健康检查",
@@ -496,6 +507,7 @@ def build_runtime_product_readiness(config: ProductRuntimeConfig | None = None, 
     checks = [
         _file_check(resolved_root, "runbook", "docs/release/Z_MATRIX_OS_V4_PRO_LOCAL_WORKSTATION_RUNBOOK.md"),
         *_config_template_checks(config_templates),
+        _file_check(resolved_root, "local-bootstrap", "scripts/product/bootstrap_local_workstation.sh"),
         _file_check(resolved_root, "backend-service", "scripts/product/start_backend_service.py"),
         _file_check(resolved_root, "local-launcher", "scripts/product/start_local_workstation.sh"),
         _file_check(resolved_root, "report-export", "scripts/product/export_research_report_pack.py"),

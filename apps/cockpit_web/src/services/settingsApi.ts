@@ -417,6 +417,22 @@ const defaultOperatorActions: ProductOperatorActions = {
   human_review_required: true,
   actions: [
     {
+      id: "bootstrap-check",
+      label: "本地安装检查",
+      category: "verification",
+      command: "bash scripts/product/bootstrap_local_workstation.sh --check",
+      detail: "确认本地安装入口、Python/npm 工具链与关键文件存在，不安装依赖。",
+      expected: "Z_MATRIX_LOCAL_BOOTSTRAP_CHECK_PASS",
+      mode: "LOCAL_TERMINAL_MANUAL",
+      safety: {
+        alpha_claim: "BLOCKED",
+        promotion: "BLOCKED",
+        broker_runtime: "BLOCKED",
+        real_trade: "BLOCKED",
+        secret_storage: "ENV_ONLY"
+      }
+    },
+    {
       id: "backend-check",
       label: "后端健康检查",
       category: "health",

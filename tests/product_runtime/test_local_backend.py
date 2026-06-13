@@ -291,6 +291,7 @@ def _make_runtime_root(root: Path) -> Path:
             "VITE_ZMATRIX_DAYAN_ASK_PACKET_URL=/api/cockpit/dayan_ask_packet.json\n"
         ),
         "scripts/product/start_backend_service.py": "def main():\n    return None\n",
+        "scripts/product/bootstrap_local_workstation.sh": "#!/usr/bin/env bash\n",
         "scripts/product/start_local_workstation.sh": "#!/usr/bin/env bash\n",
         "scripts/product/export_research_report_pack.py": "def main():\n    return None\n",
         "scripts/verify_z_matrix_product_smoke.sh": "#!/usr/bin/env bash\n",

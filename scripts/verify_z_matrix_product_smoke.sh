@@ -14,7 +14,11 @@ trap 'rm -rf "$tmp_root"' EXIT
 
 echo "[1] Python product runtime compile"
 python3 -m compileall -q zmatrix/product_runtime tests/product_runtime scripts/product
+bash -n scripts/product/bootstrap_local_workstation.sh
 bash -n scripts/product/start_local_workstation.sh
+
+echo "[1.1] Bootstrap check"
+bash scripts/product/bootstrap_local_workstation.sh --check
 
 echo "[2] Backend health check"
 PYTHONPATH=. python3 scripts/product/start_backend_service.py --check >/tmp/zmatrix_product_backend_status.json

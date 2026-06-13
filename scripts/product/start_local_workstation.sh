@@ -55,6 +55,7 @@ export VITE_ZMATRIX_OPERATOR_ACTIONS_URL="${BACKEND_URL}/api/product/operator_ac
 export VITE_ZMATRIX_RESEARCH_STATUS_URL="${BACKEND_URL}/api/product/research_status.json"
 export VITE_ZMATRIX_RESEARCH_EVIDENCE_INDEX_URL="${BACKEND_URL}/api/product/research_evidence_index.json"
 export VITE_ZMATRIX_REPORT_EXPORT_STATUS_URL="${BACKEND_URL}/api/product/report_export_status.json"
+export VITE_ZMATRIX_DATA_QUALITY_STATUS_URL="${BACKEND_URL}/api/product/data_quality_status.json"
 export VITE_ZMATRIX_COCKPIT_MANIFEST_URL="${BACKEND_URL}/api/product/cockpit_manifest.json"
 export VITE_ZMATRIX_AGENT_BRIDGE_URL="${BACKEND_URL}/api/product/agent_bridge.json"
 export VITE_ZMATRIX_AGENT_DRAFT_URL="${BACKEND_URL}/api/product/agent_draft.json"

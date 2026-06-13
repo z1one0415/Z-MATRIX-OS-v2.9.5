@@ -34,6 +34,7 @@ COCKPIT_ENV_TEMPLATE_KEYS = (
     "VITE_ZMATRIX_RESEARCH_STATUS_URL",
     "VITE_ZMATRIX_RESEARCH_EVIDENCE_INDEX_URL",
     "VITE_ZMATRIX_REPORT_EXPORT_STATUS_URL",
+    "VITE_ZMATRIX_DATA_QUALITY_STATUS_URL",
     "VITE_ZMATRIX_COCKPIT_MANIFEST_URL",
     "VITE_ZMATRIX_AGENT_BRIDGE_URL",
     "VITE_ZMATRIX_AGENT_DRAFT_URL",
@@ -277,6 +278,39 @@ REPORT_EXPORT_RUNTIME_PATTERNS = (
     "v12*_*.json",
     "v13*_*.json",
 )
+DATA_QUALITY_EVIDENCE_SPECS = (
+    {
+        "id": "v8-large-data-manifest",
+        "label": "V8 大数据 manifest",
+        "path": "runtime_reports/cases/v8_large_data_manifest.json",
+    },
+    {
+        "id": "v8-large-data-manifest-audit",
+        "label": "V8 manifest 审计",
+        "path": "runtime_reports/cases/v8_large_data_manifest_audit.json",
+    },
+    {
+        "id": "price-data-schema-validation",
+        "label": "价格数据 schema 验证",
+        "path": "runtime_reports/cases/v12_4_7_price_data_schema_validation.json",
+    },
+    {
+        "id": "strict-source-schema-validation",
+        "label": "严格 source schema 验证",
+        "path": "runtime_reports/cases/v13_1_3_1_strict_source_schema_validation.json",
+    },
+    {
+        "id": "core-real-market-data-readiness",
+        "label": "Core 12 真实行情就绪",
+        "path": "runtime_reports/cases/core_12_real_market_data_readiness.json",
+    },
+    {
+        "id": "monthly-outcome-label-panel",
+        "label": "月度 outcome label panel",
+        "path": "runtime_reports/cases/v13_5_3_monthly_outcome_label_panel_manifest.json",
+    },
+)
+SOURCE_HEALTH_LEDGER_PATH = Path("data/research_db/governance/source_health_ledger.jsonl")
 AGENT_BRIDGE_INTENTS = (
     {
         "id": "explain-system-status",
@@ -591,6 +625,52 @@ def build_report_export_status(config: ProductRuntimeConfig | None = None) -> di
     }
 
 
+def build_data_quality_status(config: ProductRuntimeConfig | None = None) -> dict[str, Any]:
+    cfg = config or ProductRuntimeConfig()
+    data_source = _data_quality_vendor_status(cfg.repo_root, cfg.vendor_root)
+    evidence_items = [_data_quality_evidence_artifact(cfg.repo_root, spec) for spec in DATA_QUALITY_EVIDENCE_SPECS]
+    ready_count = sum(1 for item in evidence_items if item["ready"])
+    privacy_guardrail = _market_data_privacy_guardrail(cfg.repo_root)
+    source_health = _source_health_status(cfg.repo_root)
+    ready = ready_count >= 4 and privacy_guardrail["status"] == "PASS"
+    return {
+        "status": "Z_MATRIX_DATA_QUALITY_STATUS_READY" if ready else "Z_MATRIX_DATA_QUALITY_STATUS_DEGRADED",
+        "workspace_id": cfg.workspace_id,
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "data_source": data_source,
+        "quality_evidence": {
+            "ready_count": ready_count,
+            "required_count": len(evidence_items),
+            "items": evidence_items,
+        },
+        "source_health": source_health,
+        "privacy_guardrail": privacy_guardrail,
+        "refresh_dry_plan": {
+            "command": (
+                "PYTHONPATH=. python3 scripts/data/ingest_tushare_market_data.py "
+                "--symbols 601899,002472,300750 --end-date 20260613 --years 5 "
+                "--endpoints stock_basic,trade_cal,daily,adj_factor,daily_basic --dry-plan"
+            ),
+            "mode": "LOCAL_TERMINAL_MANUAL_DRY_PLAN",
+            "write_scope": "LOCAL_VENDOR_STORE_ONLY",
+            "auto_run_enabled": False,
+        },
+        "data_policy": {
+            "raw_vendor_data_included": False,
+            "private_account_data_included": False,
+            "secret_files_included": False,
+            "repository_commit_allowed": False,
+            "local_vendor_store_only": True,
+        },
+        "safety": {
+            "alpha_claim": "BLOCKED",
+            "promotion": "BLOCKED",
+            "broker_runtime": "BLOCKED",
+            "real_trade": "BLOCKED",
+        },
+    }
+
+
 def build_cockpit_manifest(config: ProductRuntimeConfig | None = None) -> dict[str, Any]:
     cfg = config or ProductRuntimeConfig()
     routes = []
@@ -746,6 +826,7 @@ def build_runtime_product_readiness(config: ProductRuntimeConfig | None = None, 
     research = build_research_status(cfg)
     evidence = build_research_evidence_index(cfg)
     report_export = build_report_export_status(cfg)
+    data_quality = build_data_quality_status(cfg)
     cockpit_manifest = build_cockpit_manifest(cfg)
     bridge = build_agent_bridge_status(cfg)
     actions = build_operator_actions(cfg)
@@ -762,6 +843,7 @@ def build_runtime_product_readiness(config: ProductRuntimeConfig | None = None, 
         _status_check("research-status", research["status"] == "Z_MATRIX_RESEARCH_STATUS_READY", research["status"]),
         _status_check("research-evidence-index", evidence["status"] == "Z_MATRIX_RESEARCH_EVIDENCE_INDEX_READY", evidence["status"]),
         _status_check("report-export-status", report_export["status"] == "Z_MATRIX_REPORT_EXPORT_READY", report_export["status"]),
+        _status_check("data-quality-status", data_quality["status"] == "Z_MATRIX_DATA_QUALITY_STATUS_READY", data_quality["status"]),
         _status_check("cockpit-manifest", cockpit_manifest["status"] == "Z_MATRIX_COCKPIT_MANIFEST_READY", cockpit_manifest["status"]),
         _status_check("agent-bridge", bridge["status"] == "Z_MATRIX_AGENT_BRIDGE_READY", bridge["status"]),
         _status_check("operator-actions", actions["status"] == "Z_MATRIX_OPERATOR_ACTIONS_READY", actions["status"]),
@@ -781,6 +863,8 @@ def build_runtime_product_readiness(config: ProductRuntimeConfig | None = None, 
             "ready_research_capabilities": research["ready_count"],
             "research_evidence_groups": evidence["ready_group_count"],
             "report_export_artifacts": report_export["artifact_count"],
+            "data_quality_evidence": data_quality["quality_evidence"]["ready_count"],
+            "local_vendor_manifests": data_quality["data_source"]["manifest_count"],
             "agent_intents": len(bridge["allowed_intents"]),
             "operator_actions": len(actions["actions"]),
             "config_templates": config_templates["ready_count"],
@@ -817,6 +901,9 @@ def make_handler(config: ProductRuntimeConfig) -> type[BaseHTTPRequestHandler]:
                 return
             if parsed.path == "/api/product/report_export_status.json":
                 self._send_json(build_report_export_status(config))
+                return
+            if parsed.path == "/api/product/data_quality_status.json":
+                self._send_json(build_data_quality_status(config))
                 return
             if parsed.path == "/api/product/cockpit_manifest.json":
                 self._send_json(build_cockpit_manifest(config))
@@ -964,6 +1051,134 @@ def _vendor_status(vendor_root: Path) -> dict[str, Any]:
         "latest_manifest": latest,
         "mode": "LOCAL_VENDOR_STORE_ONLY",
     }
+
+
+def _data_quality_vendor_status(root: Path, vendor_root: Path) -> dict[str, Any]:
+    resolved_vendor_root = _resolve_root_path(root, vendor_root)
+    manifests = sorted(resolved_vendor_root.glob("*/manifest.json")) if resolved_vendor_root.exists() else []
+    latest_manifest = manifests[-1] if manifests else None
+    payload = _read_json_object(latest_manifest) if latest_manifest else {}
+    endpoints = payload.get("endpoints") if isinstance(payload.get("endpoints"), dict) else {}
+    window = payload.get("window") if isinstance(payload.get("window"), dict) else {}
+    return {
+        "ready": bool(manifests),
+        "path": vendor_root.as_posix(),
+        "resolved_path": resolved_vendor_root.as_posix(),
+        "manifest_count": len(manifests),
+        "latest_manifest": _relative_path_label(root, latest_manifest) if latest_manifest else "",
+        "latest_run_id": latest_manifest.parent.name if latest_manifest else "",
+        "latest_manifest_status": str(payload.get("status", "")),
+        "source_vendor": str(payload.get("source_vendor", "TUSHARE" if manifests else "")),
+        "write_scope": str(payload.get("write_scope", "LOCAL_VENDOR_STORE_ONLY")),
+        "symbol_count": int(payload.get("symbol_count", 0) or 0),
+        "file_count": int(payload.get("file_count", 0) or 0),
+        "failure_count": int(payload.get("failure_count", 0) or 0),
+        "endpoint_count": len(endpoints),
+        "endpoints": sorted(str(key) for key in endpoints)[:12],
+        "window": {
+            "start_date": str(window.get("start_date", "")),
+            "end_date": str(window.get("end_date", "")),
+            "years": int(window.get("years", 0) or 0),
+        },
+        "mode": "LOCAL_VENDOR_STORE_ONLY",
+    }
+
+
+def _data_quality_evidence_artifact(root: Path, spec: dict[str, str]) -> dict[str, Any]:
+    relative = Path(spec["path"])
+    path = root / relative
+    ready = path.is_file()
+    return {
+        "id": spec["id"],
+        "label": spec["label"],
+        "path": relative.as_posix(),
+        "ready": ready,
+        "bytes": path.stat().st_size if ready else 0,
+        "status_field": _json_status_field(path) if ready else "",
+        "artifact_type": relative.suffix.removeprefix(".") or "file",
+    }
+
+
+def _source_health_status(root: Path) -> dict[str, Any]:
+    ledger_path = root / SOURCE_HEALTH_LEDGER_PATH
+    sources: dict[str, dict[str, Any]] = {}
+    if ledger_path.is_file():
+        for line in ledger_path.read_text(encoding="utf-8").splitlines():
+            if not line.strip():
+                continue
+            try:
+                item = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            if not isinstance(item, dict):
+                continue
+            source_id = str(item.get("source_id", "")).strip()
+            if not source_id:
+                continue
+            current = sources.setdefault(
+                source_id,
+                {
+                    "source_id": source_id,
+                    "ok_count": 0,
+                    "error_count": 0,
+                    "freshness_status": "UNKNOWN",
+                    "usable_now": False,
+                    "blocked_reason": "",
+                },
+            )
+            current["ok_count"] += int(item.get("ok_count", 0) or 0)
+            current["error_count"] += int(item.get("error_count", 0) or 0)
+            current["freshness_status"] = str(item.get("freshness_status", current["freshness_status"]))
+            current["usable_now"] = bool(item.get("usable_now", current["usable_now"]))
+            current["blocked_reason"] = str(item.get("blocked_reason", current["blocked_reason"]))
+    source_list = sorted(sources.values(), key=lambda item: item["source_id"])
+    return {
+        "status": "SOURCE_HEALTH_LEDGER_READY" if ledger_path.is_file() else "SOURCE_HEALTH_LEDGER_EMPTY",
+        "ledger_path": SOURCE_HEALTH_LEDGER_PATH.as_posix(),
+        "source_count": len(source_list),
+        "usable_count": sum(1 for item in source_list if item["usable_now"]),
+        "sources": source_list[:8],
+    }
+
+
+def _market_data_privacy_guardrail(root: Path) -> dict[str, Any]:
+    try:
+        from zmatrix.research_db.market_data.market_data_guardrail import scan_tracked_market_data_files
+
+        scan = scan_tracked_market_data_files()
+        violations = [str(item) for item in scan.get("violations", [])]
+    except Exception:
+        violations = []
+    return {
+        "status": "PASS" if not violations else "FAILED",
+        "scan_scope": "GIT_TRACKED_MARKET_DATA_FILES",
+        "tracked_private_market_data_violation_count": len(violations),
+        "violations": violations[:12],
+        "production_allowed": False,
+    }
+
+
+def _resolve_root_path(root: Path, path: Path) -> Path:
+    return path if path.is_absolute() else root / path
+
+
+def _relative_path_label(root: Path, path: Path | None) -> str:
+    if path is None:
+        return ""
+    try:
+        return path.relative_to(root).as_posix()
+    except ValueError:
+        return path.as_posix()
+
+
+def _read_json_object(path: Path | None) -> dict[str, Any]:
+    if path is None or not path.is_file():
+        return {}
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError, UnicodeDecodeError):
+        return {}
+    return payload if isinstance(payload, dict) else {}
 
 
 def _file_check(root: Path, check_id: str, relative: str) -> dict[str, Any]:

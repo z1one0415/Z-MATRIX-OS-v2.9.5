@@ -76,6 +76,13 @@ describe("settings api tenant-aware contract", () => {
     expect(packet.reportExport.data_policy.private_account_data_included).toBe(false);
     expect(packet.reportExport.safety.broker_runtime).toBe("BLOCKED");
     expect(packet.reportExport.safety.real_trade).toBe("BLOCKED");
+    expect(packet.dataQuality.status).toBe("Z_MATRIX_DATA_QUALITY_STATUS_DEGRADED");
+    expect(packet.dataQuality.quality_evidence.required_count).toBeGreaterThanOrEqual(4);
+    expect(packet.dataQuality.data_policy.raw_vendor_data_included).toBe(false);
+    expect(packet.dataQuality.privacy_guardrail.production_allowed).toBe(false);
+    expect(packet.dataQuality.refresh_dry_plan.mode).toBe("LOCAL_TERMINAL_MANUAL_DRY_PLAN");
+    expect(packet.dataQuality.safety.broker_runtime).toBe("BLOCKED");
+    expect(packet.dataQuality.safety.real_trade).toBe("BLOCKED");
     expect(packet.cockpitManifest.route_count).toBe(5);
     expect(packet.cockpitManifest.routes.map((route) => route.label)).toEqual(
       expect.arrayContaining(["持仓管理", "投研选股", "历史回溯", "天机罗盘", "大衍天问"])

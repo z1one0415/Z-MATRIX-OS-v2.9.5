@@ -71,6 +71,7 @@ def _make_readiness_root(root: Path) -> Path:
             "VITE_ZMATRIX_RESEARCH_STATUS_URL=http://127.0.0.1:8765/api/product/research_status.json\n"
             "VITE_ZMATRIX_RESEARCH_EVIDENCE_INDEX_URL=http://127.0.0.1:8765/api/product/research_evidence_index.json\n"
             "VITE_ZMATRIX_REPORT_EXPORT_STATUS_URL=http://127.0.0.1:8765/api/product/report_export_status.json\n"
+            "VITE_ZMATRIX_DATA_QUALITY_STATUS_URL=http://127.0.0.1:8765/api/product/data_quality_status.json\n"
             "VITE_ZMATRIX_COCKPIT_MANIFEST_URL=http://127.0.0.1:8765/api/product/cockpit_manifest.json\n"
             "VITE_ZMATRIX_AGENT_BRIDGE_URL=http://127.0.0.1:8765/api/product/agent_bridge.json\n"
             "VITE_ZMATRIX_AGENT_DRAFT_URL=http://127.0.0.1:8765/api/product/agent_draft.json\n"
@@ -90,6 +91,11 @@ def _make_readiness_root(root: Path) -> Path:
             '{"skill_id":"REPORT.READ","domain":"REPORT","router_ref":"y"}]\n'
         ),
         "data/research_db/market_data/vendor/tushare_5y/20260613/manifest.json": "{}\n",
+        "runtime_reports/cases/v8_large_data_manifest.json": '{"status":"V8_LARGE_DATA_MANIFEST_BUILT"}\n',
+        "runtime_reports/cases/v8_large_data_manifest_audit.json": '{"status":"V8_LARGE_DATA_MANIFEST_AUDIT_PASS"}\n',
+        "runtime_reports/cases/v12_4_7_price_data_schema_validation.json": '{"status":"V12_4_7_PRICE_DATA_SCHEMA_VALIDATION_BUILT"}\n',
+        "runtime_reports/cases/v13_1_3_1_strict_source_schema_validation.json": '{"status":"V13_1_3_1_STRICT_SOURCE_SCHEMA_VALIDATION_BUILT"}\n',
+        "runtime_reports/cases/core_12_real_market_data_readiness.json": '{"status":"CORE_12_READY"}\n',
     }
     for name in (
         "holdings_packet.json",

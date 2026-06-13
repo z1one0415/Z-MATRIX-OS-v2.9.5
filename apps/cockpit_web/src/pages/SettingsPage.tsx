@@ -107,6 +107,7 @@ export function SettingsPage({ session }: SettingsPageProps) {
   const readiness = settingsData.productReadiness;
   const cockpitManifest = settingsData.cockpitManifest;
   const researchEvidence = settingsData.researchEvidence;
+  const dataQuality = settingsData.dataQuality;
   const runtimeReady = runtime.status === "Z_MATRIX_PRODUCT_RUNTIME_READY";
   const readinessReady = readiness.status === "Z_MATRIX_LOCAL_PRODUCT_READINESS_PASS";
 
@@ -169,6 +170,7 @@ export function SettingsPage({ session }: SettingsPageProps) {
       </section>
 
       {renderSettingsStatusBar()}
+      {renderDataQualityStatus()}
       {renderCockpitManifest()}
       {renderResearchEvidence()}
       {renderOperatorActions()}
@@ -255,8 +257,8 @@ export function SettingsPage({ session }: SettingsPageProps) {
         </article>
         <article>
           <span>本地数据</span>
-          <strong>{runtime.data_source.ready ? "READY" : "WAITING"}</strong>
-          <small>{runtime.data_source.manifest_count} manifests</small>
+          <strong>{dataQuality.data_source.ready ? "READY" : "WAITING"}</strong>
+          <small>{dataQuality.data_source.manifest_count} manifests · {dataQuality.quality_evidence.ready_count}/{dataQuality.quality_evidence.required_count}</small>
         </article>
         <article>
           <span>配置模板</span>
@@ -339,6 +341,86 @@ export function SettingsPage({ session }: SettingsPageProps) {
               <code>{route.api_path}</code>
             </article>
           ))}
+        </div>
+      </section>
+    );
+  }
+
+  function renderDataQualityStatus() {
+    const primaryEvidence = dataQuality.quality_evidence.items.find((item) => item.ready) ?? dataQuality.quality_evidence.items[0];
+    const primarySource = dataQuality.source_health.sources[0];
+    return (
+      <section className="settings-research-panel panel-shell" aria-label="数据源与质量审计">
+        <div className="panel-title">
+          <span>数据源与质量审计</span>
+          <small>{dataQuality.quality_evidence.ready_count}/{dataQuality.quality_evidence.required_count} evidence</small>
+        </div>
+        <div className="settings-research-grid">
+          <article className="settings-research-card">
+            <div>
+              <Database size={16} aria-hidden="true" />
+              <span>本地 Vendor Store</span>
+              <em className={dataQuality.data_source.ready ? "is-ready" : "is-partial"}>{dataQuality.data_source.ready ? "READY" : "WAITING"}</em>
+            </div>
+            <p>行情和财务数据只进入本地 vendor store，驾驶舱不展示原始 vendor 文件。</p>
+            <dl className="settings-compact-dl">
+              <div><dt>manifest</dt><dd>{dataQuality.data_source.manifest_count}</dd></div>
+              <div><dt>scope</dt><dd>{dataQuality.data_source.mode}</dd></div>
+            </dl>
+            <code>{dataQuality.data_source.latest_manifest || dataQuality.data_source.path}</code>
+          </article>
+          <article className="settings-research-card">
+            <div>
+              <FileKey2 size={16} aria-hidden="true" />
+              <span>质量证据</span>
+              <em className={dataQuality.status === "Z_MATRIX_DATA_QUALITY_STATUS_READY" ? "is-ready" : "is-partial"}>{dataQuality.status}</em>
+            </div>
+            <p>汇总 manifest、一致性审计、schema 验证和真实行情 readiness。</p>
+            <dl className="settings-compact-dl">
+              <div><dt>证据</dt><dd>{dataQuality.quality_evidence.ready_count}/{dataQuality.quality_evidence.required_count}</dd></div>
+              <div><dt>最近状态</dt><dd>{primaryEvidence?.status_field || "WAITING"}</dd></div>
+            </dl>
+            {primaryEvidence ? <code>{primaryEvidence.path}</code> : null}
+          </article>
+          <article className="settings-research-card">
+            <div>
+              <ShieldCheck size={16} aria-hidden="true" />
+              <span>私有数据保护</span>
+              <em className={dataQuality.privacy_guardrail.status === "PASS" ? "is-ready" : "is-partial"}>{dataQuality.privacy_guardrail.status}</em>
+            </div>
+            <p>扫描 Git 已追踪市场数据，阻断 raw、staging、vendor 和私有格式进入仓库。</p>
+            <dl className="settings-compact-dl">
+              <div><dt>违规</dt><dd>{dataQuality.privacy_guardrail.tracked_private_market_data_violation_count}</dd></div>
+              <div><dt>生产</dt><dd>{dataQuality.privacy_guardrail.production_allowed ? "ALLOWED" : "BLOCKED"}</dd></div>
+            </dl>
+            <code>{dataQuality.privacy_guardrail.scan_scope}</code>
+          </article>
+          <article className="settings-research-card">
+            <div>
+              <Server size={16} aria-hidden="true" />
+              <span>Source Health</span>
+              <em>{dataQuality.source_health.status}</em>
+            </div>
+            <p>读取本地 source health ledger，只展示可用性摘要和错误计数。</p>
+            <dl className="settings-compact-dl">
+              <div><dt>source</dt><dd>{dataQuality.source_health.usable_count}/{dataQuality.source_health.source_count}</dd></div>
+              <div><dt>最近</dt><dd>{primarySource?.freshness_status ?? "UNKNOWN"}</dd></div>
+            </dl>
+            <code>{dataQuality.source_health.ledger_path}</code>
+          </article>
+          <article className="settings-research-card settings-research-card--report">
+            <div>
+              <RefreshCcw size={16} aria-hidden="true" />
+              <span>刷新 dry plan</span>
+              <em>{dataQuality.refresh_dry_plan.mode}</em>
+            </div>
+            <p>本地数据刷新只生成命令计划，由人工在终端确认，不自动运行。</p>
+            <dl className="settings-compact-dl">
+              <div><dt>写入</dt><dd>{dataQuality.refresh_dry_plan.write_scope}</dd></div>
+              <div><dt>自动</dt><dd>{dataQuality.refresh_dry_plan.auto_run_enabled ? "ON" : "OFF"}</dd></div>
+            </dl>
+            <code>{dataQuality.refresh_dry_plan.command}</code>
+          </article>
         </div>
       </section>
     );

@@ -226,6 +226,20 @@ describe("settings page", () => {
     expect(within(panel).getByText(/--dry-plan/)).toBeInTheDocument();
   });
 
+  it("shows local data source and data quality audit status", async () => {
+    renderSettings();
+
+    const panel = await screen.findByLabelText("数据源与质量审计");
+    expect(within(panel).getByText("数据源与质量审计")).toBeInTheDocument();
+    expect(within(panel).getByText("本地 Vendor Store")).toBeInTheDocument();
+    expect(within(panel).getByText("质量证据")).toBeInTheDocument();
+    expect(within(panel).getByText("私有数据保护")).toBeInTheDocument();
+    expect(within(panel).getByText("Source Health")).toBeInTheDocument();
+    expect(within(panel).getByText("刷新 dry plan")).toBeInTheDocument();
+    expect(within(panel).getByText("LOCAL_TERMINAL_MANUAL_DRY_PLAN")).toBeInTheDocument();
+    expect(within(panel).getAllByText("LOCAL_VENDOR_STORE_ONLY").length).toBeGreaterThan(0);
+  });
+
   it("shows research evidence groups without alpha promotion", async () => {
     renderSettings();
 

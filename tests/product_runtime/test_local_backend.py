@@ -12,6 +12,7 @@ from zmatrix.product_runtime.local_backend import (
     build_cockpit_manifest,
     build_config_template_status,
     build_agent_research_draft,
+    build_data_quality_status,
     build_operator_actions,
     build_report_export_status,
     build_research_evidence_index,
@@ -100,6 +101,7 @@ def test_config_template_status_reports_env_references_without_values(tmp_path: 
         "VITE_ZMATRIX_RESEARCH_STATUS_URL=http://127.0.0.1:8765/api/product/research_status.json\n"
         "VITE_ZMATRIX_RESEARCH_EVIDENCE_INDEX_URL=http://127.0.0.1:8765/api/product/research_evidence_index.json\n"
         "VITE_ZMATRIX_REPORT_EXPORT_STATUS_URL=http://127.0.0.1:8765/api/product/report_export_status.json\n"
+        "VITE_ZMATRIX_DATA_QUALITY_STATUS_URL=http://127.0.0.1:8765/api/product/data_quality_status.json\n"
         "VITE_ZMATRIX_COCKPIT_MANIFEST_URL=http://127.0.0.1:8765/api/product/cockpit_manifest.json\n"
         "VITE_ZMATRIX_AGENT_BRIDGE_URL=http://127.0.0.1:8765/api/product/agent_bridge.json\n"
         "VITE_ZMATRIX_AGENT_DRAFT_URL=http://127.0.0.1:8765/api/product/agent_draft.json\n"
@@ -195,6 +197,14 @@ def test_local_backend_serves_health_and_cockpit_packet(tmp_path: Path):
         assert report_export["status"] == "Z_MATRIX_REPORT_EXPORT_READY"
         assert report_export["artifact_policy"] == "LOCAL_FILES_ONLY"
         assert report_export["safety"]["real_trade"] == "BLOCKED"
+
+        conn.request("GET", "/api/product/data_quality_status.json")
+        data_quality_response = conn.getresponse()
+        data_quality = json.loads(data_quality_response.read().decode("utf-8"))
+        assert data_quality_response.status == 200
+        assert data_quality["status"] == "Z_MATRIX_DATA_QUALITY_STATUS_READY"
+        assert data_quality["data_policy"]["raw_vendor_data_included"] is False
+        assert data_quality["safety"]["broker_runtime"] == "BLOCKED"
 
         conn.request("GET", "/api/product/cockpit_manifest.json")
         manifest_response = conn.getresponse()
@@ -303,6 +313,61 @@ def test_report_export_status_maps_exportable_local_artifacts():
     assert status["safety"]["real_trade"] == "BLOCKED"
 
 
+def test_data_quality_status_maps_vendor_manifests_and_quality_evidence(tmp_path: Path):
+    root = tmp_path / "repo"
+    vendor_root = root / "data/research_db/market_data/vendor/tushare_5y"
+    run_root = vendor_root / "20260613"
+    run_root.mkdir(parents=True)
+    (run_root / "manifest.json").write_text(
+        json.dumps(
+            {
+                "status": "VENDOR_MARKET_DATA_INGESTION_BUILT",
+                "source_vendor": "TUSHARE",
+                "write_scope": "LOCAL_VENDOR_STORE_ONLY",
+                "symbol_count": 3,
+                "file_count": 5,
+                "failure_count": 0,
+                "window": {"start_date": "20210101", "end_date": "20260613", "years": 5},
+                "endpoints": {"daily": {"row_count": 12}},
+                "runtime_guard": {"broker_runtime": "BLOCKED", "real_trade": "BLOCKED"},
+            }
+        ),
+        encoding="utf-8",
+    )
+    quality_files = {
+        "runtime_reports/cases/v8_large_data_manifest.json": {"status": "V8_LARGE_DATA_MANIFEST_BUILT"},
+        "runtime_reports/cases/v8_large_data_manifest_audit.json": {"status": "V8_LARGE_DATA_MANIFEST_AUDIT_PASS"},
+        "runtime_reports/cases/v12_4_7_price_data_schema_validation.json": {"status": "V12_4_7_PRICE_DATA_SCHEMA_VALIDATION_BUILT"},
+        "runtime_reports/cases/v13_1_3_1_strict_source_schema_validation.json": {"status": "V13_1_3_1_STRICT_SOURCE_SCHEMA_VALIDATION_BUILT"},
+        "runtime_reports/cases/core_12_real_market_data_readiness.json": {"summary": {"ready_for_real_return": 12}},
+    }
+    for relative, payload in quality_files.items():
+        path = root / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(payload), encoding="utf-8")
+    ledger = root / "data/research_db/governance/source_health_ledger.jsonl"
+    ledger.parent.mkdir(parents=True, exist_ok=True)
+    ledger.write_text(
+        json.dumps({"source_id": "tushare", "ok_count": 1, "error_count": 0, "freshness_status": "FRESH", "usable_now": True})
+        + "\n",
+        encoding="utf-8",
+    )
+
+    status = build_data_quality_status(ProductRuntimeConfig(repo_root=root, vendor_root=vendor_root))
+
+    assert status["status"] == "Z_MATRIX_DATA_QUALITY_STATUS_READY"
+    assert status["data_source"]["manifest_count"] == 1
+    assert status["data_source"]["latest_manifest_status"] == "VENDOR_MARKET_DATA_INGESTION_BUILT"
+    assert status["data_source"]["source_vendor"] == "TUSHARE"
+    assert status["quality_evidence"]["ready_count"] >= 4
+    assert status["source_health"]["source_count"] == 1
+    assert status["privacy_guardrail"]["tracked_private_market_data_violation_count"] == 0
+    assert status["data_policy"]["raw_vendor_data_included"] is False
+    assert status["data_policy"]["secret_files_included"] is False
+    assert status["refresh_dry_plan"]["mode"] == "LOCAL_TERMINAL_MANUAL_DRY_PLAN"
+    assert status["safety"]["real_trade"] == "BLOCKED"
+
+
 def test_cockpit_manifest_maps_all_page_packets(tmp_path: Path):
     public_root = tmp_path / "public"
     public_root.mkdir()
@@ -373,6 +438,7 @@ def _make_runtime_root(root: Path) -> Path:
             "VITE_ZMATRIX_RESEARCH_STATUS_URL=http://127.0.0.1:8765/api/product/research_status.json\n"
             "VITE_ZMATRIX_RESEARCH_EVIDENCE_INDEX_URL=http://127.0.0.1:8765/api/product/research_evidence_index.json\n"
             "VITE_ZMATRIX_REPORT_EXPORT_STATUS_URL=http://127.0.0.1:8765/api/product/report_export_status.json\n"
+            "VITE_ZMATRIX_DATA_QUALITY_STATUS_URL=http://127.0.0.1:8765/api/product/data_quality_status.json\n"
             "VITE_ZMATRIX_COCKPIT_MANIFEST_URL=http://127.0.0.1:8765/api/product/cockpit_manifest.json\n"
             "VITE_ZMATRIX_AGENT_BRIDGE_URL=http://127.0.0.1:8765/api/product/agent_bridge.json\n"
             "VITE_ZMATRIX_AGENT_DRAFT_URL=http://127.0.0.1:8765/api/product/agent_draft.json\n"
@@ -392,6 +458,11 @@ def _make_runtime_root(root: Path) -> Path:
             '{"skill_id":"REPORT.READ","domain":"REPORT","router_ref":"y"}]\n'
         ),
         "data/research_db/market_data/vendor/tushare_5y/20260613/manifest.json": "{}\n",
+        "runtime_reports/cases/v8_large_data_manifest.json": '{"status":"V8_LARGE_DATA_MANIFEST_BUILT"}\n',
+        "runtime_reports/cases/v8_large_data_manifest_audit.json": '{"status":"V8_LARGE_DATA_MANIFEST_AUDIT_PASS"}\n',
+        "runtime_reports/cases/v12_4_7_price_data_schema_validation.json": '{"status":"V12_4_7_PRICE_DATA_SCHEMA_VALIDATION_BUILT"}\n',
+        "runtime_reports/cases/v13_1_3_1_strict_source_schema_validation.json": '{"status":"V13_1_3_1_STRICT_SOURCE_SCHEMA_VALIDATION_BUILT"}\n',
+        "runtime_reports/cases/core_12_real_market_data_readiness.json": '{"status":"CORE_12_READY"}\n',
     }
     for name in (
         "holdings_packet.json",

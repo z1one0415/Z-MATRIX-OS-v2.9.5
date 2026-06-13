@@ -182,6 +182,8 @@ export type ProductReadinessStatus = {
     ready_research_capabilities: number;
     research_evidence_groups: number;
     report_export_artifacts: number;
+    data_quality_evidence: number;
+    local_vendor_manifests: number;
     agent_intents: number;
     operator_actions: number;
     config_templates: number;
@@ -322,6 +324,85 @@ export type ProductReportExportStatus = {
   };
 };
 
+export type ProductDataQualityStatus = {
+  status: "Z_MATRIX_DATA_QUALITY_STATUS_READY" | "Z_MATRIX_DATA_QUALITY_STATUS_DEGRADED";
+  data_source: {
+    ready: boolean;
+    path: string;
+    resolved_path: string;
+    manifest_count: number;
+    latest_manifest: string;
+    latest_run_id: string;
+    latest_manifest_status: string;
+    source_vendor: string;
+    write_scope: "LOCAL_VENDOR_STORE_ONLY";
+    symbol_count: number;
+    file_count: number;
+    failure_count: number;
+    endpoint_count: number;
+    endpoints: string[];
+    window: {
+      start_date: string;
+      end_date: string;
+      years: number;
+    };
+    mode: "LOCAL_VENDOR_STORE_ONLY";
+  };
+  quality_evidence: {
+    ready_count: number;
+    required_count: number;
+    items: Array<{
+      id: string;
+      label: string;
+      path: string;
+      ready: boolean;
+      bytes: number;
+      status_field: string;
+      artifact_type: string;
+    }>;
+  };
+  source_health: {
+    status: "SOURCE_HEALTH_LEDGER_READY" | "SOURCE_HEALTH_LEDGER_EMPTY";
+    ledger_path: string;
+    source_count: number;
+    usable_count: number;
+    sources: Array<{
+      source_id: string;
+      ok_count: number;
+      error_count: number;
+      freshness_status: string;
+      usable_now: boolean;
+      blocked_reason: string;
+    }>;
+  };
+  privacy_guardrail: {
+    status: "PASS" | "FAILED";
+    scan_scope: "GIT_TRACKED_MARKET_DATA_FILES";
+    tracked_private_market_data_violation_count: number;
+    violations: string[];
+    production_allowed: false;
+  };
+  refresh_dry_plan: {
+    command: string;
+    mode: "LOCAL_TERMINAL_MANUAL_DRY_PLAN";
+    write_scope: "LOCAL_VENDOR_STORE_ONLY";
+    auto_run_enabled: false;
+  };
+  data_policy: {
+    raw_vendor_data_included: false;
+    private_account_data_included: false;
+    secret_files_included: false;
+    repository_commit_allowed: false;
+    local_vendor_store_only: true;
+  };
+  safety: {
+    alpha_claim: "BLOCKED";
+    promotion: "BLOCKED";
+    broker_runtime: "BLOCKED";
+    real_trade: "BLOCKED";
+  };
+};
+
 export type ProductCockpitRoute = {
   id: string;
   label: string;
@@ -377,6 +458,7 @@ export type SettingsPageData = {
   researchStatus: ProductResearchStatus;
   researchEvidence: ProductResearchEvidenceIndex;
   reportExport: ProductReportExportStatus;
+  dataQuality: ProductDataQualityStatus;
   cockpitManifest: ProductCockpitManifest;
   safety: SettingsSafety;
 };
@@ -495,6 +577,8 @@ const defaultProductReadiness: ProductReadinessStatus = {
     ready_research_capabilities: 0,
     research_evidence_groups: 0,
     report_export_artifacts: 0,
+    data_quality_evidence: 0,
+    local_vendor_manifests: 0,
     agent_intents: 0,
     operator_actions: 0,
     config_templates: 0,
@@ -524,6 +608,99 @@ const defaultReportExport: ProductReportExportStatus = {
     private_account_data_included: false,
     secret_files_included: false,
     local_files_only: true
+  },
+  safety: {
+    alpha_claim: "BLOCKED",
+    promotion: "BLOCKED",
+    broker_runtime: "BLOCKED",
+    real_trade: "BLOCKED"
+  }
+};
+
+const defaultDataQuality: ProductDataQualityStatus = {
+  status: "Z_MATRIX_DATA_QUALITY_STATUS_DEGRADED",
+  data_source: {
+    ready: false,
+    path: "data/research_db/market_data/vendor/tushare_5y",
+    resolved_path: "data/research_db/market_data/vendor/tushare_5y",
+    manifest_count: 0,
+    latest_manifest: "",
+    latest_run_id: "",
+    latest_manifest_status: "",
+    source_vendor: "TUSHARE",
+    write_scope: "LOCAL_VENDOR_STORE_ONLY",
+    symbol_count: 0,
+    file_count: 0,
+    failure_count: 0,
+    endpoint_count: 0,
+    endpoints: [],
+    window: {
+      start_date: "",
+      end_date: "",
+      years: 0
+    },
+    mode: "LOCAL_VENDOR_STORE_ONLY"
+  },
+  quality_evidence: {
+    ready_count: 0,
+    required_count: 6,
+    items: [
+      {
+        id: "v8-large-data-manifest",
+        label: "V8 大数据 manifest",
+        path: "runtime_reports/cases/v8_large_data_manifest.json",
+        ready: false,
+        bytes: 0,
+        status_field: "",
+        artifact_type: "json"
+      },
+      {
+        id: "price-data-schema-validation",
+        label: "价格数据 schema 验证",
+        path: "runtime_reports/cases/v12_4_7_price_data_schema_validation.json",
+        ready: false,
+        bytes: 0,
+        status_field: "",
+        artifact_type: "json"
+      },
+      {
+        id: "core-real-market-data-readiness",
+        label: "Core 12 真实行情就绪",
+        path: "runtime_reports/cases/core_12_real_market_data_readiness.json",
+        ready: false,
+        bytes: 0,
+        status_field: "",
+        artifact_type: "json"
+      }
+    ]
+  },
+  source_health: {
+    status: "SOURCE_HEALTH_LEDGER_EMPTY",
+    ledger_path: "data/research_db/governance/source_health_ledger.jsonl",
+    source_count: 0,
+    usable_count: 0,
+    sources: []
+  },
+  privacy_guardrail: {
+    status: "PASS",
+    scan_scope: "GIT_TRACKED_MARKET_DATA_FILES",
+    tracked_private_market_data_violation_count: 0,
+    violations: [],
+    production_allowed: false
+  },
+  refresh_dry_plan: {
+    command:
+      "PYTHONPATH=. python3 scripts/data/ingest_tushare_market_data.py --symbols 601899,002472,300750 --end-date 20260613 --years 5 --endpoints stock_basic,trade_cal,daily,adj_factor,daily_basic --dry-plan",
+    mode: "LOCAL_TERMINAL_MANUAL_DRY_PLAN",
+    write_scope: "LOCAL_VENDOR_STORE_ONLY",
+    auto_run_enabled: false
+  },
+  data_policy: {
+    raw_vendor_data_included: false,
+    private_account_data_included: false,
+    secret_files_included: false,
+    repository_commit_allowed: false,
+    local_vendor_store_only: true
   },
   safety: {
     alpha_claim: "BLOCKED",
@@ -1057,6 +1234,7 @@ const zPrimeSettings: Omit<SettingsPageData, "workspaceId"> = {
   researchStatus: defaultResearchStatus,
   researchEvidence: defaultResearchEvidence,
   reportExport: defaultReportExport,
+  dataQuality: defaultDataQuality,
   cockpitManifest: defaultCockpitManifest,
   safety
 };
@@ -1093,6 +1271,7 @@ function cloneSettings(packet: SettingsPageData): SettingsPageData {
     researchStatus: cloneResearchStatus(packet.researchStatus),
     researchEvidence: cloneResearchEvidence(packet.researchEvidence),
     reportExport: cloneReportExport(packet.reportExport),
+    dataQuality: cloneDataQuality(packet.dataQuality),
     cockpitManifest: cloneCockpitManifest(packet.cockpitManifest),
     safety: { ...packet.safety }
   };
@@ -1100,13 +1279,14 @@ function cloneSettings(packet: SettingsPageData): SettingsPageData {
 
 export async function getSettingsPageData(session: AuthSession | null): Promise<SettingsPageData> {
   const current = requireSession(session);
-  const [productRuntime, productReadiness, operatorActions, researchStatus, researchEvidence, reportExport, cockpitManifest] = await Promise.all([
+  const [productRuntime, productReadiness, operatorActions, researchStatus, researchEvidence, reportExport, dataQuality, cockpitManifest] = await Promise.all([
     loadProductRuntimeStatus(),
     loadProductReadiness(),
     loadOperatorActions(),
     loadResearchStatus(),
     loadResearchEvidence(),
     loadReportExport(),
+    loadDataQuality(),
     loadCockpitManifest()
   ]);
   return cloneSettings({
@@ -1118,6 +1298,7 @@ export async function getSettingsPageData(session: AuthSession | null): Promise<
     researchStatus,
     researchEvidence,
     reportExport,
+    dataQuality,
     cockpitManifest
   });
 }
@@ -1172,6 +1353,10 @@ function getResearchEvidenceUrl(): string {
 
 function getReportExportUrl(): string {
   return import.meta.env.VITE_ZMATRIX_REPORT_EXPORT_STATUS_URL || "/api/product/report_export_status.json";
+}
+
+function getDataQualityUrl(): string {
+  return import.meta.env.VITE_ZMATRIX_DATA_QUALITY_STATUS_URL || "/api/product/data_quality_status.json";
 }
 
 function getCockpitManifestUrl(): string {
@@ -1273,6 +1458,25 @@ async function loadReportExport(): Promise<ProductReportExportStatus> {
   }
 }
 
+async function loadDataQuality(): Promise<ProductDataQualityStatus> {
+  if (typeof fetch !== "function") {
+    return cloneDataQuality(defaultDataQuality);
+  }
+  try {
+    const response = await fetch(getDataQualityUrl(), {
+      method: "GET",
+      headers: { Accept: "application/json" }
+    });
+    if (!response.ok) {
+      return cloneDataQuality(defaultDataQuality);
+    }
+    const packet = (await response.json()) as ProductDataQualityStatus;
+    return normalizeDataQuality(packet);
+  } catch {
+    return cloneDataQuality(defaultDataQuality);
+  }
+}
+
 async function loadOperatorActions(): Promise<ProductOperatorActions> {
   if (typeof fetch !== "function") {
     return cloneOperatorActions(defaultOperatorActions);
@@ -1334,6 +1538,8 @@ function normalizeProductReadiness(packet: ProductReadinessStatus): ProductReadi
       ready_research_capabilities: Number(packet.summary?.ready_research_capabilities ?? 0),
       research_evidence_groups: Number(packet.summary?.research_evidence_groups ?? 0),
       report_export_artifacts: Number(packet.summary?.report_export_artifacts ?? 0),
+      data_quality_evidence: Number(packet.summary?.data_quality_evidence ?? 0),
+      local_vendor_manifests: Number(packet.summary?.local_vendor_manifests ?? 0),
       agent_intents: Number(packet.summary?.agent_intents ?? 0),
       operator_actions: Number(packet.summary?.operator_actions ?? 0),
       config_templates: Number(packet.summary?.config_templates ?? 0),
@@ -1536,6 +1742,116 @@ function normalizeReportExport(packet: ProductReportExportStatus): ProductReport
       private_account_data_included: false,
       secret_files_included: false,
       local_files_only: true
+    },
+    safety: {
+      alpha_claim: "BLOCKED",
+      promotion: "BLOCKED",
+      broker_runtime: "BLOCKED",
+      real_trade: "BLOCKED"
+    }
+  };
+}
+
+function cloneDataQuality(packet: ProductDataQualityStatus): ProductDataQualityStatus {
+  return {
+    ...packet,
+    data_source: {
+      ...packet.data_source,
+      endpoints: [...packet.data_source.endpoints],
+      window: { ...packet.data_source.window }
+    },
+    quality_evidence: {
+      ...packet.quality_evidence,
+      items: packet.quality_evidence.items.map((item) => ({ ...item }))
+    },
+    source_health: {
+      ...packet.source_health,
+      sources: packet.source_health.sources.map((item) => ({ ...item }))
+    },
+    privacy_guardrail: {
+      ...packet.privacy_guardrail,
+      violations: [...packet.privacy_guardrail.violations]
+    },
+    refresh_dry_plan: { ...packet.refresh_dry_plan },
+    data_policy: { ...packet.data_policy },
+    safety: { ...packet.safety }
+  };
+}
+
+function normalizeDataQuality(packet: ProductDataQualityStatus): ProductDataQualityStatus {
+  const evidenceItems = Array.isArray(packet.quality_evidence?.items) ? packet.quality_evidence.items : [];
+  const sources = Array.isArray(packet.source_health?.sources) ? packet.source_health.sources : [];
+  const violations = Array.isArray(packet.privacy_guardrail?.violations) ? packet.privacy_guardrail.violations : [];
+  return {
+    status: packet.status === "Z_MATRIX_DATA_QUALITY_STATUS_READY" ? "Z_MATRIX_DATA_QUALITY_STATUS_READY" : "Z_MATRIX_DATA_QUALITY_STATUS_DEGRADED",
+    data_source: {
+      ready: Boolean(packet.data_source?.ready),
+      path: String(packet.data_source?.path ?? defaultDataQuality.data_source.path),
+      resolved_path: String(packet.data_source?.resolved_path ?? defaultDataQuality.data_source.resolved_path),
+      manifest_count: Number(packet.data_source?.manifest_count ?? 0),
+      latest_manifest: String(packet.data_source?.latest_manifest ?? ""),
+      latest_run_id: String(packet.data_source?.latest_run_id ?? ""),
+      latest_manifest_status: String(packet.data_source?.latest_manifest_status ?? ""),
+      source_vendor: String(packet.data_source?.source_vendor ?? "TUSHARE"),
+      write_scope: "LOCAL_VENDOR_STORE_ONLY",
+      symbol_count: Number(packet.data_source?.symbol_count ?? 0),
+      file_count: Number(packet.data_source?.file_count ?? 0),
+      failure_count: Number(packet.data_source?.failure_count ?? 0),
+      endpoint_count: Number(packet.data_source?.endpoint_count ?? 0),
+      endpoints: Array.isArray(packet.data_source?.endpoints) ? packet.data_source.endpoints.map(String) : [],
+      window: {
+        start_date: String(packet.data_source?.window?.start_date ?? ""),
+        end_date: String(packet.data_source?.window?.end_date ?? ""),
+        years: Number(packet.data_source?.window?.years ?? 0)
+      },
+      mode: "LOCAL_VENDOR_STORE_ONLY"
+    },
+    quality_evidence: {
+      ready_count: Number(packet.quality_evidence?.ready_count ?? 0),
+      required_count: Number(packet.quality_evidence?.required_count ?? defaultDataQuality.quality_evidence.required_count),
+      items: evidenceItems.map((item) => ({
+        id: String(item.id ?? "data-quality-evidence"),
+        label: String(item.label ?? "数据质量证据"),
+        path: String(item.path ?? ""),
+        ready: Boolean(item.ready),
+        bytes: Number(item.bytes ?? 0),
+        status_field: String(item.status_field ?? ""),
+        artifact_type: String(item.artifact_type ?? "file")
+      }))
+    },
+    source_health: {
+      status: packet.source_health?.status === "SOURCE_HEALTH_LEDGER_READY" ? "SOURCE_HEALTH_LEDGER_READY" : "SOURCE_HEALTH_LEDGER_EMPTY",
+      ledger_path: String(packet.source_health?.ledger_path ?? defaultDataQuality.source_health.ledger_path),
+      source_count: Number(packet.source_health?.source_count ?? 0),
+      usable_count: Number(packet.source_health?.usable_count ?? 0),
+      sources: sources.map((item) => ({
+        source_id: String(item.source_id ?? ""),
+        ok_count: Number(item.ok_count ?? 0),
+        error_count: Number(item.error_count ?? 0),
+        freshness_status: String(item.freshness_status ?? "UNKNOWN"),
+        usable_now: Boolean(item.usable_now),
+        blocked_reason: String(item.blocked_reason ?? "")
+      }))
+    },
+    privacy_guardrail: {
+      status: packet.privacy_guardrail?.status === "FAILED" ? "FAILED" : "PASS",
+      scan_scope: "GIT_TRACKED_MARKET_DATA_FILES",
+      tracked_private_market_data_violation_count: Number(packet.privacy_guardrail?.tracked_private_market_data_violation_count ?? 0),
+      violations: violations.map(String),
+      production_allowed: false
+    },
+    refresh_dry_plan: {
+      command: String(packet.refresh_dry_plan?.command ?? defaultDataQuality.refresh_dry_plan.command),
+      mode: "LOCAL_TERMINAL_MANUAL_DRY_PLAN",
+      write_scope: "LOCAL_VENDOR_STORE_ONLY",
+      auto_run_enabled: false
+    },
+    data_policy: {
+      raw_vendor_data_included: false,
+      private_account_data_included: false,
+      secret_files_included: false,
+      repository_commit_allowed: false,
+      local_vendor_store_only: true
     },
     safety: {
       alpha_claim: "BLOCKED",

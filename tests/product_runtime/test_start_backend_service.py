@@ -60,6 +60,7 @@ def _make_env_template_root(root: Path) -> Path:
         "VITE_ZMATRIX_RESEARCH_STATUS_URL=http://127.0.0.1:8765/api/product/research_status.json\n"
         "VITE_ZMATRIX_RESEARCH_EVIDENCE_INDEX_URL=http://127.0.0.1:8765/api/product/research_evidence_index.json\n"
         "VITE_ZMATRIX_REPORT_EXPORT_STATUS_URL=http://127.0.0.1:8765/api/product/report_export_status.json\n"
+        "VITE_ZMATRIX_DATA_QUALITY_STATUS_URL=http://127.0.0.1:8765/api/product/data_quality_status.json\n"
         "VITE_ZMATRIX_COCKPIT_MANIFEST_URL=http://127.0.0.1:8765/api/product/cockpit_manifest.json\n"
         "VITE_ZMATRIX_AGENT_BRIDGE_URL=http://127.0.0.1:8765/api/product/agent_bridge.json\n"
         "VITE_ZMATRIX_AGENT_DRAFT_URL=http://127.0.0.1:8765/api/product/agent_draft.json\n"

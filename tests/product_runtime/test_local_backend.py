@@ -8,6 +8,7 @@ from pathlib import Path
 
 from zmatrix.product_runtime.local_backend import (
     ProductRuntimeConfig,
+    build_agent_bridge_status,
     build_operator_actions,
     build_product_status,
     build_research_status,
@@ -43,6 +44,7 @@ def test_product_status_reports_cockpit_and_registry(tmp_path: Path):
     assert status["cockpit"]["packet_count"] == 5
     assert status["registry"]["skill_count"] == 2
     assert status["registry"]["domain_count"] == 2
+    assert status["capabilities"]["agent_bridge"] is True
     assert status["safety"]["broker_runtime"] == "BLOCKED"
     assert status["safety"]["real_trade"] == "BLOCKED"
 
@@ -105,6 +107,14 @@ def test_local_backend_serves_health_and_cockpit_packet(tmp_path: Path):
         assert research_response.status == 200
         assert research["capability_count"] >= 8
         assert research["safety"]["broker_runtime"] == "BLOCKED"
+
+        conn.request("GET", "/api/product/agent_bridge.json")
+        bridge_response = conn.getresponse()
+        bridge = json.loads(bridge_response.read().decode("utf-8"))
+        assert bridge_response.status == 200
+        assert bridge["default_agent"] == "Hermes"
+        assert bridge["routing"]["human_review_required"] is True
+        assert bridge["routing"]["broker_runtime"] == "BLOCKED"
     finally:
         server.shutdown()
         server.server_close()
@@ -130,4 +140,19 @@ def test_research_status_maps_product_capabilities_to_repository_paths():
     assert status["ready_count"] >= 6
     assert {item["id"] for item in status["capabilities"]} >= {"factor-library", "historical-oos", "gatekeeper-audit"}
     assert status["report_export"]["artifact_policy"] == "LOCAL_FILES_ONLY"
+    assert status["safety"]["real_trade"] == "BLOCKED"
+
+
+def test_agent_bridge_status_is_research_draft_only():
+    status = build_agent_bridge_status()
+
+    assert status["default_agent"] == "Hermes"
+    assert status["interaction_mode"] == "NATURAL_LANGUAGE_RESEARCH_DRAFT"
+    assert status["llm_runtime"]["key_material"] == "ENV_ONLY"
+    assert status["llm_runtime"]["external_call_from_backend"] == "DISABLED_BY_DEFAULT"
+    assert status["routing"]["max_risk_level"] == "R2_DRAFT"
+    assert status["routing"]["proposal_required"] is True
+    assert status["routing"]["human_review_required"] is True
+    assert status["routing"]["direct_command_runtime"] == "BLOCKED"
+    assert status["safety"]["broker_runtime"] == "BLOCKED"
     assert status["safety"]["real_trade"] == "BLOCKED"

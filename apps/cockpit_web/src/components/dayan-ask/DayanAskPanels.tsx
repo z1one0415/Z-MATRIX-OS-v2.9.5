@@ -488,9 +488,13 @@ export function DayanSystemLine({ data }: { data: DayanAskPageData }) {
         可召法门 {data.systemStatus.registeredMethodCount}
       </span>
       <span>领域 {data.systemStatus.concreteDomainCount}</span>
+      <span>随侍 {data.agentBridge.default_agent}</span>
+      <span>问答能力 {data.agentBridge.allowed_intents.length}</span>
       <span>最高边界 草案</span>
       <span>工作流 仅纸面</span>
+      <span>人审锁 已开启</span>
       <span>正式库改写 已阻断</span>
+      <span>命令通道 已阻断</span>
     </section>
   );
 }

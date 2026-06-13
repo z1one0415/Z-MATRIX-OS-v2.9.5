@@ -143,6 +143,53 @@ export type AskConversation = {
   messages: AskMessage[];
 };
 
+export type AgentBridgeIntent = {
+  id: string;
+  label: string;
+  output_target: "CHAT_ONLY" | "REPORT_DRAFT" | "AUDIT_CHECK";
+  requires_review: boolean;
+};
+
+export type AgentBridgeStatus = {
+  status: "Z_MATRIX_AGENT_BRIDGE_READY" | "Z_MATRIX_AGENT_BRIDGE_DEGRADED";
+  workspace_id: string;
+  generated_at: string;
+  default_agent: "Hermes";
+  interaction_mode: "NATURAL_LANGUAGE_RESEARCH_DRAFT";
+  llm_runtime: {
+    provider: "ENV_CONFIGURED_BY_USER";
+    key_material: "ENV_ONLY";
+    response_storage: "DRAFT_LAYER_ONLY";
+    external_call_from_backend: "DISABLED_BY_DEFAULT";
+  };
+  registry: {
+    ready: boolean;
+    skill_count: number;
+    domain_count: number;
+    concrete_skill_count: number;
+  };
+  allowed_intents: AgentBridgeIntent[];
+  routing: {
+    max_risk_level: "R2_DRAFT";
+    proposal_required: boolean;
+    human_review_required: boolean;
+    direct_command_runtime: "BLOCKED";
+    formal_memory_write: "BLOCKED";
+    rule_enable: "BLOCKED";
+    broker_runtime: "BLOCKED";
+    real_trade: "BLOCKED";
+  };
+  safety: {
+    alpha_claim: "BLOCKED";
+    promotion: "BLOCKED";
+    broker_runtime: "BLOCKED";
+    real_trade: "BLOCKED";
+    direct_command_runtime: "BLOCKED";
+    formal_memory_write: "BLOCKED";
+    requires_user_confirmation: boolean;
+  };
+};
+
 export type DayanAction =
   | "插入法门"
   | "生成链路草案"
@@ -191,6 +238,7 @@ export type DayanAskPageData = {
     workflowMode: "DRY_RUN_ONLY";
     registryMutation: "BLOCKED";
   };
+  agentBridge: AgentBridgeStatus;
   backendMapping: {
     registry: "skill_registry.generated.json";
     contracts: "skill_contract_registry.json";
@@ -211,6 +259,50 @@ const safety: DayanSafety = {
   memoryDirectWriteAllowed: false,
   ruleDirectEnableAllowed: false,
   dataScope: "WORKSPACE_SCOPED"
+};
+
+const defaultAgentBridgeStatus: AgentBridgeStatus = {
+  status: "Z_MATRIX_AGENT_BRIDGE_DEGRADED",
+  workspace_id: "ws_personal_z_prime",
+  generated_at: "",
+  default_agent: "Hermes",
+  interaction_mode: "NATURAL_LANGUAGE_RESEARCH_DRAFT",
+  llm_runtime: {
+    provider: "ENV_CONFIGURED_BY_USER",
+    key_material: "ENV_ONLY",
+    response_storage: "DRAFT_LAYER_ONLY",
+    external_call_from_backend: "DISABLED_BY_DEFAULT"
+  },
+  registry: {
+    ready: false,
+    skill_count: 0,
+    domain_count: 0,
+    concrete_skill_count: 0
+  },
+  allowed_intents: [
+    { id: "explain-system-status", label: "解释系统状态", output_target: "CHAT_ONLY", requires_review: false },
+    { id: "build-research-chain-draft", label: "研究链路草案", output_target: "REPORT_DRAFT", requires_review: true },
+    { id: "prepare-audit-reference", label: "审计引用整理", output_target: "AUDIT_CHECK", requires_review: true }
+  ],
+  routing: {
+    max_risk_level: "R2_DRAFT",
+    proposal_required: true,
+    human_review_required: true,
+    direct_command_runtime: "BLOCKED",
+    formal_memory_write: "BLOCKED",
+    rule_enable: "BLOCKED",
+    broker_runtime: "BLOCKED",
+    real_trade: "BLOCKED"
+  },
+  safety: {
+    alpha_claim: "BLOCKED",
+    promotion: "BLOCKED",
+    broker_runtime: "BLOCKED",
+    real_trade: "BLOCKED",
+    direct_command_runtime: "BLOCKED",
+    formal_memory_write: "BLOCKED",
+    requires_user_confirmation: true
+  }
 };
 
 const skillCategories: AskSkillCategory[] = [
@@ -360,7 +452,7 @@ const skillCategories: AskSkillCategory[] = [
   {
     id: "case-replay",
     name: "案例复盘",
-    description: "成功、失败、错失与执行偏差案例",
+    description: "成功、失败、错失与行动偏差案例",
     skillCount: 10,
     safetyLevel: "DRAFT_ONLY",
     skills: [
@@ -473,7 +565,7 @@ const zPrimeData: DayanAskPageData = {
     { id: "industry", name: "产业洞察阵", description: "产业链与格局", promptTemplate: "请用产业洞察阵梳理产业链格局。", composedSkillIds: ["chain-map", "council-review"], safetyLevel: "DRAFT_ONLY" },
     { id: "value", name: "价值定价阵", description: "估值与安全边际", promptTemplate: "请用价值定价阵评估估值安全边际。", composedSkillIds: ["research-report"], safetyLevel: "PROPOSAL_REQUIRED" },
     { id: "event", name: "事件推演阵", description: "事件与冲击", promptTemplate: "请用事件推演阵判断催化路径。", composedSkillIds: ["catalyst-check"], safetyLevel: "DRAFT_ONLY" },
-    { id: "execution", name: "执行复核阵", description: "纪律与偏差", promptTemplate: "请用执行复核阵检查研究结论中的行动风险。", composedSkillIds: ["holding-review"], safetyLevel: "PROPOSAL_REQUIRED" },
+    { id: "execution", name: "纪律复核阵", description: "纪律与偏差", promptTemplate: "请用纪律复核阵检查研究结论中的行动风险。", composedSkillIds: ["holding-review"], safetyLevel: "PROPOSAL_REQUIRED" },
     { id: "replay", name: "复盘归因阵", description: "复盘与迭代", promptTemplate: "请用复盘归因阵生成可沉淀经验。", composedSkillIds: ["case-draft", "memory-draft"], safetyLevel: "PROPOSAL_REQUIRED" }
   ],
   hermesGuidance: {
@@ -500,7 +592,7 @@ const zPrimeData: DayanAskPageData = {
     { id: "council", title: "十二天官问策", description: "宏观、产业、公司多维推演", entries: ["全席会审", "反方审查", "证据缺口审查"] },
     { id: "catalyst", title: "催化研判", description: "事件强度与传导路径", entries: ["催化体检", "退潮识别", "真假信号"] },
     { id: "industry", title: "产业链研究", description: "上下游格局与演变", entries: ["链主识别", "价值捕获位置", "同链对比"] },
-    { id: "execution", title: "执行复核", description: "纪律可行性与风控检查", entries: ["窗口复核", "流动性复核", "偏差复盘"] }
+    { id: "execution", title: "纪律复核", description: "纪律可行性与风控检查", entries: ["窗口复核", "流动性复核", "偏差复盘"] }
   ],
   forgeCandidates: [
     {
@@ -572,6 +664,7 @@ const zPrimeData: DayanAskPageData = {
     workflowMode: "DRY_RUN_ONLY",
     registryMutation: "BLOCKED"
   },
+  agentBridge: defaultAgentBridgeStatus,
   backendMapping: {
     registry: "skill_registry.generated.json",
     contracts: "skill_contract_registry.json",
@@ -631,7 +724,20 @@ function cloneData(packet: DayanAskPageData, workspaceId: string): DayanAskPageD
     },
     voice: { ...packet.voice },
     systemStatus: { ...packet.systemStatus },
+    agentBridge: cloneAgentBridge(packet.agentBridge ?? defaultAgentBridgeStatus, workspaceId),
     backendMapping: { ...packet.backendMapping }
+  };
+}
+
+function cloneAgentBridge(packet: AgentBridgeStatus, workspaceId: string): AgentBridgeStatus {
+  return {
+    ...packet,
+    workspace_id: workspaceId,
+    llm_runtime: { ...packet.llm_runtime },
+    registry: { ...packet.registry },
+    allowed_intents: packet.allowed_intents.map((intent) => ({ ...intent })),
+    routing: { ...packet.routing },
+    safety: { ...packet.safety }
   };
 }
 
@@ -644,6 +750,17 @@ function getBackendDayanAskPacketUrl(): string | null {
     return null;
   }
   return "/api/cockpit/dayan_ask_packet.json";
+}
+
+function getAgentBridgeUrl(): string | null {
+  const configured = import.meta.env.VITE_ZMATRIX_AGENT_BRIDGE_URL as string | undefined;
+  if (configured) {
+    return configured;
+  }
+  if (import.meta.env.MODE === "test" || typeof window === "undefined" || typeof fetch !== "function") {
+    return null;
+  }
+  return "/api/product/agent_bridge.json";
 }
 
 async function loadBackendDayanAskPacket(workspaceId: string): Promise<DayanAskPageData | null> {
@@ -669,18 +786,44 @@ async function loadBackendDayanAskPacket(workspaceId: string): Promise<DayanAskP
   }
 }
 
+async function loadAgentBridgeStatus(workspaceId: string): Promise<AgentBridgeStatus> {
+  const bridgeUrl = getAgentBridgeUrl();
+  if (!bridgeUrl) {
+    return cloneAgentBridge(defaultAgentBridgeStatus, workspaceId);
+  }
+  try {
+    const response = await fetch(bridgeUrl, {
+      headers: { accept: "application/json" },
+      cache: "no-store"
+    });
+    if (!response.ok) {
+      return cloneAgentBridge(defaultAgentBridgeStatus, workspaceId);
+    }
+    const packet = (await response.json()) as AgentBridgeStatus;
+    if (packet.workspace_id && packet.workspace_id !== workspaceId) {
+      return cloneAgentBridge(defaultAgentBridgeStatus, workspaceId);
+    }
+    return cloneAgentBridge(packet, workspaceId);
+  } catch {
+    return cloneAgentBridge(defaultAgentBridgeStatus, workspaceId);
+  }
+}
+
 export async function getDayanAskPageData(session: AuthSession | null): Promise<DayanAskPageData> {
   const current = requireSession(session);
-  const backendPacket = await loadBackendDayanAskPacket(current.workspaceId);
+  const [backendPacket, agentBridge] = await Promise.all([
+    loadBackendDayanAskPacket(current.workspaceId),
+    loadAgentBridgeStatus(current.workspaceId)
+  ]);
   if (backendPacket) {
-    return cloneData(backendPacket, current.workspaceId);
+    return cloneData({ ...backendPacket, agentBridge }, current.workspaceId);
   }
   if (current.workspaceId === "ws_personal_z_prime") {
-    return cloneData(zPrimeData, current.workspaceId);
+    return cloneData({ ...zPrimeData, agentBridge }, current.workspaceId);
   }
 
   return {
-    ...cloneData(zPrimeData, current.workspaceId),
+    ...cloneData({ ...zPrimeData, agentBridge }, current.workspaceId),
     altar: {
       ...zPrimeData.altar,
       currentTopic: "等待研究主题输入",

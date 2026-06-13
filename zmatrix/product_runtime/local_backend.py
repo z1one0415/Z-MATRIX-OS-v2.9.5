@@ -104,6 +104,32 @@ RESEARCH_CAPABILITY_SPECS = (
         ),
     },
 )
+AGENT_BRIDGE_INTENTS = (
+    {
+        "id": "explain-system-status",
+        "label": "解释系统状态",
+        "output_target": "CHAT_ONLY",
+        "requires_review": False,
+    },
+    {
+        "id": "build-research-chain-draft",
+        "label": "研究链路草案",
+        "output_target": "REPORT_DRAFT",
+        "requires_review": True,
+    },
+    {
+        "id": "summarize-factor-evidence",
+        "label": "因子证据摘要",
+        "output_target": "REPORT_DRAFT",
+        "requires_review": True,
+    },
+    {
+        "id": "prepare-audit-reference",
+        "label": "审计引用整理",
+        "output_target": "AUDIT_CHECK",
+        "requires_review": True,
+    },
+)
 
 
 @dataclass(frozen=True)
@@ -139,6 +165,7 @@ def build_product_status(config: ProductRuntimeConfig | None = None) -> dict[str
             "backend_health": True,
             "cockpit_packets": packet_status["ready"],
             "agent_registry": registry_status["ready"],
+            "agent_bridge": registry_status["ready"],
             "vendor_data_ingestion": True,
             "monthly_refresh_dry_plan": True,
             "operator_actions": True,
@@ -253,6 +280,51 @@ def build_research_status(config: ProductRuntimeConfig | None = None) -> dict[st
     }
 
 
+def build_agent_bridge_status(config: ProductRuntimeConfig | None = None) -> dict[str, Any]:
+    cfg = config or ProductRuntimeConfig()
+    registry_status = _registry_status(cfg.registry_path)
+    ready = registry_status["ready"] and registry_status.get("skill_count", 0) > 0
+    return {
+        "status": "Z_MATRIX_AGENT_BRIDGE_READY" if ready else "Z_MATRIX_AGENT_BRIDGE_DEGRADED",
+        "workspace_id": cfg.workspace_id,
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "default_agent": "Hermes",
+        "interaction_mode": "NATURAL_LANGUAGE_RESEARCH_DRAFT",
+        "llm_runtime": {
+            "provider": "ENV_CONFIGURED_BY_USER",
+            "key_material": "ENV_ONLY",
+            "response_storage": "DRAFT_LAYER_ONLY",
+            "external_call_from_backend": "DISABLED_BY_DEFAULT",
+        },
+        "registry": {
+            "ready": registry_status["ready"],
+            "skill_count": registry_status.get("skill_count", 0),
+            "domain_count": registry_status.get("domain_count", 0),
+            "concrete_skill_count": registry_status.get("concrete_skill_count", 0),
+        },
+        "allowed_intents": list(AGENT_BRIDGE_INTENTS),
+        "routing": {
+            "max_risk_level": "R2_DRAFT",
+            "proposal_required": True,
+            "human_review_required": True,
+            "direct_command_runtime": "BLOCKED",
+            "formal_memory_write": "BLOCKED",
+            "rule_enable": "BLOCKED",
+            "broker_runtime": "BLOCKED",
+            "real_trade": "BLOCKED",
+        },
+        "safety": {
+            "alpha_claim": "BLOCKED",
+            "promotion": "BLOCKED",
+            "broker_runtime": "BLOCKED",
+            "real_trade": "BLOCKED",
+            "direct_command_runtime": "BLOCKED",
+            "formal_memory_write": "BLOCKED",
+            "requires_user_confirmation": True,
+        },
+    }
+
+
 def make_handler(config: ProductRuntimeConfig) -> type[BaseHTTPRequestHandler]:
     class ProductRuntimeHandler(BaseHTTPRequestHandler):
         server_version = "ZMatrixProductBackend/0.1"
@@ -267,6 +339,9 @@ def make_handler(config: ProductRuntimeConfig) -> type[BaseHTTPRequestHandler]:
                 return
             if parsed.path == "/api/product/research_status.json":
                 self._send_json(build_research_status(config))
+                return
+            if parsed.path == "/api/product/agent_bridge.json":
+                self._send_json(build_agent_bridge_status(config))
                 return
             if parsed.path.startswith("/api/cockpit/"):
                 relative = unquote(parsed.path.removeprefix("/api/cockpit/"))

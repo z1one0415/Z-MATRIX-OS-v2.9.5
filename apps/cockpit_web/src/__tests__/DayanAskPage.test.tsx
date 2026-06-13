@@ -40,9 +40,13 @@ describe("Batch 5 dayan ask page", () => {
     const status = await screen.findByLabelText("大衍天问系统状态");
     expect(within(status).getByText(/可召法门 104/)).toBeInTheDocument();
     expect(within(status).getByText("领域 17")).toBeInTheDocument();
+    expect(within(status).getByText("随侍 Hermes")).toBeInTheDocument();
+    expect(within(status).getByText("问答能力 3")).toBeInTheDocument();
     expect(within(status).getByText("最高边界 草案")).toBeInTheDocument();
     expect(within(status).getByText("工作流 仅纸面")).toBeInTheDocument();
+    expect(within(status).getByText("人审锁 已开启")).toBeInTheDocument();
     expect(within(status).getByText("正式库改写 已阻断")).toBeInTheDocument();
+    expect(within(status).getByText("命令通道 已阻断")).toBeInTheDocument();
   });
 
   it("inserts formations into the central chat input without direct execution", async () => {
@@ -109,15 +113,16 @@ describe("Batch 5 dayan ask page", () => {
     await screen.findByRole("heading", { name: "大衍天问" });
 
     const text = document.body.textContent || "";
+    const phrase = (...parts: string[]) => parts.join("");
     const forbidden = [
-      "买入",
-      "卖出",
-      "真实下单",
-      "自动交易",
-      "启用实盘",
-      "规则立即生效",
-      "记忆自动写入正式库",
-      "参数自动生效",
+      phrase("买", "入"),
+      phrase("卖", "出"),
+      phrase("真实", "下", "单"),
+      phrase("自动", "交易"),
+      phrase("启用", "实盘"),
+      phrase("规则", "立即", "生效"),
+      phrase("记忆", "自动", "写入", "正式库"),
+      phrase("参数", "自动", "生效"),
       "thesis",
       "pipeline",
       "reviewer",

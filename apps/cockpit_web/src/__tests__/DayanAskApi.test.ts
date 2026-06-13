@@ -167,6 +167,71 @@ describe("Batch 5 dayan ask tenant-aware data", () => {
     expect(fetch).toHaveBeenCalledWith("/api/cockpit/dayan_ask_packet.json", expect.objectContaining({ cache: "no-store" }));
   });
 
+  it("loads the local Hermes bridge status when configured", async () => {
+    vi.stubEnv("VITE_ZMATRIX_AGENT_BRIDGE_URL", "/api/product/agent_bridge.json");
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async () =>
+        new Response(
+          JSON.stringify({
+            status: "Z_MATRIX_AGENT_BRIDGE_READY",
+            workspace_id: demoSession.workspaceId,
+            generated_at: "2026-06-13T00:00:00Z",
+            default_agent: "Hermes",
+            interaction_mode: "NATURAL_LANGUAGE_RESEARCH_DRAFT",
+            llm_runtime: {
+              provider: "ENV_CONFIGURED_BY_USER",
+              key_material: "ENV_ONLY",
+              response_storage: "DRAFT_LAYER_ONLY",
+              external_call_from_backend: "DISABLED_BY_DEFAULT"
+            },
+            registry: {
+              ready: true,
+              skill_count: 104,
+              domain_count: 17,
+              concrete_skill_count: 17
+            },
+            allowed_intents: [
+              { id: "explain-system-status", label: "解释系统状态", output_target: "CHAT_ONLY", requires_review: false },
+              { id: "build-research-chain-draft", label: "研究链路草案", output_target: "REPORT_DRAFT", requires_review: true },
+              { id: "prepare-audit-reference", label: "审计引用整理", output_target: "AUDIT_CHECK", requires_review: true },
+              { id: "summarize-factor-evidence", label: "因子证据摘要", output_target: "REPORT_DRAFT", requires_review: true }
+            ],
+            routing: {
+              max_risk_level: "R2_DRAFT",
+              proposal_required: true,
+              human_review_required: true,
+              direct_command_runtime: "BLOCKED",
+              formal_memory_write: "BLOCKED",
+              rule_enable: "BLOCKED",
+              broker_runtime: "BLOCKED",
+              real_trade: "BLOCKED"
+            },
+            safety: {
+              alpha_claim: "BLOCKED",
+              promotion: "BLOCKED",
+              broker_runtime: "BLOCKED",
+              real_trade: "BLOCKED",
+              direct_command_runtime: "BLOCKED",
+              formal_memory_write: "BLOCKED",
+              requires_user_confirmation: true
+            }
+          }),
+          { status: 200, headers: { "Content-Type": "application/json" } }
+        )
+      )
+    );
+
+    const packet = await getDayanAskPageData(demoSession);
+
+    expect(packet.agentBridge.status).toBe("Z_MATRIX_AGENT_BRIDGE_READY");
+    expect(packet.agentBridge.default_agent).toBe("Hermes");
+    expect(packet.agentBridge.allowed_intents.length).toBe(4);
+    expect(packet.agentBridge.routing.human_review_required).toBe(true);
+    expect(packet.agentBridge.safety.real_trade).toBe("BLOCKED");
+    expect(fetch).toHaveBeenCalledWith("/api/product/agent_bridge.json", expect.objectContaining({ cache: "no-store" }));
+  });
+
   it("returns isolated empty personal layers for another workspace", async () => {
     const packet = await getDayanAskPageData({
       ...demoSession,

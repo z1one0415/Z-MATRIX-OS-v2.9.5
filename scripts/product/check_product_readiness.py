@@ -6,23 +6,18 @@ from __future__ import annotations
 import argparse
 import json
 from dataclasses import dataclass, replace
-from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
 
+from zmatrix.product_runtime.config_env import first_env, first_env_int, load_local_env, merged_env
 from zmatrix.product_runtime.local_backend import (
+    READINESS_BLOCKED,
+    READINESS_PASS,
     ProductRuntimeConfig,
-    build_agent_bridge_status,
-    build_config_template_status,
-    build_operator_actions,
-    build_product_status,
-    build_research_status,
+    build_runtime_product_readiness,
 )
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-READINESS_PASS = "Z_MATRIX_LOCAL_PRODUCT_READINESS_PASS"
-READINESS_BLOCKED = "Z_MATRIX_LOCAL_PRODUCT_READINESS_BLOCKED"
 
 
 @dataclass(frozen=True)
@@ -31,94 +26,32 @@ class ReadinessOptions:
     config: ProductRuntimeConfig = ProductRuntimeConfig()
 
 
-def build_product_readiness(options: ReadinessOptions = ReadinessOptions()) -> dict[str, Any]:
+def build_product_readiness(options: ReadinessOptions = ReadinessOptions()) -> dict:
     root = options.root
     config = replace(options.config, repo_root=root)
-    product = build_product_status(config)
-    research = build_research_status(config)
-    bridge = build_agent_bridge_status(config)
-    actions = build_operator_actions(config)
-    config_templates = build_config_template_status(root)
-    checks = [
-        _file_check(root, "runbook", "docs/release/Z_MATRIX_OS_V4_PRO_LOCAL_WORKSTATION_RUNBOOK.md"),
-        *_config_template_checks(config_templates),
-        _file_check(root, "backend-service", "scripts/product/start_backend_service.py"),
-        _file_check(root, "local-launcher", "scripts/product/start_local_workstation.sh"),
-        _file_check(root, "report-export", "scripts/product/export_research_report_pack.py"),
-        _file_check(root, "product-smoke", "scripts/verify_z_matrix_product_smoke.sh"),
-        _status_check("product-runtime", product["status"] == "Z_MATRIX_PRODUCT_RUNTIME_READY", product["status"]),
-        _status_check("research-status", research["status"] == "Z_MATRIX_RESEARCH_STATUS_READY", research["status"]),
-        _status_check("agent-bridge", bridge["status"] == "Z_MATRIX_AGENT_BRIDGE_READY", bridge["status"]),
-        _status_check("operator-actions", actions["status"] == "Z_MATRIX_OPERATOR_ACTIONS_READY", actions["status"]),
-    ]
-    blocking_reasons = [item["id"] for item in checks if not item["ready"]]
-    return {
-        "status": READINESS_PASS if not blocking_reasons else READINESS_BLOCKED,
-        "generated_at": datetime.now(timezone.utc).isoformat(),
-        "scope": "LOCAL_PERSONAL_RESEARCH_WORKSTATION",
-        "checks": checks,
-        "blocking_reasons": blocking_reasons,
-        "summary": {
-            "cockpit_packets": product["cockpit"]["packet_count"],
-            "registered_skills": product["registry"]["skill_count"],
-            "research_capabilities": research["capability_count"],
-            "ready_research_capabilities": research["ready_count"],
-            "agent_intents": len(bridge["allowed_intents"]),
-            "operator_actions": len(actions["actions"]),
-            "config_templates": config_templates["ready_count"],
-            "configured_secret_refs": config_templates["configured_secret_refs"],
-            "required_secret_refs": config_templates["required_secret_refs"],
-        },
-        "safety": {
-            "alpha_claim": "BLOCKED",
-            "promotion": "BLOCKED",
-            "broker_runtime": "BLOCKED",
-            "real_trade": "BLOCKED",
-            "agent_direct_mutation": "BLOCKED",
-        },
-    }
-
-
-def _file_check(root: Path, check_id: str, relative: str) -> dict[str, Any]:
-    path = root / relative
-    return {
-        "id": check_id,
-        "ready": path.exists(),
-        "evidence": relative,
-    }
-
-
-def _status_check(check_id: str, ready: bool, evidence: str) -> dict[str, Any]:
-    return {
-        "id": check_id,
-        "ready": ready,
-        "evidence": evidence,
-    }
-
-
-def _config_template_checks(config_templates: dict[str, Any]) -> list[dict[str, Any]]:
-    checks = []
-    for item in config_templates["templates"]:
-        checks.append(
-            {
-                "id": item["id"],
-                "ready": item["ready"],
-                "evidence": item["path"],
-                "missing_required_keys": item["missing_required_keys"],
-                "unsafe_example_value_keys": item["unsafe_example_value_keys"],
-                "value_material": item["value_material"],
-            }
-        )
-    return checks
+    return build_runtime_product_readiness(config, root)
 
 
 def main() -> int:
+    local_env = load_local_env(REPO_ROOT / ".env")
+    runtime_env = merged_env(local_env)
     parser = argparse.ArgumentParser(description="Check Z-MATRIX local product readiness")
-    parser.add_argument("--host", default="127.0.0.1")
-    parser.add_argument("--port", type=int, default=8765)
-    parser.add_argument("--workspace-id", default="ws_personal_z_prime")
+    parser.add_argument("--host", default=first_env(runtime_env, ("Z_MATRIX_PRODUCT_HOST", "ZMATRIX_BACKEND_HOST"), "127.0.0.1"))
+    parser.add_argument("--port", type=int, default=first_env_int(runtime_env, ("Z_MATRIX_PRODUCT_PORT", "ZMATRIX_BACKEND_PORT"), 8765))
+    parser.add_argument("--workspace-id", default=first_env(runtime_env, ("Z_MATRIX_WORKSPACE_ID",), "ws_personal_z_prime"))
+    parser.add_argument("--public-root", default=first_env(runtime_env, ("Z_MATRIX_COCKPIT_PUBLIC_ROOT",), "apps/cockpit_web/public/api/cockpit"))
+    parser.add_argument("--registry-path", default="data/research_db/agent/registry/skill_registry.generated.json")
+    parser.add_argument("--vendor-root", default=first_env(runtime_env, ("Z_MATRIX_VENDOR_ROOT",), "data/research_db/market_data/vendor/tushare_5y"))
     args = parser.parse_args()
-    config = ProductRuntimeConfig(host=args.host, port=args.port, workspace_id=args.workspace_id)
+    config = ProductRuntimeConfig(
+        host=args.host,
+        port=args.port,
+        public_root=Path(args.public_root),
+        registry_path=Path(args.registry_path),
+        vendor_root=Path(args.vendor_root),
+        workspace_id=args.workspace_id,
+        env=runtime_env,
+    )
     packet = build_product_readiness(ReadinessOptions(config=config))
     print(json.dumps(packet, ensure_ascii=False, indent=2))
     return 0 if packet["status"] == READINESS_PASS else 1

@@ -51,6 +51,10 @@ describe("settings api tenant-aware contract", () => {
     expect(packet.productRuntime.registry.skill_count).toBeGreaterThanOrEqual(100);
     expect(packet.productRuntime.safety.broker_runtime).toBe("BLOCKED");
     expect(packet.productRuntime.safety.real_trade).toBe("BLOCKED");
+    expect(packet.productReadiness.scope).toBe("LOCAL_PERSONAL_RESEARCH_WORKSTATION");
+    expect(packet.productReadiness.summary.required_secret_refs).toBe(2);
+    expect(packet.productReadiness.safety.broker_runtime).toBe("BLOCKED");
+    expect(packet.productReadiness.safety.real_trade).toBe("BLOCKED");
     expect(packet.operatorActions.auto_run_enabled).toBe(false);
     expect(packet.operatorActions.human_review_required).toBe(true);
     expect(packet.operatorActions.actions.map((item) => item.id)).toEqual(expect.arrayContaining(["backend-check", "product-smoke", "product-readiness"]));

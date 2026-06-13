@@ -58,7 +58,10 @@ def _make_minimal_product_root(root: Path) -> Path:
         "apps/cockpit_web/README.md": "# cockpit\n",
         "apps/cockpit_web/package.json": "{}\n",
         "apps/cockpit_web/package-lock.json": "{}\n",
-        "apps/cockpit_web/.env.example": "VITE_ZMATRIX_PRODUCT_STATUS_URL=http://127.0.0.1:8765/api/product/status.json\n",
+        "apps/cockpit_web/.env.example": (
+            "VITE_ZMATRIX_PRODUCT_STATUS_URL=http://127.0.0.1:8765/api/product/status.json\n"
+            "VITE_ZMATRIX_PRODUCT_READINESS_URL=http://127.0.0.1:8765/api/product/readiness.json\n"
+        ),
         "apps/cockpit_web/dist/index.html": "<html></html>\n",
         "apps/cockpit_web/src/main.tsx": "export {}\n",
         "zmatrix/product_runtime/local_backend.py": "def build_product_status():\n    return {}\n",

@@ -50,6 +50,7 @@ cleanup() {
 trap cleanup EXIT INT TERM
 
 export VITE_ZMATRIX_PRODUCT_STATUS_URL="${BACKEND_URL}/api/product/status.json"
+export VITE_ZMATRIX_PRODUCT_READINESS_URL="${BACKEND_URL}/api/product/readiness.json"
 export VITE_ZMATRIX_OPERATOR_ACTIONS_URL="${BACKEND_URL}/api/product/operator_actions.json"
 export VITE_ZMATRIX_RESEARCH_STATUS_URL="${BACKEND_URL}/api/product/research_status.json"
 export VITE_ZMATRIX_AGENT_BRIDGE_URL="${BACKEND_URL}/api/product/agent_bridge.json"

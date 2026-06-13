@@ -12,6 +12,7 @@ from zmatrix.product_runtime.local_backend import (
     build_config_template_status,
     build_agent_research_draft,
     build_operator_actions,
+    build_runtime_product_readiness,
     build_product_status,
     build_research_status,
     make_handler,
@@ -55,6 +56,25 @@ def test_product_status_reports_cockpit_and_registry(tmp_path: Path):
     assert status["safety"]["real_trade"] == "BLOCKED"
 
 
+def test_product_readiness_reuses_backend_runtime_status(tmp_path: Path):
+    root = _make_runtime_root(tmp_path / "repo")
+    config = ProductRuntimeConfig(
+        repo_root=root,
+        public_root=root / "apps/cockpit_web/public/api/cockpit",
+        registry_path=root / "data/research_db/agent/registry/skill_registry.generated.json",
+        vendor_root=root / "data/research_db/market_data/vendor/tushare_5y",
+        env={("TUSHARE_" + "TOKEN"): "local-secret-value"},
+    )
+
+    readiness = build_runtime_product_readiness(config)
+
+    assert readiness["status"] == "Z_MATRIX_LOCAL_PRODUCT_READINESS_PASS"
+    assert readiness["blocking_reasons"] == []
+    assert readiness["summary"]["configured_secret_refs"] == 1
+    assert readiness["safety"]["broker_runtime"] == "BLOCKED"
+    assert "local-secret-value" not in json.dumps(readiness, ensure_ascii=False)
+
+
 def test_config_template_status_reports_env_references_without_values(tmp_path: Path):
     root = tmp_path / "repo"
     root.mkdir()
@@ -72,6 +92,7 @@ def test_config_template_status_reports_env_references_without_values(tmp_path: 
     cockpit_env.parent.mkdir(parents=True)
     cockpit_env.write_text(
         "VITE_ZMATRIX_PRODUCT_STATUS_URL=http://127.0.0.1:8765/api/product/status.json\n"
+        "VITE_ZMATRIX_PRODUCT_READINESS_URL=http://127.0.0.1:8765/api/product/readiness.json\n"
         "VITE_ZMATRIX_OPERATOR_ACTIONS_URL=http://127.0.0.1:8765/api/product/operator_actions.json\n"
         "VITE_ZMATRIX_RESEARCH_STATUS_URL=http://127.0.0.1:8765/api/product/research_status.json\n"
         "VITE_ZMATRIX_AGENT_BRIDGE_URL=http://127.0.0.1:8765/api/product/agent_bridge.json\n"
@@ -161,6 +182,13 @@ def test_local_backend_serves_health_and_cockpit_packet(tmp_path: Path):
         assert bridge["routing"]["human_review_required"] is True
         assert bridge["routing"]["broker_runtime"] == "BLOCKED"
 
+        conn.request("GET", "/api/product/readiness.json")
+        readiness_response = conn.getresponse()
+        readiness = json.loads(readiness_response.read().decode("utf-8"))
+        assert readiness_response.status == 200
+        assert readiness["scope"] == "LOCAL_PERSONAL_RESEARCH_WORKSTATION"
+        assert readiness["safety"]["real_trade"] == "BLOCKED"
+
         conn.request(
             "POST",
             "/api/product/agent_draft.json",
@@ -235,3 +263,53 @@ def test_agent_research_draft_blocks_operation_intent():
     assert blocked["status"] == "Z_MATRIX_AGENT_DRAFT_REJECTED"
     assert blocked["rejection_reasons"] == ["FORBIDDEN_OPERATION_REQUEST"]
     assert blocked["safety"]["real_trade"] == "BLOCKED"
+
+
+def _make_runtime_root(root: Path) -> Path:
+    files = {
+        "docs/release/Z_MATRIX_OS_V4_PRO_LOCAL_WORKSTATION_RUNBOOK.md": "# runbook\n",
+        ".env.example": (
+            "Z_MATRIX_PRODUCT_HOST=127.0.0.1\n"
+            "Z_MATRIX_PRODUCT_PORT=8765\n"
+            "Z_MATRIX_WORKSPACE_ID=ws_personal_z_prime\n"
+            "TUSHARE_TOKEN" "=" "\n"
+            "DEEPSEEK_API_KEY" "=" "\n"
+            "Z_MATRIX_COCKPIT_PUBLIC_ROOT=apps/cockpit_web/public/api/cockpit\n"
+            "Z_MATRIX_VENDOR_ROOT=data/research_db/market_data/vendor/tushare_5y\n"
+        ),
+        "apps/cockpit_web/.env.example": (
+            "VITE_ZMATRIX_PRODUCT_STATUS_URL=http://127.0.0.1:8765/api/product/status.json\n"
+            "VITE_ZMATRIX_PRODUCT_READINESS_URL=http://127.0.0.1:8765/api/product/readiness.json\n"
+            "VITE_ZMATRIX_OPERATOR_ACTIONS_URL=http://127.0.0.1:8765/api/product/operator_actions.json\n"
+            "VITE_ZMATRIX_RESEARCH_STATUS_URL=http://127.0.0.1:8765/api/product/research_status.json\n"
+            "VITE_ZMATRIX_AGENT_BRIDGE_URL=http://127.0.0.1:8765/api/product/agent_bridge.json\n"
+            "VITE_ZMATRIX_AGENT_DRAFT_URL=http://127.0.0.1:8765/api/product/agent_draft.json\n"
+            "VITE_ZMATRIX_HOLDINGS_PACKET_URL=/api/cockpit/holdings_packet.json\n"
+            "VITE_ZMATRIX_SELECTION_PACKET_URL=/api/cockpit/selection_packet.json\n"
+            "VITE_ZMATRIX_HISTORY_PACKET_URL=/api/cockpit/history_packet.json\n"
+            "VITE_ZMATRIX_CONTROL_COMPASS_PACKET_URL=/api/cockpit/control_compass_packet.json\n"
+            "VITE_ZMATRIX_DAYAN_ASK_PACKET_URL=/api/cockpit/dayan_ask_packet.json\n"
+        ),
+        "scripts/product/start_backend_service.py": "def main():\n    return None\n",
+        "scripts/product/start_local_workstation.sh": "#!/usr/bin/env bash\n",
+        "scripts/product/export_research_report_pack.py": "def main():\n    return None\n",
+        "scripts/verify_z_matrix_product_smoke.sh": "#!/usr/bin/env bash\n",
+        "data/research_db/agent/registry/skill_registry.generated.json": (
+            '[{"skill_id":"COCKPIT.READ","domain":"COCKPIT","router_ref":"x"},'
+            '{"skill_id":"REPORT.READ","domain":"REPORT","router_ref":"y"}]\n'
+        ),
+        "data/research_db/market_data/vendor/tushare_5y/20260613/manifest.json": "{}\n",
+    }
+    for name in (
+        "holdings_packet.json",
+        "selection_packet.json",
+        "history_packet.json",
+        "control_compass_packet.json",
+        "dayan_ask_packet.json",
+    ):
+        files[f"apps/cockpit_web/public/api/cockpit/{name}"] = "{}\n"
+    for relative, content in files.items():
+        path = root / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(content, encoding="utf-8")
+    return root

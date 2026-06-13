@@ -6,7 +6,7 @@ import json
 import mimetypes
 import os
 from collections.abc import Mapping
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -29,6 +29,7 @@ ROOT_ENV_TEMPLATE_KEYS = (
 )
 COCKPIT_ENV_TEMPLATE_KEYS = (
     "VITE_ZMATRIX_PRODUCT_STATUS_URL",
+    "VITE_ZMATRIX_PRODUCT_READINESS_URL",
     "VITE_ZMATRIX_OPERATOR_ACTIONS_URL",
     "VITE_ZMATRIX_RESEARCH_STATUS_URL",
     "VITE_ZMATRIX_AGENT_BRIDGE_URL",
@@ -47,6 +48,8 @@ PACKET_NAMES = (
     "control_compass_packet.json",
     "dayan_ask_packet.json",
 )
+READINESS_PASS = "Z_MATRIX_LOCAL_PRODUCT_READINESS_PASS"
+READINESS_BLOCKED = "Z_MATRIX_LOCAL_PRODUCT_READINESS_BLOCKED"
 RESEARCH_CAPABILITY_SPECS = (
     {
         "id": "factor-library",
@@ -481,6 +484,55 @@ def build_agent_research_draft(payload: dict[str, Any], config: ProductRuntimeCo
     }
 
 
+def build_runtime_product_readiness(config: ProductRuntimeConfig | None = None, root: Path | None = None) -> dict[str, Any]:
+    cfg = config or ProductRuntimeConfig()
+    resolved_root = root or cfg.repo_root
+    cfg = replace(cfg, repo_root=resolved_root)
+    product = build_product_status(cfg)
+    research = build_research_status(cfg)
+    bridge = build_agent_bridge_status(cfg)
+    actions = build_operator_actions(cfg)
+    config_templates = build_config_template_status(resolved_root, cfg.env)
+    checks = [
+        _file_check(resolved_root, "runbook", "docs/release/Z_MATRIX_OS_V4_PRO_LOCAL_WORKSTATION_RUNBOOK.md"),
+        *_config_template_checks(config_templates),
+        _file_check(resolved_root, "backend-service", "scripts/product/start_backend_service.py"),
+        _file_check(resolved_root, "local-launcher", "scripts/product/start_local_workstation.sh"),
+        _file_check(resolved_root, "report-export", "scripts/product/export_research_report_pack.py"),
+        _file_check(resolved_root, "product-smoke", "scripts/verify_z_matrix_product_smoke.sh"),
+        _status_check("product-runtime", product["status"] == "Z_MATRIX_PRODUCT_RUNTIME_READY", product["status"]),
+        _status_check("research-status", research["status"] == "Z_MATRIX_RESEARCH_STATUS_READY", research["status"]),
+        _status_check("agent-bridge", bridge["status"] == "Z_MATRIX_AGENT_BRIDGE_READY", bridge["status"]),
+        _status_check("operator-actions", actions["status"] == "Z_MATRIX_OPERATOR_ACTIONS_READY", actions["status"]),
+    ]
+    blocking_reasons = [item["id"] for item in checks if not item["ready"]]
+    return {
+        "status": READINESS_PASS if not blocking_reasons else READINESS_BLOCKED,
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "scope": "LOCAL_PERSONAL_RESEARCH_WORKSTATION",
+        "checks": checks,
+        "blocking_reasons": blocking_reasons,
+        "summary": {
+            "cockpit_packets": product["cockpit"]["packet_count"],
+            "registered_skills": product["registry"]["skill_count"],
+            "research_capabilities": research["capability_count"],
+            "ready_research_capabilities": research["ready_count"],
+            "agent_intents": len(bridge["allowed_intents"]),
+            "operator_actions": len(actions["actions"]),
+            "config_templates": config_templates["ready_count"],
+            "configured_secret_refs": config_templates["configured_secret_refs"],
+            "required_secret_refs": config_templates["required_secret_refs"],
+        },
+        "safety": {
+            "alpha_claim": "BLOCKED",
+            "promotion": "BLOCKED",
+            "broker_runtime": "BLOCKED",
+            "real_trade": "BLOCKED",
+            "agent_direct_mutation": "BLOCKED",
+        },
+    }
+
+
 def make_handler(config: ProductRuntimeConfig) -> type[BaseHTTPRequestHandler]:
     class ProductRuntimeHandler(BaseHTTPRequestHandler):
         server_version = "ZMatrixProductBackend/0.1"
@@ -498,6 +550,9 @@ def make_handler(config: ProductRuntimeConfig) -> type[BaseHTTPRequestHandler]:
                 return
             if parsed.path == "/api/product/agent_bridge.json":
                 self._send_json(build_agent_bridge_status(config))
+                return
+            if parsed.path == "/api/product/readiness.json":
+                self._send_json(build_runtime_product_readiness(config, config.repo_root))
                 return
             if parsed.path.startswith("/api/cockpit/"):
                 relative = unquote(parsed.path.removeprefix("/api/cockpit/"))
@@ -636,6 +691,39 @@ def _vendor_status(vendor_root: Path) -> dict[str, Any]:
         "latest_manifest": latest,
         "mode": "LOCAL_VENDOR_STORE_ONLY",
     }
+
+
+def _file_check(root: Path, check_id: str, relative: str) -> dict[str, Any]:
+    path = root / relative
+    return {
+        "id": check_id,
+        "ready": path.exists(),
+        "evidence": relative,
+    }
+
+
+def _status_check(check_id: str, ready: bool, evidence: str) -> dict[str, Any]:
+    return {
+        "id": check_id,
+        "ready": ready,
+        "evidence": evidence,
+    }
+
+
+def _config_template_checks(config_templates: dict[str, Any]) -> list[dict[str, Any]]:
+    checks = []
+    for item in config_templates["templates"]:
+        checks.append(
+            {
+                "id": item["id"],
+                "ready": item["ready"],
+                "evidence": item["path"],
+                "missing_required_keys": item["missing_required_keys"],
+                "unsafe_example_value_keys": item["unsafe_example_value_keys"],
+                "value_material": item["value_material"],
+            }
+        )
+    return checks
 
 
 def _env_template_status(path: Path, check_id: str, required_keys: tuple[str, ...], secret_keys: tuple[str, ...]) -> dict[str, Any]:

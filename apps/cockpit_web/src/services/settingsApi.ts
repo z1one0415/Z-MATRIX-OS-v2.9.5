@@ -162,6 +162,38 @@ export type ProductRuntimeStatus = {
   };
 };
 
+export type ProductReadinessStatus = {
+  status: "Z_MATRIX_LOCAL_PRODUCT_READINESS_PASS" | "Z_MATRIX_LOCAL_PRODUCT_READINESS_BLOCKED";
+  scope: "LOCAL_PERSONAL_RESEARCH_WORKSTATION";
+  checks: Array<{
+    id: string;
+    ready: boolean;
+    evidence: string;
+    missing_required_keys?: string[];
+    unsafe_example_value_keys?: string[];
+    value_material?: "NOT_EMITTED";
+  }>;
+  blocking_reasons: string[];
+  summary: {
+    cockpit_packets: number;
+    registered_skills: number;
+    research_capabilities: number;
+    ready_research_capabilities: number;
+    agent_intents: number;
+    operator_actions: number;
+    config_templates: number;
+    configured_secret_refs: number;
+    required_secret_refs: number;
+  };
+  safety: {
+    alpha_claim: "BLOCKED";
+    promotion: "BLOCKED";
+    broker_runtime: "BLOCKED";
+    real_trade: "BLOCKED";
+    agent_direct_mutation: "BLOCKED";
+  };
+};
+
 export type ProductOperatorAction = {
   id: string;
   label: string;
@@ -247,6 +279,7 @@ export type SettingsPageData = {
   systemHealth: SystemHealthItem[];
   auditSummary: AuditSummaryItem[];
   productRuntime: ProductRuntimeStatus;
+  productReadiness: ProductReadinessStatus;
   operatorActions: ProductOperatorActions;
   researchStatus: ProductResearchStatus;
   safety: SettingsSafety;
@@ -347,6 +380,34 @@ const defaultProductRuntime: ProductRuntimeStatus = {
     real_trade: "BLOCKED",
     agent_direct_mutation: "BLOCKED",
     secret_storage: "ENV_ONLY"
+  }
+};
+
+const defaultProductReadiness: ProductReadinessStatus = {
+  status: "Z_MATRIX_LOCAL_PRODUCT_READINESS_BLOCKED",
+  scope: "LOCAL_PERSONAL_RESEARCH_WORKSTATION",
+  checks: [
+    { id: "backend-service", ready: false, evidence: "scripts/product/start_backend_service.py" },
+    { id: "product-runtime", ready: false, evidence: "backend unavailable" }
+  ],
+  blocking_reasons: ["backend-service", "product-runtime"],
+  summary: {
+    cockpit_packets: 0,
+    registered_skills: 0,
+    research_capabilities: 0,
+    ready_research_capabilities: 0,
+    agent_intents: 0,
+    operator_actions: 0,
+    config_templates: 0,
+    configured_secret_refs: 0,
+    required_secret_refs: 2
+  },
+  safety: {
+    alpha_claim: "BLOCKED",
+    promotion: "BLOCKED",
+    broker_runtime: "BLOCKED",
+    real_trade: "BLOCKED",
+    agent_direct_mutation: "BLOCKED"
   }
 };
 
@@ -767,6 +828,7 @@ const zPrimeSettings: Omit<SettingsPageData, "workspaceId"> = {
     { time: "待触发", title: "文字表达偏好保存", status: "待确认" }
   ],
   productRuntime: defaultProductRuntime,
+  productReadiness: defaultProductReadiness,
   operatorActions: defaultOperatorActions,
   researchStatus: defaultResearchStatus,
   safety
@@ -799,6 +861,7 @@ function cloneSettings(packet: SettingsPageData): SettingsPageData {
     systemHealth: packet.systemHealth.map((item) => ({ ...item })),
     auditSummary: packet.auditSummary.map((item) => ({ ...item })),
     productRuntime: cloneProductRuntime(packet.productRuntime),
+    productReadiness: cloneProductReadiness(packet.productReadiness),
     operatorActions: cloneOperatorActions(packet.operatorActions),
     researchStatus: cloneResearchStatus(packet.researchStatus),
     safety: { ...packet.safety }
@@ -807,8 +870,9 @@ function cloneSettings(packet: SettingsPageData): SettingsPageData {
 
 export async function getSettingsPageData(session: AuthSession | null): Promise<SettingsPageData> {
   const current = requireSession(session);
-  const [productRuntime, operatorActions, researchStatus] = await Promise.all([
+  const [productRuntime, productReadiness, operatorActions, researchStatus] = await Promise.all([
     loadProductRuntimeStatus(),
+    loadProductReadiness(),
     loadOperatorActions(),
     loadResearchStatus()
   ]);
@@ -816,6 +880,7 @@ export async function getSettingsPageData(session: AuthSession | null): Promise<
     ...zPrimeSettings,
     workspaceId: current.workspaceId,
     productRuntime,
+    productReadiness,
     operatorActions,
     researchStatus
   });
@@ -835,8 +900,26 @@ function cloneProductRuntime(status: ProductRuntimeStatus): ProductRuntimeStatus
   };
 }
 
+function cloneProductReadiness(status: ProductReadinessStatus): ProductReadinessStatus {
+  return {
+    ...status,
+    checks: status.checks.map((item) => ({
+      ...item,
+      missing_required_keys: item.missing_required_keys ? [...item.missing_required_keys] : undefined,
+      unsafe_example_value_keys: item.unsafe_example_value_keys ? [...item.unsafe_example_value_keys] : undefined
+    })),
+    blocking_reasons: [...status.blocking_reasons],
+    summary: { ...status.summary },
+    safety: { ...status.safety }
+  };
+}
+
 function getProductRuntimeStatusUrl(): string {
   return import.meta.env.VITE_ZMATRIX_PRODUCT_STATUS_URL || "/api/product/status.json";
+}
+
+function getProductReadinessUrl(): string {
+  return import.meta.env.VITE_ZMATRIX_PRODUCT_READINESS_URL || "/api/product/readiness.json";
 }
 
 function getOperatorActionsUrl(): string {
@@ -863,6 +946,25 @@ async function loadProductRuntimeStatus(): Promise<ProductRuntimeStatus> {
     return normalizeProductRuntime(packet);
   } catch {
     return cloneProductRuntime(defaultProductRuntime);
+  }
+}
+
+async function loadProductReadiness(): Promise<ProductReadinessStatus> {
+  if (typeof fetch !== "function") {
+    return cloneProductReadiness(defaultProductReadiness);
+  }
+  try {
+    const response = await fetch(getProductReadinessUrl(), {
+      method: "GET",
+      headers: { Accept: "application/json" }
+    });
+    if (!response.ok) {
+      return cloneProductReadiness(defaultProductReadiness);
+    }
+    const packet = (await response.json()) as ProductReadinessStatus;
+    return normalizeProductReadiness(packet);
+  } catch {
+    return cloneProductReadiness(defaultProductReadiness);
   }
 }
 
@@ -902,6 +1004,42 @@ async function loadOperatorActions(): Promise<ProductOperatorActions> {
   } catch {
     return cloneOperatorActions(defaultOperatorActions);
   }
+}
+
+function normalizeProductReadiness(packet: ProductReadinessStatus): ProductReadinessStatus {
+  const checks = Array.isArray(packet.checks) ? packet.checks : [];
+  const blockingReasons = Array.isArray(packet.blocking_reasons) ? packet.blocking_reasons.map(String) : [];
+  return {
+    status: packet.status === "Z_MATRIX_LOCAL_PRODUCT_READINESS_PASS" ? "Z_MATRIX_LOCAL_PRODUCT_READINESS_PASS" : "Z_MATRIX_LOCAL_PRODUCT_READINESS_BLOCKED",
+    scope: "LOCAL_PERSONAL_RESEARCH_WORKSTATION",
+    checks: checks.map((item) => ({
+      id: String(item.id ?? "readiness-check"),
+      ready: Boolean(item.ready),
+      evidence: String(item.evidence ?? ""),
+      missing_required_keys: Array.isArray(item.missing_required_keys) ? item.missing_required_keys.map(String) : undefined,
+      unsafe_example_value_keys: Array.isArray(item.unsafe_example_value_keys) ? item.unsafe_example_value_keys.map(String) : undefined,
+      value_material: item.value_material === "NOT_EMITTED" ? "NOT_EMITTED" : undefined
+    })),
+    blocking_reasons: blockingReasons,
+    summary: {
+      cockpit_packets: Number(packet.summary?.cockpit_packets ?? 0),
+      registered_skills: Number(packet.summary?.registered_skills ?? 0),
+      research_capabilities: Number(packet.summary?.research_capabilities ?? 0),
+      ready_research_capabilities: Number(packet.summary?.ready_research_capabilities ?? 0),
+      agent_intents: Number(packet.summary?.agent_intents ?? 0),
+      operator_actions: Number(packet.summary?.operator_actions ?? 0),
+      config_templates: Number(packet.summary?.config_templates ?? 0),
+      configured_secret_refs: Number(packet.summary?.configured_secret_refs ?? 0),
+      required_secret_refs: Number(packet.summary?.required_secret_refs ?? defaultProductReadiness.summary.required_secret_refs)
+    },
+    safety: {
+      alpha_claim: "BLOCKED",
+      promotion: "BLOCKED",
+      broker_runtime: "BLOCKED",
+      real_trade: "BLOCKED",
+      agent_direct_mutation: "BLOCKED"
+    }
+  };
 }
 
 function normalizeProductRuntime(packet: ProductRuntimeStatus): ProductRuntimeStatus {

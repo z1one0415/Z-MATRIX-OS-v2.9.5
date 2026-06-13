@@ -104,7 +104,9 @@ export function SettingsPage({ session }: SettingsPageProps) {
   const settingsData = data;
   const selectedProvider = settingsData.llmProviders.find((provider) => provider.id === selectedLlmProvider) ?? settingsData.llmProviders[0];
   const runtime = settingsData.productRuntime;
+  const readiness = settingsData.productReadiness;
   const runtimeReady = runtime.status === "Z_MATRIX_PRODUCT_RUNTIME_READY";
+  const readinessReady = readiness.status === "Z_MATRIX_LOCAL_PRODUCT_READINESS_PASS";
 
   function envReferenceLabel(key: string) {
     const ref = runtime.config.env_references.find((item) => item.key === key);
@@ -256,6 +258,11 @@ export function SettingsPage({ session }: SettingsPageProps) {
           <span>配置模板</span>
           <strong>{runtime.config.ready_count}/{runtime.config.template_count}</strong>
           <small>{runtime.config.configured_secret_refs}/{runtime.config.required_secret_refs} env refs</small>
+        </article>
+        <article>
+          <span>就绪自检</span>
+          <strong>{readinessReady ? "PASS" : "BLOCKED"}</strong>
+          <small>{readiness.blocking_reasons.length} blockers</small>
         </article>
         <div className="settings-status-actions">
           <span>{latestDraft ? latestDraft.userMessage : "设置动作都会进入人审草案或审计记录。"}</span>

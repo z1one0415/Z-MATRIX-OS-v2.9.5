@@ -176,7 +176,9 @@ describe("settings page", () => {
     expect(within(statusBar).getByText("安全保护")).toBeInTheDocument();
     expect(within(statusBar).getByText("本地数据")).toBeInTheDocument();
     expect(within(statusBar).getByText("配置模板")).toBeInTheDocument();
+    expect(within(statusBar).getByText("就绪自检")).toBeInTheDocument();
     expect(within(statusBar).getByText("0/2 env refs")).toBeInTheDocument();
+    expect(within(statusBar).getByText("2 blockers")).toBeInTheDocument();
     expect(within(statusBar).getByRole("button", { name: /导出审计记录/ })).toBeInTheDocument();
     expect(screen.queryByLabelText("系统体检")).not.toBeInTheDocument();
     expect(screen.queryByRole("region", { name: "童子谏言" })).not.toBeInTheDocument();

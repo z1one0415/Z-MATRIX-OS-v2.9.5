@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from scripts.product.start_backend_service import _first_env, _first_env_int, _load_local_env, _merged_env
+from zmatrix.product_runtime.config_env import first_env, first_env_int, load_local_env, merged_env
 from zmatrix.product_runtime.local_backend import ProductRuntimeConfig, build_product_status
 
 
@@ -17,13 +17,13 @@ def test_backend_service_loads_allowed_dotenv_without_shell_execution(tmp_path: 
         encoding="utf-8",
     )
 
-    local_env = _load_local_env(env_file)
-    merged = _merged_env(local_env, process_env={"Z_MATRIX_PRODUCT_PORT": "8766"})
+    local_env = load_local_env(env_file)
+    merged = merged_env(local_env, process_env={"Z_MATRIX_PRODUCT_PORT": "8766"})
 
     assert local_env["Z_MATRIX_PRODUCT_HOST"] == "127.0.0.9"
     assert "UNRELATED_KEY" not in local_env
-    assert _first_env(merged, ("Z_MATRIX_PRODUCT_PORT",), "8765") == "8766"
-    assert _first_env(merged, ("Z_MATRIX_PRODUCT_HOST",), "127.0.0.1") == "127.0.0.9"
+    assert first_env(merged, ("Z_MATRIX_PRODUCT_PORT",), "8765") == "8766"
+    assert first_env(merged, ("Z_MATRIX_PRODUCT_HOST",), "127.0.0.1") == "127.0.0.9"
 
 
 def test_backend_product_status_never_emits_dotenv_secret_values(tmp_path: Path):
@@ -38,7 +38,7 @@ def test_backend_product_status_never_emits_dotenv_secret_values(tmp_path: Path)
 
 
 def test_backend_service_falls_back_when_dotenv_port_is_invalid():
-    assert _first_env_int({"Z_MATRIX_PRODUCT_PORT": "not-a-port"}, ("Z_MATRIX_PRODUCT_PORT",), 8765) == 8765
+    assert first_env_int({"Z_MATRIX_PRODUCT_PORT": "not-a-port"}, ("Z_MATRIX_PRODUCT_PORT",), 8765) == 8765
 
 
 def _make_env_template_root(root: Path) -> Path:
@@ -55,6 +55,7 @@ def _make_env_template_root(root: Path) -> Path:
     )
     (root / "apps/cockpit_web/.env.example").write_text(
         "VITE_ZMATRIX_PRODUCT_STATUS_URL=http://127.0.0.1:8765/api/product/status.json\n"
+        "VITE_ZMATRIX_PRODUCT_READINESS_URL=http://127.0.0.1:8765/api/product/readiness.json\n"
         "VITE_ZMATRIX_OPERATOR_ACTIONS_URL=http://127.0.0.1:8765/api/product/operator_actions.json\n"
         "VITE_ZMATRIX_RESEARCH_STATUS_URL=http://127.0.0.1:8765/api/product/research_status.json\n"
         "VITE_ZMATRIX_AGENT_BRIDGE_URL=http://127.0.0.1:8765/api/product/agent_bridge.json\n"

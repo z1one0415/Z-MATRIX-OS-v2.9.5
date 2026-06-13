@@ -32558,5 +32558,37 @@
     "production_allowed": false,
     "status": "CANDIDATE_ONLY",
     "reason": "script discovered"
+  },
+  {
+    "candidate_id": "CANDIDATE.REPORT.BUILD_REPORT_EXPORT",
+    "module_path": "scripts/product/export_research_report_pack.py",
+    "symbol_name": "build_report_export",
+    "candidate_type": "function",
+    "domain": "REPORT",
+    "suggested_skill_id": "REPORT.BUILD_REPORT_EXPORT",
+    "suggested_skill_layer": "L0_ATOMIC",
+    "suggested_risk_level": "R2_DRAFT",
+    "read_layers": [],
+    "write_layers": [],
+    "requires_human_review": true,
+    "production_allowed": false,
+    "status": "CANDIDATE_ONLY",
+    "reason": "public function"
+  },
+  {
+    "candidate_id": "CANDIDATE.REPORT.MAIN",
+    "module_path": "scripts/product/export_research_report_pack.py",
+    "symbol_name": "main",
+    "candidate_type": "function",
+    "domain": "REPORT",
+    "suggested_skill_id": "REPORT.MAIN",
+    "suggested_skill_layer": "L0_ATOMIC",
+    "suggested_risk_level": "R0_READ",
+    "read_layers": [],
+    "write_layers": [],
+    "requires_human_review": false,
+    "production_allowed": false,
+    "status": "CANDIDATE_ONLY",
+    "reason": "public function"
   }
 ]

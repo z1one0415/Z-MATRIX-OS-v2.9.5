@@ -184,7 +184,7 @@ export function DayanAskPage({ session }: DayanAskPageProps) {
           fragments={fragments}
           inputValue={inputText}
           voiceAvailable={voiceAvailable}
-          draftMessage={action.data?.userMessage}
+          draftMessage={action.data?.answer ?? action.data?.userMessage}
           onInputChange={setInputText}
           onSend={sendMessage}
           onClear={clearConversation}

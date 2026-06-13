@@ -190,6 +190,32 @@ export type AgentBridgeStatus = {
   };
 };
 
+export type AgentResearchDraftPacket = {
+  status: "Z_MATRIX_AGENT_DRAFT_READY" | "Z_MATRIX_AGENT_DRAFT_REJECTED";
+  workspace_id: string;
+  draft_id: string;
+  default_agent: "Hermes";
+  intent_id: string;
+  intent_label: string;
+  question_summary: string;
+  answer: string;
+  user_message: string;
+  suggested_next_steps: string[];
+  draft_layers: string[];
+  selected_fragments: string[];
+  human_review_required: true;
+  proposal_required: true;
+  rejection_reasons?: string[];
+  safety: {
+    alpha_claim: "BLOCKED";
+    promotion: "BLOCKED";
+    broker_runtime: "BLOCKED";
+    real_trade: "BLOCKED";
+    direct_command_runtime: "BLOCKED";
+    formal_memory_write: "BLOCKED";
+  };
+};
+
 export type DayanAction =
   | "插入法门"
   | "生成链路草案"
@@ -206,10 +232,13 @@ export type DayanActionDraft = {
   draftId: string;
   workspaceId: string;
   action: DayanAction;
-  status: "DRAFT_CREATED" | "AUDIT_PACK_READY" | "REFERENCE_SAVED";
+  status: "DRAFT_CREATED" | "AUDIT_PACK_READY" | "REFERENCE_SAVED" | "DRAFT_REJECTED";
   humanReviewRequired: true;
   auditEvent: string;
   userMessage: string;
+  answer?: string;
+  intentId?: string;
+  suggestedNextSteps?: string[];
 };
 
 export type DayanAskPageData = {
@@ -763,6 +792,17 @@ function getAgentBridgeUrl(): string | null {
   return "/api/product/agent_bridge.json";
 }
 
+function getAgentDraftUrl(): string | null {
+  const configured = import.meta.env.VITE_ZMATRIX_AGENT_DRAFT_URL as string | undefined;
+  if (configured) {
+    return configured;
+  }
+  if (import.meta.env.MODE === "test" || typeof window === "undefined" || typeof fetch !== "function") {
+    return null;
+  }
+  return "/api/product/agent_draft.json";
+}
+
 async function loadBackendDayanAskPacket(workspaceId: string): Promise<DayanAskPageData | null> {
   const packetUrl = getBackendDayanAskPacketUrl();
   if (!packetUrl) {
@@ -781,6 +821,54 @@ async function loadBackendDayanAskPacket(workspaceId: string): Promise<DayanAskP
       return null;
     }
     return packet;
+  } catch {
+    return null;
+  }
+}
+
+async function createBackendAgentDraft(
+  session: AuthSession,
+  action: DayanAction,
+  payload: Record<string, unknown>,
+  auditEvent: string
+): Promise<DayanActionDraft | null> {
+  const draftUrl = getAgentDraftUrl();
+  const question = String(payload.userInput ?? payload.question ?? payload.prompt ?? "").trim();
+  if (!draftUrl || !question) {
+    return null;
+  }
+  try {
+    const response = await fetch(draftUrl, {
+      method: "POST",
+      headers: {
+        accept: "application/json",
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({
+        action,
+        question,
+        selectedFragments: Array.isArray(payload.selectedFragments) ? payload.selectedFragments : []
+      })
+    });
+    if (!response.ok) {
+      return null;
+    }
+    const packet = (await response.json()) as AgentResearchDraftPacket;
+    if (packet.workspace_id && packet.workspace_id !== session.workspaceId) {
+      return null;
+    }
+    return {
+      draftId: packet.draft_id || `dayan-draft-${Date.now()}`,
+      workspaceId: session.workspaceId,
+      action,
+      status: packet.status === "Z_MATRIX_AGENT_DRAFT_REJECTED" ? "DRAFT_REJECTED" : "DRAFT_CREATED",
+      humanReviewRequired: true,
+      auditEvent,
+      userMessage: packet.user_message,
+      answer: packet.answer,
+      intentId: packet.intent_id,
+      suggestedNextSteps: Array.isArray(packet.suggested_next_steps) ? [...packet.suggested_next_steps] : []
+    };
   } catch {
     return null;
   }
@@ -870,6 +958,11 @@ export async function createDayanActionDraft(
       : action === "插入法门" || action === "清空对话"
         ? "SAVE_DAYAN_REFERENCE"
         : "CREATE_DAYAN_DRAFT";
+
+  const backendDraft = await createBackendAgentDraft(current, action, payload, auditEvent);
+  if (backendDraft) {
+    return backendDraft;
+  }
 
   const response = await createWorkspaceDraft(current, payload, auditEvent);
 

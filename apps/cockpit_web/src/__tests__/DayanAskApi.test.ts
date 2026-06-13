@@ -232,6 +232,59 @@ describe("Batch 5 dayan ask tenant-aware data", () => {
     expect(fetch).toHaveBeenCalledWith("/api/product/agent_bridge.json", expect.objectContaining({ cache: "no-store" }));
   });
 
+  it("posts research questions to the local Hermes draft bridge when configured", async () => {
+    vi.stubEnv("VITE_ZMATRIX_AGENT_DRAFT_URL", "/api/product/agent_draft.json");
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async () =>
+        new Response(
+          JSON.stringify({
+            status: "Z_MATRIX_AGENT_DRAFT_READY",
+            workspace_id: demoSession.workspaceId,
+            draft_id: "agent-draft-test",
+            default_agent: "Hermes",
+            intent_id: "prepare-audit-reference",
+            intent_label: "审计引用整理",
+            question_summary: "半导体设备国产化研究证据",
+            answer: "Hermes 已生成本地研究草案。",
+            user_message: "本地研究草案已生成，等待人工复核。",
+            suggested_next_steps: ["补充研究对象与时间窗口"],
+            draft_layers: ["chat", "drafts"],
+            selected_fragments: ["产业洞察阵"],
+            human_review_required: true,
+            proposal_required: true,
+            safety: {
+              alpha_claim: "BLOCKED",
+              promotion: "BLOCKED",
+              broker_runtime: "BLOCKED",
+              real_trade: "BLOCKED",
+              direct_command_runtime: "BLOCKED",
+              formal_memory_write: "BLOCKED"
+            }
+          }),
+          { status: 200, headers: { "Content-Type": "application/json" } }
+        )
+      )
+    );
+
+    const draft = await createDayanActionDraft(demoSession, "生成链路草案", {
+      userInput: "请整理半导体设备国产化研究证据",
+      selectedFragments: ["产业洞察阵"]
+    });
+
+    expect(draft.status).toBe("DRAFT_CREATED");
+    expect(draft.draftId).toBe("agent-draft-test");
+    expect(draft.intentId).toBe("prepare-audit-reference");
+    expect(draft.answer).toContain("Hermes 已生成");
+    expect(fetch).toHaveBeenCalledWith(
+      "/api/product/agent_draft.json",
+      expect.objectContaining({
+        method: "POST",
+        body: expect.stringContaining("半导体设备国产化研究证据")
+      })
+    );
+  });
+
   it("returns isolated empty personal layers for another workspace", async () => {
     const packet = await getDayanAskPageData({
       ...demoSession,

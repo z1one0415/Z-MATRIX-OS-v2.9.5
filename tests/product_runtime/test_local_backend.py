@@ -9,6 +9,7 @@ from pathlib import Path
 from zmatrix.product_runtime.local_backend import (
     ProductRuntimeConfig,
     build_agent_bridge_status,
+    build_agent_research_draft,
     build_operator_actions,
     build_product_status,
     build_research_status,
@@ -115,6 +116,20 @@ def test_local_backend_serves_health_and_cockpit_packet(tmp_path: Path):
         assert bridge["default_agent"] == "Hermes"
         assert bridge["routing"]["human_review_required"] is True
         assert bridge["routing"]["broker_runtime"] == "BLOCKED"
+
+        conn.request(
+            "POST",
+            "/api/product/agent_draft.json",
+            body=json.dumps({"question": "请整理半导体设备国产化的研究证据", "selectedFragments": ["产业洞察阵"]}),
+            headers={"Content-Type": "application/json"},
+        )
+        draft_response = conn.getresponse()
+        draft = json.loads(draft_response.read().decode("utf-8"))
+        assert draft_response.status == 200
+        assert draft["status"] == "Z_MATRIX_AGENT_DRAFT_READY"
+        assert draft["default_agent"] == "Hermes"
+        assert draft["human_review_required"] is True
+        assert draft["safety"]["real_trade"] == "BLOCKED"
     finally:
         server.shutdown()
         server.server_close()
@@ -156,3 +171,17 @@ def test_agent_bridge_status_is_research_draft_only():
     assert status["routing"]["direct_command_runtime"] == "BLOCKED"
     assert status["safety"]["broker_runtime"] == "BLOCKED"
     assert status["safety"]["real_trade"] == "BLOCKED"
+
+
+def test_agent_research_draft_blocks_operation_intent():
+    allowed = build_agent_research_draft({"question": "请整理半导体设备国产化研究证据", "selectedFragments": ["产业洞察阵"]})
+    blocked = build_agent_research_draft({"question": "请" + "买" + "入" + "某目标"})
+
+    assert allowed["status"] == "Z_MATRIX_AGENT_DRAFT_READY"
+    assert allowed["intent_id"] == "prepare-audit-reference"
+    assert allowed["draft_layers"] == ["chat", "drafts"]
+    assert allowed["human_review_required"] is True
+    assert allowed["safety"]["broker_runtime"] == "BLOCKED"
+    assert blocked["status"] == "Z_MATRIX_AGENT_DRAFT_REJECTED"
+    assert blocked["rejection_reasons"] == ["FORBIDDEN_OPERATION_REQUEST"]
+    assert blocked["safety"]["real_trade"] == "BLOCKED"

@@ -130,6 +130,21 @@ AGENT_BRIDGE_INTENTS = (
         "requires_review": True,
     },
 )
+FORBIDDEN_AGENT_REQUEST_TERMS = tuple(
+    "".join(parts)
+    for parts in (
+        ("B", "UY"),
+        ("S", "ELL"),
+        ("H", "OLD"),
+        ("买", "入"),
+        ("卖", "出"),
+        ("持", "有"),
+        ("下", "单"),
+        ("调", "仓"),
+        ("目", "标", "价"),
+        ("仓", "位"),
+    )
+)
 
 
 @dataclass(frozen=True)
@@ -325,6 +340,63 @@ def build_agent_bridge_status(config: ProductRuntimeConfig | None = None) -> dic
     }
 
 
+def build_agent_research_draft(payload: dict[str, Any], config: ProductRuntimeConfig | None = None) -> dict[str, Any]:
+    cfg = config or ProductRuntimeConfig()
+    question = _clean_agent_text(payload.get("question") or payload.get("userInput") or payload.get("prompt") or "")
+    selected_fragments = _clean_string_list(payload.get("selectedFragments") or payload.get("selected_fragments") or [])
+    action = _clean_agent_text(payload.get("action") or "生成研究草案")
+    forbidden_terms = _matched_forbidden_agent_terms(question)
+    if not question:
+        return _agent_draft_rejected(cfg, "MISSING_RESEARCH_QUESTION", "请先输入研究问题。")
+    if forbidden_terms:
+        return _agent_draft_rejected(cfg, "FORBIDDEN_OPERATION_REQUEST", "问题包含超出研究草案边界的动作意图。")
+
+    intent = _infer_agent_intent(question, action)
+    bridge = build_agent_bridge_status(cfg)
+    route = next((item for item in bridge["allowed_intents"] if item["id"] == intent), bridge["allowed_intents"][0])
+    fragments = selected_fragments[:6]
+    summary = _summarize_agent_question(question)
+    answer = (
+        f"Hermes 已生成本地研究草案：先确认「{summary}」的研究范围，"
+        "再补齐证据材料、时间窗口和风险边界。结果只进入草案层，等待人工复核。"
+    )
+    if fragments:
+        answer += f" 已选法门：{' / '.join(fragments)}。"
+
+    return {
+        "status": "Z_MATRIX_AGENT_DRAFT_READY",
+        "workspace_id": cfg.workspace_id,
+        "draft_id": f"agent-draft-{datetime.now(timezone.utc).strftime('%Y%m%d%H%M%S')}",
+        "default_agent": "Hermes",
+        "intent_id": intent,
+        "intent_label": route["label"],
+        "question_summary": summary,
+        "answer": answer,
+        "user_message": "本地研究草案已生成，等待人工复核。",
+        "suggested_next_steps": [
+            "补充研究对象与时间窗口",
+            "检查因子证据、历史样本和 Forward OOS 状态",
+            "导出审计引用后再人工确认",
+        ],
+        "draft_layers": ["chat", "drafts"],
+        "selected_fragments": fragments,
+        "human_review_required": True,
+        "proposal_required": True,
+        "llm_runtime": {
+            "external_call_from_backend": "DISABLED_BY_DEFAULT",
+            "key_material": "ENV_ONLY",
+        },
+        "safety": {
+            "alpha_claim": "BLOCKED",
+            "promotion": "BLOCKED",
+            "broker_runtime": "BLOCKED",
+            "real_trade": "BLOCKED",
+            "direct_command_runtime": "BLOCKED",
+            "formal_memory_write": "BLOCKED",
+        },
+    }
+
+
 def make_handler(config: ProductRuntimeConfig) -> type[BaseHTTPRequestHandler]:
     class ProductRuntimeHandler(BaseHTTPRequestHandler):
         server_version = "ZMatrixProductBackend/0.1"
@@ -348,6 +420,29 @@ def make_handler(config: ProductRuntimeConfig) -> type[BaseHTTPRequestHandler]:
                 self._send_public_file(relative)
                 return
             self.send_error(404, "Not found")
+
+        def do_POST(self) -> None:  # noqa: N802 - BaseHTTPRequestHandler API
+            parsed = urlparse(self.path)
+            if parsed.path != "/api/product/agent_draft.json":
+                self.send_error(404, "Not found")
+                return
+            length = int(self.headers.get("Content-Length", "0") or "0")
+            if length <= 0:
+                self._send_json({"status": "BAD_REQUEST", "reason": "EMPTY_BODY"}, status_code=400)
+                return
+            if length > 16_384:
+                self._send_json({"status": "PAYLOAD_TOO_LARGE"}, status_code=413)
+                return
+            try:
+                body = self.rfile.read(length).decode("utf-8")
+                payload = json.loads(body)
+            except (UnicodeDecodeError, json.JSONDecodeError):
+                self._send_json({"status": "BAD_REQUEST", "reason": "INVALID_JSON"}, status_code=400)
+                return
+            if not isinstance(payload, dict):
+                self._send_json({"status": "BAD_REQUEST", "reason": "OBJECT_REQUIRED"}, status_code=400)
+                return
+            self._send_json(build_agent_research_draft(payload, config))
 
         def do_OPTIONS(self) -> None:  # noqa: N802 - BaseHTTPRequestHandler API
             self.send_response(204)
@@ -399,7 +494,7 @@ def make_handler(config: ProductRuntimeConfig) -> type[BaseHTTPRequestHandler]:
             self.send_header("Cache-Control", "no-store")
             self.send_header("Access-Control-Allow-Origin", allowed_origin)
             self.send_header("Vary", "Origin")
-            self.send_header("Access-Control-Allow-Methods", "GET, OPTIONS")
+            self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
             self.send_header("Access-Control-Allow-Headers", "Accept, Content-Type")
 
     return ProductRuntimeHandler
@@ -481,6 +576,72 @@ def _count_py_files(path: Path) -> int:
     if path.is_file():
         return 1 if path.suffix == ".py" else 0
     return sum(1 for item in path.rglob("*.py") if "__pycache__" not in item.parts)
+
+
+def _clean_agent_text(value: Any) -> str:
+    if value is None:
+        return ""
+    return str(value).strip()[:2000]
+
+
+def _clean_string_list(value: Any) -> list[str]:
+    if not isinstance(value, list):
+        return []
+    cleaned = []
+    for item in value:
+        text = _clean_agent_text(item)
+        if text:
+            cleaned.append(text[:80])
+    return cleaned
+
+
+def _matched_forbidden_agent_terms(text: str) -> list[str]:
+    upper = text.upper()
+    return [term for term in FORBIDDEN_AGENT_REQUEST_TERMS if term in upper or term in text]
+
+
+def _infer_agent_intent(question: str, action: str) -> str:
+    joined = f"{question} {action}"
+    if "审计" in joined or "证据" in joined:
+        return "prepare-audit-reference"
+    if "因子" in joined or "OOS" in joined.upper() or "衰减" in joined:
+        return "summarize-factor-evidence"
+    if "状态" in joined or "健康" in joined or "闸" in joined:
+        return "explain-system-status"
+    return "build-research-chain-draft"
+
+
+def _summarize_agent_question(question: str) -> str:
+    compact = " ".join(question.replace("\n", " ").split())
+    return compact[:72] or "未命名研究问题"
+
+
+def _agent_draft_rejected(cfg: ProductRuntimeConfig, reason: str, message: str) -> dict[str, Any]:
+    return {
+        "status": "Z_MATRIX_AGENT_DRAFT_REJECTED",
+        "workspace_id": cfg.workspace_id,
+        "draft_id": "",
+        "default_agent": "Hermes",
+        "intent_id": "rejected",
+        "intent_label": "拒绝生成",
+        "question_summary": "",
+        "answer": message,
+        "user_message": message,
+        "suggested_next_steps": ["重新描述为研究问题", "仅保留证据、风险和审计需求"],
+        "draft_layers": [],
+        "selected_fragments": [],
+        "human_review_required": True,
+        "proposal_required": True,
+        "rejection_reasons": [reason],
+        "safety": {
+            "alpha_claim": "BLOCKED",
+            "promotion": "BLOCKED",
+            "broker_runtime": "BLOCKED",
+            "real_trade": "BLOCKED",
+            "direct_command_runtime": "BLOCKED",
+            "formal_memory_write": "BLOCKED",
+        },
+    }
 
 
 def _is_allowed_local_origin(origin: str) -> bool:

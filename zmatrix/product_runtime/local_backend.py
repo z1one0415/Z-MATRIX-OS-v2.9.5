@@ -32,6 +32,7 @@ COCKPIT_ENV_TEMPLATE_KEYS = (
     "VITE_ZMATRIX_PRODUCT_READINESS_URL",
     "VITE_ZMATRIX_OPERATOR_ACTIONS_URL",
     "VITE_ZMATRIX_RESEARCH_STATUS_URL",
+    "VITE_ZMATRIX_RESEARCH_EVIDENCE_INDEX_URL",
     "VITE_ZMATRIX_COCKPIT_MANIFEST_URL",
     "VITE_ZMATRIX_AGENT_BRIDGE_URL",
     "VITE_ZMATRIX_AGENT_DRAFT_URL",
@@ -160,6 +161,104 @@ RESEARCH_CAPABILITY_SPECS = (
         "paths": (
             "scripts/verify_v40_final_hardgates.sh",
             "scripts/verify_z_skillos_full_system.sh",
+            "docs/audit/SAFETY_FORBIDDEN_FLAG_AUDIT_REPORT.md",
+        ),
+    },
+)
+RESEARCH_EVIDENCE_GROUPS = (
+    {
+        "id": "factor-library",
+        "label": "因子库状态",
+        "summary": "V9 因子选择、稳定性、衰减和稳健性证据。",
+        "artifacts": (
+            "runtime_reports/cases/v9_factor_selection_gate.json",
+            "runtime_reports/cases/v9_factor_decay_analysis.json",
+            "runtime_reports/cases/v9_factor_robustness.json",
+            "runtime_reports/cases/v9_formal_factor_stability.json",
+            "docs/cases/V9_FACTOR_SELECTION_GATE.md",
+        ),
+    },
+    {
+        "id": "historical-oos",
+        "label": "历史 OOS",
+        "summary": "OOS 完成合同、标签解析、纸面结果与审计链。",
+        "artifacts": (
+            "runtime_reports/cases/v11_6_1_oos_completion_contract.json",
+            "runtime_reports/cases/v11_6_1_oos_due_label_resolution.json",
+            "runtime_reports/cases/v11_6_1_oos_paper_outcomes.json",
+            "runtime_reports/cases/v11_6_1_oos_completion_audit.json",
+            "runtime_reports/cases/v11_6_1_oos_completion_chain.json",
+        ),
+    },
+    {
+        "id": "forward-oos",
+        "label": "Forward OOS 等待",
+        "summary": "纸面跟踪注册、刷新日历、到期计划和 live paper 运行状态。",
+        "artifacts": (
+            "runtime_reports/cases/v11_6_tracking_registry.json",
+            "runtime_reports/cases/v11_6_tracking_schedule.json",
+            "runtime_reports/cases/v12_1_live_paper_due_schedule.json",
+            "runtime_reports/cases/v12_1_live_paper_run_registry.json",
+            "runtime_reports/cases/v12_1_live_paper_status_update.json",
+        ),
+    },
+    {
+        "id": "candidate-evidence",
+        "label": "候选研究证据",
+        "summary": "候选观察清单、纸面信号快照、跟踪计划和证据审计。",
+        "artifacts": (
+            "runtime_reports/cases/v10_candidate_factor_thesis_pack.json",
+            "runtime_reports/cases/v11_candidate_factor_watchlist.json",
+            "runtime_reports/cases/v11_paper_signal_snapshot.json",
+            "runtime_reports/cases/v11_paper_tracking_plan.json",
+            "runtime_reports/cases/v11_paper_watchlist_audit.json",
+        ),
+    },
+    {
+        "id": "factor-decay",
+        "label": "因子生存 / 衰减",
+        "summary": "语义传播、生命周期种子、20D 衰减监控和战术监控。",
+        "artifacts": (
+            "runtime_reports/cases/v10_decay_semantic_propagation_audit.json",
+            "runtime_reports/cases/v11_9_factor_lifecycle_seed.json",
+            "runtime_reports/cases/v13_5_13_decay_after_20d_monitor.json",
+            "runtime_reports/cases/v13_5_13_tactical_monitoring_scorecard.json",
+            "docs/cases/V9_FACTOR_DECAY_ANALYSIS.md",
+        ),
+    },
+    {
+        "id": "portfolio-sandbox",
+        "label": "组合研究沙盒",
+        "summary": "纸面组合合同、模拟结果、风险审计、基准和成本代理。",
+        "artifacts": (
+            "runtime_reports/cases/v11_5_paper_portfolio_contract.json",
+            "runtime_reports/cases/v11_5_paper_portfolio_simulation.json",
+            "runtime_reports/cases/v11_5_paper_portfolio_risk_audit.json",
+            "runtime_reports/cases/v11_5_benchmark_cost_proxy_evaluation.json",
+            "runtime_reports/cases/case_expansion_v11_5_closeout.json",
+        ),
+    },
+    {
+        "id": "risk-cost-neutrality",
+        "label": "风险 / 成本 / 中性化",
+        "summary": "容量代理、交易成本、风险边界和中性化相关证据。",
+        "artifacts": (
+            "runtime_reports/cases/v11_7_transaction_cost_model.json",
+            "runtime_reports/cases/v11_7_cost_model_evaluation.json",
+            "runtime_reports/cases/v11_7_capacity_proxy_audit.json",
+            "runtime_reports/cases/v11_7_closeout.json",
+            "runtime_reports/cases/v11_5_paper_portfolio_risk_audit.json",
+        ),
+    },
+    {
+        "id": "gatekeeper-audit",
+        "label": "Gatekeeper 审计",
+        "summary": "V12 入口、研究只读合同、安全审计和总闸验证入口。",
+        "artifacts": (
+            "runtime_reports/cases/v12_alpha_operating_loop_entry_gate.json",
+            "runtime_reports/cases/v12_research_only_operating_contract.json",
+            "runtime_reports/cases/v12_research_only_loop_audit.json",
+            "runtime_reports/cases/v12_research_only_closeout.json",
             "docs/audit/SAFETY_FORBIDDEN_FLAG_AUDIT_REPORT.md",
         ),
     },
@@ -425,6 +524,28 @@ def build_research_status(config: ProductRuntimeConfig | None = None) -> dict[st
     }
 
 
+def build_research_evidence_index(config: ProductRuntimeConfig | None = None) -> dict[str, Any]:
+    cfg = config or ProductRuntimeConfig()
+    groups = [_research_evidence_group(cfg.repo_root, spec) for spec in RESEARCH_EVIDENCE_GROUPS]
+    ready_count = sum(1 for group in groups if group["status"] == "READY")
+    return {
+        "status": "Z_MATRIX_RESEARCH_EVIDENCE_INDEX_READY" if ready_count >= 6 else "Z_MATRIX_RESEARCH_EVIDENCE_INDEX_PARTIAL",
+        "workspace_id": cfg.workspace_id,
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "group_count": len(groups),
+        "ready_group_count": ready_count,
+        "groups": groups,
+        "artifact_policy": "LOCAL_RESEARCH_EVIDENCE_ONLY",
+        "safety": {
+            "alpha_claim": "BLOCKED",
+            "promotion": "BLOCKED",
+            "broker_runtime": "BLOCKED",
+            "real_trade": "BLOCKED",
+            "evidence_to_alpha_promotion": "BLOCKED",
+        },
+    }
+
+
 def build_cockpit_manifest(config: ProductRuntimeConfig | None = None) -> dict[str, Any]:
     cfg = config or ProductRuntimeConfig()
     routes = []
@@ -578,6 +699,7 @@ def build_runtime_product_readiness(config: ProductRuntimeConfig | None = None, 
     cfg = replace(cfg, repo_root=resolved_root)
     product = build_product_status(cfg)
     research = build_research_status(cfg)
+    evidence = build_research_evidence_index(cfg)
     cockpit_manifest = build_cockpit_manifest(cfg)
     bridge = build_agent_bridge_status(cfg)
     actions = build_operator_actions(cfg)
@@ -592,6 +714,7 @@ def build_runtime_product_readiness(config: ProductRuntimeConfig | None = None, 
         _file_check(resolved_root, "product-smoke", "scripts/verify_z_matrix_product_smoke.sh"),
         _status_check("product-runtime", product["status"] == "Z_MATRIX_PRODUCT_RUNTIME_READY", product["status"]),
         _status_check("research-status", research["status"] == "Z_MATRIX_RESEARCH_STATUS_READY", research["status"]),
+        _status_check("research-evidence-index", evidence["status"] == "Z_MATRIX_RESEARCH_EVIDENCE_INDEX_READY", evidence["status"]),
         _status_check("cockpit-manifest", cockpit_manifest["status"] == "Z_MATRIX_COCKPIT_MANIFEST_READY", cockpit_manifest["status"]),
         _status_check("agent-bridge", bridge["status"] == "Z_MATRIX_AGENT_BRIDGE_READY", bridge["status"]),
         _status_check("operator-actions", actions["status"] == "Z_MATRIX_OPERATOR_ACTIONS_READY", actions["status"]),
@@ -609,6 +732,7 @@ def build_runtime_product_readiness(config: ProductRuntimeConfig | None = None, 
             "registered_skills": product["registry"]["skill_count"],
             "research_capabilities": research["capability_count"],
             "ready_research_capabilities": research["ready_count"],
+            "research_evidence_groups": evidence["ready_group_count"],
             "agent_intents": len(bridge["allowed_intents"]),
             "operator_actions": len(actions["actions"]),
             "config_templates": config_templates["ready_count"],
@@ -639,6 +763,9 @@ def make_handler(config: ProductRuntimeConfig) -> type[BaseHTTPRequestHandler]:
                 return
             if parsed.path == "/api/product/research_status.json":
                 self._send_json(build_research_status(config))
+                return
+            if parsed.path == "/api/product/research_evidence_index.json":
+                self._send_json(build_research_evidence_index(config))
                 return
             if parsed.path == "/api/product/cockpit_manifest.json":
                 self._send_json(build_cockpit_manifest(config))
@@ -884,6 +1011,50 @@ def _research_capability_status(spec: dict[str, Any]) -> dict[str, Any]:
         "module_count": sum(_count_py_files(path) for path in paths if path.exists()),
         "safety": "RESEARCH_ONLY",
     }
+
+
+def _research_evidence_group(root: Path, spec: dict[str, Any]) -> dict[str, Any]:
+    artifacts = [_research_evidence_artifact(root, relative) for relative in spec["artifacts"]]
+    ready_count = sum(1 for item in artifacts if item["ready"])
+    return {
+        "id": spec["id"],
+        "label": spec["label"],
+        "summary": spec["summary"],
+        "status": "READY" if ready_count == len(artifacts) else "PARTIAL",
+        "ready_count": ready_count,
+        "required_count": len(artifacts),
+        "artifacts": artifacts,
+        "safety": "RESEARCH_ONLY_NO_ALPHA_PROMOTION",
+    }
+
+
+def _research_evidence_artifact(root: Path, relative: str) -> dict[str, Any]:
+    path = root / relative
+    ready = path.is_file()
+    status_field = ""
+    if ready and path.suffix == ".json":
+        status_field = _json_status_field(path)
+    return {
+        "path": relative,
+        "ready": ready,
+        "bytes": path.stat().st_size if ready else 0,
+        "artifact_type": path.suffix.removeprefix(".") or "file",
+        "status_field": status_field,
+    }
+
+
+def _json_status_field(path: Path) -> str:
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError, UnicodeDecodeError):
+        return ""
+    if not isinstance(payload, dict):
+        return ""
+    for key in ("status", "verdict", "final", "gate_status"):
+        value = payload.get(key)
+        if isinstance(value, str) and value:
+            return value[:120]
+    return ""
 
 
 def _monthly_refresh_status() -> dict[str, Any]:

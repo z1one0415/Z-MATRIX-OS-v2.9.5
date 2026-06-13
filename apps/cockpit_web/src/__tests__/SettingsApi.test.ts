@@ -65,6 +65,12 @@ describe("settings api tenant-aware contract", () => {
     expect(packet.researchStatus.monthly_refresh.mode).toBe("LOCAL_TERMINAL_MANUAL_DRY_PLAN");
     expect(packet.researchStatus.monthly_refresh.safety.broker_runtime).toBe("BLOCKED");
     expect(packet.researchStatus.safety.real_trade).toBe("BLOCKED");
+    expect(packet.researchEvidence.group_count).toBeGreaterThanOrEqual(4);
+    expect(packet.researchEvidence.groups.map((group) => group.label)).toEqual(
+      expect.arrayContaining(["因子库状态", "历史 OOS", "Forward OOS 等待", "Gatekeeper 审计"])
+    );
+    expect(packet.researchEvidence.groups.every((group) => group.safety === "RESEARCH_ONLY_NO_ALPHA_PROMOTION")).toBe(true);
+    expect(packet.researchEvidence.safety.evidence_to_alpha_promotion).toBe("BLOCKED");
     expect(packet.cockpitManifest.route_count).toBe(5);
     expect(packet.cockpitManifest.routes.map((route) => route.label)).toEqual(
       expect.arrayContaining(["持仓管理", "投研选股", "历史回溯", "天机罗盘", "大衍天问"])

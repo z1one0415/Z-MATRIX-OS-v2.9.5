@@ -106,6 +106,7 @@ export function SettingsPage({ session }: SettingsPageProps) {
   const runtime = settingsData.productRuntime;
   const readiness = settingsData.productReadiness;
   const cockpitManifest = settingsData.cockpitManifest;
+  const researchEvidence = settingsData.researchEvidence;
   const runtimeReady = runtime.status === "Z_MATRIX_PRODUCT_RUNTIME_READY";
   const readinessReady = readiness.status === "Z_MATRIX_LOCAL_PRODUCT_READINESS_PASS";
 
@@ -169,6 +170,7 @@ export function SettingsPage({ session }: SettingsPageProps) {
 
       {renderSettingsStatusBar()}
       {renderCockpitManifest()}
+      {renderResearchEvidence()}
       {renderOperatorActions()}
       {renderResearchStatus()}
 
@@ -387,6 +389,37 @@ export function SettingsPage({ session }: SettingsPageProps) {
             </dl>
             <code>{status.monthly_refresh.command}</code>
           </article>
+        </div>
+      </section>
+    );
+  }
+
+  function renderResearchEvidence() {
+    return (
+      <section className="settings-research-panel panel-shell" aria-label="研究证据索引">
+        <div className="panel-title">
+          <span>研究证据索引</span>
+          <small>{researchEvidence.ready_group_count}/{researchEvidence.group_count} ready</small>
+        </div>
+        <div className="settings-research-grid">
+          {researchEvidence.groups.map((group) => {
+            const primaryArtifact = group.artifacts.find((artifact) => artifact.ready) ?? group.artifacts[0];
+            return (
+              <article className="settings-research-card" key={group.id}>
+                <div>
+                  <FileKey2 size={16} aria-hidden="true" />
+                  <span>{group.label}</span>
+                  <em className={group.status === "READY" ? "is-ready" : "is-partial"}>{group.status}</em>
+                </div>
+                <p>{group.summary}</p>
+                <dl className="settings-compact-dl">
+                  <div><dt>证据</dt><dd>{group.ready_count}/{group.required_count}</dd></div>
+                  <div><dt>边界</dt><dd>{group.safety}</dd></div>
+                </dl>
+                {primaryArtifact ? <code>{primaryArtifact.path}</code> : null}
+              </article>
+            );
+          })}
         </div>
       </section>
     );

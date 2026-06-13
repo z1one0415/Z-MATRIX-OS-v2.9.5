@@ -180,6 +180,7 @@ export type ProductReadinessStatus = {
     registered_skills: number;
     research_capabilities: number;
     ready_research_capabilities: number;
+    research_evidence_groups: number;
     agent_intents: number;
     operator_actions: number;
     config_templates: number;
@@ -263,6 +264,40 @@ export type ProductResearchStatus = {
   };
 };
 
+export type ProductResearchEvidenceArtifact = {
+  path: string;
+  ready: boolean;
+  bytes: number;
+  artifact_type: string;
+  status_field: string;
+};
+
+export type ProductResearchEvidenceGroup = {
+  id: string;
+  label: string;
+  summary: string;
+  status: "READY" | "PARTIAL";
+  ready_count: number;
+  required_count: number;
+  artifacts: ProductResearchEvidenceArtifact[];
+  safety: "RESEARCH_ONLY_NO_ALPHA_PROMOTION";
+};
+
+export type ProductResearchEvidenceIndex = {
+  status: "Z_MATRIX_RESEARCH_EVIDENCE_INDEX_READY" | "Z_MATRIX_RESEARCH_EVIDENCE_INDEX_PARTIAL";
+  group_count: number;
+  ready_group_count: number;
+  groups: ProductResearchEvidenceGroup[];
+  artifact_policy: "LOCAL_RESEARCH_EVIDENCE_ONLY";
+  safety: {
+    alpha_claim: "BLOCKED";
+    promotion: "BLOCKED";
+    broker_runtime: "BLOCKED";
+    real_trade: "BLOCKED";
+    evidence_to_alpha_promotion: "BLOCKED";
+  };
+};
+
 export type ProductCockpitRoute = {
   id: string;
   label: string;
@@ -316,6 +351,7 @@ export type SettingsPageData = {
   productReadiness: ProductReadinessStatus;
   operatorActions: ProductOperatorActions;
   researchStatus: ProductResearchStatus;
+  researchEvidence: ProductResearchEvidenceIndex;
   cockpitManifest: ProductCockpitManifest;
   safety: SettingsSafety;
 };
@@ -432,6 +468,7 @@ const defaultProductReadiness: ProductReadinessStatus = {
     registered_skills: 0,
     research_capabilities: 0,
     ready_research_capabilities: 0,
+    research_evidence_groups: 0,
     agent_intents: 0,
     operator_actions: 0,
     config_templates: 0,
@@ -444,6 +481,62 @@ const defaultProductReadiness: ProductReadinessStatus = {
     broker_runtime: "BLOCKED",
     real_trade: "BLOCKED",
     agent_direct_mutation: "BLOCKED"
+  }
+};
+
+const defaultResearchEvidence: ProductResearchEvidenceIndex = {
+  status: "Z_MATRIX_RESEARCH_EVIDENCE_INDEX_PARTIAL",
+  group_count: 4,
+  ready_group_count: 0,
+  groups: [
+    {
+      id: "factor-library",
+      label: "因子库状态",
+      summary: "等待本地后端返回因子证据索引。",
+      status: "PARTIAL",
+      ready_count: 0,
+      required_count: 1,
+      artifacts: [{ path: "backend", ready: false, bytes: 0, artifact_type: "endpoint", status_field: "" }],
+      safety: "RESEARCH_ONLY_NO_ALPHA_PROMOTION"
+    },
+    {
+      id: "historical-oos",
+      label: "历史 OOS",
+      summary: "等待本地后端返回历史 OOS 证据索引。",
+      status: "PARTIAL",
+      ready_count: 0,
+      required_count: 1,
+      artifacts: [{ path: "backend", ready: false, bytes: 0, artifact_type: "endpoint", status_field: "" }],
+      safety: "RESEARCH_ONLY_NO_ALPHA_PROMOTION"
+    },
+    {
+      id: "forward-oos",
+      label: "Forward OOS 等待",
+      summary: "等待本地后端返回 Forward OOS 证据索引。",
+      status: "PARTIAL",
+      ready_count: 0,
+      required_count: 1,
+      artifacts: [{ path: "backend", ready: false, bytes: 0, artifact_type: "endpoint", status_field: "" }],
+      safety: "RESEARCH_ONLY_NO_ALPHA_PROMOTION"
+    },
+    {
+      id: "gatekeeper-audit",
+      label: "Gatekeeper 审计",
+      summary: "等待本地后端返回审计证据索引。",
+      status: "PARTIAL",
+      ready_count: 0,
+      required_count: 1,
+      artifacts: [{ path: "backend", ready: false, bytes: 0, artifact_type: "endpoint", status_field: "" }],
+      safety: "RESEARCH_ONLY_NO_ALPHA_PROMOTION"
+    }
+  ],
+  artifact_policy: "LOCAL_RESEARCH_EVIDENCE_ONLY",
+  safety: {
+    alpha_claim: "BLOCKED",
+    promotion: "BLOCKED",
+    broker_runtime: "BLOCKED",
+    real_trade: "BLOCKED",
+    evidence_to_alpha_promotion: "BLOCKED"
   }
 };
 
@@ -913,6 +1006,7 @@ const zPrimeSettings: Omit<SettingsPageData, "workspaceId"> = {
   productReadiness: defaultProductReadiness,
   operatorActions: defaultOperatorActions,
   researchStatus: defaultResearchStatus,
+  researchEvidence: defaultResearchEvidence,
   cockpitManifest: defaultCockpitManifest,
   safety
 };
@@ -947,6 +1041,7 @@ function cloneSettings(packet: SettingsPageData): SettingsPageData {
     productReadiness: cloneProductReadiness(packet.productReadiness),
     operatorActions: cloneOperatorActions(packet.operatorActions),
     researchStatus: cloneResearchStatus(packet.researchStatus),
+    researchEvidence: cloneResearchEvidence(packet.researchEvidence),
     cockpitManifest: cloneCockpitManifest(packet.cockpitManifest),
     safety: { ...packet.safety }
   };
@@ -954,11 +1049,12 @@ function cloneSettings(packet: SettingsPageData): SettingsPageData {
 
 export async function getSettingsPageData(session: AuthSession | null): Promise<SettingsPageData> {
   const current = requireSession(session);
-  const [productRuntime, productReadiness, operatorActions, researchStatus, cockpitManifest] = await Promise.all([
+  const [productRuntime, productReadiness, operatorActions, researchStatus, researchEvidence, cockpitManifest] = await Promise.all([
     loadProductRuntimeStatus(),
     loadProductReadiness(),
     loadOperatorActions(),
     loadResearchStatus(),
+    loadResearchEvidence(),
     loadCockpitManifest()
   ]);
   return cloneSettings({
@@ -968,6 +1064,7 @@ export async function getSettingsPageData(session: AuthSession | null): Promise<
     productReadiness,
     operatorActions,
     researchStatus,
+    researchEvidence,
     cockpitManifest
   });
 }
@@ -1014,6 +1111,10 @@ function getOperatorActionsUrl(): string {
 
 function getResearchStatusUrl(): string {
   return import.meta.env.VITE_ZMATRIX_RESEARCH_STATUS_URL || "/api/product/research_status.json";
+}
+
+function getResearchEvidenceUrl(): string {
+  return import.meta.env.VITE_ZMATRIX_RESEARCH_EVIDENCE_INDEX_URL || "/api/product/research_evidence_index.json";
 }
 
 function getCockpitManifestUrl(): string {
@@ -1077,6 +1178,25 @@ async function loadResearchStatus(): Promise<ProductResearchStatus> {
   }
 }
 
+async function loadResearchEvidence(): Promise<ProductResearchEvidenceIndex> {
+  if (typeof fetch !== "function") {
+    return cloneResearchEvidence(defaultResearchEvidence);
+  }
+  try {
+    const response = await fetch(getResearchEvidenceUrl(), {
+      method: "GET",
+      headers: { Accept: "application/json" }
+    });
+    if (!response.ok) {
+      return cloneResearchEvidence(defaultResearchEvidence);
+    }
+    const packet = (await response.json()) as ProductResearchEvidenceIndex;
+    return normalizeResearchEvidence(packet);
+  } catch {
+    return cloneResearchEvidence(defaultResearchEvidence);
+  }
+}
+
 async function loadOperatorActions(): Promise<ProductOperatorActions> {
   if (typeof fetch !== "function") {
     return cloneOperatorActions(defaultOperatorActions);
@@ -1136,6 +1256,7 @@ function normalizeProductReadiness(packet: ProductReadinessStatus): ProductReadi
       registered_skills: Number(packet.summary?.registered_skills ?? 0),
       research_capabilities: Number(packet.summary?.research_capabilities ?? 0),
       ready_research_capabilities: Number(packet.summary?.ready_research_capabilities ?? 0),
+      research_evidence_groups: Number(packet.summary?.research_evidence_groups ?? 0),
       agent_intents: Number(packet.summary?.agent_intents ?? 0),
       operator_actions: Number(packet.summary?.operator_actions ?? 0),
       config_templates: Number(packet.summary?.config_templates ?? 0),
@@ -1264,6 +1385,53 @@ function cloneResearchStatus(packet: ProductResearchStatus): ProductResearchStat
       safety: { ...packet.monthly_refresh.safety }
     },
     safety: { ...packet.safety }
+  };
+}
+
+function cloneResearchEvidence(packet: ProductResearchEvidenceIndex): ProductResearchEvidenceIndex {
+  return {
+    ...packet,
+    groups: packet.groups.map((group) => ({
+      ...group,
+      artifacts: group.artifacts.map((artifact) => ({ ...artifact }))
+    })),
+    safety: { ...packet.safety }
+  };
+}
+
+function normalizeResearchEvidence(packet: ProductResearchEvidenceIndex): ProductResearchEvidenceIndex {
+  const groups = Array.isArray(packet.groups) ? packet.groups : [];
+  const normalizedGroups = groups.map((group) => ({
+    id: String(group.id ?? "research-evidence"),
+    label: String(group.label ?? "研究证据"),
+    summary: String(group.summary ?? ""),
+    status: group.status === "READY" ? ("READY" as const) : ("PARTIAL" as const),
+    ready_count: Number(group.ready_count ?? 0),
+    required_count: Number(group.required_count ?? 0),
+    artifacts: Array.isArray(group.artifacts)
+      ? group.artifacts.map((artifact) => ({
+          path: String(artifact.path ?? ""),
+          ready: Boolean(artifact.ready),
+          bytes: Number(artifact.bytes ?? 0),
+          artifact_type: String(artifact.artifact_type ?? "file"),
+          status_field: String(artifact.status_field ?? "")
+        }))
+      : [],
+    safety: "RESEARCH_ONLY_NO_ALPHA_PROMOTION" as const
+  }));
+  return {
+    status: packet.status === "Z_MATRIX_RESEARCH_EVIDENCE_INDEX_READY" ? "Z_MATRIX_RESEARCH_EVIDENCE_INDEX_READY" : "Z_MATRIX_RESEARCH_EVIDENCE_INDEX_PARTIAL",
+    group_count: Number(packet.group_count ?? normalizedGroups.length),
+    ready_group_count: Number(packet.ready_group_count ?? normalizedGroups.filter((group) => group.status === "READY").length),
+    groups: normalizedGroups,
+    artifact_policy: "LOCAL_RESEARCH_EVIDENCE_ONLY",
+    safety: {
+      alpha_claim: "BLOCKED",
+      promotion: "BLOCKED",
+      broker_runtime: "BLOCKED",
+      real_trade: "BLOCKED",
+      evidence_to_alpha_promotion: "BLOCKED"
+    }
   };
 }
 

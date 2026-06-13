@@ -32766,5 +32766,21 @@
     "production_allowed": false,
     "status": "CANDIDATE_ONLY",
     "reason": "public function"
+  },
+  {
+    "candidate_id": "CANDIDATE.RESEARCHDB.BUILD_RESEARCH_EVIDENCE_INDEX",
+    "module_path": "zmatrix/product_runtime/local_backend.py",
+    "symbol_name": "build_research_evidence_index",
+    "candidate_type": "function",
+    "domain": "RESEARCHDB",
+    "suggested_skill_id": "RESEARCHDB.BUILD_RESEARCH_EVIDENCE_INDEX",
+    "suggested_skill_layer": "L0_ATOMIC",
+    "suggested_risk_level": "R2_DRAFT",
+    "read_layers": [],
+    "write_layers": [],
+    "requires_human_review": true,
+    "production_allowed": false,
+    "status": "CANDIDATE_ONLY",
+    "reason": "public function"
   }
 ]

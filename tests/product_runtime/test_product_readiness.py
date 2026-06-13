@@ -69,6 +69,7 @@ def _make_readiness_root(root: Path) -> Path:
             "VITE_ZMATRIX_PRODUCT_READINESS_URL=http://127.0.0.1:8765/api/product/readiness.json\n"
             "VITE_ZMATRIX_OPERATOR_ACTIONS_URL=http://127.0.0.1:8765/api/product/operator_actions.json\n"
             "VITE_ZMATRIX_RESEARCH_STATUS_URL=http://127.0.0.1:8765/api/product/research_status.json\n"
+            "VITE_ZMATRIX_RESEARCH_EVIDENCE_INDEX_URL=http://127.0.0.1:8765/api/product/research_evidence_index.json\n"
             "VITE_ZMATRIX_COCKPIT_MANIFEST_URL=http://127.0.0.1:8765/api/product/cockpit_manifest.json\n"
             "VITE_ZMATRIX_AGENT_BRIDGE_URL=http://127.0.0.1:8765/api/product/agent_bridge.json\n"
             "VITE_ZMATRIX_AGENT_DRAFT_URL=http://127.0.0.1:8765/api/product/agent_draft.json\n"
@@ -97,8 +98,54 @@ def _make_readiness_root(root: Path) -> Path:
         "dayan_ask_packet.json",
     ):
         files[f"apps/cockpit_web/public/api/cockpit/{name}"] = "{}\n"
+    for relative in _evidence_artifact_paths():
+        files[relative] = '{"status":"READY"}\n'
     for relative, content in files.items():
         path = root / relative
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(content, encoding="utf-8")
     return root
+
+
+def _evidence_artifact_paths() -> tuple[str, ...]:
+    return (
+        "runtime_reports/cases/v9_factor_selection_gate.json",
+        "runtime_reports/cases/v9_factor_decay_analysis.json",
+        "runtime_reports/cases/v9_factor_robustness.json",
+        "runtime_reports/cases/v9_formal_factor_stability.json",
+        "docs/cases/V9_FACTOR_SELECTION_GATE.md",
+        "runtime_reports/cases/v11_6_1_oos_completion_contract.json",
+        "runtime_reports/cases/v11_6_1_oos_due_label_resolution.json",
+        "runtime_reports/cases/v11_6_1_oos_paper_outcomes.json",
+        "runtime_reports/cases/v11_6_1_oos_completion_audit.json",
+        "runtime_reports/cases/v11_6_1_oos_completion_chain.json",
+        "runtime_reports/cases/v11_6_tracking_registry.json",
+        "runtime_reports/cases/v11_6_tracking_schedule.json",
+        "runtime_reports/cases/v12_1_live_paper_due_schedule.json",
+        "runtime_reports/cases/v12_1_live_paper_run_registry.json",
+        "runtime_reports/cases/v12_1_live_paper_status_update.json",
+        "runtime_reports/cases/v10_candidate_factor_thesis_pack.json",
+        "runtime_reports/cases/v11_candidate_factor_watchlist.json",
+        "runtime_reports/cases/v11_paper_signal_snapshot.json",
+        "runtime_reports/cases/v11_paper_tracking_plan.json",
+        "runtime_reports/cases/v11_paper_watchlist_audit.json",
+        "runtime_reports/cases/v10_decay_semantic_propagation_audit.json",
+        "runtime_reports/cases/v11_9_factor_lifecycle_seed.json",
+        "runtime_reports/cases/v13_5_13_decay_after_20d_monitor.json",
+        "runtime_reports/cases/v13_5_13_tactical_monitoring_scorecard.json",
+        "docs/cases/V9_FACTOR_DECAY_ANALYSIS.md",
+        "runtime_reports/cases/v11_5_paper_portfolio_contract.json",
+        "runtime_reports/cases/v11_5_paper_portfolio_simulation.json",
+        "runtime_reports/cases/v11_5_paper_portfolio_risk_audit.json",
+        "runtime_reports/cases/v11_5_benchmark_cost_proxy_evaluation.json",
+        "runtime_reports/cases/case_expansion_v11_5_closeout.json",
+        "runtime_reports/cases/v11_7_transaction_cost_model.json",
+        "runtime_reports/cases/v11_7_cost_model_evaluation.json",
+        "runtime_reports/cases/v11_7_capacity_proxy_audit.json",
+        "runtime_reports/cases/v11_7_closeout.json",
+        "runtime_reports/cases/v12_alpha_operating_loop_entry_gate.json",
+        "runtime_reports/cases/v12_research_only_operating_contract.json",
+        "runtime_reports/cases/v12_research_only_loop_audit.json",
+        "runtime_reports/cases/v12_research_only_closeout.json",
+        "docs/audit/SAFETY_FORBIDDEN_FLAG_AUDIT_REPORT.md",
+    )

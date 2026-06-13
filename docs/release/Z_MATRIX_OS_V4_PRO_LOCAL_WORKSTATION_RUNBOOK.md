@@ -85,6 +85,7 @@ Useful local endpoints:
 ```text
 http://127.0.0.1:8765/health
 http://127.0.0.1:8765/api/product/status.json
+http://127.0.0.1:8765/api/product/research_evidence_index.json
 http://127.0.0.1:8765/api/product/cockpit_manifest.json
 http://127.0.0.1:8765/api/product/agent_bridge.json
 http://127.0.0.1:8765/api/cockpit/holdings_packet.json

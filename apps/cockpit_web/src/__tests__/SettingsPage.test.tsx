@@ -225,6 +225,19 @@ describe("settings page", () => {
     expect(within(panel).getByText(/--dry-plan/)).toBeInTheDocument();
   });
 
+  it("shows research evidence groups without alpha promotion", async () => {
+    renderSettings();
+
+    const panel = await screen.findByLabelText("研究证据索引");
+    expect(within(panel).getByText("研究证据索引")).toBeInTheDocument();
+    expect(within(panel).getByText("因子库状态")).toBeInTheDocument();
+    expect(within(panel).getByText("历史 OOS")).toBeInTheDocument();
+    expect(within(panel).getByText("Forward OOS 等待")).toBeInTheDocument();
+    expect(within(panel).getByText("Gatekeeper 审计")).toBeInTheDocument();
+    expect(within(panel).getAllByText("RESEARCH_ONLY_NO_ALPHA_PROMOTION").length).toBeGreaterThan(0);
+    expect(within(panel).getAllByText("backend").length).toBeGreaterThan(0);
+  });
+
   it("does not render forbidden operational commands or internal identifiers", async () => {
     renderSettings();
     await screen.findByRole("heading", { name: "系统设置" });

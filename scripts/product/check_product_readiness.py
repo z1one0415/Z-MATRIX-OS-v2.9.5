@@ -66,6 +66,8 @@ def build_product_readiness(options: ReadinessOptions = ReadinessOptions()) -> d
             "agent_intents": len(bridge["allowed_intents"]),
             "operator_actions": len(actions["actions"]),
             "config_templates": config_templates["ready_count"],
+            "configured_secret_refs": config_templates["configured_secret_refs"],
+            "required_secret_refs": config_templates["required_secret_refs"],
         },
         "safety": {
             "alpha_claim": "BLOCKED",

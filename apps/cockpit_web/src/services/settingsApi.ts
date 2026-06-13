@@ -141,6 +141,15 @@ export type ProductRuntimeStatus = {
     ready: boolean;
     template_count: number;
     ready_count: number;
+    configured_secret_refs: number;
+    required_secret_refs: number;
+    env_reference_policy: "PROCESS_ENV_ONLY_NO_VALUES_EMITTED";
+    env_references: Array<{
+      key: string;
+      configured: boolean;
+      source: "PROCESS_ENV";
+      value_material: "NOT_EMITTED";
+    }>;
     secret_material_policy: "TEMPLATE_KEYS_ONLY_ENV_VALUES_NEVER_EMITTED";
   };
   safety: {
@@ -322,6 +331,13 @@ const defaultProductRuntime: ProductRuntimeStatus = {
     ready: true,
     template_count: 2,
     ready_count: 2,
+    configured_secret_refs: 0,
+    required_secret_refs: 2,
+    env_reference_policy: "PROCESS_ENV_ONLY_NO_VALUES_EMITTED",
+    env_references: [
+      { key: "TUSHARE_TOKEN", configured: false, source: "PROCESS_ENV", value_material: "NOT_EMITTED" },
+      { key: "DEEPSEEK_API_KEY", configured: false, source: "PROCESS_ENV", value_material: "NOT_EMITTED" }
+    ],
     secret_material_policy: "TEMPLATE_KEYS_ONLY_ENV_VALUES_NEVER_EMITTED"
   },
   safety: {
@@ -917,6 +933,10 @@ function normalizeProductRuntime(packet: ProductRuntimeStatus): ProductRuntimeSt
       ready: Boolean(packet.config?.ready),
       template_count: Number(packet.config?.template_count ?? defaultProductRuntime.config.template_count),
       ready_count: Number(packet.config?.ready_count ?? 0),
+      configured_secret_refs: Number(packet.config?.configured_secret_refs ?? 0),
+      required_secret_refs: Number(packet.config?.required_secret_refs ?? defaultProductRuntime.config.required_secret_refs),
+      env_reference_policy: "PROCESS_ENV_ONLY_NO_VALUES_EMITTED",
+      env_references: normalizeEnvReferences(packet.config?.env_references),
       secret_material_policy: "TEMPLATE_KEYS_ONLY_ENV_VALUES_NEVER_EMITTED"
     },
     safety: {
@@ -928,6 +948,16 @@ function normalizeProductRuntime(packet: ProductRuntimeStatus): ProductRuntimeSt
       secret_storage: "ENV_ONLY"
     }
   };
+}
+
+function normalizeEnvReferences(value: ProductRuntimeStatus["config"]["env_references"] | undefined): ProductRuntimeStatus["config"]["env_references"] {
+  const refs = Array.isArray(value) ? value : defaultProductRuntime.config.env_references;
+  return refs.map((item) => ({
+    key: String(item.key ?? ""),
+    configured: Boolean(item.configured),
+    source: "PROCESS_ENV",
+    value_material: "NOT_EMITTED"
+  }));
 }
 
 function cloneOperatorActions(packet: ProductOperatorActions): ProductOperatorActions {

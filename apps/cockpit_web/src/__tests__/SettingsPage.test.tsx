@@ -75,6 +75,7 @@ describe("settings page", () => {
     expect(screen.getByDisplayValue("deepseek-reasoner")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "测试模型连接" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "保存 API 密钥引用" })).toBeInTheDocument();
+    expect(screen.getByText("ENV WAITING")).toBeInTheDocument();
     await user.type(screen.getByPlaceholderText("***REDACTED***"), "secret-llm-token");
     expect(document.body.textContent || "").not.toContain("secret-llm-token");
   });
@@ -90,6 +91,7 @@ describe("settings page", () => {
     expect(screen.getAllByText("***REDACTED***").length).toBeGreaterThan(0);
     expect(screen.getByPlaceholderText("输入后保存为密钥引用")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "保存密钥引用" })).toBeInTheDocument();
+    expect(screen.getByText("ENV WAITING")).toBeInTheDocument();
     expect(document.body.textContent || "").not.toContain("test-token-value");
     expect(screen.getByRole("button", { name: "校验导入文件" })).toBeInTheDocument();
   });
@@ -174,7 +176,7 @@ describe("settings page", () => {
     expect(within(statusBar).getByText("安全保护")).toBeInTheDocument();
     expect(within(statusBar).getByText("本地数据")).toBeInTheDocument();
     expect(within(statusBar).getByText("配置模板")).toBeInTheDocument();
-    expect(within(statusBar).getByText("ENV ONLY")).toBeInTheDocument();
+    expect(within(statusBar).getByText("0/2 env refs")).toBeInTheDocument();
     expect(within(statusBar).getByRole("button", { name: /导出审计记录/ })).toBeInTheDocument();
     expect(screen.queryByLabelText("系统体检")).not.toBeInTheDocument();
     expect(screen.queryByRole("region", { name: "童子谏言" })).not.toBeInTheDocument();

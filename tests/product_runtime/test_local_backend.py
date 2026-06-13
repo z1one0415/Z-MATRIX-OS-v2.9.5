@@ -9,6 +9,7 @@ from pathlib import Path
 from zmatrix.product_runtime.local_backend import (
     ProductRuntimeConfig,
     build_agent_bridge_status,
+    build_config_template_status,
     build_agent_research_draft,
     build_operator_actions,
     build_product_status,
@@ -39,7 +40,7 @@ def test_product_status_reports_cockpit_and_registry(tmp_path: Path):
         encoding="utf-8",
     )
 
-    status = build_product_status(ProductRuntimeConfig(public_root=public_root, registry_path=registry_path))
+    status = build_product_status(ProductRuntimeConfig(public_root=public_root, registry_path=registry_path, env={}))
 
     assert status["status"] == "Z_MATRIX_PRODUCT_RUNTIME_READY"
     assert status["cockpit"]["packet_count"] == 5
@@ -49,8 +50,48 @@ def test_product_status_reports_cockpit_and_registry(tmp_path: Path):
     assert status["capabilities"]["configuration_templates"] is True
     assert status["config"]["ready"] is True
     assert status["config"]["secret_material_policy"] == "TEMPLATE_KEYS_ONLY_ENV_VALUES_NEVER_EMITTED"
+    assert status["config"]["configured_secret_refs"] == 0
     assert status["safety"]["broker_runtime"] == "BLOCKED"
     assert status["safety"]["real_trade"] == "BLOCKED"
+
+
+def test_config_template_status_reports_env_references_without_values(tmp_path: Path):
+    root = tmp_path / "repo"
+    root.mkdir()
+    (root / ".env.example").write_text(
+        "Z_MATRIX_PRODUCT_HOST=127.0.0.1\n"
+        "Z_MATRIX_PRODUCT_PORT=8765\n"
+        "Z_MATRIX_WORKSPACE_ID=ws_personal_z_prime\n"
+        "TUSHARE_TOKEN" "=" "\n"
+        "DEEPSEEK_API_KEY" "=" "\n"
+        "Z_MATRIX_COCKPIT_PUBLIC_ROOT=apps/cockpit_web/public/api/cockpit\n"
+        "Z_MATRIX_VENDOR_ROOT=data/research_db/market_data/vendor/tushare_5y\n",
+        encoding="utf-8",
+    )
+    cockpit_env = root / "apps/cockpit_web/.env.example"
+    cockpit_env.parent.mkdir(parents=True)
+    cockpit_env.write_text(
+        "VITE_ZMATRIX_PRODUCT_STATUS_URL=http://127.0.0.1:8765/api/product/status.json\n"
+        "VITE_ZMATRIX_OPERATOR_ACTIONS_URL=http://127.0.0.1:8765/api/product/operator_actions.json\n"
+        "VITE_ZMATRIX_RESEARCH_STATUS_URL=http://127.0.0.1:8765/api/product/research_status.json\n"
+        "VITE_ZMATRIX_AGENT_BRIDGE_URL=http://127.0.0.1:8765/api/product/agent_bridge.json\n"
+        "VITE_ZMATRIX_AGENT_DRAFT_URL=http://127.0.0.1:8765/api/product/agent_draft.json\n"
+        "VITE_ZMATRIX_HOLDINGS_PACKET_URL=/api/cockpit/holdings_packet.json\n"
+        "VITE_ZMATRIX_SELECTION_PACKET_URL=/api/cockpit/selection_packet.json\n"
+        "VITE_ZMATRIX_HISTORY_PACKET_URL=/api/cockpit/history_packet.json\n"
+        "VITE_ZMATRIX_CONTROL_COMPASS_PACKET_URL=/api/cockpit/control_compass_packet.json\n"
+        "VITE_ZMATRIX_DAYAN_ASK_PACKET_URL=/api/cockpit/dayan_ask_packet.json\n",
+        encoding="utf-8",
+    )
+
+    status = build_config_template_status(root, env={("TUSHARE_" + "TOKEN"): "local-secret-value"})
+
+    assert status["ready"] is True
+    assert status["configured_secret_refs"] == 1
+    ref = next(item for item in status["env_references"] if item["key"] == "TUSHARE_TOKEN")
+    assert ref["configured"] is True
+    assert ref["value_material"] == "NOT_EMITTED"
+    assert "local-secret-value" not in json.dumps(status)
 
 
 def test_local_backend_serves_health_and_cockpit_packet(tmp_path: Path):

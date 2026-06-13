@@ -106,6 +106,11 @@ export function SettingsPage({ session }: SettingsPageProps) {
   const runtime = settingsData.productRuntime;
   const runtimeReady = runtime.status === "Z_MATRIX_PRODUCT_RUNTIME_READY";
 
+  function envReferenceLabel(key: string) {
+    const ref = runtime.config.env_references.find((item) => item.key === key);
+    return ref?.configured ? "ENV READY" : "ENV WAITING";
+  }
+
   function submitSettingsAction(actionName: Parameters<typeof action.mutate>[0]["action"], payload: Record<string, unknown> = {}) {
     action.mutate({
       action: actionName,
@@ -250,7 +255,7 @@ export function SettingsPage({ session }: SettingsPageProps) {
         <article>
           <span>配置模板</span>
           <strong>{runtime.config.ready_count}/{runtime.config.template_count}</strong>
-          <small>{runtime.config.ready ? "ENV ONLY" : "Check templates"}</small>
+          <small>{runtime.config.configured_secret_refs}/{runtime.config.required_secret_refs} env refs</small>
         </article>
         <div className="settings-status-actions">
           <span>{latestDraft ? latestDraft.userMessage : "设置动作都会进入人审草案或审计记录。"}</span>
@@ -483,6 +488,7 @@ export function SettingsPage({ session }: SettingsPageProps) {
               <dl className="settings-compact-dl">
                 <div><dt>最近检查</dt><dd>{source.lastChecked}</dd></div>
                 <div><dt>密钥</dt><dd>{source.secretPreview ?? "不需要密钥"}</dd></div>
+                {source.id === "tushare" ? <div><dt>进程环境</dt><dd>{envReferenceLabel("TUSHARE_TOKEN")}</dd></div> : null}
               </dl>
               {source.id === "research-import" ? (
                 <button type="button" onClick={() => submitSettingsAction("VALIDATE_LOCAL_IMPORT_DRAFT", { sourceId: source.id })}>
@@ -659,6 +665,7 @@ export function SettingsPage({ session }: SettingsPageProps) {
             <div><dt>状态</dt><dd>{source.status}</dd></div>
             <div><dt>最近检查</dt><dd>{source.lastChecked}</dd></div>
             <div><dt>密钥</dt><dd>{source.secretPreview ?? "不需要密钥"}</dd></div>
+            {source.id === "tushare" ? <div><dt>进程环境</dt><dd>{envReferenceLabel("TUSHARE_TOKEN")}</dd></div> : null}
           </dl>
         </article>
         {source.id === "research-import" ? (
@@ -722,6 +729,7 @@ export function SettingsPage({ session }: SettingsPageProps) {
             <div><dt>区域</dt><dd>{provider.region}</dd></div>
             <div><dt>端点模式</dt><dd>{provider.endpointMode}</dd></div>
             <div><dt>最近测试</dt><dd>{provider.lastTested}</dd></div>
+            {provider.id === "deepseek" ? <div><dt>进程环境</dt><dd>{envReferenceLabel("DEEPSEEK_API_KEY")}</dd></div> : null}
           </dl>
         </article>
         <label className="settings-field-card">

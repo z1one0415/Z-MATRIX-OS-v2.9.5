@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import json
 import mimetypes
+import os
+from collections.abc import Mapping
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -175,6 +177,7 @@ class ProductRuntimeConfig:
     host: str = "127.0.0.1"
     port: int = 8765
     repo_root: Path = DEFAULT_REPO_ROOT
+    env: Mapping[str, str] | None = None
     public_root: Path = DEFAULT_PUBLIC_ROOT
     registry_path: Path = DEFAULT_REGISTRY_PATH
     vendor_root: Path = DEFAULT_VENDOR_ROOT
@@ -186,7 +189,7 @@ def build_product_status(config: ProductRuntimeConfig | None = None) -> dict[str
     packet_status = _packet_status(cfg.public_root)
     registry_status = _registry_status(cfg.registry_path)
     vendor_status = _vendor_status(cfg.vendor_root)
-    config_status = build_config_template_status(cfg.repo_root)
+    config_status = build_config_template_status(cfg.repo_root, cfg.env)
     ready = packet_status["ready"] and registry_status["ready"] and config_status["ready"]
     return {
         "status": "Z_MATRIX_PRODUCT_RUNTIME_READY" if ready else "Z_MATRIX_PRODUCT_RUNTIME_DEGRADED",
@@ -225,7 +228,7 @@ def build_product_status(config: ProductRuntimeConfig | None = None) -> dict[str
     }
 
 
-def build_config_template_status(root: Path = DEFAULT_REPO_ROOT) -> dict[str, Any]:
+def build_config_template_status(root: Path = DEFAULT_REPO_ROOT, env: Mapping[str, str] | None = None) -> dict[str, Any]:
     specs = (
         ("root-env-template", ".env.example", ROOT_ENV_TEMPLATE_KEYS, SECRET_TEMPLATE_KEYS),
         ("cockpit-env-template", "apps/cockpit_web/.env.example", COCKPIT_ENV_TEMPLATE_KEYS, ()),
@@ -241,6 +244,7 @@ def build_config_template_status(root: Path = DEFAULT_REPO_ROOT) -> dict[str, An
         for item in templates
         for key in item["unsafe_example_value_keys"]
     ]
+    env_references = _env_secret_reference_status(env if env is not None else os.environ)
     return {
         "ready": all(item["ready"] for item in templates),
         "template_count": len(templates),
@@ -248,6 +252,10 @@ def build_config_template_status(root: Path = DEFAULT_REPO_ROOT) -> dict[str, An
         "templates": templates,
         "missing_required_keys": missing,
         "unsafe_example_value_keys": unsafe,
+        "env_references": env_references,
+        "configured_secret_refs": sum(1 for item in env_references if item["configured"]),
+        "required_secret_refs": len(env_references),
+        "env_reference_policy": "PROCESS_ENV_ONLY_NO_VALUES_EMITTED",
         "secret_material_policy": "TEMPLATE_KEYS_ONLY_ENV_VALUES_NEVER_EMITTED",
     }
 
@@ -646,6 +654,20 @@ def _env_template_status(path: Path, check_id: str, required_keys: tuple[str, ..
         "secret_keys": list(secret_keys),
         "value_material": "NOT_EMITTED",
     }
+
+
+def _env_secret_reference_status(env: Mapping[str, str]) -> list[dict[str, Any]]:
+    refs = []
+    for key in SECRET_TEMPLATE_KEYS:
+        refs.append(
+            {
+                "key": key,
+                "configured": bool(str(env.get(key, "")).strip()),
+                "source": "PROCESS_ENV",
+                "value_material": "NOT_EMITTED",
+            }
+        )
+    return refs
 
 
 def _read_env_template_assignments(path: Path) -> dict[str, str]:

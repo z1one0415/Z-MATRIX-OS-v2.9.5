@@ -23,11 +23,15 @@ The frontend default packet URLs are:
 Override with:
 
 ```text
+VITE_ZMATRIX_PRODUCT_STATUS_URL=http://127.0.0.1:8765/api/product/status.json
 VITE_ZMATRIX_HOLDINGS_PACKET_URL=/api/cockpit/holdings_packet.json
 VITE_ZMATRIX_SELECTION_PACKET_URL=/api/cockpit/selection_packet.json
 VITE_ZMATRIX_HISTORY_PACKET_URL=/api/cockpit/history_packet.json
 VITE_ZMATRIX_CONTROL_COMPASS_PACKET_URL=/api/cockpit/control_compass_packet.json
 VITE_ZMATRIX_DAYAN_ASK_PACKET_URL=/api/cockpit/dayan_ask_packet.json
 ```
+
+The settings page reads product runtime status from `VITE_ZMATRIX_PRODUCT_STATUS_URL`.
+If the local backend is not running, the page falls back to a degraded offline preview.
 
 The current bridge is read-only and keeps `paperOnly=true`, `brokerRuntime=BLOCKED`, and `realTrade=BLOCKED`.

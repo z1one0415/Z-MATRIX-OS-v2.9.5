@@ -94,6 +94,8 @@ export function SettingsPage({ session }: SettingsPageProps) {
 
   const settingsData = data;
   const selectedProvider = settingsData.llmProviders.find((provider) => provider.id === selectedLlmProvider) ?? settingsData.llmProviders[0];
+  const runtime = settingsData.productRuntime;
+  const runtimeReady = runtime.status === "Z_MATRIX_PRODUCT_RUNTIME_READY";
 
   function submitSettingsAction(actionName: Parameters<typeof action.mutate>[0]["action"], payload: Record<string, unknown> = {}) {
     action.mutate({
@@ -206,27 +208,33 @@ export function SettingsPage({ session }: SettingsPageProps) {
     return (
       <section className="settings-status-bar panel-shell" aria-label="设置页统一状态栏">
         <article>
-          <span>数据连接</span>
-          <strong>可测试</strong>
-          <small>Tushare 引用可更新</small>
+          <span>后端服务</span>
+          <strong>{runtimeReady ? "READY" : "DEGRADED"}</strong>
+          <small>{runtime.service.host}:{runtime.service.port}</small>
         </article>
         <article>
-          <span>模型接口</span>
-          <strong>{settingsData.llmProviders.length} 路</strong>
-          <small>{settingsData.llmProviders.filter((provider) => provider.region === "国内").length} 路国内接口</small>
+          <span>驾驶舱数据</span>
+          <strong>{runtime.cockpit.packet_count}/{runtime.cockpit.required_packet_count}</strong>
+          <small>{runtime.cockpit.ready ? "Packets ready" : `${runtime.cockpit.missing.length} missing`}</small>
+        </article>
+        <article>
+          <span>SkillOS</span>
+          <strong>{runtime.registry.skill_count}</strong>
+          <small>{runtime.registry.concrete_skill_count} active paths</small>
         </article>
         <article>
           <span>安全保护</span>
-          <strong>已锁定</strong>
+          <strong>BLOCKED</strong>
           <small className="settings-status-chipline">
             <span>Paper-only</span>
-            <span>Human Review</span>
+            <span>Broker</span>
+            <span>Real Trade</span>
           </small>
         </article>
         <article>
-          <span>显示偏好</span>
-          <strong>{copyModeMeta[selectedCopyMode].label}</strong>
-          <small>{fontScaleMeta[selectedFontScale].label} · {themeModeMeta[selectedThemeMode].label}</small>
+          <span>本地数据</span>
+          <strong>{runtime.data_source.ready ? "READY" : "WAITING"}</strong>
+          <small>{runtime.data_source.manifest_count} manifests</small>
         </article>
         <article>
           <span>备份</span>

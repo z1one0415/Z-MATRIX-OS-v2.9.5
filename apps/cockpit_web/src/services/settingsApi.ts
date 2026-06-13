@@ -113,6 +113,40 @@ export type AuditSummaryItem = {
   status: "已记录" | "待确认" | "可导出";
 };
 
+export type ProductRuntimeStatus = {
+  status: "Z_MATRIX_PRODUCT_RUNTIME_READY" | "Z_MATRIX_PRODUCT_RUNTIME_DEGRADED";
+  service: {
+    name: string;
+    host: string;
+    port: number;
+  };
+  cockpit: {
+    ready: boolean;
+    packet_count: number;
+    required_packet_count: number;
+    missing: string[];
+  };
+  registry: {
+    ready: boolean;
+    skill_count: number;
+    domain_count: number;
+    concrete_skill_count: number;
+  };
+  data_source: {
+    ready: boolean;
+    manifest_count: number;
+    mode: string;
+  };
+  safety: {
+    alpha_claim: "BLOCKED";
+    promotion: "BLOCKED";
+    broker_runtime: "BLOCKED";
+    real_trade: "BLOCKED";
+    agent_direct_mutation: "BLOCKED";
+    secret_storage: "ENV_ONLY";
+  };
+};
+
 export type SettingsPageData = {
   workspaceId: string;
   title: "系统设置";
@@ -129,6 +163,7 @@ export type SettingsPageData = {
   copyPack: CopyPack;
   systemHealth: SystemHealthItem[];
   auditSummary: AuditSummaryItem[];
+  productRuntime: ProductRuntimeStatus;
   safety: SettingsSafety;
 };
 
@@ -181,6 +216,40 @@ const safety: SettingsSafety = {
   realTrade: "BLOCKED",
   agentDirectMutation: "BLOCKED",
   dataScope: "WORKSPACE_SCOPED"
+};
+
+const defaultProductRuntime: ProductRuntimeStatus = {
+  status: "Z_MATRIX_PRODUCT_RUNTIME_DEGRADED",
+  service: {
+    name: "z-matrix-local-product-backend",
+    host: "127.0.0.1",
+    port: 8765
+  },
+  cockpit: {
+    ready: true,
+    packet_count: 5,
+    required_packet_count: 5,
+    missing: []
+  },
+  registry: {
+    ready: true,
+    skill_count: 104,
+    domain_count: 20,
+    concrete_skill_count: 50
+  },
+  data_source: {
+    ready: false,
+    manifest_count: 0,
+    mode: "LOCAL_VENDOR_STORE_ONLY"
+  },
+  safety: {
+    alpha_claim: "BLOCKED",
+    promotion: "BLOCKED",
+    broker_runtime: "BLOCKED",
+    real_trade: "BLOCKED",
+    agent_direct_mutation: "BLOCKED",
+    secret_storage: "ENV_ONLY"
+  }
 };
 
 const copyPack: CopyPack = {
@@ -459,6 +528,7 @@ const zPrimeSettings: Omit<SettingsPageData, "workspaceId"> = {
     { time: "09:41", title: "安全锁状态复核", status: "已记录" },
     { time: "待触发", title: "文字表达偏好保存", status: "待确认" }
   ],
+  productRuntime: defaultProductRuntime,
   safety
 };
 
@@ -488,16 +558,92 @@ function cloneSettings(packet: SettingsPageData): SettingsPageData {
     copyPack: Object.fromEntries(Object.entries(packet.copyPack).map(([key, value]) => [key, { ...value }])) as CopyPack,
     systemHealth: packet.systemHealth.map((item) => ({ ...item })),
     auditSummary: packet.auditSummary.map((item) => ({ ...item })),
+    productRuntime: cloneProductRuntime(packet.productRuntime),
     safety: { ...packet.safety }
   };
 }
 
 export async function getSettingsPageData(session: AuthSession | null): Promise<SettingsPageData> {
   const current = requireSession(session);
+  const productRuntime = await loadProductRuntimeStatus();
   return cloneSettings({
     ...zPrimeSettings,
-    workspaceId: current.workspaceId
+    workspaceId: current.workspaceId,
+    productRuntime
   });
+}
+
+function cloneProductRuntime(status: ProductRuntimeStatus): ProductRuntimeStatus {
+  return {
+    ...status,
+    service: { ...status.service },
+    cockpit: {
+      ...status.cockpit,
+      missing: [...status.cockpit.missing]
+    },
+    registry: { ...status.registry },
+    data_source: { ...status.data_source },
+    safety: { ...status.safety }
+  };
+}
+
+function getProductRuntimeStatusUrl(): string {
+  return import.meta.env.VITE_ZMATRIX_PRODUCT_STATUS_URL || "/api/product/status.json";
+}
+
+async function loadProductRuntimeStatus(): Promise<ProductRuntimeStatus> {
+  if (typeof fetch !== "function") {
+    return cloneProductRuntime(defaultProductRuntime);
+  }
+  try {
+    const response = await fetch(getProductRuntimeStatusUrl(), {
+      method: "GET",
+      headers: { Accept: "application/json" }
+    });
+    if (!response.ok) {
+      return cloneProductRuntime(defaultProductRuntime);
+    }
+    const packet = (await response.json()) as ProductRuntimeStatus;
+    return normalizeProductRuntime(packet);
+  } catch {
+    return cloneProductRuntime(defaultProductRuntime);
+  }
+}
+
+function normalizeProductRuntime(packet: ProductRuntimeStatus): ProductRuntimeStatus {
+  return {
+    status: packet.status === "Z_MATRIX_PRODUCT_RUNTIME_READY" ? "Z_MATRIX_PRODUCT_RUNTIME_READY" : "Z_MATRIX_PRODUCT_RUNTIME_DEGRADED",
+    service: {
+      name: packet.service?.name ?? defaultProductRuntime.service.name,
+      host: packet.service?.host ?? defaultProductRuntime.service.host,
+      port: Number(packet.service?.port ?? defaultProductRuntime.service.port)
+    },
+    cockpit: {
+      ready: Boolean(packet.cockpit?.ready),
+      packet_count: Number(packet.cockpit?.packet_count ?? 0),
+      required_packet_count: Number(packet.cockpit?.required_packet_count ?? defaultProductRuntime.cockpit.required_packet_count),
+      missing: Array.isArray(packet.cockpit?.missing) ? [...packet.cockpit.missing] : []
+    },
+    registry: {
+      ready: Boolean(packet.registry?.ready),
+      skill_count: Number(packet.registry?.skill_count ?? 0),
+      domain_count: Number(packet.registry?.domain_count ?? 0),
+      concrete_skill_count: Number(packet.registry?.concrete_skill_count ?? 0)
+    },
+    data_source: {
+      ready: Boolean(packet.data_source?.ready),
+      manifest_count: Number(packet.data_source?.manifest_count ?? 0),
+      mode: packet.data_source?.mode ?? defaultProductRuntime.data_source.mode
+    },
+    safety: {
+      alpha_claim: "BLOCKED",
+      promotion: "BLOCKED",
+      broker_runtime: "BLOCKED",
+      real_trade: "BLOCKED",
+      agent_direct_mutation: "BLOCKED",
+      secret_storage: "ENV_ONLY"
+    }
+  };
 }
 
 export async function createSettingsActionDraft(

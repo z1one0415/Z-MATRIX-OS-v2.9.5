@@ -66,12 +66,18 @@ def test_local_backend_serves_health_and_cockpit_packet(tmp_path: Path):
         payload = json.loads(response.read().decode("utf-8"))
         assert response.status == 200
         assert payload["status"] == "Z_MATRIX_PRODUCT_RUNTIME_READY"
+        assert response.getheader("Access-Control-Allow-Origin") == "http://127.0.0.1:5173"
 
         conn.request("GET", "/api/cockpit/holdings_packet.json")
         packet_response = conn.getresponse()
         packet = json.loads(packet_response.read().decode("utf-8"))
         assert packet_response.status == 200
         assert packet["name"] == "holdings_packet.json"
+
+        conn.request("OPTIONS", "/api/product/status.json")
+        options_response = conn.getresponse()
+        options_response.read()
+        assert options_response.status == 204
     finally:
         server.shutdown()
         server.server_close()

@@ -87,15 +87,20 @@ def make_handler(config: ProductRuntimeConfig) -> type[BaseHTTPRequestHandler]:
                 return
             self.send_error(404, "Not found")
 
+        def do_OPTIONS(self) -> None:  # noqa: N802 - BaseHTTPRequestHandler API
+            self.send_response(204)
+            self._send_common_headers()
+            self.end_headers()
+
         def log_message(self, format: str, *args: Any) -> None:  # noqa: A002
             return
 
         def _send_json(self, payload: dict[str, Any], status_code: int = 200) -> None:
             encoded = json.dumps(payload, ensure_ascii=False, indent=2).encode("utf-8")
             self.send_response(status_code)
+            self._send_common_headers()
             self.send_header("Content-Type", "application/json; charset=utf-8")
             self.send_header("Content-Length", str(len(encoded)))
-            self.send_header("Cache-Control", "no-store")
             self.end_headers()
             self.wfile.write(encoded)
 
@@ -114,11 +119,17 @@ def make_handler(config: ProductRuntimeConfig) -> type[BaseHTTPRequestHandler]:
             content = target.read_bytes()
             content_type = mimetypes.guess_type(target.name)[0] or "application/octet-stream"
             self.send_response(200)
+            self._send_common_headers()
             self.send_header("Content-Type", content_type)
             self.send_header("Content-Length", str(len(content)))
-            self.send_header("Cache-Control", "no-store")
             self.end_headers()
             self.wfile.write(content)
+
+        def _send_common_headers(self) -> None:
+            self.send_header("Cache-Control", "no-store")
+            self.send_header("Access-Control-Allow-Origin", "http://127.0.0.1:5173")
+            self.send_header("Access-Control-Allow-Methods", "GET, OPTIONS")
+            self.send_header("Access-Control-Allow-Headers", "Accept, Content-Type")
 
     return ProductRuntimeHandler
 

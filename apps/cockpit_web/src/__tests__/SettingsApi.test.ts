@@ -47,6 +47,10 @@ describe("settings api tenant-aware contract", () => {
     expect(packet.safety.brokerRuntime).toBe("BLOCKED");
     expect(packet.safety.realTrade).toBe("BLOCKED");
     expect(packet.safety.agentDirectMutation).toBe("BLOCKED");
+    expect(packet.productRuntime.cockpit.packet_count).toBe(5);
+    expect(packet.productRuntime.registry.skill_count).toBeGreaterThanOrEqual(100);
+    expect(packet.productRuntime.safety.broker_runtime).toBe("BLOCKED");
+    expect(packet.productRuntime.safety.real_trade).toBe("BLOCKED");
   });
 
   it("includes tianji, plain, and english copy packs for core cockpit labels", async () => {

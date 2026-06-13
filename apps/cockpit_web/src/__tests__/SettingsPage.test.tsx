@@ -168,9 +168,11 @@ describe("settings page", () => {
     renderSettings();
 
     const statusBar = await screen.findByLabelText("设置页统一状态栏");
-    expect(within(statusBar).getByText("模型接口")).toBeInTheDocument();
-    expect(within(statusBar).getByText("10 路")).toBeInTheDocument();
-    expect(within(statusBar).getByText("显示偏好")).toBeInTheDocument();
+    expect(within(statusBar).getByText("后端服务")).toBeInTheDocument();
+    expect(within(statusBar).getByText("驾驶舱数据")).toBeInTheDocument();
+    expect(within(statusBar).getByText("SkillOS")).toBeInTheDocument();
+    expect(within(statusBar).getByText("安全保护")).toBeInTheDocument();
+    expect(within(statusBar).getByText("本地数据")).toBeInTheDocument();
     expect(within(statusBar).getByRole("button", { name: /导出审计记录/ })).toBeInTheDocument();
     expect(screen.queryByLabelText("系统体检")).not.toBeInTheDocument();
     expect(screen.queryByRole("region", { name: "童子谏言" })).not.toBeInTheDocument();

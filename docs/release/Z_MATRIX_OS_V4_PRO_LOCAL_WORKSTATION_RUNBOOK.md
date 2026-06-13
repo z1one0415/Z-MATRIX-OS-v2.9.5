@@ -74,6 +74,12 @@ http://127.0.0.1:8765/api/cockpit/holdings_packet.json
 
 ## 6. Start Cockpit
 
+Optional frontend runtime pointer:
+
+```bash
+cp apps/cockpit_web/.env.example apps/cockpit_web/.env.local
+```
+
 ```bash
 npm --prefix apps/cockpit_web run dev -- --port 5173
 ```

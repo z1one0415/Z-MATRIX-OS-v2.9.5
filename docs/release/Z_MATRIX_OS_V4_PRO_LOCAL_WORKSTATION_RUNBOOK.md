@@ -20,6 +20,8 @@ cp .env.example .env
 
 Fill only local environment values in `.env`. Do not commit `.env`.
 
+The backend check and combined workstation launcher read `.env` through a fixed allowlist parser. The file is not shell-sourced, so values are treated as local configuration strings rather than executable shell content.
+
 Required for vendor data ingestion:
 
 ```text
@@ -82,6 +84,8 @@ bash scripts/product/start_local_workstation.sh
 ```
 
 It starts the local backend, waits for `/health`, exports the cockpit runtime URLs, and starts the cockpit dev server in the foreground. Stop it with `Ctrl-C`; the backend process is cleaned up by the script.
+
+If `.env` is present, this launcher applies the local host, port, workspace, cockpit packet root, vendor root, and secret reference variables before the backend starts. Secret values are never printed by the launcher or backend status endpoints.
 
 ## 7. Start Cockpit Manually
 

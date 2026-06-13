@@ -194,6 +194,19 @@ export type ProductResearchStatus = {
     command: string;
     artifact_policy: "LOCAL_FILES_ONLY";
   };
+  monthly_refresh: {
+    status: "MONTHLY_REFRESH_DRY_PLAN_READY" | "MONTHLY_REFRESH_DEGRADED";
+    ready_count: number;
+    required_count: number;
+    command: string;
+    mode: "LOCAL_TERMINAL_MANUAL_DRY_PLAN";
+    safety: {
+      alpha_claim: "BLOCKED";
+      promotion: "BLOCKED";
+      broker_runtime: "BLOCKED";
+      real_trade: "BLOCKED";
+    };
+  };
   safety: {
     alpha_claim: "BLOCKED";
     promotion: "BLOCKED";
@@ -407,6 +420,23 @@ const defaultResearchStatus: ProductResearchStatus = {
     status: "LOCAL_EXPORT_READY",
     command: "PYTHONPATH=. python3 scripts/product/export_research_report_pack.py",
     artifact_policy: "LOCAL_FILES_ONLY"
+  },
+  monthly_refresh: {
+    status: "MONTHLY_REFRESH_DEGRADED",
+    ready_count: 0,
+    required_count: 4,
+    command: (
+      "PYTHONPATH=. python3 scripts/data/ingest_tushare_market_data.py " +
+      "--symbols 601899,002472,300750 --end-date 20260613 --years 5 " +
+      "--endpoints stock_basic,trade_cal,daily,adj_factor,daily_basic --dry-plan"
+    ),
+    mode: "LOCAL_TERMINAL_MANUAL_DRY_PLAN",
+    safety: {
+      alpha_claim: "BLOCKED",
+      promotion: "BLOCKED",
+      broker_runtime: "BLOCKED",
+      real_trade: "BLOCKED"
+    }
   },
   safety: {
     alpha_claim: "BLOCKED",
@@ -917,6 +947,10 @@ function cloneResearchStatus(packet: ProductResearchStatus): ProductResearchStat
       missing_paths: [...item.missing_paths]
     })),
     report_export: { ...packet.report_export },
+    monthly_refresh: {
+      ...packet.monthly_refresh,
+      safety: { ...packet.monthly_refresh.safety }
+    },
     safety: { ...packet.safety }
   };
 }
@@ -943,6 +977,19 @@ function normalizeResearchStatus(packet: ProductResearchStatus): ProductResearch
       status: packet.report_export?.status === "LOCAL_EXPORT_READY" ? "LOCAL_EXPORT_READY" : "LOCAL_EXPORT_PLANNED",
       command: String(packet.report_export?.command ?? defaultResearchStatus.report_export.command),
       artifact_policy: "LOCAL_FILES_ONLY"
+    },
+    monthly_refresh: {
+      status: packet.monthly_refresh?.status === "MONTHLY_REFRESH_DRY_PLAN_READY" ? "MONTHLY_REFRESH_DRY_PLAN_READY" : "MONTHLY_REFRESH_DEGRADED",
+      ready_count: Number(packet.monthly_refresh?.ready_count ?? 0),
+      required_count: Number(packet.monthly_refresh?.required_count ?? defaultResearchStatus.monthly_refresh.required_count),
+      command: String(packet.monthly_refresh?.command ?? defaultResearchStatus.monthly_refresh.command),
+      mode: "LOCAL_TERMINAL_MANUAL_DRY_PLAN",
+      safety: {
+        alpha_claim: "BLOCKED",
+        promotion: "BLOCKED",
+        broker_runtime: "BLOCKED",
+        real_trade: "BLOCKED"
+      }
     },
     safety: {
       alpha_claim: "BLOCKED",

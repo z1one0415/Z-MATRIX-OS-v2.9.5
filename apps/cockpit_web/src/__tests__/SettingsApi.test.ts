@@ -57,6 +57,8 @@ describe("settings api tenant-aware contract", () => {
     expect(packet.operatorActions.actions.every((item) => item.safety.broker_runtime === "BLOCKED")).toBe(true);
     expect(packet.researchStatus.capability_count).toBeGreaterThanOrEqual(4);
     expect(packet.researchStatus.report_export.artifact_policy).toBe("LOCAL_FILES_ONLY");
+    expect(packet.researchStatus.monthly_refresh.mode).toBe("LOCAL_TERMINAL_MANUAL_DRY_PLAN");
+    expect(packet.researchStatus.monthly_refresh.safety.broker_runtime).toBe("BLOCKED");
     expect(packet.researchStatus.safety.real_trade).toBe("BLOCKED");
   });
 

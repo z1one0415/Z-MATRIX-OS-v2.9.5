@@ -296,6 +296,7 @@ def build_research_status(config: ProductRuntimeConfig | None = None) -> dict[st
             "command": "PYTHONPATH=. python3 scripts/product/export_research_report_pack.py",
             "artifact_policy": "LOCAL_FILES_ONLY",
         },
+        "monthly_refresh": _monthly_refresh_status(),
         "safety": {
             "alpha_claim": "BLOCKED",
             "promotion": "BLOCKED",
@@ -579,6 +580,44 @@ def _research_capability_status(spec: dict[str, Any]) -> dict[str, Any]:
         "missing_paths": missing_paths,
         "module_count": sum(_count_py_files(path) for path in paths if path.exists()),
         "safety": "RESEARCH_ONLY",
+    }
+
+
+def _monthly_refresh_status() -> dict[str, Any]:
+    tracked = {
+        "forward_due_schedule": Path("runtime_reports/cases/v12_1_live_paper_due_schedule.json"),
+        "oos_completion": Path("runtime_reports/cases/v11_6_1_oos_completion_chain.json"),
+        "tracking_registry": Path("runtime_reports/cases/v11_6_tracking_registry.json"),
+        "monthly_outcome_panel": Path("runtime_reports/cases/v13_5_3_monthly_outcome_label_panel_manifest.json"),
+    }
+    files = []
+    for name, path in tracked.items():
+        files.append(
+            {
+                "id": name,
+                "path": path.as_posix(),
+                "ready": path.exists(),
+                "bytes": path.stat().st_size if path.exists() else 0,
+            }
+        )
+    ready_count = sum(1 for item in files if item["ready"])
+    return {
+        "status": "MONTHLY_REFRESH_DRY_PLAN_READY" if ready_count >= 2 else "MONTHLY_REFRESH_DEGRADED",
+        "ready_count": ready_count,
+        "required_count": len(files),
+        "files": files,
+        "command": (
+            "PYTHONPATH=. python3 scripts/data/ingest_tushare_market_data.py "
+            "--symbols 601899,002472,300750 --end-date 20260613 --years 5 "
+            "--endpoints stock_basic,trade_cal,daily,adj_factor,daily_basic --dry-plan"
+        ),
+        "mode": "LOCAL_TERMINAL_MANUAL_DRY_PLAN",
+        "safety": {
+            "alpha_claim": "BLOCKED",
+            "promotion": "BLOCKED",
+            "broker_runtime": "BLOCKED",
+            "real_trade": "BLOCKED",
+        },
     }
 
 

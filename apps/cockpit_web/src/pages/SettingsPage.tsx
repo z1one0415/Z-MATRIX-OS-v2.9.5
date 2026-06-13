@@ -329,8 +329,21 @@ export function SettingsPage({ session }: SettingsPageProps) {
               <span>报告导出</span>
               <em>{status.report_export.artifact_policy}</em>
             </div>
-            <p>通过本地产品包生成器输出 manifest、checksums 与可审计材料。</p>
+            <p>通过本地报告导出器输出 manifest、checksums 与可审计材料。</p>
             <code>{status.report_export.command}</code>
+          </article>
+          <article className="settings-research-card settings-research-card--report">
+            <div>
+              <RefreshCcw size={16} aria-hidden="true" />
+              <span>月度刷新</span>
+              <em>{status.monthly_refresh.status}</em>
+            </div>
+            <p>Forward OOS 等待、月度标签和本地数据刷新只生成 dry plan。</p>
+            <dl className="settings-compact-dl">
+              <div><dt>证据</dt><dd>{status.monthly_refresh.ready_count}/{status.monthly_refresh.required_count}</dd></div>
+              <div><dt>模式</dt><dd>{status.monthly_refresh.mode}</dd></div>
+            </dl>
+            <code>{status.monthly_refresh.command}</code>
           </article>
         </div>
       </section>

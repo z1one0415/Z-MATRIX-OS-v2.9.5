@@ -200,6 +200,8 @@ describe("settings page", () => {
     expect(within(panel).getByText("Forward OOS 等待")).toBeInTheDocument();
     expect(within(panel).getByText("报告导出")).toBeInTheDocument();
     expect(within(panel).getByText(/export_research_report_pack\.py/)).toBeInTheDocument();
+    expect(within(panel).getByText("月度刷新")).toBeInTheDocument();
+    expect(within(panel).getByText(/--dry-plan/)).toBeInTheDocument();
   });
 
   it("does not render forbidden operational commands or internal identifiers", async () => {

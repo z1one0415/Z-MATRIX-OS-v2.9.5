@@ -158,6 +158,9 @@ def test_research_status_maps_product_capabilities_to_repository_paths():
     assert status["report_export"]["status"] == "LOCAL_EXPORT_READY"
     assert status["report_export"]["command"].endswith("scripts/product/export_research_report_pack.py")
     assert status["report_export"]["artifact_policy"] == "LOCAL_FILES_ONLY"
+    assert status["monthly_refresh"]["mode"] == "LOCAL_TERMINAL_MANUAL_DRY_PLAN"
+    assert status["monthly_refresh"]["command"].endswith("--dry-plan")
+    assert status["monthly_refresh"]["safety"]["broker_runtime"] == "BLOCKED"
     assert status["safety"]["real_trade"] == "BLOCKED"
 
 

@@ -38,3 +38,7 @@
 
 ## Next
 A1-A6 agent waves execute in parallel. Integration merge after all waves pass.
+
+## R-Matrix Scope Note
+
+R-Matrix is core SkillOS scope as research judgment matrix. Readonly, disabled-default. No runtime/broker/production/alpha/promotion/F8 authorization.

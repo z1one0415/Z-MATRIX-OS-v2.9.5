@@ -43,3 +43,7 @@ All Z-SkillOS backend mainline work complete. FactorLib→A1→B1→Z2→Z9 pipe
 
 ## Next Legal Entry
 FRONTEND_DASHBOARD_APP_IMPLEMENTATION_START
+
+## R-Matrix Backfill Note
+
+R-Matrix skill line registered as core Z-SkillOS skill line between B1 and Z2/Z9. Not a frontend page. Updated: 6 strict core skills, 7 incl handoff.

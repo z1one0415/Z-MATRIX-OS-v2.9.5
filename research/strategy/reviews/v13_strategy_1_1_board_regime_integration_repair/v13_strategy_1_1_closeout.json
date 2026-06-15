@@ -1,0 +1,16 @@
+{
+  "pipeline_signature": "Z2-V13-STRATEGY-1-1-CLOSEOUT",
+  "status": "V13_STRATEGY_1_1_INTEGRATION_SAFETY_REPAIR_PASS",
+  "base_commit": "aa63b04",
+  "context_builder_created": true,
+  "safety_assertion_real": true,
+  "no_real_trade_test_real": true,
+  "g18_wired": true,
+  "recommended_next": "V13_STRATEGY_2_FORWARD_OOS_BOARD_REGIME_VALIDATION",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

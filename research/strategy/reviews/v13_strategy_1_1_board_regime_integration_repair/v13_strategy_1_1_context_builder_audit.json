@@ -1,0 +1,12 @@
+{
+  "context_builder_created": true,
+  "integrates_4_modules": true,
+  "board_regime_strategy_bmatrix_interpretation": true,
+  "output_safety_fields": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

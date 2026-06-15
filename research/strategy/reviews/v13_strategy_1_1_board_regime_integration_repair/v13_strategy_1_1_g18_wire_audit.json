@@ -1,0 +1,11 @@
+{
+  "final_decision_envelope_has_board_regime_context": true,
+  "interpretation_present": true,
+  "not_trade_signal_preserved": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

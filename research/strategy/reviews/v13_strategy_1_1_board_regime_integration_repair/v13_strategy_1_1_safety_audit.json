@@ -1,0 +1,11 @@
+{
+  "assert_strategy_safety_real": true,
+  "pass_was_empty_now_has_10_asserts": true,
+  "no_forbidden_scan_8_files": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

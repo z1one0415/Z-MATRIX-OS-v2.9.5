@@ -1,0 +1,17 @@
+{
+  "pipeline_signature": "Z2-V13-STRATEGY-1-1",
+  "status": "V13_STRATEGY_1_1_REPAIR",
+  "base_commit": "aa63b04",
+  "fixes": [
+    "context builder",
+    "safety assertion real",
+    "no-real-trade test real",
+    "G18 integration field"
+  ],
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

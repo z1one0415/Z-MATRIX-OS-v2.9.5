@@ -1,0 +1,16 @@
+{
+  "pipeline_signature": "Z2-V13-G18-1-1",
+  "status": "V13_G18_1_1_INTEGRATION_REPAIR",
+  "base_commit": "bafcea5",
+  "fixes": [
+    "gate_pipeline provider wiring",
+    "market_snapshot_adapter new fields",
+    "full-chain integration test"
+  ],
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,13 @@
+{
+  "gate_pipeline_wired": true,
+  "position_provider_called": true,
+  "event_calendar_provider_called": true,
+  "TODO_removed": 2,
+  "adapter_maps_all_fields": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

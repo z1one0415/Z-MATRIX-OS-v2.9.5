@@ -1,0 +1,11 @@
+{
+  "import_test": true,
+  "all_gates_defined": true,
+  "r11_flag_not_score": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

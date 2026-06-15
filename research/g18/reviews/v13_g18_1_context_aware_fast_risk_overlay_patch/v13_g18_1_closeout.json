@@ -1,0 +1,16 @@
+{
+  "pipeline_signature": "Z2-V13-G18-1-CLOSEOUT",
+  "status": "V13_G18_1_CONTEXT_AWARE_FAST_RISK_PATCH_PASS",
+  "base_commit": "53899d1",
+  "R3_split": true,
+  "R7_split": true,
+  "R6_exclude_R3": true,
+  "R11_position_flags_only": true,
+  "recommended_next": "V13_G18_2_FULL_INTEGRATION_TEST",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,10 +1,7 @@
-"""Final Decision Envelope v1.2 — G18 output with enforced priority rules + fast risk overlay.
+"""Final Decision Envelope v2.0 — G18 context-aware output with interpretation layers.
 
-Priority: G09 sell > G09 hard_blocks > FAST_RISK_OVERLAY > G18 probability > G11 warn > G14 provenance
-G11: STRONG_WARNING_ONLY, never hard veto
-Z16/G17: required confirmations for any paper action
-Fast risk overlay: veto power over PAPER_TRACK regardless of base_score
-No BUY/SELL/AUTO_TRADE/MARKET_ORDER ever
+v2.0: Added probability_interpretation, position_management, event_risk_interpretation.
+Priority unchanged: G09 sell > G09 hard_blocks > FAST_RISK_OVERLAY > G18 probability > G11 warn > G14 provenance
 """
 from __future__ import annotations
 from zmatrix.action.action_contracts import assert_no_real_trade
@@ -14,15 +11,42 @@ from zmatrix.prediction.fast_risk_overlay import (
     FastRiskResult,
 )
 
-
 _ORDER = ["AVOID", "BLOCKED", "WAIT", "WATCH", "PAPER_PROBE_ELIGIBLE_PENDING_Z16_Z17", "PAPER_TRACK", "PAPER_PROBE_ELIGIBLE"]
 
 def _lowest_cap(lhs, rhs):
-    """Return the more conservative action cap."""
     for a in _ORDER:
         if lhs == a or rhs == a: return a
     return lhs
 
+def _probability_bucket(p: float) -> str:
+    if p >= 0.70: return "STRONG_RESEARCH_SIGNAL"
+    if p >= 0.50: return "MODERATE_RESEARCH_SIGNAL"
+    return "WEAK_OR_NEGATIVE_RESEARCH_SIGNAL"
+
+def _event_interpretation(snap: MarketSnapshot | None) -> dict:
+    if snap is None:
+        return {"event_active": False}
+    return {
+        "event_active": snap.event_window_active,
+        "event_type": snap.event_type,
+        "event_risk_severity": snap.event_risk_severity,
+        "event_phase": snap.event_phase,
+        "scheduled_event_policy": "reduce_interpretation_strength_not_global_stop",
+    }
+
+def _position_interpretation(snap: MarketSnapshot | None, fast_risk: FastRiskResult | None) -> dict:
+    if snap is None:
+        return {"status": "NO_POSITION"}
+    flags = fast_risk.position_management_flags if fast_risk else []
+    return {
+        "position_state": snap.position_state,
+        "shares": snap.shares,
+        "avg_holding_cost": snap.avg_holding_cost,
+        "review_flags": [f.get("gate") for f in flags],
+        "oversold_review_eligible": any("R11" in f.get("gate", "") for f in flags),
+        "not_new_entry_signal": True,
+        "not_auto_add_signal": True,
+    }
 
 def build_final_decision(prediction, upstream_evidence: dict | None = None,
                          market_snapshot: "MarketSnapshot | None" = None) -> dict:
@@ -41,7 +65,7 @@ def build_final_decision(prediction, upstream_evidence: dict | None = None,
     risk_warnings = list(g11.get("warnings", []))
     required_confirmations = []
 
-    # ── Rule 1: G09 sell_decision overrides G18 buy ──
+    # ── Rule 1: G09 sell ──
     pos_action = ""
     g09_avail = g09.get("available") is True or g09.get("status") in ("PASS", "DEGRADED")
     if g09 and g09_avail:
@@ -53,14 +77,13 @@ def build_final_decision(prediction, upstream_evidence: dict | None = None,
             exit_intent = pos_action
             blocking_reasons.append("G09_SELL_DECISION_ACTIVE")
 
-    # ── Rule 2: G09 hard_blocks prevent paper entry ──
+    # ── Rule 2: G09 hard_blocks ──
     if g09 and (g09.get("hard_blocks") or (g09.get("sell_decision") or {}).get("hard_blocks")):
         entry = "WAIT"
         paper_action = None
         blocking_reasons.append("G09_HARD_BLOCKS")
 
-    # ── Rule 3: G11 warning only, never hard veto ──
-    # (risk_warnings already populated, no action change)
+    # ── Rule 3: G11 warning only ──
 
     # ── Rule 5: Paper actions require Z16/G17 ──
     if entry in ("WATCH", "PAPER_TRACK", "PAPER_PROBE_ELIGIBLE", "PAPER_PROBE_ELIGIBLE_PENDING_Z16_Z17"):
@@ -75,7 +98,7 @@ def build_final_decision(prediction, upstream_evidence: dict | None = None,
         entry = conflict["suggested_action_cap"]
     entry = _lowest_cap(entry, conflict["suggested_action_cap"])
 
-    # ── Rule 5b: Fast Risk Overlay (v1.2) ──
+    # ── Fast Risk Overlay ──
     fast_risk = None
     if market_snapshot is not None:
         base_score = int(prediction.probability * 100)
@@ -85,7 +108,6 @@ def build_final_decision(prediction, upstream_evidence: dict | None = None,
                 paper_action = None
             if entry in ("PAPER_TRACK", "PAPER_PROBE_ELIGIBLE"):
                 entry = _lowest_cap(entry, "WAIT")
-        # Apply action from fast risk if more conservative
         fr_action = fast_risk.recommended_action
         if fr_action in ("WAIT", "REDUCE_OR_WAIT", "AVOID"):
             entry = _lowest_cap(entry, "WAIT")
@@ -95,9 +117,11 @@ def build_final_decision(prediction, upstream_evidence: dict | None = None,
     if exit_intent:
         assert_no_real_trade(exit_intent)
 
+    # ── v2.0: interpretation layers ──
+    prob = prediction.probability
     return {
-        "decision_version": "v1.2",
-        "version": "v1.2",
+        "decision_version": "v2.0",
+        "version": "v2.0",
         "ticker": prediction.ticker,
         "conflict_resolution": conflict,
         "conflicts": conflict["conflicts"],
@@ -105,10 +129,18 @@ def build_final_decision(prediction, upstream_evidence: dict | None = None,
         "exit_intent": exit_intent,
         "paper_action": paper_action,
         "action_cap": entry,
-        "probability_after_constraints": prediction.probability,
+        "probability_after_constraints": prob,
         "required_confirmations": required_confirmations,
         "risk_warnings": risk_warnings,
         "blocking_reasons": blocking_reasons,
+        "probability_interpretation": {
+            "raw_probability": prob,
+            "conviction_bucket": _probability_bucket(prob),
+            "label_is_action_cap": True,
+            "allowed_action_is_not_trade": True,
+        },
+        "position_management": _position_interpretation(market_snapshot, fast_risk),
+        "event_risk_interpretation": _event_interpretation(market_snapshot),
         "provenance": {
             "g09": {
                 "available": g09_avail, "source": g09.get("source", "targeted_scan"),
@@ -145,5 +177,6 @@ def build_final_decision(prediction, upstream_evidence: dict | None = None,
             "paper_track_allowed": fast_risk.paper_track_allowed if fast_risk else True,
             "recommended_action": fast_risk.recommended_action if fast_risk else None,
             "action_gate_reason": fast_risk.action_gate_reason if fast_risk else "",
+            "position_management_flags": fast_risk.position_management_flags if fast_risk else [],
         },
     }

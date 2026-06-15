@@ -1,0 +1,10 @@
+{
+  "position_provider_created": true,
+  "no_real_data_committed": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

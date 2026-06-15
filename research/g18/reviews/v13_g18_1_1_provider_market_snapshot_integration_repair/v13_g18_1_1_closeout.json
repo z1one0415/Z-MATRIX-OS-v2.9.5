@@ -11,5 +11,8 @@
   "execution_allowed": false,
   "production": "BLOCKED",
   "broker_runtime": "BLOCKED",
-  "real_trade": "BLOCKED"
+  "real_trade": "BLOCKED",
+  "unified_with": "feature/v13-strategy-1-1-integration-safety-repair @ db4804f",
+  "g18_strategy_integrated": true,
+  "board_regime_real_wired": true
 }

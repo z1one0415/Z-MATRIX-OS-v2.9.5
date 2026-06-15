@@ -168,14 +168,7 @@ def build_final_decision(prediction, upstream_evidence: dict | None = None,
             },
         },
         "forbidden_real_trade_checked": True,
-        "board_regime_context": {
-            "available": False,
-            "board_type": None,
-            "regime_state": None,
-            "strategy_family": None,
-            "b_matrix_search_status": None,
-            "action_interpretation": None,
-        },
+        "board_regime_context": _build_board_context(prediction.ticker, market_snapshot, entry, prob),
         "fast_risk_overlay": {
             "evaluated": fast_risk is not None,
             "triggered_gates": fast_risk.triggered_gates if fast_risk else [],
@@ -188,3 +181,34 @@ def build_final_decision(prediction, upstream_evidence: dict | None = None,
             "position_management_flags": fast_risk.position_management_flags if fast_risk else [],
         },
     }
+
+
+def _build_board_context(ticker: str, market_snapshot, entry: str, prob: float) -> dict:
+    """Build board/regime context. Safe defaults when data unavailable."""
+    try:
+        from zmatrix.strategy.board_regime_context import build_board_regime_context
+        price_series = getattr(market_snapshot, "close_series", None) if market_snapshot else None
+        ctx = build_board_regime_context(str(ticker), price_series, entry, prob)
+        ctx["available"] = True
+        return ctx
+    except (ImportError, Exception):
+        from zmatrix.strategy.board_classifier import classify_board
+        try:
+            board = classify_board(str(ticker))
+            board_type = board.get("board_type", "UNKNOWN")
+        except Exception:
+            board_type = "UNKNOWN"
+        return {
+            "available": True,
+            "board_type": board_type,
+            "regime_state": "DATA_INSUFFICIENT",
+            "strategy_family": "DIAGNOSTIC_ONLY",
+            "b_matrix_search_status": "BLOCKED",
+            "action_interpretation": {
+                "raw_action_label": entry,
+                "interpreted_as": entry,
+                "not_trade_signal": True,
+                "not_alpha_claim": True,
+                "requires_forward_oos_confirmation": True,
+            },
+        }

@@ -1,0 +1,24 @@
+{
+  "version": "v13_strategy_1",
+  "regime_thresholds": {
+    "reversal_up_day_next_down_probability": 0.52,
+    "momentum_up_day_next_down_probability": 0.47,
+    "momentum_avg_up_run_length": 2.1,
+    "transition_lower": 0.48,
+    "transition_upper": 0.51
+  },
+  "board_types": [
+    "MAINBOARD",
+    "STAR",
+    "CHINEXT",
+    "SME",
+    "BSE",
+    "UNKNOWN"
+  ],
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

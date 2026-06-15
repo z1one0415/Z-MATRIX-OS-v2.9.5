@@ -1,0 +1,19 @@
+{
+  "pipeline_signature": "Z2-V13-STRATEGY-1-CLOSEOUT",
+  "status": "V13_STRATEGY_1_BOARD_AWARE_REGIME_ROUTER_PASS",
+  "base_commit": "bafcea5",
+  "modules_created": 6,
+  "board_classifier_tested": true,
+  "regime_detector_tested": true,
+  "strategy_router_tested": true,
+  "b_matrix_router_tested": true,
+  "g18_interpretation_tested": true,
+  "no_alpha_no_execution": true,
+  "recommended_next": "V13_STRATEGY_2_FORWARD_OOS_BOARD_REGIME_VALIDATION",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,23 @@
+{
+  "version": "v13_strategy_1",
+  "default_policy": "research_only",
+  "priority_boards": [
+    "STAR",
+    "CHINEXT"
+  ],
+  "allowed_regimes": [
+    "MOMENTUM"
+  ],
+  "conditional_regimes": [
+    "TRANSITION"
+  ],
+  "mainboard_default": "REVERSAL_REPAIR",
+  "not_trade_signal": true,
+  "requires_forward_oos_confirmation": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

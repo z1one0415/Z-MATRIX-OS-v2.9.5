@@ -1,0 +1,12 @@
+{
+  "g18_interpretation_layer_added": true,
+  "raw_action_preserved": true,
+  "board_regime_context_added": true,
+  "no_action_contract_change": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

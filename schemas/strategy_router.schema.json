@@ -1,0 +1,17 @@
+{
+  "title": "StrategyRouter",
+  "type": "object",
+  "properties": {
+    "strategy_family": {
+      "type": "string"
+    },
+    "not_trade_signal": {
+      "type": "boolean",
+      "const": true
+    },
+    "requires_forward_oos_confirmation": {
+      "type": "boolean",
+      "const": true
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "canonical_registry_unchanged": true,
+  "F7_baseline_unchanged": true,
+  "no_BUY_SELL_ADD": true,
+  "safety_gates": {
+    "alpha_claim_allowed": false,
+    "runner_enabled": false,
+    "execution_allowed": false,
+    "production": "BLOCKED",
+    "broker_runtime": "BLOCKED",
+    "real_trade": "BLOCKED"
+  }
+}

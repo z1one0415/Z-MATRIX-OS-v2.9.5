@@ -1,0 +1,28 @@
+{
+  "title": "BoardRegime",
+  "type": "object",
+  "properties": {
+    "ticker": {
+      "type": "string"
+    },
+    "board_type": {
+      "enum": [
+        "MAINBOARD",
+        "STAR",
+        "CHINEXT",
+        "SME",
+        "BSE",
+        "UNKNOWN"
+      ]
+    },
+    "regime_state": {
+      "enum": [
+        "REVERSAL",
+        "MOMENTUM",
+        "TRANSITION",
+        "DATA_INSUFFICIENT",
+        "HIGH_VOL_NOISE"
+      ]
+    }
+  }
+}

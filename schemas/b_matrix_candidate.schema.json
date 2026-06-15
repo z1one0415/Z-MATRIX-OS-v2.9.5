@@ -1,0 +1,23 @@
+{
+  "title": "BMatrixCandidate",
+  "type": "object",
+  "properties": {
+    "ticker": {
+      "type": "string"
+    },
+    "search_status": {
+      "enum": [
+        "ALLOWED",
+        "CONDITIONAL",
+        "BLOCKED"
+      ]
+    },
+    "priority": {
+      "enum": [
+        "HIGH",
+        "MEDIUM",
+        "LOW"
+      ]
+    }
+  }
+}

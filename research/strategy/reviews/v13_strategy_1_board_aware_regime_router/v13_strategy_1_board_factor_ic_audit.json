@@ -1,0 +1,12 @@
+{
+  "board_types_recognized": 5,
+  "board_aware_routing": true,
+  "mainboard_reversal_default": "REVERSAL_REPAIR",
+  "star_momentum_default": "B_MATRIX_MOMENTUM",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

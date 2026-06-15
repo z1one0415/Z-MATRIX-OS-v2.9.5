@@ -1,0 +1,14 @@
+{
+  "modules_created": 6,
+  "configs_created": 2,
+  "schemas_created": 3,
+  "tests_created": 6,
+  "review_artifacts": 9,
+  "no_module_modification": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

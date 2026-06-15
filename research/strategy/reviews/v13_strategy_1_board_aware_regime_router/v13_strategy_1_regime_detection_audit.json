@@ -1,0 +1,16 @@
+{
+  "regime_states": [
+    "REVERSAL",
+    "MOMENTUM",
+    "TRANSITION",
+    "DATA_INSUFFICIENT",
+    "HIGH_VOL_NOISE"
+  ],
+  "thresholds_defined": true,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

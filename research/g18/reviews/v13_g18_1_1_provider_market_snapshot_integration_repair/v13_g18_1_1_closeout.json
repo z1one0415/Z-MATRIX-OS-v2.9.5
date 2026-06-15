@@ -1,0 +1,15 @@
+{
+  "pipeline_signature": "Z2-V13-G18-1-1-CLOSEOUT",
+  "status": "V13_G18_1_1_PROVIDER_INTEGRATION_REPAIR_PASS",
+  "base_commit": "bafcea5",
+  "integration_complete": true,
+  "gate_pipeline_todo_removed": true,
+  "adapter_all_fields_mapped": true,
+  "recommended_next": "V13_G18_1_RECERTIFY_AS_FULL_CHAIN_PASS",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

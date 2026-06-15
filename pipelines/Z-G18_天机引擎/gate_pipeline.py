@@ -177,6 +177,8 @@ def run(tickers=None, mode="daily", universe="WATCHLIST"):
     from zmatrix.prediction.adapters.g17_account_confirm_adapter import load_g17_signal
     from zmatrix.prediction.final_decision_envelope import build_final_decision
     from zmatrix.prediction.market_snapshot_adapter import build_market_snapshot
+    from zmatrix.prediction.position_provider import load_position_context
+    from zmatrix.prediction.event_calendar_provider import load_event_context
     from zmatrix.prediction.paper_execution_record import build_paper_execution_record
     from zmatrix.calibration.z9_calibration_sample import build_z9_calibration_sample
     from zmatrix.calibration.z9_ingestion_queue import build_z9_ingestion_queue_item
@@ -201,8 +203,8 @@ def run(tickers=None, mode="daily", universe="WATCHLIST"):
             prediction=p,
             kline_data=kl_snap,
             g09_signal=g09_signal_map.get(p.ticker),
-            position_data=None,  # TODO: wire position_provider
-            event_calendar=None,  # TODO: wire event_calendar
+            position_data=load_position_context(p.ticker),
+            event_calendar=load_event_context(p.ticker, now.date()),
         )
 
         p.final_decision = build_final_decision(p, upstream, market_snapshot=market_snap)

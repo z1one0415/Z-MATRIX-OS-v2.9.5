@@ -57,11 +57,25 @@ def build_market_snapshot(
     d1_support = g09.get("d1_support") if g09.get("available") else None
     cycle_origin = g09.get("cycle_origin") if g09.get("available") else None
 
-    # ── Position data ──
+    # ── Position data (v2.0 context-aware) ──
     user_cost_line = pos.get("cost_line") or pos.get("avg_cost") if pos else None
+    position_state = pos.get("position_state", "NO_POSITION") if pos else "NO_POSITION"
+    shares = float(pos.get("shares", 0)) if pos else 0.0
+    planned_entry_price = pos.get("planned_entry_price")
+    avg_holding_cost = pos.get("avg_cost")
+    cost_line_source = pos.get("cost_line_source", "none") if pos else "none"
+    oversold_zscore = pos.get("oversold_zscore")
+    ma60_deviation_pct = pos.get("ma60_deviation_pct")
+    fundamental_deteriorated = bool(pos.get("fundamental_deteriorated", False)) if pos else False
+    catalyst_active = bool(pos.get("catalyst_active", False)) if pos else False
 
-    # ── Event calendar ──
+    # ── Event calendar (v2.0 context-aware) ──
     event_window_active = bool(evt.get("event_window_active", False))
+    event_type = evt.get("event_type") if evt else None
+    event_risk_severity = evt.get("event_risk_severity", "none") if evt else "none"
+    event_phase = evt.get("event_phase", "none") if evt else "none"
+    event_expected = bool(evt.get("event_expected", False)) if evt else False
+    event_confirmation_received = bool(evt.get("event_confirmation_received", False)) if evt else False
 
     # ── Sector / style / catalyst (future wire — safe defaults) ──
     sector_momentum_rank_current = None  # None = gate won't fire
@@ -78,9 +92,22 @@ def build_market_snapshot(
         d1_support=d1_support,
         cycle_origin=cycle_origin,
         event_window_active=event_window_active,
-        event_confirmation_received=False,
+        event_confirmation_received=event_confirmation_received,
         sector_momentum_rank_current=sector_momentum_rank_current,
         sector_momentum_rank_prior=sector_momentum_rank_prior,
         style_mismatch_duration_days=style_mismatch_duration_days,
         days_since_catalyst=days_since_catalyst,
+        position_state=position_state,
+        shares=shares,
+        planned_entry_price=planned_entry_price,
+        avg_holding_cost=avg_holding_cost,
+        cost_line_source=cost_line_source,
+        oversold_zscore=oversold_zscore,
+        ma60_deviation_pct=ma60_deviation_pct,
+        fundamental_deteriorated=fundamental_deteriorated,
+        catalyst_active=catalyst_active,
+        event_type=event_type,
+        event_risk_severity=event_risk_severity,
+        event_phase=event_phase,
+        event_expected=event_expected,
     )

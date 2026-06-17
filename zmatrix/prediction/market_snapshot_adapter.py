@@ -83,11 +83,15 @@ def build_market_snapshot(
     style_mismatch_duration_days = 0  # 0 < 5, so R9 won't fire
     days_since_catalyst = None  # None = gate won't fire
 
+    # ── Close series for regime detection (v2.1) ──
+    close_series = closes if closes and len(closes) >= 5 else None
+
     return MarketSnapshot(
         close=close,
         high=high,
         volume=volume,
         avg_volume_20d=avg_volume_20d,
+        close_series=close_series,
         user_cost_line=user_cost_line,
         d1_support=d1_support,
         cycle_origin=cycle_origin,

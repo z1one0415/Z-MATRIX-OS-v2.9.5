@@ -1,0 +1,61 @@
+{
+  "pipeline_signature": "Z2-V13-STRATEGY-2-REGIME",
+  "board_distribution": {
+    "MAINBOARD": 300,
+    "STAR": 100,
+    "CHINEXT": 100,
+    "SME": 50
+  },
+  "regime_by_board": {
+    "MAINBOARD": {
+      "REVERSAL": 119,
+      "MOMENTUM": 92,
+      "TRANSITION": 89
+    },
+    "STAR": {
+      "REVERSAL": 23,
+      "TRANSITION": 31,
+      "MOMENTUM": 46
+    },
+    "CHINEXT": {
+      "TRANSITION": 22,
+      "MOMENTUM": 42,
+      "REVERSAL": 36
+    },
+    "SME": {
+      "TRANSITION": 17,
+      "REVERSAL": 16,
+      "MOMENTUM": 17
+    }
+  },
+  "b_matrix_by_board": {
+    "MAINBOARD": {
+      "BLOCKED": 119,
+      "CONDITIONAL": 181
+    },
+    "STAR": {
+      "BLOCKED": 23,
+      "CONDITIONAL": 31,
+      "ALLOWED": 46
+    },
+    "CHINEXT": {
+      "CONDITIONAL": 22,
+      "ALLOWED": 42,
+      "BLOCKED": 36
+    },
+    "SME": {
+      "BLOCKED": 50
+    }
+  },
+  "key_finding": {
+    "STAR_momentum_pct": 44.0,
+    "MAINBOARD_reversal_pct": 39.7,
+    "B_matrix_eligible_from_STAR_CHINEXT": 141
+  },
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

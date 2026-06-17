@@ -1,0 +1,11 @@
+{
+  "close_series_added_to_MarketSnapshot": true,
+  "adapter_maps_close_series": true,
+  "board_regime_computed": 550,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

@@ -1,0 +1,12 @@
+{
+  "close_series_fed": true,
+  "board_context_live": true,
+  "regime_detection_partial": "sample-based from board/regime generator. Full U475 needs real price data pull.",
+  "DATA_INSUFFICIENT_count": 0,
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

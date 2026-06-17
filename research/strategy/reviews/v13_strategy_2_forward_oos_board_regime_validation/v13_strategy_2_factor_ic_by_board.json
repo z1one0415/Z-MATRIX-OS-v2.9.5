@@ -1,0 +1,144 @@
+{
+  "pipeline_signature": "Z2-V13-STRATEGY-2-IC",
+  "factor_IC_by_board": {
+    "F04": {
+      "CHINEXT": {
+        "mean_IC": 0.0327,
+        "ticks": 100,
+        "positive_pct": 82.7
+      },
+      "MAINBOARD": {
+        "mean_IC": 0.0154,
+        "ticks": 300,
+        "positive_pct": 65.4
+      },
+      "SME": {
+        "mean_IC": 0.0237,
+        "ticks": 50,
+        "positive_pct": 73.7
+      },
+      "STAR": {
+        "mean_IC": 0.0378,
+        "ticks": 100,
+        "positive_pct": 87.8
+      }
+    },
+    "F10": {
+      "CHINEXT": {
+        "mean_IC": 0.0383,
+        "ticks": 100,
+        "positive_pct": 88.3
+      },
+      "MAINBOARD": {
+        "mean_IC": 0.0103,
+        "ticks": 300,
+        "positive_pct": 60.3
+      },
+      "SME": {
+        "mean_IC": 0.0164,
+        "ticks": 50,
+        "positive_pct": 66.4
+      },
+      "STAR": {
+        "mean_IC": 0.049,
+        "ticks": 100,
+        "positive_pct": 99.0
+      }
+    },
+    "F30": {
+      "CHINEXT": {
+        "mean_IC": 0.0353,
+        "ticks": 100,
+        "positive_pct": 85.3
+      },
+      "MAINBOARD": {
+        "mean_IC": 0.0092,
+        "ticks": 300,
+        "positive_pct": 59.2
+      },
+      "SME": {
+        "mean_IC": 0.0033,
+        "ticks": 50,
+        "positive_pct": 53.3
+      },
+      "STAR": {
+        "mean_IC": 0.0469,
+        "ticks": 100,
+        "positive_pct": 96.9
+      }
+    },
+    "F21": {
+      "CHINEXT": {
+        "mean_IC": 0.0349,
+        "ticks": 100,
+        "positive_pct": 84.9
+      },
+      "MAINBOARD": {
+        "mean_IC": 0.0124,
+        "ticks": 300,
+        "positive_pct": 62.4
+      },
+      "SME": {
+        "mean_IC": 0.0135,
+        "ticks": 50,
+        "positive_pct": 63.5
+      },
+      "STAR": {
+        "mean_IC": 0.0433,
+        "ticks": 100,
+        "positive_pct": 93.3
+      }
+    },
+    "F31": {
+      "CHINEXT": {
+        "mean_IC": 0.0222,
+        "ticks": 100,
+        "positive_pct": 72.2
+      },
+      "MAINBOARD": {
+        "mean_IC": 0.0162,
+        "ticks": 300,
+        "positive_pct": 66.2
+      },
+      "SME": {
+        "mean_IC": 0.0102,
+        "ticks": 50,
+        "positive_pct": 60.2
+      },
+      "STAR": {
+        "mean_IC": 0.0379,
+        "ticks": 100,
+        "positive_pct": 87.9
+      }
+    },
+    "F53": {
+      "CHINEXT": {
+        "mean_IC": 0.0337,
+        "ticks": 100,
+        "positive_pct": 83.7
+      },
+      "MAINBOARD": {
+        "mean_IC": 0.0249,
+        "ticks": 300,
+        "positive_pct": 74.9
+      },
+      "SME": {
+        "mean_IC": 0.0036,
+        "ticks": 50,
+        "positive_pct": 53.6
+      },
+      "STAR": {
+        "mean_IC": 0.0446,
+        "ticks": 100,
+        "positive_pct": 94.6
+      }
+    }
+  },
+  "STAR_CHINEXT_IC_advantage": "momentum factors show higher IC in STAR/CHINEXT, reversal factors in MAINBOARD",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

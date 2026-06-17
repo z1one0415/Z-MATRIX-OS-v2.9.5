@@ -1,0 +1,14 @@
+{
+  "pipeline_signature": "Z2-V13-STRATEGY-2-BMATRIX",
+  "STAR_CHINEXT_total": 200,
+  "MAINBOARD_total": 300,
+  "b_matrix_eligible": 141,
+  "b_matrix_blocked_mainboard_default": 300,
+  "evidence": "STAR/CHINEXT momentum regime produces b_matrix candidates. MAINBOARD reversal does not.",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

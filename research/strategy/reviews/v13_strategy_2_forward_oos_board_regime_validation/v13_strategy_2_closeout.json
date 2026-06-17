@@ -1,0 +1,18 @@
+{
+  "pipeline_signature": "Z2-V13-STRATEGY-2-CLOSEOUT",
+  "status": "V13_STRATEGY_2_FORWARD_OOS_BOARD_REGIME_PASS",
+  "base_commit": "52d277f",
+  "close_series_added": true,
+  "board_regime_distribution_computed": true,
+  "factor_IC_by_board_computed": true,
+  "b_matrix_evidence_generated": true,
+  "STAR_CHINEXT_momentum_B_matrix_eligible": "141 of 200",
+  "MAINBOARD_reversal_B_matrix_blocked": true,
+  "recommended_next": "V13_STRATEGY_3_BOARD_REGIME_GATING_INTO_FACTOR_SELECTION",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

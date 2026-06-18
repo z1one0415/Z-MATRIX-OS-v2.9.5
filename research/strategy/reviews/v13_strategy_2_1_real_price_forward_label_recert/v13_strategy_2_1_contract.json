@@ -1,0 +1,11 @@
+{
+  "pipeline_signature": "Z2-V13-STRATEGY-2-1",
+  "base_commit": "7356dff",
+  "fixes": "duplicate close_series, real price + forward labels",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}

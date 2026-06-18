@@ -1,0 +1,9 @@
+{
+  "board_distribution": {
+    "MAINBOARD": 35,
+    "CHINEXT": 6,
+    "STAR": 4,
+    "SME": 5
+  },
+  "source": "real_tushare_daily"
+}

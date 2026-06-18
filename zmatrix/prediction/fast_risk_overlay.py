@@ -57,8 +57,7 @@ class MarketSnapshot:
     days_since_catalyst: int | None = None
     catalyst_decay_threshold: int = 20
     catalyst_refreshed: bool = False
-    close_series: list | None = None  # v2.1: historical closes for regime detection
-
+    
     # ── position fields (v2.0) ──
     position_state: str = "NO_POSITION"     # NO_POSITION / HOLDING / WATCHING
     shares: float = 0.0

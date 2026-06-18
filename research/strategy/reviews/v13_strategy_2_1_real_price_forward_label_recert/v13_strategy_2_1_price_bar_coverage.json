@@ -1,0 +1,9 @@
+{
+  "tickers_pulled": 50,
+  "forward_labels": {
+    "5D": 300,
+    "20D": 300,
+    "60D": 250
+  },
+  "source": "tushare_daily_real"
+}

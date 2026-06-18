@@ -1,0 +1,17 @@
+{
+  "status": "V13_STRATEGY_2_1_REAL_PRICE_FORWARD_LABEL_PASS",
+  "base_commit": "7356dff",
+  "duplicate_close_series_fixed": true,
+  "tickers_pulled": 50,
+  "forward_labels_total": 850,
+  "5D": 300,
+  "20D": 300,
+  "60D": 250,
+  "recommended_next": "V13_STRATEGY_3_BOARD_REGIME_FORWARD_OOS",
+  "alpha_claim_allowed": false,
+  "runner_enabled": false,
+  "execution_allowed": false,
+  "production": "BLOCKED",
+  "broker_runtime": "BLOCKED",
+  "real_trade": "BLOCKED"
+}
